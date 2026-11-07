@@ -10,11 +10,11 @@ test_that("BoardsUserFollowsList", {
   # base path: https://api.pinterest.com/v5
   # List following boards
   # Get a list of the boards a user follows. The request returns a board summary object array.
-  # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param explicit_following character Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
-  # @return [BoardsUserFollowsList200Response]
+  # @param explicit_following character Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
+  # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @return [BoardsList200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -24,10 +24,10 @@ test_that("FollowUserUpdate", {
   # tests for FollowUserUpdate
   # base path: https://api.pinterest.com/v5
   # Follow user
-  # &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+  # **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
   # @param username character A valid username
-  # @param follow_user_request FollowUserRequest Follow a user.
-  # @return [UserSummary]
+  # @param follow_user_create FollowUserCreate 
+  # @return [FollowUser]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -39,7 +39,7 @@ test_that("FollowersList", {
   # List followers
   # Get a list of your followers.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [FollowersList200Response]
 
   # uncomment below to test the operation
@@ -61,9 +61,9 @@ test_that("UnverifyWebsiteDelete", {
   # tests for UnverifyWebsiteDelete
   # base path: https://api.pinterest.com/v5
   # Unverify website
-  # Unverifu a website verified by the signed-in user.
+  # Unverify a website verified by the signed-in user.
   # @param website character Website with path or domain only
-  # @return [Void]
+  # @return [UserWebsite]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -81,7 +81,7 @@ test_that("UserAccountAnalytics", {
   # @param app_types character Apps or devices to get data for, default is all. (optional)
   # @param content_type character Filter to paid or organic data. Default is all. (optional)
   # @param source character Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
-  # @param metric_types array[character] Metric types to get data for, default is all.  (optional)
+  # @param metric_types array[QuerymetrictypesItems] Metric types to get data for, default is all. (optional)
   # @param split_field character How to split the data into groups. Not including this param means data won't be split. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [map(AnalyticsMetricsResponse)]
@@ -97,15 +97,15 @@ test_that("UserAccountAnalyticsTopPins", {
   # Gets analytics data about a user&#39;s top pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
   # @param start_date character Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   # @param end_date character Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  # @param sort_by character Specify sorting order for metrics
+  # @param sort_by TopPinsSortBy Specify sorting order for metrics
   # @param from_claimed_content character Filter on Pins that match your claimed domain. (optional)
   # @param pin_format character Pin formats to get data for, default is all. (optional)
   # @param app_types character Apps or devices to get data for, default is all. (optional)
   # @param content_type character Filter to paid or organic data. Default is all. (optional)
   # @param source character Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
-  # @param metric_types array[character] Metric types to get data for, default is all.  (optional)
+  # @param metric_types array[QuerymetrictypesItems] Metric types to get data for, default is all. (optional)
   # @param num_of_pins integer Number of pins to include, default is 10. Max is 50. (optional)
-  # @param created_in_last_n_days integer Get metrics for pins created in the last \"n\" days. (optional)
+  # @param created_in_last_n_days numeric Get metrics for pins created in the last \"n\" days. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [TopPinsAnalyticsResponse]
 
@@ -120,15 +120,15 @@ test_that("UserAccountAnalyticsTopVideoPins", {
   # Gets analytics data about a user&#39;s top video pins (limited to the top 50). - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;.
   # @param start_date character Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   # @param end_date character Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  # @param sort_by character Specify sorting order for video metrics
+  # @param sort_by TopVideoPinsSortBy Specify sorting order for video metrics
   # @param from_claimed_content character Filter on Pins that match your claimed domain. (optional)
   # @param pin_format character Pin formats to get data for, default is all. (optional)
   # @param app_types character Apps or devices to get data for, default is all. (optional)
   # @param content_type character Filter to paid or organic data. Default is all. (optional)
   # @param source character Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts (optional)
-  # @param metric_types array[character] Metric types to get video data for, default is all.  (optional)
+  # @param metric_types array[QueryvideopinmetrictypesItems] Metric types to get video data for, default is all. (optional)
   # @param num_of_pins integer Number of pins to include, default is 10. Max is 50. (optional)
-  # @param created_in_last_n_days integer Get metrics for pins created in the last \"n\" days. (optional)
+  # @param created_in_last_n_days numeric Get metrics for pins created in the last \"n\" days. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [TopVideoPinsAnalyticsResponse]
 
@@ -143,7 +143,7 @@ test_that("UserAccountFollowedInterests", {
   # Get a list of a user&#39;s following interests in one place.
   # @param username character A valid username
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [UserAccountFollowedInterests200Response]
 
   # uncomment below to test the operation
@@ -154,7 +154,7 @@ test_that("UserAccountGet", {
   # tests for UserAccountGet
   # base path: https://api.pinterest.com/v5
   # Get user account
-  # Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+  # Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [Account]
 
@@ -167,12 +167,12 @@ test_that("UserFollowingGet", {
   # base path: https://api.pinterest.com/v5
   # List following
   # Get a list of who a certain user follows.
-  # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param feed_type UserFollowingFeedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
-  # @param explicit_following character Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
-  # @return [UserFollowingGet200Response]
+  # @param explicit_following character Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows. (optional)
+  # @param feed_type UserFollowingFeedType Thrift param specifying what type of followees will be kept. Default to include all followees. (optional)
+  # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @return [FollowersList200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -184,7 +184,7 @@ test_that("UserWebsitesGet", {
   # Get user websites
   # Get user websites, claimed or not
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [UserWebsitesGet200Response]
 
   # uncomment below to test the operation
@@ -196,9 +196,9 @@ test_that("VerifyWebsiteUpdate", {
   # base path: https://api.pinterest.com/v5
   # Verify website
   # Verify a website as a signed-in user.
-  # @param user_website_verify_request UserWebsiteVerifyRequest Verify a website.
+  # @param user_website_create UserWebsiteCreate 
   # @param ad_account_id character Unique identifier of an ad account. (optional)
-  # @return [UserWebsiteSummary]
+  # @return [UserWebsite]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -210,7 +210,7 @@ test_that("WebsiteVerificationGet", {
   # Get user verification code for website claiming
   # Get verification code for user to install on the website to claim it.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
-  # @return [UserWebsiteVerificationCode]
+  # @return [UserWebsiteVerification]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

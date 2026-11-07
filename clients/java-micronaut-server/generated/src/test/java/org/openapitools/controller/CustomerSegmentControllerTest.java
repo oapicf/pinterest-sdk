@@ -90,7 +90,7 @@ public class CustomerSegmentControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@7d904923");
+            .accept("[Ljava.lang.String;@57a3a1ba");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CustomerSegment.class);
@@ -141,7 +141,7 @@ public class CustomerSegmentControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2d302ac2");
+            .accept("[Ljava.lang.String;@1a7f323f");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -195,7 +195,7 @@ public class CustomerSegmentControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@584d9bf0");
+            .accept("[Ljava.lang.String;@608a5a3d");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 

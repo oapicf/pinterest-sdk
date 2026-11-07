@@ -90,7 +90,7 @@ public class ConversionEqsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@24576926");
+            .accept("[Ljava.lang.String;@2fd41e9a");
         request.getParameters()
             .add("lookback_period", String.valueOf(LookbackPeriodOptions.fromValue("1d"))) // The query parameter format should be 
             .add("source_platform", String.valueOf(SourcePlatformOptions.fromValue("WEB"))) // The query parameter format should be 

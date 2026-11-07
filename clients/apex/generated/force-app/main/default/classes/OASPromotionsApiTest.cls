@@ -14,7 +14,7 @@ private class OASPromotionsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSPromotionCreateRequest' => new List<OASPromotionCreateRequest>{OASPromotionCreateRequest.getExample()}
+            'oaSPromotionCreate' => new List<OASPromotionCreate>{OASPromotionCreate.getExample()}
         };
 
         OASClient client;
@@ -25,6 +25,38 @@ private class OASPromotionsApiTest {
 
         client = new OASClient();
         api = new OASPromotionsApi(client);
+
+        js = JSON.serialize(OASPromotionsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsResponse.getExample();
+        response = (OASPromotionsResponse) api.promotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotionsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsResponse.getExample();
+        response = (OASPromotionsResponse) api.promotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotionsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsResponse.getExample();
+        response = (OASPromotionsResponse) api.promotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotionsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsResponse.getExample();
+        response = (OASPromotionsResponse) api.promotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASPromotionsResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -63,22 +95,72 @@ private class OASPromotionsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
-            'promotionId' => 'null'
+            'promotionId' => 'null',
+            'adAccountId' => 'null'
         };
 
         OASClient client;
         OASPromotionsApi api;
+        OASPromotion response;
+        OASPromotion expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASPromotionsApi(client);
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPromotion.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.promotionsDelete(params);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsDelete(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -95,47 +177,79 @@ private class OASPromotionsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
-            'promotionId' => 'null'
+            'promotionId' => 'null',
+            'adAccountId' => 'null'
         };
 
         OASClient client;
         OASPromotionsApi api;
-        OASPromotionResponse response;
-        OASPromotionResponse expectedResponse;
+        OASPromotion response;
+        OASPromotion expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASPromotionsApi(client);
 
-        js = JSON.serialize(OASPromotionResponse.getExample());
+        js = JSON.serialize(OASPromotion.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASPromotionResponse.getExample();
-        response = (OASPromotionResponse) api.promotionsGet(params);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASPromotionResponse.getExample());
+        js = JSON.serialize(OASPromotion.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASPromotionResponse.getExample();
-        response = (OASPromotionResponse) api.promotionsGet(params);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASPromotionResponse.getExample());
+        js = JSON.serialize(OASPromotion.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASPromotionResponse.getExample();
-        response = (OASPromotionResponse) api.promotionsGet(params);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotion.getExample();
+        response = (OASPromotion) api.promotionsGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get promotions
      *
-     * Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
+     * Gets all promotions associated with an ad account ID that can be\napplied to an ad group. Can be either internally-saved promotions or external\npromotions imported from a commerce integration.
      */
     @isTest
     private static void promotionsListTest() {
@@ -146,9 +260,9 @@ private class OASPromotionsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
+            'bookmark' => 'null',
             'pageSize' => '',
-            'order' => ASCENDING,
-            'bookmark' => 'null'
+            'order' => ''
         };
 
         OASClient client;
@@ -159,6 +273,38 @@ private class OASPromotionsApiTest {
 
         client = new OASClient();
         api = new OASPromotionsApi(client);
+
+        js = JSON.serialize(OASPromotionsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsList200Response.getExample();
+        response = (OASPromotionsList200Response) api.promotionsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotionsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsList200Response.getExample();
+        response = (OASPromotionsList200Response) api.promotionsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotionsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsList200Response.getExample();
+        response = (OASPromotionsList200Response) api.promotionsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotionsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsList200Response.getExample();
+        response = (OASPromotionsList200Response) api.promotionsList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASPromotionsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -198,7 +344,7 @@ private class OASPromotionsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSPromotionUpdateRequest' => new List<OASPromotionUpdateRequest>{OASPromotionUpdateRequest.getExample()}
+            'oaSPromotionBatchUpdate' => new List<OASPromotionBatchUpdate>{OASPromotionBatchUpdate.getExample()}
         };
 
         OASClient client;
@@ -209,6 +355,38 @@ private class OASPromotionsApiTest {
 
         client = new OASClient();
         api = new OASPromotionsApi(client);
+
+        js = JSON.serialize(OASPromotionsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsResponse.getExample();
+        response = (OASPromotionsResponse) api.promotionsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotionsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsResponse.getExample();
+        response = (OASPromotionsResponse) api.promotionsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotionsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsResponse.getExample();
+        response = (OASPromotionsResponse) api.promotionsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPromotionsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPromotionsResponse.getExample();
+        response = (OASPromotionsResponse) api.promotionsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASPromotionsResponse.getExample());
         res.setHeader('Content-Type', 'application/json');

@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 Project.toml
 README.md
 docs/Account.md

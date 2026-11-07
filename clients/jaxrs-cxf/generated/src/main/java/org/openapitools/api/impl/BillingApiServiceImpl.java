@@ -1,20 +1,23 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.AdsCreditRedeemRequest;
-import org.openapitools.model.AdsCreditRedeemResponse;
+import org.openapitools.model.AdsCreditRedeem;
+import org.openapitools.model.AdsCreditRedeemCreate;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.model.BillingInvoiceDocumentType;
 import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoiceSortField;
+import org.openapitools.model.BillingInvoiceStatus;
 import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
-import org.openapitools.model.Error;
 import org.joda.time.LocalDate;
-import org.openapitools.model.SSIOAccountResponse;
-import org.openapitools.model.SSIOCreateInsertionOrderRequest;
-import org.openapitools.model.SSIOCreateInsertionOrderResponse;
-import org.openapitools.model.SSIOEditInsertionOrderRequest;
-import org.openapitools.model.SSIOEditInsertionOrderResponse;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.SSIOAccount;
+import org.openapitools.model.SSIOInsertionOrder;
+import org.openapitools.model.SSIOInsertionOrderCreate;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.model.SSIOInsertionOrderUpdate;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
 
@@ -40,10 +43,10 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Redeem ad credits
      *
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      *
      */
-    public AdsCreditRedeemResponse adsCreditRedeem(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) {
+    public AdsCreditRedeem adsCreditRedeem(String adAccountId, AdsCreditRedeemCreate adsCreditRedeemCreate) {
         // TODO: Implement...
 
         return null;
@@ -52,7 +55,7 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Get ads credit discounts
      *
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      *
      */
     public AdsCreditsDiscountsGet200Response adsCreditsDiscountsGet(String adAccountId, String bookmark, Integer pageSize) {
@@ -79,7 +82,7 @@ public class BillingApiServiceImpl implements BillingApi {
      * Get billing invoices in the advertiser account.
      *
      */
-    public BillingInvoicesGet200Response billingInvoicesGet(String adAccountId, String bookmark, Integer pageSize, String sort, String order, String status, String documentType, LocalDate startDueDate, LocalDate endDueDate) {
+    public BillingInvoicesGet200Response billingInvoicesGet(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, LocalDate startDueDate, LocalDate endDueDate) {
         // TODO: Implement...
 
         return null;
@@ -88,10 +91,10 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Get billing profiles
      *
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      *
      */
-    public BillingProfilesGet200Response billingProfilesGet(String adAccountId, Boolean isActive, String bookmark, Integer pageSize) {
+    public BillingProfilesGet200Response billingProfilesGet(Boolean isActive, String adAccountId, String bookmark, Integer pageSize) {
         // TODO: Implement...
 
         return null;
@@ -100,10 +103,10 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Get Salesforce account details including bill-to information.
      *
-     * Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      */
-    public SSIOAccountResponse ssioAccountsGet(String adAccountId) {
+    public SSIOAccount ssioAccountsGet(String adAccountId) {
         // TODO: Implement...
 
         return null;
@@ -112,10 +115,10 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Create insertion order through SSIO.
      *
-     * Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      */
-    public SSIOCreateInsertionOrderResponse ssioInsertionOrderCreate(String adAccountId, SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest) {
+    public SSIOInsertionOrder ssioInsertionOrderCreate(String adAccountId, SSIOInsertionOrderCreate ssIOInsertionOrderCreate) {
         // TODO: Implement...
 
         return null;
@@ -124,10 +127,10 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Edit insertion order through SSIO.
      *
-     * Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      */
-    public SSIOEditInsertionOrderResponse ssioInsertionOrderEdit(String adAccountId, SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest) {
+    public SSIOInsertionOrder ssioInsertionOrderEdit(String adAccountId, SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate) {
         // TODO: Implement...
 
         return null;
@@ -136,7 +139,7 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Get insertion order status by ad account id.
      *
-     * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      */
     public SsioInsertionOrdersStatusGetByAdAccount200Response ssioInsertionOrdersStatusGetByAdAccount(String adAccountId, String bookmark, Integer pageSize) {
@@ -148,7 +151,7 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Get insertion order status by pin order id.
      *
-     * Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      */
     public SSIOInsertionOrderStatusResponse ssioInsertionOrdersStatusGetByPinOrderId(String adAccountId, String pinOrderId) {
@@ -160,10 +163,10 @@ public class BillingApiServiceImpl implements BillingApi {
     /**
      * Get Salesforce order lines by ad account id.
      *
-     * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      */
-    public SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(String adAccountId, String bookmark, Integer pageSize, String pinOrderId) {
+    public SsioOrderLinesGetByAdAccount200Response ssioOrderLinesGetByAdAccount(String adAccountId, String pinOrderId, String bookmark, Integer pageSize) {
         // TODO: Implement...
 
         return null;

@@ -18,6 +18,7 @@ feature -- Test routines
             --
             -- Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
         local
+            l_response: LEAD_SUBSCRIPTION
             l_ad_account_id: STRING_32
             l_subscription_id: STRING_32
         do
@@ -25,7 +26,7 @@ feature -- Test routines
             -- l_ad_account_id
             -- l_subscription_id
 
-            -- api.ad_accounts_subscriptions_del_by_id(l_ad_account_id, l_subscription_id)
+            -- l_response := api.ad_accounts_subscriptions_del_by_id(l_ad_account_id, l_subscription_id)
             assert ("not_implemented", False)
         end
 

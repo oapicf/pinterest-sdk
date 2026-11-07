@@ -22,48 +22,44 @@ module AudiencesApiHandlerTestsHelper =
   let mutable AudiencesCreateBody = ""
 
   AudiencesCreateBody <- WebUtility.HtmlDecode "{
-  &quot;audience_type&quot; : &quot;audience_type&quot;,
-  &quot;name&quot; : &quot;string&quot;,
+  &quot;ad_account_id&quot; : &quot;ad_account_id&quot;,
+  &quot;audience_type&quot; : &quot;&quot;,
+  &quot;description&quot; : &quot;description&quot;,
+  &quot;name&quot; : &quot;name&quot;,
   &quot;rule&quot; : {
-    &quot;country&quot; : &quot;US&quot;,
-    &quot;visitor_source_id&quot; : &quot;549755885175&quot;,
-    &quot;prefill&quot; : true,
-    &quot;customer_list_id&quot; : &quot;5497558859876&quot;,
-    &quot;event_source&quot; : {
-      &quot;&#x3D;&quot; : [ &quot;web&quot;, &quot;mobile&quot; ]
-    },
-    &quot;objective_type&quot; : [ &quot;AWARENESS&quot; ],
+    &quot;ad_account_id&quot; : &quot;ad_account_id&quot;,
+    &quot;ad_id&quot; : [ &quot;ad_id&quot;, &quot;ad_id&quot; ],
+    &quot;campaign_id&quot; : [ &quot;campaign_id&quot;, &quot;campaign_id&quot; ],
+    &quot;country&quot; : &quot;country&quot;,
+    &quot;customer_list_id&quot; : &quot;customer_list_id&quot;,
+    &quot;engagement_domain&quot; : [ &quot;engagement_domain&quot;, &quot;engagement_domain&quot; ],
+    &quot;engagement_type&quot; : &quot;engagement_type&quot;,
+    &quot;engager_type&quot; : 6,
+    &quot;event&quot; : &quot;event&quot;,
     &quot;event_data&quot; : {
-      &quot;video_title&quot; : &quot;How to style your Parker Boots&quot;,
-      &quot;page_name&quot; : &quot;Our Favorite Pins on Pinterest&quot;,
-      &quot;order_quantity&quot; : 1,
-      &quot;property&quot; : &quot;Athleta&quot;,
       &quot;currency&quot; : &quot;&quot;,
       &quot;lead_type&quot; : &quot;Newsletter&quot;,
-      &quot;promo_code&quot; : &quot;WINTER10&quot;,
       &quot;line_items&quot; : &quot;&quot;,
-      &quot;search_query&quot; : &quot;boots&quot;,
       &quot;order_id&quot; : &quot;X-151481&quot;,
-      &quot;value&quot; : &quot;199.98&quot;
+      &quot;order_quantity&quot; : 1,
+      &quot;page_name&quot; : &quot;Our Favorite Pins on Pinterest&quot;,
+      &quot;promo_code&quot; : &quot;WINTER10&quot;,
+      &quot;property&quot; : &quot;Athleta&quot;,
+      &quot;search_query&quot; : &quot;boots&quot;,
+      &quot;value&quot; : &quot;199.98&quot;,
+      &quot;video_title&quot; : &quot;How to style your Parker Boots&quot;
     },
-    &quot;seed_id&quot; : [ &quot;2542620639259&quot;, &quot;2542620639261&quot; ],
+    &quot;event_source&quot; : &quot;{}&quot;,
+    &quot;ingestion_source&quot; : &quot;{}&quot;,
+    &quot;objective_type&quot; : [ &quot;AWARENESS&quot;, &quot;AWARENESS&quot; ],
+    &quot;percentage&quot; : 1,
+    &quot;pin_id&quot; : [ &quot;pin_id&quot;, &quot;pin_id&quot; ],
+    &quot;prefill&quot; : true,
+    &quot;retention_days&quot; : 5,
+    &quot;seed_id&quot; : [ &quot;seed_id&quot;, &quot;seed_id&quot; ],
     &quot;url&quot; : [ &quot;url&quot;, &quot;url&quot; ],
-    &quot;ad_account_id&quot; : &quot;549755885175&quot;,
-    &quot;ad_id&quot; : [ &quot;687201361754&quot; ],
-    &quot;ingestion_source&quot; : {
-      &quot;&#x3D;&quot; : [ &quot;tag&quot; ]
-    },
-    &quot;engager_type&quot; : 1,
-    &quot;retention_days&quot; : 30,
-    &quot;engagement_type&quot; : &quot;click&quot;,
-    &quot;percentage&quot; : 3,
-    &quot;engagement_domain&quot; : [ &quot;www.somedomain.com&quot; ],
-    &quot;event&quot; : &quot;checkout&quot;,
-    &quot;pin_id&quot; : [ &quot;34567&quot; ],
-    &quot;campaign_id&quot; : [ &quot;626744528398&quot; ]
-  },
-  &quot;description&quot; : &quot;string&quot;,
-  &quot;ad_account_id&quot; : &quot;549755885175&quot;
+    &quot;visitor_source_id&quot; : &quot;visitor_source_id&quot;
+  }
 }"
   AudiencesCreateExamples <- AudiencesCreateExamples.Add("application/json", AudiencesCreateBody)
 
@@ -79,48 +75,45 @@ module AudiencesApiHandlerTestsHelper =
   let mutable AudiencesUpdateBody = ""
 
   AudiencesUpdateBody <- WebUtility.HtmlDecode "{
-  &quot;operation_type&quot; : &quot;UPDATE&quot;,
-  &quot;name&quot; : &quot;string&quot;,
+  &quot;ad_account_id&quot; : &quot;ad_account_id&quot;,
+  &quot;audience_type&quot; : &quot;&quot;,
+  &quot;description&quot; : &quot;description&quot;,
+  &quot;name&quot; : &quot;name&quot;,
+  &quot;operation_type&quot; : &quot;&quot;,
   &quot;rule&quot; : {
-    &quot;country&quot; : &quot;US&quot;,
-    &quot;visitor_source_id&quot; : &quot;549755885175&quot;,
-    &quot;prefill&quot; : true,
-    &quot;customer_list_id&quot; : &quot;5497558859876&quot;,
-    &quot;event_source&quot; : {
-      &quot;&#x3D;&quot; : [ &quot;web&quot;, &quot;mobile&quot; ]
-    },
-    &quot;objective_type&quot; : [ &quot;AWARENESS&quot; ],
+    &quot;ad_account_id&quot; : &quot;ad_account_id&quot;,
+    &quot;ad_id&quot; : [ &quot;ad_id&quot;, &quot;ad_id&quot; ],
+    &quot;campaign_id&quot; : [ &quot;campaign_id&quot;, &quot;campaign_id&quot; ],
+    &quot;country&quot; : &quot;country&quot;,
+    &quot;customer_list_id&quot; : &quot;customer_list_id&quot;,
+    &quot;engagement_domain&quot; : [ &quot;engagement_domain&quot;, &quot;engagement_domain&quot; ],
+    &quot;engagement_type&quot; : &quot;engagement_type&quot;,
+    &quot;engager_type&quot; : 6,
+    &quot;event&quot; : &quot;event&quot;,
     &quot;event_data&quot; : {
-      &quot;video_title&quot; : &quot;How to style your Parker Boots&quot;,
-      &quot;page_name&quot; : &quot;Our Favorite Pins on Pinterest&quot;,
-      &quot;order_quantity&quot; : 1,
-      &quot;property&quot; : &quot;Athleta&quot;,
       &quot;currency&quot; : &quot;&quot;,
       &quot;lead_type&quot; : &quot;Newsletter&quot;,
-      &quot;promo_code&quot; : &quot;WINTER10&quot;,
       &quot;line_items&quot; : &quot;&quot;,
-      &quot;search_query&quot; : &quot;boots&quot;,
       &quot;order_id&quot; : &quot;X-151481&quot;,
-      &quot;value&quot; : &quot;199.98&quot;
+      &quot;order_quantity&quot; : 1,
+      &quot;page_name&quot; : &quot;Our Favorite Pins on Pinterest&quot;,
+      &quot;promo_code&quot; : &quot;WINTER10&quot;,
+      &quot;property&quot; : &quot;Athleta&quot;,
+      &quot;search_query&quot; : &quot;boots&quot;,
+      &quot;value&quot; : &quot;199.98&quot;,
+      &quot;video_title&quot; : &quot;How to style your Parker Boots&quot;
     },
-    &quot;seed_id&quot; : [ &quot;2542620639259&quot;, &quot;2542620639261&quot; ],
+    &quot;event_source&quot; : &quot;{}&quot;,
+    &quot;ingestion_source&quot; : &quot;{}&quot;,
+    &quot;objective_type&quot; : [ &quot;AWARENESS&quot;, &quot;AWARENESS&quot; ],
+    &quot;percentage&quot; : 1,
+    &quot;pin_id&quot; : [ &quot;pin_id&quot;, &quot;pin_id&quot; ],
+    &quot;prefill&quot; : true,
+    &quot;retention_days&quot; : 5,
+    &quot;seed_id&quot; : [ &quot;seed_id&quot;, &quot;seed_id&quot; ],
     &quot;url&quot; : [ &quot;url&quot;, &quot;url&quot; ],
-    &quot;ad_account_id&quot; : &quot;549755885175&quot;,
-    &quot;ad_id&quot; : [ &quot;687201361754&quot; ],
-    &quot;ingestion_source&quot; : {
-      &quot;&#x3D;&quot; : [ &quot;tag&quot; ]
-    },
-    &quot;engager_type&quot; : 1,
-    &quot;retention_days&quot; : 30,
-    &quot;engagement_type&quot; : &quot;click&quot;,
-    &quot;percentage&quot; : 3,
-    &quot;engagement_domain&quot; : [ &quot;www.somedomain.com&quot; ],
-    &quot;event&quot; : &quot;checkout&quot;,
-    &quot;pin_id&quot; : [ &quot;34567&quot; ],
-    &quot;campaign_id&quot; : [ &quot;626744528398&quot; ]
-  },
-  &quot;description&quot; : &quot;string&quot;,
-  &quot;ad_account_id&quot; : &quot;549755885175&quot;
+    &quot;visitor_source_id&quot; : &quot;visitor_source_id&quot;
+  }
 }"
   AudiencesUpdateExamples <- AudiencesUpdateExamples.Add("application/json", AudiencesUpdateBody)
 

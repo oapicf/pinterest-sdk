@@ -10,7 +10,7 @@ spec = withApp $ do
 
     describe "getAdAccountsByTextOrderLinesByTextR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextOrderLinesByTextR "adAccountId_example" "orderLineId_example"
+            get $ AdAccountsByTextOrderLinesByTextR "orderLineId_example" "adAccountId_example"
             statusIs 501
 
     describe "getAdAccountsByTextOrderLinesR" $

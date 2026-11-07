@@ -1,16 +1,26 @@
 module.exports = {
     "AdPreviewURLResponseSample": 
         { data: {} },
+    "AdPreviewURLResponseSample": 
+        { data: {} },
     "MetricsResponseSample": 
         { data: {} },
-    "AdsAnalyticsResponse_innerSample": 
+    "AdsAnalyticsSample": 
         { data: {} },
-    "AdArrayResponseSample": 
+    "AdBatchWriteResponseModelSample": 
         { data: {} },
-    "AdResponseSample": 
+    "AdSample": 
         { data: {} },
     "ads_list_200_responseSample": 
         { data: {} },
-    "AdArrayResponseSample": 
+    "AdBatchWriteResponseModelSample": 
+        { data: {} },
+    "campaign_ad_preview_create_200_response_innerSample": 
+        { data: {} },
+    "CampaignAdPreviewSample": 
+        { data: {} },
+    "campaign_ad_preview_delete_200_response_innerSample": 
+        { data: {} },
+    "CampaignAdPreviewSample": 
         { data: {} },
 }

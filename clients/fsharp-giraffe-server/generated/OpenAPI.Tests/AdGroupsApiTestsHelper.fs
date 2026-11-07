@@ -24,6 +24,8 @@ module AdGroupsApiHandlerTestsHelper =
   let mutable AdGroupsAudienceSizingBody = ""
 
   AdGroupsAudienceSizingBody <- WebUtility.HtmlDecode "{
+  &quot;auto_targeting_enabled&quot; : true,
+  &quot;creative_types&quot; : [ &quot;REGULAR&quot;, &quot;REGULAR&quot; ],
   &quot;keywords&quot; : [ {
     &quot;match_type&quot; : &quot;BROAD&quot;,
     &quot;value&quot; : &quot;value&quot;
@@ -31,11 +33,22 @@ module AdGroupsApiHandlerTestsHelper =
     &quot;match_type&quot; : &quot;BROAD&quot;,
     &quot;value&quot; : &quot;value&quot;
   } ],
+  &quot;placement_group&quot; : &quot;&quot;,
+  &quot;product_group_ids&quot; : [ null, null ],
   &quot;targeting_spec&quot; : {
+    &quot;AGE_BUCKET&quot; : [ &quot;18-24&quot;, &quot;18-24&quot; ],
+    &quot;APPTYPE&quot; : [ &quot;android_mobile&quot;, &quot;android_mobile&quot; ],
+    &quot;AUDIENCE_EXCLUDE&quot; : [ null, null ],
+    &quot;AUDIENCE_INCLUDE&quot; : [ null, null ],
+    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
+    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+    &quot;GEO_EXCLUDE&quot; : [ &quot;GEO_EXCLUDE&quot;, &quot;GEO_EXCLUDE&quot; ],
+    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
     &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-    &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
-    &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
-    &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
+    &quot;LOCATION_EXCLUDE&quot; : [ &quot;LOCATION_EXCLUDE&quot;, &quot;LOCATION_EXCLUDE&quot; ],
+    &quot;MAXIMUM_AGE&quot; : &quot;MAXIMUM_AGE&quot;,
+    &quot;MINIMUM_AGE&quot; : &quot;MINIMUM_AGE&quot;,
     &quot;SHOPPING_RETARGETING&quot; : [ {
       &quot;lookback_window&quot; : 30,
       &quot;exclusion_window&quot; : 14,
@@ -45,19 +58,8 @@ module AdGroupsApiHandlerTestsHelper =
       &quot;exclusion_window&quot; : 14,
       &quot;tag_types&quot; : [ 0, 6 ]
     } ],
-    &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
-    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
-    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
-    &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
-    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
-    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
-    &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
-  },
-  &quot;creative_types&quot; : [ &quot;REGULAR&quot;, &quot;REGULAR&quot; ],
-  &quot;product_group_ids&quot; : [ &quot;23423422123&quot;, &quot;23423422123&quot; ],
-  &quot;auto_targeting_enabled&quot; : true,
-  &quot;placement_group&quot; : &quot;ALL&quot;
+    &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ]
+  }
 }"
   AdGroupsAudienceSizingExamples <- AdGroupsAudienceSizingExamples.Add("application/json", AdGroupsAudienceSizingBody)
 
@@ -69,80 +71,22 @@ module AdGroupsApiHandlerTestsHelper =
   let mutable AdGroupsBidFloorGetBody = ""
 
   AdGroupsBidFloorGetBody <- WebUtility.HtmlDecode "{
-  &quot;targeting_spec&quot; : {
-    &quot;GEO&quot; : [ &quot;BE-VOV&quot; ],
-    &quot;LOCATION&quot; : [ &quot;US&quot; ],
-    &quot;LOCALE&quot; : [ &quot;cs&quot; ],
-    &quot;AGE_BUCKET&quot; : [ &quot;25-34&quot; ],
-    &quot;AUDIENCE_INCLUDE&quot; : [ &quot;2542620905473&quot; ],
-    &quot;SHOPPING_RETARGETING&quot; : [ {
-      &quot;lookback_window&quot; : 30,
-      &quot;exclusion_window&quot; : 14,
-      &quot;tag_types&quot; : [ 0, 6 ]
-    }, {
-      &quot;lookback_window&quot; : 30,
-      &quot;exclusion_window&quot; : 14,
-      &quot;tag_types&quot; : [ 0, 6 ]
-    } ],
-    &quot;GENDER&quot; : [ &quot;male&quot; ],
-    &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot; ],
-    &quot;APPTYPE&quot; : [ &quot;iphone&quot; ],
-    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;2542620905475&quot; ],
-    &quot;INTEREST&quot; : [ &quot;925056443165&quot; ]
-  },
   &quot;bid_floor_specs&quot; : [ {
-    &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
-    &quot;creative_type&quot; : &quot;REGULAR&quot;,
-    &quot;currency&quot; : &quot;USD&quot;,
-    &quot;countries&quot; : [ &quot;US&quot;, &quot;US&quot; ],
-    &quot;optimization_goal_metadata&quot; : {
-      &quot;frequency_goal_metadata&quot; : {
-        &quot;timerange&quot; : &quot;DAY&quot;,
-        &quot;frequency&quot; : 5
-      },
-      &quot;conversion_tag_v3_goal_metadata&quot; : {
-        &quot;attribution_windows&quot; : {
-          &quot;view_window_days&quot; : 1,
-          &quot;click_window_days&quot; : 0,
-          &quot;engagement_window_days&quot; : 6
-        },
-        &quot;conversion_tag_id&quot; : &quot;123456789&quot;,
-        &quot;learning_mode_type&quot; : &quot;ACTIVE&quot;,
-        &quot;conversion_event&quot; : &quot;PAGE_VISIT&quot;,
-        &quot;is_roas_optimized&quot; : true,
-        &quot;cpa_goal_value_in_micro_currency&quot; : &quot;123456789&quot;
-      },
-      &quot;scrollup_goal_metadata&quot; : {
-        &quot;scrollup_goal_value_in_micro_currency&quot; : &quot;123456789&quot;
-      }
-    }
+    &quot;billable_event&quot; : &quot;&quot;,
+    &quot;countries&quot; : [ &quot;AD&quot;, &quot;AD&quot; ],
+    &quot;creative_type&quot; : &quot;&quot;,
+    &quot;currency&quot; : &quot;&quot;,
+    &quot;objective_type&quot; : &quot;&quot;,
+    &quot;optimization_goal_metadata&quot; : &quot;&quot;
   }, {
-    &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
-    &quot;creative_type&quot; : &quot;REGULAR&quot;,
-    &quot;currency&quot; : &quot;USD&quot;,
-    &quot;countries&quot; : [ &quot;US&quot;, &quot;US&quot; ],
-    &quot;optimization_goal_metadata&quot; : {
-      &quot;frequency_goal_metadata&quot; : {
-        &quot;timerange&quot; : &quot;DAY&quot;,
-        &quot;frequency&quot; : 5
-      },
-      &quot;conversion_tag_v3_goal_metadata&quot; : {
-        &quot;attribution_windows&quot; : {
-          &quot;view_window_days&quot; : 1,
-          &quot;click_window_days&quot; : 0,
-          &quot;engagement_window_days&quot; : 6
-        },
-        &quot;conversion_tag_id&quot; : &quot;123456789&quot;,
-        &quot;learning_mode_type&quot; : &quot;ACTIVE&quot;,
-        &quot;conversion_event&quot; : &quot;PAGE_VISIT&quot;,
-        &quot;is_roas_optimized&quot; : true,
-        &quot;cpa_goal_value_in_micro_currency&quot; : &quot;123456789&quot;
-      },
-      &quot;scrollup_goal_metadata&quot; : {
-        &quot;scrollup_goal_value_in_micro_currency&quot; : &quot;123456789&quot;
-      }
-    }
-  } ]
+    &quot;billable_event&quot; : &quot;&quot;,
+    &quot;countries&quot; : [ &quot;AD&quot;, &quot;AD&quot; ],
+    &quot;creative_type&quot; : &quot;&quot;,
+    &quot;currency&quot; : &quot;&quot;,
+    &quot;objective_type&quot; : &quot;&quot;,
+    &quot;optimization_goal_metadata&quot; : &quot;&quot;
+  } ],
+  &quot;targeting_spec&quot; : &quot;&quot;
 }"
   AdGroupsBidFloorGetExamples <- AdGroupsBidFloorGetExamples.Add("application/json", AdGroupsBidFloorGetBody)
 
@@ -154,24 +98,49 @@ module AdGroupsApiHandlerTestsHelper =
   let mutable AdGroupsCreateBody = ""
 
   AdGroupsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;bid_in_micro_currency&quot; : 5000000,
-  &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
-  &quot;is_creative_optimization&quot; : true,
-  &quot;end_time&quot; : 5705424000,
-  &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
-  &quot;promotion_id&quot; : &quot;7834020347906&quot;,
   &quot;auto_targeting_enabled&quot; : true,
-  &quot;bid_multiplier&quot; : 1,
-  &quot;tracking_urls&quot; : &quot;{}&quot;,
-  &quot;budget_in_micro_currency&quot; : 5000000,
-  &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
-  &quot;start_time&quot; : 5686848000,
+  &quot;bid_in_micro_currency&quot; : 0,
+  &quot;bid_multiplier&quot; : 6.027456183070403,
+  &quot;bid_strategy_type&quot; : &quot;AUTOMATIC_BID&quot;,
   &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+  &quot;budget_in_micro_currency&quot; : 1,
+  &quot;budget_type&quot; : &quot;&quot;,
+  &quot;campaign_id&quot; : &quot;campaign_id&quot;,
+  &quot;customer_segment_id&quot; : &quot;&quot;,
+  &quot;end_time&quot; : 5,
+  &quot;ext_features&quot; : {
+    &quot;enabled&quot; : [ &quot;TRENDS&quot;, &quot;TRENDS&quot; ]
+  },
+  &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;,
+  &quot;is_creative_optimization&quot; : true,
+  &quot;is_local_inventory&quot; : true,
+  &quot;lifetime_frequency_cap&quot; : 5,
+  &quot;local_inventory_radius_in_miles&quot; : 2.3021358869347655,
+  &quot;name&quot; : &quot;name&quot;,
+  &quot;optimization_goal_metadata&quot; : &quot;{}&quot;,
+  &quot;pacing_delivery_type&quot; : &quot;&quot;,
+  &quot;performance_plus_campaign_settings&quot; : &quot;{}&quot;,
+  &quot;placement_group&quot; : &quot;&quot;,
+  &quot;placement_traffic_type&quot; : &quot;&quot;,
+  &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
+  &quot;promotion_id&quot; : &quot;0&quot;,
+  &quot;promotion_ids&quot; : [ &quot;promotion_ids&quot;, &quot;promotion_ids&quot; ],
+  &quot;start_time&quot; : 7,
+  &quot;status&quot; : &quot;&quot;,
   &quot;targeting_spec&quot; : {
+    &quot;AGE_BUCKET&quot; : [ &quot;18-24&quot;, &quot;18-24&quot; ],
+    &quot;APPTYPE&quot; : [ &quot;android_mobile&quot;, &quot;android_mobile&quot; ],
+    &quot;AUDIENCE_EXCLUDE&quot; : [ null, null ],
+    &quot;AUDIENCE_INCLUDE&quot; : [ null, null ],
+    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
+    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+    &quot;GEO_EXCLUDE&quot; : [ &quot;GEO_EXCLUDE&quot;, &quot;GEO_EXCLUDE&quot; ],
+    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
     &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-    &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
-    &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
-    &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
+    &quot;LOCATION_EXCLUDE&quot; : [ &quot;LOCATION_EXCLUDE&quot;, &quot;LOCATION_EXCLUDE&quot; ],
+    &quot;MAXIMUM_AGE&quot; : &quot;MAXIMUM_AGE&quot;,
+    &quot;MINIMUM_AGE&quot; : &quot;MINIMUM_AGE&quot;,
     &quot;SHOPPING_RETARGETING&quot; : [ {
       &quot;lookback_window&quot; : 30,
       &quot;exclusion_window&quot; : 14,
@@ -181,23 +150,16 @@ module AdGroupsApiHandlerTestsHelper =
       &quot;exclusion_window&quot; : 14,
       &quot;tag_types&quot; : [ 0, 6 ]
     } ],
-    &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
-    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
-    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
-    &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
-    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
-    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
-    &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
+    &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ]
   },
-  &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
-  &quot;lifetime_frequency_cap&quot; : 100,
-  &quot;optimization_goal_metadata&quot; : &quot;{}&quot;,
-  &quot;placement_group&quot; : &quot;placement_group&quot;,
-  &quot;budget_type&quot; : &quot;DAILY&quot;,
-  &quot;campaign_id&quot; : &quot;626736533506&quot;,
-  &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
-  &quot;status&quot; : &quot;status&quot;
+  &quot;targeting_template_ids&quot; : [ null ],
+  &quot;tracking_urls&quot; : {
+    &quot;impression&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ],
+    &quot;click&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ],
+    &quot;engagement&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ],
+    &quot;buyable_button&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ],
+    &quot;audience_verification&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ]
+  }
 }"
   AdGroupsCreateExamples <- AdGroupsCreateExamples.Add("application/json", AdGroupsCreateBody)
 
@@ -211,28 +173,72 @@ module AdGroupsApiHandlerTestsHelper =
   ()
 
 
+  let mutable AdGroupsDynamicTitlesProcessCsvExamples = Map.empty
+  let mutable AdGroupsDynamicTitlesProcessCsvBody = ""
+
+  AdGroupsDynamicTitlesProcessCsvBody <- WebUtility.HtmlDecode "{
+  &quot;request_id&quot; : &quot;request_id&quot;
+}"
+  AdGroupsDynamicTitlesProcessCsvExamples <- AdGroupsDynamicTitlesProcessCsvExamples.Add("application/json", AdGroupsDynamicTitlesProcessCsvBody)
+
+  let getAdGroupsDynamicTitlesProcessCsvExample mediaType =
+    AdGroupsDynamicTitlesProcessCsvExamples.[mediaType]
+      |> getConverter mediaType
+  ()
+
+  ()
+
+  ()
+
+
   let mutable AdGroupsUpdateExamples = Map.empty
   let mutable AdGroupsUpdateBody = ""
 
   AdGroupsUpdateBody <- WebUtility.HtmlDecode "{
-  &quot;bid_in_micro_currency&quot; : 5000000,
-  &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
-  &quot;is_creative_optimization&quot; : true,
-  &quot;end_time&quot; : 5705424000,
-  &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
-  &quot;promotion_id&quot; : &quot;7834020347906&quot;,
   &quot;auto_targeting_enabled&quot; : true,
-  &quot;bid_multiplier&quot; : 1,
-  &quot;tracking_urls&quot; : &quot;{}&quot;,
-  &quot;budget_in_micro_currency&quot; : 5000000,
-  &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
-  &quot;start_time&quot; : 5686848000,
+  &quot;bid_in_micro_currency&quot; : 0,
+  &quot;bid_multiplier&quot; : 6.027456183070403,
+  &quot;bid_strategy_type&quot; : &quot;AUTOMATIC_BID&quot;,
   &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+  &quot;budget_in_micro_currency&quot; : 1,
+  &quot;budget_type&quot; : &quot;DAILY&quot;,
+  &quot;campaign_id&quot; : &quot;campaign_id&quot;,
+  &quot;customer_segment_id&quot; : &quot;&quot;,
+  &quot;end_time&quot; : 5,
+  &quot;ext_features&quot; : {
+    &quot;enabled&quot; : [ &quot;TRENDS&quot;, &quot;TRENDS&quot; ]
+  },
+  &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;,
+  &quot;id&quot; : &quot;id&quot;,
+  &quot;is_creative_optimization&quot; : true,
+  &quot;is_local_inventory&quot; : true,
+  &quot;lifetime_frequency_cap&quot; : 5,
+  &quot;local_inventory_radius_in_miles&quot; : 2.3021358869347655,
+  &quot;name&quot; : &quot;name&quot;,
+  &quot;optimization_goal_metadata&quot; : &quot;{}&quot;,
+  &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
+  &quot;performance_plus_campaign_settings&quot; : &quot;{}&quot;,
+  &quot;placement_group&quot; : &quot;&quot;,
+  &quot;placement_traffic_type&quot; : &quot;&quot;,
+  &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
+  &quot;promotion_id&quot; : &quot;0&quot;,
+  &quot;promotion_ids&quot; : [ &quot;promotion_ids&quot;, &quot;promotion_ids&quot; ],
+  &quot;start_time&quot; : 7,
+  &quot;status&quot; : &quot;&quot;,
   &quot;targeting_spec&quot; : {
+    &quot;AGE_BUCKET&quot; : [ &quot;18-24&quot;, &quot;18-24&quot; ],
+    &quot;APPTYPE&quot; : [ &quot;android_mobile&quot;, &quot;android_mobile&quot; ],
+    &quot;AUDIENCE_EXCLUDE&quot; : [ null, null ],
+    &quot;AUDIENCE_INCLUDE&quot; : [ null, null ],
+    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
+    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+    &quot;GEO_EXCLUDE&quot; : [ &quot;GEO_EXCLUDE&quot;, &quot;GEO_EXCLUDE&quot; ],
+    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
     &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-    &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
-    &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
-    &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
+    &quot;LOCATION_EXCLUDE&quot; : [ &quot;LOCATION_EXCLUDE&quot;, &quot;LOCATION_EXCLUDE&quot; ],
+    &quot;MAXIMUM_AGE&quot; : &quot;MAXIMUM_AGE&quot;,
+    &quot;MINIMUM_AGE&quot; : &quot;MINIMUM_AGE&quot;,
     &quot;SHOPPING_RETARGETING&quot; : [ {
       &quot;lookback_window&quot; : 30,
       &quot;exclusion_window&quot; : 14,
@@ -242,27 +248,30 @@ module AdGroupsApiHandlerTestsHelper =
       &quot;exclusion_window&quot; : 14,
       &quot;tag_types&quot; : [ 0, 6 ]
     } ],
-    &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
-    &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
-    &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
-    &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
-    &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
-    &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
-    &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-    &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
+    &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ]
   },
-  &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
-  &quot;lifetime_frequency_cap&quot; : 100,
-  &quot;id&quot; : &quot;2680060704746&quot;,
-  &quot;optimization_goal_metadata&quot; : &quot;{}&quot;,
-  &quot;placement_group&quot; : &quot;placement_group&quot;,
-  &quot;budget_type&quot; : &quot;budget_type&quot;,
-  &quot;campaign_id&quot; : &quot;626736533506&quot;,
-  &quot;pacing_delivery_type&quot; : &quot;pacing_delivery_type&quot;,
-  &quot;status&quot; : &quot;status&quot;
+  &quot;targeting_spec_operations&quot; : [ {
+    &quot;field&quot; : &quot;AUDIENCE_EXCLUDE&quot;,
+    &quot;operation&quot; : &quot;SET&quot;,
+    &quot;values&quot; : [ &quot;values&quot;, &quot;values&quot; ]
+  }, {
+    &quot;field&quot; : &quot;AUDIENCE_EXCLUDE&quot;,
+    &quot;operation&quot; : &quot;SET&quot;,
+    &quot;values&quot; : [ &quot;values&quot;, &quot;values&quot; ]
+  } ],
+  &quot;targeting_template_ids&quot; : [ null ],
+  &quot;tracking_urls&quot; : {
+    &quot;impression&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ],
+    &quot;click&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ],
+    &quot;engagement&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ],
+    &quot;buyable_button&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ],
+    &quot;audience_verification&quot; : [ &quot;URL1&quot;, &quot;URL2&quot; ]
+  }
 }"
   AdGroupsUpdateExamples <- AdGroupsUpdateExamples.Add("application/json", AdGroupsUpdateBody)
 
   let getAdGroupsUpdateExample mediaType =
     AdGroupsUpdateExamples.[mediaType]
       |> getConverter mediaType
+  ()
+

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -22,11 +30,12 @@ import org.openapitools.client.apis.CatalogProductGroupsApi
 import org.openapitools.client.models.CatalogsListProductsByFilterRequest
 import org.openapitools.client.models.CatalogsProductGroupPinsList200Response
 import org.openapitools.client.models.CatalogsProductGroupProductCountsVertical
+import org.openapitools.client.models.CatalogsProductGroupsCreateManyRequestItems
+import org.openapitools.client.models.CatalogsProductGroupsCreateRequestSchema
 import org.openapitools.client.models.CatalogsProductGroupsList200Response
-import org.openapitools.client.models.CatalogsProductGroupsUpdateRequest
+import org.openapitools.client.models.CatalogsProductGroupsUpdateRequestSchema
 import org.openapitools.client.models.CatalogsVerticalProductGroup
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.MultipleProductGroupsInner
+import org.openapitools.client.models.PinterestLibError
 
 class CatalogProductGroupsApiTest : ShouldSpec() {
     init {
@@ -37,29 +46,29 @@ class CatalogProductGroupsApiTest : ShouldSpec() {
         should("test catalogsProductGroupPinsList") {
             // uncomment below to test catalogsProductGroupPinsList
             //val productGroupId : kotlin.String = productGroupId_example // kotlin.String | Unique identifier of a product group
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-            //val result : CatalogsProductGroupPinsList200Response = apiInstance.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId, pinMetrics)
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : CatalogsProductGroupPinsList200Response = apiInstance.catalogsProductGroupPinsList(productGroupId, adAccountId, pinMetrics, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test catalogsProductGroupsCreate
         should("test catalogsProductGroupsCreate") {
             // uncomment below to test catalogsProductGroupsCreate
-            //val multipleProductGroupsInner : MultipleProductGroupsInner = {"name":"Few Filters using \"all_of\"","feed_id":"2680059592705","filters":{"all_of":[{"MIN_PRICE":{"values":999.99,"inclusion":true}},{"CURRENCY":{"values":"USD"}},{"CUSTOM_LABEL_0":{"values":["Luxury Items"]}}]}} // MultipleProductGroupsInner | Request object used to create a single catalogs product groups.
+            //val catalogsProductGroupsCreateRequestSchema : CatalogsProductGroupsCreateRequestSchema =  // CatalogsProductGroupsCreateRequestSchema | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : CatalogsVerticalProductGroup = apiInstance.catalogsProductGroupsCreate(multipleProductGroupsInner, adAccountId)
+            //val result : CatalogsVerticalProductGroup = apiInstance.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema, adAccountId)
             //result shouldBe ("TODO")
         }
 
         // to test catalogsProductGroupsCreateMany
         should("test catalogsProductGroupsCreateMany") {
             // uncomment below to test catalogsProductGroupsCreateMany
-            //val multipleProductGroupsInner : kotlin.collections.List<MultipleProductGroupsInner> = [{"name":"Few Filters using \"all_of\"","feed_id":"2680059592705","filters":{"all_of":[{"MIN_PRICE":{"values":999.99,"inclusion":true}},{"CURRENCY":{"values":"USD"}},{"CUSTOM_LABEL_0":{"values":["Luxury Items"]}}]}}] // kotlin.collections.List<MultipleProductGroupsInner> | Request object used to create one or more catalogs product groups.
+            //val catalogsProductGroupsCreateManyRequestItems : kotlin.collections.List<CatalogsProductGroupsCreateManyRequestItems> =  // kotlin.collections.List<CatalogsProductGroupsCreateManyRequestItems> | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : kotlin.collections.List<kotlin.String> = apiInstance.catalogsProductGroupsCreateMany(multipleProductGroupsInner, adAccountId)
+            //val result : kotlin.collections.List<kotlin.String> = apiInstance.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems, adAccountId)
             //result shouldBe ("TODO")
         }
 
@@ -68,7 +77,8 @@ class CatalogProductGroupsApiTest : ShouldSpec() {
             // uncomment below to test catalogsProductGroupsDelete
             //val productGroupId : kotlin.String = productGroupId_example // kotlin.String | Unique identifier of a product group
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //apiInstance.catalogsProductGroupsDelete(productGroupId, adAccountId)
+            //val result : CatalogsVerticalProductGroup = apiInstance.catalogsProductGroupsDelete(productGroupId, adAccountId)
+            //result shouldBe ("TODO")
         }
 
         // to test catalogsProductGroupsDeleteMany
@@ -94,10 +104,10 @@ class CatalogProductGroupsApiTest : ShouldSpec() {
             //val id : kotlin.collections.List<kotlin.Int> =  // kotlin.collections.List<kotlin.Int> | Comma-separated list of product group ids
             //val feedId : kotlin.String = feedId_example // kotlin.String | Filter entities for a given feed_id. If not given, all feeds are considered.
             //val catalogId : kotlin.String = catalogId_example // kotlin.String | Filter entities for a given catalog_id. If not given, all catalogs are considered.
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : CatalogsProductGroupsList200Response = apiInstance.catalogsProductGroupsList(id, feedId, catalogId, bookmark, pageSize, adAccountId)
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : CatalogsProductGroupsList200Response = apiInstance.catalogsProductGroupsList(id, feedId, catalogId, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
@@ -114,18 +124,18 @@ class CatalogProductGroupsApiTest : ShouldSpec() {
         should("test catalogsProductGroupsUpdate") {
             // uncomment below to test catalogsProductGroupsUpdate
             //val productGroupId : kotlin.String = productGroupId_example // kotlin.String | Unique identifier of a product group
-            //val catalogsProductGroupsUpdateRequest : CatalogsProductGroupsUpdateRequest =  // CatalogsProductGroupsUpdateRequest | Request object used to Update a catalogs product group.
+            //val catalogsProductGroupsUpdateRequestSchema : CatalogsProductGroupsUpdateRequestSchema =  // CatalogsProductGroupsUpdateRequestSchema | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : CatalogsVerticalProductGroup = apiInstance.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId)
+            //val result : CatalogsVerticalProductGroup = apiInstance.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequestSchema, adAccountId)
             //result shouldBe ("TODO")
         }
 
         // to test productsByProductGroupFilterList
         should("test productsByProductGroupFilterList") {
             // uncomment below to test productsByProductGroupFilterList
-            //val catalogsListProductsByFilterRequest : CatalogsListProductsByFilterRequest =  // CatalogsListProductsByFilterRequest | Object holding a group of filters for a catalog product group
+            //val catalogsListProductsByFilterRequest : CatalogsListProductsByFilterRequest =  // CatalogsListProductsByFilterRequest | 
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
             //val result : CatalogsProductGroupPinsList200Response = apiInstance.productsByProductGroupFilterList(catalogsListProductsByFilterRequest, bookmark, pageSize, adAccountId, pinMetrics)

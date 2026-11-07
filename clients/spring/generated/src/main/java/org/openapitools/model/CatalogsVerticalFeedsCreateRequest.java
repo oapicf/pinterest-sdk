@@ -45,7 +45,7 @@ import jakarta.annotation.Generated;
   @JsonSubTypes.Type(value = CatalogsRetailFeedsCreateRequest.class, name = "RETAIL")
 })
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public interface CatalogsVerticalFeedsCreateRequest extends CatalogsFeedCreateRequestSchema {
     public Enum getCatalogType();
 }

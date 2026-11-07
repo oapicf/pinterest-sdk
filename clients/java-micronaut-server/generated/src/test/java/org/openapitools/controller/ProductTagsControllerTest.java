@@ -89,7 +89,7 @@ public class ProductTagsControllerTest {
             put("pin_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@4ec7836c");
+            .accept("[Ljava.lang.String;@14c3175a");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ProductTagsResponse.class);
@@ -137,7 +137,7 @@ public class ProductTagsControllerTest {
             put("pin_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@3e417de7");
+            .accept("[Ljava.lang.String;@20e2e7b0");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
@@ -183,7 +183,7 @@ public class ProductTagsControllerTest {
             put("pin_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2130710");
+            .accept("[Ljava.lang.String;@6311fecd");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ProductTagsResponse.class);

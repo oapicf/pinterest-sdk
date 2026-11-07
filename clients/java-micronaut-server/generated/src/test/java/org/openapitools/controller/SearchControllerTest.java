@@ -1,9 +1,9 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.BoardsList200Response;
+import org.openapitools.model.PinsList200Response;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.SearchPartnerPins200Response;
-import org.openapitools.model.SearchUserBoardsGet200Response;
-import org.openapitools.model.SearchUserPinsList200Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -54,7 +54,7 @@ public class SearchControllerTest {
      *
      * The method should: Search pins by a given search term
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -63,7 +63,7 @@ public class SearchControllerTest {
     void searchPartnerPinsMethodTest() {
         // given
         String term = "example";
-        String countryCode = "US";
+        String countryCode = "example";
         String bookmark = "example";
         String locale = "example";
         Integer limit = 10;
@@ -87,10 +87,10 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/partner/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6ef5a77b");
+            .accept("[Ljava.lang.String;@29e8a4b6");
         request.getParameters()
             .add("term", "example") // The query parameter format should be 
-            .add("country_code", "US") // The query parameter format should be 
+            .add("country_code", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
             .add("locale", "example") // The query parameter format should be 
             .add("limit", String.valueOf(10)); // The query parameter format should be 
@@ -107,7 +107,7 @@ public class SearchControllerTest {
      *
      * The method should: Search user&#39;s boards
      *
-     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -116,12 +116,12 @@ public class SearchControllerTest {
     void searchUserBoardsGetMethodTest() {
         // given
         String adAccountId = "example";
+        String query = "example";
         String bookmark = "example";
         Integer pageSize = 25;
-        String query = "example";
 
         // when
-        SearchUserBoardsGet200Response result = controller.searchUserBoardsGet(adAccountId, bookmark, pageSize, query).block();
+        BoardsList200Response result = controller.searchUserBoardsGet(adAccountId, query, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -139,15 +139,15 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1dfe9cba");
+            .accept("[Ljava.lang.String;@27aa285a");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
+            .add("query", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("query", "example"); // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, SearchUserBoardsGet200Response.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BoardsList200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -158,7 +158,7 @@ public class SearchControllerTest {
      *
      * The method should: Search user&#39;s Pins
      *
-     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -166,12 +166,12 @@ public class SearchControllerTest {
     @Disabled("Not Implemented")
     void searchUserPinsListMethodTest() {
         // given
-        String query = "Plants";
+        String query = "example";
         String adAccountId = "example";
         String bookmark = "example";
 
         // when
-        SearchUserPinsList200Response result = controller.searchUserPinsList(query, adAccountId, bookmark).block();
+        PinsList200Response result = controller.searchUserPinsList(query, adAccountId, bookmark).block();
 
         // then
         Assertions.assertTrue(true);
@@ -189,14 +189,14 @@ public class SearchControllerTest {
         // given
         String uri = UriTemplate.of("/search/pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6d8ef668");
+            .accept("[Ljava.lang.String;@1ea12368");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
-            .add("query", "Plants") // The query parameter format should be 
+            .add("query", "example") // The query parameter format should be 
             .add("bookmark", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, SearchUserPinsList200Response.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, PinsList200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

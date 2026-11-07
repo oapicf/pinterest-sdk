@@ -1,11 +1,13 @@
 module.exports = {
     "KeywordsMetricsArrayResponseSample": 
         { data: {} },
-    "KeywordsResponseSample": 
+    "KeywordsSample": 
+        { data: {} },
+    "KeywordsSample": 
         { data: {} },
     "keywords_get_200_responseSample": 
         { data: {} },
-    "KeywordsResponseSample": 
+    "KeywordsSample": 
         { data: {} },
     "TrendingKeywordsResponseSample": 
         { data: {} },

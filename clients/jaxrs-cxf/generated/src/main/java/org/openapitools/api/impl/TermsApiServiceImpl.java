@@ -1,7 +1,7 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.RelatedTerms;
 
 import java.io.InputStream;
@@ -26,7 +26,7 @@ public class TermsApiServiceImpl implements TermsApi {
     /**
      * List related terms
      *
-     * Get a list of terms logically related to each input term. &lt;p/&gt; Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
+     * Get a list of terms logically related to each input term.  Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
      *
      */
     public RelatedTerms termsRelatedList(List<String> terms) {
@@ -38,7 +38,7 @@ public class TermsApiServiceImpl implements TermsApi {
     /**
      * List suggested terms
      *
-     * Get popular search terms that begin with your input term. &lt;p/&gt; Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
+     * Get popular search terms that begin with your input term.  Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
      *
      */
     public List<String> termsSuggestedList(String term, Integer limit) {

@@ -1,10 +1,10 @@
 module.exports = {
-    "AdAccountsCountryResponseSample": 
+    "ad_account_countries_get_200_responseSample": 
         { data: {} },
-    "DeliveryMetricsResponseSample": 
+    "delivery_metrics_get_200_responseSample": 
         { data: {} },
-    "SingleInterestTargetingOptionResponseSample": 
+    "SingleInterestTargetingOptionSample": 
         { data: {} },
-    "BookClosedResponseSample": 
+    "BookClosedSample": 
         { data: {} },
 }

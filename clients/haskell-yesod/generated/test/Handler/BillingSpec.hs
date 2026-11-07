@@ -55,7 +55,7 @@ spec = withApp $ do
 
     describe "getAdAccountsByTextSsioInsertionOrdersByTextStatusR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextSsioInsertionOrdersByTextStatusR "adAccountId_example" "0Q01N0000015hekSVDFDC"
+            get $ AdAccountsByTextSsioInsertionOrdersByTextStatusR "adAccountId_example" "pinOrderId_example"
             statusIs 501
 
     describe "getAdAccountsByTextSsioOrderLinesR" $

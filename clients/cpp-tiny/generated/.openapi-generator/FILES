@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 README.md
 lib/Models/Account.cpp
 lib/Models/Account.h

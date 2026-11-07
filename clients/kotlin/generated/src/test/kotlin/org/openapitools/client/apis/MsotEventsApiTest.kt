@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,8 +27,8 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.MsotEventsApi
-import org.openapitools.client.models.ConversionMSOTEvents
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.ConversionMSOTEventsCreate
+import org.openapitools.client.models.PinterestLibError
 
 class MsotEventsApiTest : ShouldSpec() {
     init {
@@ -31,8 +39,8 @@ class MsotEventsApiTest : ShouldSpec() {
         should("test msotEventsCreate") {
             // uncomment below to test msotEventsCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val conversionMSOTEvents : ConversionMSOTEvents =  // ConversionMSOTEvents | Attributed MSOT conversion events
-            //apiInstance.msotEventsCreate(adAccountId, conversionMSOTEvents)
+            //val conversionMSOTEventsCreate : ConversionMSOTEventsCreate =  // ConversionMSOTEventsCreate | 
+            //apiInstance.msotEventsCreate(adAccountId, conversionMSOTEventsCreate)
         }
 
     }

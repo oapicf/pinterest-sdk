@@ -3,16 +3,16 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictBool, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Dict, List, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
 from openapi_server.models.conversion_event_response import ConversionEventResponse  # noqa: F401
 from openapi_server.models.conversion_tag import ConversionTag  # noqa: F401
 from openapi_server.models.conversion_tag_create import ConversionTagCreate  # noqa: F401
 from openapi_server.models.conversion_tags_list200_response import ConversionTagsList200Response  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
 from openapi_server.models.page_visit_conversion_tags_get200_response import PageVisitConversionTagsGet200Response  # noqa: F401
 from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
+from openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: F401
 
 
 def test_conversion_tags_list(client: TestClient):
@@ -42,7 +42,7 @@ def test_conversion_tags_create(client: TestClient):
 
     Create conversion tag
     """
-    conversion_tag_create = {"aem_fnln_enabled":0,"aem_external_id_enabled":0,"aem_db_enabled":0,"aem_enabled":0,"name":"ACME Checkout Test Tag","md_frequency":0.6,"aem_ph_enabled":0,"aem_ge_enabled":0,"aem_loc_enabled":0}
+    conversion_tag_create = openapi_server.ConversionTagCreate()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -85,7 +85,7 @@ def test_page_visit_conversion_tags_get(client: TestClient):
 
     Get page visit conversion tags
     """
-    params = [("page_size", 25),     ("order", 'ASCENDING'),     ("bookmark", 'bookmark_example')]
+    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("order", openapi_server.PinterestLibPaginationOrder())]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -115,7 +115,7 @@ def test_conversion_tags_get(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}".format(ad_account_id='ad_account_id_example', conversion_tag_id='2617998078212'),
+    #    "/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}".format(ad_account_id='ad_account_id_example', conversion_tag_id='conversion_tag_id_example'),
     #    headers=headers,
     #)
 

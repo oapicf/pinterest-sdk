@@ -5,9 +5,11 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.conversion_access_token_response import ConversionAccessTokenResponse  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
-from app.openapi_server.models.oauth_access_token_response import OauthAccessTokenResponse  # noqa: E501
+from app.openapi_server.models.conversion_access_token import ConversionAccessToken  # noqa: E501
+from app.openapi_server.models.oauth_access_token import OauthAccessToken  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.token_grant_type import TokenGrantType  # noqa: E501
+from app.openapi_server.models.token_type_hint import TokenTypeHint  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -30,7 +32,12 @@ class TestOauthController(BaseTestCase):
 
         Generate OAuth access token
         """
-        data = dict(grant_type='grant_type_example')
+        data = dict(code='code_example',
+                    continuous_refresh='continuous_refresh_example',
+                    grant_type=openapi_server.TokenGrantType(),
+                    redirect_uri='redirect_uri_example',
+                    refresh_token='refresh_token_example',
+                    scope='scope_example')
         response = self.client.open(
             '/v5/oauth/token',
             method='POST',
@@ -45,7 +52,7 @@ class TestOauthController(BaseTestCase):
         Revoke a token
         """
         data = dict(token='token_example',
-                    token_type_hint='token_type_hint_example')
+                    token_type_hint=openapi_server.TokenTypeHint())
         response = self.client.open(
             '/v5/oauth/token/revoke',
             method='POST',

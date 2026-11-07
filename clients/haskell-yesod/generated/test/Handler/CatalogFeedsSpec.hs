@@ -45,5 +45,5 @@ spec = withApp $ do
 
     describe "getCatalogsProcessingResultsByTextItemIssuesR" $
         it "returns 501 Not Implemented" $ do
-            get $ CatalogsProcessingResultsByTextItemIssuesR "5224831246441439241"
+            get $ CatalogsProcessingResultsByTextItemIssuesR "processingResultId_example"
             statusIs 501

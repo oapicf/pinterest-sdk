@@ -66,7 +66,7 @@ public class LeadAdsControllerTest {
         String subscriptionId = "example";
 
         // when
-        controller.adAccountsSubscriptionsDelById(adAccountId, subscriptionId).block();
+        LeadSubscription result = controller.adAccountsSubscriptionsDelById(adAccountId, subscriptionId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -88,10 +88,10 @@ public class LeadAdsControllerTest {
             put("subscription_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@3c37e224");
+            .accept("[Ljava.lang.String;@5cdf6be0");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
+        HttpResponse<?> response = client.toBlocking().exchange(request, LeadSubscription.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -136,7 +136,7 @@ public class LeadAdsControllerTest {
             put("subscription_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7fdd009a");
+            .accept("[Ljava.lang.String;@653fe804");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadSubscription.class);
@@ -184,7 +184,7 @@ public class LeadAdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@405a36a");
+            .accept("[Ljava.lang.String;@5973ac00");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -235,7 +235,7 @@ public class LeadAdsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@bef7775");
+            .accept("[Ljava.lang.String;@11a1bd5c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadSubscription.class);

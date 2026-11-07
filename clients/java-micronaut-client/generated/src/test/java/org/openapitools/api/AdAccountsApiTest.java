@@ -1,23 +1,25 @@
 package org.openapitools.api;
 
 import org.openapitools.model.AdAccount;
-import org.openapitools.model.AdAccountAnalyticsResponseInner;
+import org.openapitools.model.AdAccountAnalyticsItems;
 import org.openapitools.model.AdAccountCreate;
 import org.openapitools.model.AdAccountsList200Response;
+import org.openapitools.model.AdsAnalyticsAccountTargetingType;
 import org.openapitools.model.AdsAnalyticsCreateAsyncRequest;
 import org.openapitools.model.AdsAnalyticsCreateAsyncResponse;
 import org.openapitools.model.AdsAnalyticsGetAsyncResponse;
-import org.openapitools.model.AdsAnalyticsTargetingType;
-import org.openapitools.model.ConversionProductReportRequest;
+import java.math.BigDecimal;
+import org.openapitools.model.ConversionProductReport;
+import org.openapitools.model.ConversionProductReportCreate;
 import org.openapitools.model.ConversionReportAttributionType;
-import org.openapitools.model.CreateMMMReportRequest;
-import org.openapitools.model.CreateMMMReportResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.GetMMMReportResponse;
 import org.openapitools.model.Granularity;
 import java.time.LocalDate;
+import org.openapitools.model.MMMReport;
+import org.openapitools.model.MMMReportCreate;
 import org.openapitools.model.MetricsResponse;
 import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.ReportingColumnSync;
 import org.openapitools.model.ReportingTimeZone;
 import org.openapitools.model.TemplateBasedReport;
 import org.openapitools.model.TemplatesList200Response;
@@ -46,25 +48,25 @@ public class AdAccountsApiTest {
     /**
      * Get ad account analytics
      *
-     * Get analytics for the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
+     *   Get analytics for the specified &#x60;ad_account_id&#x60;, filtered by the specified options.    - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
      */
     @Test
     @Disabled("Not Implemented")
     public void adAccountAnalyticsTest() {
         // given
-        String adAccountId = "example";
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<String> columns = Arrays.asList("example");
-        Granularity granularity = Granularity.fromValue("DAY");
-        Integer clickWindowDays = 30;
-        Integer engagementWindowDays = 30;
-        Integer viewWindowDays = 1;
+        List<ReportingColumnSync> columns = Arrays.asList();
+        Granularity granularity = Granularity.fromValue("TOTAL");
+        String adAccountId = "example";
+        BigDecimal clickWindowDays = new BigDecimal(78);
+        BigDecimal engagementWindowDays = new BigDecimal(78);
+        BigDecimal viewWindowDays = new BigDecimal(78);
         String conversionReportTime = "TIME_OF_AD_ACTION";
         ReportingTimeZone reportingTimezone = ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE");
 
         // when
-        List<AdAccountAnalyticsResponseInner> body = api.adAccountAnalytics(adAccountId, startDate, endDate, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone).block();
+        List<AdAccountAnalyticsItems> body = api.adAccountAnalytics(startDate, endDate, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone).block();
 
         // then
         // TODO implement the adAccountAnalyticsTest()
@@ -74,7 +76,7 @@ public class AdAccountsApiTest {
     /**
      * Get targeting analytics for an ad account
      *
-     * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt;  * The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      */
     @Test
     @Disabled("Not Implemented")
@@ -83,12 +85,12 @@ public class AdAccountsApiTest {
         String adAccountId = "example";
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        List<AdsAnalyticsTargetingType> targetingTypes = Arrays.asList();
-        List<String> columns = Arrays.asList("example");
-        Granularity granularity = Granularity.fromValue("DAY");
-        Integer clickWindowDays = 30;
-        Integer engagementWindowDays = 30;
-        Integer viewWindowDays = 1;
+        List<AdsAnalyticsAccountTargetingType> targetingTypes = Arrays.asList();
+        List<ReportingColumnSync> columns = Arrays.asList();
+        Granularity granularity = Granularity.fromValue("TOTAL");
+        BigDecimal clickWindowDays = new BigDecimal(78);
+        BigDecimal engagementWindowDays = new BigDecimal(78);
+        BigDecimal viewWindowDays = new BigDecimal(78);
         String conversionReportTime = "TIME_OF_AD_ACTION";
         List<ConversionReportAttributionType> attributionTypes = Arrays.asList();
         ReportingTimeZone reportingTimezone = ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE");
@@ -163,17 +165,17 @@ public class AdAccountsApiTest {
     /**
      * Create a request for a brand, category, SKU report
      *
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+     *   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
      */
     @Test
     @Disabled("Not Implemented")
     public void analyticsCreateConversionProductReportTest() {
         // given
         String adAccountId = "example";
-        ConversionProductReportRequest conversionProductReportRequest = new ConversionProductReportRequest(Arrays.asList(), "2024-04-23", "example", "example", "example", "2024-03-17");
+        ConversionProductReportCreate conversionProductReportCreate = new ConversionProductReportCreate(Arrays.asList(), "2024-04-23", org.openapitools.model.ConversionProductReportGranularity.fromValue("TOTAL"), org.openapitools.model.ConversionProductReportLevel.fromValue("ADVERTISER"), "example", "2024-04-17");
 
         // when
-        AdsAnalyticsCreateAsyncResponse body = api.analyticsCreateConversionProductReport(adAccountId, conversionProductReportRequest).block();
+        ConversionProductReport body = api.analyticsCreateConversionProductReport(adAccountId, conversionProductReportCreate).block();
 
         // then
         // TODO implement the analyticsCreateConversionProductReportTest()
@@ -183,17 +185,17 @@ public class AdAccountsApiTest {
     /**
      * Create a request for a Marketing Mix Modeling (MMM) report
      *
-     * This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it&#39;s in beta release.
+     *     This creates an asynchronous mmm report based on the given request.     It returns a token that you can use to download the report when it is     ready. NOTE: An additional limit of 5 queries per minute per advertiser     applies to this endpoint while it&#39;s in beta release.     For the ADVERTISER_PAID_SPEND_IN_DOLLAR,     ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR     columns: if you receive bonus media, this value still includes that spend, and it will     need to be removed manually with support from your Pinterest account team for a     fully netted value. Over time, we&#39;ll also subtract bonus media and other incentives as     data becomes available. Production and other non-media fees are excluded.
      */
     @Test
     @Disabled("Not Implemented")
     public void analyticsCreateMmmReportTest() {
         // given
         String adAccountId = "example";
-        CreateMMMReportRequest createMMMReportRequest = new CreateMMMReportRequest();
+        MMMReportCreate mmMReportCreate = new MMMReportCreate(Arrays.asList(), "2020-12-20", org.openapitools.model.MMMReportGranularity.fromValue("DAY"), org.openapitools.model.MMMReportLevel.fromValue("CAMPAIGN_TARGETING"), "example", "2020-12-20", Arrays.asList());
 
         // when
-        CreateMMMReportResponse body = api.analyticsCreateMmmReport(adAccountId, createMMMReportRequest).block();
+        MMMReport body = api.analyticsCreateMmmReport(adAccountId, mmMReportCreate).block();
 
         // then
         // TODO implement the analyticsCreateMmmReportTest()
@@ -203,14 +205,14 @@ public class AdAccountsApiTest {
     /**
      * Create async request for an account analytics report
      *
-     * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+     *   This returns a token that you can use to download the report when it is ready.   Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.   - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.   - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.   - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.   - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
      */
     @Test
     @Disabled("Not Implemented")
     public void analyticsCreateReportTest() {
         // given
         String adAccountId = "example";
-        AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest = new AdsAnalyticsCreateAsyncRequest();
+        AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest = new AdsAnalyticsCreateAsyncRequest("example", org.openapitools.model.Granularity.fromValue("TOTAL"), "example");
 
         // when
         AdsAnalyticsCreateAsyncResponse body = api.analyticsCreateReport(adAccountId, adsAnalyticsCreateAsyncRequest).block();
@@ -223,7 +225,7 @@ public class AdAccountsApiTest {
     /**
      * Create async request for an analytics report using a template
      *
-     *    This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
+     *   This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
      */
     @Test
     @Disabled("Not Implemented")
@@ -246,7 +248,7 @@ public class AdAccountsApiTest {
     /**
      * Get advertiser brand, category, SKU report
      *
-     * &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Restricted&lt;/a&gt; Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+     *   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
      */
     @Test
     @Disabled("Not Implemented")
@@ -256,7 +258,7 @@ public class AdAccountsApiTest {
         String token = "example";
 
         // when
-        AdsAnalyticsGetAsyncResponse body = api.analyticsGetConversionProductReport(adAccountId, token).block();
+        ConversionProductReport body = api.analyticsGetConversionProductReport(adAccountId, token).block();
 
         // then
         // TODO implement the analyticsGetConversionProductReportTest()
@@ -266,7 +268,7 @@ public class AdAccountsApiTest {
     /**
      * Get advertiser Marketing Mix Modeling (MMM) report.
      *
-     * Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
+     *     Get an mmm report for an ad account. This returns a URL to an     mmm metrics report given a token returned from the create mmm report endpoint.
      */
     @Test
     @Disabled("Not Implemented")
@@ -276,7 +278,7 @@ public class AdAccountsApiTest {
         String token = "example";
 
         // when
-        GetMMMReportResponse body = api.analyticsGetMmmReport(adAccountId, token).block();
+        MMMReport body = api.analyticsGetMmmReport(adAccountId, token).block();
 
         // then
         // TODO implement the analyticsGetMmmReportTest()
@@ -286,7 +288,7 @@ public class AdAccountsApiTest {
     /**
      * Get the account analytics report created by the async call
      *
-     * This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.
+     *   This returns a URL to an analytics report given a token returned from the post request report creation call.   You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.   - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
      */
     @Test
     @Disabled("Not Implemented")
@@ -332,12 +334,12 @@ public class AdAccountsApiTest {
     public void templatesListTest() {
         // given
         String adAccountId = "example";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
 
         // when
-        TemplatesList200Response body = api.templatesList(adAccountId, pageSize, order, bookmark).block();
+        TemplatesList200Response body = api.templatesList(adAccountId, bookmark, pageSize, order).block();
 
         // then
         // TODO implement the templatesListTest()

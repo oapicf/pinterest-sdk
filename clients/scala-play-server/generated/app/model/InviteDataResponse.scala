@@ -10,7 +10,7 @@ import play.api.libs.json._
   * @param lastUpdatedTime The date and time the invite/request was last updated. Returned in milliseconds.
   * @param sentAt The date and time the invite/request was sent/created. Returned in milliseconds.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class InviteDataResponse(
   inviteExpiration: Option[Int],
   inviteStatus: Option[String],

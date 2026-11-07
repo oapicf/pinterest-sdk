@@ -5,10 +5,10 @@ from fastapi.testclient import TestClient
 
 from pydantic import Field, field_validator  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
+from openapi_server.models.customer_list_upload import CustomerListUpload  # noqa: F401
 from openapi_server.models.customer_list_upload_create_request import CustomerListUploadCreateRequest  # noqa: F401
 from openapi_server.models.customer_list_upload_create_response import CustomerListUploadCreateResponse  # noqa: F401
-from openapi_server.models.customer_list_upload_response import CustomerListUploadResponse  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 
 
 def test_customer_list_uploads_create(client: TestClient):
@@ -16,7 +16,7 @@ def test_customer_list_uploads_create(client: TestClient):
 
     Create customer list upload
     """
-    customer_list_upload_create_request = {"total_parts":2,"operation":"operation"}
+    customer_list_upload_create_request = openapi_server.CustomerListUploadCreateRequest()
 
     headers = {
         "Authorization": "Bearer special-key",

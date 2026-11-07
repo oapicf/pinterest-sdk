@@ -3,7 +3,7 @@ private class OASMsotEventsApiTest {
     /**
      * Send Measurement Source Of Truth (MSOT) attributed conversion events
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;\n&lt;br&gt;\n&lt;p&gt;Advertisers or their measurement partners can send attributed MSOT conversion events to Pinterest based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object.&lt;/p&gt;\n- These events will NOT be used in Reporting.
+     * **This feature is currently in beta and not available to all apps.**\nIf you are interested in joining the beta, reach out to your Pinterest account manager.\n\nAdvertisers or their measurement partners can send attributed MSOT conversion events to Pinterest\nbased on their &#x60;ad_account_id&#x60;. The request body should be a JSON object.\n\n- These events will not be used in Reporting.
      */
     @isTest
     private static void msotEventsCreateTest() {
@@ -14,7 +14,7 @@ private class OASMsotEventsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSConversionMSOTEvents' => ''
+            'oaSConversionMSOTEventsCreate' => ''
         };
 
         OASClient client;
@@ -23,6 +23,14 @@ private class OASMsotEventsApiTest {
 
         client = new OASClient();
         api = new OASMsotEventsApi(client);
+
+        js = JSON.serialize();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = ;
+        response = () api.msotEventsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize();
         res.setHeader('Content-Type', 'application/json');

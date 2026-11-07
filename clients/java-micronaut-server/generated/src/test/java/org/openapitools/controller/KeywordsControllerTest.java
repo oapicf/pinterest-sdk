@@ -1,14 +1,17 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.KeywordUpdateBody;
+import org.openapitools.model.Keywords;
+import org.openapitools.model.KeywordsCreate;
 import org.openapitools.model.KeywordsGet200Response;
 import org.openapitools.model.KeywordsMetricsArrayResponse;
-import org.openapitools.model.KeywordsRequest;
-import org.openapitools.model.KeywordsResponse;
+import org.openapitools.model.KeywordsUpdate;
 import org.openapitools.model.MatchType;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.TrendType;
 import org.openapitools.model.TrendingKeywordsResponse;
+import org.openapitools.model.TrendsAgeBucket;
+import org.openapitools.model.TrendsGenderFilter;
+import org.openapitools.model.TrendsL1Interest;
 import org.openapitools.model.TrendsSupportedRegion;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
@@ -60,7 +63,7 @@ public class KeywordsControllerTest {
      *
      * The method should: Get country&#39;s keyword metrics
      *
-     * See keyword metrics for a specified country, aggregated across all of Pinterest. (Definitions are available from the \&quot;Get delivery metrics definitions\&quot; &lt;a href&#x3D;\&quot;/docs/api/v5/#operation/delivery_metrics/get\&quot;&gt;API endpoint&lt;/a&gt;).
+     *   See keyword metrics for a specified country, aggregated across all of Pinterest.   (Definitions are available from the \&quot;Get delivery metrics definitions\&quot;   [API endpoint](/docs/api/v5/#operation/delivery_metrics/get)).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -69,7 +72,7 @@ public class KeywordsControllerTest {
     void countryKeywordsMetricsGetMethodTest() {
         // given
         String adAccountId = "example";
-        String countryCode = "US";
+        String countryCode = "example";
         List<String> keywords = Arrays.asList("example");
 
         // when
@@ -94,9 +97,9 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2040505e");
+            .accept("[Ljava.lang.String;@3292c1d3");
         request.getParameters()
-            .add("country_code", "US") // The query parameter format should be 
+            .add("country_code", "example") // The query parameter format should be 
             .add("keywords", String.valueOf(Arrays.asList("example"))); // The query parameter format should be csv
 
         // when
@@ -111,7 +114,7 @@ public class KeywordsControllerTest {
      *
      * The method should: Create keywords
      *
-     * &lt;p&gt;Create keywords for following entity types(advertiser, campaign, ad group or ad).&lt;/p&gt; &lt;p&gt;For more information, see &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/keyword-targeting\&quot;&gt;Keyword targeting&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Notes:&lt;/b&gt;&lt;/p&gt; &lt;ul style&#x3D;\&quot;list-style-type: square;\&quot;&gt; &lt;li&gt;Advertisers and campaigns can only be assigned keywords with excluding (&#39;_NEGATIVE&#39;).&lt;/li&gt; &lt;li&gt;All keyword match types are available for ad groups.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information on match types, see &lt;a  target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type enums&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Returns:&lt;/b&gt;&lt;/p&gt; &lt;ul style&#x3D;\&quot;list-style-type: square;\&quot;&gt; &lt;li&gt;&lt;p&gt;A successful call returns an object containing an array of new keyword objects and an empty &amp;quot;errors&amp;quot; object array.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &amp;quot;errors&amp;quot; object array:&lt;/p&gt; &lt;pre class&#x3D;\&quot;last literal-block\&quot;&gt; { \&quot;keywords\&quot;: [], \&quot;errors\&quot;: [ { \&quot;data\&quot;: { \&quot;archived\&quot;: null, \&quot;match_type\&quot;: \&quot;EXACT\&quot;, \&quot;parent_type\&quot;: null, \&quot;value\&quot;: \&quot;foobar\&quot;, \&quot;parent_id\&quot;: null, \&quot;type\&quot;: \&quot;keyword\&quot;, \&quot;id\&quot;: null }, \&quot;error_messages\&quot;: [ \&quot;Advertisers and Campaigns only accept excluded targeting attributes.\&quot; ] } } &lt;/pre&gt;&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;&lt;b&gt;Rate limit&lt;/b&gt;: &lt;a href&#x3D;\&quot;/docs/reference/rate-limits/\&quot;&gt;WRITE&lt;/a&gt;.&lt;/p&gt;
+     *   Create keywords for the following entity types (advertiser, campaign, ad group, or ad). For more information, see [Keyword targeting](https://help.pinterest.com/en/business/article/keyword-targeting).    **Notes:**   - Advertisers and campaigns can only be assigned keywords with excluding (&#x60;_NEGATIVE&#x60;).   - All keyword match types are available for ad groups.    For more information on match types, see [match type enums](/docs/api-features/targeting-overview/).    **Returns:**   - A successful call returns an object containing an array of new keyword objects and an empty &#x60;errors&#x60; object array.   - An unsuccessful call returns an empty keywords array, and instead, inserts the entire object with nulled/negated properties into the &#x60;errors&#x60; object array:     &#x60;&#x60;&#x60;json     {       \&quot;keywords\&quot;: [],       \&quot;errors\&quot;: [         {           \&quot;data\&quot;: {             \&quot;archived\&quot;: null,             \&quot;match_type\&quot;: \&quot;EXACT\&quot;,             \&quot;parent_type\&quot;: null,             \&quot;value\&quot;: \&quot;foobar\&quot;,             \&quot;parent_id\&quot;: null,             \&quot;type\&quot;: \&quot;keyword\&quot;,             \&quot;id\&quot;: null           },           \&quot;error_messages\&quot;: [             \&quot;Advertisers and Campaigns only accept excluded targeting attributes.\&quot;           ]         }       ]     }
      *
      * TODO fill in the parameters and test return value.
      */
@@ -120,10 +123,10 @@ public class KeywordsControllerTest {
     void keywordsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        KeywordsRequest keywordsRequest = new KeywordsRequest(Arrays.asList(), "383791336903426391");
+        KeywordsCreate keywordsCreate = new KeywordsCreate(Arrays.asList(), "example");
 
         // when
-        KeywordsResponse result = controller.keywordsCreate(adAccountId, keywordsRequest).block();
+        Keywords result = controller.keywordsCreate(adAccountId, keywordsCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -139,16 +142,16 @@ public class KeywordsControllerTest {
     @Disabled("Not Implemented")
     void keywordsCreateClientApiTest() throws IOException {
         // given
-        KeywordsRequest body = new KeywordsRequest(Arrays.asList(), "383791336903426391");
+        KeywordsCreate body = new KeywordsCreate(Arrays.asList(), "example");
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/keywords").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@1d596a9c");
+            .accept("[Ljava.lang.String;@4f68e31a");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, KeywordsResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, Keywords.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -159,7 +162,7 @@ public class KeywordsControllerTest {
      *
      * The method should: Get keywords
      *
-     * &lt;p&gt;Get a list of keywords based on the filters provided. If no filter is provided, it will default to the ad_account_id filter, which means it will only return keywords that specifically have parent_id set to the ad_account_id. Note: Keywords can have ad_account_ids, campaign_ids, and ad_group_ids set as their parent_ids. Keywords created through Ads Manager will have their parent_id set to an ad_group_id, not ad_account_id.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/keyword-targeting\&quot;&gt;Keyword targeting&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Notes:&lt;/b&gt;&lt;/p&gt; &lt;ul style&#x3D;\&quot;list-style-type: square;\&quot;&gt; &lt;li&gt;Advertisers and campaigns can only be assigned keywords with excluding (&#39;_NEGATIVE&#39;).&lt;/li&gt; &lt;li&gt;All keyword match types are available for ad groups.&lt;/li&gt; &lt;/ul&gt; &lt;p&gt;For more information on match types, see &lt;a target&#x3D;\&quot;_blank\&quot; href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot;&gt;match type enums&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Returns:&lt;/b&gt;&lt;/p&gt; &lt;ul style&#x3D;\&quot;list-style-type: square;\&quot;&gt; &lt;li&gt;&lt;p&gt;A successful call returns an object containing an array of new keyword objects and an empty &amp;quot;errors&amp;quot; object array.&lt;/p&gt;&lt;/li&gt; &lt;li&gt;&lt;p&gt;An unsuccessful call returns an empty keywords array, and, instead, inserts the entire object with nulled/negated properties into the &amp;quot;errors&amp;quot; object array:&lt;/p&gt; &lt;pre class&#x3D;\&quot;last literal-block\&quot;&gt; { \&quot;keywords\&quot;: [], \&quot;errors\&quot;: [ { \&quot;data\&quot;: { \&quot;archived\&quot;: null, \&quot;match_type\&quot;: \&quot;EXACT\&quot;, \&quot;parent_type\&quot;: null, \&quot;value\&quot;: \&quot;foobar\&quot;, \&quot;parent_id\&quot;: null, \&quot;type\&quot;: \&quot;keyword\&quot;, \&quot;id\&quot;: null }, \&quot;error_messages\&quot;: [ \&quot;Advertisers and Campaigns only accept excluded targeting attributes.\&quot; ] } } &lt;/pre&gt;&lt;/li&gt; &lt;/ul&gt;
+     *     Get a list of keywords based on the filters provided. If no filter is provided, it will default to the &#x60;ad_account_id&#x60; filter, which means it will only return keywords that specifically have &#x60;parent_id&#x60; set to the &#x60;ad_account_id&#x60;. Note: Keywords can have &#x60;ad_account_ids&#x60;, &#x60;campaign_ids&#x60;, and &#x60;ad_group_ids&#x60; set as their &#x60;parent_ids&#x60;. Keywords created through Ads Manager will have their &#x60;parent_id&#x60; set to an &#x60;ad_group_id&#x60;, not &#x60;ad_account_id&#x60;.      For more information, see [Keyword targeting](https://help.pinterest.com/en/business/article/keyword-targeting).      **Notes:**     - Advertisers and campaigns can only be assigned keywords with excluding (&#x60;_NEGATIVE&#x60;).     - All keyword match types are available for ad groups.      For more information on match types, see [match type enums](/docs/api-features/targeting-overview/).      **Returns:**     - A successful call returns an object containing an array of new keyword objects and an empty &#x60;errors&#x60; object array.     - An unsuccessful call returns an empty keywords array, and instead, inserts the entire object with nulled/negated properties into the &#x60;errors&#x60; object array:       &#x60;&#x60;&#x60;json       {         \&quot;keywords\&quot;: [],         \&quot;errors\&quot;: [           {             \&quot;data\&quot;: {               \&quot;archived\&quot;: null,               \&quot;match_type\&quot;: \&quot;EXACT\&quot;,               \&quot;parent_type\&quot;: null,               \&quot;value\&quot;: \&quot;foobar\&quot;,               \&quot;parent_id\&quot;: null,               \&quot;type\&quot;: \&quot;keyword\&quot;,               \&quot;id\&quot;: null             },             \&quot;error_messages\&quot;: [               \&quot;Advertisers and Campaigns only accept excluded targeting attributes.\&quot;             ]           }         ]       }
      *
      * TODO fill in the parameters and test return value.
      */
@@ -169,14 +172,14 @@ public class KeywordsControllerTest {
         // given
         String adAccountId = "example";
         String campaignId = "example";
-        String adGroupId = "123123123";
-        List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> adGroupIds = Arrays.asList("example");
+        String adGroupId = "example";
+        List<@Pattern(regexp = "^\\d+$")String> adGroupIds = Arrays.asList("example");
         List<MatchType> matchTypes = Arrays.asList();
-        Integer pageSize = 25;
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        KeywordsGet200Response result = controller.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark).block();
+        KeywordsGet200Response result = controller.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -197,14 +200,14 @@ public class KeywordsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@49da24e3");
+            .accept("[Ljava.lang.String;@ec228d4");
         request.getParameters()
             .add("campaign_id", "example") // The query parameter format should be 
-            .add("ad_group_id", "123123123") // The query parameter format should be 
+            .add("ad_group_id", "example") // The query parameter format should be 
             .add("ad_group_ids", Arrays.asList("example")) // The query format should be multi
             .add("match_types", Arrays.asList()) // The query format should be multi
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, KeywordsGet200Response.class);
@@ -218,7 +221,7 @@ public class KeywordsControllerTest {
      *
      * The method should: Update keywords
      *
-     * &lt;p&gt;Update one or more keywords&#39; bid and archived fields.&lt;/p&gt; &lt;p&gt;Archiving a keyword effectively deletes it - keywords no longer receive metrics and no longer visible within the parent entity&#39;s keywords list.&lt;/p&gt;
+     *   Update one or more keywords&#39; bid and archived fields. Archiving   a keyword effectively deletes it - keywords no longer receive metrics and   are no longer visible within the parent entity&#39;s keywords list.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -227,10 +230,10 @@ public class KeywordsControllerTest {
     void keywordsUpdateMethodTest() {
         // given
         String adAccountId = "example";
-        KeywordUpdateBody keywordUpdateBody = new KeywordUpdateBody(Arrays.asList());
+        KeywordsUpdate keywordsUpdate = new KeywordsUpdate();
 
         // when
-        KeywordsResponse result = controller.keywordsUpdate(adAccountId, keywordUpdateBody).block();
+        Keywords result = controller.keywordsUpdate(adAccountId, keywordsUpdate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -246,16 +249,16 @@ public class KeywordsControllerTest {
     @Disabled("Not Implemented")
     void keywordsUpdateClientApiTest() throws IOException {
         // given
-        KeywordUpdateBody body = new KeywordUpdateBody(Arrays.asList());
+        KeywordsUpdate body = new KeywordsUpdate();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/keywords").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@3bbd17be");
+            .accept("[Ljava.lang.String;@6209e275");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, KeywordsResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, Keywords.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -266,7 +269,7 @@ public class KeywordsControllerTest {
      *
      * The method should: List trending keywords
      *
-     * &lt;p&gt;Get the top trending search keywords among the Pinterest user audience.&lt;/p&gt; &lt;p&gt;Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.&lt;/p&gt; &lt;p&gt;Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.&lt;/p&gt; &lt;p&gt;For an interactive way to explore this data, please visit &lt;a href&#x3D;\&quot;https://trends.pinterest.com\&quot;&gt;trends.pinterest.com&lt;/a&gt;. 
+     * Get the top trending search keywords among the Pinterest user audience.  Trending keywords can be used to inform ad targeting, budget strategy, and creative decisions about which products and Pins will resonate with your audience.  Geographic, demographic and interest-based filters are available to narrow down to the top trends among a specific audience. Multiple trend types are supported that can be used to identify newly-popular, evergreen or seasonal keywords.  For an interactive way to explore this data, please visit [trends.pinterest.com](https://trends.pinterest.com).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -276,17 +279,16 @@ public class KeywordsControllerTest {
         // given
         TrendsSupportedRegion region = TrendsSupportedRegion.fromValue("US");
         TrendType trendType = TrendType.fromValue("growing");
-        List<String> interests = Arrays.asList("example");
-        List<String> genders = Arrays.asList("example");
-        List<String> ages = Arrays.asList("example");
+        List<TrendsL1Interest> interests = Arrays.asList();
+        List<TrendsGenderFilter> genders = Arrays.asList();
+        List<TrendsAgeBucket> ages = Arrays.asList();
         List<@Size(min = 1, max = 100)String> includeKeywords = Arrays.asList("example");
         Boolean normalizeAgainstGroup = false;
         Integer limit = 50;
-        Boolean includePrediction = false;
         Boolean includeDemographics = false;
 
         // when
-        TrendingKeywordsResponse result = controller.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics).block();
+        TrendingKeywordsResponse result = controller.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includeDemographics).block();
 
         // then
         Assertions.assertTrue(true);
@@ -308,15 +310,14 @@ public class KeywordsControllerTest {
             put("trend_type", TrendType.fromValue("growing"));
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@19dd6237");
+            .accept("[Ljava.lang.String;@46312bbe");
         request.getParameters()
-            .add("interests", Arrays.asList("example")) // The query format should be multi
-            .add("genders", Arrays.asList("example")) // The query format should be multi
-            .add("ages", Arrays.asList("example")) // The query format should be multi
+            .add("interests", Arrays.asList()) // The query format should be multi
+            .add("genders", Arrays.asList()) // The query format should be multi
+            .add("ages", Arrays.asList()) // The query format should be multi
             .add("include_keywords", Arrays.asList("example")) // The query format should be multi
             .add("normalize_against_group", String.valueOf(false)) // The query parameter format should be 
             .add("limit", String.valueOf(50)) // The query parameter format should be 
-            .add("include_prediction", String.valueOf(false)) // The query parameter format should be 
             .add("include_demographics", String.valueOf(false)); // The query parameter format should be 
 
         // when

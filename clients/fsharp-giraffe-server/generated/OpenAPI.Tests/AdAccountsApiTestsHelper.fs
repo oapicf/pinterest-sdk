@@ -27,9 +27,10 @@ module AdAccountsApiHandlerTestsHelper =
 
   AdAccountsCreateBody <- WebUtility.HtmlDecode "{
   &quot;country&quot; : &quot;AD&quot;,
-  &quot;owner_user_id&quot; : &quot;owner_user_id&quot;,
+  &quot;currency&quot; : &quot;UNK&quot;,
   &quot;name&quot; : &quot;name&quot;,
-  &quot;currency&quot; : &quot;UNK&quot;
+  &quot;owner_user_id&quot; : &quot;owner_user_id&quot;,
+  &quot;time_zone&quot; : &quot;America/Los_Angeles&quot;
 }"
   AdAccountsCreateExamples <- AdAccountsCreateExamples.Add("application/json", AdAccountsCreateBody)
 
@@ -45,21 +46,21 @@ module AdAccountsApiHandlerTestsHelper =
   let mutable AnalyticsCreateConversionProductReportBody = ""
 
   AnalyticsCreateConversionProductReportBody <- WebUtility.HtmlDecode "{
-  &quot;end_date&quot; : &quot;2024-04-23&quot;,
-  &quot;conversion_product_attribution_type&quot; : &quot;DEFAULT&quot;,
-  &quot;level&quot; : &quot;ADVERTISER&quot;,
-  &quot;view_window_days&quot; : 6,
-  &quot;columns&quot; : [ &quot;AD_GROUP_ID&quot;, &quot;AD_GROUP_ID&quot; ],
-  &quot;campaign_ids&quot; : [ &quot;12345678&quot; ],
-  &quot;click_window_days&quot; : 0,
-  &quot;conversion_report_time&quot; : &quot;TIME_OF_AD_ACTION&quot;,
-  &quot;campaign_objective_types&quot; : [ &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot; ],
-  &quot;product_sku_ids&quot; : [ &quot;WBC45678&quot;, &quot;WBC45679&quot; ],
-  &quot;granularity&quot; : &quot;WEEK&quot;,
   &quot;ad_group_ids&quot; : [ &quot;12345678&quot; ],
-  &quot;conversion_product_breakdown&quot; : &quot;PRODUCT_BRAND&quot;,
+  &quot;campaign_ids&quot; : [ &quot;12345678&quot; ],
+  &quot;campaign_objective_types&quot; : [ &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot; ],
+  &quot;click_window_days&quot; : &quot;&quot;,
+  &quot;columns&quot; : [ &quot;AD_GROUP_ID&quot;, &quot;AD_GROUP_ID&quot; ],
+  &quot;conversion_product_attribution_type&quot; : &quot;&quot;,
+  &quot;conversion_product_breakdown&quot; : &quot;&quot;,
+  &quot;conversion_report_time&quot; : &quot;&quot;,
+  &quot;end_date&quot; : &quot;2024-04-23&quot;,
+  &quot;granularity&quot; : &quot;&quot;,
+  &quot;level&quot; : &quot;&quot;,
+  &quot;product_sku_ids&quot; : [ &quot;WBC45678&quot;, &quot;WBC45679&quot; ],
   &quot;report_name&quot; : &quot;report_name&quot;,
-  &quot;start_date&quot; : &quot;2024-03-17&quot;
+  &quot;start_date&quot; : &quot;2024-04-17&quot;,
+  &quot;view_window_days&quot; : &quot;&quot;
 }"
   AnalyticsCreateConversionProductReportExamples <- AnalyticsCreateConversionProductReportExamples.Add("application/json", AnalyticsCreateConversionProductReportBody)
 
@@ -71,14 +72,16 @@ module AdAccountsApiHandlerTestsHelper =
   let mutable AnalyticsCreateMmmReportBody = ""
 
   AnalyticsCreateMmmReportBody <- WebUtility.HtmlDecode "{
-  &quot;end_date&quot; : &quot;2020-12-20&quot;,
-  &quot;level&quot; : &quot;CAMPAIGN_TARGETING&quot;,
+  &quot;advertiser_ids&quot; : [ &quot;advertiser_ids&quot;, &quot;advertiser_ids&quot; ],
   &quot;columns&quot; : [ &quot;SPEND_IN_DOLLAR&quot;, &quot;SPEND_IN_DOLLAR&quot; ],
-  &quot;granularity&quot; : &quot;DAY&quot;,
   &quot;countries&quot; : [ &quot;US&quot;, &quot;US&quot; ],
+  &quot;custom_column_ids&quot; : [ &quot;custom_column_ids&quot;, &quot;custom_column_ids&quot;, &quot;custom_column_ids&quot;, &quot;custom_column_ids&quot;, &quot;custom_column_ids&quot; ],
+  &quot;end_date&quot; : &quot;2020-12-20&quot;,
+  &quot;granularity&quot; : &quot;&quot;,
+  &quot;level&quot; : &quot;&quot;,
   &quot;report_name&quot; : &quot;report_name&quot;,
-  &quot;targeting_types&quot; : [ &quot;GENDER&quot; ],
-  &quot;start_date&quot; : &quot;2020-12-20&quot;
+  &quot;start_date&quot; : &quot;2020-12-20&quot;,
+  &quot;targeting_types&quot; : [ &quot;GENDER&quot; ]
 }"
   AnalyticsCreateMmmReportExamples <- AnalyticsCreateMmmReportExamples.Add("application/json", AnalyticsCreateMmmReportBody)
 
@@ -90,33 +93,20 @@ module AdAccountsApiHandlerTestsHelper =
   let mutable AnalyticsCreateReportBody = ""
 
   AnalyticsCreateReportBody <- WebUtility.HtmlDecode "{
-  &quot;end_date&quot; : &quot;2020-12-20&quot;,
-  &quot;view_window_days&quot; : 1,
-  &quot;report_format&quot; : &quot;JSON&quot;,
-  &quot;metrics_filters&quot; : [ {
-    &quot;field&quot; : &quot;SPEND_IN_DOLLAR&quot;,
-    &quot;values&quot; : [ 5.962133916683182, 5.962133916683182 ],
-    &quot;operator&quot; : &quot;LESS_THAN&quot;
-  }, {
-    &quot;field&quot; : &quot;SPEND_IN_DOLLAR&quot;,
-    &quot;values&quot; : [ 5.962133916683182, 5.962133916683182 ],
-    &quot;operator&quot; : &quot;LESS_THAN&quot;
-  } ],
+  &quot;ad_group_ids&quot; : [ null, null, null, null, null ],
+  &quot;ad_group_statuses&quot; : [ &quot;RUNNING&quot;, &quot;RUNNING&quot;, &quot;RUNNING&quot;, &quot;RUNNING&quot;, &quot;RUNNING&quot; ],
+  &quot;ad_ids&quot; : [ null, null, null, null, null ],
+  &quot;ad_statuses&quot; : [ &quot;APPROVED&quot;, &quot;APPROVED&quot;, &quot;APPROVED&quot;, &quot;APPROVED&quot;, &quot;APPROVED&quot; ],
+  &quot;attribution_types&quot; : [ &quot;INDIVIDUAL&quot;, &quot;INDIVIDUAL&quot; ],
+  &quot;campaign_brand_label&quot; : &quot;campaign_brand_label&quot;,
+  &quot;campaign_custom_label&quot; : &quot;campaign_custom_label&quot;,
+  &quot;campaign_ids&quot; : [ null, null, null, null, null ],
+  &quot;campaign_objective_types&quot; : [ &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot;, &quot;AWARENESS&quot; ],
+  &quot;campaign_statuses&quot; : [ &quot;RUNNING&quot;, &quot;RUNNING&quot;, &quot;RUNNING&quot;, &quot;RUNNING&quot;, &quot;RUNNING&quot; ],
+  &quot;click_window_days&quot; : &quot;&quot;,
   &quot;columns&quot; : [ &quot;SPEND_IN_MICRO_DOLLAR&quot;, &quot;SPEND_IN_MICRO_DOLLAR&quot; ],
-  &quot;campaign_ids&quot; : [ &quot;12345678&quot; ],
   &quot;combine_targeting_types&quot; : false,
-  &quot;click_window_days&quot; : 0,
-  &quot;conversion_report_time&quot; : &quot;TIME_OF_AD_ACTION&quot;,
-  &quot;product_group_ids&quot; : [ &quot;12345678&quot; ],
-  &quot;campaign_objective_types&quot; : [ &quot;AWARENESS&quot; ],
-  &quot;product_group_statuses&quot; : [ &quot;RUNNING&quot;, &quot;PAUSED&quot; ],
-  &quot;reporting_timezone&quot; : &quot;&quot;,
-  &quot;campaign_statuses&quot; : [ &quot;RUNNING&quot;, &quot;PAUSED&quot; ],
-  &quot;start_hour&quot; : 5,
-  &quot;ad_group_ids&quot; : [ &quot;12345678&quot; ],
-  &quot;end_hour&quot; : 12,
-  &quot;targeting_types&quot; : [ &quot;APPTYPE&quot;, &quot;APPTYPE&quot;, &quot;APPTYPE&quot;, &quot;APPTYPE&quot;, &quot;APPTYPE&quot; ],
-  &quot;start_date&quot; : &quot;2020-12-20&quot;,
+  &quot;conversion_report_time&quot; : &quot;&quot;,
   &quot;custom_conversion_event_metrics&quot; : [ {
     &quot;custom_event_metrics_type&quot; : &quot;ADE_COST_PER_ACTION&quot;,
     &quot;custom_event_name&quot; : &quot;custom_event_name&quot;
@@ -124,16 +114,30 @@ module AdAccountsApiHandlerTestsHelper =
     &quot;custom_event_metrics_type&quot; : &quot;ADE_COST_PER_ACTION&quot;,
     &quot;custom_event_name&quot; : &quot;custom_event_name&quot;
   } ],
-  &quot;level&quot; : &quot;CAMPAIGN&quot;,
-  &quot;ad_ids&quot; : [ &quot;12345678&quot; ],
-  &quot;campaign_brand_label&quot; : &quot;Brand&quot;,
-  &quot;ad_statuses&quot; : [ &quot;APPROVED&quot;, &quot;PAUSED&quot; ],
-  &quot;primary_sort&quot; : &quot;BY_ID&quot;,
-  &quot;attribution_types&quot; : [ &quot;INDIVIDUAL&quot;, &quot;INDIVIDUAL&quot; ],
-  &quot;granularity&quot; : &quot;granularity&quot;,
-  &quot;ad_group_statuses&quot; : [ &quot;RUNNING&quot;, &quot;PAUSED&quot; ],
-  &quot;engagement_window_days&quot; : 6,
-  &quot;product_item_ids&quot; : [ &quot;12345678&quot; ]
+  &quot;end_date&quot; : &quot;end_date&quot;,
+  &quot;end_hour&quot; : 1,
+  &quot;engagement_window_days&quot; : &quot;&quot;,
+  &quot;granularity&quot; : &quot;&quot;,
+  &quot;level&quot; : &quot;&quot;,
+  &quot;metrics_filters&quot; : [ {
+    &quot;field&quot; : &quot;SPEND_IN_DOLLAR&quot;,
+    &quot;operator&quot; : &quot;LESS_THAN&quot;,
+    &quot;values&quot; : [ 6.027456183070403, 6.027456183070403 ]
+  }, {
+    &quot;field&quot; : &quot;SPEND_IN_DOLLAR&quot;,
+    &quot;operator&quot; : &quot;LESS_THAN&quot;,
+    &quot;values&quot; : [ 6.027456183070403, 6.027456183070403 ]
+  } ],
+  &quot;primary_sort&quot; : &quot;&quot;,
+  &quot;product_group_ids&quot; : [ null, null, null, null, null ],
+  &quot;product_group_statuses&quot; : [ &quot;RUNNING&quot;, &quot;RUNNING&quot;, &quot;RUNNING&quot;, &quot;RUNNING&quot;, &quot;RUNNING&quot; ],
+  &quot;product_item_ids&quot; : [ null, null, null, null, null ],
+  &quot;report_format&quot; : &quot;&quot;,
+  &quot;reporting_timezone&quot; : &quot;&quot;,
+  &quot;start_date&quot; : &quot;start_date&quot;,
+  &quot;start_hour&quot; : 3,
+  &quot;targeting_types&quot; : [ &quot;KEYWORD&quot;, &quot;KEYWORD&quot;, &quot;KEYWORD&quot;, &quot;KEYWORD&quot;, &quot;KEYWORD&quot; ],
+  &quot;view_window_days&quot; : &quot;&quot;
 }"
   AnalyticsCreateReportExamples <- AnalyticsCreateReportExamples.Add("application/json", AnalyticsCreateReportBody)
 

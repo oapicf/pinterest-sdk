@@ -21,7 +21,7 @@ void main() {
     //
     // Create multiple new promotions.
     //
-    //Future<PromotionsResponse> promotionsCreate(String adAccountId, List<PromotionCreateRequest> promotionCreateRequest) async
+    //Future<PromotionsResponse> promotionsCreate(String adAccountId, List<PromotionCreate> promotionCreate) async
     test('test promotionsCreate', () async {
       // TODO
     });
@@ -30,7 +30,7 @@ void main() {
     //
     // Delete a promotion within Pinterest.
     //
-    //Future promotionsDelete(String adAccountId, String promotionId) async
+    //Future<Promotion> promotionsDelete(String promotionId, String adAccountId) async
     test('test promotionsDelete', () async {
       // TODO
     });
@@ -39,7 +39,7 @@ void main() {
     //
     // Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
     //
-    //Future<PromotionResponse> promotionsGet(String adAccountId, String promotionId) async
+    //Future<Promotion> promotionsGet(String promotionId, String adAccountId) async
     test('test promotionsGet', () async {
       // TODO
     });
@@ -48,7 +48,7 @@ void main() {
     //
     // Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
     //
-    //Future<PromotionsList200Response> promotionsList(String adAccountId, { int pageSize, String order, String bookmark }) async
+    //Future<PromotionsList200Response> promotionsList(String adAccountId, { String bookmark, int pageSize, PinterestLibPaginationOrder order }) async
     test('test promotionsList', () async {
       // TODO
     });
@@ -57,7 +57,7 @@ void main() {
     //
     // Update multiple promotions.
     //
-    //Future<PromotionsResponse> promotionsUpdate(String adAccountId, List<PromotionUpdateRequest> promotionUpdateRequest) async
+    //Future<PromotionsResponse> promotionsUpdate(String adAccountId, List<PromotionBatchUpdate> promotionBatchUpdate) async
     test('test promotionsUpdate', () async {
       // TODO
     });

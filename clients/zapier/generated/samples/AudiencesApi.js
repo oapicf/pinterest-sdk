@@ -1,10 +1,12 @@
 module.exports = {
-    "AudienceSample": 
+    "AdAccountsAudienceSample": 
         { data: {} },
-    "AudienceSample": 
+    "AdAccountsAudienceSample": 
+        { data: {} },
+    "AdAccountsAudienceSample": 
         { data: {} },
     "audiences_list_200_responseSample": 
         { data: {} },
-    "AudienceSample": 
+    "AdAccountsAudienceSample": 
         { data: {} },
 }

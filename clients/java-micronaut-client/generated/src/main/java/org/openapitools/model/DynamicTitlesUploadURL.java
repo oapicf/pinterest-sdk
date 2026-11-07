@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   DynamicTitlesUploadURL.JSON_PROPERTY_UPLOAD_URL
 })
 @JsonTypeName("DynamicTitlesUploadURL")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class DynamicTitlesUploadURL {
     public static final String JSON_PROPERTY_EXISTING_FILENAME = "existing_filename";

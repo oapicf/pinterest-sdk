@@ -3,7 +3,7 @@ private class OASAudiencesApiTest {
     /**
      * Create audience
      *
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with\nthe ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude\nspecific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt;\nLearn about &lt;a href&#x3D;&quot;/docs/work-with-targets-and-audiences/create-audiences/&quot; target&#x3D;&quot;_blank&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+     * Create a new audience for the ad account.
      */
     @isTest
     private static void audiencesCreateTest() {
@@ -14,31 +14,79 @@ private class OASAudiencesApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSAudienceCreateRequest' => ''
+            'oaSAdAccountsAudienceCreate' => ''
         };
 
         OASClient client;
         OASAudiencesApi api;
-        OASAudience response;
-        OASAudience expectedResponse;
+        OASAdAccountsAudience response;
+        OASAdAccountsAudience expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudiencesApi(client);
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesCreate(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesCreate(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesCreate(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -55,65 +103,129 @@ private class OASAudiencesApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
-            'audienceId' => 'null'
+            'audienceId' => 'null',
+            'adAccountId' => 'null'
         };
 
         OASClient client;
         OASAudiencesApi api;
-        OASAudience response;
-        OASAudience expectedResponse;
+        OASAdAccountsAudience response;
+        OASAdAccountsAudience expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudiencesApi(client);
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesGet(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesGet(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesGet(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAudiencesApi(client);
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesGet(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesGet(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesGet(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -132,9 +244,10 @@ private class OASAudiencesApiTest {
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
             'bookmark' => 'null',
-            'order' => ASCENDING,
             'pageSize' => '',
-            'ownershipType' => OWNED
+            'order' => '',
+            'ownershipType' => '',
+            'excludeNca' => ''
         };
 
         OASClient client;
@@ -168,8 +281,72 @@ private class OASAudiencesApiTest {
         expectedResponse = OASAudiencesList200Response.getExample();
         response = (OASAudiencesList200Response) api.audiencesList(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudiencesList200Response.getExample();
+        response = (OASAudiencesList200Response) api.audiencesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudiencesList200Response.getExample();
+        response = (OASAudiencesList200Response) api.audiencesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudiencesList200Response.getExample();
+        response = (OASAudiencesList200Response) api.audiencesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudiencesList200Response.getExample();
+        response = (OASAudiencesList200Response) api.audiencesList(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAudiencesApi(client);
+
+        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudiencesList200Response.getExample();
+        response = (OASAudiencesList200Response) api.audiencesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudiencesList200Response.getExample();
+        response = (OASAudiencesList200Response) api.audiencesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudiencesList200Response.getExample();
+        response = (OASAudiencesList200Response) api.audiencesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudiencesList200Response.getExample();
+        response = (OASAudiencesList200Response) api.audiencesList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASAudiencesList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -198,7 +375,7 @@ private class OASAudiencesApiTest {
     /**
      * Update audience
      *
-     * Update (edit or remove) an existing targeting audience.
+     * Update an existing audience for the ad account.
      */
     @isTest
     private static void audiencesUpdateTest() {
@@ -208,33 +385,73 @@ private class OASAudiencesApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
             'audienceId' => 'null',
-            'oaSAudienceUpdateRequest' => ''
+            'adAccountId' => 'null',
+            'oaSAdAccountsAudienceUpdate' => ''
         };
 
         OASClient client;
         OASAudiencesApi api;
-        OASAudience response;
-        OASAudience expectedResponse;
+        OASAdAccountsAudience response;
+        OASAdAccountsAudience expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudiencesApi(client);
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesUpdate(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudience.getExample());
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudience.getExample();
-        response = (OASAudience) api.audiencesUpdate(params);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudience.getExample();
+        response = (OASAdAccountsAudience) api.audiencesUpdate(params);
         System.assertEquals(expectedResponse, response);
     }
 }

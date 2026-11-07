@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 api/AdAccountsApi.ts
 api/AdGroupsApi.ts
 api/AdsApi.ts

@@ -43,9 +43,10 @@ func Test_openapi_BoardsAPIService(t *testing.T) {
 		var boardId string
 		var sectionId string
 
-		httpRes, err := apiClient.BoardsAPI.BoardSectionsDelete(context.Background(), boardId, sectionId).Execute()
+		resp, httpRes, err := apiClient.BoardsAPI.BoardSectionsDelete(context.Background(), boardId, sectionId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -112,9 +113,10 @@ func Test_openapi_BoardsAPIService(t *testing.T) {
 
 		var boardId string
 
-		httpRes, err := apiClient.BoardsAPI.BoardsDelete(context.Background(), boardId).Execute()
+		resp, httpRes, err := apiClient.BoardsAPI.BoardsDelete(context.Background(), boardId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

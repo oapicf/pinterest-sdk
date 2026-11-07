@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -20,14 +28,17 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.PinsApi
 import org.openapitools.client.models.CreativeType
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.MultiPinsAnalyticsMetricTypesItem
 import org.openapitools.client.models.Pin
 import org.openapitools.client.models.PinAnalyticsMetricsResponse
 import org.openapitools.client.models.PinCreate
+import org.openapitools.client.models.PinFilter
+import org.openapitools.client.models.PinType
 import org.openapitools.client.models.PinUpdate
 import org.openapitools.client.models.PinsList200Response
-import org.openapitools.client.models.PinsSaveRequest
+import org.openapitools.client.models.PinsSaveRequestCreate
 import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.QuerypinanalyticsmetrictypesItems
 
 class PinsApiTest : ShouldSpec() {
     init {
@@ -40,7 +51,7 @@ class PinsApiTest : ShouldSpec() {
             //val pinIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Pin IDs.
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-            //val metricTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Pin metric types to get data for.
+            //val metricTypes : kotlin.collections.List<MultiPinsAnalyticsMetricTypesItem> =  // kotlin.collections.List<MultiPinsAnalyticsMetricTypesItem> | Pin metric types to get data for.
             //val appTypes : kotlin.String = appTypes_example // kotlin.String | Apps or devices to get data for, default is all.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : kotlin.collections.Map<kotlin.String, kotlin.collections.Map<kotlin.String, PinAnalyticsMetricsResponse>> = apiInstance.multiPinsAnalytics(pinIds, startDate, endDate, metricTypes, appTypes, adAccountId)
@@ -53,7 +64,7 @@ class PinsApiTest : ShouldSpec() {
             //val pinId : kotlin.String = pinId_example // kotlin.String | Unique identifier of a Pin.
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-            //val metricTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before <code>2023-03-20</code>, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than <code>NO_SPLIT</code>.
+            //val metricTypes : kotlin.collections.List<QuerypinanalyticsmetrictypesItems> =  // kotlin.collections.List<QuerypinanalyticsmetrictypesItems> | Pin metric types to get data for. VIDEO_MRC_VIEW are Video views, VIDEO_V50_WATCH_TIME is Total play time. If Pin was created before `2023-03-20`, Profile visits and Follows will only be available for Idea Pins. These metrics are available for all Pin formats since then. Keep in mind this cannot have ALL if split_field is set to any value other than `NO_SPLIT`.
             //val appTypes : kotlin.String = appTypes_example // kotlin.String | Apps or devices to get data for, default is all.
             //val splitField : kotlin.String = splitField_example // kotlin.String | How to split the data into groups. Not including this param means data won't be split.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
@@ -75,7 +86,8 @@ class PinsApiTest : ShouldSpec() {
             // uncomment below to test pinsDelete
             //val pinId : kotlin.String = pinId_example // kotlin.String | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //apiInstance.pinsDelete(pinId, adAccountId)
+            //val result : Pin = apiInstance.pinsDelete(pinId, adAccountId)
+            //result shouldBe ("TODO")
         }
 
         // to test pinsGet
@@ -91,15 +103,18 @@ class PinsApiTest : ShouldSpec() {
         // to test pinsList
         should("test pinsList") {
             // uncomment below to test pinsList
-            //val pinFilter : kotlin.String = pinFilter_example // kotlin.String | The filter to apply to the pins
+            //val pinFilter : PinFilter =  // PinFilter | The filter to apply to the pins
             //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
             //val includeProtectedPins : kotlin.Boolean = true // kotlin.Boolean | Whether to include protected pins in the results
-            //val pinType : kotlin.String = pinType_example // kotlin.String | The type of pins to return, currently only enabled for private pins
+            //val pinType : PinType =  // PinType | The type of pins to return, currently only enabled for private pins
             //val creativeTypes : kotlin.collections.List<CreativeType> =  // kotlin.collections.List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val domain : kotlin.String = domain_example // kotlin.String | Only return pins with links that match the exact domain. Domain should not include 'www.' prefix. For example, 'pinterest.com' is a valid domain, but 'www.pinterest.com' is not (will not match any pins).
+            //val domains : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Only return pins with links whose domain matches any value in the list. Values are joined comma-separated on the wire (e.g. `?domains=instagram.com,jcpenney.com`).
+            //val includeProductTagObj : kotlin.Boolean = true // kotlin.Boolean | Include product tag objects in the response with their associated links.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
-            //val result : PinsList200Response = apiInstance.pinsList(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, bookmark, pageSize)
+            //val result : PinsList200Response = apiInstance.pinsList(pinFilter, pinMetrics, includeProtectedPins, pinType, creativeTypes, adAccountId, domain, domains, includeProductTagObj, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
@@ -107,9 +122,9 @@ class PinsApiTest : ShouldSpec() {
         should("test pinsSave") {
             // uncomment below to test pinsSave
             //val pinId : kotlin.String = pinId_example // kotlin.String | Unique identifier of a Pin.
-            //val pinsSaveRequest : PinsSaveRequest =  // PinsSaveRequest | Request object used to save an existing pin
+            //val pinsSaveRequestCreate : PinsSaveRequestCreate =  // PinsSaveRequestCreate | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : Pin = apiInstance.pinsSave(pinId, pinsSaveRequest, adAccountId)
+            //val result : Pin = apiInstance.pinsSave(pinId, pinsSaveRequestCreate, adAccountId)
             //result shouldBe ("TODO")
         }
 

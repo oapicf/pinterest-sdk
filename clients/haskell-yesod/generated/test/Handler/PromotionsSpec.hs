@@ -15,12 +15,12 @@ spec = withApp $ do
 
     describe "deleteAdAccountsByTextPromotionsByTextR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "DELETE" $ AdAccountsByTextPromotionsByTextR "adAccountId_example" "promotionId_example"
+            performMethod "DELETE" $ AdAccountsByTextPromotionsByTextR "promotionId_example" "adAccountId_example"
             statusIs 501
 
     describe "getAdAccountsByTextPromotionsByTextR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextPromotionsByTextR "adAccountId_example" "promotionId_example"
+            get $ AdAccountsByTextPromotionsByTextR "promotionId_example" "adAccountId_example"
             statusIs 501
 
     describe "getAdAccountsByTextPromotionsR" $

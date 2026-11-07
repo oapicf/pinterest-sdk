@@ -65,7 +65,7 @@ import javax.validation.Valid;
   AdGroupUpdateRequest.JSON_PROPERTY_TARGETING_TEMPLATE_IDS,
   AdGroupUpdateRequest.JSON_PROPERTY_TRACKING_URLS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupUpdateRequest   {
   public static final String JSON_PROPERTY_BID_MULTIPLIER = "bid_multiplier";
   @JsonProperty(JSON_PROPERTY_BID_MULTIPLIER)

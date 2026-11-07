@@ -1,8 +1,10 @@
 package org.openapitools.api
 
-import org.openapitools.model.ConversionAccessTokenResponse
-import org.openapitools.model.Error
-import org.openapitools.model.OauthAccessTokenResponse
+import org.openapitools.model.ConversionAccessToken
+import org.openapitools.model.OauthAccessToken
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.TokenGrantType
+import org.openapitools.model.TokenTypeHint
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -19,7 +21,8 @@ class OauthApiTest {
     @Test
     fun oauthConversionTokenTest() {
         
-        val response: ResponseEntity<ConversionAccessTokenResponse> = api.oauthConversionToken()
+        
+        val response: ResponseEntity<ConversionAccessToken> = api.oauthConversionToken()
 
         // TODO: test validations
     }
@@ -32,9 +35,15 @@ class OauthApiTest {
      */
     @Test
     fun oauthTokenTest() {
-        val grantType: kotlin.String = TODO()
+        val grantType: TokenGrantType = TODO()
+        val code: kotlin.String? = TODO()
+        val continuousRefresh: kotlin.String? = TODO()
+        val redirectUri: kotlin.String? = TODO()
+        val refreshToken: kotlin.String? = TODO()
+        val scope: kotlin.String? = TODO()
         
-        val response: ResponseEntity<OauthAccessTokenResponse> = api.oauthToken(grantType)
+        
+        val response: ResponseEntity<OauthAccessToken> = api.oauthToken(grantType, code, continuousRefresh, redirectUri, refreshToken, scope)
 
         // TODO: test validations
     }
@@ -48,7 +57,8 @@ class OauthApiTest {
     @Test
     fun tokenRevokeTest() {
         val token: kotlin.String = TODO()
-        val tokenTypeHint: kotlin.String? = TODO()
+        val tokenTypeHint: TokenTypeHint? = TODO()
+        
         
         val response: ResponseEntity<Unit> = api.tokenRevoke(token, tokenTypeHint)
 

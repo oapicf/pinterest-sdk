@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 README.md
 build.gradle.kts
 gradle/wrapper/gradle-wrapper.jar
@@ -1137,3 +1138,20 @@ src/main/kotlin/org/openapitools/model/WebsiteVerificationMethod.kt
 src/main/kotlin/org/openapitools/model/WorkloadState.kt
 src/main/resources/application.yaml
 src/main/resources/openapi.yaml
+src/test/kotlin/org/openapitools/api/AdAccountsApiTest.kt
+src/test/kotlin/org/openapitools/api/AdvancedAuctionApiTest.kt
+src/test/kotlin/org/openapitools/api/BoardsApiTest.kt
+src/test/kotlin/org/openapitools/api/BusinessAccessApiTest.kt
+src/test/kotlin/org/openapitools/api/BusinessesApiTest.kt
+src/test/kotlin/org/openapitools/api/CatalogsApiTest.kt
+src/test/kotlin/org/openapitools/api/IntegrationsApiTest.kt
+src/test/kotlin/org/openapitools/api/MediaApiTest.kt
+src/test/kotlin/org/openapitools/api/NotificationsApiTest.kt
+src/test/kotlin/org/openapitools/api/OauthApiTest.kt
+src/test/kotlin/org/openapitools/api/PinsApiTest.kt
+src/test/kotlin/org/openapitools/api/ResourcesApiTest.kt
+src/test/kotlin/org/openapitools/api/SearchApiTest.kt
+src/test/kotlin/org/openapitools/api/TermsApiTest.kt
+src/test/kotlin/org/openapitools/api/TrendsApiTest.kt
+src/test/kotlin/org/openapitools/api/UserAccountApiTest.kt
+src/test/kotlin/org/openapitools/api/UsersApiTest.kt

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Type of information in the page referenced by `disclosure_url`, provided either by the Food and Drug Administration (FDA) or the manufacturer.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum DisclosureType {
   
   NO_DISCLOSURE("NO_DISCLOSURE"),

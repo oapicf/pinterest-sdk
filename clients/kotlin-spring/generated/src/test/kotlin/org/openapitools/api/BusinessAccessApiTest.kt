@@ -1,9 +1,9 @@
 package org.openapitools.api
 
-import org.openapitools.model.BrandAccountsCreate200Response
-import org.openapitools.model.BrandAccountsCreateRequest
-import org.openapitools.model.BrandAccountsUpdateRequest
-import org.openapitools.model.Error
+import org.openapitools.model.BrandAccount
+import org.openapitools.model.BrandAccountCreate
+import org.openapitools.model.BrandAccountUpdate
+import org.openapitools.model.PinterestLibError
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -20,9 +20,10 @@ class BusinessAccessApiTest {
     @Test
     fun brandAccountsCreateTest() {
         val businessHierarchyId: kotlin.String = TODO()
-        val brandAccountsCreateRequest: BrandAccountsCreateRequest = TODO()
+        val brandAccountCreate: BrandAccountCreate = TODO()
         
-        val response: ResponseEntity<BrandAccountsCreate200Response> = api.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+        
+        val response: ResponseEntity<BrandAccount> = api.brandAccountsCreate(businessHierarchyId, brandAccountCreate)
 
         // TODO: test validations
     }
@@ -35,11 +36,12 @@ class BusinessAccessApiTest {
      */
     @Test
     fun brandAccountsUpdateTest() {
-        val businessHierarchyId: kotlin.String = TODO()
         val brandAccountId: kotlin.String = TODO()
-        val brandAccountsUpdateRequest: BrandAccountsUpdateRequest = TODO()
+        val businessHierarchyId: kotlin.String = TODO()
+        val brandAccountUpdate: BrandAccountUpdate = TODO()
         
-        val response: ResponseEntity<BrandAccountsCreate200Response> = api.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+        
+        val response: ResponseEntity<BrandAccount> = api.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
 
         // TODO: test validations
     }

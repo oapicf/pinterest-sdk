@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,10 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.AudienceInsightsApi
-import org.openapitools.client.models.AudienceDefinitionResponse
 import org.openapitools.client.models.AudienceInsightType
-import org.openapitools.client.models.AudienceInsightsResponse
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.AudienceInsights
+import org.openapitools.client.models.AudienceInsightsScopeAndTypeGet200Response
+import org.openapitools.client.models.PinterestLibError
 
 class AudienceInsightsApiTest : ShouldSpec() {
     init {
@@ -34,7 +42,7 @@ class AudienceInsightsApiTest : ShouldSpec() {
             // uncomment below to test audienceInsightsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val audienceInsightType : AudienceInsightType =  // AudienceInsightType | Type of audience insights.
-            //val result : AudienceInsightsResponse = apiInstance.audienceInsightsGet(adAccountId, audienceInsightType)
+            //val result : AudienceInsights = apiInstance.audienceInsightsGet(adAccountId, audienceInsightType)
             //result shouldBe ("TODO")
         }
 
@@ -42,7 +50,7 @@ class AudienceInsightsApiTest : ShouldSpec() {
         should("test audienceInsightsScopeAndTypeGet") {
             // uncomment below to test audienceInsightsScopeAndTypeGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : AudienceDefinitionResponse = apiInstance.audienceInsightsScopeAndTypeGet(adAccountId)
+            //val result : AudienceInsightsScopeAndTypeGet200Response = apiInstance.audienceInsightsScopeAndTypeGet(adAccountId)
             //result shouldBe ("TODO")
         }
 

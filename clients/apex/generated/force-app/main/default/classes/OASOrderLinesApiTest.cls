@@ -13,8 +13,8 @@ private class OASOrderLinesApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
-            'orderLineId' => 'null'
+            'orderLineId' => 'null',
+            'adAccountId' => 'null'
         };
 
         OASClient client;
@@ -40,10 +40,50 @@ private class OASOrderLinesApiTest {
         expectedResponse = OASOrderLine.getExample();
         response = (OASOrderLine) api.orderLinesGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASOrderLine.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLine.getExample();
+        response = (OASOrderLine) api.orderLinesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASOrderLine.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLine.getExample();
+        response = (OASOrderLine) api.orderLinesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASOrderLine.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLine.getExample();
+        response = (OASOrderLine) api.orderLinesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASOrderLine.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLine.getExample();
+        response = (OASOrderLine) api.orderLinesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASOrderLine.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLine.getExample();
+        response = (OASOrderLine) api.orderLinesGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
-     * Get order lines
+     * Get order lines.
      *
      * List existing order lines associated with an ad account.
      */
@@ -56,9 +96,9 @@ private class OASOrderLinesApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
+            'bookmark' => 'null',
             'pageSize' => '',
-            'order' => ASCENDING,
-            'bookmark' => 'null'
+            'order' => ''
         };
 
         OASClient client;
@@ -69,6 +109,46 @@ private class OASOrderLinesApiTest {
 
         client = new OASClient();
         api = new OASOrderLinesApi(client);
+
+        js = JSON.serialize(OASOrderLinesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLinesList200Response.getExample();
+        response = (OASOrderLinesList200Response) api.orderLinesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASOrderLinesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLinesList200Response.getExample();
+        response = (OASOrderLinesList200Response) api.orderLinesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASOrderLinesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLinesList200Response.getExample();
+        response = (OASOrderLinesList200Response) api.orderLinesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASOrderLinesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLinesList200Response.getExample();
+        response = (OASOrderLinesList200Response) api.orderLinesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASOrderLinesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASOrderLinesList200Response.getExample();
+        response = (OASOrderLinesList200Response) api.orderLinesList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASOrderLinesList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');

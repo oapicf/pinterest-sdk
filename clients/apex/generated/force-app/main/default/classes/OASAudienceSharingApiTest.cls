@@ -13,11 +13,11 @@ private class OASAudienceSharingApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
             'audienceId' => 'null',
             'accountType' => '',
-            'pageSize' => '',
-            'bookmark' => 'null'
+            'adAccountId' => 'null',
+            'bookmark' => 'null',
+            'pageSize' => ''
         };
 
         OASClient client;
@@ -59,8 +59,56 @@ private class OASAudienceSharingApiTest {
         expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
         response = (OASAdAccountsAudiencesSharedAccounts) api.adAccountsAudiencesSharedAccountsList(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
+        response = (OASAdAccountsAudiencesSharedAccounts) api.adAccountsAudiencesSharedAccountsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
+        response = (OASAdAccountsAudiencesSharedAccounts) api.adAccountsAudiencesSharedAccountsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
+        response = (OASAdAccountsAudiencesSharedAccounts) api.adAccountsAudiencesSharedAccountsList(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAudienceSharingApi(client);
+
+        js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
+        response = (OASAdAccountsAudiencesSharedAccounts) api.adAccountsAudiencesSharedAccountsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
+        response = (OASAdAccountsAudiencesSharedAccounts) api.adAccountsAudiencesSharedAccountsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
+        response = (OASAdAccountsAudiencesSharedAccounts) api.adAccountsAudiencesSharedAccountsList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -97,7 +145,7 @@ private class OASAudienceSharingApiTest {
     /**
      * List accounts with access to an audience owned by a business
      *
-     * List all ad accounts and/or businesses that have access to a specific audience.\nThe audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business.\nIf the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
+     * List all ad accounts and/or businesses that have access to a specific audience. The audience must either be owned by an ad account in the requesting business, or it must have been shared with the requesting business. If the requesting business is not the owner of the audience, only ad accounts owned by the requesting business will be returned.
      */
     @isTest
     private static void businessAccountAudiencesSharedAccountsListTest() {
@@ -107,11 +155,11 @@ private class OASAudienceSharingApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
             'audienceId' => 'null',
             'accountType' => '',
-            'pageSize' => '',
-            'bookmark' => 'null'
+            'bookmark' => 'null',
+            'pageSize' => ''
         };
 
         OASClient client;
@@ -122,6 +170,30 @@ private class OASAudienceSharingApiTest {
 
         client = new OASClient();
         api = new OASAudienceSharingApi(client);
+
+        js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
+        response = (OASAdAccountsAudiencesSharedAccounts) api.businessAccountAudiencesSharedAccountsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
+        response = (OASAdAccountsAudiencesSharedAccounts) api.businessAccountAudiencesSharedAccountsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountsAudiencesSharedAccounts.getExample();
+        response = (OASAdAccountsAudiencesSharedAccounts) api.businessAccountAudiencesSharedAccountsList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASAdAccountsAudiencesSharedAccounts.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -168,49 +240,81 @@ private class OASAudienceSharingApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
+            'order' => '',
             'bookmark' => 'null',
-            'order' => ASCENDING,
             'pageSize' => ''
         };
 
         OASClient client;
         OASAudienceSharingApi api;
-        OASAudiencesList200Response response;
-        OASAudiencesList200Response expectedResponse;
+        OASSharedAudiencesForBusinessList200 response;
+        OASSharedAudiencesForBusinessList200 expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudienceSharingApi(client);
 
-        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        js = JSON.serialize(OASSharedAudiencesForBusinessList200.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudiencesList200Response.getExample();
-        response = (OASAudiencesList200Response) api.sharedAudiencesForBusinessList(params);
+        expectedResponse = OASSharedAudiencesForBusinessList200.getExample();
+        response = (OASSharedAudiencesForBusinessList200) api.sharedAudiencesForBusinessList(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        js = JSON.serialize(OASSharedAudiencesForBusinessList200.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudiencesList200Response.getExample();
-        response = (OASAudiencesList200Response) api.sharedAudiencesForBusinessList(params);
+        expectedResponse = OASSharedAudiencesForBusinessList200.getExample();
+        response = (OASSharedAudiencesForBusinessList200) api.sharedAudiencesForBusinessList(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudiencesList200Response.getExample());
+        js = JSON.serialize(OASSharedAudiencesForBusinessList200.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudiencesList200Response.getExample();
-        response = (OASAudiencesList200Response) api.sharedAudiencesForBusinessList(params);
+        expectedResponse = OASSharedAudiencesForBusinessList200.getExample();
+        response = (OASSharedAudiencesForBusinessList200) api.sharedAudiencesForBusinessList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSharedAudiencesForBusinessList200.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSharedAudiencesForBusinessList200.getExample();
+        response = (OASSharedAudiencesForBusinessList200) api.sharedAudiencesForBusinessList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSharedAudiencesForBusinessList200.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSharedAudiencesForBusinessList200.getExample();
+        response = (OASSharedAudiencesForBusinessList200) api.sharedAudiencesForBusinessList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSharedAudiencesForBusinessList200.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSharedAudiencesForBusinessList200.getExample();
+        response = (OASSharedAudiencesForBusinessList200) api.sharedAudiencesForBusinessList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASSharedAudiencesForBusinessList200.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASSharedAudiencesForBusinessList200.getExample();
+        response = (OASSharedAudiencesForBusinessList200) api.sharedAudiencesForBusinessList(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Update audience sharing between ad accounts
      *
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;\&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts\&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.\n\nThis endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      */
     @isTest
     private static void updateAdAccountToAdAccountSharedAudienceTest() {
@@ -221,46 +325,78 @@ private class OASAudienceSharingApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSSharedAudience' => ''
+            'oaSAdAccountToAdAccountSharedAudienc' => ''
         };
 
         OASClient client;
         OASAudienceSharingApi api;
-        OASSharedAudienceResponse response;
-        OASSharedAudienceResponse expectedResponse;
+        OASAdAccountToAdAccountSharedAudienc response;
+        OASAdAccountToAdAccountSharedAudienc expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudienceSharingApi(client);
 
-        js = JSON.serialize(OASSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASAdAccountToAdAccountSharedAudienc.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASSharedAudienceResponse.getExample();
-        response = (OASSharedAudienceResponse) api.updateAdAccountToAdAccountSharedAudience(params);
+        expectedResponse = OASAdAccountToAdAccountSharedAudienc.getExample();
+        response = (OASAdAccountToAdAccountSharedAudienc) api.updateAdAccountToAdAccountSharedAudience(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASAdAccountToAdAccountSharedAudienc.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASSharedAudienceResponse.getExample();
-        response = (OASSharedAudienceResponse) api.updateAdAccountToAdAccountSharedAudience(params);
+        expectedResponse = OASAdAccountToAdAccountSharedAudienc.getExample();
+        response = (OASAdAccountToAdAccountSharedAudienc) api.updateAdAccountToAdAccountSharedAudience(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASAdAccountToAdAccountSharedAudienc.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASSharedAudienceResponse.getExample();
-        response = (OASSharedAudienceResponse) api.updateAdAccountToAdAccountSharedAudience(params);
+        expectedResponse = OASAdAccountToAdAccountSharedAudienc.getExample();
+        response = (OASAdAccountToAdAccountSharedAudienc) api.updateAdAccountToAdAccountSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountToAdAccountSharedAudienc.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountToAdAccountSharedAudienc.getExample();
+        response = (OASAdAccountToAdAccountSharedAudienc) api.updateAdAccountToAdAccountSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountToAdAccountSharedAudienc.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountToAdAccountSharedAudienc.getExample();
+        response = (OASAdAccountToAdAccountSharedAudienc) api.updateAdAccountToAdAccountSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountToAdAccountSharedAudienc.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountToAdAccountSharedAudienc.getExample();
+        response = (OASAdAccountToAdAccountSharedAudienc) api.updateAdAccountToAdAccountSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountToAdAccountSharedAudienc.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountToAdAccountSharedAudienc.getExample();
+        response = (OASAdAccountToAdAccountSharedAudienc) api.updateAdAccountToAdAccountSharedAudience(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Update audience sharing from an ad account to businesses
      *
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.\n\nThis endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      */
     @isTest
     private static void updateAdAccountToBusinessSharedAudienceTest() {
@@ -271,46 +407,78 @@ private class OASAudienceSharingApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSBusinessSharedAudience' => ''
+            'oaSAdAccountToBusinessSharedAudience' => ''
         };
 
         OASClient client;
         OASAudienceSharingApi api;
-        OASBusinessSharedAudienceResponse response;
-        OASBusinessSharedAudienceResponse expectedResponse;
+        OASAdAccountToBusinessSharedAudience response;
+        OASAdAccountToBusinessSharedAudience expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudienceSharingApi(client);
 
-        js = JSON.serialize(OASBusinessSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASAdAccountToBusinessSharedAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessSharedAudienceResponse.getExample();
-        response = (OASBusinessSharedAudienceResponse) api.updateAdAccountToBusinessSharedAudience(params);
+        expectedResponse = OASAdAccountToBusinessSharedAudience.getExample();
+        response = (OASAdAccountToBusinessSharedAudience) api.updateAdAccountToBusinessSharedAudience(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBusinessSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASAdAccountToBusinessSharedAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessSharedAudienceResponse.getExample();
-        response = (OASBusinessSharedAudienceResponse) api.updateAdAccountToBusinessSharedAudience(params);
+        expectedResponse = OASAdAccountToBusinessSharedAudience.getExample();
+        response = (OASAdAccountToBusinessSharedAudience) api.updateAdAccountToBusinessSharedAudience(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBusinessSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASAdAccountToBusinessSharedAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessSharedAudienceResponse.getExample();
-        response = (OASBusinessSharedAudienceResponse) api.updateAdAccountToBusinessSharedAudience(params);
+        expectedResponse = OASAdAccountToBusinessSharedAudience.getExample();
+        response = (OASAdAccountToBusinessSharedAudience) api.updateAdAccountToBusinessSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountToBusinessSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountToBusinessSharedAudience.getExample();
+        response = (OASAdAccountToBusinessSharedAudience) api.updateAdAccountToBusinessSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountToBusinessSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountToBusinessSharedAudience.getExample();
+        response = (OASAdAccountToBusinessSharedAudience) api.updateAdAccountToBusinessSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountToBusinessSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountToBusinessSharedAudience.getExample();
+        response = (OASAdAccountToBusinessSharedAudience) api.updateAdAccountToBusinessSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdAccountToBusinessSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdAccountToBusinessSharedAudience.getExample();
+        response = (OASAdAccountToBusinessSharedAudience) api.updateAdAccountToBusinessSharedAudience(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Update audience sharing from a business to ad accounts
      *
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.\n\n- If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.\n- If the business is the recipient of the audience, it can share with any of its owned ad accounts.\n\nThis endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      */
     @isTest
     private static void updateBusinessToAdAccountSharedAudienceTest() {
@@ -320,47 +488,79 @@ private class OASAudienceSharingApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'oaSSharedAudience' => ''
+            'businessId' => 'null',
+            'oaSBusinessToAdAccountSharedAudience' => ''
         };
 
         OASClient client;
         OASAudienceSharingApi api;
-        OASSharedAudienceResponse response;
-        OASSharedAudienceResponse expectedResponse;
+        OASBusinessToAdAccountSharedAudience response;
+        OASBusinessToAdAccountSharedAudience expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudienceSharingApi(client);
 
-        js = JSON.serialize(OASSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASBusinessToAdAccountSharedAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASSharedAudienceResponse.getExample();
-        response = (OASSharedAudienceResponse) api.updateBusinessToAdAccountSharedAudience(params);
+        expectedResponse = OASBusinessToAdAccountSharedAudience.getExample();
+        response = (OASBusinessToAdAccountSharedAudience) api.updateBusinessToAdAccountSharedAudience(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASBusinessToAdAccountSharedAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASSharedAudienceResponse.getExample();
-        response = (OASSharedAudienceResponse) api.updateBusinessToAdAccountSharedAudience(params);
+        expectedResponse = OASBusinessToAdAccountSharedAudience.getExample();
+        response = (OASBusinessToAdAccountSharedAudience) api.updateBusinessToAdAccountSharedAudience(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASBusinessToAdAccountSharedAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASSharedAudienceResponse.getExample();
-        response = (OASSharedAudienceResponse) api.updateBusinessToAdAccountSharedAudience(params);
+        expectedResponse = OASBusinessToAdAccountSharedAudience.getExample();
+        response = (OASBusinessToAdAccountSharedAudience) api.updateBusinessToAdAccountSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessToAdAccountSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessToAdAccountSharedAudience.getExample();
+        response = (OASBusinessToAdAccountSharedAudience) api.updateBusinessToAdAccountSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessToAdAccountSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessToAdAccountSharedAudience.getExample();
+        response = (OASBusinessToAdAccountSharedAudience) api.updateBusinessToAdAccountSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessToAdAccountSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessToAdAccountSharedAudience.getExample();
+        response = (OASBusinessToAdAccountSharedAudience) api.updateBusinessToAdAccountSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessToAdAccountSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessToAdAccountSharedAudience.getExample();
+        response = (OASBusinessToAdAccountSharedAudience) api.updateBusinessToAdAccountSharedAudience(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Update audience sharing between businesses
      *
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.\n\nThis endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      */
     @isTest
     private static void updateBusinessToBusinessSharedAudienceTest() {
@@ -370,40 +570,72 @@ private class OASAudienceSharingApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'oaSBusinessSharedAudience' => ''
+            'businessId' => 'null',
+            'oaSBusinessToBusinessSharedAudienceU' => ''
         };
 
         OASClient client;
         OASAudienceSharingApi api;
-        OASBusinessSharedAudienceResponse response;
-        OASBusinessSharedAudienceResponse expectedResponse;
+        OASBusinessToBusinessSharedAudience response;
+        OASBusinessToBusinessSharedAudience expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudienceSharingApi(client);
 
-        js = JSON.serialize(OASBusinessSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASBusinessToBusinessSharedAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessSharedAudienceResponse.getExample();
-        response = (OASBusinessSharedAudienceResponse) api.updateBusinessToBusinessSharedAudience(params);
+        expectedResponse = OASBusinessToBusinessSharedAudience.getExample();
+        response = (OASBusinessToBusinessSharedAudience) api.updateBusinessToBusinessSharedAudience(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBusinessSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASBusinessToBusinessSharedAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessSharedAudienceResponse.getExample();
-        response = (OASBusinessSharedAudienceResponse) api.updateBusinessToBusinessSharedAudience(params);
+        expectedResponse = OASBusinessToBusinessSharedAudience.getExample();
+        response = (OASBusinessToBusinessSharedAudience) api.updateBusinessToBusinessSharedAudience(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBusinessSharedAudienceResponse.getExample());
+        js = JSON.serialize(OASBusinessToBusinessSharedAudience.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessSharedAudienceResponse.getExample();
-        response = (OASBusinessSharedAudienceResponse) api.updateBusinessToBusinessSharedAudience(params);
+        expectedResponse = OASBusinessToBusinessSharedAudience.getExample();
+        response = (OASBusinessToBusinessSharedAudience) api.updateBusinessToBusinessSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessToBusinessSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessToBusinessSharedAudience.getExample();
+        response = (OASBusinessToBusinessSharedAudience) api.updateBusinessToBusinessSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessToBusinessSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessToBusinessSharedAudience.getExample();
+        response = (OASBusinessToBusinessSharedAudience) api.updateBusinessToBusinessSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessToBusinessSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessToBusinessSharedAudience.getExample();
+        response = (OASBusinessToBusinessSharedAudience) api.updateBusinessToBusinessSharedAudience(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessToBusinessSharedAudience.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessToBusinessSharedAudience.getExample();
+        response = (OASBusinessToBusinessSharedAudience) api.updateBusinessToBusinessSharedAudience(params);
         System.assertEquals(expectedResponse, response);
     }
 }

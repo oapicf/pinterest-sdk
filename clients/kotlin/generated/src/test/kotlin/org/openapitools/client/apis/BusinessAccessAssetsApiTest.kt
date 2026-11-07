@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,24 +27,26 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.BusinessAccessAssetsApi
+import org.openapitools.client.models.AssetGroupDeletion
+import org.openapitools.client.models.AssetGroupDeletionDelete
+import org.openapitools.client.models.AssetGroupInput
+import org.openapitools.client.models.AssetGroupInputCreate
+import org.openapitools.client.models.AssetGroupModification
+import org.openapitools.client.models.AssetGroupModificationReadOrUpdate
+import org.openapitools.client.models.AssetPermissionType
+import org.openapitools.client.models.AssetSearchBy
+import org.openapitools.client.models.AssetSortBy
 import org.openapitools.client.models.BusinessAssetMembersGet200Response
-import org.openapitools.client.models.BusinessAssetPartnersGet200Response
 import org.openapitools.client.models.BusinessAssetsGet200Response
-import org.openapitools.client.models.BusinessMemberAssetsGet200Response
-import org.openapitools.client.models.BusinessMembersAssetAccessDeleteRequest
+import org.openapitools.client.models.BusinessMemberAssetsGetResponse
+import org.openapitools.client.models.BusinessMembersAssetAccessDeleteBody
 import org.openapitools.client.models.BusinessPartnerAssetAccessGet200Response
-import org.openapitools.client.models.CreateAssetGroupBody
-import org.openapitools.client.models.CreateAssetGroupResponse
-import org.openapitools.client.models.DeleteAssetGroupBody
-import org.openapitools.client.models.DeleteAssetGroupResponse
 import org.openapitools.client.models.DeleteMemberAccessResultsResponseArray
 import org.openapitools.client.models.DeletePartnerAssetAccessBody
-import org.openapitools.client.models.DeletePartnerAssetsResultsResponseArray
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.PartnerType
+import org.openapitools.client.models.DeletePartnerAssetAccessResultsResponseArray
+import org.openapitools.client.models.NonDraftEntityStatus
 import org.openapitools.client.models.PermissionsWithOwner
-import org.openapitools.client.models.UpdateAssetGroupBody
-import org.openapitools.client.models.UpdateAssetGroupResponse
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.UpdateMemberAssetAccessBody
 import org.openapitools.client.models.UpdateMemberAssetsResultsResponseArray
 import org.openapitools.client.models.UpdatePartnerAssetAccessBody
@@ -50,66 +60,66 @@ class BusinessAccessAssetsApiTest : ShouldSpec() {
         // to test assetGroupCreate
         should("test assetGroupCreate") {
             // uncomment below to test assetGroupCreate
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val createAssetGroupBody : CreateAssetGroupBody =  // CreateAssetGroupBody | 
-            //val result : CreateAssetGroupResponse = apiInstance.assetGroupCreate(businessId, createAssetGroupBody)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val assetGroupInputCreate : AssetGroupInputCreate =  // AssetGroupInputCreate | 
+            //val result : AssetGroupInput = apiInstance.assetGroupCreate(businessId, assetGroupInputCreate)
             //result shouldBe ("TODO")
         }
 
         // to test assetGroupDelete
         should("test assetGroupDelete") {
             // uncomment below to test assetGroupDelete
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val deleteAssetGroupBody : DeleteAssetGroupBody =  // DeleteAssetGroupBody | 
-            //val result : DeleteAssetGroupResponse = apiInstance.assetGroupDelete(businessId, deleteAssetGroupBody)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val assetGroupDeletionDelete : AssetGroupDeletionDelete =  // AssetGroupDeletionDelete | 
+            //val result : AssetGroupDeletion = apiInstance.assetGroupDelete(businessId, assetGroupDeletionDelete)
             //result shouldBe ("TODO")
         }
 
         // to test assetGroupUpdate
         should("test assetGroupUpdate") {
             // uncomment below to test assetGroupUpdate
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val updateAssetGroupBody : UpdateAssetGroupBody =  // UpdateAssetGroupBody | 
-            //val result : UpdateAssetGroupResponse = apiInstance.assetGroupUpdate(businessId, updateAssetGroupBody)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val assetGroupModificationReadOrUpdate : AssetGroupModificationReadOrUpdate =  // AssetGroupModificationReadOrUpdate | 
+            //val result : AssetGroupModification = apiInstance.assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate)
             //result shouldBe ("TODO")
         }
 
         // to test businessAssetMembersGet
         should("test businessAssetMembersGet") {
             // uncomment below to test businessAssetMembersGet
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val assetId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of a business asset.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val assetId : kotlin.String = assetId_example // kotlin.String | Unique identifier of a business asset.
+            //val startIndex : kotlin.Int = 56 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
             //val fetchSystemUsers : kotlin.Boolean = true // kotlin.Boolean | Fetches system users if True. Fetches regular user employees if False.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val startIndex : kotlin.Int = 0 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
-            //val result : BusinessAssetMembersGet200Response = apiInstance.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : BusinessAssetMembersGet200Response = apiInstance.businessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test businessAssetPartnersGet
         should("test businessAssetPartnersGet") {
             // uncomment below to test businessAssetPartnersGet
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val assetId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of a business asset.
-            //val startIndex : kotlin.Int = 0 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val assetId : kotlin.String = assetId_example // kotlin.String | Unique identifier of a business asset.
+            //val startIndex : kotlin.Int = 56 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val result : BusinessAssetPartnersGet200Response = apiInstance.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : BusinessAssetMembersGet200Response = apiInstance.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test businessAssetsGet
         should("test businessAssetsGet") {
             // uncomment below to test businessAssetsGet
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
             //val permissions : kotlin.collections.List<PermissionsWithOwner> =  // kotlin.collections.List<PermissionsWithOwner> | A list of asset permissions used to filter the assets. Only assets where the requesting business has at least one of the specified permissions will be returned.
-            //val childAssetId : kotlin.String = 549764894835 // kotlin.String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
-            //val assetGroupId : kotlin.String = 7078106104032 // kotlin.String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
-            //val assetType : kotlin.String = AD_ACCOUNT // kotlin.String | A resource type to filter the assets by. Only assets of the specified type will be returned.
-            //val startIndex : kotlin.Int = 0 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+            //val childAssetId : kotlin.String = childAssetId_example // kotlin.String | A child asset unique identifier. Used to fetch asset groups that contain the asset id as a child.
+            //val assetGroupId : kotlin.String = assetGroupId_example // kotlin.String | An asset group unique identifier. Used to fetch assets contained within the specified asset group.
+            //val assetType : kotlin.String = assetType_example // kotlin.String | A resource type to filter the assets by. Only assets of the specified type will be returned.
+            //val startIndex : kotlin.Int = 56 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : BusinessAssetsGet200Response = apiInstance.businessAssetsGet(businessId, permissions, childAssetId, assetGroupId, assetType, startIndex, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -117,30 +127,36 @@ class BusinessAccessAssetsApiTest : ShouldSpec() {
         // to test businessMemberAssetsGet
         should("test businessMemberAssetsGet") {
             // uncomment below to test businessMemberAssetsGet
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val memberId : kotlin.String = 729090764583391194 // kotlin.String | The member id to fetch assets for.
-            //val assetType : kotlin.String = AD_ACCOUNT // kotlin.String | A resource type to filter the assets by. Only assets of the specified type will be returned.
-            //val startIndex : kotlin.Int = 0 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val memberId : kotlin.String = memberId_example // kotlin.String | The member id to fetch assets for.
+            //val assetType : kotlin.String = assetType_example // kotlin.String | A resource type to filter the assets by. Only assets of the specified type will be returned.
+            //val startIndex : kotlin.Int = 56 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+            //val sortBy : AssetSortBy =  // AssetSortBy | The field to sort member assets by
+            //val sortAscending : kotlin.Boolean = true // kotlin.Boolean | Sort assets in ascending order
+            //val searchBy : AssetSearchBy =  // AssetSearchBy | The field to search member assets by
+            //val searchValue : kotlin.String = searchValue_example // kotlin.String | The value to search for
+            //val assetPermissionType : AssetPermissionType =  // AssetPermissionType | The type of asset permission to filter by
+            //val adAccountStatuses : kotlin.collections.List<NonDraftEntityStatus> =  // kotlin.collections.List<NonDraftEntityStatus> | A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val result : BusinessMemberAssetsGet200Response = apiInstance.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : BusinessMemberAssetsGetResponse = apiInstance.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test businessMembersAssetAccessDelete
         should("test businessMembersAssetAccessDelete") {
             // uncomment below to test businessMembersAssetAccessDelete
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val businessMembersAssetAccessDeleteRequest : BusinessMembersAssetAccessDeleteRequest =  // BusinessMembersAssetAccessDeleteRequest | List member assset permissions to delete.
-            //val result : DeleteMemberAccessResultsResponseArray = apiInstance.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val businessMembersAssetAccessDeleteBody : BusinessMembersAssetAccessDeleteBody =  // BusinessMembersAssetAccessDeleteBody | 
+            //val result : DeleteMemberAccessResultsResponseArray = apiInstance.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody)
             //result shouldBe ("TODO")
         }
 
         // to test businessMembersAssetAccessUpdate
         should("test businessMembersAssetAccessUpdate") {
             // uncomment below to test businessMembersAssetAccessUpdate
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val updateMemberAssetAccessBody : UpdateMemberAssetAccessBody =  // UpdateMemberAssetAccessBody | List of member asset permissions to create or update.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val updateMemberAssetAccessBody : UpdateMemberAssetAccessBody =  // UpdateMemberAssetAccessBody | 
             //val result : UpdateMemberAssetsResultsResponseArray = apiInstance.businessMembersAssetAccessUpdate(businessId, updateMemberAssetAccessBody)
             //result shouldBe ("TODO")
         }
@@ -148,31 +164,35 @@ class BusinessAccessAssetsApiTest : ShouldSpec() {
         // to test businessPartnerAssetAccessGet
         should("test businessPartnerAssetAccessGet") {
             // uncomment below to test businessPartnerAssetAccessGet
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val partnerId : kotlin.String = 729090764583391194 // kotlin.String | The partner id to be bound to the Business
-            //val partnerType : PartnerType = INTERNAL // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-            //val assetType : kotlin.String = AD_ACCOUNT // kotlin.String | A resource type to filter the assets by. Only assets of the specified type will be returned.
-            //val startIndex : kotlin.Int = 0 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val partnerId : kotlin.String = partnerId_example // kotlin.String | The partner id to be bound to the Business
+            //val partnerType : kotlin.String = partnerType_example // kotlin.String | Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+            //val assetType : kotlin.String = assetType_example // kotlin.String | A resource type to filter the assets by. Only assets of the specified type will be returned.
+            //val startIndex : kotlin.Int = 56 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+            //val sortBy : AssetSortBy =  // AssetSortBy | The field to sort member assets by
+            //val sortAscending : kotlin.Boolean = true // kotlin.Boolean | Sort assets in ascending order
+            //val searchBy : AssetSearchBy =  // AssetSearchBy | The field to search member assets by
+            //val searchValue : kotlin.String = searchValue_example // kotlin.String | The value to search for
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : BusinessPartnerAssetAccessGet200Response = apiInstance.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : BusinessPartnerAssetAccessGet200Response = apiInstance.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test deletePartnerAssetAccessHandlerImpl
         should("test deletePartnerAssetAccessHandlerImpl") {
             // uncomment below to test deletePartnerAssetAccessHandlerImpl
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
             //val deletePartnerAssetAccessBody : DeletePartnerAssetAccessBody =  // DeletePartnerAssetAccessBody | 
-            //val result : DeletePartnerAssetsResultsResponseArray = apiInstance.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
+            //val result : DeletePartnerAssetAccessResultsResponseArray = apiInstance.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody)
             //result shouldBe ("TODO")
         }
 
         // to test updatePartnerAssetAccessHandlerImpl
         should("test updatePartnerAssetAccessHandlerImpl") {
             // uncomment below to test updatePartnerAssetAccessHandlerImpl
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val updatePartnerAssetAccessBody : UpdatePartnerAssetAccessBody =  // UpdatePartnerAssetAccessBody | A list of assets and permissions to assign to your partners.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val updatePartnerAssetAccessBody : UpdatePartnerAssetAccessBody =  // UpdatePartnerAssetAccessBody | 
             //val result : UpdatePartnerAssetsResultsResponseArray = apiInstance.updatePartnerAssetAccessHandlerImpl(businessId, updatePartnerAssetAccessBody)
             //result shouldBe ("TODO")
         }

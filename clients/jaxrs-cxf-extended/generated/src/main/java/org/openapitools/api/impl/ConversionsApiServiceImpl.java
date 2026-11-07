@@ -1,8 +1,10 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.AdvertiserDefinedEventsResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.AdvertiserDefinedEventsCreate200Response;
+import org.openapitools.model.AdvertiserDefinedEventsCreateRequest;
+import org.openapitools.model.AdvertiserDefinedEventsGet200Response;
+import org.openapitools.model.PinterestLibError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -25,13 +27,49 @@ import io.swagger.annotations.Api;
  */
 public class ConversionsApiServiceImpl implements ConversionsApi {
     /**
-     * Get advertiser defined events
+     * Create advertiser defined events
      *
-     * &lt;p&gt;Get advertiser defined events for the given ad account.&lt;/p&gt;
+     * Map advertiser defined events to standard events for the given ad account.
      *
      */
     @Override
-    public AdvertiserDefinedEventsResponse advertiserDefinedEventsGet(String adAccountId) {
+    public AdvertiserDefinedEventsCreate200Response advertiserDefinedEventsCreate(String adAccountId, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) {
+        // TODO: Implement...
+        return null;
+    }
+
+    /**
+     * Delete advertiser defined events
+     *
+     * Untrack advertiser defined events for the given ad account.
+     *
+     */
+    @Override
+    public AdvertiserDefinedEventsCreate200Response advertiserDefinedEventsDelete(String adAccountId, List<String> eventNames) {
+        // TODO: Implement...
+        return null;
+    }
+
+    /**
+     * Get advertiser defined events
+     *
+     * Get advertiser defined events for the given ad account.
+     *
+     */
+    @Override
+    public AdvertiserDefinedEventsGet200Response advertiserDefinedEventsGet(String adAccountId) {
+        // TODO: Implement...
+        return null;
+    }
+
+    /**
+     * Update advertiser defined events
+     *
+     * Update advertiser defined event names or mappings for the given ad account.
+     *
+     */
+    @Override
+    public AdvertiserDefinedEventsCreate200Response advertiserDefinedEventsUpdate(String adAccountId, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) {
         // TODO: Implement...
         return null;
     }

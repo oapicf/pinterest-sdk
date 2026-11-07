@@ -1,14 +1,18 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
+import java.math.BigDecimal;
+import org.openapitools.model.EntityStatus;
 import org.openapitools.model.Granularity;
 import java.time.LocalDate;
-import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.ProductGroupAnalyticsItems;
 import org.openapitools.model.ProductGroupPromotion;
-import org.openapitools.model.ProductGroupPromotionCreateRequest;
-import org.openapitools.model.ProductGroupPromotionResponse;
-import org.openapitools.model.ProductGroupPromotionUpdateRequest;
+import org.openapitools.model.ProductGroupPromotions;
+import org.openapitools.model.ProductGroupPromotionsCreate;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
+import org.openapitools.model.ProductGroupPromotionsUpdateWithRequiredBody;
+import org.openapitools.model.ReportingColumnSync;
 import org.openapitools.model.ReportingTimeZone;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -42,10 +46,10 @@ public class ProductGroupPromotionsApiTest {
     public void productGroupPromotionsCreateTest() {
         // given
         String adAccountId = "example";
-        ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest = new ProductGroupPromotionCreateRequest("2680059592705", Arrays.asList());
+        ProductGroupPromotionsCreate productGroupPromotionsCreate = new ProductGroupPromotionsCreate("2680059592705", Arrays.asList());
 
         // when
-        ProductGroupPromotionResponse body = api.productGroupPromotionsCreate(adAccountId, productGroupPromotionCreateRequest).block();
+        ProductGroupPromotions body = api.productGroupPromotionsCreate(adAccountId, productGroupPromotionsCreate).block();
 
         // then
         // TODO implement the productGroupPromotionsCreateTest()
@@ -75,22 +79,22 @@ public class ProductGroupPromotionsApiTest {
     /**
      * Get product group promotions
      *
-     * List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  &lt;b&gt;Note:&lt;/b&gt; ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+     * List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
      */
     @Test
     @Disabled("Not Implemented")
     public void productGroupPromotionsListTest() {
         // given
         String adAccountId = "example";
-        List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds = Arrays.asList("example");
-        List<String> entityStatuses = Arrays.asList("example");
-        String adGroupId = "123123123";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
+        List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds = Arrays.asList("example");
+        List<EntityStatus> entityStatuses = Arrays.asList();
+        String adGroupId = "example";
 
         // when
-        ProductGroupPromotionsList200Response body = api.productGroupPromotionsList(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark).block();
+        ProductGroupPromotionsList200Response body = api.productGroupPromotionsList(adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId).block();
 
         // then
         // TODO implement the productGroupPromotionsListTest()
@@ -107,10 +111,10 @@ public class ProductGroupPromotionsApiTest {
     public void productGroupPromotionsUpdateTest() {
         // given
         String adAccountId = "example";
-        ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest = new ProductGroupPromotionUpdateRequest("2680059592705", Arrays.asList());
+        ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody = new ProductGroupPromotionsUpdateWithRequiredBody("2680059592705", Arrays.asList());
 
         // when
-        ProductGroupPromotionResponse body = api.productGroupPromotionsUpdate(adAccountId, productGroupPromotionUpdateRequest).block();
+        ProductGroupPromotions body = api.productGroupPromotionsUpdate(adAccountId, productGroupPromotionsUpdateWithRequiredBody).block();
 
         // then
         // TODO implement the productGroupPromotionsUpdateTest()
@@ -120,26 +124,26 @@ public class ProductGroupPromotionsApiTest {
     /**
      * Get product group analytics
      *
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get analytics for the specified product groups in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.  - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      */
     @Test
     @Disabled("Not Implemented")
     public void productGroupsAnalyticsTest() {
         // given
-        String adAccountId = "example";
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
         List<@Pattern(regexp = "^\\d+$")String> productGroupIds = Arrays.asList("example");
-        List<String> columns = Arrays.asList("example");
-        Granularity granularity = Granularity.fromValue("DAY");
-        Integer clickWindowDays = 30;
-        Integer engagementWindowDays = 30;
-        Integer viewWindowDays = 1;
+        List<ReportingColumnSync> columns = Arrays.asList();
+        Granularity granularity = Granularity.fromValue("TOTAL");
+        String adAccountId = "example";
+        BigDecimal clickWindowDays = new BigDecimal(78);
+        BigDecimal engagementWindowDays = new BigDecimal(78);
+        BigDecimal viewWindowDays = new BigDecimal(78);
         String conversionReportTime = "TIME_OF_AD_ACTION";
         ReportingTimeZone reportingTimezone = ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE");
 
         // when
-        List<ProductGroupAnalyticsResponseInner> body = api.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone).block();
+        List<ProductGroupAnalyticsItems> body = api.productGroupsAnalytics(startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone).block();
 
         // then
         // TODO implement the productGroupsAnalyticsTest()

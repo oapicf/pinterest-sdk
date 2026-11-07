@@ -28,9 +28,9 @@ module AudienceSharingApiHandlerTestsHelper =
   let mutable UpdateAdAccountToAdAccountSharedAudienceBody = ""
 
   UpdateAdAccountToAdAccountSharedAudienceBody <- WebUtility.HtmlDecode "{
-  &quot;recipient_account_ids&quot; : [ &quot;recipient_account_ids&quot;, &quot;recipient_account_ids&quot; ],
+  &quot;audience_id&quot; : &quot;2542621871096&quot;,
   &quot;operation_type&quot; : &quot;SHARE&quot;,
-  &quot;audience_id&quot; : &quot;2542621871096&quot;
+  &quot;recipient_account_ids&quot; : [ null, null ]
 }"
   UpdateAdAccountToAdAccountSharedAudienceExamples <- UpdateAdAccountToAdAccountSharedAudienceExamples.Add("application/json", UpdateAdAccountToAdAccountSharedAudienceBody)
 
@@ -42,9 +42,9 @@ module AudienceSharingApiHandlerTestsHelper =
   let mutable UpdateAdAccountToBusinessSharedAudienceBody = ""
 
   UpdateAdAccountToBusinessSharedAudienceBody <- WebUtility.HtmlDecode "{
+  &quot;audience_id&quot; : &quot;2542621871096&quot;,
   &quot;operation_type&quot; : &quot;SHARE&quot;,
-  &quot;recipient_business_ids&quot; : [ &quot;recipient_business_ids&quot;, &quot;recipient_business_ids&quot; ],
-  &quot;audience_id&quot; : &quot;2542621871096&quot;
+  &quot;recipient_business_ids&quot; : [ null, null ]
 }"
   UpdateAdAccountToBusinessSharedAudienceExamples <- UpdateAdAccountToBusinessSharedAudienceExamples.Add("application/json", UpdateAdAccountToBusinessSharedAudienceBody)
 
@@ -56,9 +56,9 @@ module AudienceSharingApiHandlerTestsHelper =
   let mutable UpdateBusinessToAdAccountSharedAudienceBody = ""
 
   UpdateBusinessToAdAccountSharedAudienceBody <- WebUtility.HtmlDecode "{
-  &quot;recipient_account_ids&quot; : [ &quot;recipient_account_ids&quot;, &quot;recipient_account_ids&quot; ],
+  &quot;audience_id&quot; : &quot;2542621871096&quot;,
   &quot;operation_type&quot; : &quot;SHARE&quot;,
-  &quot;audience_id&quot; : &quot;2542621871096&quot;
+  &quot;recipient_account_ids&quot; : [ null, null ]
 }"
   UpdateBusinessToAdAccountSharedAudienceExamples <- UpdateBusinessToAdAccountSharedAudienceExamples.Add("application/json", UpdateBusinessToAdAccountSharedAudienceBody)
 
@@ -70,9 +70,9 @@ module AudienceSharingApiHandlerTestsHelper =
   let mutable UpdateBusinessToBusinessSharedAudienceBody = ""
 
   UpdateBusinessToBusinessSharedAudienceBody <- WebUtility.HtmlDecode "{
+  &quot;audience_id&quot; : &quot;2542621871096&quot;,
   &quot;operation_type&quot; : &quot;SHARE&quot;,
-  &quot;recipient_business_ids&quot; : [ &quot;recipient_business_ids&quot;, &quot;recipient_business_ids&quot; ],
-  &quot;audience_id&quot; : &quot;2542621871096&quot;
+  &quot;recipient_business_ids&quot; : [ null, null ]
 }"
   UpdateBusinessToBusinessSharedAudienceExamples <- UpdateBusinessToBusinessSharedAudienceExamples.Add("application/json", UpdateBusinessToBusinessSharedAudienceBody)
 

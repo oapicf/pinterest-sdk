@@ -5,10 +5,10 @@ import org.openapitools.model.ConversionEventResponse;
 import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
 import org.openapitools.model.ConversionTagsList200Response;
-import org.openapitools.model.Error;
 import java.util.Map;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
 import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -83,7 +83,7 @@ public class ConversionTagsApiServiceImpl implements ConversionTagsApi {
      * Get all page visit conversion tag events for an ad account.
      *
      */
-    public PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(String adAccountId, Integer pageSize, String order, String bookmark) {
+    public PageVisitConversionTagsGet200Response pageVisitConversionTagsGet(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order) {
         // TODO: Implement...
 
         return null;

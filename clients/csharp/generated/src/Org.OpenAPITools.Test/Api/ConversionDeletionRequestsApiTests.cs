@@ -61,7 +61,7 @@ namespace Org.OpenAPITools.Test.Api
             ConversionDeletionRequestCreate conversionDeletionRequestCreate = default!;
             var response = await _instance.ConversionDeletionRequestCreateAsync(adAccountId, conversionDeletionRequestCreate);
             var model = response.Ok();
-            Assert.IsType<ConversionDeletionRequest>(model);
+            Assert.IsType<Org.OpenAPITools.Model.ConversionDeletionRequest>(model);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Org.OpenAPITools.Test.Api
             string adAccountId = default!;
             var response = await _instance.ConversionDeletionRequestDeleteAsync(requestId, adAccountId);
             var model = response.Ok();
-            Assert.IsType<ConversionDeletionRequest>(model);
+            Assert.IsType<Org.OpenAPITools.Model.ConversionDeletionRequest>(model);
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Org.OpenAPITools.Test.Api
             string adAccountId = default!;
             var response = await _instance.ConversionDeletionRequestGetAsync(requestId, adAccountId);
             var model = response.Ok();
-            Assert.IsType<ConversionDeletionRequest>(model);
+            Assert.IsType<Org.OpenAPITools.Model.ConversionDeletionRequest>(model);
         }
 
         /// <summary>
@@ -102,7 +102,7 @@ namespace Org.OpenAPITools.Test.Api
             Client.Option<PinterestLibPaginationOrder> order = default!;
             var response = await _instance.ConversionDeletionRequestListAsync(adAccountId, bookmark, pageSize, order);
             var model = response.Ok();
-            Assert.IsType<ConversionDeletionRequestList200Response>(model);
+            Assert.IsType<Org.OpenAPITools.Model.ConversionDeletionRequestList200Response>(model);
         }
     }
 }

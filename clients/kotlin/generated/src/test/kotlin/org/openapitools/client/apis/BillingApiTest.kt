@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,19 +27,22 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.BillingApi
-import org.openapitools.client.models.AdsCreditRedeemRequest
-import org.openapitools.client.models.AdsCreditRedeemResponse
+import org.openapitools.client.models.AdsCreditRedeem
+import org.openapitools.client.models.AdsCreditRedeemCreate
 import org.openapitools.client.models.AdsCreditsDiscountsGet200Response
+import org.openapitools.client.models.BillingInvoiceDocumentType
 import org.openapitools.client.models.BillingInvoiceDownloadResponse
+import org.openapitools.client.models.BillingInvoiceSortField
+import org.openapitools.client.models.BillingInvoiceStatus
 import org.openapitools.client.models.BillingInvoicesGet200Response
 import org.openapitools.client.models.BillingProfilesGet200Response
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.SSIOAccountResponse
-import org.openapitools.client.models.SSIOCreateInsertionOrderRequest
-import org.openapitools.client.models.SSIOCreateInsertionOrderResponse
-import org.openapitools.client.models.SSIOEditInsertionOrderRequest
-import org.openapitools.client.models.SSIOEditInsertionOrderResponse
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
+import org.openapitools.client.models.SSIOAccount
+import org.openapitools.client.models.SSIOInsertionOrder
+import org.openapitools.client.models.SSIOInsertionOrderCreate
 import org.openapitools.client.models.SSIOInsertionOrderStatusResponse
+import org.openapitools.client.models.SSIOInsertionOrderUpdate
 import org.openapitools.client.models.SsioInsertionOrdersStatusGetByAdAccount200Response
 import org.openapitools.client.models.SsioOrderLinesGetByAdAccount200Response
 
@@ -44,8 +55,8 @@ class BillingApiTest : ShouldSpec() {
         should("test adsCreditRedeem") {
             // uncomment below to test adsCreditRedeem
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val adsCreditRedeemRequest : AdsCreditRedeemRequest =  // AdsCreditRedeemRequest | Redeem ad credits request.
-            //val result : AdsCreditRedeemResponse = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemRequest)
+            //val adsCreditRedeemCreate : AdsCreditRedeemCreate =  // AdsCreditRedeemCreate | 
+            //val result : AdsCreditRedeem = apiInstance.adsCreditRedeem(adAccountId, adsCreditRedeemCreate)
             //result shouldBe ("TODO")
         }
 
@@ -54,7 +65,7 @@ class BillingApiTest : ShouldSpec() {
             // uncomment below to test adsCreditsDiscountsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : AdsCreditsDiscountsGet200Response = apiInstance.adsCreditsDiscountsGet(adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -73,14 +84,14 @@ class BillingApiTest : ShouldSpec() {
             // uncomment below to test billingInvoicesGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val sort : kotlin.String = DUE_DATE // kotlin.String | Field of which to sort billing invoices
-            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-            //val status : kotlin.String = OPEN // kotlin.String | Status of billing invoices to filter by
-            //val documentType : kotlin.String = INVOICE // kotlin.String | Document type of billing invoices to filter by
-            //val startDueDate : java.time.LocalDate = Sun Jan 01 00:00:00 UTC 2023 // java.time.LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
-            //val endDueDate : java.time.LocalDate = Mon Jan 01 00:00:00 UTC 2024 // java.time.LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
-            //val result : BillingInvoicesGet200Response = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val sort : BillingInvoiceSortField =  // BillingInvoiceSortField | Field of which to sort billing invoices
+            //val status : BillingInvoiceStatus =  // BillingInvoiceStatus | Status of billing invoices to filter by
+            //val documentType : BillingInvoiceDocumentType =  // BillingInvoiceDocumentType | Document type of billing invoices to filter by
+            //val startDueDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Starting point for due dates when searching for invoices. Format: YYYY-MM-DD
+            //val endDueDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Ending point for due dates when searching for invoices. Format: YYYY-MM-DD
+            //val result : BillingInvoicesGet200Response = apiInstance.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate)
             //result shouldBe ("TODO")
         }
 
@@ -90,7 +101,7 @@ class BillingApiTest : ShouldSpec() {
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val isActive : kotlin.Boolean = true // kotlin.Boolean | Return active billing profiles, if false return all billing profiles.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : BillingProfilesGet200Response = apiInstance.billingProfilesGet(adAccountId, isActive, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -99,7 +110,7 @@ class BillingApiTest : ShouldSpec() {
         should("test ssioAccountsGet") {
             // uncomment below to test ssioAccountsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : SSIOAccountResponse = apiInstance.ssioAccountsGet(adAccountId)
+            //val result : SSIOAccount = apiInstance.ssioAccountsGet(adAccountId)
             //result shouldBe ("TODO")
         }
 
@@ -107,8 +118,8 @@ class BillingApiTest : ShouldSpec() {
         should("test ssioInsertionOrderCreate") {
             // uncomment below to test ssioInsertionOrderCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val ssIOCreateInsertionOrderRequest : SSIOCreateInsertionOrderRequest =  // SSIOCreateInsertionOrderRequest | Order line to create.
-            //val result : SSIOCreateInsertionOrderResponse = apiInstance.ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest)
+            //val ssIOInsertionOrderCreate : SSIOInsertionOrderCreate =  // SSIOInsertionOrderCreate | 
+            //val result : SSIOInsertionOrder = apiInstance.ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate)
             //result shouldBe ("TODO")
         }
 
@@ -116,8 +127,8 @@ class BillingApiTest : ShouldSpec() {
         should("test ssioInsertionOrderEdit") {
             // uncomment below to test ssioInsertionOrderEdit
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val ssIOEditInsertionOrderRequest : SSIOEditInsertionOrderRequest =  // SSIOEditInsertionOrderRequest | Order line to create.
-            //val result : SSIOEditInsertionOrderResponse = apiInstance.ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest)
+            //val ssIOInsertionOrderUpdate : SSIOInsertionOrderUpdate =  // SSIOInsertionOrderUpdate | 
+            //val result : SSIOInsertionOrder = apiInstance.ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate)
             //result shouldBe ("TODO")
         }
 
@@ -126,7 +137,7 @@ class BillingApiTest : ShouldSpec() {
             // uncomment below to test ssioInsertionOrdersStatusGetByAdAccount
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : SsioInsertionOrdersStatusGetByAdAccount200Response = apiInstance.ssioInsertionOrdersStatusGetByAdAccount(adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -135,7 +146,7 @@ class BillingApiTest : ShouldSpec() {
         should("test ssioInsertionOrdersStatusGetByPinOrderId") {
             // uncomment below to test ssioInsertionOrdersStatusGetByPinOrderId
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pinOrderId : kotlin.String = 0Q01N0000015hekSVDFDC // kotlin.String | The pin order id associated with the ssio insertion order
+            //val pinOrderId : kotlin.String = pinOrderId_example // kotlin.String | The pin order id associated with the ssio insertion order
             //val result : SSIOInsertionOrderStatusResponse = apiInstance.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId)
             //result shouldBe ("TODO")
         }
@@ -144,10 +155,10 @@ class BillingApiTest : ShouldSpec() {
         should("test ssioOrderLinesGetByAdAccount") {
             // uncomment below to test ssioOrderLinesGetByAdAccount
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val pinOrderId : kotlin.String = pinOrderId_example // kotlin.String | The pin order id associated with the SSIO insertion order
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val pinOrderId : kotlin.String = 0Q01N0000015hekSVDFDC // kotlin.String | The pin order id associated with the ssio insertino order
-            //val result : SsioOrderLinesGetByAdAccount200Response = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : SsioOrderLinesGetByAdAccount200Response = apiInstance.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 

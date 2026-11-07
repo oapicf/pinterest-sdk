@@ -27,7 +27,7 @@ import org.openapitools.model.GenderDemographics;
  */
 
 @ApiModel(description = "Age and gender distribution who engaged with this product category in the past 3 months")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductCategoriesDemographic   {
   
   private Map<String, BigDecimal> age = new HashMap<>();

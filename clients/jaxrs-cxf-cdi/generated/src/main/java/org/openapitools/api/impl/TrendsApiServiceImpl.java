@@ -37,7 +37,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-11-03T06:15:11.297068727Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-11-07T02:51:11.241513942Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsApiServiceImpl implements TrendsApiService {
       @Override
       public Response trendingKeywordsList(TrendsSupportedRegion region, TrendType trendType, List<TrendsL1Interest> interests, List<TrendsGenderFilter> genders, List<TrendsAgeBucket> ages, List<@Size(min = 1, max = 100)String> includeKeywords, Boolean normalizeAgainstGroup, Integer limit, Boolean includeDemographics, SecurityContext securityContext) {

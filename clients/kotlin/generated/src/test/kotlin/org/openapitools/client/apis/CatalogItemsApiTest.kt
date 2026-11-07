@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,11 +27,11 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.CatalogItemsApi
-import org.openapitools.client.models.CatalogsItems
 import org.openapitools.client.models.CatalogsItemsBatch
+import org.openapitools.client.models.CatalogsItemsBatchPostRequest
 import org.openapitools.client.models.CatalogsItemsRequest
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.ItemsBatchPostRequest
+import org.openapitools.client.models.ItemsPost200Response
+import org.openapitools.client.models.PinterestLibError
 
 class CatalogItemsApiTest : ShouldSpec() {
     init {
@@ -33,7 +41,7 @@ class CatalogItemsApiTest : ShouldSpec() {
         // to test itemsBatchGet
         should("test itemsBatchGet") {
             // uncomment below to test itemsBatchGet
-            //val batchId : kotlin.String = 66753b9bb65c46c49bd8503b27fecf9e // kotlin.String | Id of a catalogs items batch to fetch
+            //val batchId : kotlin.String = batchId_example // kotlin.String | Id of a catalogs items batch to fetch
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : CatalogsItemsBatch = apiInstance.itemsBatchGet(batchId, adAccountId)
             //result shouldBe ("TODO")
@@ -42,18 +50,18 @@ class CatalogItemsApiTest : ShouldSpec() {
         // to test itemsBatchPost
         should("test itemsBatchPost") {
             // uncomment below to test itemsBatchPost
-            //val itemsBatchPostRequest : ItemsBatchPostRequest =  // ItemsBatchPostRequest | Request object used to create catalogs items in a batch
+            //val catalogsItemsBatchPostRequest : CatalogsItemsBatchPostRequest =  // CatalogsItemsBatchPostRequest | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : CatalogsItemsBatch = apiInstance.itemsBatchPost(itemsBatchPostRequest, adAccountId)
+            //val result : CatalogsItemsBatch = apiInstance.itemsBatchPost(catalogsItemsBatchPostRequest, adAccountId)
             //result shouldBe ("TODO")
         }
 
         // to test itemsPost
         should("test itemsPost") {
             // uncomment below to test itemsPost
-            //val catalogsItemsRequest : CatalogsItemsRequest =  // CatalogsItemsRequest | Request object used to get catalogs items
+            //val catalogsItemsRequest : CatalogsItemsRequest =  // CatalogsItemsRequest | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : CatalogsItems = apiInstance.itemsPost(catalogsItemsRequest, adAccountId)
+            //val result : ItemsPost200Response = apiInstance.itemsPost(catalogsItemsRequest, adAccountId)
             //result shouldBe ("TODO")
         }
 

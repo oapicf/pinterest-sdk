@@ -33,7 +33,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelFeedsCreateRequest", description = "Request object for creating a feed. Please, be aware that \"default_country\" and \"default_locale\" are not required in the spec for forward compatibility but for now the API will not accept requests without those fields.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelFeedsCreateRequest implements CatalogsVerticalFeedsCreateRequest {
 
   private @Nullable String catalogId;

@@ -1,10 +1,14 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
 import org.openapitools.model.LabelCreateRequest;
 import org.openapitools.model.LabelUpdateRequest;
+import org.openapitools.model.LabeledEntities;
+import org.openapitools.model.LabeledEntitiesCreate;
 import org.openapitools.model.LabelsList200Response;
 import org.openapitools.model.LabelsResponse;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.QueryLabelEntityStatusesItems;
+import org.openapitools.model.QueryLabelTypesItems;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -28,16 +32,37 @@ public class LabelsApiTest {
 
     
     /**
+     * Apply label to entity
+     *
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    public void labelsApplyTest() {
+        // given
+        String adAccountId = "example";
+        String labelId = "example";
+        LabeledEntitiesCreate labeledEntitiesCreate = new LabeledEntitiesCreate(Arrays.asList("example"));
+
+        // when
+        LabeledEntities body = api.labelsApply(adAccountId, labelId, labeledEntitiesCreate).block();
+
+        // then
+        // TODO implement the labelsApplyTest()
+    }
+
+    
+    /**
      * Create labels
      *
-     * &lt;p&gt; &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    &lt;b&gt;Note:&lt;/b&gt; You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
      */
     @Test
     @Disabled("Not Implemented")
     public void labelsCreateTest() {
         // given
         String adAccountId = "example";
-        LabelCreateRequest labelCreateRequest = new LabelCreateRequest(Arrays.asList(), "626753052072");
+        LabelCreateRequest labelCreateRequest = new LabelCreateRequest(Arrays.asList());
 
         // when
         LabelsResponse body = api.labelsCreate(adAccountId, labelCreateRequest).block();
@@ -50,7 +75,7 @@ public class LabelsApiTest {
     /**
      * List labels
      *
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   See a list of labels for assets that your account owns, and filter the list by different criteria. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
      */
     @Test
     @Disabled("Not Implemented")
@@ -59,13 +84,13 @@ public class LabelsApiTest {
         String adAccountId = "example";
         List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds = Arrays.asList("example");
         List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds = Arrays.asList("example");
-        List<String> entityStatuses = Arrays.asList("example");
-        List<String> labelTypes = Arrays.asList("example");
-        Integer pageSize = 25;
+        List<QueryLabelEntityStatusesItems> entityStatuses = Arrays.asList();
+        List<QueryLabelTypesItems> labelTypes = Arrays.asList();
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        LabelsList200Response body = api.labelsList(adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, pageSize, bookmark).block();
+        LabelsList200Response body = api.labelsList(adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, bookmark, pageSize).block();
 
         // then
         // TODO implement the labelsListTest()
@@ -73,9 +98,30 @@ public class LabelsApiTest {
 
     
     /**
+     * Remove label from entities
+     *
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
+     */
+    @Test
+    @Disabled("Not Implemented")
+    public void labelsRemoveTest() {
+        // given
+        String adAccountId = "example";
+        String labelId = "example";
+        LabeledEntitiesCreate labeledEntitiesCreate = new LabeledEntitiesCreate(Arrays.asList("example"));
+
+        // when
+        LabeledEntities body = api.labelsRemove(adAccountId, labelId, labeledEntitiesCreate).block();
+
+        // then
+        // TODO implement the labelsRemoveTest()
+    }
+
+    
+    /**
      * Update labels
      *
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Change the properties of one or more labels. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
      */
     @Test
     @Disabled("Not Implemented")

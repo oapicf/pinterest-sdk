@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CustomNumber4Filter.JSON_PROPERTY_C_U_S_T_O_M_N_U_M_B_E_R4
 })
 @JsonTypeName("CustomNumber4Filter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CustomNumber4Filter {
     public static final String JSON_PROPERTY_C_U_S_T_O_M_N_U_M_B_E_R4 = "CUSTOM_NUMBER_4";

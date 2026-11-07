@@ -22,19 +22,22 @@ module MsotEventsApiHandlerTestsHelper =
   let mutable MsotEventsCreateBody = ""
 
   MsotEventsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;attribution_score&quot; : 0.5,
-  &quot;total_events&quot; : 2,
-  &quot;attribution_scope&quot; : &quot;click&quot;,
-  &quot;attribution_model&quot; : &quot;multi_touch&quot;,
-  &quot;event_timestamp&quot; : 1451431341,
   &quot;action_timestamps&quot; : [ 1451410040 ],
-  &quot;total_event_touchpoints&quot; : 2,
+  &quot;ad_group_id&quot; : &quot;2680060704746&quot;,
+  &quot;attribution_model&quot; : &quot;multi_touch&quot;,
+  &quot;attribution_scope&quot; : &quot;click&quot;,
+  &quot;attribution_score&quot; : 0.5,
+  &quot;campaign_id&quot; : &quot;626736533506&quot;,
+  &quot;click_window&quot; : &quot;click_window&quot;,
+  &quot;currency&quot; : &quot;&quot;,
   &quot;event_id&quot; : &quot;eventId0001&quot;,
   &quot;event_name&quot; : &quot;add_to_cart&quot;,
-  &quot;currency&quot; : &quot;&quot;,
-  &quot;ad_group_id&quot; : &quot;2680060704746&quot;,
+  &quot;event_timestamp&quot; : 1451431341,
+  &quot;total_event_touchpoints&quot; : 2,
+  &quot;total_events&quot; : 2,
+  &quot;total_events_fractional&quot; : 0.08008281904610115,
   &quot;value&quot; : 123.45,
-  &quot;campaign_id&quot; : &quot;626736533506&quot;
+  &quot;view_window&quot; : &quot;view_window&quot;
 }"
   MsotEventsCreateExamples <- MsotEventsCreateExamples.Add("application/json", MsotEventsCreateBody)
 

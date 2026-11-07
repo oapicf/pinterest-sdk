@@ -18,7 +18,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object describing the catalogs hotel items batch. If specified, you must provide all properties.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@ApiModel(description="Object describing the catalogs hotel items batch. If specified, you must provide all properties.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T02:51:45.323422857Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelItemsBatch   {
   
   private String batchId;

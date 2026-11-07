@@ -19,7 +19,7 @@ import org.openapitools.model.Permissions;
  **/
 
 @ApiModel(description = "Object declaring an asset role update to an invite.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetInvitesRequestItem   {
   @JsonProperty("asset_id_to_permissions")
   private Map<String, List<Permissions>> assetIdToPermissions = new HashMap<>();

@@ -54,9 +54,10 @@ func Test_openapi_CatalogFeedsAPIService(t *testing.T) {
 
 		var feedId string
 
-		httpRes, err := apiClient.CatalogFeedsAPI.FeedsDelete(context.Background(), feedId).Execute()
+		resp, httpRes, err := apiClient.CatalogFeedsAPI.FeedsDelete(context.Background(), feedId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

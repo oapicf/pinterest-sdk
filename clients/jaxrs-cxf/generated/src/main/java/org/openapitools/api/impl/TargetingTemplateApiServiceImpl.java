@@ -1,11 +1,12 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.TargetingTemplate;
 import org.openapitools.model.TargetingTemplateCreate;
-import org.openapitools.model.TargetingTemplateGetResponseData;
 import org.openapitools.model.TargetingTemplateList200Response;
-import org.openapitools.model.TargetingTemplateUpdateRequest;
+import org.openapitools.model.TargetingTemplateUpdateRequestReadOrUpdate;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -29,10 +30,10 @@ public class TargetingTemplateApiServiceImpl implements TargetingTemplateApi {
     /**
      * Create targeting templates
      *
-     * &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+     * Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
      *
      */
-    public TargetingTemplateGetResponseData targetingTemplateCreate(String adAccountId, TargetingTemplateCreate targetingTemplateCreate) {
+    public TargetingTemplate targetingTemplateCreate(String adAccountId, TargetingTemplateCreate targetingTemplateCreate) {
         // TODO: Implement...
 
         return null;
@@ -41,10 +42,10 @@ public class TargetingTemplateApiServiceImpl implements TargetingTemplateApi {
     /**
      * List targeting templates
      *
-     * Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+     * Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
      *
      */
-    public TargetingTemplateList200Response targetingTemplateList(String adAccountId, String order, Boolean includeSizing, String searchQuery, Integer pageSize, String bookmark) {
+    public TargetingTemplateList200Response targetingTemplateList(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, Boolean includeSizing, String searchQuery) {
         // TODO: Implement...
 
         return null;
@@ -53,10 +54,10 @@ public class TargetingTemplateApiServiceImpl implements TargetingTemplateApi {
     /**
      * Update targeting templates
      *
-     * &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+     * Update the targeting template given advertiser ID and targeting template ID
      *
      */
-    public void targetingTemplateUpdate(String adAccountId, TargetingTemplateUpdateRequest targetingTemplateUpdateRequest) {
+    public void targetingTemplateUpdate(String adAccountId, TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate) {
         // TODO: Implement...
 
         

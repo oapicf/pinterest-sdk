@@ -1,10 +1,12 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Audience;
-import org.openapitools.model.AudienceCreateRequest;
-import org.openapitools.model.AudienceUpdateRequest;
+import org.openapitools.model.AdAccountsAudience;
+import org.openapitools.model.AdAccountsAudienceCreate;
+import org.openapitools.model.AdAccountsAudienceUpdate;
+import org.openapitools.model.AudienceOwnershipType;
 import org.openapitools.model.AudiencesList200Response;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -55,7 +57,7 @@ public class AudiencesControllerTest {
      *
      * The method should: Create audience
      *
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+     * Create a new audience for the ad account.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -64,10 +66,10 @@ public class AudiencesControllerTest {
     void audiencesCreateMethodTest() {
         // given
         String adAccountId = "example";
-        AudienceCreateRequest audienceCreateRequest = new AudienceCreateRequest();
+        AdAccountsAudienceCreate adAccountsAudienceCreate = new AdAccountsAudienceCreate();
 
         // when
-        Audience result = controller.audiencesCreate(adAccountId, audienceCreateRequest).block();
+        AdAccountsAudience result = controller.audiencesCreate(adAccountId, adAccountsAudienceCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -83,16 +85,16 @@ public class AudiencesControllerTest {
     @Disabled("Not Implemented")
     void audiencesCreateClientApiTest() throws IOException {
         // given
-        AudienceCreateRequest body = new AudienceCreateRequest();
+        AdAccountsAudienceCreate body = new AdAccountsAudienceCreate();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/audiences").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@24332ee3");
+            .accept("[Ljava.lang.String;@7f86ffaf");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountsAudience.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -111,11 +113,11 @@ public class AudiencesControllerTest {
     @Disabled("Not Implemented")
     void audiencesGetMethodTest() {
         // given
-        String adAccountId = "example";
         String audienceId = "example";
+        String adAccountId = "example";
 
         // when
-        Audience result = controller.audiencesGet(adAccountId, audienceId).block();
+        AdAccountsAudience result = controller.audiencesGet(audienceId, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -133,14 +135,14 @@ public class AudiencesControllerTest {
         // given
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/audiences/{audience_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("ad_account_id", "example");
             put("audience_id", "example");
+            put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3754d1eb");
+            .accept("[Ljava.lang.String;@3840f3ef");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountsAudience.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -161,12 +163,13 @@ public class AudiencesControllerTest {
         // given
         String adAccountId = "example";
         String bookmark = "example";
-        String order = "ASCENDING";
         Integer pageSize = 25;
-        String ownershipType = "OWNED";
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
+        AudienceOwnershipType ownershipType = AudienceOwnershipType.fromValue("OWNED");
+        Boolean excludeNca = false;
 
         // when
-        AudiencesList200Response result = controller.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType).block();
+        AudiencesList200Response result = controller.audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca).block();
 
         // then
         Assertions.assertTrue(true);
@@ -187,12 +190,13 @@ public class AudiencesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5813a30e");
+            .accept("[Ljava.lang.String;@36d151ca");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
-            .add("order", "ASCENDING") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("ownership_type", "OWNED"); // The query parameter format should be 
+            .add("order", String.valueOf(PinterestLibPaginationOrder.fromValue("ASCENDING"))) // The query parameter format should be 
+            .add("ownership_type", String.valueOf(AudienceOwnershipType.fromValue("OWNED"))) // The query parameter format should be 
+            .add("exclude_nca", String.valueOf(false)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AudiencesList200Response.class);
@@ -206,7 +210,7 @@ public class AudiencesControllerTest {
      *
      * The method should: Update audience
      *
-     * Update (edit or remove) an existing targeting audience.
+     * Update an existing audience for the ad account.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -214,12 +218,12 @@ public class AudiencesControllerTest {
     @Disabled("Not Implemented")
     void audiencesUpdateMethodTest() {
         // given
-        String adAccountId = "example";
         String audienceId = "example";
-        AudienceUpdateRequest audienceUpdateRequest = new AudienceUpdateRequest();
+        String adAccountId = "example";
+        AdAccountsAudienceUpdate adAccountsAudienceUpdate = new AdAccountsAudienceUpdate();
 
         // when
-        Audience result = controller.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest).block();
+        AdAccountsAudience result = controller.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -235,17 +239,17 @@ public class AudiencesControllerTest {
     @Disabled("Not Implemented")
     void audiencesUpdateClientApiTest() throws IOException {
         // given
-        AudienceUpdateRequest body = new AudienceUpdateRequest();
+        AdAccountsAudienceUpdate body = new AdAccountsAudienceUpdate();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/audiences/{audience_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("ad_account_id", "example");
             put("audience_id", "example");
+            put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@1d6932");
+            .accept("[Ljava.lang.String;@3249667e");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, Audience.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountsAudience.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

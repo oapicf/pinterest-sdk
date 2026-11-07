@@ -31,7 +31,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AdGroupsAnalyticsMetrics.JSON_PROPERTY_D_A_T_E
 })
 @JsonTypeName("AdGroupsAnalyticsMetrics")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdGroupsAnalyticsMetrics {
     public static final String JSON_PROPERTY_A_D_G_R_O_U_P_I_D = "AD_GROUP_ID";

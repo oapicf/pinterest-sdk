@@ -1,14 +1,14 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.IntegrationLogsRequest;
+import org.openapitools.model.IntegrationLogsInvalidLogResponse;
+import org.openapitools.model.IntegrationLogsRequestCreate;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
 import org.openapitools.model.IntegrationMetadata;
+import org.openapitools.model.IntegrationMetadataCreate;
+import org.openapitools.model.IntegrationMetadataUpdate;
 import org.openapitools.model.IntegrationRecord;
-import org.openapitools.model.IntegrationRequest;
-import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
-import org.openapitools.model.IntegrationsLogsPost400Response;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -43,7 +43,7 @@ public class IntegrationsApiTest {
         String externalBusinessId = "example";
 
         // when
-        api.integrationsCommerceDel(externalBusinessId).block();
+        IntegrationMetadata body = api.integrationsCommerceDel(externalBusinessId).block();
 
         // then
         // TODO implement the integrationsCommerceDelTest()
@@ -79,10 +79,10 @@ public class IntegrationsApiTest {
     public void integrationsCommercePatchTest() {
         // given
         String externalBusinessId = "example";
-        IntegrationRequestPatch integrationRequestPatch = new IntegrationRequestPatch();
+        IntegrationMetadataUpdate integrationMetadataUpdate = new IntegrationMetadataUpdate();
 
         // when
-        IntegrationMetadata body = api.integrationsCommercePatch(externalBusinessId, integrationRequestPatch).block();
+        IntegrationMetadata body = api.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate).block();
 
         // then
         // TODO implement the integrationsCommercePatchTest()
@@ -98,10 +98,10 @@ public class IntegrationsApiTest {
     @Disabled("Not Implemented")
     public void integrationsCommercePostTest() {
         // given
-        IntegrationRequest integrationRequest = new IntegrationRequest();
+        IntegrationMetadataCreate integrationMetadataCreate = new IntegrationMetadataCreate();
 
         // when
-        IntegrationMetadata body = api.integrationsCommercePost(integrationRequest).block();
+        IntegrationMetadata body = api.integrationsCommercePost(integrationMetadataCreate).block();
 
         // then
         // TODO implement the integrationsCommercePostTest()
@@ -156,10 +156,10 @@ public class IntegrationsApiTest {
     @Disabled("Not Implemented")
     public void integrationsLogsPostTest() {
         // given
-        IntegrationLogsRequest integrationLogsRequest = new IntegrationLogsRequest(Arrays.asList());
+        IntegrationLogsRequestCreate integrationLogsRequestCreate = new IntegrationLogsRequestCreate(Arrays.asList());
 
         // when
-        IntegrationLogsSuccessResponse body = api.integrationsLogsPost(integrationLogsRequest).block();
+        IntegrationLogsSuccessResponse body = api.integrationsLogsPost(integrationLogsRequestCreate).block();
 
         // then
         // TODO implement the integrationsLogsPostTest()

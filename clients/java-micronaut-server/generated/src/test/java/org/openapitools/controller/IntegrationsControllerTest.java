@@ -1,14 +1,14 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.IntegrationLogsRequest;
+import org.openapitools.model.IntegrationLogsInvalidLogResponse;
+import org.openapitools.model.IntegrationLogsRequestCreate;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
 import org.openapitools.model.IntegrationMetadata;
+import org.openapitools.model.IntegrationMetadataCreate;
+import org.openapitools.model.IntegrationMetadataUpdate;
 import org.openapitools.model.IntegrationRecord;
-import org.openapitools.model.IntegrationRequest;
-import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
-import org.openapitools.model.IntegrationsLogsPost400Response;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -70,7 +70,7 @@ public class IntegrationsControllerTest {
         String externalBusinessId = "example";
 
         // when
-        controller.integrationsCommerceDel(externalBusinessId).block();
+        IntegrationMetadata result = controller.integrationsCommerceDel(externalBusinessId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -91,10 +91,10 @@ public class IntegrationsControllerTest {
             put("external_business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@71c328a9");
+            .accept("[Ljava.lang.String;@44246f75");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
+        HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationMetadata.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -137,7 +137,7 @@ public class IntegrationsControllerTest {
             put("external_business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@46a6d001");
+            .accept("[Ljava.lang.String;@48369cd2");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationMetadata.class);
@@ -160,10 +160,10 @@ public class IntegrationsControllerTest {
     void integrationsCommercePatchMethodTest() {
         // given
         String externalBusinessId = "example";
-        IntegrationRequestPatch integrationRequestPatch = new IntegrationRequestPatch();
+        IntegrationMetadataUpdate integrationMetadataUpdate = new IntegrationMetadataUpdate();
 
         // when
-        IntegrationMetadata result = controller.integrationsCommercePatch(externalBusinessId, integrationRequestPatch).block();
+        IntegrationMetadata result = controller.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -179,13 +179,13 @@ public class IntegrationsControllerTest {
     @Disabled("Not Implemented")
     void integrationsCommercePatchClientApiTest() throws IOException {
         // given
-        IntegrationRequestPatch body = new IntegrationRequestPatch();
+        IntegrationMetadataUpdate body = new IntegrationMetadataUpdate();
         String uri = UriTemplate.of("/integrations/commerce/{external_business_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("external_business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@4aeda4a2");
+            .accept("[Ljava.lang.String;@5bbe0b1a");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationMetadata.class);
@@ -207,10 +207,10 @@ public class IntegrationsControllerTest {
     @Disabled("Not Implemented")
     void integrationsCommercePostMethodTest() {
         // given
-        IntegrationRequest integrationRequest = new IntegrationRequest();
+        IntegrationMetadataCreate integrationMetadataCreate = new IntegrationMetadataCreate();
 
         // when
-        IntegrationMetadata result = controller.integrationsCommercePost(integrationRequest).block();
+        IntegrationMetadata result = controller.integrationsCommercePost(integrationMetadataCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -226,10 +226,10 @@ public class IntegrationsControllerTest {
     @Disabled("Not Implemented")
     void integrationsCommercePostClientApiTest() throws IOException {
         // given
-        IntegrationRequest body = new IntegrationRequest();
+        IntegrationMetadataCreate body = new IntegrationMetadataCreate();
         String uri = UriTemplate.of("/integrations/commerce").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@26993032");
+            .accept("[Ljava.lang.String;@108f3f68");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationMetadata.class);
@@ -275,7 +275,7 @@ public class IntegrationsControllerTest {
             put("id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4e77c228");
+            .accept("[Ljava.lang.String;@77b7a5cb");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationRecord.class);
@@ -319,7 +319,7 @@ public class IntegrationsControllerTest {
         // given
         String uri = UriTemplate.of("/integrations").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3e21253f");
+            .accept("[Ljava.lang.String;@b9b77e3");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -344,10 +344,10 @@ public class IntegrationsControllerTest {
     @Disabled("Not Implemented")
     void integrationsLogsPostMethodTest() {
         // given
-        IntegrationLogsRequest integrationLogsRequest = new IntegrationLogsRequest(Arrays.asList());
+        IntegrationLogsRequestCreate integrationLogsRequestCreate = new IntegrationLogsRequestCreate(Arrays.asList());
 
         // when
-        IntegrationLogsSuccessResponse result = controller.integrationsLogsPost(integrationLogsRequest).block();
+        IntegrationLogsSuccessResponse result = controller.integrationsLogsPost(integrationLogsRequestCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -363,10 +363,10 @@ public class IntegrationsControllerTest {
     @Disabled("Not Implemented")
     void integrationsLogsPostClientApiTest() throws IOException {
         // given
-        IntegrationLogsRequest body = new IntegrationLogsRequest(Arrays.asList());
+        IntegrationLogsRequestCreate body = new IntegrationLogsRequestCreate(Arrays.asList());
         String uri = UriTemplate.of("/integrations/logs").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@19ce4eed");
+            .accept("[Ljava.lang.String;@20d65b51");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, IntegrationLogsSuccessResponse.class);

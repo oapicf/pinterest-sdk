@@ -8,9 +8,9 @@ from io import BytesIO
 from app.openapi_server.models.catalogs_create_report_response import CatalogsCreateReportResponse  # noqa: E501
 from app.openapi_server.models.catalogs_report import CatalogsReport  # noqa: E501
 from app.openapi_server.models.catalogs_report_parameters import CatalogsReportParameters  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.catalogs_report_stats_parameters import CatalogsReportStatsParameters  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from app.openapi_server.models.reports_stats200_response import ReportsStats200Response  # noqa: E501
-from app.openapi_server.models.reports_stats_parameters_parameter import ReportsStatsParametersParameter  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -22,7 +22,7 @@ class TestCatalogReportsController(BaseTestCase):
 
         Build catalogs report
         """
-        body = {"catalog_type":"RETAIL"}
+        body = {"catalog_type":"RETAIL","report":{"feed_id":"feed_id","processing_result_id":"processing_result_id","report_type":"FEED_INGESTION_ISSUES"}}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/catalogs/reports',
@@ -53,9 +53,9 @@ class TestCatalogReportsController(BaseTestCase):
         List report stats
         """
         query_string = [('ad_account_id', 'ad_account_id_example'),
-                        ('page_size', 25),
+                        ('parameters', {'key': openapi_server.CatalogsReportStatsParameters()}),
                         ('bookmark', 'bookmark_example'),
-                        ('parameters', openapi_server.ReportsStatsParametersParameter())]
+                        ('page_size', 25)]
         response = self.client.open(
             '/v5/catalogs/reports/stats',
             method='GET',

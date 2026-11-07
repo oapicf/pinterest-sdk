@@ -66,9 +66,10 @@ func Test_openapi_PinsAPIService(t *testing.T) {
 
 		var pinId string
 
-		httpRes, err := apiClient.PinsAPI.PinsDelete(context.Background(), pinId).Execute()
+		resp, httpRes, err := apiClient.PinsAPI.PinsDelete(context.Background(), pinId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -31,7 +31,7 @@ import org.openapitools.model.AudienceInsightType;
  */
 
 @ApiModel(description = "Audience interests and demographics.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AudienceInsights   {
   
   private List<AudienceCategory> categories = new ArrayList<>();

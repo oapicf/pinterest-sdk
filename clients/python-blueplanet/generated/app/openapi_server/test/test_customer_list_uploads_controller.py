@@ -5,10 +5,10 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
+from app.openapi_server.models.customer_list_upload import CustomerListUpload  # noqa: E501
 from app.openapi_server.models.customer_list_upload_create_request import CustomerListUploadCreateRequest  # noqa: E501
 from app.openapi_server.models.customer_list_upload_create_response import CustomerListUploadCreateResponse  # noqa: E501
-from app.openapi_server.models.customer_list_upload_response import CustomerListUploadResponse  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -20,7 +20,7 @@ class TestCustomerListUploadsController(BaseTestCase):
 
         Create customer list upload
         """
-        body = {"total_parts":2,"operation":"operation"}
+        body = {"operation":"REMOVE","total_parts":2}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/customer_lists/{customer_list_id}/uploads'.format(ad_account_id='ad_account_id_example', customer_list_id='customer_list_id_example'),
             method='POST',

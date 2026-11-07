@@ -5,10 +5,10 @@ from fastapi.testclient import TestClient
 
 from pydantic import Field, field_validator  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.audience_definition_response import AudienceDefinitionResponse  # noqa: F401
 from openapi_server.models.audience_insight_type import AudienceInsightType  # noqa: F401
-from openapi_server.models.audience_insights_response import AudienceInsightsResponse  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.audience_insights import AudienceInsights  # noqa: F401
+from openapi_server.models.audience_insights_scope_and_type_get200_response import AudienceInsightsScopeAndTypeGet200Response  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 
 
 def test_audience_insights_get(client: TestClient):
@@ -16,7 +16,7 @@ def test_audience_insights_get(client: TestClient):
 
     Get audience insights
     """
-    params = [("audience_insight_type", YOUR_TOTAL_AUDIENCE)]
+    params = [("audience_insight_type", openapi_server.AudienceInsightType())]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",

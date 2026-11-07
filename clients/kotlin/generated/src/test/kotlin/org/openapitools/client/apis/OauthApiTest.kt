@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,9 +27,11 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.OauthApi
-import org.openapitools.client.models.ConversionAccessTokenResponse
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.OauthAccessTokenResponse
+import org.openapitools.client.models.ConversionAccessToken
+import org.openapitools.client.models.OauthAccessToken
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.TokenGrantType
+import org.openapitools.client.models.TokenTypeHint
 
 class OauthApiTest : ShouldSpec() {
     init {
@@ -31,15 +41,20 @@ class OauthApiTest : ShouldSpec() {
         // to test oauthConversionToken
         should("test oauthConversionToken") {
             // uncomment below to test oauthConversionToken
-            //val result : ConversionAccessTokenResponse = apiInstance.oauthConversionToken()
+            //val result : ConversionAccessToken = apiInstance.oauthConversionToken()
             //result shouldBe ("TODO")
         }
 
         // to test oauthToken
         should("test oauthToken") {
             // uncomment below to test oauthToken
-            //val grantType : kotlin.String = grantType_example // kotlin.String | 
-            //val result : OauthAccessTokenResponse = apiInstance.oauthToken(grantType)
+            //val grantType : TokenGrantType =  // TokenGrantType | 
+            //val code : kotlin.String = code_example // kotlin.String | 
+            //val continuousRefresh : kotlin.String = continuousRefresh_example // kotlin.String |   If your app was created before **September 25, 2025**, set to `true` to generate a [continuous refresh token](/docs/getting-started/set-up-authentication-and-authorization/#exchange-the-default-refresh-token-for-a-continuous-refresh-token), which has a 60-day expiration window. We no longer support the legacy refresh token, which has a 365-day expiration window.    If your app was created on or after **September 25, 2025**, ignore this parameter. You automatically receive a continuous refresh token when you request an access token.
+            //val redirectUri : kotlin.String = redirectUri_example // kotlin.String | 
+            //val refreshToken : kotlin.String = refreshToken_example // kotlin.String | 
+            //val scope : kotlin.String = scope_example // kotlin.String | 
+            //val result : OauthAccessToken = apiInstance.oauthToken(grantType, code, continuousRefresh, redirectUri, refreshToken, scope)
             //result shouldBe ("TODO")
         }
 
@@ -47,7 +62,7 @@ class OauthApiTest : ShouldSpec() {
         should("test tokenRevoke") {
             // uncomment below to test tokenRevoke
             //val token : kotlin.String = token_example // kotlin.String | The token to revoke.
-            //val tokenTypeHint : kotlin.String = tokenTypeHint_example // kotlin.String | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
+            //val tokenTypeHint : TokenTypeHint =  // TokenTypeHint | The type of the token to revoke. Please refer to [our developer guide for more information](https://developers.pinterest.com/docs/getting-started/set-up-authentication-and-authorization/) for more information.
             //apiInstance.tokenRevoke(token, tokenTypeHint)
         }
 

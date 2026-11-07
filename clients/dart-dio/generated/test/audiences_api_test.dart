@@ -9,9 +9,9 @@ void main() {
   group(AudiencesApi, () {
     // Create audience
     //
-    // Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific `audience_ids` when you create an ad group. <p/> Learn about <a href=\"/docs/work-with-targets-and-audiences/create-audiences/\" target=\"_blank\">creating different kinds of audiences</a>.
+    // Create a new audience for the ad account.
     //
-    //Future<Audience> audiencesCreate(String adAccountId, AudienceCreateRequest audienceCreateRequest) async
+    //Future<AdAccountsAudience> audiencesCreate(String adAccountId, AdAccountsAudienceCreate adAccountsAudienceCreate) async
     test('test audiencesCreate', () async {
       // TODO
     });
@@ -20,7 +20,7 @@ void main() {
     //
     // Get a specific audience given the audience ID.
     //
-    //Future<Audience> audiencesGet(String adAccountId, String audienceId) async
+    //Future<AdAccountsAudience> audiencesGet(String audienceId, String adAccountId) async
     test('test audiencesGet', () async {
       // TODO
     });
@@ -29,16 +29,16 @@ void main() {
     //
     // Get list of audiences for the ad account.
     //
-    //Future<AudiencesList200Response> audiencesList(String adAccountId, { String bookmark, String order, int pageSize, String ownershipType }) async
+    //Future<AudiencesList200Response> audiencesList(String adAccountId, { String bookmark, int pageSize, PinterestLibPaginationOrder order, AudienceOwnershipType ownershipType, bool excludeNca }) async
     test('test audiencesList', () async {
       // TODO
     });
 
     // Update audience
     //
-    // Update (edit or remove) an existing targeting audience.
+    // Update an existing audience for the ad account.
     //
-    //Future<Audience> audiencesUpdate(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest) async
+    //Future<AdAccountsAudience> audiencesUpdate(String audienceId, String adAccountId, AdAccountsAudienceUpdate adAccountsAudienceUpdate) async
     test('test audiencesUpdate', () async {
       // TODO
     });

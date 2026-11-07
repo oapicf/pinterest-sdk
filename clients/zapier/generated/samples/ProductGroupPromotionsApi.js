@@ -1,12 +1,14 @@
 module.exports = {
-    "ProductGroupPromotionResponseSample": 
+    "ProductGroupPromotionsSample": 
+        { data: {} },
+    "ProductGroupPromotionsSample": 
         { data: {} },
     "ProductGroupPromotionSample": 
         { data: {} },
     "product_group_promotions_list_200_responseSample": 
         { data: {} },
-    "ProductGroupPromotionResponseSample": 
+    "ProductGroupPromotionsSample": 
         { data: {} },
-    "ProductGroupAnalyticsResponse_innerSample": 
+    "ProductGroupAnalyticsItemsSample": 
         { data: {} },
 }

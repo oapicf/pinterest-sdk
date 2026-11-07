@@ -85,7 +85,7 @@ public class MediaControllerTest {
         MediaUploadCreate body = new MediaUploadCreate(org.openapitools.model.MediaUploadType.fromValue("video"));
         String uri = UriTemplate.of("/media").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@2ca10d93");
+            .accept("[Ljava.lang.String;@35f016d6");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, MediaUpload.class);
@@ -131,7 +131,7 @@ public class MediaControllerTest {
             put("media_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7b11904c");
+            .accept("[Ljava.lang.String;@1e90ca70");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Media.class);
@@ -175,7 +175,7 @@ public class MediaControllerTest {
         // given
         String uri = UriTemplate.of("/media").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@60ed0a16");
+            .accept("[Ljava.lang.String;@7b8e5116");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 

@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  * Lead form test action: submit sample answers and receive the resulting subscription id.
  */
 @ApiModel(description = "Lead form test action: submit sample answers and receive the resulting subscription id.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadFormTest   {
   @JsonProperty("subscription_id")
   private String subscriptionId;

@@ -22,8 +22,8 @@ module CustomerListUploadsApiHandlerTestsHelper =
   let mutable CustomerListUploadsCreateBody = ""
 
   CustomerListUploadsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;total_parts&quot; : 2,
-  &quot;operation&quot; : &quot;operation&quot;
+  &quot;operation&quot; : &quot;REMOVE&quot;,
+  &quot;total_parts&quot; : 2
 }"
   CustomerListUploadsCreateExamples <- CustomerListUploadsCreateExamples.Add("application/json", CustomerListUploadsCreateBody)
 

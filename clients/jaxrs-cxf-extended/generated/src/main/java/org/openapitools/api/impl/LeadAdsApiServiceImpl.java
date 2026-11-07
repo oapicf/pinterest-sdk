@@ -33,9 +33,9 @@ public class LeadAdsApiServiceImpl implements LeadAdsApi {
      *
      */
     @Override
-    public void adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId) {
+    public LeadSubscription adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId) {
         // TODO: Implement...
-
+        return null;
     }
 
     /**

@@ -15,7 +15,7 @@ spec = withApp $ do
 
     describe "postUserAccountFollowingByTextR" $
         it "returns 501 Not Implemented" $ do
-            post $ UserAccountFollowingByTextR "username"
+            post $ UserAccountFollowingByTextR "username_example"
             statusIs 501
 
     describe "getUserAccountFollowersR" $
@@ -50,7 +50,7 @@ spec = withApp $ do
 
     describe "getUsersByTextInterestsFollowR" $
         it "returns 501 Not Implemented" $ do
-            get $ UsersByTextInterestsFollowR "username"
+            get $ UsersByTextInterestsFollowR "username_example"
             statusIs 501
 
     describe "getUserAccountR" $

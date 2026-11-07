@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 README.md
 pom.xml
 src/main/java/org/openapitools/OpenApiGeneratorApplication.java
@@ -1145,3 +1146,20 @@ src/main/java/org/openapitools/model/VideoPinMetricTypes.java
 src/main/java/org/openapitools/model/WebsiteVerificationMethod.java
 src/main/java/org/openapitools/model/WorkloadState.java
 src/main/resources/application.properties
+src/test/java/org/openapitools/api/AdAccountsApiTest.java
+src/test/java/org/openapitools/api/AdvancedAuctionApiTest.java
+src/test/java/org/openapitools/api/BoardsApiTest.java
+src/test/java/org/openapitools/api/BusinessAccessApiTest.java
+src/test/java/org/openapitools/api/BusinessesApiTest.java
+src/test/java/org/openapitools/api/CatalogsApiTest.java
+src/test/java/org/openapitools/api/IntegrationsApiTest.java
+src/test/java/org/openapitools/api/MediaApiTest.java
+src/test/java/org/openapitools/api/NotificationsApiTest.java
+src/test/java/org/openapitools/api/OauthApiTest.java
+src/test/java/org/openapitools/api/PinsApiTest.java
+src/test/java/org/openapitools/api/ResourcesApiTest.java
+src/test/java/org/openapitools/api/SearchApiTest.java
+src/test/java/org/openapitools/api/TermsApiTest.java
+src/test/java/org/openapitools/api/TrendsApiTest.java
+src/test/java/org/openapitools/api/UserAccountApiTest.java
+src/test/java/org/openapitools/api/UsersApiTest.java

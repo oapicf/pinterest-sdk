@@ -15,5 +15,5 @@ spec = withApp $ do
 
     describe "getAdAccountsByTextLeadsExportByTextR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextLeadsExportByTextR "adAccountId_example" "123755885175"
+            get $ AdAccountsByTextLeadsExportByTextR "adAccountId_example" "leadsExportId_example"
             statusIs 501

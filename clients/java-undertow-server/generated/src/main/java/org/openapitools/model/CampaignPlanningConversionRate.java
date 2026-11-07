@@ -26,7 +26,7 @@ import org.openapitools.model.CampaignPlanningConversionEvent;
  */
 
 @ApiModel(description = "Conversion rate estimate for a specific conversion event and attribution window combination.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningConversionRate   {
   
   private CampaignPlanningConversionAttribution attributionWindows;

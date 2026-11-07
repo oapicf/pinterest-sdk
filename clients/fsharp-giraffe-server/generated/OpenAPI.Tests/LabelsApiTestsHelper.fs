@@ -18,11 +18,22 @@ open OpenAPI.LabelsApiHandlerParams
 module LabelsApiHandlerTestsHelper =
 
 
+  let mutable LabelsApplyExamples = Map.empty
+  let mutable LabelsApplyBody = ""
+
+  LabelsApplyBody <- WebUtility.HtmlDecode "{
+  &quot;entity_ids&quot; : [ &quot;entity_ids&quot;, &quot;entity_ids&quot; ]
+}"
+  LabelsApplyExamples <- LabelsApplyExamples.Add("application/json", LabelsApplyBody)
+
+  let getLabelsApplyExample mediaType =
+    LabelsApplyExamples.[mediaType]
+      |> getConverter mediaType
+
   let mutable LabelsCreateExamples = Map.empty
   let mutable LabelsCreateBody = ""
 
   LabelsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;parent_id&quot; : &quot;626753052072&quot;,
   &quot;labels&quot; : [ {
     &quot;label_type&quot; : &quot;BRAND&quot;,
     &quot;value&quot; : &quot;value&quot;
@@ -39,18 +50,30 @@ module LabelsApiHandlerTestsHelper =
   ()
 
 
+  let mutable LabelsRemoveExamples = Map.empty
+  let mutable LabelsRemoveBody = ""
+
+  LabelsRemoveBody <- WebUtility.HtmlDecode "{
+  &quot;entity_ids&quot; : [ &quot;entity_ids&quot;, &quot;entity_ids&quot; ]
+}"
+  LabelsRemoveExamples <- LabelsRemoveExamples.Add("application/json", LabelsRemoveBody)
+
+  let getLabelsRemoveExample mediaType =
+    LabelsRemoveExamples.[mediaType]
+      |> getConverter mediaType
+
   let mutable LabelsUpdateExamples = Map.empty
   let mutable LabelsUpdateBody = ""
 
   LabelsUpdateBody <- WebUtility.HtmlDecode "{
   &quot;labels&quot; : [ {
     &quot;id&quot; : &quot;1106385754497&quot;,
-    &quot;value&quot; : &quot;value&quot;,
-    &quot;status&quot; : &quot;ACTIVE&quot;
+    &quot;status&quot; : &quot;ACTIVE&quot;,
+    &quot;value&quot; : &quot;value&quot;
   }, {
     &quot;id&quot; : &quot;1106385754497&quot;,
-    &quot;value&quot; : &quot;value&quot;,
-    &quot;status&quot; : &quot;ACTIVE&quot;
+    &quot;status&quot; : &quot;ACTIVE&quot;,
+    &quot;value&quot; : &quot;value&quot;
   } ]
 }"
   LabelsUpdateExamples <- LabelsUpdateExamples.Add("application/json", LabelsUpdateBody)

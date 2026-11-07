@@ -42,7 +42,7 @@ import javax.annotation.Generated;
   CampaignBidOptions.JSON_PROPERTY_PLACEMENT_MULTIPLIERS
 })
 @JsonTypeName("CampaignBidOptions")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CampaignBidOptions {
     public static final String JSON_PROPERTY_AGE_BUCKET_MULTIPLIERS = "age_bucket_multipliers";

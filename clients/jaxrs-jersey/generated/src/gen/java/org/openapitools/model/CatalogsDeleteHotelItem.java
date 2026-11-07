@@ -31,7 +31,7 @@ import javax.validation.Valid;
   CatalogsDeleteHotelItem.JSON_PROPERTY_HOTEL_ID,
   CatalogsDeleteHotelItem.JSON_PROPERTY_OPERATION
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsDeleteHotelItem   {
   public static final String JSON_PROPERTY_HOTEL_ID = "hotel_id";
   @JsonProperty(JSON_PROPERTY_HOTEL_ID)

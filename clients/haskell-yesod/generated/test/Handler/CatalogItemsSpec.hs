@@ -15,7 +15,7 @@ spec = withApp $ do
 
     describe "getCatalogsItemsBatchByTextR" $
         it "returns 501 Not Implemented" $ do
-            get $ CatalogsItemsBatchByTextR "66753b9bb65c46c49bd8503b27fecf9e"
+            get $ CatalogsItemsBatchByTextR "batchId_example"
             statusIs 501
 
     describe "postCatalogsItemsBatchR" $

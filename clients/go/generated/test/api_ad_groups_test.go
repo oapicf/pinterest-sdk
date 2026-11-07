@@ -78,14 +78,74 @@ func Test_openapi_AdGroupsAPIService(t *testing.T) {
 
 	})
 
-	t.Run("Test AdGroupsAPIService AdGroupsGet", func(t *testing.T) {
+	t.Run("Test AdGroupsAPIService AdGroupsDynamicTitlesDownloadCsv", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
 		var adAccountId string
 		var adGroupId string
 
-		resp, httpRes, err := apiClient.AdGroupsAPI.AdGroupsGet(context.Background(), adAccountId, adGroupId).Execute()
+		resp, httpRes, err := apiClient.AdGroupsAPI.AdGroupsDynamicTitlesDownloadCsv(context.Background(), adAccountId, adGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdGroupsAPIService AdGroupsDynamicTitlesGetStatus", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+		var adGroupId string
+
+		resp, httpRes, err := apiClient.AdGroupsAPI.AdGroupsDynamicTitlesGetStatus(context.Background(), adAccountId, adGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdGroupsAPIService AdGroupsDynamicTitlesGetUploadUrl", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+		var adGroupId string
+
+		resp, httpRes, err := apiClient.AdGroupsAPI.AdGroupsDynamicTitlesGetUploadUrl(context.Background(), adAccountId, adGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdGroupsAPIService AdGroupsDynamicTitlesProcessCsv", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+		var adGroupId string
+
+		resp, httpRes, err := apiClient.AdGroupsAPI.AdGroupsDynamicTitlesProcessCsv(context.Background(), adAccountId, adGroupId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdGroupsAPIService AdGroupsGet", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adGroupId string
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.AdGroupsAPI.AdGroupsGet(context.Background(), adGroupId, adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -128,6 +188,20 @@ func Test_openapi_AdGroupsAPIService(t *testing.T) {
 		var adAccountId string
 
 		resp, httpRes, err := apiClient.AdGroupsAPI.AdGroupsUpdate(context.Background(), adAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdGroupsAPIService GetAdGroupsByPromotionIdsList", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.AdGroupsAPI.GetAdGroupsByPromotionIdsList(context.Background(), adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

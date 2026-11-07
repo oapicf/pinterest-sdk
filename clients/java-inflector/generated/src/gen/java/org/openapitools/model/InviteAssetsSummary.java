@@ -17,7 +17,7 @@ import org.openapitools.model.InviteAssetsSummaryItem;
  **/
 
 @ApiModel(description = "Ad accounts and profiles the member/partner will be granted access to with this invite/request.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteAssetsSummary   {
   @JsonProperty("ad_accounts")
   private List<InviteAssetsSummaryItem> adAccounts = null;

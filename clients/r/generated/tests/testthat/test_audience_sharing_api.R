@@ -10,11 +10,11 @@ test_that("AdAccountsAudiencesSharedAccountsList", {
   # base path: https://api.pinterest.com/v5
   # List accounts with access to an audience owned by an ad account
   # List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
-  # @param ad_account_id character Unique identifier of an ad account.
   # @param audience_id character Unique identifier of the audience to use to filter the results.
   # @param account_type AudienceAccountType Filter accounts by account type.
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [AdAccountsAudiencesSharedAccountsList200Response]
 
   # uncomment below to test the operation
@@ -29,8 +29,8 @@ test_that("BusinessAccountAudiencesSharedAccountsList", {
   # @param business_id character Unique identifier of the requesting business.
   # @param audience_id character Unique identifier of the audience to use to filter the results.
   # @param account_type AudienceAccountType Filter accounts by account type.
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [AdAccountsAudiencesSharedAccountsList200Response]
 
   # uncomment below to test the operation
@@ -43,10 +43,10 @@ test_that("SharedAudiencesForBusinessList", {
   # List received audiences for a business
   # Get a list of received audiences for the given business.
   # @param business_id character Unique identifier of the requesting business.
+  # @param order Order The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param order character The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @return [AudiencesList200Response]
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @return [SharedAudiencesForBusinessList200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -56,10 +56,10 @@ test_that("UpdateAdAccountToAdAccountSharedAudience", {
   # tests for UpdateAdAccountToAdAccountSharedAudience
   # base path: https://api.pinterest.com/v5
   # Update audience sharing between ad accounts
-  # From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+  # From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param shared_audience SharedAudience 
-  # @return [SharedAudienceResponse]
+  # @param ad_account_to_ad_account_shared_audience_update_with_required_body AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody 
+  # @return [AdAccountToAdAccountSharedAudience]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -69,10 +69,10 @@ test_that("UpdateAdAccountToBusinessSharedAudience", {
   # tests for UpdateAdAccountToBusinessSharedAudience
   # base path: https://api.pinterest.com/v5
   # Update audience sharing from an ad account to businesses
-  # From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+  # From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param business_shared_audience BusinessSharedAudience 
-  # @return [BusinessSharedAudienceResponse]
+  # @param ad_account_to_business_shared_audience_update_with_required_body AdAccountToBusinessSharedAudienceUpdateWithRequiredBody 
+  # @return [AdAccountToBusinessSharedAudience]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -82,10 +82,10 @@ test_that("UpdateBusinessToAdAccountSharedAudience", {
   # tests for UpdateBusinessToAdAccountSharedAudience
   # base path: https://api.pinterest.com/v5
   # Update audience sharing from a business to ad accounts
-  # From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+  # From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   # @param business_id character Unique identifier of the requesting business.
-  # @param shared_audience SharedAudience 
-  # @return [SharedAudienceResponse]
+  # @param business_to_ad_account_shared_audience_update_with_required_body BusinessToAdAccountSharedAudienceUpdateWithRequiredBody 
+  # @return [BusinessToAdAccountSharedAudience]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -95,10 +95,10 @@ test_that("UpdateBusinessToBusinessSharedAudience", {
   # tests for UpdateBusinessToBusinessSharedAudience
   # base path: https://api.pinterest.com/v5
   # Update audience sharing between businesses
-  # From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+  # From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
   # @param business_id character Unique identifier of the requesting business.
-  # @param business_shared_audience BusinessSharedAudience 
-  # @return [BusinessSharedAudienceResponse]
+  # @param business_to_business_shared_audience_update_with_required_body BusinessToBusinessSharedAudienceUpdateWithRequiredBody 
+  # @return [BusinessToBusinessSharedAudience]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

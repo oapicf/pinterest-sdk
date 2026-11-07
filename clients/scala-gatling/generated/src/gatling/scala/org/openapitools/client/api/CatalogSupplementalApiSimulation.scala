@@ -138,8 +138,8 @@ class CatalogSupplementalApiSimulation extends Simulation {
         .feed(catalogs_local_stores/deletePATHFeeder)
         .exec(http("catalogsLocalStoresDelete")
         .httpRequest("DELETE","/catalogs/${catalog_id}/local_stores")
-        .queryParam("ids","${ids}")
         .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("ids","${ids}")
 )
 
     // Run scncatalogsLocalStoresDelete with warm up and reach a constant rate for entire duration
@@ -155,10 +155,10 @@ class CatalogSupplementalApiSimulation extends Simulation {
         .feed(catalogs_local_stores/listPATHFeeder)
         .exec(http("catalogsLocalStoresList")
         .httpRequest("GET","/catalogs/${catalog_id}/local_stores")
-        .queryParam("ids","${ids}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("bookmark","${bookmark}")
+        .queryParam("page_size","${page_size}")
+        .queryParam("ids","${ids}")
 )
 
     // Run scncatalogsLocalStoresList with warm up and reach a constant rate for entire duration

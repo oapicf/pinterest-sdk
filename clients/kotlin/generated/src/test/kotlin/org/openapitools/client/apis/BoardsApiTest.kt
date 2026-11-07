@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -23,13 +31,14 @@ import org.openapitools.client.models.Board
 import org.openapitools.client.models.BoardCreate
 import org.openapitools.client.models.BoardPrivacyFilter
 import org.openapitools.client.models.BoardSection
+import org.openapitools.client.models.BoardSectionCreate
+import org.openapitools.client.models.BoardSectionUpdateWithRequiredBody
 import org.openapitools.client.models.BoardSectionsList200Response
 import org.openapitools.client.models.BoardWithUpdatePrivacy
 import org.openapitools.client.models.BoardWithUpdatePrivacyUpdate
 import org.openapitools.client.models.BoardsList200Response
 import org.openapitools.client.models.BoardsListPins200Response
 import org.openapitools.client.models.CreativeType
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.PinterestLibError
 
 class BoardsApiTest : ShouldSpec() {
@@ -41,9 +50,9 @@ class BoardsApiTest : ShouldSpec() {
         should("test boardSectionsCreate") {
             // uncomment below to test boardSectionsCreate
             //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
-            //val boardSection : BoardSection =  // BoardSection | Create a board section.
+            //val boardSectionCreate : BoardSectionCreate =  // BoardSectionCreate | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : BoardSection = apiInstance.boardSectionsCreate(boardId, boardSection, adAccountId)
+            //val result : BoardSection = apiInstance.boardSectionsCreate(boardId, boardSectionCreate, adAccountId)
             //result shouldBe ("TODO")
         }
 
@@ -53,7 +62,8 @@ class BoardsApiTest : ShouldSpec() {
             //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
             //val sectionId : kotlin.String = sectionId_example // kotlin.String | Unique identifier of a board section.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //apiInstance.boardSectionsDelete(boardId, sectionId, adAccountId)
+            //val result : BoardSection = apiInstance.boardSectionsDelete(boardId, sectionId, adAccountId)
+            //result shouldBe ("TODO")
         }
 
         // to test boardSectionsList
@@ -62,7 +72,7 @@ class BoardsApiTest : ShouldSpec() {
             //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : BoardSectionsList200Response = apiInstance.boardSectionsList(boardId, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -74,7 +84,7 @@ class BoardsApiTest : ShouldSpec() {
             //val sectionId : kotlin.String = sectionId_example // kotlin.String | Unique identifier of a board section.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : BoardsListPins200Response = apiInstance.boardSectionsListPins(boardId, sectionId, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -84,9 +94,9 @@ class BoardsApiTest : ShouldSpec() {
             // uncomment below to test boardSectionsUpdate
             //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
             //val sectionId : kotlin.String = sectionId_example // kotlin.String | Unique identifier of a board section.
-            //val boardSection : BoardSection =  // BoardSection | Update a board section.
+            //val boardSectionUpdateWithRequiredBody : BoardSectionUpdateWithRequiredBody =  // BoardSectionUpdateWithRequiredBody | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : BoardSection = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId)
+            //val result : BoardSection = apiInstance.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId)
             //result shouldBe ("TODO")
         }
 
@@ -104,7 +114,8 @@ class BoardsApiTest : ShouldSpec() {
             // uncomment below to test boardsDelete
             //val boardId : kotlin.String = boardId_example // kotlin.String | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //apiInstance.boardsDelete(boardId, adAccountId)
+            //val result : Board = apiInstance.boardsDelete(boardId, adAccountId)
+            //result shouldBe ("TODO")
         }
 
         // to test boardsGet
@@ -131,12 +142,12 @@ class BoardsApiTest : ShouldSpec() {
         should("test boardsListPins") {
             // uncomment below to test boardsListPins
             //val boardId : kotlin.String = boardId_example // kotlin.String | Unique identifier of a board.
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val creativeTypes : kotlin.collections.List<CreativeType> =  // kotlin.collections.List<CreativeType> | Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val pinMetrics : kotlin.Boolean = true // kotlin.Boolean | Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
-            //val result : BoardsListPins200Response = apiInstance.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics)
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : BoardsListPins200Response = apiInstance.boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 

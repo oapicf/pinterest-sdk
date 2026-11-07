@@ -11,7 +11,7 @@ import org.openapitools.model.CatalogsProductGroupMultipleStringListCriteria;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class GoogleProductCategory3Filter   {
   @JsonProperty("GOOGLE_PRODUCT_CATEGORY_3")
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_3;

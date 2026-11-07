@@ -1,16 +1,17 @@
 package org.openapitools.controller;
 
 import org.openapitools.model.AuthRespondInvitesBody;
-import org.openapitools.model.CancelInvitesBody;
+import org.openapitools.model.CancelInvitesRequest;
+import org.openapitools.model.CancelInvitesResponse;
 import org.openapitools.model.CreateAssetAccessRequestBody;
 import org.openapitools.model.CreateAssetAccessRequestResponse;
 import org.openapitools.model.CreateAssetInvitesRequest;
 import org.openapitools.model.CreateInvitesResultsResponseArray;
 import org.openapitools.model.CreateMembershipOrPartnershipInvitesBody;
-import org.openapitools.model.DeleteInvitesResultsResponseArray;
-import org.openapitools.model.Error;
 import org.openapitools.model.GetInvites200Response;
+import org.openapitools.model.InviteFilterStatus;
 import org.openapitools.model.InviteType;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -71,7 +72,7 @@ public class BusinessAccessInviteControllerTest {
     @Disabled("Not Implemented")
     void assetAccessRequestsCreateMethodTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         CreateAssetAccessRequestBody createAssetAccessRequestBody = new CreateAssetAccessRequestBody(Arrays.asList());
 
         // when
@@ -94,10 +95,10 @@ public class BusinessAccessInviteControllerTest {
         CreateAssetAccessRequestBody body = new CreateAssetAccessRequestBody(Arrays.asList());
         String uri = UriTemplate.of("/businesses/{business_id}/requests/assets/access").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@627a290d");
+            .accept("[Ljava.lang.String;@3d051b2f");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CreateAssetAccessRequestResponse.class);
@@ -119,11 +120,11 @@ public class BusinessAccessInviteControllerTest {
     @Disabled("Not Implemented")
     void cancelInvitesOrRequestsMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        CancelInvitesBody cancelInvitesBody = new CancelInvitesBody(Arrays.asList("example"));
+        String businessId = "example";
+        CancelInvitesRequest cancelInvitesRequest = new CancelInvitesRequest(Arrays.asList("example"));
 
         // when
-        DeleteInvitesResultsResponseArray result = controller.cancelInvitesOrRequests(businessId, cancelInvitesBody).block();
+        CancelInvitesResponse result = controller.cancelInvitesOrRequests(businessId, cancelInvitesRequest).block();
 
         // then
         Assertions.assertTrue(true);
@@ -139,16 +140,16 @@ public class BusinessAccessInviteControllerTest {
     @Disabled("Not Implemented")
     void cancelInvitesOrRequestsClientApiTest() throws IOException {
         // given
-        CancelInvitesBody body = new CancelInvitesBody(Arrays.asList("example"));
+        CancelInvitesRequest body = new CancelInvitesRequest(Arrays.asList("example"));
         String uri = UriTemplate.of("/businesses/{business_id}/invites").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@2e6e5804");
+            .accept("[Ljava.lang.String;@5c25324c");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, DeleteInvitesResultsResponseArray.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, CancelInvitesResponse.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -167,7 +168,7 @@ public class BusinessAccessInviteControllerTest {
     @Disabled("Not Implemented")
     void createAssetInvitesMethodTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         CreateAssetInvitesRequest createAssetInvitesRequest = new CreateAssetInvitesRequest(Arrays.asList());
 
         // when
@@ -190,10 +191,10 @@ public class BusinessAccessInviteControllerTest {
         CreateAssetInvitesRequest body = new CreateAssetInvitesRequest(Arrays.asList());
         String uri = UriTemplate.of("/businesses/{business_id}/invites/assets/access").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@103f44dd");
+            .accept("[Ljava.lang.String;@2a885ae8");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UpdateInvitesResultsResponseArray.class);
@@ -215,8 +216,8 @@ public class BusinessAccessInviteControllerTest {
     @Disabled("Not Implemented")
     void createMembershipOrPartnershipInvitesMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody = new CreateMembershipOrPartnershipInvitesBody("BIZ_ADMIN", org.openapitools.model.InviteType.fromValue("MEMBER_INVITE"));
+        String businessId = "example";
+        CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody = new CreateMembershipOrPartnershipInvitesBody(org.openapitools.model.BusinessRoleForInvite.fromValue("BIZ_ADMIN"), org.openapitools.model.InviteType.fromValue("MEMBER_INVITE"));
 
         // when
         CreateInvitesResultsResponseArray result = controller.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody).block();
@@ -235,13 +236,13 @@ public class BusinessAccessInviteControllerTest {
     @Disabled("Not Implemented")
     void createMembershipOrPartnershipInvitesClientApiTest() throws IOException {
         // given
-        CreateMembershipOrPartnershipInvitesBody body = new CreateMembershipOrPartnershipInvitesBody("BIZ_ADMIN", org.openapitools.model.InviteType.fromValue("MEMBER_INVITE"));
+        CreateMembershipOrPartnershipInvitesBody body = new CreateMembershipOrPartnershipInvitesBody(org.openapitools.model.BusinessRoleForInvite.fromValue("BIZ_ADMIN"), org.openapitools.model.InviteType.fromValue("MEMBER_INVITE"));
         String uri = UriTemplate.of("/businesses/{business_id}/invites").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@5f27a3fe");
+            .accept("[Ljava.lang.String;@732d941a");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CreateInvitesResultsResponseArray.class);
@@ -263,9 +264,9 @@ public class BusinessAccessInviteControllerTest {
     @Disabled("Not Implemented")
     void getInvitesMethodTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         Boolean isMember = true;
-        List<String> inviteStatus = Arrays.asList("example");
+        List<InviteFilterStatus> inviteStatus = Arrays.asList();
         InviteType inviteType = InviteType.fromValue("MEMBER_INVITE");
         String bookmark = "example";
         Integer pageSize = 25;
@@ -289,13 +290,13 @@ public class BusinessAccessInviteControllerTest {
         // given
         String uri = UriTemplate.of("/businesses/{business_id}/invites").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6ca6db56");
+            .accept("[Ljava.lang.String;@66642533");
         request.getParameters()
             .add("is_member", String.valueOf(true)) // The query parameter format should be 
-            .add("invite_status", Arrays.asList("example")) // The query format should be multi
+            .add("invite_status", Arrays.asList()) // The query format should be multi
             .add("invite_type", String.valueOf(InviteType.fromValue("MEMBER_INVITE"))) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -342,7 +343,7 @@ public class BusinessAccessInviteControllerTest {
         AuthRespondInvitesBody body = new AuthRespondInvitesBody(Arrays.asList());
         String uri = UriTemplate.of("/businesses/invites").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@305410be");
+            .accept("[Ljava.lang.String;@13a6dce1");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, RespondToInvitesResponseArray.class);

@@ -13,7 +13,7 @@ private class OASBusinessAccessInviteApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
             'oaSCreateAssetAccessRequestBody' => ''
         };
 
@@ -25,6 +25,54 @@ private class OASBusinessAccessInviteApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessInviteApi(client);
+
+        js = JSON.serialize(OASCreateAssetAccessRequestResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateAssetAccessRequestResponse.getExample();
+        response = (OASCreateAssetAccessRequestResponse) api.assetAccessRequestsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateAssetAccessRequestResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateAssetAccessRequestResponse.getExample();
+        response = (OASCreateAssetAccessRequestResponse) api.assetAccessRequestsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateAssetAccessRequestResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateAssetAccessRequestResponse.getExample();
+        response = (OASCreateAssetAccessRequestResponse) api.assetAccessRequestsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateAssetAccessRequestResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateAssetAccessRequestResponse.getExample();
+        response = (OASCreateAssetAccessRequestResponse) api.assetAccessRequestsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateAssetAccessRequestResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateAssetAccessRequestResponse.getExample();
+        response = (OASCreateAssetAccessRequestResponse) api.assetAccessRequestsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateAssetAccessRequestResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateAssetAccessRequestResponse.getExample();
+        response = (OASCreateAssetAccessRequestResponse) api.assetAccessRequestsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASCreateAssetAccessRequestResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -55,32 +103,32 @@ private class OASBusinessAccessInviteApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'oaSCancelInvitesBody' => ''
+            'businessId' => 'null',
+            'oaSCancelInvitesRequest' => ''
         };
 
         OASClient client;
         OASBusinessAccessInviteApi api;
-        OASDeleteInvitesResultsResponseArray response;
-        OASDeleteInvitesResultsResponseArray expectedResponse;
+        OASCancelInvitesResponse response;
+        OASCancelInvitesResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASBusinessAccessInviteApi(client);
 
-        js = JSON.serialize(OASDeleteInvitesResultsResponseArray.getExample());
+        js = JSON.serialize(OASCancelInvitesResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASDeleteInvitesResultsResponseArray.getExample();
-        response = (OASDeleteInvitesResultsResponseArray) api.cancelInvitesOrRequests(params);
+        expectedResponse = OASCancelInvitesResponse.getExample();
+        response = (OASCancelInvitesResponse) api.cancelInvitesOrRequests(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASDeleteInvitesResultsResponseArray.getExample());
+        js = JSON.serialize(OASCancelInvitesResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASDeleteInvitesResultsResponseArray.getExample();
-        response = (OASDeleteInvitesResultsResponseArray) api.cancelInvitesOrRequests(params);
+        expectedResponse = OASCancelInvitesResponse.getExample();
+        response = (OASCancelInvitesResponse) api.cancelInvitesOrRequests(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -97,7 +145,7 @@ private class OASBusinessAccessInviteApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
             'oaSCreateAssetInvitesRequest' => ''
         };
 
@@ -109,6 +157,54 @@ private class OASBusinessAccessInviteApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessInviteApi(client);
+
+        js = JSON.serialize(OASUpdateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateInvitesResultsResponseArray.getExample();
+        response = (OASUpdateInvitesResultsResponseArray) api.createAssetInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateInvitesResultsResponseArray.getExample();
+        response = (OASUpdateInvitesResultsResponseArray) api.createAssetInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateInvitesResultsResponseArray.getExample();
+        response = (OASUpdateInvitesResultsResponseArray) api.createAssetInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateInvitesResultsResponseArray.getExample();
+        response = (OASUpdateInvitesResultsResponseArray) api.createAssetInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateInvitesResultsResponseArray.getExample();
+        response = (OASUpdateInvitesResultsResponseArray) api.createAssetInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateInvitesResultsResponseArray.getExample();
+        response = (OASUpdateInvitesResultsResponseArray) api.createAssetInvites(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASUpdateInvitesResultsResponseArray.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -139,7 +235,7 @@ private class OASBusinessAccessInviteApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
             'oaSCreateMembershipOrPartnershipInvi' => ''
         };
 
@@ -151,6 +247,54 @@ private class OASBusinessAccessInviteApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessInviteApi(client);
+
+        js = JSON.serialize(OASCreateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateInvitesResultsResponseArray.getExample();
+        response = (OASCreateInvitesResultsResponseArray) api.createMembershipOrPartnershipInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateInvitesResultsResponseArray.getExample();
+        response = (OASCreateInvitesResultsResponseArray) api.createMembershipOrPartnershipInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateInvitesResultsResponseArray.getExample();
+        response = (OASCreateInvitesResultsResponseArray) api.createMembershipOrPartnershipInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateInvitesResultsResponseArray.getExample();
+        response = (OASCreateInvitesResultsResponseArray) api.createMembershipOrPartnershipInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateInvitesResultsResponseArray.getExample();
+        response = (OASCreateInvitesResultsResponseArray) api.createMembershipOrPartnershipInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCreateInvitesResultsResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCreateInvitesResultsResponseArray.getExample();
+        response = (OASCreateInvitesResultsResponseArray) api.createMembershipOrPartnershipInvites(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASCreateInvitesResultsResponseArray.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -181,9 +325,9 @@ private class OASBusinessAccessInviteApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
             'isMember' => '',
-            'inviteStatus' => new List<String>{'PENDING'},
+            'inviteStatus' => new List<OASInviteFilterStatus>{OASInviteFilterStatus.getExample()},
             'inviteType' => '',
             'bookmark' => 'null',
             'pageSize' => ''
@@ -197,6 +341,46 @@ private class OASBusinessAccessInviteApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessInviteApi(client);
+
+        js = JSON.serialize(OASGetInvites200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASGetInvites200Response.getExample();
+        response = (OASGetInvites200Response) api.getInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASGetInvites200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASGetInvites200Response.getExample();
+        response = (OASGetInvites200Response) api.getInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASGetInvites200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASGetInvites200Response.getExample();
+        response = (OASGetInvites200Response) api.getInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASGetInvites200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASGetInvites200Response.getExample();
+        response = (OASGetInvites200Response) api.getInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASGetInvites200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASGetInvites200Response.getExample();
+        response = (OASGetInvites200Response) api.getInvites(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASGetInvites200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -238,6 +422,46 @@ private class OASBusinessAccessInviteApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessInviteApi(client);
+
+        js = JSON.serialize(OASRespondToInvitesResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASRespondToInvitesResponseArray.getExample();
+        response = (OASRespondToInvitesResponseArray) api.respondBusinessAccessInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASRespondToInvitesResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASRespondToInvitesResponseArray.getExample();
+        response = (OASRespondToInvitesResponseArray) api.respondBusinessAccessInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASRespondToInvitesResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASRespondToInvitesResponseArray.getExample();
+        response = (OASRespondToInvitesResponseArray) api.respondBusinessAccessInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASRespondToInvitesResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASRespondToInvitesResponseArray.getExample();
+        response = (OASRespondToInvitesResponseArray) api.respondBusinessAccessInvites(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASRespondToInvitesResponseArray.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASRespondToInvitesResponseArray.getExample();
+        response = (OASRespondToInvitesResponseArray) api.respondBusinessAccessInvites(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASRespondToInvitesResponseArray.getExample());
         res.setHeader('Content-Type', 'application/json');

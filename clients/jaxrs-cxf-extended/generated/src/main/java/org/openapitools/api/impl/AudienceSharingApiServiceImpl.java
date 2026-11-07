@@ -1,14 +1,19 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
+import org.openapitools.model.AdAccountToAdAccountSharedAudience;
+import org.openapitools.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.AdAccountToBusinessSharedAudience;
+import org.openapitools.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudiencesList200Response;
-import org.openapitools.model.BusinessSharedAudience;
-import org.openapitools.model.BusinessSharedAudienceResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.SharedAudience;
-import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.BusinessToAdAccountSharedAudience;
+import org.openapitools.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.BusinessToBusinessSharedAudience;
+import org.openapitools.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.Order;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.SharedAudiencesForBusinessList200Response;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -37,7 +42,7 @@ public class AudienceSharingApiServiceImpl implements AudienceSharingApi {
      *
      */
     @Override
-    public AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(String adAccountId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark) {
+    public AdAccountsAudiencesSharedAccountsList200Response adAccountsAudiencesSharedAccountsList(String audienceId, AudienceAccountType accountType, String adAccountId, String bookmark, Integer pageSize) {
         // TODO: Implement...
         return null;
     }
@@ -49,7 +54,7 @@ public class AudienceSharingApiServiceImpl implements AudienceSharingApi {
      *
      */
     @Override
-    public AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(String businessId, String audienceId, AudienceAccountType accountType, Integer pageSize, String bookmark) {
+    public AdAccountsAudiencesSharedAccountsList200Response businessAccountAudiencesSharedAccountsList(String businessId, String audienceId, AudienceAccountType accountType, String bookmark, Integer pageSize) {
         // TODO: Implement...
         return null;
     }
@@ -61,7 +66,7 @@ public class AudienceSharingApiServiceImpl implements AudienceSharingApi {
      *
      */
     @Override
-    public AudiencesList200Response sharedAudiencesForBusinessList(String businessId, String bookmark, String order, Integer pageSize) {
+    public SharedAudiencesForBusinessList200Response sharedAudiencesForBusinessList(String businessId, Order order, String bookmark, Integer pageSize) {
         // TODO: Implement...
         return null;
     }
@@ -69,11 +74,11 @@ public class AudienceSharingApiServiceImpl implements AudienceSharingApi {
     /**
      * Update audience sharing between ad accounts
      *
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      */
     @Override
-    public SharedAudienceResponse updateAdAccountToAdAccountSharedAudience(String adAccountId, SharedAudience sharedAudience) {
+    public AdAccountToAdAccountSharedAudience updateAdAccountToAdAccountSharedAudience(String adAccountId, AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody) {
         // TODO: Implement...
         return null;
     }
@@ -81,11 +86,11 @@ public class AudienceSharingApiServiceImpl implements AudienceSharingApi {
     /**
      * Update audience sharing from an ad account to businesses
      *
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      */
     @Override
-    public BusinessSharedAudienceResponse updateAdAccountToBusinessSharedAudience(String adAccountId, BusinessSharedAudience businessSharedAudience) {
+    public AdAccountToBusinessSharedAudience updateAdAccountToBusinessSharedAudience(String adAccountId, AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody) {
         // TODO: Implement...
         return null;
     }
@@ -93,11 +98,11 @@ public class AudienceSharingApiServiceImpl implements AudienceSharingApi {
     /**
      * Update audience sharing from a business to ad accounts
      *
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      */
     @Override
-    public SharedAudienceResponse updateBusinessToAdAccountSharedAudience(String businessId, SharedAudience sharedAudience) {
+    public BusinessToAdAccountSharedAudience updateBusinessToAdAccountSharedAudience(String businessId, BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody) {
         // TODO: Implement...
         return null;
     }
@@ -105,11 +110,11 @@ public class AudienceSharingApiServiceImpl implements AudienceSharingApi {
     /**
      * Update audience sharing between businesses
      *
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      */
     @Override
-    public BusinessSharedAudienceResponse updateBusinessToBusinessSharedAudience(String businessId, BusinessSharedAudience businessSharedAudience) {
+    public BusinessToBusinessSharedAudience updateBusinessToBusinessSharedAudience(String businessId, BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody) {
         // TODO: Implement...
         return null;
     }

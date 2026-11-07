@@ -3,7 +3,7 @@ private class OASTargetingTemplateApiTest {
     /**
      * Create targeting templates
      *
-     * &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,\n keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;\n &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse\n  performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+     * Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.\n\nTemplates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
      */
     @isTest
     private static void targetingTemplateCreateTest() {
@@ -19,41 +19,81 @@ private class OASTargetingTemplateApiTest {
 
         OASClient client;
         OASTargetingTemplateApi api;
-        OASTargetingTemplateGetResponseData response;
-        OASTargetingTemplateGetResponseData expectedResponse;
+        OASTargetingTemplate response;
+        OASTargetingTemplate expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASTargetingTemplateApi(client);
 
-        js = JSON.serialize(OASTargetingTemplateGetResponseData.getExample());
+        js = JSON.serialize(OASTargetingTemplate.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASTargetingTemplateGetResponseData.getExample();
-        response = (OASTargetingTemplateGetResponseData) api.targetingTemplateCreate(params);
+        expectedResponse = OASTargetingTemplate.getExample();
+        response = (OASTargetingTemplate) api.targetingTemplateCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASTargetingTemplateGetResponseData.getExample());
+        js = JSON.serialize(OASTargetingTemplate.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASTargetingTemplateGetResponseData.getExample();
-        response = (OASTargetingTemplateGetResponseData) api.targetingTemplateCreate(params);
+        expectedResponse = OASTargetingTemplate.getExample();
+        response = (OASTargetingTemplate) api.targetingTemplateCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASTargetingTemplateGetResponseData.getExample());
+        js = JSON.serialize(OASTargetingTemplate.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASTargetingTemplateGetResponseData.getExample();
-        response = (OASTargetingTemplateGetResponseData) api.targetingTemplateCreate(params);
+        expectedResponse = OASTargetingTemplate.getExample();
+        response = (OASTargetingTemplate) api.targetingTemplateCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplate.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplate.getExample();
+        response = (OASTargetingTemplate) api.targetingTemplateCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplate.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplate.getExample();
+        response = (OASTargetingTemplate) api.targetingTemplateCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplate.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplate.getExample();
+        response = (OASTargetingTemplate) api.targetingTemplateCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplate.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplate.getExample();
+        response = (OASTargetingTemplate) api.targetingTemplateCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplate.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplate.getExample();
+        response = (OASTargetingTemplate) api.targetingTemplateCreate(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * List targeting templates
      *
-     * Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+     * Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
      */
     @isTest
     private static void targetingTemplateListTest() {
@@ -64,11 +104,11 @@ private class OASTargetingTemplateApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'order' => ASCENDING,
-            'includeSizing' => '',
-            'searchQuery' => gaming,
+            'bookmark' => 'null',
             'pageSize' => '',
-            'bookmark' => 'null'
+            'order' => '',
+            'includeSizing' => '',
+            'searchQuery' => 'null'
         };
 
         OASClient client;
@@ -102,8 +142,72 @@ private class OASTargetingTemplateApiTest {
         expectedResponse = OASTargetingTemplateList200Response.getExample();
         response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASTargetingTemplateApi(client);
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTargetingTemplateList200Response.getExample();
+        response = (OASTargetingTemplateList200Response) api.targetingTemplateList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASTargetingTemplateList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -132,7 +236,7 @@ private class OASTargetingTemplateApiTest {
     /**
      * Update targeting templates
      *
-     * &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+     * Update the targeting template given advertiser ID and targeting template ID
      */
     @isTest
     private static void targetingTemplateUpdateTest() {
@@ -143,7 +247,7 @@ private class OASTargetingTemplateApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSTargetingTemplateUpdateRequest' => ''
+            'oaSTargetingTemplateUpdateRequestRea' => ''
         };
 
         OASClient client;
@@ -152,6 +256,38 @@ private class OASTargetingTemplateApiTest {
 
         client = new OASClient();
         api = new OASTargetingTemplateApi(client);
+
+        js = JSON.serialize();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = ;
+        response = () api.targetingTemplateUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = ;
+        response = () api.targetingTemplateUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = ;
+        response = () api.targetingTemplateUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize();
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = ;
+        response = () api.targetingTemplateUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize();
         res.setHeader('Content-Type', 'application/json');

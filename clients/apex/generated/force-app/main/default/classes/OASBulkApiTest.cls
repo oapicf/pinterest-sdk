@@ -3,7 +3,7 @@ private class OASBulkApiTest {
     /**
      * Get advertiser entities in bulk
      *
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads,\nkeywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,\nonly active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads,\nkeywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused,\nonly active entities will return data.
      */
     @isTest
     private static void bulkDownloadCreateTest() {
@@ -14,38 +14,86 @@ private class OASBulkApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSBulkDownloadRequest' => ''
+            'oaSBulkDownloadCreate' => ''
         };
 
         OASClient client;
         OASBulkApi api;
-        OASBulkDownloadResponse response;
-        OASBulkDownloadResponse expectedResponse;
+        OASBulkDownload response;
+        OASBulkDownload expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASBulkApi(client);
 
-        js = JSON.serialize(OASBulkDownloadResponse.getExample());
+        js = JSON.serialize(OASBulkDownload.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBulkDownloadResponse.getExample();
-        response = (OASBulkDownloadResponse) api.bulkDownloadCreate(params);
+        expectedResponse = OASBulkDownload.getExample();
+        response = (OASBulkDownload) api.bulkDownloadCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBulkDownloadResponse.getExample());
+        js = JSON.serialize(OASBulkDownload.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBulkDownloadResponse.getExample();
-        response = (OASBulkDownloadResponse) api.bulkDownloadCreate(params);
+        expectedResponse = OASBulkDownload.getExample();
+        response = (OASBulkDownload) api.bulkDownloadCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkDownload.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkDownload.getExample();
+        response = (OASBulkDownload) api.bulkDownloadCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkDownload.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkDownload.getExample();
+        response = (OASBulkDownload) api.bulkDownloadCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkDownload.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkDownload.getExample();
+        response = (OASBulkDownload) api.bulkDownloadCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkDownload.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkDownload.getExample();
+        response = (OASBulkDownload) api.bulkDownloadCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkDownload.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkDownload.getExample();
+        response = (OASBulkDownload) api.bulkDownloadCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkDownload.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkDownload.getExample();
+        response = (OASBulkDownload) api.bulkDownloadCreate(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Download advertiser entities in bulk
      *
-     * Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the\nnew or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+     * Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the\nnew or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
      */
     @isTest
     private static void bulkRequestGetTest() {
@@ -62,50 +110,130 @@ private class OASBulkApiTest {
 
         OASClient client;
         OASBulkApi api;
-        OASBulkUpsertStatusResponse response;
-        OASBulkUpsertStatusResponse expectedResponse;
+        OASBulkJobData response;
+        OASBulkJobData expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASBulkApi(client);
 
-        js = JSON.serialize(OASBulkUpsertStatusResponse.getExample());
+        js = JSON.serialize(OASBulkJobData.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBulkUpsertStatusResponse.getExample();
-        response = (OASBulkUpsertStatusResponse) api.bulkRequestGet(params);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBulkUpsertStatusResponse.getExample());
+        js = JSON.serialize(OASBulkJobData.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBulkUpsertStatusResponse.getExample();
-        response = (OASBulkUpsertStatusResponse) api.bulkRequestGet(params);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASBulkApi(client);
 
-        js = JSON.serialize(OASBulkUpsertStatusResponse.getExample());
+        js = JSON.serialize(OASBulkJobData.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBulkUpsertStatusResponse.getExample();
-        response = (OASBulkUpsertStatusResponse) api.bulkRequestGet(params);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBulkUpsertStatusResponse.getExample());
+        js = JSON.serialize(OASBulkJobData.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBulkUpsertStatusResponse.getExample();
-        response = (OASBulkUpsertStatusResponse) api.bulkRequestGet(params);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBulkJobData.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBulkJobData.getExample();
+        response = (OASBulkJobData) api.bulkRequestGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Create/update ad entities in bulk
      *
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels.\nNote that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt;\nthat can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels.\nNote that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt;\nthat can be used to obtain the status of the request.
      */
     @isTest
     private static void bulkUpsertCreateTest() {

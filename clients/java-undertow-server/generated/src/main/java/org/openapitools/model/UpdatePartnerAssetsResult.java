@@ -28,7 +28,7 @@ import org.openapitools.model.AssetTypeResponse;
  */
 
 @ApiModel(description = "An object containing the permissions a business partner has on the asset.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class UpdatePartnerAssetsResult   {
   
   private String assetId;

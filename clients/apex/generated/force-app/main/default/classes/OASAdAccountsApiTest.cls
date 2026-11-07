@@ -3,7 +3,7 @@ private class OASAdAccountsApiTest {
     /**
      * Get ad account analytics
      *
-     * Get analytics for the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
+     *   Get analytics for the specified &#x60;ad_account_id&#x60;, filtered by the specified options.\n\n  - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.\n\n  - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n\n  - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
      */
     @isTest
     private static void adAccountAnalyticsTest() {
@@ -13,12 +13,12 @@ private class OASAdAccountsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'columns' => new List<String>{'TOTAL_CONVERSIONS'},
-            'granularity' => DAY,
-            'clickWindowDays' => 1,
+            'columns' => new List<OASReportingColumnSync>{OASReportingColumnSync.getExample()},
+            'granularity' => '',
+            'adAccountId' => 'null',
+            'clickWindowDays' => '',
             'engagementWindowDays' => '',
             'viewWindowDays' => '',
             'conversionReportTime' => TIME_OF_AD_ACTION,
@@ -27,66 +27,130 @@ private class OASAdAccountsApiTest {
 
         OASClient client;
         OASAdAccountsApi api;
-        List<OASAdAccountAnalyticsResponseInner> response;
-        List<OASAdAccountAnalyticsResponseInner> expectedResponse;
+        List<OASAdAccountAnalyticsItems> response;
+        List<OASAdAccountAnalyticsItems> expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAdAccountsApi(client);
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASAdAccountAnalyticsResponseInner>) api.adAccountAnalytics(params);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASAdAccountAnalyticsResponseInner>) api.adAccountAnalytics(params);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASAdAccountAnalyticsResponseInner>) api.adAccountAnalytics(params);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAdAccountsApi(client);
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASAdAccountAnalyticsResponseInner>) api.adAccountAnalytics(params);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASAdAccountAnalyticsResponseInner>) api.adAccountAnalytics(params);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASAdAccountAnalyticsResponseInner>) api.adAccountAnalytics(params);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdAccountAnalyticsItems>{OASAdAccountAnalyticsItems.getExample()};
+        response = (List<OASAdAccountAnalyticsItems>) api.adAccountAnalytics(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get targeting analytics for an ad account
      *
-     * Get targeting analytics for an ad account.\nFor the requested account and metrics, the response will include the requested metric information\n(e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. &quot;age_bucket&quot;) for applicable values (e.g. &quot;45-49&quot;). &lt;p/&gt;\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one\nof the necessary roles granted to them via\n&lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get targeting analytics for an ad account.\nFor the requested account and metrics, the response will include the requested metric information\n(e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. &quot;age_bucket&quot;) for applicable values (e.g. &quot;45-49&quot;). &lt;p/&gt;\n\n* The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.\n* If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n* If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      */
     @isTest
     private static void adAccountTargetingAnalyticsGetTest() {
@@ -99,10 +163,10 @@ private class OASAdAccountsApiTest {
             'adAccountId' => 'null',
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'targetingTypes' => new List<OASAdsAnalyticsTargetingType>{OASAdsAnalyticsTargetingType.getExample()},
-            'columns' => new List<String>{'TOTAL_CONVERSIONS'},
-            'granularity' => DAY,
-            'clickWindowDays' => 1,
+            'targetingTypes' => new List<OASAdsAnalyticsAccountTargetingType>{OASAdsAnalyticsAccountTargetingType.getExample()},
+            'columns' => new List<OASReportingColumnSync>{OASReportingColumnSync.getExample()},
+            'granularity' => '',
+            'clickWindowDays' => '',
             'engagementWindowDays' => '',
             'viewWindowDays' => '',
             'conversionReportTime' => TIME_OF_AD_ACTION,
@@ -133,8 +197,88 @@ private class OASAdAccountsApiTest {
         expectedResponse = OASMetricsResponse.getExample();
         response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAdAccountsApi(client);
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.adAccountTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASMetricsResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -522,7 +666,7 @@ private class OASAdAccountsApiTest {
     /**
      * Create a request for a brand, category, SKU report
      *
-     * &lt;a href&#x3D;&quot;/docs/getting-started/using-beta-and-restricted-features/&quot; target&#x3D;&quot;blank&quot; target&#x3D;&quot;blank&quot;&gt;Restricted&lt;/a&gt;\nThis creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+     *   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)\n  This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
      */
     @isTest
     private static void analyticsCreateConversionProductReportTest() {
@@ -533,46 +677,86 @@ private class OASAdAccountsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSConversionProductReportRequest' => ''
+            'oaSConversionProductReportCreate' => ''
         };
 
         OASClient client;
         OASAdAccountsApi api;
-        OASAdsAnalyticsCreateAsyncResponse response;
-        OASAdsAnalyticsCreateAsyncResponse expectedResponse;
+        OASConversionProductReport response;
+        OASConversionProductReport expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAdAccountsApi(client);
 
-        js = JSON.serialize(OASAdsAnalyticsCreateAsyncResponse.getExample());
+        js = JSON.serialize(OASConversionProductReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdsAnalyticsCreateAsyncResponse.getExample();
-        response = (OASAdsAnalyticsCreateAsyncResponse) api.analyticsCreateConversionProductReport(params);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsCreateConversionProductReport(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdsAnalyticsCreateAsyncResponse.getExample());
+        js = JSON.serialize(OASConversionProductReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdsAnalyticsCreateAsyncResponse.getExample();
-        response = (OASAdsAnalyticsCreateAsyncResponse) api.analyticsCreateConversionProductReport(params);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsCreateConversionProductReport(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdsAnalyticsCreateAsyncResponse.getExample());
+        js = JSON.serialize(OASConversionProductReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdsAnalyticsCreateAsyncResponse.getExample();
-        response = (OASAdsAnalyticsCreateAsyncResponse) api.analyticsCreateConversionProductReport(params);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsCreateConversionProductReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionProductReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsCreateConversionProductReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionProductReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsCreateConversionProductReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionProductReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsCreateConversionProductReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionProductReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsCreateConversionProductReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionProductReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsCreateConversionProductReport(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Create a request for a Marketing Mix Modeling (MMM) report
      *
-     * This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download\nthe report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it\&#39;s in beta release.
+     *     This creates an asynchronous mmm report based on the given request.\n    It returns a token that you can use to download the report when it is\n    ready. NOTE: An additional limit of 5 queries per minute per advertiser\n    applies to this endpoint while it\&#39;s in beta release.\n    For the ADVERTISER_PAID_SPEND_IN_DOLLAR,\n    ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR\n    columns: if you receive bonus media, this value still includes that spend, and it will\n    need to be removed manually with support from your Pinterest account team for a\n    fully netted value. Over time, we\&#39;ll also subtract bonus media and other incentives as\n    data becomes available. Production and other non-media fees are excluded.
      */
     @isTest
     private static void analyticsCreateMmmReportTest() {
@@ -583,46 +767,86 @@ private class OASAdAccountsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSCreateMMMReportRequest' => ''
+            'oaSMMMReportCreate' => ''
         };
 
         OASClient client;
         OASAdAccountsApi api;
-        OASCreateMMMReportResponse response;
-        OASCreateMMMReportResponse expectedResponse;
+        OASMMMReport response;
+        OASMMMReport expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAdAccountsApi(client);
 
-        js = JSON.serialize(OASCreateMMMReportResponse.getExample());
+        js = JSON.serialize(OASMMMReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCreateMMMReportResponse.getExample();
-        response = (OASCreateMMMReportResponse) api.analyticsCreateMmmReport(params);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsCreateMmmReport(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASCreateMMMReportResponse.getExample());
+        js = JSON.serialize(OASMMMReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCreateMMMReportResponse.getExample();
-        response = (OASCreateMMMReportResponse) api.analyticsCreateMmmReport(params);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsCreateMmmReport(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASCreateMMMReportResponse.getExample());
+        js = JSON.serialize(OASMMMReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCreateMMMReportResponse.getExample();
-        response = (OASCreateMMMReportResponse) api.analyticsCreateMmmReport(params);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsCreateMmmReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMMMReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsCreateMmmReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMMMReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsCreateMmmReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMMMReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsCreateMmmReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMMMReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsCreateMmmReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMMMReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsCreateMmmReport(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Create async request for an account analytics report
      *
-     * This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.\n- If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.\n- If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+     *   This returns a token that you can use to download the report when it is ready.\n  Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.\n  - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.\n  - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.\n  - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.\n  - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.\n  - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
      */
     @isTest
     private static void analyticsCreateReportTest() {
@@ -667,12 +891,44 @@ private class OASAdAccountsApiTest {
         expectedResponse = OASAdsAnalyticsCreateAsyncResponse.getExample();
         response = (OASAdsAnalyticsCreateAsyncResponse) api.analyticsCreateReport(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdsAnalyticsCreateAsyncResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsAnalyticsCreateAsyncResponse.getExample();
+        response = (OASAdsAnalyticsCreateAsyncResponse) api.analyticsCreateReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdsAnalyticsCreateAsyncResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsAnalyticsCreateAsyncResponse.getExample();
+        response = (OASAdsAnalyticsCreateAsyncResponse) api.analyticsCreateReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdsAnalyticsCreateAsyncResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsAnalyticsCreateAsyncResponse.getExample();
+        response = (OASAdsAnalyticsCreateAsyncResponse) api.analyticsCreateReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdsAnalyticsCreateAsyncResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsAnalyticsCreateAsyncResponse.getExample();
+        response = (OASAdsAnalyticsCreateAsyncResponse) api.analyticsCreateReport(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Create async request for an analytics report using a template
      *
-     * \n  This takes a template ID and an optional custom timeframe and\n  constructs an asynchronous report based on the template. It returns\n  a token that you can use to download the report when it is ready.
+     *   This takes a template ID and an optional custom timeframe and\n  constructs an asynchronous report based on the template. It returns\n  a token that you can use to download the report when it is ready.
      */
     @isTest
     private static void analyticsCreateTemplateReportTest() {
@@ -765,7 +1021,7 @@ private class OASAdAccountsApiTest {
     /**
      * Get advertiser brand, category, SKU report
      *
-     * &lt;a href&#x3D;&quot;/docs/getting-started/using-beta-and-restricted-features/&quot; target&#x3D;&quot;blank&quot; target&#x3D;&quot;blank&quot;&gt;Restricted&lt;/a&gt;\nGet a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+     *   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)\n  Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
      */
     @isTest
     private static void analyticsGetConversionProductReportTest() {
@@ -781,41 +1037,73 @@ private class OASAdAccountsApiTest {
 
         OASClient client;
         OASAdAccountsApi api;
-        OASAdsAnalyticsGetAsyncResponse response;
-        OASAdsAnalyticsGetAsyncResponse expectedResponse;
+        OASConversionProductReport response;
+        OASConversionProductReport expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAdAccountsApi(client);
 
-        js = JSON.serialize(OASAdsAnalyticsGetAsyncResponse.getExample());
+        js = JSON.serialize(OASConversionProductReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdsAnalyticsGetAsyncResponse.getExample();
-        response = (OASAdsAnalyticsGetAsyncResponse) api.analyticsGetConversionProductReport(params);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsGetConversionProductReport(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdsAnalyticsGetAsyncResponse.getExample());
+        js = JSON.serialize(OASConversionProductReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdsAnalyticsGetAsyncResponse.getExample();
-        response = (OASAdsAnalyticsGetAsyncResponse) api.analyticsGetConversionProductReport(params);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsGetConversionProductReport(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAdsAnalyticsGetAsyncResponse.getExample());
+        js = JSON.serialize(OASConversionProductReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAdsAnalyticsGetAsyncResponse.getExample();
-        response = (OASAdsAnalyticsGetAsyncResponse) api.analyticsGetConversionProductReport(params);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsGetConversionProductReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionProductReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsGetConversionProductReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionProductReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsGetConversionProductReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionProductReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsGetConversionProductReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASConversionProductReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASConversionProductReport.getExample();
+        response = (OASConversionProductReport) api.analyticsGetConversionProductReport(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get advertiser Marketing Mix Modeling (MMM) report.
      *
-     * Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the\ncreate mmm report endpoint.
+     *     Get an mmm report for an ad account. This returns a URL to an\n    mmm metrics report given a token returned from the create mmm report endpoint.
      */
     @isTest
     private static void analyticsGetMmmReportTest() {
@@ -831,41 +1119,73 @@ private class OASAdAccountsApiTest {
 
         OASClient client;
         OASAdAccountsApi api;
-        OASGetMMMReportResponse response;
-        OASGetMMMReportResponse expectedResponse;
+        OASMMMReport response;
+        OASMMMReport expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAdAccountsApi(client);
 
-        js = JSON.serialize(OASGetMMMReportResponse.getExample());
+        js = JSON.serialize(OASMMMReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASGetMMMReportResponse.getExample();
-        response = (OASGetMMMReportResponse) api.analyticsGetMmmReport(params);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsGetMmmReport(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASGetMMMReportResponse.getExample());
+        js = JSON.serialize(OASMMMReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASGetMMMReportResponse.getExample();
-        response = (OASGetMMMReportResponse) api.analyticsGetMmmReport(params);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsGetMmmReport(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASGetMMMReportResponse.getExample());
+        js = JSON.serialize(OASMMMReport.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASGetMMMReportResponse.getExample();
-        response = (OASGetMMMReportResponse) api.analyticsGetMmmReport(params);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsGetMmmReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMMMReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsGetMmmReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMMMReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsGetMmmReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMMMReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsGetMmmReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMMMReport.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMMMReport.getExample();
+        response = (OASMMMReport) api.analyticsGetMmmReport(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get the account analytics report created by the async call
      *
-     * This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.
+     *   This returns a URL to an analytics report given a token returned from the post request report creation call.\n  You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.\n  - The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
      */
     @isTest
     private static void analyticsGetReportTest() {
@@ -887,6 +1207,38 @@ private class OASAdAccountsApiTest {
 
         client = new OASClient();
         api = new OASAdAccountsApi(client);
+
+        js = JSON.serialize(OASAdsAnalyticsGetAsyncResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsAnalyticsGetAsyncResponse.getExample();
+        response = (OASAdsAnalyticsGetAsyncResponse) api.analyticsGetReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdsAnalyticsGetAsyncResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsAnalyticsGetAsyncResponse.getExample();
+        response = (OASAdsAnalyticsGetAsyncResponse) api.analyticsGetReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdsAnalyticsGetAsyncResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsAnalyticsGetAsyncResponse.getExample();
+        response = (OASAdsAnalyticsGetAsyncResponse) api.analyticsGetReport(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAdsAnalyticsGetAsyncResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAdsAnalyticsGetAsyncResponse.getExample();
+        response = (OASAdsAnalyticsGetAsyncResponse) api.analyticsGetReport(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASAdsAnalyticsGetAsyncResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -937,26 +1289,50 @@ private class OASAdAccountsApiTest {
         client = new OASClient();
         api = new OASAdAccountsApi(client);
 
-        js = JSON.serialize('Delete Success');
+        js = JSON.serialize('');
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = 'Delete Success';
+        expectedResponse = '';
         response = (String) api.sandboxDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize('Delete Success');
+        js = JSON.serialize('');
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = 'Delete Success';
+        expectedResponse = '';
         response = (String) api.sandboxDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize('Delete Success');
+        js = JSON.serialize('');
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = 'Delete Success';
+        expectedResponse = '';
+        response = (String) api.sandboxDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize('');
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = '';
+        response = (String) api.sandboxDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize('');
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = '';
+        response = (String) api.sandboxDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize('');
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = '';
         response = (String) api.sandboxDelete(params);
         System.assertEquals(expectedResponse, response);
     }
@@ -975,9 +1351,9 @@ private class OASAdAccountsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
+            'bookmark' => 'null',
             'pageSize' => '',
-            'order' => ASCENDING,
-            'bookmark' => 'null'
+            'order' => ''
         };
 
         OASClient client;
@@ -988,6 +1364,38 @@ private class OASAdAccountsApiTest {
 
         client = new OASClient();
         api = new OASAdAccountsApi(client);
+
+        js = JSON.serialize(OASTemplatesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTemplatesList200Response.getExample();
+        response = (OASTemplatesList200Response) api.templatesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTemplatesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTemplatesList200Response.getExample();
+        response = (OASTemplatesList200Response) api.templatesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTemplatesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTemplatesList200Response.getExample();
+        response = (OASTemplatesList200Response) api.templatesList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTemplatesList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTemplatesList200Response.getExample();
+        response = (OASTemplatesList200Response) api.templatesList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASTemplatesList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');

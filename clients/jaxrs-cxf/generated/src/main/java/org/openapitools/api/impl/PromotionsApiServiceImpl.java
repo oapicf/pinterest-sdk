@@ -1,10 +1,11 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
-import org.openapitools.model.PromotionCreateRequest;
-import org.openapitools.model.PromotionResponse;
-import org.openapitools.model.PromotionUpdateRequest;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.Promotion;
+import org.openapitools.model.PromotionBatchUpdate;
+import org.openapitools.model.PromotionCreate;
 import org.openapitools.model.PromotionsList200Response;
 import org.openapitools.model.PromotionsResponse;
 
@@ -33,7 +34,7 @@ public class PromotionsApiServiceImpl implements PromotionsApi {
      * Create multiple new promotions.
      *
      */
-    public PromotionsResponse promotionsCreate(String adAccountId, List<@Valid PromotionCreateRequest> promotionCreateRequest) {
+    public PromotionsResponse promotionsCreate(String adAccountId, List<@Valid PromotionCreate> promotionCreate) {
         // TODO: Implement...
 
         return null;
@@ -45,10 +46,10 @@ public class PromotionsApiServiceImpl implements PromotionsApi {
      * Delete a promotion within Pinterest.
      *
      */
-    public void promotionsDelete(String adAccountId, String promotionId) {
+    public Promotion promotionsDelete(String promotionId, String adAccountId) {
         // TODO: Implement...
 
-        
+        return null;
     }
 
     /**
@@ -57,7 +58,7 @@ public class PromotionsApiServiceImpl implements PromotionsApi {
      * Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
      *
      */
-    public PromotionResponse promotionsGet(String adAccountId, String promotionId) {
+    public Promotion promotionsGet(String promotionId, String adAccountId) {
         // TODO: Implement...
 
         return null;
@@ -69,7 +70,7 @@ public class PromotionsApiServiceImpl implements PromotionsApi {
      * Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
      *
      */
-    public PromotionsList200Response promotionsList(String adAccountId, Integer pageSize, String order, String bookmark) {
+    public PromotionsList200Response promotionsList(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order) {
         // TODO: Implement...
 
         return null;
@@ -81,7 +82,7 @@ public class PromotionsApiServiceImpl implements PromotionsApi {
      * Update multiple promotions.
      *
      */
-    public PromotionsResponse promotionsUpdate(String adAccountId, List<@Valid PromotionUpdateRequest> promotionUpdateRequest) {
+    public PromotionsResponse promotionsUpdate(String adAccountId, List<@Valid PromotionBatchUpdate> promotionBatchUpdate) {
         // TODO: Implement...
 
         return null;

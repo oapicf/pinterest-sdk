@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CartingProduct
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CartingProduct {
   public static final String SERIALIZED_NAME_CARTING_PRODUCT_ID = "carting_product_id";
   @SerializedName(SERIALIZED_NAME_CARTING_PRODUCT_ID)

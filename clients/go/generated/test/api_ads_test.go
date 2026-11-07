@@ -82,10 +82,10 @@ func Test_openapi_AdsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var adAccountId string
 		var adId string
+		var adAccountId string
 
-		resp, httpRes, err := apiClient.AdsAPI.AdsGet(context.Background(), adAccountId, adId).Execute()
+		resp, httpRes, err := apiClient.AdsAPI.AdsGet(context.Background(), adId, adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -114,6 +114,48 @@ func Test_openapi_AdsAPIService(t *testing.T) {
 		var adAccountId string
 
 		resp, httpRes, err := apiClient.AdsAPI.AdsUpdate(context.Background(), adAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdsAPIService CampaignAdPreviewCreate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.AdsAPI.CampaignAdPreviewCreate(context.Background(), adAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdsAPIService CampaignAdPreviewDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.AdsAPI.CampaignAdPreviewDelete(context.Background(), adAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test AdsAPIService CampaignAdPreviewRead", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.AdsAPI.CampaignAdPreviewRead(context.Background(), adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

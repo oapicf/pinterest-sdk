@@ -15,7 +15,7 @@ import io.swagger.annotations.ApiModelProperty;
  * GoogleProductCategory6Filter
  */
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T02:50:11.535708279Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class GoogleProductCategory6Filter   {
   @JsonProperty("GOOGLE_PRODUCT_CATEGORY_6")
   private CatalogsProductGroupMultipleStringListCriteria GOOGLE_PRODUCT_CATEGORY_6;

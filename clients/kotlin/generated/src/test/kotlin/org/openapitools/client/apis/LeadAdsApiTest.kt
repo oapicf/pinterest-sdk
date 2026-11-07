@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -34,7 +42,8 @@ class LeadAdsApiTest : ShouldSpec() {
             // uncomment below to test adAccountsSubscriptionsDelById
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val subscriptionId : kotlin.String = subscriptionId_example // kotlin.String | Unique identifier of a subscription.
-            //apiInstance.adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
+            //val result : LeadSubscription = apiInstance.adAccountsSubscriptionsDelById(adAccountId, subscriptionId)
+            //result shouldBe ("TODO")
         }
 
         // to test adAccountsSubscriptionsGetById

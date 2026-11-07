@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,10 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.ConversionEventsApi
-import org.openapitools.client.models.ConversionApiResponse
 import org.openapitools.client.models.ConversionEvents
+import org.openapitools.client.models.ConversionEventsCreate
 import org.openapitools.client.models.DetailedError
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 
 class ConversionEventsApiTest : ShouldSpec() {
     init {
@@ -33,9 +41,9 @@ class ConversionEventsApiTest : ShouldSpec() {
         should("test eventsCreate") {
             // uncomment below to test eventsCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val conversionEvents : ConversionEvents =  // ConversionEvents | Conversion events.
+            //val conversionEventsCreate : ConversionEventsCreate =  // ConversionEventsCreate | 
             //val test : kotlin.Boolean = true // kotlin.Boolean | Include query param ?test=true to mark the request as a test request. The events will not be recorded but the API will still return the same response messages. Use this mode to verify your requests are working and your events are constructed correctly. Warning: If you use this query parameter, be certain that it is off (set to false or deleted) before sending a legitimate (non-testing) request.
-            //val result : ConversionApiResponse = apiInstance.eventsCreate(adAccountId, conversionEvents, test)
+            //val result : ConversionEvents = apiInstance.eventsCreate(adAccountId, conversionEventsCreate, test)
             //result shouldBe ("TODO")
         }
 

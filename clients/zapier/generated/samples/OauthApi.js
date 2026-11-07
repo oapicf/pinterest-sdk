@@ -1,6 +1,8 @@
 module.exports = {
-    "ConversionAccessTokenResponseSample": 
+    "ConversionAccessTokenSample": 
         { data: {} },
-    "OauthAccessTokenResponseSample": 
+    "OauthAccessTokenSample": 
+        { data: {} },
+    "OauthAccessTokenSample": 
         { data: {} },
 }

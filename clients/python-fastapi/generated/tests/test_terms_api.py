@@ -6,7 +6,7 @@ from fastapi.testclient import TestClient
 from pydantic import Field, StrictStr  # noqa: F401
 from typing import List, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 from openapi_server.models.related_terms import RelatedTerms  # noqa: F401
 
 
@@ -36,7 +36,7 @@ def test_terms_suggested_list(client: TestClient):
 
     List suggested terms
     """
-    params = [("term", 'sports'),     ("limit", 4)]
+    params = [("term", 'term_example'),     ("limit", 4)]
     headers = {
         "Authorization": "Bearer special-key",
     }

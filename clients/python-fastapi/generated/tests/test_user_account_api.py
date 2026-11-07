@@ -4,24 +4,28 @@ from fastapi.testclient import TestClient
 
 
 from datetime import date  # noqa: F401
-from pydantic import Field, StrictBool, StrictInt, StrictStr, field_validator  # noqa: F401
-from typing import Any, Dict, List, Optional  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
+from typing import Any, Dict, List, Optional, Union  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
 from openapi_server.models.account import Account  # noqa: F401
 from openapi_server.models.analytics_metrics_response import AnalyticsMetricsResponse  # noqa: F401
-from openapi_server.models.boards_user_follows_list200_response import BoardsUserFollowsList200Response  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
-from openapi_server.models.follow_user_request import FollowUserRequest  # noqa: F401
+from openapi_server.models.boards_list200_response import BoardsList200Response  # noqa: F401
+from openapi_server.models.follow_user import FollowUser  # noqa: F401
+from openapi_server.models.follow_user_create import FollowUserCreate  # noqa: F401
 from openapi_server.models.followers_list200_response import FollowersList200Response  # noqa: F401
 from openapi_server.models.linked_business import LinkedBusiness  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
+from openapi_server.models.querymetrictypes_items import QuerymetrictypesItems  # noqa: F401
+from openapi_server.models.queryvideopinmetrictypes_items import QueryvideopinmetrictypesItems  # noqa: F401
 from openapi_server.models.top_pins_analytics_response import TopPinsAnalyticsResponse  # noqa: F401
+from openapi_server.models.top_pins_sort_by import TopPinsSortBy  # noqa: F401
 from openapi_server.models.top_video_pins_analytics_response import TopVideoPinsAnalyticsResponse  # noqa: F401
+from openapi_server.models.top_video_pins_sort_by import TopVideoPinsSortBy  # noqa: F401
 from openapi_server.models.user_account_followed_interests200_response import UserAccountFollowedInterests200Response  # noqa: F401
-from openapi_server.models.user_following_get200_response import UserFollowingGet200Response  # noqa: F401
-from openapi_server.models.user_summary import UserSummary  # noqa: F401
-from openapi_server.models.user_website_summary import UserWebsiteSummary  # noqa: F401
-from openapi_server.models.user_website_verification_code import UserWebsiteVerificationCode  # noqa: F401
-from openapi_server.models.user_website_verify_request import UserWebsiteVerifyRequest  # noqa: F401
+from openapi_server.models.user_following_feed_type import UserFollowingFeedType  # noqa: F401
+from openapi_server.models.user_website import UserWebsite  # noqa: F401
+from openapi_server.models.user_website_create import UserWebsiteCreate  # noqa: F401
+from openapi_server.models.user_website_verification import UserWebsiteVerification  # noqa: F401
 from openapi_server.models.user_websites_get200_response import UserWebsitesGet200Response  # noqa: F401
 
 
@@ -52,7 +56,7 @@ def test_user_account_analytics(client: TestClient):
 
     Get user account analytics
     """
-    params = [("start_date", '2013-10-20'),     ("end_date", '2013-10-20'),     ("from_claimed_content", BOTH),     ("pin_format", ALL),     ("app_types", ALL),     ("content_type", ALL),     ("source", ALL),     ("metric_types", ['metric_types_example']),     ("split_field", NO_SPLIT),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("start_date", '2013-10-20'),     ("end_date", '2013-10-20'),     ("from_claimed_content", 'BOTH'),     ("pin_format", 'ALL'),     ("app_types", 'ALL'),     ("content_type", 'ALL'),     ("source", 'ALL'),     ("metric_types", [openapi_server.QuerymetrictypesItems()]),     ("split_field", 'NO_SPLIT'),     ("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
     }
@@ -73,7 +77,7 @@ def test_user_account_analytics_top_pins(client: TestClient):
 
     Get user account top pins analytics
     """
-    params = [("start_date", '2013-10-20'),     ("end_date", '2013-10-20'),     ("sort_by", 'sort_by_example'),     ("from_claimed_content", BOTH),     ("pin_format", ALL),     ("app_types", ALL),     ("content_type", ALL),     ("source", ALL),     ("metric_types", ['metric_types_example']),     ("num_of_pins", 10),     ("created_in_last_n_days", 30),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("start_date", '2013-10-20'),     ("end_date", '2013-10-20'),     ("sort_by", openapi_server.TopPinsSortBy()),     ("from_claimed_content", 'BOTH'),     ("pin_format", 'ALL'),     ("app_types", 'ALL'),     ("content_type", 'ALL'),     ("source", 'ALL'),     ("metric_types", [openapi_server.QuerymetrictypesItems()]),     ("num_of_pins", 10),     ("created_in_last_n_days", 3.4),     ("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -95,7 +99,7 @@ def test_user_account_analytics_top_video_pins(client: TestClient):
 
     Get user account top video pins analytics
     """
-    params = [("start_date", '2013-10-20'),     ("end_date", '2013-10-20'),     ("sort_by", 'sort_by_example'),     ("from_claimed_content", BOTH),     ("pin_format", ALL),     ("app_types", ALL),     ("content_type", ALL),     ("source", ALL),     ("metric_types", ['metric_types_example']),     ("num_of_pins", 10),     ("created_in_last_n_days", 30),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("start_date", '2013-10-20'),     ("end_date", '2013-10-20'),     ("sort_by", openapi_server.TopVideoPinsSortBy()),     ("from_claimed_content", 'BOTH'),     ("pin_format", 'ALL'),     ("app_types", 'ALL'),     ("content_type", 'ALL'),     ("source", 'ALL'),     ("metric_types", [openapi_server.QueryvideopinmetrictypesItems()]),     ("num_of_pins", 10),     ("created_in_last_n_days", 3.4),     ("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -160,7 +164,7 @@ def test_user_following_get(client: TestClient):
 
     List following
     """
-    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("feed_type", ALL),     ("explicit_following", False),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("ad_account_id", 'ad_account_id_example'),     ("explicit_following", False),     ("feed_type", 'ALL'),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -182,7 +186,7 @@ def test_boards_user_follows_list(client: TestClient):
 
     List following boards
     """
-    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("explicit_following", False),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("ad_account_id", 'ad_account_id_example'),     ("explicit_following", False),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -204,7 +208,7 @@ def test_follow_user_update(client: TestClient):
 
     Follow user
     """
-    follow_user_request = {"auto_follow":0}
+    follow_user_create = openapi_server.FollowUserCreate()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -212,9 +216,9 @@ def test_follow_user_update(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "POST",
-    #    "/user_account/following/{username}".format(username='username'),
+    #    "/user_account/following/{username}".format(username='username_example'),
     #    headers=headers,
-    #    json=follow_user_request,
+    #    json=follow_user_create,
     #)
 
     # uncomment below to assert the status code of the HTTP response
@@ -247,7 +251,7 @@ def test_verify_website_update(client: TestClient):
 
     Verify website
     """
-    user_website_verify_request = {"website":"pintest-website-12345678.test/test_1","verification_method":"METATAG"}
+    user_website_create = openapi_server.UserWebsiteCreate()
     params = [("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
@@ -257,7 +261,7 @@ def test_verify_website_update(client: TestClient):
     #    "POST",
     #    "/user_account/websites",
     #    headers=headers,
-    #    json=user_website_verify_request,
+    #    json=user_website_create,
     #    params=params,
     #)
 
@@ -270,7 +274,7 @@ def test_unverify_website_delete(client: TestClient):
 
     Unverify website
     """
-    params = [("website", 'mysite.test')]
+    params = [("website", 'website_example')]
     headers = {
         "Authorization": "Bearer special-key",
     }
@@ -321,7 +325,7 @@ def test_user_account_followed_interests(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/users/{username}/interests/follow".format(username='username'),
+    #    "/users/{username}/interests/follow".format(username='username_example'),
     #    headers=headers,
     #    params=params,
     #)

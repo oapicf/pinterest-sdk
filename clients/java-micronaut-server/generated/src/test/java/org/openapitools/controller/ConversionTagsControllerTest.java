@@ -4,9 +4,9 @@ import org.openapitools.model.ConversionEventResponse;
 import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
 import org.openapitools.model.ConversionTagsList200Response;
-import org.openapitools.model.Error;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
 import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -66,7 +66,7 @@ public class ConversionTagsControllerTest {
     void conversionTagsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        ConversionTagCreate conversionTagCreate = new ConversionTagCreate("ACME Checkout Test Tag");
+        ConversionTagCreate conversionTagCreate = new ConversionTagCreate("download_picture");
 
         // when
         ConversionTag result = controller.conversionTagsCreate(adAccountId, conversionTagCreate).block();
@@ -85,13 +85,13 @@ public class ConversionTagsControllerTest {
     @Disabled("Not Implemented")
     void conversionTagsCreateClientApiTest() throws IOException {
         // given
-        ConversionTagCreate body = new ConversionTagCreate("ACME Checkout Test Tag");
+        ConversionTagCreate body = new ConversionTagCreate("download_picture");
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/conversion_tags").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@63e72528");
+            .accept("[Ljava.lang.String;@128756c3");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTag.class);
@@ -114,7 +114,7 @@ public class ConversionTagsControllerTest {
     void conversionTagsGetMethodTest() {
         // given
         String adAccountId = "example";
-        String conversionTagId = "2617998078212";
+        String conversionTagId = "example";
 
         // when
         ConversionTag result = controller.conversionTagsGet(adAccountId, conversionTagId).block();
@@ -136,10 +136,10 @@ public class ConversionTagsControllerTest {
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
-            put("conversion_tag_id", "2617998078212");
+            put("conversion_tag_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4cd52ceb");
+            .accept("[Ljava.lang.String;@10107f88");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ConversionTag.class);
@@ -186,7 +186,7 @@ public class ConversionTagsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@42f71036");
+            .accept("[Ljava.lang.String;@704f9ed5");
         request.getParameters()
             .add("filter_deleted", String.valueOf(false)); // The query parameter format should be 
 
@@ -234,7 +234,7 @@ public class ConversionTagsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@775ba5e");
+            .accept("[Ljava.lang.String;@48fabcc");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(Map.class, String.class, List.class));
@@ -257,12 +257,12 @@ public class ConversionTagsControllerTest {
     void pageVisitConversionTagsGetMethodTest() {
         // given
         String adAccountId = "example";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
 
         // when
-        PageVisitConversionTagsGet200Response result = controller.pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark).block();
+        PageVisitConversionTagsGet200Response result = controller.pageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order).block();
 
         // then
         Assertions.assertTrue(true);
@@ -283,11 +283,11 @@ public class ConversionTagsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5de111fd");
+            .accept("[Ljava.lang.String;@2c96c4d0");
         request.getParameters()
+            .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("order", "ASCENDING") // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("order", String.valueOf(PinterestLibPaginationOrder.fromValue("ASCENDING"))); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, PageVisitConversionTagsGet200Response.class);

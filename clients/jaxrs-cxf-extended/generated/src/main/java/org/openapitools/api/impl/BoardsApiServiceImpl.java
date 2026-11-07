@@ -5,13 +5,14 @@ import org.openapitools.model.Board;
 import org.openapitools.model.BoardCreate;
 import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
+import org.openapitools.model.BoardSectionCreate;
+import org.openapitools.model.BoardSectionUpdateWithRequiredBody;
 import org.openapitools.model.BoardSectionsList200Response;
 import org.openapitools.model.BoardWithUpdatePrivacy;
 import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
 import org.openapitools.model.CreativeType;
-import org.openapitools.model.Error;
 import org.openapitools.model.PinterestLibError;
 
 import java.io.InputStream;
@@ -41,7 +42,7 @@ public class BoardsApiServiceImpl implements BoardsApi {
      *
      */
     @Override
-    public BoardSection boardSectionsCreate(String boardId, BoardSection boardSection, String adAccountId) {
+    public BoardSection boardSectionsCreate(String boardId, BoardSectionCreate boardSectionCreate, String adAccountId) {
         // TODO: Implement...
         return null;
     }
@@ -53,9 +54,9 @@ public class BoardsApiServiceImpl implements BoardsApi {
      *
      */
     @Override
-    public void boardSectionsDelete(String boardId, String sectionId, String adAccountId) {
+    public BoardSection boardSectionsDelete(String boardId, String sectionId, String adAccountId) {
         // TODO: Implement...
-
+        return null;
     }
 
     /**
@@ -89,7 +90,7 @@ public class BoardsApiServiceImpl implements BoardsApi {
      *
      */
     @Override
-    public BoardSection boardSectionsUpdate(String boardId, String sectionId, BoardSection boardSection, String adAccountId) {
+    public BoardSection boardSectionsUpdate(String boardId, String sectionId, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, String adAccountId) {
         // TODO: Implement...
         return null;
     }
@@ -113,9 +114,9 @@ public class BoardsApiServiceImpl implements BoardsApi {
      *
      */
     @Override
-    public void boardsDelete(String boardId, String adAccountId) {
+    public Board boardsDelete(String boardId, String adAccountId) {
         // TODO: Implement...
-
+        return null;
     }
 
     /**
@@ -149,7 +150,7 @@ public class BoardsApiServiceImpl implements BoardsApi {
      *
      */
     @Override
-    public BoardsListPins200Response boardsListPins(String boardId, String bookmark, Integer pageSize, List<CreativeType> creativeTypes, String adAccountId, Boolean pinMetrics) {
+    public BoardsListPins200Response boardsListPins(String boardId, List<CreativeType> creativeTypes, String adAccountId, Boolean pinMetrics, String bookmark, Integer pageSize) {
         // TODO: Implement...
         return null;
     }

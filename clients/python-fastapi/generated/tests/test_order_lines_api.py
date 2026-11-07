@@ -3,20 +3,21 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
 from openapi_server.models.order_line import OrderLine  # noqa: F401
 from openapi_server.models.order_lines_list200_response import OrderLinesList200Response  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
+from openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: F401
 
 
 def test_order_lines_list(client: TestClient):
     """Test case for order_lines_list
 
-    Get order lines
+    Get order lines.
     """
-    params = [("page_size", 25),     ("order", 'ASCENDING'),     ("bookmark", 'bookmark_example')]
+    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("order", openapi_server.PinterestLibPaginationOrder())]
     headers = {
         "Authorization": "Bearer special-key",
     }
@@ -44,7 +45,7 @@ def test_order_lines_get(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}".format(ad_account_id='ad_account_id_example', order_line_id='order_line_id_example'),
+    #    "/ad_accounts/{ad_account_id}/order_lines/{order_line_id}".format(order_line_id='order_line_id_example', ad_account_id='ad_account_id_example'),
     #    headers=headers,
     #)
 

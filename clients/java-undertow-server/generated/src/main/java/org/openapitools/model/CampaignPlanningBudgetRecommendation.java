@@ -28,7 +28,7 @@ import org.openapitools.model.CampaignPlanningExperimentBudgetRecommendation;
  */
 
 @ApiModel(description = "Budget recommendation response containing recommended budget, estimated days, and point estimations.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningBudgetRecommendation   {
   
   private Integer budgetRecommendation;

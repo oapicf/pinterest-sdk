@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * ProductType2Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductType2Filter {
   public static final String SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E2 = "PRODUCT_TYPE_2";
   @SerializedName(SERIALIZED_NAME_P_R_O_D_U_C_T_T_Y_P_E2)

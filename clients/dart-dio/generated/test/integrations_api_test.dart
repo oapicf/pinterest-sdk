@@ -11,7 +11,7 @@ void main() {
     //
     // Delete commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
     //
-    //Future integrationsCommerceDel(String externalBusinessId) async
+    //Future<IntegrationMetadata> integrationsCommerceDel(String externalBusinessId) async
     test('test integrationsCommerceDel', () async {
       // TODO
     });
@@ -29,7 +29,7 @@ void main() {
     //
     // Update commerce integration metadata for the given external business ID. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
     //
-    //Future<IntegrationMetadata> integrationsCommercePatch(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch) async
+    //Future<IntegrationMetadata> integrationsCommercePatch(String externalBusinessId, IntegrationMetadataUpdate integrationMetadataUpdate) async
     test('test integrationsCommercePatch', () async {
       // TODO
     });
@@ -38,7 +38,7 @@ void main() {
     //
     // Create commerce integration metadata to link an external business ID with a Pinterest merchant & ad account. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
     //
-    //Future<IntegrationMetadata> integrationsCommercePost(IntegrationRequest integrationRequest) async
+    //Future<IntegrationMetadata> integrationsCommercePost(IntegrationMetadataCreate integrationMetadataCreate) async
     test('test integrationsCommercePost', () async {
       // TODO
     });
@@ -65,7 +65,7 @@ void main() {
     //
     // This endpoint receives batched logs from integration applications on partner platforms. Note: If you're interested in joining the beta, please reach out to your Pinterest account manager.
     //
-    //Future<IntegrationLogsSuccessResponse> integrationsLogsPost(IntegrationLogsRequest integrationLogsRequest) async
+    //Future<IntegrationLogsSuccessResponse> integrationsLogsPost(IntegrationLogsRequestCreate integrationLogsRequestCreate) async
     test('test integrationsLogsPost', () async {
       // TODO
     });

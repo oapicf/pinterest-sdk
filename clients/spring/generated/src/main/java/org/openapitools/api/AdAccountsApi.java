@@ -217,7 +217,7 @@ import java.util.Map;
 import java.util.Optional;
 import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Validated
 @Tag(name = "ad_accounts", description = "View analytical information about advertising.  Note: If the current operation_user_account (defined by the access token) has access to another user's Ad Accounts via <a href='/docs/getting-started/using-business-access/'>Pinterest Business Access</a>, you can modify your request to use the current operation_user_account's permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id=12345&...).")
 public interface AdAccountsApi {

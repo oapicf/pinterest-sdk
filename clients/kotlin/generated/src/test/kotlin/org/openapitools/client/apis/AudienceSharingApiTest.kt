@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,14 +27,19 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.AudienceSharingApi
+import org.openapitools.client.models.AdAccountToAdAccountSharedAudience
+import org.openapitools.client.models.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.client.models.AdAccountToBusinessSharedAudience
+import org.openapitools.client.models.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody
 import org.openapitools.client.models.AdAccountsAudiencesSharedAccountsList200Response
 import org.openapitools.client.models.AudienceAccountType
-import org.openapitools.client.models.AudiencesList200Response
-import org.openapitools.client.models.BusinessSharedAudience
-import org.openapitools.client.models.BusinessSharedAudienceResponse
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.SharedAudience
-import org.openapitools.client.models.SharedAudienceResponse
+import org.openapitools.client.models.BusinessToAdAccountSharedAudience
+import org.openapitools.client.models.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody
+import org.openapitools.client.models.BusinessToBusinessSharedAudience
+import org.openapitools.client.models.BusinessToBusinessSharedAudienceUpdateWithRequiredBody
+import org.openapitools.client.models.Order
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.SharedAudiencesForBusinessList200Response
 
 class AudienceSharingApiTest : ShouldSpec() {
     init {
@@ -39,32 +52,32 @@ class AudienceSharingApiTest : ShouldSpec() {
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val audienceId : kotlin.String = audienceId_example // kotlin.String | Unique identifier of the audience to use to filter the results.
             //val accountType : AudienceAccountType =  // AudienceAccountType | Filter accounts by account type.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : AdAccountsAudiencesSharedAccountsList200Response = apiInstance.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : AdAccountsAudiencesSharedAccountsList200Response = apiInstance.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test businessAccountAudiencesSharedAccountsList
         should("test businessAccountAudiencesSharedAccountsList") {
             // uncomment below to test businessAccountAudiencesSharedAccountsList
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
             //val audienceId : kotlin.String = audienceId_example // kotlin.String | Unique identifier of the audience to use to filter the results.
             //val accountType : AudienceAccountType =  // AudienceAccountType | Filter accounts by account type.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : AdAccountsAudiencesSharedAccountsList200Response = apiInstance.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : AdAccountsAudiencesSharedAccountsList200Response = apiInstance.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test sharedAudiencesForBusinessList
         should("test sharedAudiencesForBusinessList") {
             // uncomment below to test sharedAudiencesForBusinessList
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val order : Order =  // Order | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val result : AudiencesList200Response = apiInstance.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : SharedAudiencesForBusinessList200Response = apiInstance.sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
@@ -72,8 +85,8 @@ class AudienceSharingApiTest : ShouldSpec() {
         should("test updateAdAccountToAdAccountSharedAudience") {
             // uncomment below to test updateAdAccountToAdAccountSharedAudience
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val sharedAudience : SharedAudience =  // SharedAudience | 
-            //val result : SharedAudienceResponse = apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience)
+            //val adAccountToAdAccountSharedAudienceUpdateWithRequiredBody : AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody =  // AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody | 
+            //val result : AdAccountToAdAccountSharedAudience = apiInstance.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody)
             //result shouldBe ("TODO")
         }
 
@@ -81,26 +94,26 @@ class AudienceSharingApiTest : ShouldSpec() {
         should("test updateAdAccountToBusinessSharedAudience") {
             // uncomment below to test updateAdAccountToBusinessSharedAudience
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val businessSharedAudience : BusinessSharedAudience =  // BusinessSharedAudience | 
-            //val result : BusinessSharedAudienceResponse = apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience)
+            //val adAccountToBusinessSharedAudienceUpdateWithRequiredBody : AdAccountToBusinessSharedAudienceUpdateWithRequiredBody =  // AdAccountToBusinessSharedAudienceUpdateWithRequiredBody | 
+            //val result : AdAccountToBusinessSharedAudience = apiInstance.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody)
             //result shouldBe ("TODO")
         }
 
         // to test updateBusinessToAdAccountSharedAudience
         should("test updateBusinessToAdAccountSharedAudience") {
             // uncomment below to test updateBusinessToAdAccountSharedAudience
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val sharedAudience : SharedAudience =  // SharedAudience | 
-            //val result : SharedAudienceResponse = apiInstance.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val businessToAdAccountSharedAudienceUpdateWithRequiredBody : BusinessToAdAccountSharedAudienceUpdateWithRequiredBody =  // BusinessToAdAccountSharedAudienceUpdateWithRequiredBody | 
+            //val result : BusinessToAdAccountSharedAudience = apiInstance.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody)
             //result shouldBe ("TODO")
         }
 
         // to test updateBusinessToBusinessSharedAudience
         should("test updateBusinessToBusinessSharedAudience") {
             // uncomment below to test updateBusinessToBusinessSharedAudience
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val businessSharedAudience : BusinessSharedAudience =  // BusinessSharedAudience | 
-            //val result : BusinessSharedAudienceResponse = apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val businessToBusinessSharedAudienceUpdateWithRequiredBody : BusinessToBusinessSharedAudienceUpdateWithRequiredBody =  // BusinessToBusinessSharedAudienceUpdateWithRequiredBody | 
+            //val result : BusinessToBusinessSharedAudience = apiInstance.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody)
             //result shouldBe ("TODO")
         }
 

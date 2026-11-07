@@ -5,11 +5,12 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: E501
+from app.openapi_server.models.targeting_template import TargetingTemplate  # noqa: E501
 from app.openapi_server.models.targeting_template_create import TargetingTemplateCreate  # noqa: E501
-from app.openapi_server.models.targeting_template_get_response_data import TargetingTemplateGetResponseData  # noqa: E501
 from app.openapi_server.models.targeting_template_list200_response import TargetingTemplateList200Response  # noqa: E501
-from app.openapi_server.models.targeting_template_update_request import TargetingTemplateUpdateRequest  # noqa: E501
+from app.openapi_server.models.targeting_template_update_request_read_or_update import TargetingTemplateUpdateRequestReadOrUpdate  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -21,7 +22,7 @@ class TestTargetingTemplateController(BaseTestCase):
 
         Create targeting templates
         """
-        body = {"targeting_attributes":{"LOCATION":["LOCATION","LOCATION"],"MAXIMUM_AGE":"65+","AGE_BUCKET":["35-44","50-54"],"AUDIENCE_INCLUDE":["AUDIENCE_INCLUDE","AUDIENCE_INCLUDE"],"SHOPPING_RETARGETING":[{"lookback_window":30,"exclusion_window":14,"tag_types":[0,6]},{"lookback_window":30,"exclusion_window":14,"tag_types":[0,6]}],"TARGETING_STRATEGY":["CHOOSE_YOUR_OWN","CHOOSE_YOUR_OWN"],"INTEREST":["INTEREST","INTEREST"],"GEO":["GEO","GEO"],"MINIMUM_AGE":"18","LOCALE":["LOCALE","LOCALE"],"GENDER":["unknown","unknown"],"APPTYPE":["ipad","iphone"],"AUDIENCE_EXCLUDE":["AUDIENCE_EXCLUDE","AUDIENCE_EXCLUDE"]},"keywords":[{"value":"cats","match_type":"EXACT_NEGATIVE"}],"name":"Gaming","auto_targeting_enabled":True,"placement_group":"ALL","tracking_urls":{"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]}}
+        body = {"auto_targeting_enabled":True,"keywords":[{"match_type":"BROAD","value":"couples halloween costumes"},{"match_type":"BROAD","value":"couples halloween costumes"}],"name":"name","placement_group":"ALL","targeting_attributes":"","tracking_urls":{"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]}}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/targeting_templates'.format(ad_account_id='ad_account_id_example'),
             method='POST',
@@ -35,11 +36,11 @@ class TestTargetingTemplateController(BaseTestCase):
 
         List targeting templates
         """
-        query_string = [('order', 'ASCENDING'),
-                        ('include_sizing', False),
-                        ('search_query', 'gaming'),
+        query_string = [('bookmark', 'bookmark_example'),
                         ('page_size', 25),
-                        ('bookmark', 'bookmark_example')]
+                        ('order', openapi_server.PinterestLibPaginationOrder()),
+                        ('include_sizing', False),
+                        ('search_query', 'search_query_example')]
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/targeting_templates'.format(ad_account_id='ad_account_id_example'),
             method='GET',
@@ -52,7 +53,7 @@ class TestTargetingTemplateController(BaseTestCase):
 
         Update targeting templates
         """
-        body = {"targeting_attributes":{"LOCATION":["LOCATION","LOCATION"],"MAXIMUM_AGE":"65+","AGE_BUCKET":["35-44","50-54"],"AUDIENCE_INCLUDE":["AUDIENCE_INCLUDE","AUDIENCE_INCLUDE"],"SHOPPING_RETARGETING":[{"lookback_window":30,"exclusion_window":14,"tag_types":[0,6]},{"lookback_window":30,"exclusion_window":14,"tag_types":[0,6]}],"TARGETING_STRATEGY":["CHOOSE_YOUR_OWN","CHOOSE_YOUR_OWN"],"INTEREST":["INTEREST","INTEREST"],"GEO":["GEO","GEO"],"MINIMUM_AGE":"18","LOCALE":["LOCALE","LOCALE"],"GENDER":["unknown","unknown"],"APPTYPE":["ipad","iphone"],"AUDIENCE_EXCLUDE":["AUDIENCE_EXCLUDE","AUDIENCE_EXCLUDE"]},"operation_type":"REMOVE","id":"643"}
+        body = {"id":"643","operation_type":"UPDATE","targeting_attributes":""}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/targeting_templates'.format(ad_account_id='ad_account_id_example'),
             method='PATCH',

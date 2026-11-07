@@ -15,7 +15,7 @@ import org.openapitools.model.CatalogsFeedProcessingScheduleTimezone;
  **/
 
 @ApiModel(description = "Daily processing schedule. This field is **OPTIONAL**. Use this to configure the preferred time for processing a feed (otherwise random).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedProcessingSchedule   {
   @JsonProperty("time")
   private String time;

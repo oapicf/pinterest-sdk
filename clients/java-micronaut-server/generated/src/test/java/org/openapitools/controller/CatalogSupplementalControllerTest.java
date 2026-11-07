@@ -97,7 +97,7 @@ public class CatalogSupplementalControllerTest {
             put("catalog_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@3952a8da");
+            .accept("[Ljava.lang.String;@40d0f9bb");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -148,7 +148,7 @@ public class CatalogSupplementalControllerTest {
             put("catalog_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@45577977");
+            .accept("[Ljava.lang.String;@6d19556d");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -199,7 +199,7 @@ public class CatalogSupplementalControllerTest {
             put("catalog_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@45a948c7");
+            .accept("[Ljava.lang.String;@11c7b12f");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -249,7 +249,7 @@ public class CatalogSupplementalControllerTest {
             put("catalog_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@3416a8eb");
+            .accept("[Ljava.lang.String;@5b75125c");
         request.getParameters()
             .add("ids", String.valueOf(Arrays.asList("example"))) // The query parameter format should be csv
             .add("ad_account_id", "example"); // The query parameter format should be 
@@ -302,7 +302,7 @@ public class CatalogSupplementalControllerTest {
             put("catalog_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@18aed2cb");
+            .accept("[Ljava.lang.String;@1c2f35a8");
         request.getParameters()
             .add("ids", String.valueOf(Arrays.asList("example"))) // The query parameter format should be csv
             .add("ad_account_id", "example") // The query parameter format should be 
@@ -356,7 +356,7 @@ public class CatalogSupplementalControllerTest {
             put("catalog_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@68fcb338");
+            .accept("[Ljava.lang.String;@3bbaa97d");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -407,7 +407,7 @@ public class CatalogSupplementalControllerTest {
             put("batch_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6aa0c66");
+            .accept("[Ljava.lang.String;@175839ec");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 

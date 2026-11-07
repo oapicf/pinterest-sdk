@@ -3,7 +3,7 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
 from openapi_server.models.media import Media  # noqa: F401
@@ -39,7 +39,7 @@ def test_media_create(client: TestClient):
 
     Register media upload
     """
-    media_upload_create = {"media_type":"video"}
+    media_upload_create = openapi_server.MediaUploadCreate()
 
     headers = {
         "Authorization": "Bearer special-key",

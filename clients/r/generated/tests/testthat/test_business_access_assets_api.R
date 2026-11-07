@@ -9,10 +9,10 @@ test_that("AssetGroupCreate", {
   # tests for AssetGroupCreate
   # base path: https://api.pinterest.com/v5
   # Create a new asset group.
-  # Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+  # Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
   # @param business_id character Unique identifier of the requesting business.
-  # @param create_asset_group_body CreateAssetGroupBody 
-  # @return [CreateAssetGroupResponse]
+  # @param asset_group_input_create AssetGroupInputCreate 
+  # @return [AssetGroupInput]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -24,8 +24,8 @@ test_that("AssetGroupDelete", {
   # Delete asset groups.
   # Delete a batch of asset groups.
   # @param business_id character Unique identifier of the requesting business.
-  # @param delete_asset_group_body DeleteAssetGroupBody 
-  # @return [DeleteAssetGroupResponse]
+  # @param asset_group_deletion_delete AssetGroupDeletionDelete 
+  # @return [AssetGroupDeletion]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -37,8 +37,8 @@ test_that("AssetGroupUpdate", {
   # Update asset groups.
   # Update a batch of asset groups with the specified parameters.
   # @param business_id character Unique identifier of the requesting business.
-  # @param update_asset_group_body UpdateAssetGroupBody 
-  # @return [UpdateAssetGroupResponse]
+  # @param asset_group_modification_read_or_update AssetGroupModificationReadOrUpdate 
+  # @return [AssetGroupModification]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -51,10 +51,10 @@ test_that("BusinessAssetMembersGet", {
   # Get all the members the requesting business has granted access to on the given asset.
   # @param business_id character Unique identifier of the requesting business.
   # @param asset_id character Unique identifier of a business asset.
+  # @param start_index integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
   # @param fetch_system_users character Fetches system users if True. Fetches regular user employees if False. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param start_index integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [BusinessAssetMembersGet200Response]
 
   # uncomment below to test the operation
@@ -70,8 +70,8 @@ test_that("BusinessAssetPartnersGet", {
   # @param asset_id character Unique identifier of a business asset.
   # @param start_index integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @return [BusinessAssetPartnersGet200Response]
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @return [BusinessAssetMembersGet200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -89,7 +89,7 @@ test_that("BusinessAssetsGet", {
   # @param asset_type character A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
   # @param start_index integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [BusinessAssetsGet200Response]
 
   # uncomment below to test the operation
@@ -105,9 +105,15 @@ test_that("BusinessMemberAssetsGet", {
   # @param member_id character The member id to fetch assets for.
   # @param asset_type character A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
   # @param start_index integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
+  # @param sort_by AssetSortBy The field to sort member assets by (optional)
+  # @param sort_ascending character Sort assets in ascending order (optional)
+  # @param search_by AssetSearchBy The field to search member assets by (optional)
+  # @param search_value character The value to search for (optional)
+  # @param asset_permission_type AssetPermissionType The type of asset permission to filter by (optional)
+  # @param ad_account_statuses array[NonDraftEntityStatus] A list of ad account statuses to filter the assets by. Only used when asset_type is AD_ACCOUNT. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @return [BusinessMemberAssetsGet200Response]
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @return [BusinessMemberAssetsGetResponse]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -119,7 +125,7 @@ test_that("BusinessMembersAssetAccessDelete", {
   # Delete member access to asset
   # Terminate multiple members&#39; access to an asset.
   # @param business_id character Unique identifier of the requesting business.
-  # @param business_members_asset_access_delete_request BusinessMembersAssetAccessDeleteRequest List member assset permissions to delete.
+  # @param business_members_asset_access_delete_body BusinessMembersAssetAccessDeleteBody 
   # @return [DeleteMemberAccessResultsResponseArray]
 
   # uncomment below to test the operation
@@ -130,9 +136,9 @@ test_that("BusinessMembersAssetAccessUpdate", {
   # tests for BusinessMembersAssetAccessUpdate
   # base path: https://api.pinterest.com/v5
   # Assign/Update member asset permissions
-  # Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+  # Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
   # @param business_id character Unique identifier of the requesting business.
-  # @param update_member_asset_access_body UpdateMemberAssetAccessBody List of member asset permissions to create or update.
+  # @param update_member_asset_access_body UpdateMemberAssetAccessBody 
   # @return [UpdateMemberAssetsResultsResponseArray]
 
   # uncomment below to test the operation
@@ -146,11 +152,15 @@ test_that("BusinessPartnerAssetAccessGet", {
   # Can be used to get the business assets your partner has granted you access to or the business assets you have granted your partner access to. If you specify: - partner_type&#x3D;INTERNAL, you will retrieve your business assets that the partner has access to. - partner_type&#x3D;EXTERNAL, you will retrieve the partner&#39;s business assets that the partner has granted you access to.
   # @param business_id character Unique identifier of the requesting business.
   # @param partner_id character The partner id to be bound to the Business
-  # @param partner_type PartnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+  # @param partner_type character Specifies whether to fetch internal or external (shared) partners.  If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.  If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
   # @param asset_type character A resource type to filter the assets by. Only assets of the specified type will be returned. (optional)
   # @param start_index integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param sort_by AssetSortBy The field to sort member assets by (optional)
+  # @param sort_ascending character Sort assets in ascending order (optional)
+  # @param search_by AssetSearchBy The field to search member assets by (optional)
+  # @param search_value character The value to search for (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [BusinessPartnerAssetAccessGet200Response]
 
   # uncomment below to test the operation
@@ -164,7 +174,7 @@ test_that("DeletePartnerAssetAccessHandlerImpl", {
   # Terminate multiple partners&#39; access to an asset. If - partner_type&#x3D;INTERNAL: You will terminate a partner&#39;s asset access to your business assets. - partner_type&#x3D;EXTERNAL: You will terminate your own access to your partner&#39;s business assets.
   # @param business_id character Unique identifier of the requesting business.
   # @param delete_partner_asset_access_body DeletePartnerAssetAccessBody 
-  # @return [DeletePartnerAssetsResultsResponseArray]
+  # @return [DeletePartnerAssetAccessResultsResponseArray]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -176,7 +186,7 @@ test_that("UpdatePartnerAssetAccessHandlerImpl", {
   # Assign/Update partner asset permissions
   # Grant multiple partners access to assets and/or update multiple partner&#39;s exisiting permissions to an asset. If your partner already had permissions on the asset, they will be overriden with the new permissions you assign to them. To learn more about permission levels, visit https://help.pinterest.com/en/business/article/business-manager-overview  Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
   # @param business_id character Unique identifier of the requesting business.
-  # @param update_partner_asset_access_body UpdatePartnerAssetAccessBody A list of assets and permissions to assign to your partners.
+  # @param update_partner_asset_access_body UpdatePartnerAssetAccessBody 
   # @return [UpdatePartnerAssetsResultsResponseArray]
 
   # uncomment below to test the operation

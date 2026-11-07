@@ -1,15 +1,19 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
+import java.math.BigDecimal;
+import org.openapitools.model.EntityStatus;
 import org.openapitools.model.Granularity;
 import org.joda.time.LocalDate;
-import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.ProductGroupAnalyticsItems;
 import org.openapitools.model.ProductGroupPromotion;
-import org.openapitools.model.ProductGroupPromotionCreateRequest;
-import org.openapitools.model.ProductGroupPromotionResponse;
-import org.openapitools.model.ProductGroupPromotionUpdateRequest;
+import org.openapitools.model.ProductGroupPromotions;
+import org.openapitools.model.ProductGroupPromotionsCreate;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
+import org.openapitools.model.ProductGroupPromotionsUpdateWithRequiredBody;
+import org.openapitools.model.ReportingColumnSync;
 import org.openapitools.model.ReportingTimeZone;
 
 import java.io.InputStream;
@@ -39,7 +43,7 @@ public class ProductGroupPromotionsApiServiceImpl implements ProductGroupPromoti
      *
      */
     @Override
-    public ProductGroupPromotionResponse productGroupPromotionsCreate(String adAccountId, ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest) {
+    public ProductGroupPromotions productGroupPromotionsCreate(String adAccountId, ProductGroupPromotionsCreate productGroupPromotionsCreate) {
         // TODO: Implement...
         return null;
     }
@@ -59,11 +63,11 @@ public class ProductGroupPromotionsApiServiceImpl implements ProductGroupPromoti
     /**
      * Get product group promotions
      *
-     * List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  &lt;b&gt;Note:&lt;/b&gt; ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+     * List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
      *
      */
     @Override
-    public ProductGroupPromotionsList200Response productGroupPromotionsList(String adAccountId, List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<String> entityStatuses, String adGroupId, Integer pageSize, String order, String bookmark) {
+    public ProductGroupPromotionsList200Response productGroupPromotionsList(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds, List<EntityStatus> entityStatuses, String adGroupId) {
         // TODO: Implement...
         return null;
     }
@@ -75,7 +79,7 @@ public class ProductGroupPromotionsApiServiceImpl implements ProductGroupPromoti
      *
      */
     @Override
-    public ProductGroupPromotionResponse productGroupPromotionsUpdate(String adAccountId, ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest) {
+    public ProductGroupPromotions productGroupPromotionsUpdate(String adAccountId, ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody) {
         // TODO: Implement...
         return null;
     }
@@ -83,11 +87,11 @@ public class ProductGroupPromotionsApiServiceImpl implements ProductGroupPromoti
     /**
      * Get product group analytics
      *
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get analytics for the specified product groups in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.  - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      */
     @Override
-    public List<ProductGroupAnalyticsResponseInner> productGroupsAnalytics(String adAccountId, LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")String> productGroupIds, List<String> columns, Granularity granularity, Integer clickWindowDays, Integer engagementWindowDays, Integer viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) {
+    public List<ProductGroupAnalyticsItems> productGroupsAnalytics(LocalDate startDate, LocalDate endDate, List<@Pattern(regexp = "^\\d+$")String> productGroupIds, List<ReportingColumnSync> columns, Granularity granularity, String adAccountId, BigDecimal clickWindowDays, BigDecimal engagementWindowDays, BigDecimal viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone) {
         // TODO: Implement...
         return null;
     }

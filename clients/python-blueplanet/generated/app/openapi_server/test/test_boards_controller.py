@@ -9,13 +9,14 @@ from app.openapi_server.models.board import Board  # noqa: E501
 from app.openapi_server.models.board_create import BoardCreate  # noqa: E501
 from app.openapi_server.models.board_privacy_filter import BoardPrivacyFilter  # noqa: E501
 from app.openapi_server.models.board_section import BoardSection  # noqa: E501
+from app.openapi_server.models.board_section_create import BoardSectionCreate  # noqa: E501
+from app.openapi_server.models.board_section_update_with_required_body import BoardSectionUpdateWithRequiredBody  # noqa: E501
 from app.openapi_server.models.board_sections_list200_response import BoardSectionsList200Response  # noqa: E501
 from app.openapi_server.models.board_with_update_privacy import BoardWithUpdatePrivacy  # noqa: E501
 from app.openapi_server.models.board_with_update_privacy_update import BoardWithUpdatePrivacyUpdate  # noqa: E501
 from app.openapi_server.models.boards_list200_response import BoardsList200Response  # noqa: E501
 from app.openapi_server.models.boards_list_pins200_response import BoardsListPins200Response  # noqa: E501
 from app.openapi_server.models.creative_type import CreativeType  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
 from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from openapi_server.test import BaseTestCase
 
@@ -28,7 +29,7 @@ class TestBoardsController(BaseTestCase):
 
         Create board section
         """
-        body = {"name":"Salads","id":"549755885175"}
+        body = {"id":"549755885175","name":"Salads"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/boards/{board_id}/sections'.format(board_id='board_id_example'),
@@ -87,7 +88,7 @@ class TestBoardsController(BaseTestCase):
 
         Update board section
         """
-        body = {"name":"Salads","id":"549755885175"}
+        body = {"id":"549755885175","name":"Salads"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/boards/{board_id}/sections/{section_id}'.format(board_id='board_id_example', section_id='section_id_example'),
@@ -103,7 +104,7 @@ class TestBoardsController(BaseTestCase):
 
         Create board
         """
-        body = {"name":"Summer recipes","description":"My favorite summer recipes","privacy":"","is_ads_only":True}
+        body = {"description":"My favorite summer recipes","is_ads_only":True,"name":"Summer recipes","privacy":""}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/boards',
@@ -161,11 +162,11 @@ class TestBoardsController(BaseTestCase):
 
         List Pins on board
         """
-        query_string = [('bookmark', 'bookmark_example'),
-                        ('page_size', 25),
-                        ('creative_types', [openapi_server.CreativeType()]),
+        query_string = [('creative_types', [openapi_server.CreativeType()]),
                         ('ad_account_id', 'ad_account_id_example'),
-                        ('pin_metrics', False)]
+                        ('pin_metrics', False),
+                        ('bookmark', 'bookmark_example'),
+                        ('page_size', 25)]
         response = self.client.open(
             '/v5/boards/{board_id}/pins'.format(board_id='board_id_example'),
             method='GET',
@@ -178,7 +179,7 @@ class TestBoardsController(BaseTestCase):
 
         Update board
         """
-        body = {"name":"Summer recipes","description":"My favorite summer recipes","privacy":"PUBLIC"}
+        body = {"description":"My favorite summer recipes","name":"Summer recipes","privacy":"PUBLIC"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/boards/{board_id}'.format(board_id='board_id_example'),

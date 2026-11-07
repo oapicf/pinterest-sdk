@@ -1,9 +1,15 @@
 module.exports = {
     "CreateAssetAccessRequestResponseSample": 
         { data: {} },
-    "DeleteInvitesResultsResponseArraySample": 
+    "CreateAssetAccessRequestResponseSample": 
+        { data: {} },
+    "CancelInvitesResponseSample": 
         { data: {} },
     "UpdateInvitesResultsResponseArraySample": 
+        { data: {} },
+    "UpdateInvitesResultsResponseArraySample": 
+        { data: {} },
+    "CreateInvitesResultsResponseArraySample": 
         { data: {} },
     "CreateInvitesResultsResponseArraySample": 
         { data: {} },

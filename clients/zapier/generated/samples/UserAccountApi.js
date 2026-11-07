@@ -1,11 +1,15 @@
 module.exports = {
-    "boards_user_follows_list_200_responseSample": 
+    "boards_list_200_responseSample": 
         { data: {} },
-    "UserSummarySample": 
+    "FollowUserSample": 
+        { data: {} },
+    "FollowUserSample": 
         { data: {} },
     "followers_list_200_responseSample": 
         { data: {} },
     "LinkedBusinessSample": 
+        { data: {} },
+    "UserWebsiteSample": 
         { data: {} },
     "AnalyticsMetricsResponseSample": 
         { data: {} },
@@ -17,12 +21,14 @@ module.exports = {
         { data: {} },
     "AccountSample": 
         { data: {} },
-    "user_following_get_200_responseSample": 
+    "followers_list_200_responseSample": 
         { data: {} },
     "user_websites_get_200_responseSample": 
         { data: {} },
-    "UserWebsiteSummarySample": 
+    "UserWebsiteSample": 
         { data: {} },
-    "UserWebsiteVerificationCodeSample": 
+    "UserWebsiteSample": 
+        { data: {} },
+    "UserWebsiteVerificationSample": 
         { data: {} },
 }

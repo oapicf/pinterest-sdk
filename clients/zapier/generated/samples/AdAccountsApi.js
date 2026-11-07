@@ -1,5 +1,5 @@
 module.exports = {
-    "AdAccountAnalyticsResponse_innerSample": 
+    "AdAccountAnalyticsItemsSample": 
         { data: {} },
     "MetricsResponseSample": 
         { data: {} },
@@ -11,9 +11,13 @@ module.exports = {
         { data: {} },
     "ad_accounts_list_200_responseSample": 
         { data: {} },
-    "AdsAnalyticsCreateAsyncResponseSample": 
+    "ConversionProductReportSample": 
         { data: {} },
-    "CreateMMMReportResponseSample": 
+    "ConversionProductReportSample": 
+        { data: {} },
+    "MMMReportSample": 
+        { data: {} },
+    "MMMReportSample": 
         { data: {} },
     "AdsAnalyticsCreateAsyncResponseSample": 
         { data: {} },
@@ -21,9 +25,9 @@ module.exports = {
         { data: {} },
     "TemplateBasedReportSample": 
         { data: {} },
-    "AdsAnalyticsGetAsyncResponseSample": 
+    "ConversionProductReportSample": 
         { data: {} },
-    "GetMMMReportResponseSample": 
+    "MMMReportSample": 
         { data: {} },
     "AdsAnalyticsGetAsyncResponseSample": 
         { data: {} },

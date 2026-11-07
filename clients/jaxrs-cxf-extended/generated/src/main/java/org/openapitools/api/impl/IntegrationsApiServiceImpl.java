@@ -1,15 +1,15 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
-import org.openapitools.model.IntegrationLogsRequest;
+import org.openapitools.model.IntegrationLogsInvalidLogResponse;
+import org.openapitools.model.IntegrationLogsRequestCreate;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
 import org.openapitools.model.IntegrationMetadata;
+import org.openapitools.model.IntegrationMetadataCreate;
+import org.openapitools.model.IntegrationMetadataUpdate;
 import org.openapitools.model.IntegrationRecord;
-import org.openapitools.model.IntegrationRequest;
-import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
-import org.openapitools.model.IntegrationsLogsPost400Response;
+import org.openapitools.model.PinterestLibError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -38,9 +38,9 @@ public class IntegrationsApiServiceImpl implements IntegrationsApi {
      *
      */
     @Override
-    public void integrationsCommerceDel(String externalBusinessId) {
+    public IntegrationMetadata integrationsCommerceDel(String externalBusinessId) {
         // TODO: Implement...
-
+        return null;
     }
 
     /**
@@ -62,7 +62,7 @@ public class IntegrationsApiServiceImpl implements IntegrationsApi {
      *
      */
     @Override
-    public IntegrationMetadata integrationsCommercePatch(String externalBusinessId, IntegrationRequestPatch integrationRequestPatch) {
+    public IntegrationMetadata integrationsCommercePatch(String externalBusinessId, IntegrationMetadataUpdate integrationMetadataUpdate) {
         // TODO: Implement...
         return null;
     }
@@ -74,7 +74,7 @@ public class IntegrationsApiServiceImpl implements IntegrationsApi {
      *
      */
     @Override
-    public IntegrationMetadata integrationsCommercePost(IntegrationRequest integrationRequest) {
+    public IntegrationMetadata integrationsCommercePost(IntegrationMetadataCreate integrationMetadataCreate) {
         // TODO: Implement...
         return null;
     }
@@ -110,7 +110,7 @@ public class IntegrationsApiServiceImpl implements IntegrationsApi {
      *
      */
     @Override
-    public IntegrationLogsSuccessResponse integrationsLogsPost(IntegrationLogsRequest integrationLogsRequest) {
+    public IntegrationLogsSuccessResponse integrationsLogsPost(IntegrationLogsRequestCreate integrationLogsRequestCreate) {
         // TODO: Implement...
         return null;
     }

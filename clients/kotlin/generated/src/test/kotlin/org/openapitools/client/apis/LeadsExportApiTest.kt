@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,10 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.LeadsExportApi
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.LeadsExportCreateRequest
-import org.openapitools.client.models.LeadsExportCreateResponse
 import org.openapitools.client.models.LeadsExportResponseData
+import org.openapitools.client.models.LeadsExports
+import org.openapitools.client.models.LeadsExportsCreate
+import org.openapitools.client.models.PinterestLibError
 
 class LeadsExportApiTest : ShouldSpec() {
     init {
@@ -33,8 +41,8 @@ class LeadsExportApiTest : ShouldSpec() {
         should("test leadsExportCreate") {
             // uncomment below to test leadsExportCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val leadsExportCreateRequest : LeadsExportCreateRequest =  // LeadsExportCreateRequest | 
-            //val result : LeadsExportCreateResponse = apiInstance.leadsExportCreate(adAccountId, leadsExportCreateRequest)
+            //val leadsExportsCreate : LeadsExportsCreate =  // LeadsExportsCreate | 
+            //val result : LeadsExports = apiInstance.leadsExportCreate(adAccountId, leadsExportsCreate)
             //result shouldBe ("TODO")
         }
 
@@ -42,7 +50,7 @@ class LeadsExportApiTest : ShouldSpec() {
         should("test leadsExportGet") {
             // uncomment below to test leadsExportGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val leadsExportId : kotlin.String = 123755885175 // kotlin.String | lead_export_id token returned from the create a lead export endpoint
+            //val leadsExportId : kotlin.String = leadsExportId_example // kotlin.String | lead_export_id token returned from the create a lead export endpoint
             //val result : LeadsExportResponseData = apiInstance.leadsExportGet(adAccountId, leadsExportId)
             //result shouldBe ("TODO")
         }

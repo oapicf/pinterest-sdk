@@ -9,10 +9,10 @@ test_that("AudiencesCreate", {
   # tests for AudiencesCreate
   # base path: https://api.pinterest.com/v5
   # Create audience
-  # Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+  # Create a new audience for the ad account.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param audience_create_request AudienceCreateRequest List of ads to create, size limit [1, 30]
-  # @return [Audience]
+  # @param ad_accounts_audience_create AdAccountsAudienceCreate 
+  # @return [AdAccountsAudience]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -23,9 +23,9 @@ test_that("AudiencesGet", {
   # base path: https://api.pinterest.com/v5
   # Get audience
   # Get a specific audience given the audience ID.
+  # @param audience_id character Audience ID.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param audience_id character Unique identifier of an audience
-  # @return [Audience]
+  # @return [AdAccountsAudience]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -38,9 +38,10 @@ test_that("AudiencesList", {
   # Get list of audiences for the ad account.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param order character The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items. (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param ownership_type character Filter audiences by ownership type. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @param order PinterestLibPaginationOrder The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+  # @param ownership_type AudienceOwnershipType  (optional)
+  # @param exclude_nca character When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all). (optional)
   # @return [AudiencesList200Response]
 
   # uncomment below to test the operation
@@ -51,11 +52,11 @@ test_that("AudiencesUpdate", {
   # tests for AudiencesUpdate
   # base path: https://api.pinterest.com/v5
   # Update audience
-  # Update (edit or remove) an existing targeting audience.
+  # Update an existing audience for the ad account.
+  # @param audience_id character Audience ID.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param audience_id character Unique identifier of an audience
-  # @param audience_update_request AudienceUpdateRequest The audience to be updated.
-  # @return [Audience]
+  # @param ad_accounts_audience_update AdAccountsAudienceUpdate 
+  # @return [AdAccountsAudience]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

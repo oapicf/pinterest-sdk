@@ -22,7 +22,12 @@ module CatalogReportsApiHandlerTestsHelper =
   let mutable ReportsCreateBody = ""
 
   ReportsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;catalog_type&quot; : &quot;RETAIL&quot;
+  &quot;catalog_type&quot; : &quot;RETAIL&quot;,
+  &quot;report&quot; : {
+    &quot;feed_id&quot; : &quot;feed_id&quot;,
+    &quot;processing_result_id&quot; : &quot;processing_result_id&quot;,
+    &quot;report_type&quot; : &quot;FEED_INGESTION_ISSUES&quot;
+  }
 }"
   ReportsCreateExamples <- ReportsCreateExamples.Add("application/json", ReportsCreateBody)
 

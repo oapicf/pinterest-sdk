@@ -66,7 +66,7 @@ import org.openapitools.model.TitleKeywordsFilter;
  */
 
 @ApiModel(description = "Base filter keys shared across catalog filtering")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsBaseFilterKeys   {
   
   private CatalogsProductGroupPricingCriteria MIN_PRICE;

@@ -10,7 +10,7 @@ from openapi_server.models.advanced_auction_items import AdvancedAuctionItems  #
 from openapi_server.models.advanced_auction_items_get_request import AdvancedAuctionItemsGetRequest  # noqa: F401
 from openapi_server.models.advanced_auction_items_submit_request import AdvancedAuctionItemsSubmitRequest  # noqa: F401
 from openapi_server.models.advanced_auction_processed_items import AdvancedAuctionProcessedItems  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 
 
 def test_advanced_auction_items_get_post(client: TestClient):
@@ -18,7 +18,7 @@ def test_advanced_auction_items_get_post(client: TestClient):
 
     Get item bid options (POST)
     """
-    advanced_auction_items_get_request = {"catalog_id":"2680059592705","items":[{"country":"AD","item_id":"DS0294-M","language":"EN"},{"country":"AD","item_id":"DS0294-M","language":"EN"},{"country":"AD","item_id":"DS0294-M","language":"EN"},{"country":"AD","item_id":"DS0294-M","language":"EN"},{"country":"AD","item_id":"DS0294-M","language":"EN"}]}
+    advanced_auction_items_get_request = openapi_server.AdvancedAuctionItemsGetRequest()
     params = [("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
@@ -41,7 +41,7 @@ def test_advanced_auction_items_submit_post(client: TestClient):
 
     Operate on item level bid options
     """
-    advanced_auction_items_submit_request = {"catalog_id":"2680059592705","items":[{"operation":"UPSERT"},{"operation":"UPSERT"},{"operation":"UPSERT"},{"operation":"UPSERT"},{"operation":"UPSERT"}]}
+    advanced_auction_items_submit_request = openapi_server.AdvancedAuctionItemsSubmitRequest()
     params = [("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",

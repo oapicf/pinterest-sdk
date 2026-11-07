@@ -40,12 +40,13 @@ func Test_openapi_PromotionsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var adAccountId string
 		var promotionId string
+		var adAccountId string
 
-		httpRes, err := apiClient.PromotionsAPI.PromotionsDelete(context.Background(), adAccountId, promotionId).Execute()
+		resp, httpRes, err := apiClient.PromotionsAPI.PromotionsDelete(context.Background(), promotionId, adAccountId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})
@@ -54,10 +55,10 @@ func Test_openapi_PromotionsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var adAccountId string
 		var promotionId string
+		var adAccountId string
 
-		resp, httpRes, err := apiClient.PromotionsAPI.PromotionsGet(context.Background(), adAccountId, promotionId).Execute()
+		resp, httpRes, err := apiClient.PromotionsAPI.PromotionsGet(context.Background(), promotionId, adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 Account.avsc
 AccountTemplate.avsc
 ActionType.avsc

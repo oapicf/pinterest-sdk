@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   GenderMultipliers.JSON_PROPERTY_G_E_N_D_E_R
 })
 @JsonTypeName("GenderMultipliers")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class GenderMultipliers extends HashMap<String, Double> {
     public static final String JSON_PROPERTY_G_E_N_D_E_R = "GENDER";

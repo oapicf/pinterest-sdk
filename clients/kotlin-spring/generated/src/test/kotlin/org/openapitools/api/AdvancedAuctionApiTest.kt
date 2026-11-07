@@ -4,7 +4,7 @@ import org.openapitools.model.AdvancedAuctionItems
 import org.openapitools.model.AdvancedAuctionItemsGetRequest
 import org.openapitools.model.AdvancedAuctionItemsSubmitRequest
 import org.openapitools.model.AdvancedAuctionProcessedItems
-import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -23,6 +23,7 @@ class AdvancedAuctionApiTest {
         val advancedAuctionItemsGetRequest: AdvancedAuctionItemsGetRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
         
+        
         val response: ResponseEntity<AdvancedAuctionItems> = api.advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest, adAccountId)
 
         // TODO: test validations
@@ -38,6 +39,7 @@ class AdvancedAuctionApiTest {
     fun advancedAuctionItemsSubmitPostTest() {
         val advancedAuctionItemsSubmitRequest: AdvancedAuctionItemsSubmitRequest = TODO()
         val adAccountId: kotlin.String? = TODO()
+        
         
         val response: ResponseEntity<AdvancedAuctionProcessedItems> = api.advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest, adAccountId)
 

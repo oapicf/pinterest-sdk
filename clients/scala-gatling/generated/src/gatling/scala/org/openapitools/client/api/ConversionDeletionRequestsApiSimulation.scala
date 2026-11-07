@@ -120,9 +120,9 @@ class ConversionDeletionRequestsApiSimulation extends Simulation {
         .feed(conversion_deletion_request/listPATHFeeder)
         .exec(http("conversionDeletionRequestList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/conversion_deletion_requests")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("order","${order}")
+        .queryParam("page_size","${page_size}")
 )
 
     // Run scnconversionDeletionRequestList with warm up and reach a constant rate for entire duration

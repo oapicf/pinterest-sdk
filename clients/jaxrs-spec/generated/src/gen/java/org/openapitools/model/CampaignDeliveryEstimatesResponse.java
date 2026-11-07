@@ -23,7 +23,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Delivery estimates response for a campaign.")
 @JsonTypeName("CampaignDeliveryEstimatesResponse")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-07T02:51:53.160510316Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignDeliveryEstimatesResponse   {
   private List<@Valid CampaignPlanningCurveEstimate> curves = new ArrayList<>();
   private CampaignDeliveryEstimatesDerivedMetrics derivedMetrics;

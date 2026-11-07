@@ -3,14 +3,14 @@ module.exports = {
         { data: {} },
     "ad_accounts_audiences_shared_accounts_list_200_responseSample": 
         { data: {} },
-    "audiences_list_200_responseSample": 
+    "shared_audiences_for_business_list_200_responseSample": 
         { data: {} },
-    "SharedAudienceResponseSample": 
+    "AdAccountToAdAccountSharedAudienceSample": 
         { data: {} },
-    "BusinessSharedAudienceResponseSample": 
+    "AdAccountToBusinessSharedAudienceSample": 
         { data: {} },
-    "SharedAudienceResponseSample": 
+    "BusinessToAdAccountSharedAudienceSample": 
         { data: {} },
-    "BusinessSharedAudienceResponseSample": 
+    "BusinessToBusinessSharedAudienceSample": 
         { data: {} },
 }

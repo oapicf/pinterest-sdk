@@ -6,22 +6,23 @@ from flask import json
 from io import BytesIO
 
 from app.openapi_server.models.ad_account import AdAccount  # noqa: E501
-from app.openapi_server.models.ad_account_analytics_response_inner import AdAccountAnalyticsResponseInner  # noqa: E501
+from app.openapi_server.models.ad_account_analytics_items import AdAccountAnalyticsItems  # noqa: E501
 from app.openapi_server.models.ad_account_create import AdAccountCreate  # noqa: E501
 from app.openapi_server.models.ad_accounts_list200_response import AdAccountsList200Response  # noqa: E501
+from app.openapi_server.models.ads_analytics_account_targeting_type import AdsAnalyticsAccountTargetingType  # noqa: E501
 from app.openapi_server.models.ads_analytics_create_async_request import AdsAnalyticsCreateAsyncRequest  # noqa: E501
 from app.openapi_server.models.ads_analytics_create_async_response import AdsAnalyticsCreateAsyncResponse  # noqa: E501
 from app.openapi_server.models.ads_analytics_get_async_response import AdsAnalyticsGetAsyncResponse  # noqa: E501
-from app.openapi_server.models.ads_analytics_targeting_type import AdsAnalyticsTargetingType  # noqa: E501
-from app.openapi_server.models.conversion_product_report_request import ConversionProductReportRequest  # noqa: E501
+from app.openapi_server.models.conversion_product_report import ConversionProductReport  # noqa: E501
+from app.openapi_server.models.conversion_product_report_create import ConversionProductReportCreate  # noqa: E501
 from app.openapi_server.models.conversion_report_attribution_type import ConversionReportAttributionType  # noqa: E501
-from app.openapi_server.models.create_mmm_report_request import CreateMMMReportRequest  # noqa: E501
-from app.openapi_server.models.create_mmm_report_response import CreateMMMReportResponse  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
-from app.openapi_server.models.get_mmm_report_response import GetMMMReportResponse  # noqa: E501
 from app.openapi_server.models.granularity import Granularity  # noqa: E501
+from app.openapi_server.models.mmm_report import MMMReport  # noqa: E501
+from app.openapi_server.models.mmm_report_create import MMMReportCreate  # noqa: E501
 from app.openapi_server.models.metrics_response import MetricsResponse  # noqa: E501
 from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: E501
+from app.openapi_server.models.reporting_column_sync import ReportingColumnSync  # noqa: E501
 from app.openapi_server.models.reporting_time_zone import ReportingTimeZone  # noqa: E501
 from app.openapi_server.models.template_based_report import TemplateBasedReport  # noqa: E501
 from app.openapi_server.models.templates_list200_response import TemplatesList200Response  # noqa: E501
@@ -38,12 +39,12 @@ class TestAdAccountsController(BaseTestCase):
         """
         query_string = [('start_date', '2013-10-20'),
                         ('end_date', '2013-10-20'),
-                        ('columns', ['columns_example']),
+                        ('columns', [openapi_server.ReportingColumnSync()]),
                         ('granularity', openapi_server.Granularity()),
                         ('click_window_days', 30),
                         ('engagement_window_days', 30),
                         ('view_window_days', 1),
-                        ('conversion_report_time', TIME_OF_AD_ACTION),
+                        ('conversion_report_time', 'TIME_OF_AD_ACTION'),
                         ('reporting_timezone', openapi_server.ReportingTimeZone())]
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/analytics'.format(ad_account_id='ad_account_id_example'),
@@ -59,13 +60,13 @@ class TestAdAccountsController(BaseTestCase):
         """
         query_string = [('start_date', '2013-10-20'),
                         ('end_date', '2013-10-20'),
-                        ('targeting_types', [openapi_server.AdsAnalyticsTargetingType()]),
-                        ('columns', ['columns_example']),
+                        ('targeting_types', [openapi_server.AdsAnalyticsAccountTargetingType()]),
+                        ('columns', [openapi_server.ReportingColumnSync()]),
                         ('granularity', openapi_server.Granularity()),
                         ('click_window_days', 30),
                         ('engagement_window_days', 30),
                         ('view_window_days', 1),
-                        ('conversion_report_time', TIME_OF_AD_ACTION),
+                        ('conversion_report_time', 'TIME_OF_AD_ACTION'),
                         ('attribution_types', [openapi_server.ConversionReportAttributionType()]),
                         ('reporting_timezone', openapi_server.ReportingTimeZone())]
         response = self.client.open(
@@ -80,7 +81,7 @@ class TestAdAccountsController(BaseTestCase):
 
         Create ad account
         """
-        body = {"country":"AD","owner_user_id":"owner_user_id","name":"name","currency":"UNK"}
+        body = {"country":"AD","currency":"UNK","name":"name","owner_user_id":"owner_user_id","time_zone":"America/Los_Angeles"}
         response = self.client.open(
             '/v5/ad_accounts',
             method='POST',
@@ -120,7 +121,7 @@ class TestAdAccountsController(BaseTestCase):
 
         Create a request for a brand, category, SKU report
         """
-        body = {"end_date":"2024-04-23","conversion_product_attribution_type":"DEFAULT","level":"ADVERTISER","view_window_days":6,"columns":["AD_GROUP_ID","AD_GROUP_ID"],"campaign_ids":["12345678"],"click_window_days":0,"conversion_report_time":"TIME_OF_AD_ACTION","campaign_objective_types":["AWARENESS","AWARENESS","AWARENESS","AWARENESS","AWARENESS"],"product_sku_ids":["WBC45678","WBC45679"],"granularity":"WEEK","ad_group_ids":["12345678"],"conversion_product_breakdown":"PRODUCT_BRAND","report_name":"report_name","start_date":"2024-03-17"}
+        body = {"ad_group_ids":["12345678"],"campaign_ids":["12345678"],"campaign_objective_types":["AWARENESS","AWARENESS","AWARENESS","AWARENESS","AWARENESS"],"click_window_days":"","columns":["AD_GROUP_ID","AD_GROUP_ID"],"conversion_product_attribution_type":"","conversion_product_breakdown":"","conversion_report_time":"","end_date":"2024-04-23","granularity":"","level":"","product_sku_ids":["WBC45678","WBC45679"],"report_name":"report_name","start_date":"2024-04-17","view_window_days":""}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/reports/brand_category_sku'.format(ad_account_id='ad_account_id_example'),
             method='POST',
@@ -134,7 +135,7 @@ class TestAdAccountsController(BaseTestCase):
 
         Create a request for a Marketing Mix Modeling (MMM) report
         """
-        body = {"end_date":"2020-12-20","level":"CAMPAIGN_TARGETING","columns":["SPEND_IN_DOLLAR","SPEND_IN_DOLLAR"],"granularity":"DAY","countries":["US","US"],"report_name":"report_name","targeting_types":["GENDER"],"start_date":"2020-12-20"}
+        body = {"advertiser_ids":["advertiser_ids","advertiser_ids"],"columns":["SPEND_IN_DOLLAR","SPEND_IN_DOLLAR"],"countries":["US","US"],"custom_column_ids":["custom_column_ids","custom_column_ids","custom_column_ids","custom_column_ids","custom_column_ids"],"end_date":"2020-12-20","granularity":"","level":"","report_name":"report_name","start_date":"2020-12-20","targeting_types":["GENDER"]}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/mmm_reports'.format(ad_account_id='ad_account_id_example'),
             method='POST',
@@ -148,7 +149,7 @@ class TestAdAccountsController(BaseTestCase):
 
         Create async request for an account analytics report
         """
-        body = {"end_date":"2020-12-20","view_window_days":1,"report_format":"JSON","metrics_filters":[{"field":"SPEND_IN_DOLLAR","values":[5.962133916683182,5.962133916683182],"operator":"LESS_THAN"},{"field":"SPEND_IN_DOLLAR","values":[5.962133916683182,5.962133916683182],"operator":"LESS_THAN"}],"columns":["SPEND_IN_MICRO_DOLLAR","SPEND_IN_MICRO_DOLLAR"],"campaign_ids":["12345678"],"combine_targeting_types":False,"click_window_days":0,"conversion_report_time":"TIME_OF_AD_ACTION","product_group_ids":["12345678"],"campaign_objective_types":["AWARENESS"],"product_group_statuses":["RUNNING","PAUSED"],"reporting_timezone":"","campaign_statuses":["RUNNING","PAUSED"],"start_hour":5,"ad_group_ids":["12345678"],"end_hour":12,"targeting_types":["APPTYPE","APPTYPE","APPTYPE","APPTYPE","APPTYPE"],"start_date":"2020-12-20","custom_conversion_event_metrics":[{"custom_event_metrics_type":"ADE_COST_PER_ACTION","custom_event_name":"custom_event_name"},{"custom_event_metrics_type":"ADE_COST_PER_ACTION","custom_event_name":"custom_event_name"}],"level":"CAMPAIGN","ad_ids":["12345678"],"campaign_brand_label":"Brand","ad_statuses":["APPROVED","PAUSED"],"primary_sort":"BY_ID","attribution_types":["INDIVIDUAL","INDIVIDUAL"],"granularity":"granularity","ad_group_statuses":["RUNNING","PAUSED"],"engagement_window_days":6,"product_item_ids":["12345678"]}
+        body = {"ad_group_ids":[null,null,null,null,null],"ad_group_statuses":["RUNNING","RUNNING","RUNNING","RUNNING","RUNNING"],"ad_ids":[null,null,null,null,null],"ad_statuses":["APPROVED","APPROVED","APPROVED","APPROVED","APPROVED"],"attribution_types":["INDIVIDUAL","INDIVIDUAL"],"campaign_brand_label":"campaign_brand_label","campaign_custom_label":"campaign_custom_label","campaign_ids":[null,null,null,null,null],"campaign_objective_types":["AWARENESS","AWARENESS","AWARENESS","AWARENESS","AWARENESS"],"campaign_statuses":["RUNNING","RUNNING","RUNNING","RUNNING","RUNNING"],"click_window_days":"","columns":["SPEND_IN_MICRO_DOLLAR","SPEND_IN_MICRO_DOLLAR"],"combine_targeting_types":False,"conversion_report_time":"","custom_conversion_event_metrics":[{"custom_event_metrics_type":"ADE_COST_PER_ACTION","custom_event_name":"custom_event_name"},{"custom_event_metrics_type":"ADE_COST_PER_ACTION","custom_event_name":"custom_event_name"}],"end_date":"end_date","end_hour":1,"engagement_window_days":"","granularity":"","level":"","metrics_filters":[{"field":"SPEND_IN_DOLLAR","operator":"LESS_THAN","values":[6.027456183070403,6.027456183070403]},{"field":"SPEND_IN_DOLLAR","operator":"LESS_THAN","values":[6.027456183070403,6.027456183070403]}],"primary_sort":"","product_group_ids":[null,null,null,null,null],"product_group_statuses":["RUNNING","RUNNING","RUNNING","RUNNING","RUNNING"],"product_item_ids":[null,null,null,null,null],"report_format":"","reporting_timezone":"","start_date":"start_date","start_hour":3,"targeting_types":["KEYWORD","KEYWORD","KEYWORD","KEYWORD","KEYWORD"],"view_window_days":""}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/reports'.format(ad_account_id='ad_account_id_example'),
             method='POST',
@@ -227,9 +228,9 @@ class TestAdAccountsController(BaseTestCase):
 
         List templates
         """
-        query_string = [('page_size', 25),
-                        ('order', 'ASCENDING'),
-                        ('bookmark', 'bookmark_example')]
+        query_string = [('bookmark', 'bookmark_example'),
+                        ('page_size', 25),
+                        ('order', openapi_server.PinterestLibPaginationOrder())]
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/templates'.format(ad_account_id='ad_account_id_example'),
             method='GET',

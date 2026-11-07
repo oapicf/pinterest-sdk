@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -20,12 +28,12 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.CatalogsApi
 import org.openapitools.client.models.Catalog
+import org.openapitools.client.models.CatalogCreate
 import org.openapitools.client.models.CatalogsAvailableFilterValues
-import org.openapitools.client.models.CatalogsCreateRequest
 import org.openapitools.client.models.CatalogsList200Response
 import org.openapitools.client.models.CatalogsLocale
 import org.openapitools.client.models.Country
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 
 class CatalogsApiTest : ShouldSpec() {
     init {
@@ -37,8 +45,8 @@ class CatalogsApiTest : ShouldSpec() {
             // uncomment below to test catalogsAvailableFilterValues
             //val catalogId : kotlin.String = catalogId_example // kotlin.String | Filter entities for a given catalog_id.
             //val feedId : kotlin.String = feedId_example // kotlin.String | Filter entities for a given feed_id. If not given, all feeds are considered.
-            //val country : Country = US // Country | Country for the Catalogs Items
-            //val language : CatalogsLocale = en-US // CatalogsLocale | Language for the Catalogs Items
+            //val country : Country =  // Country | Country for the Catalogs Items
+            //val language : CatalogsLocale =  // CatalogsLocale | Language for the Catalogs Items
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : CatalogsAvailableFilterValues = apiInstance.catalogsAvailableFilterValues(catalogId, feedId, country, language, adAccountId)
             //result shouldBe ("TODO")
@@ -47,19 +55,19 @@ class CatalogsApiTest : ShouldSpec() {
         // to test catalogsCreate
         should("test catalogsCreate") {
             // uncomment below to test catalogsCreate
-            //val catalogsCreateRequest : CatalogsCreateRequest =  // CatalogsCreateRequest | Request object used to created a feed.
+            //val catalogCreate : CatalogCreate =  // CatalogCreate | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : Catalog = apiInstance.catalogsCreate(catalogsCreateRequest, adAccountId)
+            //val result : Catalog = apiInstance.catalogsCreate(catalogCreate, adAccountId)
             //result shouldBe ("TODO")
         }
 
         // to test catalogsList
         should("test catalogsList") {
             // uncomment below to test catalogsList
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : CatalogsList200Response = apiInstance.catalogsList(bookmark, pageSize, adAccountId)
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : CatalogsList200Response = apiInstance.catalogsList(adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 

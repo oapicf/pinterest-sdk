@@ -18,12 +18,13 @@ feature -- Test routines
             --
             -- Delete commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
         local
+            l_response: INTEGRATION_METADATA
             l_external_business_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_external_business_id
 
-            -- api.integrations_commerce_del(l_external_business_id)
+            -- l_response := api.integrations_commerce_del(l_external_business_id)
             assert ("not_implemented", False)
         end
 
@@ -49,13 +50,13 @@ feature -- Test routines
         local
             l_response: INTEGRATION_METADATA
             l_external_business_id: STRING_32
-            l_integration_request_patch: INTEGRATION_REQUEST_PATCH
+            l_integration_metadata_update: INTEGRATION_METADATA_UPDATE
         do
             -- TODO: Initialize required params.
             -- l_external_business_id
-            -- l_integration_request_patch
+            -- l_integration_metadata_update
 
-            -- l_response := api.integrations_commerce_patch(l_external_business_id, l_integration_request_patch)
+            -- l_response := api.integrations_commerce_patch(l_external_business_id, l_integration_metadata_update)
             assert ("not_implemented", False)
         end
 
@@ -65,12 +66,12 @@ feature -- Test routines
             -- Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
         local
             l_response: INTEGRATION_METADATA
-            l_integration_request: INTEGRATION_REQUEST
+            l_integration_metadata_create: INTEGRATION_METADATA_CREATE
         do
             -- TODO: Initialize required params.
-            -- l_integration_request
+            -- l_integration_metadata_create
 
-            -- l_response := api.integrations_commerce_post(l_integration_request)
+            -- l_response := api.integrations_commerce_post(l_integration_metadata_create)
             assert ("not_implemented", False)
         end
 
@@ -110,12 +111,12 @@ feature -- Test routines
             -- This endpoint receives batched logs from integration applications on partner platforms. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
         local
             l_response: INTEGRATION_LOGS_SUCCESS_RESPONSE
-            l_integration_logs_request: INTEGRATION_LOGS_REQUEST
+            l_integration_logs_request_create: INTEGRATION_LOGS_REQUEST_CREATE
         do
             -- TODO: Initialize required params.
-            -- l_integration_logs_request
+            -- l_integration_logs_request_create
 
-            -- l_response := api.integrations_logs_post(l_integration_logs_request)
+            -- l_response := api.integrations_logs_post(l_integration_logs_request_create)
             assert ("not_implemented", False)
         end
 

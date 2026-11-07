@@ -6,12 +6,12 @@ from flask import json
 from io import BytesIO
 
 from app.openapi_server.models.catalog import Catalog  # noqa: E501
+from app.openapi_server.models.catalog_create import CatalogCreate  # noqa: E501
 from app.openapi_server.models.catalogs_available_filter_values import CatalogsAvailableFilterValues  # noqa: E501
-from app.openapi_server.models.catalogs_create_request import CatalogsCreateRequest  # noqa: E501
 from app.openapi_server.models.catalogs_list200_response import CatalogsList200Response  # noqa: E501
 from app.openapi_server.models.catalogs_locale import CatalogsLocale  # noqa: E501
 from app.openapi_server.models.country import Country  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -56,9 +56,9 @@ class TestCatalogsController(BaseTestCase):
 
         List catalogs
         """
-        query_string = [('bookmark', 'bookmark_example'),
-                        ('page_size', 25),
-                        ('ad_account_id', 'ad_account_id_example')]
+        query_string = [('ad_account_id', 'ad_account_id_example'),
+                        ('bookmark', 'bookmark_example'),
+                        ('page_size', 25)]
         response = self.client.open(
             '/v5/catalogs',
             method='GET',

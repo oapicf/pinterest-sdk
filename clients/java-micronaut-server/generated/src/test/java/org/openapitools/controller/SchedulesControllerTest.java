@@ -93,7 +93,7 @@ public class SchedulesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@d28fe12");
+            .accept("[Ljava.lang.String;@55445d5e");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, SchedulesCreate200ResponseInner.class));
@@ -145,7 +145,7 @@ public class SchedulesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@101f98d0");
+            .accept("[Ljava.lang.String;@b08cd7a");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
@@ -200,7 +200,7 @@ public class SchedulesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@72b6753d");
+            .accept("[Ljava.lang.String;@4e15e735");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, SchedulesCreate200ResponseInner.class));

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -20,14 +28,14 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.CatalogFeedsApi
 import org.openapitools.client.models.CatalogsFeed
+import org.openapitools.client.models.CatalogsFeedCreateRequestSchema
 import org.openapitools.client.models.CatalogsFeedIngestion
+import org.openapitools.client.models.CatalogsFeedUpdateRequestSchema
 import org.openapitools.client.models.CatalogsItemValidationIssue
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.FeedProcessingResultsList200Response
-import org.openapitools.client.models.FeedsCreateRequest
 import org.openapitools.client.models.FeedsList200Response
-import org.openapitools.client.models.FeedsUpdateRequest
 import org.openapitools.client.models.ItemsIssuesList200Response
+import org.openapitools.client.models.PinterestLibError
 
 class CatalogFeedsApiTest : ShouldSpec() {
     init {
@@ -37,35 +45,36 @@ class CatalogFeedsApiTest : ShouldSpec() {
         // to test feedProcessingResultsList
         should("test feedProcessingResultsList") {
             // uncomment below to test feedProcessingResultsList
-            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : FeedProcessingResultsList200Response = apiInstance.feedProcessingResultsList(feedId, bookmark, pageSize, adAccountId)
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : FeedProcessingResultsList200Response = apiInstance.feedProcessingResultsList(feedId, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test feedsCreate
         should("test feedsCreate") {
             // uncomment below to test feedsCreate
-            //val feedsCreateRequest : FeedsCreateRequest =  // FeedsCreateRequest | Request object used to created a feed.
+            //val catalogsFeedCreateRequestSchema : CatalogsFeedCreateRequestSchema =  // CatalogsFeedCreateRequestSchema | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : CatalogsFeed = apiInstance.feedsCreate(feedsCreateRequest, adAccountId)
+            //val result : CatalogsFeed = apiInstance.feedsCreate(catalogsFeedCreateRequestSchema, adAccountId)
             //result shouldBe ("TODO")
         }
 
         // to test feedsDelete
         should("test feedsDelete") {
             // uncomment below to test feedsDelete
-            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed
+            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //apiInstance.feedsDelete(feedId, adAccountId)
+            //val result : CatalogsFeed = apiInstance.feedsDelete(feedId, adAccountId)
+            //result shouldBe ("TODO")
         }
 
         // to test feedsGet
         should("test feedsGet") {
             // uncomment below to test feedsGet
-            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed
+            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : CatalogsFeed = apiInstance.feedsGet(feedId, adAccountId)
             //result shouldBe ("TODO")
@@ -74,7 +83,7 @@ class CatalogFeedsApiTest : ShouldSpec() {
         // to test feedsIngest
         should("test feedsIngest") {
             // uncomment below to test feedsIngest
-            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed
+            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : CatalogsFeedIngestion = apiInstance.feedsIngest(feedId, adAccountId)
             //result shouldBe ("TODO")
@@ -83,34 +92,34 @@ class CatalogFeedsApiTest : ShouldSpec() {
         // to test feedsList
         should("test feedsList") {
             // uncomment below to test feedsList
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val catalogId : kotlin.String = catalogId_example // kotlin.String | Filter entities for a given catalog_id. If not given, all catalogs are considered.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : FeedsList200Response = apiInstance.feedsList(bookmark, pageSize, catalogId, adAccountId)
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : FeedsList200Response = apiInstance.feedsList(catalogId, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test feedsUpdate
         should("test feedsUpdate") {
             // uncomment below to test feedsUpdate
-            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed
-            //val feedsUpdateRequest : FeedsUpdateRequest =  // FeedsUpdateRequest | Request object used to update a feed.
+            //val feedId : kotlin.String = feedId_example // kotlin.String | Unique identifier of a feed.
+            //val catalogsFeedUpdateRequestSchema : CatalogsFeedUpdateRequestSchema =  // CatalogsFeedUpdateRequestSchema | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : CatalogsFeed = apiInstance.feedsUpdate(feedId, feedsUpdateRequest, adAccountId)
+            //val result : CatalogsFeed = apiInstance.feedsUpdate(feedId, catalogsFeedUpdateRequestSchema, adAccountId)
             //result shouldBe ("TODO")
         }
 
         // to test itemsIssuesList
         should("test itemsIssuesList") {
             // uncomment below to test itemsIssuesList
-            //val processingResultId : kotlin.String = 5224831246441439241 // kotlin.String | Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val itemNumbers : kotlin.collections.List<kotlin.Int> = [1,5] // kotlin.collections.List<kotlin.Int> | Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
-            //val itemValidationIssue : CatalogsItemValidationIssue = TITLE_MISSING // CatalogsItemValidationIssue | Filter item validation issues that have a given type of item validation issue.
+            //val processingResultId : kotlin.String = processingResultId_example // kotlin.String | Unique identifier of a feed processing result. It can be acquired from the \"id\" field of the \"items\" array within the response of the [List processing results for a given feed](/docs/api/v5/#operation/feed_processing_results/list).
+            //val itemNumbers : kotlin.collections.List<kotlin.Int> =  // kotlin.collections.List<kotlin.Int> | Item number based on order of appearance in the Catalogs Feed. For example, '0' refers to first item found in a feed that was downloaded from a 'location' specified during feed creation.
+            //val itemValidationIssue : CatalogsItemValidationIssue =  // CatalogsItemValidationIssue | Filter item validation issues that have a given type of item validation issue.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : ItemsIssuesList200Response = apiInstance.itemsIssuesList(processingResultId, bookmark, pageSize, itemNumbers, itemValidationIssue, adAccountId)
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : ItemsIssuesList200Response = apiInstance.itemsIssuesList(processingResultId, itemNumbers, itemValidationIssue, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 

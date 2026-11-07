@@ -6,14 +6,17 @@ from flask import json
 from io import BytesIO
 
 from app.openapi_server.models.creative_type import CreativeType  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.multi_pins_analytics_metric_types_item import MultiPinsAnalyticsMetricTypesItem  # noqa: E501
 from app.openapi_server.models.pin import Pin  # noqa: E501
 from app.openapi_server.models.pin_analytics_metrics_response import PinAnalyticsMetricsResponse  # noqa: E501
 from app.openapi_server.models.pin_create import PinCreate  # noqa: E501
+from app.openapi_server.models.pin_filter import PinFilter  # noqa: E501
+from app.openapi_server.models.pin_type import PinType  # noqa: E501
 from app.openapi_server.models.pin_update import PinUpdate  # noqa: E501
 from app.openapi_server.models.pins_list200_response import PinsList200Response  # noqa: E501
-from app.openapi_server.models.pins_save_request import PinsSaveRequest  # noqa: E501
+from app.openapi_server.models.pins_save_request_create import PinsSaveRequestCreate  # noqa: E501
 from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.querypinanalyticsmetrictypes_items import QuerypinanalyticsmetrictypesItems  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -28,8 +31,8 @@ class TestPinsController(BaseTestCase):
         query_string = [('pin_ids', ['pin_ids_example']),
                         ('start_date', '2013-10-20'),
                         ('end_date', '2013-10-20'),
-                        ('app_types', ALL),
-                        ('metric_types', ['metric_types_example']),
+                        ('app_types', 'ALL'),
+                        ('metric_types', [openapi_server.MultiPinsAnalyticsMetricTypesItem()]),
                         ('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/pins/analytics',
@@ -45,9 +48,9 @@ class TestPinsController(BaseTestCase):
         """
         query_string = [('start_date', '2013-10-20'),
                         ('end_date', '2013-10-20'),
-                        ('app_types', ALL),
-                        ('metric_types', ['metric_types_example']),
-                        ('split_field', NO_SPLIT),
+                        ('app_types', 'ALL'),
+                        ('metric_types', [openapi_server.QuerypinanalyticsmetrictypesItems()]),
+                        ('split_field', 'NO_SPLIT'),
                         ('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/pins/{pin_id}/analytics'.format(pin_id='pin_id_example'),
@@ -61,7 +64,7 @@ class TestPinsController(BaseTestCase):
 
         Create Pin
         """
-        body = {"dominant_color":"dominant_color","media_source":{"content_type":"image/jpeg","data":"data","source_type":"image_base64","is_standard":True},"alt_text":"alt_text","board_id":"board_id","parent_pin_id":"parent_pin_id","link":"link","description":"description","title":"title","sponsor_id":"sponsor_id","board_section_id":"board_section_id"}
+        body = {"ai_disclosures":"","alt_text":"alt_text","board_id":"board_id","board_section_id":"board_section_id","description":"description","dominant_color":"dominant_color","link":"link","media_source":{"content_type":"image/jpeg","data":"data","is_standard":True,"source_type":"image_base64"},"parent_pin_id":"parent_pin_id","sponsor_id":"sponsor_id","title":"title"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/pins',
@@ -104,12 +107,15 @@ class TestPinsController(BaseTestCase):
 
         List Pins
         """
-        query_string = [('pin_filter', 'pin_filter_example'),
+        query_string = [('pin_filter', openapi_server.PinFilter()),
                         ('pin_metrics', False),
                         ('include_protected_pins', False),
-                        ('pin_type', 'pin_type_example'),
+                        ('pin_type', openapi_server.PinType()),
                         ('creative_types', [openapi_server.CreativeType()]),
                         ('ad_account_id', 'ad_account_id_example'),
+                        ('domain', 'domain_example'),
+                        ('domains', ['domains_example']),
+                        ('include_product_tag_obj', True),
                         ('bookmark', 'bookmark_example'),
                         ('page_size', 25)]
         response = self.client.open(
@@ -124,7 +130,7 @@ class TestPinsController(BaseTestCase):
 
         Save Pin
         """
-        body = openapi_server.PinsSaveRequest()
+        body = {"board_id":"board_id","board_section_id":"board_section_id"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/pins/{pin_id}/save'.format(pin_id='pin_id_example'),
@@ -140,7 +146,7 @@ class TestPinsController(BaseTestCase):
 
         Update Pin
         """
-        body = {"alt_text":"alt_text","board_id":"board_id","link":"link","description":"description","title":"title","board_section_id":"board_section_id","carousel_slots":[{"link":"link","description":"description","title":"title"},{"link":"link","description":"description","title":"title"}]}
+        body = {"ai_disclosures":"","alt_text":"alt_text","board_id":"board_id","board_section_id":"board_section_id","carousel_slots":[{"description":"description","link":"link","title":"title"},{"description":"description","link":"link","title":"title"}],"description":"description","link":"link","title":"title"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/pins/{pin_id}'.format(pin_id='pin_id_example'),

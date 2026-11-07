@@ -3,11 +3,12 @@ package org.openapitools.controller;
 import org.openapitools.model.CatalogsListProductsByFilterRequest;
 import org.openapitools.model.CatalogsProductGroupPinsList200Response;
 import org.openapitools.model.CatalogsProductGroupProductCountsVertical;
+import org.openapitools.model.CatalogsProductGroupsCreateManyRequestItems;
+import org.openapitools.model.CatalogsProductGroupsCreateRequestSchema;
 import org.openapitools.model.CatalogsProductGroupsList200Response;
-import org.openapitools.model.CatalogsProductGroupsUpdateRequest;
+import org.openapitools.model.CatalogsProductGroupsUpdateRequestSchema;
 import org.openapitools.model.CatalogsVerticalProductGroup;
-import org.openapitools.model.Error;
-import org.openapitools.model.MultipleProductGroupsInner;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -58,7 +59,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: List products by product group
      *
-     * Get a list of product pins for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a list of product pins for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      *
      * TODO fill in the parameters and test return value.
      */
@@ -67,13 +68,13 @@ public class CatalogProductGroupsControllerTest {
     void catalogsProductGroupPinsListMethodTest() {
         // given
         String productGroupId = "example";
-        String bookmark = "example";
-        Integer pageSize = 25;
         String adAccountId = "example";
         Boolean pinMetrics = false;
+        String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        CatalogsProductGroupPinsList200Response result = controller.catalogsProductGroupPinsList(productGroupId, bookmark, pageSize, adAccountId, pinMetrics).block();
+        CatalogsProductGroupPinsList200Response result = controller.catalogsProductGroupPinsList(productGroupId, adAccountId, pinMetrics, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -94,12 +95,12 @@ public class CatalogProductGroupsControllerTest {
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2c67a0c");
+            .accept("[Ljava.lang.String;@d28fe12");
         request.getParameters()
-            .add("bookmark", "example") // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("ad_account_id", "example") // The query parameter format should be 
-            .add("pin_metrics", String.valueOf(false)); // The query parameter format should be 
+            .add("pin_metrics", String.valueOf(false)) // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CatalogsProductGroupPinsList200Response.class);
@@ -113,7 +114,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: Create product group
      *
-     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -121,11 +122,11 @@ public class CatalogProductGroupsControllerTest {
     @Disabled("Not Implemented")
     void catalogsProductGroupsCreateMethodTest() {
         // given
-        MultipleProductGroupsInner multipleProductGroupsInner = new MultipleProductGroupsInner();
+        CatalogsProductGroupsCreateRequestSchema catalogsProductGroupsCreateRequestSchema = new CatalogsProductGroupsCreateRequestSchema();
         String adAccountId = "example";
 
         // when
-        CatalogsVerticalProductGroup result = controller.catalogsProductGroupsCreate(multipleProductGroupsInner, adAccountId).block();
+        CatalogsVerticalProductGroup result = controller.catalogsProductGroupsCreate(catalogsProductGroupsCreateRequestSchema, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -141,10 +142,10 @@ public class CatalogProductGroupsControllerTest {
     @Disabled("Not Implemented")
     void catalogsProductGroupsCreateClientApiTest() throws IOException {
         // given
-        MultipleProductGroupsInner body = new MultipleProductGroupsInner();
+        CatalogsProductGroupsCreateRequestSchema body = new CatalogsProductGroupsCreateRequestSchema();
         String uri = UriTemplate.of("/catalogs/product_groups").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@59d7b79b");
+            .accept("[Ljava.lang.String;@101f98d0");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -160,7 +161,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: Create product groups
      *
-     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Create product group to use in Catalogs owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -168,11 +169,11 @@ public class CatalogProductGroupsControllerTest {
     @Disabled("Not Implemented")
     void catalogsProductGroupsCreateManyMethodTest() {
         // given
-        List<MultipleProductGroupsInner> multipleProductGroupsInner = Arrays.asList();
+        List<@Valid CatalogsProductGroupsCreateManyRequestItems> catalogsProductGroupsCreateManyRequestItems = Arrays.asList();
         String adAccountId = "example";
 
         // when
-        List<String> result = controller.catalogsProductGroupsCreateMany(multipleProductGroupsInner, adAccountId).block();
+        List<String> result = controller.catalogsProductGroupsCreateMany(catalogsProductGroupsCreateManyRequestItems, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -188,10 +189,10 @@ public class CatalogProductGroupsControllerTest {
     @Disabled("Not Implemented")
     void catalogsProductGroupsCreateManyClientApiTest() throws IOException {
         // given
-        List<MultipleProductGroupsInner> body = Arrays.asList();
+        List<@Valid CatalogsProductGroupsCreateManyRequestItems> body = Arrays.asList();
         String uri = UriTemplate.of("/catalogs/product_groups/multiple").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@2fcb157a");
+            .accept("[Ljava.lang.String;@72b6753d");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -207,7 +208,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: Delete product group
      *
-     * Delete a product group owned by the \&quot;operation user_account\&quot; from being in use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Delete a product group owned by the \&quot;operation user_account\&quot; from being in use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      *
      * TODO fill in the parameters and test return value.
      */
@@ -219,7 +220,7 @@ public class CatalogProductGroupsControllerTest {
         String adAccountId = "example";
 
         // when
-        controller.catalogsProductGroupsDelete(productGroupId, adAccountId).block();
+        CatalogsVerticalProductGroup result = controller.catalogsProductGroupsDelete(productGroupId, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -240,12 +241,12 @@ public class CatalogProductGroupsControllerTest {
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@3738ef38");
+            .accept("[Ljava.lang.String;@1d4681ea");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
+        HttpResponse<?> response = client.toBlocking().exchange(request, CatalogsVerticalProductGroup.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -256,7 +257,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: Delete product groups
      *
-     * Delete product groups owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Delete product groups owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      *
      * TODO fill in the parameters and test return value.
      */
@@ -286,7 +287,7 @@ public class CatalogProductGroupsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs/product_groups/multiple").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@69fe5c9");
+            .accept("[Ljava.lang.String;@5754243e");
         request.getParameters()
             .add("id", String.valueOf(Arrays.asList())) // The query parameter format should be csv
             .add("ad_account_id", "example"); // The query parameter format should be 
@@ -303,7 +304,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: Get product group
      *
-     * Get a singe product group for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a single product group for a given Catalogs Product Group Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      *
      * TODO fill in the parameters and test return value.
      */
@@ -336,7 +337,7 @@ public class CatalogProductGroupsControllerTest {
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6210f1ee");
+            .accept("[Ljava.lang.String;@3b61ef1c");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -352,7 +353,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: List product groups
      *
-     * Get a list of product groups for a given Catalogs Feed Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a list of product groups for a given Catalogs Feed Id owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      *
      * TODO fill in the parameters and test return value.
      */
@@ -363,12 +364,12 @@ public class CatalogProductGroupsControllerTest {
         List<Integer> id = Arrays.asList();
         String feedId = "example";
         String catalogId = "example";
+        String adAccountId = "example";
         String bookmark = "example";
         Integer pageSize = 25;
-        String adAccountId = "example";
 
         // when
-        CatalogsProductGroupsList200Response result = controller.catalogsProductGroupsList(id, feedId, catalogId, bookmark, pageSize, adAccountId).block();
+        CatalogsProductGroupsList200Response result = controller.catalogsProductGroupsList(id, feedId, catalogId, adAccountId, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -386,14 +387,14 @@ public class CatalogProductGroupsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs/product_groups").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@15075813");
+            .accept("[Ljava.lang.String;@7abf7ad0");
         request.getParameters()
             .add("id", String.valueOf(Arrays.asList())) // The query parameter format should be csv
             .add("feed_id", "example") // The query parameter format should be 
             .add("catalog_id", "example") // The query parameter format should be 
+            .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("ad_account_id", "example"); // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, CatalogsProductGroupsList200Response.class);
@@ -407,7 +408,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: Get product counts
      *
-     * Get a product counts for a given Catalogs Product Group owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * Get a product counts for a given Catalogs Product Group owned by the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  [Learn more](/docs/api-features/shopping-overview/)
      *
      * TODO fill in the parameters and test return value.
      */
@@ -440,7 +441,7 @@ public class CatalogProductGroupsControllerTest {
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@65b634a4");
+            .accept("[Ljava.lang.String;@535fedbc");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -456,7 +457,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: Update single product group
      *
-     * Update product group owned by the \&quot;operation user_account\&quot; to use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Update product group owned by the \&quot;operation user_account\&quot; to use in Catalogs. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager. \&quot;Catalog-based product groups\&quot; can include items from all data sources (feeds and API) and are available to both non-retail catalogs with any data sources and retail catalogs with API-created items. If your catalog only contains retail items created via feeds, you should use the \&quot;retail feed-based\&quot; option. [Learn more](/docs/api-features/shopping-overview/)  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -465,11 +466,11 @@ public class CatalogProductGroupsControllerTest {
     void catalogsProductGroupsUpdateMethodTest() {
         // given
         String productGroupId = "example";
-        CatalogsProductGroupsUpdateRequest catalogsProductGroupsUpdateRequest = new CatalogsProductGroupsUpdateRequest();
+        CatalogsProductGroupsUpdateRequestSchema catalogsProductGroupsUpdateRequestSchema = new CatalogsProductGroupsUpdateRequestSchema();
         String adAccountId = "example";
 
         // when
-        CatalogsVerticalProductGroup result = controller.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequest, adAccountId).block();
+        CatalogsVerticalProductGroup result = controller.catalogsProductGroupsUpdate(productGroupId, catalogsProductGroupsUpdateRequestSchema, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -485,13 +486,13 @@ public class CatalogProductGroupsControllerTest {
     @Disabled("Not Implemented")
     void catalogsProductGroupsUpdateClientApiTest() throws IOException {
         // given
-        CatalogsProductGroupsUpdateRequest body = new CatalogsProductGroupsUpdateRequest();
+        CatalogsProductGroupsUpdateRequestSchema body = new CatalogsProductGroupsUpdateRequestSchema();
         String uri = UriTemplate.of("/catalogs/product_groups/{product_group_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("product_group_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@1c7e3476");
+            .accept("[Ljava.lang.String;@25dc563d");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -507,7 +508,7 @@ public class CatalogProductGroupsControllerTest {
      *
      * The method should: List products by filter
      *
-     * List products Pins owned by the \&quot;operation user_account\&quot; that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  &lt;a href&#x3D;&#39;/docs/api-features/shopping-overview/&#39;&gt;Learn more&lt;/a&gt;
+     * List products Pins owned by the \&quot;operation user_account\&quot; that meet the criteria specified in the Catalogs Product Group Filter given in the request. - This endpoint has been implemented in POST to allow for complex filters. This specific POST endpoint is designed to be idempotent. - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: This endpoint only supports RETAIL catalog at the moment.  [Learn more](/docs/api-features/shopping-overview/)
      *
      * TODO fill in the parameters and test return value.
      */
@@ -541,7 +542,7 @@ public class CatalogProductGroupsControllerTest {
         CatalogsListProductsByFilterRequest body = new CatalogsListProductsByFilterRequest();
         String uri = UriTemplate.of("/catalogs/products/get_by_product_group_filters").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@79043996");
+            .accept("[Ljava.lang.String;@11714495");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 

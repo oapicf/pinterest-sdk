@@ -17,15 +17,18 @@ open PinsApiHandlerTestsHelper
 open OpenAPI.PinsApiHandler
 open OpenAPI.PinsApiHandlerParams
 open OpenAPI.Model.CreativeType
-open OpenAPI.Model.Error
 open System.Collections.Generic
+open OpenAPI.Model.MultiPinsAnalyticsMetricTypesItem
 open OpenAPI.Model.Pin
 open OpenAPI.Model.PinAnalyticsMetricsResponse
 open OpenAPI.Model.PinCreate
+open OpenAPI.Model.PinFilter
+open OpenAPI.Model.PinType
 open OpenAPI.Model.PinUpdate
 open OpenAPI.Model.PinsList200Response
-open OpenAPI.Model.PinsSaveRequest
+open OpenAPI.Model.PinsSaveRequestCreate
 open OpenAPI.Model.PinterestLibError
+open OpenAPI.Model.QuerypinanalyticsmetrictypesItems
 
 module PinsApiHandlerTests =
 
@@ -34,7 +37,7 @@ module PinsApiHandlerTests =
   // ---------------------------------
 
   [<Fact>]
-  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 200 where response`` () =
+  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -51,7 +54,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 400 where Invalid pins analytics parameters.`` () =
+  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -68,7 +71,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 401 where Not authorized to access board or Pin.`` () =
+  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -85,7 +88,24 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 404 where Pin not found.`` () =
+  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/pins/analytics" + "?pinIds=ADDME&startDate=ADDME&endDate=ADDME&appTypes=ADDME&metricTypes=ADDME&adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(403))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -102,7 +122,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 429 where This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits or if multiple write operations are applied to an object within a short time window.`` () =
+  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -119,7 +139,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 0 where Unexpected error`` () =
+  let ``MultiPinsAnalytics - Get multiple Pin analytics returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -136,7 +156,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``PinsAnalytics - Get Pin analytics returns 200 where response`` () =
+  let ``PinsAnalytics - Get Pin analytics returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -153,7 +173,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``PinsAnalytics - Get Pin analytics returns 400 where Invalid pins analytics parameters.`` () =
+  let ``PinsAnalytics - Get Pin analytics returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -170,7 +190,24 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``PinsAnalytics - Get Pin analytics returns 403 where Not authorized to access board or Pin.`` () =
+  let ``PinsAnalytics - Get Pin analytics returns 401 where Authentication is required and has either failed or not been provided.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/pins/{pin_id}/analytics".Replace("pinId", "ADDME") + "?startDate=ADDME&endDate=ADDME&appTypes=ADDME&metricTypes=ADDME&splitField=ADDME&adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``PinsAnalytics - Get Pin analytics returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -187,7 +224,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``PinsAnalytics - Get Pin analytics returns 404 where Pin not found.`` () =
+  let ``PinsAnalytics - Get Pin analytics returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -204,7 +241,24 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``PinsAnalytics - Get Pin analytics returns 0 where Unexpected error`` () =
+  let ``PinsAnalytics - Get Pin analytics returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/pins/{pin_id}/analytics".Replace("pinId", "ADDME") + "?startDate=ADDME&endDate=ADDME&appTypes=ADDME&metricTypes=ADDME&splitField=ADDME&adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``PinsAnalytics - Get Pin analytics returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -394,6 +448,23 @@ module PinsApiHandlerTests =
         |> isStatus (enum<HttpStatusCode>(0))
         |> readText
         |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``PinsDelete - Delete Pin returns 200 where The request has succeeded.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/pins/{pin_id}".Replace("pinId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpDelete client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
       }
 
   [<Fact>]
@@ -642,7 +713,7 @@ module PinsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
+      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&domain=ADDME&domains=ADDME&includeProductTagObj=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -659,7 +730,7 @@ module PinsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
+      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&domain=ADDME&domains=ADDME&includeProductTagObj=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(400))
@@ -676,7 +747,7 @@ module PinsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
+      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&domain=ADDME&domains=ADDME&includeProductTagObj=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(401))
@@ -693,7 +764,7 @@ module PinsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
+      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&domain=ADDME&domains=ADDME&includeProductTagObj=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(403))
@@ -710,7 +781,7 @@ module PinsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
+      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&domain=ADDME&domains=ADDME&includeProductTagObj=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(404))
@@ -727,7 +798,7 @@ module PinsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
+      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&domain=ADDME&domains=ADDME&includeProductTagObj=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(429))
@@ -744,7 +815,7 @@ module PinsApiHandlerTests =
 
       // add your setup code here
 
-      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
+      let path = "/v5/pins" + "?pinFilter=ADDME&pinMetrics=ADDME&includeProtectedPins=ADDME&pinType=ADDME&creativeTypes=ADDME&adAccountId=ADDME&domain=ADDME&domains=ADDME&includeProductTagObj=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))
@@ -754,7 +825,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``PinsSave - Save Pin returns 201 where Successfully saved pin.`` () =
+  let ``PinsSave - Save Pin returns 201 where The request has succeeded and a new resource has been created as a result.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -765,8 +836,8 @@ module PinsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getPinsSaveExample "application/json")
-      // or pass a body of type PinsSaveRequest
-      let body = obj() :?> PinsSaveRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type PinsSaveRequestCreate
+      let body = obj() :?> PinsSaveRequestCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -776,7 +847,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``PinsSave - Save Pin returns 403 where Not authorized to access Board or Pin.`` () =
+  let ``PinsSave - Save Pin returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -787,8 +858,52 @@ module PinsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getPinsSaveExample "application/json")
-      // or pass a body of type PinsSaveRequest
-      let body = obj() :?> PinsSaveRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type PinsSaveRequestCreate
+      let body = obj() :?> PinsSaveRequestCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``PinsSave - Save Pin returns 401 where Authentication is required and has either failed or not been provided.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/pins/{pin_id}/save".Replace("pinId", "ADDME") + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getPinsSaveExample "application/json")
+      // or pass a body of type PinsSaveRequestCreate
+      let body = obj() :?> PinsSaveRequestCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``PinsSave - Save Pin returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/pins/{pin_id}/save".Replace("pinId", "ADDME") + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getPinsSaveExample "application/json")
+      // or pass a body of type PinsSaveRequestCreate
+      let body = obj() :?> PinsSaveRequestCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -798,7 +913,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``PinsSave - Save Pin returns 404 where Board or Pin not found.`` () =
+  let ``PinsSave - Save Pin returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -809,8 +924,8 @@ module PinsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getPinsSaveExample "application/json")
-      // or pass a body of type PinsSaveRequest
-      let body = obj() :?> PinsSaveRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type PinsSaveRequestCreate
+      let body = obj() :?> PinsSaveRequestCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -820,7 +935,7 @@ module PinsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``PinsSave - Save Pin returns 0 where Unexpected error`` () =
+  let ``PinsSave - Save Pin returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -831,8 +946,30 @@ module PinsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getPinsSaveExample "application/json")
-      // or pass a body of type PinsSaveRequest
-      let body = obj() :?> PinsSaveRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type PinsSaveRequestCreate
+      let body = obj() :?> PinsSaveRequestCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``PinsSave - Save Pin returns 0 where An unexpected error response.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/pins/{pin_id}/save".Replace("pinId", "ADDME") + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getPinsSaveExample "application/json")
+      // or pass a body of type PinsSaveRequestCreate
+      let body = obj() :?> PinsSaveRequestCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path

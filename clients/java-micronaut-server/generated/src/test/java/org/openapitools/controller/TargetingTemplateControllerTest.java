@@ -1,10 +1,11 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.TargetingTemplate;
 import org.openapitools.model.TargetingTemplateCreate;
-import org.openapitools.model.TargetingTemplateGetResponseData;
 import org.openapitools.model.TargetingTemplateList200Response;
-import org.openapitools.model.TargetingTemplateUpdateRequest;
+import org.openapitools.model.TargetingTemplateUpdateRequestReadOrUpdate;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -55,7 +56,7 @@ public class TargetingTemplateControllerTest {
      *
      * The method should: Create targeting templates
      *
-     * &lt;p&gt;Targeting templates allow advertisers to save a set of targeting details including audience lists,  keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.&lt;/p&gt;  &lt;p&gt;Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse   performance targeting from prior campaigns for new campaigns.&lt;/p&gt;
+     * Targeting templates allow advertisers to save a set of targeting details including audience lists, keywords &amp; interest, demographics, and placements to use more than once during the campaign creation process.  Templates can be used to build out basic targeting criteria that you plan to use across campaigns and to reuse performance targeting from prior campaigns for new campaigns.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -64,10 +65,10 @@ public class TargetingTemplateControllerTest {
     void targetingTemplateCreateMethodTest() {
         // given
         String adAccountId = "example";
-        TargetingTemplateCreate targetingTemplateCreate = new TargetingTemplateCreate();
+        TargetingTemplateCreate targetingTemplateCreate = new TargetingTemplateCreate("example", null);
 
         // when
-        TargetingTemplateGetResponseData result = controller.targetingTemplateCreate(adAccountId, targetingTemplateCreate).block();
+        TargetingTemplate result = controller.targetingTemplateCreate(adAccountId, targetingTemplateCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -83,16 +84,16 @@ public class TargetingTemplateControllerTest {
     @Disabled("Not Implemented")
     void targetingTemplateCreateClientApiTest() throws IOException {
         // given
-        TargetingTemplateCreate body = new TargetingTemplateCreate();
+        TargetingTemplateCreate body = new TargetingTemplateCreate("example", null);
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/targeting_templates").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@526c3731");
+            .accept("[Ljava.lang.String;@3c2db405");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, TargetingTemplateGetResponseData.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, TargetingTemplate.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -103,7 +104,7 @@ public class TargetingTemplateControllerTest {
      *
      * The method should: List targeting templates
      *
-     * Get a list of the targeting templates in the specified &lt;code&gt;ad_account_id&lt;/code&gt;
+     * Get a list of the targeting templates in the specified &#x60;ad_account_id&#x60;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -112,14 +113,14 @@ public class TargetingTemplateControllerTest {
     void targetingTemplateListMethodTest() {
         // given
         String adAccountId = "example";
-        String order = "ASCENDING";
-        Boolean includeSizing = false;
-        String searchQuery = "gaming";
-        Integer pageSize = 25;
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
+        Boolean includeSizing = false;
+        String searchQuery = "example";
 
         // when
-        TargetingTemplateList200Response result = controller.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark).block();
+        TargetingTemplateList200Response result = controller.targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery).block();
 
         // then
         Assertions.assertTrue(true);
@@ -140,13 +141,13 @@ public class TargetingTemplateControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3d209363");
+            .accept("[Ljava.lang.String;@572eabf0");
         request.getParameters()
-            .add("order", "ASCENDING") // The query parameter format should be 
-            .add("include_sizing", String.valueOf(false)) // The query parameter format should be 
-            .add("search_query", "gaming") // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("order", String.valueOf(PinterestLibPaginationOrder.fromValue("ASCENDING"))) // The query parameter format should be 
+            .add("include_sizing", String.valueOf(false)) // The query parameter format should be 
+            .add("search_query", "example"); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, TargetingTemplateList200Response.class);
@@ -160,7 +161,7 @@ public class TargetingTemplateControllerTest {
      *
      * The method should: Update targeting templates
      *
-     * &lt;p&gt;Update the targeting template given advertiser ID and targeting template ID&lt;/p&gt;
+     * Update the targeting template given advertiser ID and targeting template ID
      *
      * TODO fill in the parameters and test return value.
      */
@@ -169,10 +170,10 @@ public class TargetingTemplateControllerTest {
     void targetingTemplateUpdateMethodTest() {
         // given
         String adAccountId = "example";
-        TargetingTemplateUpdateRequest targetingTemplateUpdateRequest = new TargetingTemplateUpdateRequest("643", "example");
+        TargetingTemplateUpdateRequestReadOrUpdate targetingTemplateUpdateRequestReadOrUpdate = new TargetingTemplateUpdateRequestReadOrUpdate("643", org.openapitools.model.AudienceUpdateOperationType.fromValue("UPDATE"));
 
         // when
-        controller.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest).block();
+        controller.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -188,13 +189,13 @@ public class TargetingTemplateControllerTest {
     @Disabled("Not Implemented")
     void targetingTemplateUpdateClientApiTest() throws IOException {
         // given
-        TargetingTemplateUpdateRequest body = new TargetingTemplateUpdateRequest("643", "example");
+        TargetingTemplateUpdateRequestReadOrUpdate body = new TargetingTemplateUpdateRequestReadOrUpdate("643", org.openapitools.model.AudienceUpdateOperationType.fromValue("UPDATE"));
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/targeting_templates").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@32296d67");
+            .accept("[Ljava.lang.String;@3f81a8bd");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 

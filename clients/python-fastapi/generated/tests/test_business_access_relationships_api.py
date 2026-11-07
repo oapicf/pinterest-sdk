@@ -3,25 +3,67 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictBool, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Any, List, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.brand_accounts_create200_response import BrandAccountsCreate200Response  # noqa: F401
-from openapi_server.models.brand_accounts_create_request import BrandAccountsCreateRequest  # noqa: F401
-from openapi_server.models.brand_accounts_update_request import BrandAccountsUpdateRequest  # noqa: F401
-from openapi_server.models.delete_partners_request import DeletePartnersRequest  # noqa: F401
-from openapi_server.models.delete_partners_response import DeletePartnersResponse  # noqa: F401
-from openapi_server.models.deleted_members_response import DeletedMembersResponse  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.brand_account import BrandAccount  # noqa: F401
+from openapi_server.models.brand_account_create import BrandAccountCreate  # noqa: F401
+from openapi_server.models.brand_account_update import BrandAccountUpdate  # noqa: F401
+from openapi_server.models.business_membership_member import BusinessMembershipMember  # noqa: F401
+from openapi_server.models.delete_business_membership200_response import DeleteBusinessMembership200Response  # noqa: F401
+from openapi_server.models.delete_business_membership_body import DeleteBusinessMembershipBody  # noqa: F401
+from openapi_server.models.delete_business_partners import DeleteBusinessPartners  # noqa: F401
+from openapi_server.models.delete_business_partners_delete import DeleteBusinessPartnersDelete  # noqa: F401
 from openapi_server.models.get_business_employers200_response import GetBusinessEmployers200Response  # noqa: F401
-from openapi_server.models.get_business_members200_response import GetBusinessMembers200Response  # noqa: F401
-from openapi_server.models.get_business_partners200_response import GetBusinessPartners200Response  # noqa: F401
 from openapi_server.models.member_business_role import MemberBusinessRole  # noqa: F401
-from openapi_server.models.members_to_delete_body import MembersToDeleteBody  # noqa: F401
 from openapi_server.models.partner_type import PartnerType  # noqa: F401
-from openapi_server.models.system_user_update_request import SystemUserUpdateRequest  # noqa: F401
-from openapi_server.models.update_member_business_role_body import UpdateMemberBusinessRoleBody  # noqa: F401
-from openapi_server.models.update_member_results_response_array import UpdateMemberResultsResponseArray  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
+from openapi_server.models.system_user_update_with_required_body import SystemUserUpdateWithRequiredBody  # noqa: F401
+from openapi_server.models.update_business_memberships_response import UpdateBusinessMembershipsResponse  # noqa: F401
+
+
+def test_brand_accounts_create(client: TestClient):
+    """Test case for brand_accounts_create
+
+    Create a Brand Account
+    """
+    brand_account_create = openapi_server.BrandAccountCreate()
+
+    headers = {
+        "Authorization": "Bearer special-key",
+    }
+    # uncomment below to make a request
+    #response = client.request(
+    #    "POST",
+    #    "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts".format(business_hierarchy_id='business_hierarchy_id_example'),
+    #    headers=headers,
+    #    json=brand_account_create,
+    #)
+
+    # uncomment below to assert the status code of the HTTP response
+    #assert response.status_code == 200
+
+
+def test_brand_accounts_update(client: TestClient):
+    """Test case for brand_accounts_update
+
+    Update a Brand Account
+    """
+    brand_account_update = openapi_server.BrandAccountUpdate()
+
+    headers = {
+        "Authorization": "Bearer special-key",
+    }
+    # uncomment below to make a request
+    #response = client.request(
+    #    "PATCH",
+    #    "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".format(brand_account_id='brand_account_id_example', business_hierarchy_id='business_hierarchy_id_example'),
+    #    headers=headers,
+    #    json=brand_account_update,
+    #)
+
+    # uncomment below to assert the status code of the HTTP response
+    #assert response.status_code == 200
 
 
 def test_get_business_employers(client: TestClient):
@@ -29,7 +71,7 @@ def test_get_business_employers(client: TestClient):
 
     List business employers for user
     """
-    params = [("page_size", 25),     ("bookmark", 'bookmark_example')]
+    params = [("assets_summary", True),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
     }
@@ -45,41 +87,19 @@ def test_get_business_employers(client: TestClient):
     #assert response.status_code == 200
 
 
-def test_system_user_update(client: TestClient):
-    """Test case for system_user_update
-
-    Update a system user information.
-    """
-    system_user_update_request = openapi_server.SystemUserUpdateRequest()
-
-    headers = {
-        "Authorization": "Bearer special-key",
-    }
-    # uncomment below to make a request
-    #response = client.request(
-    #    "PATCH",
-    #    "/businesses/{business_id}/system_users/{system_user_id}".format(business_id='729090764583391194', system_user_id='729090764583391194'),
-    #    headers=headers,
-    #    json=system_user_update_request,
-    #)
-
-    # uncomment below to assert the status code of the HTTP response
-    #assert response.status_code == 200
-
-
 def test_get_business_members(client: TestClient):
     """Test case for get_business_members
 
     Get business members
     """
-    params = [("fetch_system_users", False),     ("assets_summary", False),     ("business_roles", [openapi_server.MemberBusinessRole()]),     ("member_ids", '00101010101,2222220101'),     ("start_index", 0),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
+    params = [("fetch_system_users", False),     ("assets_summary", False),     ("business_roles", [openapi_server.MemberBusinessRole()]),     ("member_ids", 'member_ids_example'),     ("start_index", 0),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
     }
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/businesses/{business_id}/members".format(business_id='729090764583391194'),
+    #    "/businesses/{business_id}/members".format(business_id='business_id_example'),
     #    headers=headers,
     #    params=params,
     #)
@@ -93,7 +113,7 @@ def test_delete_business_membership(client: TestClient):
 
     Terminate business memberships
     """
-    members_to_delete_body = {"members":[{"member_id":"140943737684417","business_role":"BIZ_ADMIN"},{"member_id":"140943737684417","business_role":"BIZ_ADMIN"},{"member_id":"140943737684417","business_role":"BIZ_ADMIN"},{"member_id":"140943737684417","business_role":"BIZ_ADMIN"},{"member_id":"140943737684417","business_role":"BIZ_ADMIN"}]}
+    delete_business_membership_body = openapi_server.DeleteBusinessMembershipBody()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -101,9 +121,9 @@ def test_delete_business_membership(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "DELETE",
-    #    "/businesses/{business_id}/members".format(business_id='729090764583391194'),
+    #    "/businesses/{business_id}/members".format(business_id='business_id_example'),
     #    headers=headers,
-    #    json=members_to_delete_body,
+    #    json=delete_business_membership_body,
     #)
 
     # uncomment below to assert the status code of the HTTP response
@@ -115,7 +135,7 @@ def test_update_business_memberships(client: TestClient):
 
     Update member's business role
     """
-    update_member_business_role_body = [{"member_id":"140943737684417","business_role":"BIZ_ADMIN"}]
+    business_membership_member = [[openapi_server.BusinessMembershipMember()]]
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -123,9 +143,9 @@ def test_update_business_memberships(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "PATCH",
-    #    "/businesses/{business_id}/members".format(business_id='729090764583391194'),
+    #    "/businesses/{business_id}/members".format(business_id='business_id_example'),
     #    headers=headers,
-    #    json=update_member_business_role_body,
+    #    json=business_membership_member,
     #)
 
     # uncomment below to assert the status code of the HTTP response
@@ -137,14 +157,14 @@ def test_get_business_partners(client: TestClient):
 
     Get business partners
     """
-    params = [("assets_summary", False),     ("partner_type", openapi_server.PartnerType()),     ("partner_ids", '00101010101,2222220101'),     ("start_index", 0),     ("page_size", 25),     ("bookmark", 'bookmark_example')]
+    params = [("assets_summary", False),     ("partner_type", openapi_server.PartnerType()),     ("partner_ids", 'partner_ids_example'),     ("start_index", 0),     ("sort_ascending", True),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
     }
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/businesses/{business_id}/partners".format(business_id='729090764583391194'),
+    #    "/businesses/{business_id}/partners".format(business_id='business_id_example'),
     #    headers=headers,
     #    params=params,
     #)
@@ -158,7 +178,7 @@ def test_delete_business_partners(client: TestClient):
 
     Terminate business partnerships
     """
-    delete_partners_request = {"partner_type":"partner_type","partner_ids":["1234567890123","1234567890123","1234567890123","1234567890123","1234567890123"]}
+    delete_business_partners_delete = openapi_server.DeleteBusinessPartnersDelete()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -166,43 +186,21 @@ def test_delete_business_partners(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "DELETE",
-    #    "/businesses/{business_id}/partners".format(business_id='729090764583391194'),
+    #    "/businesses/{business_id}/partners".format(business_id='business_id_example'),
     #    headers=headers,
-    #    json=delete_partners_request,
+    #    json=delete_business_partners_delete,
     #)
 
     # uncomment below to assert the status code of the HTTP response
     #assert response.status_code == 200
 
 
-def test_brand_accounts_create(client: TestClient):
-    """Test case for brand_accounts_create
+def test_system_user_update(client: TestClient):
+    """Test case for system_user_update
 
-    Create a Brand Account
+    Update a system user information.
     """
-    brand_accounts_create_request = openapi_server.BrandAccountsCreateRequest()
-
-    headers = {
-        "Authorization": "Bearer special-key",
-    }
-    # uncomment below to make a request
-    #response = client.request(
-    #    "POST",
-    #    "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts".format(business_hierarchy_id='7009386637860'),
-    #    headers=headers,
-    #    json=brand_accounts_create_request,
-    #)
-
-    # uncomment below to assert the status code of the HTTP response
-    #assert response.status_code == 200
-
-
-def test_brand_accounts_update(client: TestClient):
-    """Test case for brand_accounts_update
-
-    Update a Brand Account
-    """
-    brand_accounts_update_request = openapi_server.BrandAccountsUpdateRequest()
+    system_user_update_with_required_body = openapi_server.SystemUserUpdateWithRequiredBody()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -210,9 +208,9 @@ def test_brand_accounts_update(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "PATCH",
-    #    "/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}".format(business_hierarchy_id='7009386637860', brand_account_id='729090764583391194'),
+    #    "/businesses/{business_id}/system_users/{system_user_id}".format(business_id='business_id_example', system_user_id='system_user_id_example'),
     #    headers=headers,
-    #    json=brand_accounts_update_request,
+    #    json=system_user_update_with_required_body,
     #)
 
     # uncomment below to assert the status code of the HTTP response

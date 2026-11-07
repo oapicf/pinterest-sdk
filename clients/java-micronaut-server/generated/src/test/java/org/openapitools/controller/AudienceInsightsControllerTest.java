@@ -1,9 +1,9 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.AudienceDefinitionResponse;
 import org.openapitools.model.AudienceInsightType;
-import org.openapitools.model.AudienceInsightsResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.AudienceInsights;
+import org.openapitools.model.AudienceInsightsScopeAndTypeGet200Response;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -54,7 +54,7 @@ public class AudienceInsightsControllerTest {
      *
      * The method should: Get audience insights
      *
-     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -66,7 +66,7 @@ public class AudienceInsightsControllerTest {
         AudienceInsightType audienceInsightType = AudienceInsightType.fromValue("YOUR_TOTAL_AUDIENCE");
 
         // when
-        AudienceInsightsResponse result = controller.audienceInsightsGet(adAccountId, audienceInsightType).block();
+        AudienceInsights result = controller.audienceInsightsGet(adAccountId, audienceInsightType).block();
 
         // then
         Assertions.assertTrue(true);
@@ -87,12 +87,12 @@ public class AudienceInsightsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@67e28340");
+            .accept("[Ljava.lang.String;@3b6ce423");
         request.getParameters()
             .add("audience_insight_type", String.valueOf(AudienceInsightType.fromValue("YOUR_TOTAL_AUDIENCE"))); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, AudienceInsightsResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AudienceInsights.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -114,7 +114,7 @@ public class AudienceInsightsControllerTest {
         String adAccountId = "example";
 
         // when
-        AudienceDefinitionResponse result = controller.audienceInsightsScopeAndTypeGet(adAccountId).block();
+        AudienceInsightsScopeAndTypeGet200Response result = controller.audienceInsightsScopeAndTypeGet(adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -135,10 +135,10 @@ public class AudienceInsightsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@74bc5421");
+            .accept("[Ljava.lang.String;@3f4c2882");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, AudienceDefinitionResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AudienceInsightsScopeAndTypeGet200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

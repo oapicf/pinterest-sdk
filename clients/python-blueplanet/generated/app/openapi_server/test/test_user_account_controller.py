@@ -7,20 +7,23 @@ from io import BytesIO
 
 from app.openapi_server.models.account import Account  # noqa: E501
 from app.openapi_server.models.analytics_metrics_response import AnalyticsMetricsResponse  # noqa: E501
-from app.openapi_server.models.boards_user_follows_list200_response import BoardsUserFollowsList200Response  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
-from app.openapi_server.models.follow_user_request import FollowUserRequest  # noqa: E501
+from app.openapi_server.models.boards_list200_response import BoardsList200Response  # noqa: E501
+from app.openapi_server.models.follow_user import FollowUser  # noqa: E501
+from app.openapi_server.models.follow_user_create import FollowUserCreate  # noqa: E501
 from app.openapi_server.models.followers_list200_response import FollowersList200Response  # noqa: E501
 from app.openapi_server.models.linked_business import LinkedBusiness  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.querymetrictypes_items import QuerymetrictypesItems  # noqa: E501
+from app.openapi_server.models.queryvideopinmetrictypes_items import QueryvideopinmetrictypesItems  # noqa: E501
 from app.openapi_server.models.top_pins_analytics_response import TopPinsAnalyticsResponse  # noqa: E501
+from app.openapi_server.models.top_pins_sort_by import TopPinsSortBy  # noqa: E501
 from app.openapi_server.models.top_video_pins_analytics_response import TopVideoPinsAnalyticsResponse  # noqa: E501
+from app.openapi_server.models.top_video_pins_sort_by import TopVideoPinsSortBy  # noqa: E501
 from app.openapi_server.models.user_account_followed_interests200_response import UserAccountFollowedInterests200Response  # noqa: E501
 from app.openapi_server.models.user_following_feed_type import UserFollowingFeedType  # noqa: E501
-from app.openapi_server.models.user_following_get200_response import UserFollowingGet200Response  # noqa: E501
-from app.openapi_server.models.user_summary import UserSummary  # noqa: E501
-from app.openapi_server.models.user_website_summary import UserWebsiteSummary  # noqa: E501
-from app.openapi_server.models.user_website_verification_code import UserWebsiteVerificationCode  # noqa: E501
-from app.openapi_server.models.user_website_verify_request import UserWebsiteVerifyRequest  # noqa: E501
+from app.openapi_server.models.user_website import UserWebsite  # noqa: E501
+from app.openapi_server.models.user_website_create import UserWebsiteCreate  # noqa: E501
+from app.openapi_server.models.user_website_verification import UserWebsiteVerification  # noqa: E501
 from app.openapi_server.models.user_websites_get200_response import UserWebsitesGet200Response  # noqa: E501
 from openapi_server.test import BaseTestCase
 
@@ -33,10 +36,10 @@ class TestUserAccountController(BaseTestCase):
 
         List following boards
         """
-        query_string = [('bookmark', 'bookmark_example'),
-                        ('page_size', 25),
+        query_string = [('ad_account_id', 'ad_account_id_example'),
                         ('explicit_following', False),
-                        ('ad_account_id', 'ad_account_id_example')]
+                        ('bookmark', 'bookmark_example'),
+                        ('page_size', 25)]
         response = self.client.open(
             '/v5/user_account/following/boards',
             method='GET',
@@ -49,9 +52,9 @@ class TestUserAccountController(BaseTestCase):
 
         Follow user
         """
-        body = {"auto_follow":False}
+        body = {"auto_follow":True}
         response = self.client.open(
-            '/v5/user_account/following/{username}'.format(username='username'),
+            '/v5/user_account/following/{username}'.format(username='username_example'),
             method='POST',
             data=json.dumps(body),
             content_type='application/json')
@@ -88,7 +91,7 @@ class TestUserAccountController(BaseTestCase):
 
         Unverify website
         """
-        query_string = [('website', 'mysite.test')]
+        query_string = [('website', 'website_example')]
         response = self.client.open(
             '/v5/user_account/websites',
             method='DELETE',
@@ -103,13 +106,13 @@ class TestUserAccountController(BaseTestCase):
         """
         query_string = [('start_date', '2013-10-20'),
                         ('end_date', '2013-10-20'),
-                        ('from_claimed_content', BOTH),
-                        ('pin_format', ALL),
-                        ('app_types', ALL),
-                        ('content_type', ALL),
-                        ('source', ALL),
-                        ('metric_types', ['metric_types_example']),
-                        ('split_field', NO_SPLIT),
+                        ('from_claimed_content', 'BOTH'),
+                        ('pin_format', 'ALL'),
+                        ('app_types', 'ALL'),
+                        ('content_type', 'ALL'),
+                        ('source', 'ALL'),
+                        ('metric_types', [openapi_server.QuerymetrictypesItems()]),
+                        ('split_field', 'NO_SPLIT'),
                         ('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/user_account/analytics',
@@ -125,15 +128,15 @@ class TestUserAccountController(BaseTestCase):
         """
         query_string = [('start_date', '2013-10-20'),
                         ('end_date', '2013-10-20'),
-                        ('sort_by', 'sort_by_example'),
-                        ('from_claimed_content', BOTH),
-                        ('pin_format', ALL),
-                        ('app_types', ALL),
-                        ('content_type', ALL),
-                        ('source', ALL),
-                        ('metric_types', ['metric_types_example']),
+                        ('sort_by', openapi_server.TopPinsSortBy()),
+                        ('from_claimed_content', 'BOTH'),
+                        ('pin_format', 'ALL'),
+                        ('app_types', 'ALL'),
+                        ('content_type', 'ALL'),
+                        ('source', 'ALL'),
+                        ('metric_types', [openapi_server.QuerymetrictypesItems()]),
                         ('num_of_pins', 10),
-                        ('created_in_last_n_days', 30),
+                        ('created_in_last_n_days', 3.4),
                         ('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/user_account/analytics/top_pins',
@@ -149,15 +152,15 @@ class TestUserAccountController(BaseTestCase):
         """
         query_string = [('start_date', '2013-10-20'),
                         ('end_date', '2013-10-20'),
-                        ('sort_by', 'sort_by_example'),
-                        ('from_claimed_content', BOTH),
-                        ('pin_format', ALL),
-                        ('app_types', ALL),
-                        ('content_type', ALL),
-                        ('source', ALL),
-                        ('metric_types', ['metric_types_example']),
+                        ('sort_by', openapi_server.TopVideoPinsSortBy()),
+                        ('from_claimed_content', 'BOTH'),
+                        ('pin_format', 'ALL'),
+                        ('app_types', 'ALL'),
+                        ('content_type', 'ALL'),
+                        ('source', 'ALL'),
+                        ('metric_types', [openapi_server.QueryvideopinmetrictypesItems()]),
                         ('num_of_pins', 10),
-                        ('created_in_last_n_days', 30),
+                        ('created_in_last_n_days', 3.4),
                         ('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/user_account/analytics/top_video_pins',
@@ -174,7 +177,7 @@ class TestUserAccountController(BaseTestCase):
         query_string = [('bookmark', 'bookmark_example'),
                         ('page_size', 25)]
         response = self.client.open(
-            '/v5/users/{username}/interests/follow'.format(username='username'),
+            '/v5/users/{username}/interests/follow'.format(username='username_example'),
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -198,11 +201,11 @@ class TestUserAccountController(BaseTestCase):
 
         List following
         """
-        query_string = [('bookmark', 'bookmark_example'),
-                        ('page_size', 25),
-                        ('feed_type', ALL),
+        query_string = [('ad_account_id', 'ad_account_id_example'),
                         ('explicit_following', False),
-                        ('ad_account_id', 'ad_account_id_example')]
+                        ('feed_type', 'ALL'),
+                        ('bookmark', 'bookmark_example'),
+                        ('page_size', 25)]
         response = self.client.open(
             '/v5/user_account/following',
             method='GET',
@@ -229,7 +232,7 @@ class TestUserAccountController(BaseTestCase):
 
         Verify website
         """
-        body = {"website":"pintest-website-12345678.test/test_1","verification_method":"METATAG"}
+        body = {"verification_method":"","website":"website"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/user_account/websites',

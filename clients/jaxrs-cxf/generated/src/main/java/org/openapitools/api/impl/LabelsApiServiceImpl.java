@@ -1,11 +1,15 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
 import org.openapitools.model.LabelCreateRequest;
 import org.openapitools.model.LabelUpdateRequest;
+import org.openapitools.model.LabeledEntities;
+import org.openapitools.model.LabeledEntitiesCreate;
 import org.openapitools.model.LabelsList200Response;
 import org.openapitools.model.LabelsResponse;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.QueryLabelEntityStatusesItems;
+import org.openapitools.model.QueryLabelTypesItems;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,9 +31,21 @@ import org.apache.cxf.jaxrs.ext.multipart.*;
  */
 public class LabelsApiServiceImpl implements LabelsApi {
     /**
+     * Apply label to entity
+     *
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+     *
+     */
+    public LabeledEntities labelsApply(String adAccountId, String labelId, LabeledEntitiesCreate labeledEntitiesCreate) {
+        // TODO: Implement...
+
+        return null;
+    }
+
+    /**
      * Create labels
      *
-     * &lt;p&gt; &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    &lt;b&gt;Note:&lt;/b&gt; You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
      *
      */
     public LabelsResponse labelsCreate(String adAccountId, LabelCreateRequest labelCreateRequest) {
@@ -41,10 +57,22 @@ public class LabelsApiServiceImpl implements LabelsApi {
     /**
      * List labels
      *
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   See a list of labels for assets that your account owns, and filter the list by different criteria. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
      *
      */
-    public LabelsList200Response labelsList(String adAccountId, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds, List<String> entityStatuses, List<String> labelTypes, Integer pageSize, String bookmark) {
+    public LabelsList200Response labelsList(String adAccountId, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> campaignIds, List<@Pattern(regexp = "^\\d+$")@Size(max = 18)String> labelIds, List<QueryLabelEntityStatusesItems> entityStatuses, List<QueryLabelTypesItems> labelTypes, String bookmark, Integer pageSize) {
+        // TODO: Implement...
+
+        return null;
+    }
+
+    /**
+     * Remove label from entities
+     *
+     *   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
+     *
+     */
+    public LabeledEntities labelsRemove(String adAccountId, String labelId, LabeledEntitiesCreate labeledEntitiesCreate) {
         // TODO: Implement...
 
         return null;
@@ -53,7 +81,7 @@ public class LabelsApiServiceImpl implements LabelsApi {
     /**
      * Update labels
      *
-     * &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Change the properties of one or more labels. &lt;/p&gt;
+     * [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
      *
      */
     public LabelsResponse labelsUpdate(String adAccountId, LabelUpdateRequest labelUpdateRequest) {

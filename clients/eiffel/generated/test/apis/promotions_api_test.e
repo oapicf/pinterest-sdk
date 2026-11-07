@@ -20,13 +20,13 @@ feature -- Test routines
         local
             l_response: PROMOTIONS_RESPONSE
             l_ad_account_id: STRING_32
-            l_promotion_create_request: LIST [PROMOTION_CREATE_REQUEST]
+            l_promotion_create: LIST [PROMOTION_CREATE]
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
-            -- create {ARRAYED_LIST [PROMOTION_CREATE_REQUEST]} l_promotion_create_request.make (2)
+            -- create {ARRAYED_LIST [PROMOTION_CREATE]} l_promotion_create.make (2)
 
-            -- l_response := api.promotions_create(l_ad_account_id, l_promotion_create_request)
+            -- l_response := api.promotions_create(l_ad_account_id, l_promotion_create)
             assert ("not_implemented", False)
         end
 
@@ -35,14 +35,15 @@ feature -- Test routines
             --
             -- Delete a promotion within Pinterest.
         local
-            l_ad_account_id: STRING_32
+            l_response: PROMOTION
             l_promotion_id: STRING_32
+            l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
-            -- l_ad_account_id
             -- l_promotion_id
+            -- l_ad_account_id
 
-            -- api.promotions_delete(l_ad_account_id, l_promotion_id)
+            -- l_response := api.promotions_delete(l_promotion_id, l_ad_account_id)
             assert ("not_implemented", False)
         end
 
@@ -51,15 +52,15 @@ feature -- Test routines
             --
             -- Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
         local
-            l_response: PROMOTION_RESPONSE
-            l_ad_account_id: STRING_32
+            l_response: PROMOTION
             l_promotion_id: STRING_32
+            l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
-            -- l_ad_account_id
             -- l_promotion_id
+            -- l_ad_account_id
 
-            -- l_response := api.promotions_get(l_ad_account_id, l_promotion_id)
+            -- l_response := api.promotions_get(l_promotion_id, l_ad_account_id)
             assert ("not_implemented", False)
         end
 
@@ -70,14 +71,14 @@ feature -- Test routines
         local
             l_response: PROMOTIONS_LIST_200_RESPONSE
             l_ad_account_id: STRING_32
-            l_page_size: INTEGER_32
-            l_order: STRING_32
             l_bookmark: STRING_32
+            l_page_size: INTEGER_32
+            l_order: PINTEREST_LIB_PAGINATION_ORDER
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
 
-            -- l_response := api.promotions_list(l_ad_account_id, l_page_size, l_order, l_bookmark)
+            -- l_response := api.promotions_list(l_ad_account_id, l_bookmark, l_page_size, l_order)
             assert ("not_implemented", False)
         end
 
@@ -88,13 +89,13 @@ feature -- Test routines
         local
             l_response: PROMOTIONS_RESPONSE
             l_ad_account_id: STRING_32
-            l_promotion_update_request: LIST [PROMOTION_UPDATE_REQUEST]
+            l_promotion_batch_update: LIST [PROMOTION_BATCH_UPDATE]
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
-            -- create {ARRAYED_LIST [PROMOTION_UPDATE_REQUEST]} l_promotion_update_request.make (2)
+            -- create {ARRAYED_LIST [PROMOTION_BATCH_UPDATE]} l_promotion_batch_update.make (2)
 
-            -- l_response := api.promotions_update(l_ad_account_id, l_promotion_update_request)
+            -- l_response := api.promotions_update(l_ad_account_id, l_promotion_batch_update)
             assert ("not_implemented", False)
         end
 

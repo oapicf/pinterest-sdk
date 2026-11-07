@@ -13,74 +13,138 @@ private class OASUserAccountApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'bookmark' => 'null',
-            'pageSize' => '',
+            'adAccountId' => 'null',
             'explicitFollowing' => '',
-            'adAccountId' => 'null'
+            'bookmark' => 'null',
+            'pageSize' => ''
         };
 
         OASClient client;
         OASUserAccountApi api;
-        OASBoardsUserFollowsList200Response response;
-        OASBoardsUserFollowsList200Response expectedResponse;
+        OASBoardsList200Response response;
+        OASBoardsList200Response expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASUserAccountApi(client);
 
-        js = JSON.serialize(OASBoardsUserFollowsList200Response.getExample());
+        js = JSON.serialize(OASBoardsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBoardsUserFollowsList200Response.getExample();
-        response = (OASBoardsUserFollowsList200Response) api.boardsUserFollowsList(params);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBoardsUserFollowsList200Response.getExample());
+        js = JSON.serialize(OASBoardsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBoardsUserFollowsList200Response.getExample();
-        response = (OASBoardsUserFollowsList200Response) api.boardsUserFollowsList(params);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBoardsUserFollowsList200Response.getExample());
+        js = JSON.serialize(OASBoardsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBoardsUserFollowsList200Response.getExample();
-        response = (OASBoardsUserFollowsList200Response) api.boardsUserFollowsList(params);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASUserAccountApi(client);
 
-        js = JSON.serialize(OASBoardsUserFollowsList200Response.getExample());
+        js = JSON.serialize(OASBoardsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBoardsUserFollowsList200Response.getExample();
-        response = (OASBoardsUserFollowsList200Response) api.boardsUserFollowsList(params);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBoardsUserFollowsList200Response.getExample());
+        js = JSON.serialize(OASBoardsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBoardsUserFollowsList200Response.getExample();
-        response = (OASBoardsUserFollowsList200Response) api.boardsUserFollowsList(params);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBoardsUserFollowsList200Response.getExample());
+        js = JSON.serialize(OASBoardsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBoardsUserFollowsList200Response.getExample();
-        response = (OASBoardsUserFollowsList200Response) api.boardsUserFollowsList(params);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBoardsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBoardsList200Response.getExample();
+        response = (OASBoardsList200Response) api.boardsUserFollowsList(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Follow user
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;\n\nUse this request, as a signed-in user, to follow another user.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**\n\nUse this request, as a signed-in user, to follow another user.
      */
     @isTest
     private static void followUserUpdateTest() {
@@ -90,40 +154,80 @@ private class OASUserAccountApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'username' => username,
-            'oaSFollowUserRequest' => ''
+            'username' => 'null',
+            'oaSFollowUserCreate' => ''
         };
 
         OASClient client;
         OASUserAccountApi api;
-        OASUserSummary response;
-        OASUserSummary expectedResponse;
+        OASFollowUser response;
+        OASFollowUser expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASUserAccountApi(client);
 
-        js = JSON.serialize(OASUserSummary.getExample());
+        js = JSON.serialize(OASFollowUser.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserSummary.getExample();
-        response = (OASUserSummary) api.followUserUpdate(params);
+        expectedResponse = OASFollowUser.getExample();
+        response = (OASFollowUser) api.followUserUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUserSummary.getExample());
+        js = JSON.serialize(OASFollowUser.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserSummary.getExample();
-        response = (OASUserSummary) api.followUserUpdate(params);
+        expectedResponse = OASFollowUser.getExample();
+        response = (OASFollowUser) api.followUserUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUserSummary.getExample());
+        js = JSON.serialize(OASFollowUser.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserSummary.getExample();
-        response = (OASUserSummary) api.followUserUpdate(params);
+        expectedResponse = OASFollowUser.getExample();
+        response = (OASFollowUser) api.followUserUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowUser.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowUser.getExample();
+        response = (OASFollowUser) api.followUserUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowUser.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowUser.getExample();
+        response = (OASFollowUser) api.followUserUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowUser.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowUser.getExample();
+        response = (OASFollowUser) api.followUserUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowUser.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowUser.getExample();
+        response = (OASFollowUser) api.followUserUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowUser.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowUser.getExample();
+        response = (OASFollowUser) api.followUserUpdate(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -175,8 +279,72 @@ private class OASUserAccountApiTest {
         expectedResponse = OASFollowersList200Response.getExample();
         response = (OASFollowersList200Response) api.followersList(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.followersList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.followersList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.followersList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.followersList(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASUserAccountApi(client);
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.followersList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.followersList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.followersList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.followersList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASFollowersList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -237,8 +405,88 @@ private class OASUserAccountApiTest {
         expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
         response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASUserAccountApi(client);
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()};
+        response = (List<OASLinkedBusiness>) api.linkedBusinessAccountsGet();
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(new List<OASLinkedBusiness>{OASLinkedBusiness.getExample()});
         res.setHeader('Content-Type', 'application/json');
@@ -259,7 +507,7 @@ private class OASUserAccountApiTest {
     /**
      * Unverify website
      *
-     * Unverifu a website verified by the signed-in user.
+     * Unverify a website verified by the signed-in user.
      */
     @isTest
     private static void unverifyWebsiteDeleteTest() {
@@ -269,29 +517,71 @@ private class OASUserAccountApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'website' => mysite.test
+            'website' => 'null'
         };
 
         OASClient client;
         OASUserAccountApi api;
+        OASUserWebsite response;
+        OASUserWebsite expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASUserAccountApi(client);
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASUserWebsite.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.unverifyWebsiteDelete(params);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.unverifyWebsiteDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASUserWebsite.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.unverifyWebsiteDelete(params);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.unverifyWebsiteDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.unverifyWebsiteDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.unverifyWebsiteDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.unverifyWebsiteDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.unverifyWebsiteDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.unverifyWebsiteDelete(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -315,7 +605,7 @@ private class OASUserAccountApiTest {
             'appTypes' => ALL,
             'contentType' => ALL,
             'source' => ALL,
-            'metricTypes' => new List<String>{'ENGAGEMENT'},
+            'metricTypes' => new List<OASQuerymetrictypesItems>{OASQuerymetrictypesItems.getExample()},
             'splitField' => NO_SPLIT,
             'adAccountId' => 'null'
         };
@@ -328,6 +618,30 @@ private class OASUserAccountApiTest {
 
         client = new OASClient();
         api = new OASUserAccountApi(client);
+
+        js = JSON.serialize(Map.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = Map.getExample();
+        response = (Map<String, OASAnalyticsMetricsResponse>) api.userAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(Map.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = Map.getExample();
+        response = (Map<String, OASAnalyticsMetricsResponse>) api.userAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(Map.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = Map.getExample();
+        response = (Map<String, OASAnalyticsMetricsResponse>) api.userAccountAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(Map.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -368,15 +682,15 @@ private class OASUserAccountApiTest {
         Map<String, Object> params = new Map<String, Object>{
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'sortBy' => ENGAGEMENT,
+            'sortBy' => '',
             'fromClaimedContent' => OTHER,
             'pinFormat' => ALL,
             'appTypes' => ALL,
             'contentType' => ALL,
             'source' => ALL,
-            'metricTypes' => new List<String>{'ENGAGEMENT'},
-            'numOfPins' => 25,
-            'createdInLastNDays' => 30,
+            'metricTypes' => new List<OASQuerymetrictypesItems>{OASQuerymetrictypesItems.getExample()},
+            'numOfPins' => '',
+            'createdInLastNDays' => '',
             'adAccountId' => 'null'
         };
 
@@ -411,8 +725,72 @@ private class OASUserAccountApiTest {
         expectedResponse = OASTopPinsAnalyticsResponse.getExample();
         response = (OASTopPinsAnalyticsResponse) api.userAccountAnalyticsTopPins(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopPinsAnalyticsResponse.getExample();
+        response = (OASTopPinsAnalyticsResponse) api.userAccountAnalyticsTopPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopPinsAnalyticsResponse.getExample();
+        response = (OASTopPinsAnalyticsResponse) api.userAccountAnalyticsTopPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopPinsAnalyticsResponse.getExample();
+        response = (OASTopPinsAnalyticsResponse) api.userAccountAnalyticsTopPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopPinsAnalyticsResponse.getExample();
+        response = (OASTopPinsAnalyticsResponse) api.userAccountAnalyticsTopPins(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASUserAccountApi(client);
+
+        js = JSON.serialize(OASTopPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopPinsAnalyticsResponse.getExample();
+        response = (OASTopPinsAnalyticsResponse) api.userAccountAnalyticsTopPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopPinsAnalyticsResponse.getExample();
+        response = (OASTopPinsAnalyticsResponse) api.userAccountAnalyticsTopPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopPinsAnalyticsResponse.getExample();
+        response = (OASTopPinsAnalyticsResponse) api.userAccountAnalyticsTopPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopPinsAnalyticsResponse.getExample();
+        response = (OASTopPinsAnalyticsResponse) api.userAccountAnalyticsTopPins(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASTopPinsAnalyticsResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -453,15 +831,15 @@ private class OASUserAccountApiTest {
         Map<String, Object> params = new Map<String, Object>{
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'sortBy' => IMPRESSION,
+            'sortBy' => '',
             'fromClaimedContent' => OTHER,
             'pinFormat' => ALL,
             'appTypes' => ALL,
             'contentType' => ALL,
             'source' => ALL,
-            'metricTypes' => new List<String>{'IMPRESSION'},
-            'numOfPins' => 25,
-            'createdInLastNDays' => 30,
+            'metricTypes' => new List<OASQueryvideopinmetrictypesItems>{OASQueryvideopinmetrictypesItems.getExample()},
+            'numOfPins' => '',
+            'createdInLastNDays' => '',
             'adAccountId' => 'null'
         };
 
@@ -496,8 +874,72 @@ private class OASUserAccountApiTest {
         expectedResponse = OASTopVideoPinsAnalyticsResponse.getExample();
         response = (OASTopVideoPinsAnalyticsResponse) api.userAccountAnalyticsTopVideoPins(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopVideoPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopVideoPinsAnalyticsResponse.getExample();
+        response = (OASTopVideoPinsAnalyticsResponse) api.userAccountAnalyticsTopVideoPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopVideoPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopVideoPinsAnalyticsResponse.getExample();
+        response = (OASTopVideoPinsAnalyticsResponse) api.userAccountAnalyticsTopVideoPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopVideoPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopVideoPinsAnalyticsResponse.getExample();
+        response = (OASTopVideoPinsAnalyticsResponse) api.userAccountAnalyticsTopVideoPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopVideoPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopVideoPinsAnalyticsResponse.getExample();
+        response = (OASTopVideoPinsAnalyticsResponse) api.userAccountAnalyticsTopVideoPins(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASUserAccountApi(client);
+
+        js = JSON.serialize(OASTopVideoPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopVideoPinsAnalyticsResponse.getExample();
+        response = (OASTopVideoPinsAnalyticsResponse) api.userAccountAnalyticsTopVideoPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopVideoPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopVideoPinsAnalyticsResponse.getExample();
+        response = (OASTopVideoPinsAnalyticsResponse) api.userAccountAnalyticsTopVideoPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopVideoPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopVideoPinsAnalyticsResponse.getExample();
+        response = (OASTopVideoPinsAnalyticsResponse) api.userAccountAnalyticsTopVideoPins(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTopVideoPinsAnalyticsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTopVideoPinsAnalyticsResponse.getExample();
+        response = (OASTopVideoPinsAnalyticsResponse) api.userAccountAnalyticsTopVideoPins(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASTopVideoPinsAnalyticsResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -536,7 +978,7 @@ private class OASUserAccountApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'username' => username,
+            'username' => 'null',
             'bookmark' => 'null',
             'pageSize' => ''
         };
@@ -634,7 +1076,7 @@ private class OASUserAccountApiTest {
     /**
      * Get user account
      *
-     * Get account information for the &quot;operation user_account&quot;\n- By default, the &quot;operation user_account&quot; is the token user_account.\n\nIf using Business Access: Specify an ad_account_id to use the owner of that ad_account as the &quot;operation user_account&quot;. See &lt;a href&#x3D;\&#39;/docs/getting-started/using-business-access/\&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the &quot;operation user_account&quot;\n- By default, the &quot;operation user_account&quot; is the token user_account.\n\n[Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ &quot;Understanding Business Access&quot;\nIf using Business Access: Specify an ad_account_id to use the owner of that ad_account as the &quot;operation user_account&quot;. See [Understanding Business Access] for more information.
      */
     @isTest
     private static void userAccountGetTest() {
@@ -678,8 +1120,72 @@ private class OASUserAccountApiTest {
         expectedResponse = OASAccount.getExample();
         response = (OASAccount) api.userAccountGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAccount.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAccount.getExample();
+        response = (OASAccount) api.userAccountGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAccount.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAccount.getExample();
+        response = (OASAccount) api.userAccountGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAccount.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAccount.getExample();
+        response = (OASAccount) api.userAccountGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAccount.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAccount.getExample();
+        response = (OASAccount) api.userAccountGet(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASUserAccountApi(client);
+
+        js = JSON.serialize(OASAccount.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAccount.getExample();
+        response = (OASAccount) api.userAccountGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAccount.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAccount.getExample();
+        response = (OASAccount) api.userAccountGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAccount.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAccount.getExample();
+        response = (OASAccount) api.userAccountGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAccount.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAccount.getExample();
+        response = (OASAccount) api.userAccountGet(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASAccount.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -718,52 +1224,132 @@ private class OASUserAccountApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'bookmark' => 'null',
-            'pageSize' => '',
-            'feedType' => 'null',
+            'adAccountId' => 'null',
             'explicitFollowing' => '',
-            'adAccountId' => 'null'
+            'feedType' => '',
+            'bookmark' => 'null',
+            'pageSize' => ''
         };
 
         OASClient client;
         OASUserAccountApi api;
-        OASUserFollowingGet200Response response;
-        OASUserFollowingGet200Response expectedResponse;
+        OASFollowersList200Response response;
+        OASFollowersList200Response expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASUserAccountApi(client);
 
-        js = JSON.serialize(OASUserFollowingGet200Response.getExample());
+        js = JSON.serialize(OASFollowersList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserFollowingGet200Response.getExample();
-        response = (OASUserFollowingGet200Response) api.userFollowingGet(params);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUserFollowingGet200Response.getExample());
+        js = JSON.serialize(OASFollowersList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserFollowingGet200Response.getExample();
-        response = (OASUserFollowingGet200Response) api.userFollowingGet(params);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASUserAccountApi(client);
 
-        js = JSON.serialize(OASUserFollowingGet200Response.getExample());
+        js = JSON.serialize(OASFollowersList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserFollowingGet200Response.getExample();
-        response = (OASUserFollowingGet200Response) api.userFollowingGet(params);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUserFollowingGet200Response.getExample());
+        js = JSON.serialize(OASFollowersList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserFollowingGet200Response.getExample();
-        response = (OASUserFollowingGet200Response) api.userFollowingGet(params);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASFollowersList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASFollowersList200Response.getExample();
+        response = (OASFollowersList200Response) api.userFollowingGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -815,6 +1401,38 @@ private class OASUserAccountApiTest {
         expectedResponse = OASUserWebsitesGet200Response.getExample();
         response = (OASUserWebsitesGet200Response) api.userWebsitesGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsitesGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsitesGet200Response.getExample();
+        response = (OASUserWebsitesGet200Response) api.userWebsitesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsitesGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsitesGet200Response.getExample();
+        response = (OASUserWebsitesGet200Response) api.userWebsitesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsitesGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsitesGet200Response.getExample();
+        response = (OASUserWebsitesGet200Response) api.userWebsitesGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsitesGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsitesGet200Response.getExample();
+        response = (OASUserWebsitesGet200Response) api.userWebsitesGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -830,32 +1448,80 @@ private class OASUserAccountApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'oaSUserWebsiteVerifyRequest' => '',
+            'oaSUserWebsiteCreate' => '',
             'adAccountId' => 'null'
         };
 
         OASClient client;
         OASUserAccountApi api;
-        OASUserWebsiteSummary response;
-        OASUserWebsiteSummary expectedResponse;
+        OASUserWebsite response;
+        OASUserWebsite expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASUserAccountApi(client);
 
-        js = JSON.serialize(OASUserWebsiteSummary.getExample());
+        js = JSON.serialize(OASUserWebsite.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserWebsiteSummary.getExample();
-        response = (OASUserWebsiteSummary) api.verifyWebsiteUpdate(params);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.verifyWebsiteUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUserWebsiteSummary.getExample());
+        js = JSON.serialize(OASUserWebsite.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserWebsiteSummary.getExample();
-        response = (OASUserWebsiteSummary) api.verifyWebsiteUpdate(params);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.verifyWebsiteUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.verifyWebsiteUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.verifyWebsiteUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.verifyWebsiteUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.verifyWebsiteUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.verifyWebsiteUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsite.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsite.getExample();
+        response = (OASUserWebsite) api.verifyWebsiteUpdate(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -877,59 +1543,123 @@ private class OASUserAccountApiTest {
 
         OASClient client;
         OASUserAccountApi api;
-        OASUserWebsiteVerificationCode response;
-        OASUserWebsiteVerificationCode expectedResponse;
+        OASUserWebsiteVerification response;
+        OASUserWebsiteVerification expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASUserAccountApi(client);
 
-        js = JSON.serialize(OASUserWebsiteVerificationCode.getExample());
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserWebsiteVerificationCode.getExample();
-        response = (OASUserWebsiteVerificationCode) api.websiteVerificationGet(params);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUserWebsiteVerificationCode.getExample());
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserWebsiteVerificationCode.getExample();
-        response = (OASUserWebsiteVerificationCode) api.websiteVerificationGet(params);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUserWebsiteVerificationCode.getExample());
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserWebsiteVerificationCode.getExample();
-        response = (OASUserWebsiteVerificationCode) api.websiteVerificationGet(params);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASUserAccountApi(client);
 
-        js = JSON.serialize(OASUserWebsiteVerificationCode.getExample());
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserWebsiteVerificationCode.getExample();
-        response = (OASUserWebsiteVerificationCode) api.websiteVerificationGet(params);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUserWebsiteVerificationCode.getExample());
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserWebsiteVerificationCode.getExample();
-        response = (OASUserWebsiteVerificationCode) api.websiteVerificationGet(params);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUserWebsiteVerificationCode.getExample());
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUserWebsiteVerificationCode.getExample();
-        response = (OASUserWebsiteVerificationCode) api.websiteVerificationGet(params);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUserWebsiteVerification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUserWebsiteVerification.getExample();
+        response = (OASUserWebsiteVerification) api.websiteVerificationGet(params);
         System.assertEquals(expectedResponse, response);
     }
 }

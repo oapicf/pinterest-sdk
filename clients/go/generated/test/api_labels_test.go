@@ -22,6 +22,21 @@ func Test_openapi_LabelsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test LabelsAPIService LabelsApply", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+		var labelId string
+
+		resp, httpRes, err := apiClient.LabelsAPI.LabelsApply(context.Background(), adAccountId, labelId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test LabelsAPIService LabelsCreate", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -43,6 +58,21 @@ func Test_openapi_LabelsAPIService(t *testing.T) {
 		var adAccountId string
 
 		resp, httpRes, err := apiClient.LabelsAPI.LabelsList(context.Background(), adAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test LabelsAPIService LabelsRemove", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+		var labelId string
+
+		resp, httpRes, err := apiClient.LabelsAPI.LabelsRemove(context.Background(), adAccountId, labelId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

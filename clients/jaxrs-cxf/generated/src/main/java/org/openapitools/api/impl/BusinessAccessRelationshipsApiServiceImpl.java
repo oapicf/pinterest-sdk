@@ -1,22 +1,20 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.BrandAccountsCreate200Response;
-import org.openapitools.model.BrandAccountsCreateRequest;
-import org.openapitools.model.BrandAccountsUpdateRequest;
-import org.openapitools.model.DeletePartnersRequest;
-import org.openapitools.model.DeletePartnersResponse;
-import org.openapitools.model.DeletedMembersResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.BrandAccount;
+import org.openapitools.model.BrandAccountCreate;
+import org.openapitools.model.BrandAccountUpdate;
+import org.openapitools.model.BusinessMembershipMember;
+import org.openapitools.model.DeleteBusinessMembership200Response;
+import org.openapitools.model.DeleteBusinessMembershipBody;
+import org.openapitools.model.DeleteBusinessPartners;
+import org.openapitools.model.DeleteBusinessPartnersDelete;
 import org.openapitools.model.GetBusinessEmployers200Response;
-import org.openapitools.model.GetBusinessMembers200Response;
-import org.openapitools.model.GetBusinessPartners200Response;
 import org.openapitools.model.MemberBusinessRole;
-import org.openapitools.model.MembersToDeleteBody;
 import org.openapitools.model.PartnerType;
-import org.openapitools.model.SystemUserUpdateRequest;
-import org.openapitools.model.UpdateMemberBusinessRoleBody;
-import org.openapitools.model.UpdateMemberResultsResponseArray;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.SystemUserUpdateWithRequiredBody;
+import org.openapitools.model.UpdateBusinessMembershipsResponse;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -43,7 +41,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
      *
      */
-    public BrandAccountsCreate200Response brandAccountsCreate(String businessHierarchyId, BrandAccountsCreateRequest brandAccountsCreateRequest) {
+    public BrandAccount brandAccountsCreate(String businessHierarchyId, BrandAccountCreate brandAccountCreate) {
         // TODO: Implement...
 
         return null;
@@ -55,7 +53,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Update an existing Brand Account
      *
      */
-    public BrandAccountsCreate200Response brandAccountsUpdate(String businessHierarchyId, String brandAccountId, BrandAccountsUpdateRequest brandAccountsUpdateRequest) {
+    public BrandAccount brandAccountsUpdate(String brandAccountId, String businessHierarchyId, BrandAccountUpdate brandAccountUpdate) {
         // TODO: Implement...
 
         return null;
@@ -67,7 +65,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Terminate memberships between the specified members and your business.
      *
      */
-    public DeletedMembersResponse deleteBusinessMembership(String businessId, MembersToDeleteBody membersToDeleteBody) {
+    public DeleteBusinessMembership200Response deleteBusinessMembership(String businessId, DeleteBusinessMembershipBody deleteBusinessMembershipBody) {
         // TODO: Implement...
 
         return null;
@@ -79,7 +77,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
      *
      */
-    public DeletePartnersResponse deleteBusinessPartners(String businessId, DeletePartnersRequest deletePartnersRequest) {
+    public DeleteBusinessPartners deleteBusinessPartners(String businessId, DeleteBusinessPartnersDelete deleteBusinessPartnersDelete) {
         // TODO: Implement...
 
         return null;
@@ -91,7 +89,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Get all of the viewing user&#39;s business employers.
      *
      */
-    public GetBusinessEmployers200Response getBusinessEmployers(Integer pageSize, String bookmark) {
+    public GetBusinessEmployers200Response getBusinessEmployers(Boolean assetsSummary, String bookmark, Integer pageSize) {
         // TODO: Implement...
 
         return null;
@@ -103,7 +101,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Get all members of the specified business. The return response will include the member&#39;s business_role and assets they have access to if assets_summary&#x3D;TRUE
      *
      */
-    public GetBusinessMembers200Response getBusinessMembers(String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize) {
+    public GetBusinessEmployers200Response getBusinessMembers(String businessId, Boolean fetchSystemUsers, Boolean assetsSummary, List<MemberBusinessRole> businessRoles, String memberIds, Integer startIndex, String bookmark, Integer pageSize) {
         // TODO: Implement...
 
         return null;
@@ -115,7 +113,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and: - partner_type&#x3D;INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type&#x3D;EXTERNAL, the business assets returned are your partner&#39;s business assets the partner has granted you   access to.
      *
      */
-    public GetBusinessPartners200Response getBusinessPartners(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Integer pageSize, String bookmark) {
+    public GetBusinessEmployers200Response getBusinessPartners(String businessId, Boolean assetsSummary, PartnerType partnerType, String partnerIds, Integer startIndex, Boolean sortAscending, String bookmark, Integer pageSize) {
         // TODO: Implement...
 
         return null;
@@ -127,7 +125,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Update a system user information such as name.
      *
      */
-    public void systemUserUpdate(String businessId, String systemUserId, SystemUserUpdateRequest systemUserUpdateRequest) {
+    public void systemUserUpdate(String businessId, String systemUserId, SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody) {
         // TODO: Implement...
 
         
@@ -139,7 +137,7 @@ public class BusinessAccessRelationshipsApiServiceImpl implements BusinessAccess
      * Update a member&#39;s business role within the business.
      *
      */
-    public UpdateMemberResultsResponseArray updateBusinessMemberships(String businessId, List<@Valid UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody) {
+    public UpdateBusinessMembershipsResponse updateBusinessMemberships(String businessId, List<@Valid BusinessMembershipMember> businessMembershipMember) {
         // TODO: Implement...
 
         return null;

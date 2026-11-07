@@ -1,8 +1,9 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
 import org.openapitools.model.OrderLine;
 import org.openapitools.model.OrderLinesList200Response;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -34,11 +35,11 @@ public class OrderLinesApiTest {
     @Disabled("Not Implemented")
     public void orderLinesGetTest() {
         // given
-        String adAccountId = "example";
         String orderLineId = "example";
+        String adAccountId = "example";
 
         // when
-        OrderLine body = api.orderLinesGet(adAccountId, orderLineId).block();
+        OrderLine body = api.orderLinesGet(orderLineId, adAccountId).block();
 
         // then
         // TODO implement the orderLinesGetTest()
@@ -46,7 +47,7 @@ public class OrderLinesApiTest {
 
     
     /**
-     * Get order lines
+     * Get order lines.
      *
      * List existing order lines associated with an ad account.
      */
@@ -55,12 +56,12 @@ public class OrderLinesApiTest {
     public void orderLinesListTest() {
         // given
         String adAccountId = "example";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
 
         // when
-        OrderLinesList200Response body = api.orderLinesList(adAccountId, pageSize, order, bookmark).block();
+        OrderLinesList200Response body = api.orderLinesList(adAccountId, bookmark, pageSize, order).block();
 
         // then
         // TODO implement the orderLinesListTest()

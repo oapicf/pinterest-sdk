@@ -31,10 +31,10 @@ public class LeadAdsApiServiceImpl implements LeadAdsApi {
      * Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
      *
      */
-    public void adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId) {
+    public LeadSubscription adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId) {
         // TODO: Implement...
 
-        
+        return null;
     }
 
     /**

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -22,9 +30,9 @@ import org.openapitools.client.apis.CatalogReportsApi
 import org.openapitools.client.models.CatalogsCreateReportResponse
 import org.openapitools.client.models.CatalogsReport
 import org.openapitools.client.models.CatalogsReportParameters
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.CatalogsReportStatsParameters
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.ReportsStats200Response
-import org.openapitools.client.models.ReportsStatsParametersParameter
 
 class CatalogReportsApiTest : ShouldSpec() {
     init {
@@ -34,7 +42,7 @@ class CatalogReportsApiTest : ShouldSpec() {
         // to test reportsCreate
         should("test reportsCreate") {
             // uncomment below to test reportsCreate
-            //val catalogsReportParameters : CatalogsReportParameters =  // CatalogsReportParameters | Request object to asynchronously create a report.
+            //val catalogsReportParameters : CatalogsReportParameters =  // CatalogsReportParameters | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : CatalogsCreateReportResponse = apiInstance.reportsCreate(catalogsReportParameters, adAccountId)
             //result shouldBe ("TODO")
@@ -43,7 +51,7 @@ class CatalogReportsApiTest : ShouldSpec() {
         // to test reportsGet
         should("test reportsGet") {
             // uncomment below to test reportsGet
-            //val token : kotlin.String = token_example // kotlin.String | Token returned from async build report call
+            //val token : kotlin.String = token_example // kotlin.String | Token returned from the post request creation call
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : CatalogsReport = apiInstance.reportsGet(token, adAccountId)
             //result shouldBe ("TODO")
@@ -52,11 +60,11 @@ class CatalogReportsApiTest : ShouldSpec() {
         // to test reportsStats
         should("test reportsStats") {
             // uncomment below to test reportsStats
-            //val parameters : ReportsStatsParametersParameter =  // ReportsStatsParametersParameter | Contains the parameters for report identification.
+            //val parameters : CatalogsReportStatsParameters =  // CatalogsReportStatsParameters | Contains the parameters for report identification.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : ReportsStats200Response = apiInstance.reportsStats(parameters, adAccountId, pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : ReportsStats200Response = apiInstance.reportsStats(parameters, adAccountId, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 

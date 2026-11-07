@@ -12,7 +12,7 @@ import javax.validation.Valid;
 /**
  * This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-07T02:50:19.877694946Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class TrendsGenderDistribution extends HashMap<String, Double>  {
   @JsonProperty("gender_distribution")

@@ -14,7 +14,7 @@ import java.math.BigDecimal;
  **/
 
 @ApiModel(description = "Integration metadata")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationMetadata   {
   @JsonProperty("additional_id_1")
   private String additionalId1;

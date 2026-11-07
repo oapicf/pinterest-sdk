@@ -11,7 +11,7 @@ test_that("BoardSectionsCreate", {
   # Create board section
   # Create a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
   # @param board_id character Unique identifier of a board.
-  # @param board_section BoardSection Create a board section.
+  # @param board_section_create BoardSectionCreate 
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [BoardSection]
 
@@ -27,7 +27,7 @@ test_that("BoardSectionsDelete", {
   # @param board_id character Unique identifier of a board.
   # @param section_id character Unique identifier of a board section.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
-  # @return [Void]
+  # @return [BoardSection]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -41,7 +41,7 @@ test_that("BoardSectionsList", {
   # @param board_id character Unique identifier of a board.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [BoardSectionsList200Response]
 
   # uncomment below to test the operation
@@ -57,7 +57,7 @@ test_that("BoardSectionsListPins", {
   # @param section_id character Unique identifier of a board section.
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [BoardsListPins200Response]
 
   # uncomment below to test the operation
@@ -71,7 +71,7 @@ test_that("BoardSectionsUpdate", {
   # Update a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
   # @param board_id character Unique identifier of a board.
   # @param section_id character Unique identifier of a board section.
-  # @param board_section BoardSection Update a board section.
+  # @param board_section_update_with_required_body BoardSectionUpdateWithRequiredBody 
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @return [BoardSection]
 
@@ -99,7 +99,7 @@ test_that("BoardsDelete", {
   # Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
   # @param board_id character 
   # @param ad_account_id character Unique identifier of an ad account. (optional)
-  # @return [Void]
+  # @return [Board]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -139,11 +139,11 @@ test_that("BoardsListPins", {
   # List Pins on board
   # Get a list of the Pins on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
   # @param board_id character Unique identifier of a board.
-  # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
   # @param creative_types array[CreativeType] Pin creative types filter. **Note:** SHOP_THE_PIN has been deprecated. Please use COLLECTION instead. (optional)
   # @param ad_account_id character Unique identifier of an ad account. (optional)
   # @param pin_metrics character Specify whether to return 90d and lifetime Pin metrics. Total comments and total reactions are only available with lifetime Pin metrics. If Pin was created before `2023-03-20` lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then. (optional)
+  # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [BoardsListPins200Response]
 
   # uncomment below to test the operation

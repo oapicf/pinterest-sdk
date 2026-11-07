@@ -43,7 +43,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CampaignCreateRequestAllOf1.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("CampaignCreateRequestAllOf1")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CampaignCreateRequestAllOf1 {
     public static final String JSON_PROPERTY_BID_OPTIONS = "bid_options";

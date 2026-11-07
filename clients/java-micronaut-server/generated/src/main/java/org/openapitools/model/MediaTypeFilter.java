@@ -30,7 +30,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   MediaTypeFilter.JSON_PROPERTY_M_E_D_I_A_T_Y_P_E
 })
 @JsonTypeName("MediaTypeFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class MediaTypeFilter {
     public static final String JSON_PROPERTY_M_E_D_I_A_T_Y_P_E = "MEDIA_TYPE";

@@ -56,7 +56,7 @@ import javax.annotation.Generated;
   CatalogsHotelAttributes.JSON_PROPERTY_MAIN_IMAGE
 })
 @JsonTypeName("CatalogsHotelAttributes")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsHotelAttributes {
     public static final String JSON_PROPERTY_ADDRESS = "address";

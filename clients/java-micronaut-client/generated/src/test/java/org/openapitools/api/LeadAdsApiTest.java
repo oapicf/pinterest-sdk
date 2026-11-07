@@ -39,7 +39,7 @@ public class LeadAdsApiTest {
         String subscriptionId = "example";
 
         // when
-        api.adAccountsSubscriptionsDelById(adAccountId, subscriptionId).block();
+        LeadSubscription body = api.adAccountsSubscriptionsDelById(adAccountId, subscriptionId).block();
 
         // then
         // TODO implement the adAccountsSubscriptionsDelByIdTest()

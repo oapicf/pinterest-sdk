@@ -14,7 +14,7 @@ import org.openapitools.model.CatalogsProductGroupFilterKeys;
 
 
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupFiltersRequestAnyOfItems1   {
   @JsonProperty("all_of")
   private List<CatalogsProductGroupFilterKeys> allOf = new ArrayList<>();

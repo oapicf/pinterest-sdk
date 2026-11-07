@@ -20,14 +20,14 @@ feature -- Test routines
         local
             l_response: BOARD_SECTION
             l_board_id: STRING_32
-            l_board_section: BOARD_SECTION
+            l_board_section_create: BOARD_SECTION_CREATE
             l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_board_id
-            -- l_board_section
+            -- l_board_section_create
 
-            -- l_response := api.board_sections_create(l_board_id, l_board_section, l_ad_account_id)
+            -- l_response := api.board_sections_create(l_board_id, l_board_section_create, l_ad_account_id)
             assert ("not_implemented", False)
         end
 
@@ -36,6 +36,7 @@ feature -- Test routines
             --
             -- Delete a board section on a board owned by the \&quot;operation user_account\&quot; - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.
         local
+            l_response: BOARD_SECTION
             l_board_id: STRING_32
             l_section_id: STRING_32
             l_ad_account_id: STRING_32
@@ -44,7 +45,7 @@ feature -- Test routines
             -- l_board_id
             -- l_section_id
 
-            -- api.board_sections_delete(l_board_id, l_section_id, l_ad_account_id)
+            -- l_response := api.board_sections_delete(l_board_id, l_section_id, l_ad_account_id)
             assert ("not_implemented", False)
         end
 
@@ -94,15 +95,15 @@ feature -- Test routines
             l_response: BOARD_SECTION
             l_board_id: STRING_32
             l_section_id: STRING_32
-            l_board_section: BOARD_SECTION
+            l_board_section_update_with_required_body: BOARD_SECTION_UPDATE_WITH_REQUIRED_BODY
             l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_board_id
             -- l_section_id
-            -- l_board_section
+            -- l_board_section_update_with_required_body
 
-            -- l_response := api.board_sections_update(l_board_id, l_section_id, l_board_section, l_ad_account_id)
+            -- l_response := api.board_sections_update(l_board_id, l_section_id, l_board_section_update_with_required_body, l_ad_account_id)
             assert ("not_implemented", False)
         end
 
@@ -127,13 +128,14 @@ feature -- Test routines
             --
             -- Delete a board owned by the \&quot;operation user_account\&quot;. * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. * By default, the \&quot;operation user_account\&quot; is the token user_account.
         local
+            l_response: BOARD
             l_board_id: STRING_32
             l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_board_id
 
-            -- api.boards_delete(l_board_id, l_ad_account_id)
+            -- l_response := api.boards_delete(l_board_id, l_ad_account_id)
             assert ("not_implemented", False)
         end
 
@@ -177,16 +179,16 @@ feature -- Test routines
         local
             l_response: BOARDS_LIST_PINS_200_RESPONSE
             l_board_id: STRING_32
-            l_bookmark: STRING_32
-            l_page_size: INTEGER_32
             l_creative_types: LIST [CREATIVE_TYPE]
             l_ad_account_id: STRING_32
             l_pin_metrics: BOOLEAN
+            l_bookmark: STRING_32
+            l_page_size: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_board_id
 
-            -- l_response := api.boards_list_pins(l_board_id, l_bookmark, l_page_size, l_creative_types, l_ad_account_id, l_pin_metrics)
+            -- l_response := api.boards_list_pins(l_board_id, l_creative_types, l_ad_account_id, l_pin_metrics, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 

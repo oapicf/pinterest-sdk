@@ -48,7 +48,7 @@ import javax.annotation.Generated;
   SchedulesCreate200ResponseInnerData.JSON_PROPERTY_EXCEPTIONS
 })
 @JsonTypeName("schedules_create_200_response_inner_data")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class SchedulesCreate200ResponseInnerData {
     public static final String JSON_PROPERTY_DELTA_VALUE = "delta_value";

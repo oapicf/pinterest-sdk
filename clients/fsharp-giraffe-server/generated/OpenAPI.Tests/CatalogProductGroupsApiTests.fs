@@ -19,11 +19,12 @@ open OpenAPI.CatalogProductGroupsApiHandlerParams
 open OpenAPI.Model.CatalogsListProductsByFilterRequest
 open OpenAPI.Model.CatalogsProductGroupPinsList200Response
 open OpenAPI.Model.CatalogsProductGroupProductCountsVertical
+open OpenAPI.Model.CatalogsProductGroupsCreateManyRequestItems
+open OpenAPI.Model.CatalogsProductGroupsCreateRequestSchema
 open OpenAPI.Model.CatalogsProductGroupsList200Response
-open OpenAPI.Model.CatalogsProductGroupsUpdateRequest
+open OpenAPI.Model.CatalogsProductGroupsUpdateRequestSchema
 open OpenAPI.Model.CatalogsVerticalProductGroup
-open OpenAPI.Model.Error
-open OpenAPI.Model.MultipleProductGroupsInner
+open OpenAPI.Model.PinterestLibError
 
 module CatalogProductGroupsApiHandlerTests =
 
@@ -32,14 +33,14 @@ module CatalogProductGroupsApiHandlerTests =
   // ---------------------------------
 
   [<Fact>]
-  let ``CatalogsProductGroupPinsList - List products by product group returns 200 where Success`` () =
+  let ``CatalogsProductGroupPinsList - List products by product group returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME&pinMetrics=ADDME"
+      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME&pinMetrics=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -49,14 +50,14 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupPinsList - List products by product group returns 400 where Invalid parameters.`` () =
+  let ``CatalogsProductGroupPinsList - List products by product group returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME&pinMetrics=ADDME"
+      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME&pinMetrics=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(400))
@@ -66,14 +67,14 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupPinsList - List products by product group returns 401 where Unauthorized access.`` () =
+  let ``CatalogsProductGroupPinsList - List products by product group returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME&pinMetrics=ADDME"
+      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME&pinMetrics=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(401))
@@ -83,14 +84,31 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupPinsList - List products by product group returns 404 where Catalogs product group not found.`` () =
+  let ``CatalogsProductGroupPinsList - List products by product group returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME&pinMetrics=ADDME"
+      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME&pinMetrics=ADDME&bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(403))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupPinsList - List products by product group returns 404 where The requested resource could not be found on this server.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME&pinMetrics=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(404))
@@ -100,14 +118,31 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupPinsList - List products by product group returns 0 where Unexpected error.`` () =
+  let ``CatalogsProductGroupPinsList - List products by product group returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME&pinMetrics=ADDME"
+      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME&pinMetrics=ADDME&bookmark=ADDME&pageSize=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupPinsList - List products by product group returns 0 where An unexpected error response.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups/{product_group_id}/products".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME&pinMetrics=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))
@@ -117,7 +152,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreate - Create product group returns 201 where Success`` () =
+  let ``CatalogsProductGroupsCreate - Create product group returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -128,8 +163,30 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner
-      let body = obj() :?> MultipleProductGroupsInner |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsCreateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupsCreate - Create product group returns 201 where Resource create operation completed successfully.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateExample "application/json")
+      // or pass a body of type CatalogsProductGroupsCreateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsCreateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -139,7 +196,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreate - Create product group returns 400 where Invalid body.`` () =
+  let ``CatalogsProductGroupsCreate - Create product group returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -150,8 +207,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner
-      let body = obj() :?> MultipleProductGroupsInner |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsCreateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -161,7 +218,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreate - Create product group returns 401 where Unauthorized access.`` () =
+  let ``CatalogsProductGroupsCreate - Create product group returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -172,8 +229,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner
-      let body = obj() :?> MultipleProductGroupsInner |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsCreateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -183,7 +240,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreate - Create product group returns 403 where Forbidden. Account not approved for catalog product group mutations yet.`` () =
+  let ``CatalogsProductGroupsCreate - Create product group returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -194,8 +251,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner
-      let body = obj() :?> MultipleProductGroupsInner |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsCreateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -205,7 +262,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreate - Create product group returns 409 where Conflict. Can&#39;t create this catalogs product group with this value.`` () =
+  let ``CatalogsProductGroupsCreate - Create product group returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -216,18 +273,18 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner
-      let body = obj() :?> MultipleProductGroupsInner |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsCreateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
-        |> isStatus (enum<HttpStatusCode>(409))
+        |> isStatus (enum<HttpStatusCode>(404))
         |> readText
         |> shouldEqual "TESTME"
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreate - Create product group returns 0 where Unexpected error.`` () =
+  let ``CatalogsProductGroupsCreate - Create product group returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -238,8 +295,30 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner
-      let body = obj() :?> MultipleProductGroupsInner |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsCreateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupsCreate - Create product group returns 0 where An unexpected error response.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateExample "application/json")
+      // or pass a body of type CatalogsProductGroupsCreateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsCreateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -249,7 +328,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreateMany - Create product groups returns 201 where Success`` () =
+  let ``CatalogsProductGroupsCreateMany - Create product groups returns 201 where The request has succeeded and a new resource has been created as a result.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -260,8 +339,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateManyExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner[]
-      let body = obj() :?> MultipleProductGroupsInner[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateManyRequestItems[]
+      let body = obj() :?> CatalogsProductGroupsCreateManyRequestItems[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -271,7 +350,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreateMany - Create product groups returns 400 where Invalid body.`` () =
+  let ``CatalogsProductGroupsCreateMany - Create product groups returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -282,8 +361,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateManyExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner[]
-      let body = obj() :?> MultipleProductGroupsInner[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateManyRequestItems[]
+      let body = obj() :?> CatalogsProductGroupsCreateManyRequestItems[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -293,7 +372,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreateMany - Create product groups returns 401 where Unauthorized access.`` () =
+  let ``CatalogsProductGroupsCreateMany - Create product groups returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -304,8 +383,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateManyExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner[]
-      let body = obj() :?> MultipleProductGroupsInner[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateManyRequestItems[]
+      let body = obj() :?> CatalogsProductGroupsCreateManyRequestItems[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -315,7 +394,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreateMany - Create product groups returns 403 where Forbidden. Account not approved for catalog product group mutations yet.`` () =
+  let ``CatalogsProductGroupsCreateMany - Create product groups returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -326,8 +405,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateManyExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner[]
-      let body = obj() :?> MultipleProductGroupsInner[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateManyRequestItems[]
+      let body = obj() :?> CatalogsProductGroupsCreateManyRequestItems[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -337,7 +416,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreateMany - Create product groups returns 409 where Conflict. Can&#39;t create this catalogs product group with this value.`` () =
+  let ``CatalogsProductGroupsCreateMany - Create product groups returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -348,18 +427,18 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateManyExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner[]
-      let body = obj() :?> MultipleProductGroupsInner[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateManyRequestItems[]
+      let body = obj() :?> CatalogsProductGroupsCreateManyRequestItems[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
-        |> isStatus (enum<HttpStatusCode>(409))
+        |> isStatus (enum<HttpStatusCode>(404))
         |> readText
         |> shouldEqual "TESTME"
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsCreateMany - Create product groups returns 0 where Unexpected error.`` () =
+  let ``CatalogsProductGroupsCreateMany - Create product groups returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -370,8 +449,30 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateManyExample "application/json")
-      // or pass a body of type MultipleProductGroupsInner[]
-      let body = obj() :?> MultipleProductGroupsInner[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsCreateManyRequestItems[]
+      let body = obj() :?> CatalogsProductGroupsCreateManyRequestItems[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupsCreateMany - Create product groups returns 0 where An unexpected error response.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups/multiple" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getCatalogsProductGroupsCreateManyExample "application/json")
+      // or pass a body of type CatalogsProductGroupsCreateManyRequestItems[]
+      let body = obj() :?> CatalogsProductGroupsCreateManyRequestItems[] |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -381,7 +482,24 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDelete - Delete product group returns 204 where Catalogs Product Group deleted successfully.`` () =
+  let ``CatalogsProductGroupsDelete - Delete product group returns 200 where The request has succeeded.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups/{product_group_id}".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpDelete client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupsDelete - Delete product group returns 204 where Resource deleted successfully.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -398,7 +516,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDelete - Delete product group returns 400 where Invalid catalogs product group id parameters.`` () =
+  let ``CatalogsProductGroupsDelete - Delete product group returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -415,7 +533,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDelete - Delete product group returns 401 where Unauthorized access.`` () =
+  let ``CatalogsProductGroupsDelete - Delete product group returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -432,7 +550,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDelete - Delete product group returns 403 where Forbidden. Account not approved for catalog product group mutations yet.`` () =
+  let ``CatalogsProductGroupsDelete - Delete product group returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -449,7 +567,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDelete - Delete product group returns 404 where Catalogs product group not found.`` () =
+  let ``CatalogsProductGroupsDelete - Delete product group returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -466,7 +584,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDelete - Delete product group returns 409 where Conflict. Can&#39;t delete this catalogs product group.`` () =
+  let ``CatalogsProductGroupsDelete - Delete product group returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -476,14 +594,14 @@ module CatalogProductGroupsApiHandlerTests =
       let path = "/v5/catalogs/product_groups/{product_group_id}".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME"
 
       HttpDelete client path
-        |> isStatus (enum<HttpStatusCode>(409))
+        |> isStatus (enum<HttpStatusCode>(429))
         |> readText
         |> shouldEqual "TESTME"
         |> ignore
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDelete - Delete product group returns 0 where Unexpected error.`` () =
+  let ``CatalogsProductGroupsDelete - Delete product group returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -500,7 +618,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 204 where Catalogs Product Groups deleted successfully.`` () =
+  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 204 where Resource deleted successfully.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -517,7 +635,24 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 401 where Unauthorized access.`` () =
+  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 400 where The request could not be understood by the server due to unexpected data.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups/multiple" + "?id=ADDME&adAccountId=ADDME"
+
+      HttpDelete client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -534,7 +669,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 403 where Forbidden. Account not approved for catalog product group mutations yet.`` () =
+  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -551,7 +686,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 404 where Catalogs product group not found.`` () =
+  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -568,7 +703,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 409 where Conflict. Can&#39;t delete this catalogs product group.`` () =
+  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -578,14 +713,14 @@ module CatalogProductGroupsApiHandlerTests =
       let path = "/v5/catalogs/product_groups/multiple" + "?id=ADDME&adAccountId=ADDME"
 
       HttpDelete client path
-        |> isStatus (enum<HttpStatusCode>(409))
+        |> isStatus (enum<HttpStatusCode>(429))
         |> readText
         |> shouldEqual "TESTME"
         |> ignore
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 0 where Unexpected error.`` () =
+  let ``CatalogsProductGroupsDeleteMany - Delete product groups returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -602,7 +737,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsGet - Get product group returns 200 where Success`` () =
+  let ``CatalogsProductGroupsGet - Get product group returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -619,7 +754,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsGet - Get product group returns 400 where Invalid catalogs product group id parameters.`` () =
+  let ``CatalogsProductGroupsGet - Get product group returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -636,7 +771,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsGet - Get product group returns 401 where Unauthorized access.`` () =
+  let ``CatalogsProductGroupsGet - Get product group returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -653,7 +788,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsGet - Get product group returns 403 where Forbidden. Account not approved for catalog product group mutations yet.`` () =
+  let ``CatalogsProductGroupsGet - Get product group returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -670,7 +805,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsGet - Get product group returns 404 where Catalogs product group not found.`` () =
+  let ``CatalogsProductGroupsGet - Get product group returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -687,7 +822,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsGet - Get product group returns 409 where Conflict. Can&#39;t get a catalogs product group without an existing catalog.`` () =
+  let ``CatalogsProductGroupsGet - Get product group returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -697,14 +832,14 @@ module CatalogProductGroupsApiHandlerTests =
       let path = "/v5/catalogs/product_groups/{product_group_id}".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME"
 
       HttpGet client path
-        |> isStatus (enum<HttpStatusCode>(409))
+        |> isStatus (enum<HttpStatusCode>(429))
         |> readText
         |> shouldEqual "TESTME"
         |> ignore
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsGet - Get product group returns 0 where Unexpected error.`` () =
+  let ``CatalogsProductGroupsGet - Get product group returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -721,14 +856,14 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsList - List product groups returns 200 where Success`` () =
+  let ``CatalogsProductGroupsList - List product groups returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME"
+      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(200))
@@ -738,14 +873,14 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsList - List product groups returns 400 where Invalid feed parameters.`` () =
+  let ``CatalogsProductGroupsList - List product groups returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME"
+      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(400))
@@ -755,14 +890,14 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsList - List product groups returns 401 where Unauthorized access.`` () =
+  let ``CatalogsProductGroupsList - List product groups returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME"
+      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(401))
@@ -772,14 +907,14 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsList - List product groups returns 403 where Forbidden. Account not approved for catalog product group mutations yet.`` () =
+  let ``CatalogsProductGroupsList - List product groups returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME"
+      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(403))
@@ -789,14 +924,14 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsList - List product groups returns 404 where Data feed not found.`` () =
+  let ``CatalogsProductGroupsList - List product groups returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME"
+      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(404))
@@ -806,31 +941,31 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsList - List product groups returns 409 where Conflict. Can&#39;t create this catalogs product group with this value.`` () =
+  let ``CatalogsProductGroupsList - List product groups returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME"
+      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
-        |> isStatus (enum<HttpStatusCode>(409))
+        |> isStatus (enum<HttpStatusCode>(429))
         |> readText
         |> shouldEqual "TESTME"
         |> ignore
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsList - List product groups returns 0 where Unexpected error.`` () =
+  let ``CatalogsProductGroupsList - List product groups returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
 
       // add your setup code here
 
-      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME"
+      let path = "/v5/catalogs/product_groups" + "?id=ADDME&feedId=ADDME&catalogId=ADDME&adAccountId=ADDME&bookmark=ADDME&pageSize=ADDME"
 
       HttpGet client path
         |> isStatus (enum<HttpStatusCode>(0))
@@ -840,7 +975,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 200 where Success`` () =
+  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -857,7 +992,58 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 404 where Product Group Not Found.`` () =
+  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 400 where The request could not be understood by the server due to unexpected data.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups/{product_group_id}/product_counts".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 401 where Authentication is required and has either failed or not been provided.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups/{product_group_id}/product_counts".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(401))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/product_groups/{product_group_id}/product_counts".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(403))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -874,7 +1060,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 409 where Can&#39;t access this feature without an existing catalog.`` () =
+  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -884,14 +1070,14 @@ module CatalogProductGroupsApiHandlerTests =
       let path = "/v5/catalogs/product_groups/{product_group_id}/product_counts".Replace("productGroupId", "ADDME") + "?adAccountId=ADDME"
 
       HttpGet client path
-        |> isStatus (enum<HttpStatusCode>(409))
+        |> isStatus (enum<HttpStatusCode>(429))
         |> readText
         |> shouldEqual "TESTME"
         |> ignore
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 0 where Unexpected error.`` () =
+  let ``CatalogsProductGroupsProductCountsGet - Get product counts returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -908,7 +1094,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsUpdate - Update single product group returns 200 where Success`` () =
+  let ``CatalogsProductGroupsUpdate - Update single product group returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -919,8 +1105,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsUpdateExample "application/json")
-      // or pass a body of type CatalogsProductGroupsUpdateRequest
-      let body = obj() :?> CatalogsProductGroupsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsUpdateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsUpdateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -930,7 +1116,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsUpdate - Update single product group returns 400 where Invalid parameters.`` () =
+  let ``CatalogsProductGroupsUpdate - Update single product group returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -941,8 +1127,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsUpdateExample "application/json")
-      // or pass a body of type CatalogsProductGroupsUpdateRequest
-      let body = obj() :?> CatalogsProductGroupsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsUpdateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsUpdateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -952,7 +1138,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsUpdate - Update single product group returns 401 where Unauthorized access.`` () =
+  let ``CatalogsProductGroupsUpdate - Update single product group returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -963,8 +1149,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsUpdateExample "application/json")
-      // or pass a body of type CatalogsProductGroupsUpdateRequest
-      let body = obj() :?> CatalogsProductGroupsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsUpdateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsUpdateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -974,7 +1160,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsUpdate - Update single product group returns 403 where Forbidden. Account not approved for catalog product group mutations yet.`` () =
+  let ``CatalogsProductGroupsUpdate - Update single product group returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -985,8 +1171,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsUpdateExample "application/json")
-      // or pass a body of type CatalogsProductGroupsUpdateRequest
-      let body = obj() :?> CatalogsProductGroupsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsUpdateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsUpdateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -996,7 +1182,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsUpdate - Update single product group returns 404 where Catalogs product group not found.`` () =
+  let ``CatalogsProductGroupsUpdate - Update single product group returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -1007,8 +1193,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsUpdateExample "application/json")
-      // or pass a body of type CatalogsProductGroupsUpdateRequest
-      let body = obj() :?> CatalogsProductGroupsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsUpdateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsUpdateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -1018,7 +1204,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsUpdate - Update single product group returns 409 where Conflict. Can&#39;t update this catalogs product group to this value.`` () =
+  let ``CatalogsProductGroupsUpdate - Update single product group returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -1029,18 +1215,18 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsUpdateExample "application/json")
-      // or pass a body of type CatalogsProductGroupsUpdateRequest
-      let body = obj() :?> CatalogsProductGroupsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsUpdateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsUpdateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
-        |> isStatus (enum<HttpStatusCode>(409))
+        |> isStatus (enum<HttpStatusCode>(429))
         |> readText
         |> shouldEqual "TESTME"
       }
 
   [<Fact>]
-  let ``CatalogsProductGroupsUpdate - Update single product group returns 0 where Unexpected error.`` () =
+  let ``CatalogsProductGroupsUpdate - Update single product group returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -1051,8 +1237,8 @@ module CatalogProductGroupsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getCatalogsProductGroupsUpdateExample "application/json")
-      // or pass a body of type CatalogsProductGroupsUpdateRequest
-      let body = obj() :?> CatalogsProductGroupsUpdateRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsProductGroupsUpdateRequestSchema
+      let body = obj() :?> CatalogsProductGroupsUpdateRequestSchema |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPatch client path
@@ -1062,7 +1248,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ProductsByProductGroupFilterList - List products by filter returns 200 where Success`` () =
+  let ``ProductsByProductGroupFilterList - List products by filter returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -1084,7 +1270,29 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ProductsByProductGroupFilterList - List products by filter returns 401 where Unauthorized access.`` () =
+  let ``ProductsByProductGroupFilterList - List products by filter returns 400 where The request could not be understood by the server due to unexpected data.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/products/get_by_product_group_filters" + "?bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME&pinMetrics=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getProductsByProductGroupFilterListExample "application/json")
+      // or pass a body of type CatalogsListProductsByFilterRequest
+      let body = obj() :?> CatalogsListProductsByFilterRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``ProductsByProductGroupFilterList - List products by filter returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -1106,7 +1314,7 @@ module CatalogProductGroupsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ProductsByProductGroupFilterList - List products by filter returns 409 where Conflict. Can&#39;t get products.`` () =
+  let ``ProductsByProductGroupFilterList - List products by filter returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -1122,13 +1330,57 @@ module CatalogProductGroupsApiHandlerTests =
 
       body
         |> HttpPost client path
-        |> isStatus (enum<HttpStatusCode>(409))
+        |> isStatus (enum<HttpStatusCode>(403))
         |> readText
         |> shouldEqual "TESTME"
       }
 
   [<Fact>]
-  let ``ProductsByProductGroupFilterList - List products by filter returns 0 where Unexpected error.`` () =
+  let ``ProductsByProductGroupFilterList - List products by filter returns 404 where The requested resource could not be found on this server.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/products/get_by_product_group_filters" + "?bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME&pinMetrics=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getProductsByProductGroupFilterListExample "application/json")
+      // or pass a body of type CatalogsListProductsByFilterRequest
+      let body = obj() :?> CatalogsListProductsByFilterRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(404))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``ProductsByProductGroupFilterList - List products by filter returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/products/get_by_product_group_filters" + "?bookmark=ADDME&pageSize=ADDME&adAccountId=ADDME&pinMetrics=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getProductsByProductGroupFilterListExample "application/json")
+      // or pass a body of type CatalogsListProductsByFilterRequest
+      let body = obj() :?> CatalogsListProductsByFilterRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``ProductsByProductGroupFilterList - List products by filter returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()

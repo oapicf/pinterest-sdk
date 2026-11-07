@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,14 +27,17 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.ProductGroupPromotionsApi
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.Granularity
-import org.openapitools.client.models.ProductGroupAnalyticsResponseInner
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
+import org.openapitools.client.models.ProductGroupAnalyticsItems
 import org.openapitools.client.models.ProductGroupPromotion
-import org.openapitools.client.models.ProductGroupPromotionCreateRequest
-import org.openapitools.client.models.ProductGroupPromotionResponse
-import org.openapitools.client.models.ProductGroupPromotionUpdateRequest
+import org.openapitools.client.models.ProductGroupPromotions
+import org.openapitools.client.models.ProductGroupPromotionsCreate
 import org.openapitools.client.models.ProductGroupPromotionsList200Response
+import org.openapitools.client.models.ProductGroupPromotionsUpdateWithRequiredBody
+import org.openapitools.client.models.ReportingColumnSync
 import org.openapitools.client.models.ReportingTimeZone
 
 class ProductGroupPromotionsApiTest : ShouldSpec() {
@@ -38,8 +49,8 @@ class ProductGroupPromotionsApiTest : ShouldSpec() {
         should("test productGroupPromotionsCreate") {
             // uncomment below to test productGroupPromotionsCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val productGroupPromotionCreateRequest : ProductGroupPromotionCreateRequest =  // ProductGroupPromotionCreateRequest | List of Product Group Promotions to create, size limit [1, 30].
-            //val result : ProductGroupPromotionResponse = apiInstance.productGroupPromotionsCreate(adAccountId, productGroupPromotionCreateRequest)
+            //val productGroupPromotionsCreate : ProductGroupPromotionsCreate =  // ProductGroupPromotionsCreate | 
+            //val result : ProductGroupPromotions = apiInstance.productGroupPromotionsCreate(adAccountId, productGroupPromotionsCreate)
             //result shouldBe ("TODO")
         }
 
@@ -56,13 +67,13 @@ class ProductGroupPromotionsApiTest : ShouldSpec() {
         should("test productGroupPromotionsList") {
             // uncomment below to test productGroupPromotionsList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val productGroupPromotionIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Product group promotion Ids.
-            //val entityStatuses : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Entity status
-            //val adGroupId : kotlin.String = 123123123 // kotlin.String | Ad group Id.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : ProductGroupPromotionsList200Response = apiInstance.productGroupPromotionsList(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val productGroupPromotionIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Product group promotion Ids.
+            //val entityStatuses : kotlin.collections.List<EntityStatus> =  // kotlin.collections.List<EntityStatus> | Entity status
+            //val adGroupId : kotlin.String = adGroupId_example // kotlin.String | Ad group Id.
+            //val result : ProductGroupPromotionsList200Response = apiInstance.productGroupPromotionsList(adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId)
             //result shouldBe ("TODO")
         }
 
@@ -70,8 +81,8 @@ class ProductGroupPromotionsApiTest : ShouldSpec() {
         should("test productGroupPromotionsUpdate") {
             // uncomment below to test productGroupPromotionsUpdate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val productGroupPromotionUpdateRequest : ProductGroupPromotionUpdateRequest =  // ProductGroupPromotionUpdateRequest | Parameters to update Product group promotions
-            //val result : ProductGroupPromotionResponse = apiInstance.productGroupPromotionsUpdate(adAccountId, productGroupPromotionUpdateRequest)
+            //val productGroupPromotionsUpdateWithRequiredBody : ProductGroupPromotionsUpdateWithRequiredBody =  // ProductGroupPromotionsUpdateWithRequiredBody | 
+            //val result : ProductGroupPromotions = apiInstance.productGroupPromotionsUpdate(adAccountId, productGroupPromotionsUpdateWithRequiredBody)
             //result shouldBe ("TODO")
         }
 
@@ -82,14 +93,14 @@ class ProductGroupPromotionsApiTest : ShouldSpec() {
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
             //val productGroupIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Product group Ids to use to filter the results.
-            //val columns : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-            //val granularity : Granularity = DAY // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-            //val clickWindowDays : kotlin.Int = 1 // kotlin.Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-            //val engagementWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
-            //val viewWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-            //val conversionReportTime : kotlin.String = TIME_OF_AD_ACTION // kotlin.String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+            //val columns : kotlin.collections.List<ReportingColumnSync> =  // kotlin.collections.List<ReportingColumnSync> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+            //val granularity : Granularity =  // Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+            //val clickWindowDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+            //val engagementWindowDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+            //val viewWindowDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+            //val conversionReportTime : kotlin.String = conversionReportTime_example // kotlin.String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
             //val reportingTimezone : ReportingTimeZone =  // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
-            //val result : kotlin.collections.List<ProductGroupAnalyticsResponseInner> = apiInstance.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
+            //val result : kotlin.collections.List<ProductGroupAnalyticsItems> = apiInstance.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone)
             //result shouldBe ("TODO")
         }
 

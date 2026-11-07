@@ -1,9 +1,10 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.PromotionCreateRequest;
-import org.openapitools.model.PromotionResponse;
-import org.openapitools.model.PromotionUpdateRequest;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.Promotion;
+import org.openapitools.model.PromotionBatchUpdate;
+import org.openapitools.model.PromotionCreate;
 import org.openapitools.model.PromotionsList200Response;
 import org.openapitools.model.PromotionsResponse;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -65,10 +66,10 @@ public class PromotionsControllerTest {
     void promotionsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        List<@Valid PromotionCreateRequest> promotionCreateRequest = Arrays.asList();
+        List<@Valid PromotionCreate> promotionCreate = Arrays.asList();
 
         // when
-        PromotionsResponse result = controller.promotionsCreate(adAccountId, promotionCreateRequest).block();
+        PromotionsResponse result = controller.promotionsCreate(adAccountId, promotionCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -84,13 +85,13 @@ public class PromotionsControllerTest {
     @Disabled("Not Implemented")
     void promotionsCreateClientApiTest() throws IOException {
         // given
-        List<@Valid PromotionCreateRequest> body = Arrays.asList();
+        List<@Valid PromotionCreate> body = Arrays.asList();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/promotions").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@3cbd0cb0");
+            .accept("[Ljava.lang.String;@41dbeb3b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, PromotionsResponse.class);
@@ -112,11 +113,11 @@ public class PromotionsControllerTest {
     @Disabled("Not Implemented")
     void promotionsDeleteMethodTest() {
         // given
-        String adAccountId = "example";
         String promotionId = "example";
+        String adAccountId = "example";
 
         // when
-        controller.promotionsDelete(adAccountId, promotionId).block();
+        Promotion result = controller.promotionsDelete(promotionId, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -134,14 +135,14 @@ public class PromotionsControllerTest {
         // given
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/promotions/{promotion_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("ad_account_id", "example");
             put("promotion_id", "example");
+            put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@26f8a3a3");
+            .accept("[Ljava.lang.String;@1ab039a5");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
+        HttpResponse<?> response = client.toBlocking().exchange(request, Promotion.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -160,11 +161,11 @@ public class PromotionsControllerTest {
     @Disabled("Not Implemented")
     void promotionsGetMethodTest() {
         // given
-        String adAccountId = "example";
         String promotionId = "example";
+        String adAccountId = "example";
 
         // when
-        PromotionResponse result = controller.promotionsGet(adAccountId, promotionId).block();
+        Promotion result = controller.promotionsGet(promotionId, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -182,14 +183,14 @@ public class PromotionsControllerTest {
         // given
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/promotions/{promotion_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("ad_account_id", "example");
             put("promotion_id", "example");
+            put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6a7920c1");
+            .accept("[Ljava.lang.String;@eae9533");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, PromotionResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, Promotion.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -209,12 +210,12 @@ public class PromotionsControllerTest {
     void promotionsListMethodTest() {
         // given
         String adAccountId = "example";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
 
         // when
-        PromotionsList200Response result = controller.promotionsList(adAccountId, pageSize, order, bookmark).block();
+        PromotionsList200Response result = controller.promotionsList(adAccountId, bookmark, pageSize, order).block();
 
         // then
         Assertions.assertTrue(true);
@@ -235,11 +236,11 @@ public class PromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1aaeb86");
+            .accept("[Ljava.lang.String;@3140becc");
         request.getParameters()
+            .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("order", "ASCENDING") // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("order", String.valueOf(PinterestLibPaginationOrder.fromValue("ASCENDING"))); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, PromotionsList200Response.class);
@@ -262,10 +263,10 @@ public class PromotionsControllerTest {
     void promotionsUpdateMethodTest() {
         // given
         String adAccountId = "example";
-        List<@Valid PromotionUpdateRequest> promotionUpdateRequest = Arrays.asList();
+        List<@Valid PromotionBatchUpdate> promotionBatchUpdate = Arrays.asList();
 
         // when
-        PromotionsResponse result = controller.promotionsUpdate(adAccountId, promotionUpdateRequest).block();
+        PromotionsResponse result = controller.promotionsUpdate(adAccountId, promotionBatchUpdate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -281,13 +282,13 @@ public class PromotionsControllerTest {
     @Disabled("Not Implemented")
     void promotionsUpdateClientApiTest() throws IOException {
         // given
-        List<@Valid PromotionUpdateRequest> body = Arrays.asList();
+        List<@Valid PromotionBatchUpdate> body = Arrays.asList();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/promotions").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@5526af8f");
+            .accept("[Ljava.lang.String;@2f5c19ec");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, PromotionsResponse.class);

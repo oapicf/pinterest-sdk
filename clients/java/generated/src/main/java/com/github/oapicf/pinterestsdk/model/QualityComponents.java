@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Set of quality components, with each component containing a event coverage and details.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QualityComponents {
   public static final String SERIALIZED_NAME_ADVERTISER_EXTERNAL_ID = "advertiser_external_id";
   @SerializedName(SERIALIZED_NAME_ADVERTISER_EXTERNAL_ID)

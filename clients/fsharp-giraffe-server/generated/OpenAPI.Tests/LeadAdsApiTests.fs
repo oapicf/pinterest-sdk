@@ -28,6 +28,23 @@ module LeadAdsApiHandlerTests =
   // ---------------------------------
 
   [<Fact>]
+  let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 200 where The request has succeeded.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/leads/subscriptions/{subscription_id}".Replace("adAccountId", "ADDME").Replace("subscriptionId", "ADDME")
+
+      HttpDelete client path
+        |> isStatus (enum<HttpStatusCode>(200))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
   let ``AdAccountsSubscriptionsDelById - Delete lead ads subscription returns 204 where Resource deleted successfully.`` () =
     task {
       use server = new TestServer(createHost())

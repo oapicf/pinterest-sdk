@@ -11,7 +11,7 @@ test_that("IntegrationsCommerceDel", {
   # Delete commerce integration
   # Delete commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
   # @param external_business_id character External business ID for the integration.
-  # @return [Void]
+  # @return [IntegrationMetadata]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -35,7 +35,7 @@ test_that("IntegrationsCommercePatch", {
   # Update commerce integration
   # Update commerce integration metadata for the given external business ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
   # @param external_business_id character External business ID for the integration.
-  # @param integration_request_patch IntegrationRequestPatch Parameters to get create/update the Integration Metadata
+  # @param integration_metadata_update IntegrationMetadataUpdate 
   # @return [IntegrationMetadata]
 
   # uncomment below to test the operation
@@ -47,7 +47,7 @@ test_that("IntegrationsCommercePost", {
   # base path: https://api.pinterest.com/v5
   # Create commerce integration
   # Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-  # @param integration_request IntegrationRequest Parameters to get create/update the Integration Metadata
+  # @param integration_metadata_create IntegrationMetadataCreate 
   # @return [IntegrationMetadata]
 
   # uncomment below to test the operation
@@ -59,7 +59,7 @@ test_that("IntegrationsGetById", {
   # base path: https://api.pinterest.com/v5
   # Get integration metadata
   # Get integration metadata by ID. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-  # @param id character Integration ID.
+  # @param id character Integration record ID.
   # @return [IntegrationRecord]
 
   # uncomment below to test the operation
@@ -72,7 +72,7 @@ test_that("IntegrationsGetList", {
   # Get integration metadata list
   # Get integration metadata list. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [IntegrationsGetList200Response]
 
   # uncomment below to test the operation
@@ -84,7 +84,7 @@ test_that("IntegrationsLogsPost", {
   # base path: https://api.pinterest.com/v5
   # Receives batched logs from integration applications.
   # This endpoint receives batched logs from integration applications on partner platforms. Note: If you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
-  # @param integration_logs_request IntegrationLogsRequest Ingest log information from external integration application.
+  # @param integration_logs_request_create IntegrationLogsRequestCreate 
   # @return [IntegrationLogsSuccessResponse]
 
   # uncomment below to test the operation

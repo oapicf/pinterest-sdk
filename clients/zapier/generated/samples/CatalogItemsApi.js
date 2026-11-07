@@ -1,5 +1,5 @@
 module.exports = {
-    "CatalogsItemsSample": 
+    "items_post_200_responseSample": 
         { data: {} },
     "CatalogsItemsBatchSample": 
         { data: {} },

@@ -23,7 +23,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "DeleteBusinessMembershipBody", description = "List of members with role to delete.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T02:50:45.754899335Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class DeleteBusinessMembershipBody {
 
   private List<@Valid DeleteBusinessMembershipMember> members = new ArrayList<>();

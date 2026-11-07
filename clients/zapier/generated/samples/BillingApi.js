@@ -1,5 +1,7 @@
 module.exports = {
-    "AdsCreditRedeemResponseSample": 
+    "AdsCreditRedeemSample": 
+        { data: {} },
+    "AdsCreditRedeemSample": 
         { data: {} },
     "ads_credits_discounts_get_200_responseSample": 
         { data: {} },
@@ -9,11 +11,13 @@ module.exports = {
         { data: {} },
     "billing_profiles_get_200_responseSample": 
         { data: {} },
-    "SSIOAccountResponseSample": 
+    "SSIOAccountSample": 
         { data: {} },
-    "SSIOCreateInsertionOrderResponseSample": 
+    "SSIOInsertionOrderSample": 
         { data: {} },
-    "SSIOEditInsertionOrderResponseSample": 
+    "SSIOInsertionOrderSample": 
+        { data: {} },
+    "SSIOInsertionOrderSample": 
         { data: {} },
     "ssio_insertion_orders_status_get_by_ad_account_200_responseSample": 
         { data: {} },

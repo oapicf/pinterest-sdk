@@ -1,10 +1,10 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.CatalogsItems;
 import org.openapitools.model.CatalogsItemsBatch;
+import org.openapitools.model.CatalogsItemsBatchPostRequest;
 import org.openapitools.model.CatalogsItemsRequest;
-import org.openapitools.model.Error;
-import org.openapitools.model.ItemsBatchPostRequest;
+import org.openapitools.model.ItemsPost200Response;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -55,7 +55,7 @@ public class CatalogItemsControllerTest {
      *
      * The method should: Get item batch status
      *
-     * Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.
+     * Get a single catalogs items batch owned by the \&quot;operating user_account\&quot;. [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -63,7 +63,7 @@ public class CatalogItemsControllerTest {
     @Disabled("Not Implemented")
     void itemsBatchGetMethodTest() {
         // given
-        String batchId = "66753b9bb65c46c49bd8503b27fecf9e";
+        String batchId = "example";
         String adAccountId = "example";
 
         // when
@@ -85,10 +85,10 @@ public class CatalogItemsControllerTest {
         // given
         String uri = UriTemplate.of("/catalogs/items/batch/{batch_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("batch_id", "66753b9bb65c46c49bd8503b27fecf9e");
+            put("batch_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4ae7d069");
+            .accept("[Ljava.lang.String;@2760b676");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -104,7 +104,7 @@ public class CatalogItemsControllerTest {
      *
      * The method should: Operate on item batch
      *
-     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
+     * This endpoint supports multiple operations on a set of one or more catalog items owned by the \&quot;operation user_account\&quot;. [See detailed documentation here.](/docs/work-with-catalogs/modify-items-in-batch/) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: - Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager. - The item UPSERT operation is restricted to users without a feed data source. If you plan to migrate item ingestion from feeds to the API, please reach out to your partner manager or via the Help Center to get assistance.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -112,11 +112,11 @@ public class CatalogItemsControllerTest {
     @Disabled("Not Implemented")
     void itemsBatchPostMethodTest() {
         // given
-        ItemsBatchPostRequest itemsBatchPostRequest = new ItemsBatchPostRequest();
+        CatalogsItemsBatchPostRequest catalogsItemsBatchPostRequest = new CatalogsItemsBatchPostRequest();
         String adAccountId = "example";
 
         // when
-        CatalogsItemsBatch result = controller.itemsBatchPost(itemsBatchPostRequest, adAccountId).block();
+        CatalogsItemsBatch result = controller.itemsBatchPost(catalogsItemsBatchPostRequest, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -132,10 +132,10 @@ public class CatalogItemsControllerTest {
     @Disabled("Not Implemented")
     void itemsBatchPostClientApiTest() throws IOException {
         // given
-        ItemsBatchPostRequest body = new ItemsBatchPostRequest();
+        CatalogsItemsBatchPostRequest body = new CatalogsItemsBatchPostRequest();
         String uri = UriTemplate.of("/catalogs/items/batch").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@54cbc093");
+            .accept("[Ljava.lang.String;@35e3c66f");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -151,7 +151,7 @@ public class CatalogItemsControllerTest {
      *
      * The method should: Get catalogs items (POST)
      *
-     * Get the items of the catalog owned by the \&quot;operation user_account\&quot;. &lt;a href&#x3D;\&quot;/docs/api-features/shopping-overview/#Update%20items%20in%20batch\&quot; target&#x3D;\&quot;_blank\&quot;&gt;See detailed documentation here.&lt;/a&gt; - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&#39;/docs/api/v5/#operation/ad_accounts/list&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
+     * Get the items of the catalog owned by the \&quot;operation user_account\&quot;. [See detailed documentation here.](/docs/api-features/shopping-overview/#Update%20items%20in%20batch) - By default, the \&quot;operation user_account\&quot; is the token user_account.  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the \&quot;operation user_account\&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account: Owner, Admin, Catalogs Manager.  Note: Access to the Creative Assets catalog type is restricted to a specific group of users. If you require access, please reach out to your partner manager.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -163,7 +163,7 @@ public class CatalogItemsControllerTest {
         String adAccountId = "example";
 
         // when
-        CatalogsItems result = controller.itemsPost(catalogsItemsRequest, adAccountId).block();
+        ItemsPost200Response result = controller.itemsPost(catalogsItemsRequest, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -182,12 +182,12 @@ public class CatalogItemsControllerTest {
         CatalogsItemsRequest body = new CatalogsItemsRequest(org.openapitools.model.Country.fromValue("AD"), null, "example");
         String uri = UriTemplate.of("/catalogs/items").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@51542b9");
+            .accept("[Ljava.lang.String;@7ea93b9b");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, CatalogsItems.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, ItemsPost200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

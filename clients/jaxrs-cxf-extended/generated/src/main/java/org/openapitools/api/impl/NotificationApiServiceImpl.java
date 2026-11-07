@@ -1,9 +1,9 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
 import org.openapitools.model.NotificationPostRequest;
 import org.openapitools.model.NotificationResponse;
+import org.openapitools.model.PinterestLibError;
 
 import java.io.InputStream;
 import java.io.OutputStream;

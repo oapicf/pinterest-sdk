@@ -1,13 +1,18 @@
 package org.openapitools.api;
 
+import org.openapitools.model.AdAccountToAdAccountSharedAudience;
+import org.openapitools.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.AdAccountToBusinessSharedAudience;
+import org.openapitools.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudiencesList200Response;
-import org.openapitools.model.BusinessSharedAudience;
-import org.openapitools.model.BusinessSharedAudienceResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.SharedAudience;
-import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.BusinessToAdAccountSharedAudience;
+import org.openapitools.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.BusinessToBusinessSharedAudience;
+import org.openapitools.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.Order;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.SharedAudiencesForBusinessList200Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -39,14 +44,14 @@ public class AudienceSharingApiTest {
     @Disabled("Not Implemented")
     public void adAccountsAudiencesSharedAccountsListTest() {
         // given
-        String adAccountId = "example";
         String audienceId = "example";
         AudienceAccountType accountType = AudienceAccountType.fromValue("AD_ACCOUNT");
-        Integer pageSize = 25;
+        String adAccountId = "example";
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        AdAccountsAudiencesSharedAccountsList200Response body = api.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark).block();
+        AdAccountsAudiencesSharedAccountsList200Response body = api.adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, bookmark, pageSize).block();
 
         // then
         // TODO implement the adAccountsAudiencesSharedAccountsListTest()
@@ -62,14 +67,14 @@ public class AudienceSharingApiTest {
     @Disabled("Not Implemented")
     public void businessAccountAudiencesSharedAccountsListTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         String audienceId = "example";
         AudienceAccountType accountType = AudienceAccountType.fromValue("AD_ACCOUNT");
-        Integer pageSize = 25;
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        AdAccountsAudiencesSharedAccountsList200Response body = api.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark).block();
+        AdAccountsAudiencesSharedAccountsList200Response body = api.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize).block();
 
         // then
         // TODO implement the businessAccountAudiencesSharedAccountsListTest()
@@ -85,13 +90,13 @@ public class AudienceSharingApiTest {
     @Disabled("Not Implemented")
     public void sharedAudiencesForBusinessListTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
+        Order order = Order.fromValue("ASCENDING");
         String bookmark = "example";
-        String order = "ASCENDING";
         Integer pageSize = 25;
 
         // when
-        AudiencesList200Response body = api.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize).block();
+        SharedAudiencesForBusinessList200Response body = api.sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize).block();
 
         // then
         // TODO implement the sharedAudiencesForBusinessListTest()
@@ -101,17 +106,17 @@ public class AudienceSharingApiTest {
     /**
      * Update audience sharing between ad accounts
      *
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      */
     @Test
     @Disabled("Not Implemented")
     public void updateAdAccountToAdAccountSharedAudienceTest() {
         // given
         String adAccountId = "example";
-        SharedAudience sharedAudience = new SharedAudience();
+        AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = new AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
 
         // when
-        SharedAudienceResponse body = api.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience).block();
+        AdAccountToAdAccountSharedAudience body = api.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody).block();
 
         // then
         // TODO implement the updateAdAccountToAdAccountSharedAudienceTest()
@@ -121,17 +126,17 @@ public class AudienceSharingApiTest {
     /**
      * Update audience sharing from an ad account to businesses
      *
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      */
     @Test
     @Disabled("Not Implemented")
     public void updateAdAccountToBusinessSharedAudienceTest() {
         // given
         String adAccountId = "example";
-        BusinessSharedAudience businessSharedAudience = new BusinessSharedAudience();
+        AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody = new AdAccountToBusinessSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
 
         // when
-        BusinessSharedAudienceResponse body = api.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience).block();
+        AdAccountToBusinessSharedAudience body = api.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody).block();
 
         // then
         // TODO implement the updateAdAccountToBusinessSharedAudienceTest()
@@ -141,17 +146,17 @@ public class AudienceSharingApiTest {
     /**
      * Update audience sharing from a business to ad accounts
      *
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      */
     @Test
     @Disabled("Not Implemented")
     public void updateBusinessToAdAccountSharedAudienceTest() {
         // given
-        String businessId = "729090764583391194";
-        SharedAudience sharedAudience = new SharedAudience();
+        String businessId = "example";
+        BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody = new BusinessToAdAccountSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
 
         // when
-        SharedAudienceResponse body = api.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience).block();
+        BusinessToAdAccountSharedAudience body = api.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody).block();
 
         // then
         // TODO implement the updateBusinessToAdAccountSharedAudienceTest()
@@ -161,17 +166,17 @@ public class AudienceSharingApiTest {
     /**
      * Update audience sharing between businesses
      *
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      */
     @Test
     @Disabled("Not Implemented")
     public void updateBusinessToBusinessSharedAudienceTest() {
         // given
-        String businessId = "729090764583391194";
-        BusinessSharedAudience businessSharedAudience = new BusinessSharedAudience();
+        String businessId = "example";
+        BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody = new BusinessToBusinessSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
 
         // when
-        BusinessSharedAudienceResponse body = api.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience).block();
+        BusinessToBusinessSharedAudience body = api.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody).block();
 
         // then
         // TODO implement the updateBusinessToBusinessSharedAudienceTest()

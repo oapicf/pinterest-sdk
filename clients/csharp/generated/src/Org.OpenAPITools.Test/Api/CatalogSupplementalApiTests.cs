@@ -62,7 +62,7 @@ namespace Org.OpenAPITools.Test.Api
             Client.Option<string> adAccountId = default!;
             var response = await _instance.CatalogsLocalInventoryItemsBatchOperateAsync(catalogId, localInventoryItemsBatchCreate, adAccountId);
             var model = response.Ok();
-            Assert.IsType<SupplementalItemsBatchResponse>(model);
+            Assert.IsType<Org.OpenAPITools.Model.SupplementalItemsBatchResponse>(model);
         }
 
         /// <summary>
@@ -76,7 +76,7 @@ namespace Org.OpenAPITools.Test.Api
             Client.Option<string> adAccountId = default!;
             var response = await _instance.CatalogsLocalInventoryItemsPostAsync(catalogId, localInventoryItemsGetCreate, adAccountId);
             var model = response.Ok();
-            Assert.IsType<LocalInventoryItemsGet>(model);
+            Assert.IsType<Org.OpenAPITools.Model.LocalInventoryItemsGet>(model);
         }
 
         /// <summary>
@@ -120,7 +120,7 @@ namespace Org.OpenAPITools.Test.Api
             Client.Option<int> pageSize = default!;
             var response = await _instance.CatalogsLocalStoresListAsync(catalogId, ids, adAccountId, bookmark, pageSize);
             var model = response.Ok();
-            Assert.IsType<CatalogsLocalStoresList200Response>(model);
+            Assert.IsType<Org.OpenAPITools.Model.CatalogsLocalStoresList200Response>(model);
         }
 
         /// <summary>
@@ -148,7 +148,7 @@ namespace Org.OpenAPITools.Test.Api
             Client.Option<string> adAccountId = default!;
             var response = await _instance.CatalogsSupplementalItemsBatchGetAsync(catalogId, batchId, adAccountId);
             var model = response.Ok();
-            Assert.IsType<SupplementalItemsBatchResponse>(model);
+            Assert.IsType<Org.OpenAPITools.Model.SupplementalItemsBatchResponse>(model);
         }
     }
 }

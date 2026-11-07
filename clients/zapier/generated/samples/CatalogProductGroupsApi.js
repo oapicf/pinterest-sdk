@@ -5,6 +5,10 @@ module.exports = {
         { data: {} },
     "CatalogsVerticalProductGroupSample": 
         { data: {} },
+    "CatalogsVerticalProductGroupSample": 
+        { data: {} },
+    "CatalogsVerticalProductGroupSample": 
+        { data: {} },
     "catalogs_product_groups_list_200_responseSample": 
         { data: {} },
     "CatalogsProductGroupProductCountsVerticalSample": 

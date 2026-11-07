@@ -1,8 +1,8 @@
 module.exports = {
     "search_partner_pins_200_responseSample": 
         { data: {} },
-    "search_user_boards_get_200_responseSample": 
+    "boards_list_200_responseSample": 
         { data: {} },
-    "search_user_pins_list_200_responseSample": 
+    "pins_list_200_responseSample": 
         { data: {} },
 }

@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   CreativeAssetsIdFilter.JSON_PROPERTY_C_R_E_A_T_I_V_E_A_S_S_E_T_S_I_D
 })
 @JsonTypeName("CreativeAssetsIdFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CreativeAssetsIdFilter {
     public static final String JSON_PROPERTY_C_R_E_A_T_I_V_E_A_S_S_E_T_S_I_D = "CREATIVE_ASSETS_ID";

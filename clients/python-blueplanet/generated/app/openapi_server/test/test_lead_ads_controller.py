@@ -56,7 +56,7 @@ class TestLeadAdsController(BaseTestCase):
 
         Create lead ads subscription
         """
-        body = {"webhook_url":"webhook_url","partner_refresh_token":"partner_refresh_token","lead_form_id":"lead_form_id","partner_metadata":{"subscriber_key":"subscriber_key"},"partner_access_token":"partner_access_token"}
+        body = {"lead_form_id":"lead_form_id","webhook_url":"webhook_url","partner_access_token":"partner_access_token","partner_metadata":"","partner_refresh_token":"partner_refresh_token"}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/leads/subscriptions'.format(ad_account_id='ad_account_id_example'),
             method='POST',

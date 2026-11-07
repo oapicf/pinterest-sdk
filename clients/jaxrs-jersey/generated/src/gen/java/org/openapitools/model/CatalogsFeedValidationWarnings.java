@@ -238,7 +238,7 @@ import javax.validation.Valid;
   CatalogsFeedValidationWarnings.JSON_PROPERTY_V_I_D_E_O_R_E_Q_U_I_R_E_D_W_H_E_N_A_D_V_I_D_E_O_P_R_O_V_I_D_E_D,
   CatalogsFeedValidationWarnings.JSON_PROPERTY_W_E_I_G_H_T_U_N_I_T_I_N_V_A_L_I_D
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedValidationWarnings   {
   public static final String JSON_PROPERTY_A_D_I_M_A_G_E0_L_I_N_K_D_U_P_L_I_C_A_T_E_D = "AD_IMAGE_0_LINK_DUPLICATED";
   @JsonProperty(JSON_PROPERTY_A_D_I_M_A_G_E0_L_I_N_K_D_U_P_L_I_C_A_T_E_D)

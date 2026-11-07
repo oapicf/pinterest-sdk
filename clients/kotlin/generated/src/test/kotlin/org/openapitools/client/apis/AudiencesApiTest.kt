@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,11 +27,13 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.AudiencesApi
-import org.openapitools.client.models.Audience
-import org.openapitools.client.models.AudienceCreateRequest
-import org.openapitools.client.models.AudienceUpdateRequest
+import org.openapitools.client.models.AdAccountsAudience
+import org.openapitools.client.models.AdAccountsAudienceCreate
+import org.openapitools.client.models.AdAccountsAudienceUpdate
+import org.openapitools.client.models.AudienceOwnershipType
 import org.openapitools.client.models.AudiencesList200Response
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
 
 class AudiencesApiTest : ShouldSpec() {
     init {
@@ -34,17 +44,17 @@ class AudiencesApiTest : ShouldSpec() {
         should("test audiencesCreate") {
             // uncomment below to test audiencesCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val audienceCreateRequest : AudienceCreateRequest =  // AudienceCreateRequest | List of ads to create, size limit [1, 30]
-            //val result : Audience = apiInstance.audiencesCreate(adAccountId, audienceCreateRequest)
+            //val adAccountsAudienceCreate : AdAccountsAudienceCreate =  // AdAccountsAudienceCreate | 
+            //val result : AdAccountsAudience = apiInstance.audiencesCreate(adAccountId, adAccountsAudienceCreate)
             //result shouldBe ("TODO")
         }
 
         // to test audiencesGet
         should("test audiencesGet") {
             // uncomment below to test audiencesGet
+            //val audienceId : kotlin.String = audienceId_example // kotlin.String | Audience ID.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val audienceId : kotlin.String = audienceId_example // kotlin.String | Unique identifier of an audience
-            //val result : Audience = apiInstance.audiencesGet(adAccountId, audienceId)
+            //val result : AdAccountsAudience = apiInstance.audiencesGet(audienceId, adAccountId)
             //result shouldBe ("TODO")
         }
 
@@ -53,20 +63,21 @@ class AudiencesApiTest : ShouldSpec() {
             // uncomment below to test audiencesList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. For received audiences, it is sorted by sharing event time. Note that higher-value IDs are associated with more-recently added items.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val ownershipType : kotlin.String = OWNED // kotlin.String | Filter audiences by ownership type.
-            //val result : AudiencesList200Response = apiInstance.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val ownershipType : AudienceOwnershipType =  // AudienceOwnershipType | 
+            //val excludeNca : kotlin.Boolean = true // kotlin.Boolean | When true, excludes audiences derived from new customer acquisition (expanded matching) customer lists from the result. Defaults to false (include all).
+            //val result : AudiencesList200Response = apiInstance.audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca)
             //result shouldBe ("TODO")
         }
 
         // to test audiencesUpdate
         should("test audiencesUpdate") {
             // uncomment below to test audiencesUpdate
+            //val audienceId : kotlin.String = audienceId_example // kotlin.String | Audience ID.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val audienceId : kotlin.String = audienceId_example // kotlin.String | Unique identifier of an audience
-            //val audienceUpdateRequest : AudienceUpdateRequest =  // AudienceUpdateRequest | The audience to be updated.
-            //val result : Audience = apiInstance.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest)
+            //val adAccountsAudienceUpdate : AdAccountsAudienceUpdate =  // AdAccountsAudienceUpdate | 
+            //val result : AdAccountsAudience = apiInstance.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate)
             //result shouldBe ("TODO")
         }
 

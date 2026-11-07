@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -20,10 +28,11 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.CustomerListsApi
 import org.openapitools.client.models.CustomerList
-import org.openapitools.client.models.CustomerListRequest
-import org.openapitools.client.models.CustomerListUpdateRequest
+import org.openapitools.client.models.CustomerListCreate
+import org.openapitools.client.models.CustomerListUpdateWithRequiredBody
 import org.openapitools.client.models.CustomerListsList200Response
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
 
 class CustomerListsApiTest : ShouldSpec() {
     init {
@@ -33,17 +42,17 @@ class CustomerListsApiTest : ShouldSpec() {
         // to test customerListsCreate
         should("test customerListsCreate") {
             // uncomment below to test customerListsCreate
-            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val customerListRequest : CustomerListRequest =  // CustomerListRequest | Parameters to get Customer lists info
-            //val result : CustomerList = apiInstance.customerListsCreate(adAccountId, customerListRequest)
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+            //val customerListCreate : CustomerListCreate =  // CustomerListCreate | 
+            //val result : CustomerList = apiInstance.customerListsCreate(adAccountId, customerListCreate)
             //result shouldBe ("TODO")
         }
 
         // to test customerListsGet
         should("test customerListsGet") {
             // uncomment below to test customerListsGet
-            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Unique identifier of a customer list
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Customer list ID.
             //val result : CustomerList = apiInstance.customerListsGet(adAccountId, customerListId)
             //result shouldBe ("TODO")
         }
@@ -51,21 +60,22 @@ class CustomerListsApiTest : ShouldSpec() {
         // to test customerListsList
         should("test customerListsList") {
             // uncomment below to test customerListsList
-            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : CustomerListsList200Response = apiInstance.customerListsList(adAccountId, pageSize, order, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val excludeNca : kotlin.Boolean = true // kotlin.Boolean | When true, excludes customer lists uploaded for new customer acquisition (expanded matching) from the result. Defaults to false (include all).
+            //val result : CustomerListsList200Response = apiInstance.customerListsList(adAccountId, bookmark, pageSize, order, excludeNca)
             //result shouldBe ("TODO")
         }
 
         // to test customerListsUpdate
         should("test customerListsUpdate") {
             // uncomment below to test customerListsUpdate
-            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Unique identifier of a customer list
-            //val customerListUpdateRequest : CustomerListUpdateRequest =  // CustomerListUpdateRequest | 
-            //val result : CustomerList = apiInstance.customerListsUpdate(adAccountId, customerListId, customerListUpdateRequest)
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Customer list ID.
+            //val customerListUpdateWithRequiredBody : CustomerListUpdateWithRequiredBody =  // CustomerListUpdateWithRequiredBody | 
+            //val result : CustomerList = apiInstance.customerListsUpdate(adAccountId, customerListId, customerListUpdateWithRequiredBody)
             //result shouldBe ("TODO")
         }
 

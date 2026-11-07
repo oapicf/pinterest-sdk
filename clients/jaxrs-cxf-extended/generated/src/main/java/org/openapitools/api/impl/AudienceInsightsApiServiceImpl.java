@@ -1,10 +1,10 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.AudienceDefinitionResponse;
 import org.openapitools.model.AudienceInsightType;
-import org.openapitools.model.AudienceInsightsResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.AudienceInsights;
+import org.openapitools.model.AudienceInsightsScopeAndTypeGet200Response;
+import org.openapitools.model.PinterestLibError;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -29,11 +29,11 @@ public class AudienceInsightsApiServiceImpl implements AudienceInsightsApi {
     /**
      * Get audience insights
      *
-     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.&lt;p/&gt; &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-insights\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account&#39;s engaged audience on Pinterest, the ad account&#39;s total audience on Pinterest and Pinterest&#39;s total audience.  [Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
      *
      */
     @Override
-    public AudienceInsightsResponse audienceInsightsGet(String adAccountId, AudienceInsightType audienceInsightType) {
+    public AudienceInsights audienceInsightsGet(String adAccountId, AudienceInsightType audienceInsightType) {
         // TODO: Implement...
         return null;
     }
@@ -45,7 +45,7 @@ public class AudienceInsightsApiServiceImpl implements AudienceInsightsApi {
      *
      */
     @Override
-    public AudienceDefinitionResponse audienceInsightsScopeAndTypeGet(String adAccountId) {
+    public AudienceInsightsScopeAndTypeGet200Response audienceInsightsScopeAndTypeGet(String adAccountId) {
         // TODO: Implement...
         return null;
     }

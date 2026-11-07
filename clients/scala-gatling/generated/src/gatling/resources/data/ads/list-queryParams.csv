@@ -1,1 +1,1 @@
-ad_ids,page_size,entity_statuses,bookmark,campaign_ids,order,ad_group_ids
+bookmark,ad_group_ids,order,campaign_ids,page_size,ad_ids,entity_statuses

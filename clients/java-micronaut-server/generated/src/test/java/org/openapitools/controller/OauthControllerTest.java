@@ -1,8 +1,10 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.ConversionAccessTokenResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.OauthAccessTokenResponse;
+import org.openapitools.model.ConversionAccessToken;
+import org.openapitools.model.OauthAccessToken;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.TokenGrantType;
+import org.openapitools.model.TokenTypeHint;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -63,7 +65,7 @@ public class OauthControllerTest {
         // given
 
         // when
-        ConversionAccessTokenResponse result = controller.oauthConversionToken().block();
+        ConversionAccessToken result = controller.oauthConversionToken().block();
 
         // then
         Assertions.assertTrue(true);
@@ -81,10 +83,10 @@ public class OauthControllerTest {
         // given
         String uri = UriTemplate.of("/oauth/conversion_token").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, null)
-            .accept("[Ljava.lang.String;@6cc53274");
+            .accept("[Ljava.lang.String;@121e9621");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionAccessTokenResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionAccessToken.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -95,7 +97,7 @@ public class OauthControllerTest {
      *
      * The method should: Generate OAuth access token
      *
-     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for &lt;a href&#x3D;&#39;/docs/getting-started/set-up-authentication-and-authorization/&#39; target&#x3D;&#39;blank&#39;&gt;requesting and refreshing tokens&lt;/a&gt;.  &lt;strong&gt;Note:&lt;/strong&gt; If your app was created &lt;strong&gt;before September 25, 2025&lt;/strong&gt;, make sure to set the &lt;code&gt;continuous_refresh&lt;/code&gt; parameter to &lt;code&gt;true&lt;/code&gt; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use &lt;a href&#x3D;&#39;/docs/developer-tools/token-debugger/&#39; target&#x3D;&#39;blank&#39;&gt;Token Debugger&lt;/a&gt; to validate and inspect your access token.
+     * Generate a new OAuth access token using an authorization code; or refresh an existing one using a continuous refresh token.  Follow the complete steps for [requesting and refreshing tokens](/docs/getting-started/set-up-authentication-and-authorization/).  **Note:** If your app was created **before September 25, 2025**, make sure to set the &#x60;continuous_refresh&#x60; parameter to &#x60;true&#x60; to use the continuous refresh token (60-day expiration, refreshable indefinitely). Pinterest no longer supports the legacy refresh token (365-day expiration, hard limit).  Disregard this note if your app was activated on or after September 25, 2025. You are automatically using the continuous refresh token.  Use [Token Debugger](/docs/developer-tools/token-debugger/) to validate and inspect your access token. 
      *
      * TODO fill in the parameters and test return value.
      */
@@ -103,10 +105,15 @@ public class OauthControllerTest {
     @Disabled("Not Implemented")
     void oauthTokenMethodTest() {
         // given
-        String grantType = "example";
+        TokenGrantType grantType = TokenGrantType.fromValue("authorization_code");
+        String code = "example";
+        String continuousRefresh = "example";
+        String redirectUri = "example";
+        String refreshToken = "example";
+        String scope = "example";
 
         // when
-        OauthAccessTokenResponse result = controller.oauthToken(grantType).block();
+        OauthAccessToken result = controller.oauthToken(grantType, code, continuousRefresh, redirectUri, refreshToken, scope).block();
 
         // then
         Assertions.assertTrue(true);
@@ -124,14 +131,19 @@ public class OauthControllerTest {
         // given
         Map<String, Object> form = new HashMap<String, Object>(){{
             // Fill in the body form parameters
-            put("grant_type", "example");
+            put("code", "example");
+            put("continuous_refresh", "example");
+            put("grant_type", TokenGrantType.fromValue("authorization_code"));
+            put("redirect_uri", "example");
+            put("refresh_token", "example");
+            put("scope", "example");
         }};
         String uri = UriTemplate.of("/oauth/token").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, form)
-            .accept("[Ljava.lang.String;@518e24d");
+            .accept("[Ljava.lang.String;@69de34de");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, OauthAccessTokenResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, OauthAccessToken.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -151,7 +163,7 @@ public class OauthControllerTest {
     void tokenRevokeMethodTest() {
         // given
         String token = "example";
-        String tokenTypeHint = "example";
+        TokenTypeHint tokenTypeHint = TokenTypeHint.fromValue("access_token");
 
         // when
         controller.tokenRevoke(token, tokenTypeHint).block();
@@ -173,11 +185,11 @@ public class OauthControllerTest {
         Map<String, Object> form = new HashMap<String, Object>(){{
             // Fill in the body form parameters
             put("token", "example");
-            put("token_type_hint", "example");
+            put("token_type_hint", TokenTypeHint.fromValue("access_token"));
         }};
         String uri = UriTemplate.of("/oauth/token/revoke").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, form)
-            .accept("[Ljava.lang.String;@1381a7d3");
+            .accept("[Ljava.lang.String;@33286e3b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 

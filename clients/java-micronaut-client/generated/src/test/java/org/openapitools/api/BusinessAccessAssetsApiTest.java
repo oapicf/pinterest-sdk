@@ -1,23 +1,25 @@
 package org.openapitools.api;
 
+import org.openapitools.model.AssetGroupDeletion;
+import org.openapitools.model.AssetGroupDeletionDelete;
+import org.openapitools.model.AssetGroupInput;
+import org.openapitools.model.AssetGroupInputCreate;
+import org.openapitools.model.AssetGroupModification;
+import org.openapitools.model.AssetGroupModificationReadOrUpdate;
+import org.openapitools.model.AssetPermissionType;
+import org.openapitools.model.AssetSearchBy;
+import org.openapitools.model.AssetSortBy;
 import org.openapitools.model.BusinessAssetMembersGet200Response;
-import org.openapitools.model.BusinessAssetPartnersGet200Response;
 import org.openapitools.model.BusinessAssetsGet200Response;
-import org.openapitools.model.BusinessMemberAssetsGet200Response;
-import org.openapitools.model.BusinessMembersAssetAccessDeleteRequest;
+import org.openapitools.model.BusinessMemberAssetsGetResponse;
+import org.openapitools.model.BusinessMembersAssetAccessDeleteBody;
 import org.openapitools.model.BusinessPartnerAssetAccessGet200Response;
-import org.openapitools.model.CreateAssetGroupBody;
-import org.openapitools.model.CreateAssetGroupResponse;
-import org.openapitools.model.DeleteAssetGroupBody;
-import org.openapitools.model.DeleteAssetGroupResponse;
 import org.openapitools.model.DeleteMemberAccessResultsResponseArray;
 import org.openapitools.model.DeletePartnerAssetAccessBody;
-import org.openapitools.model.DeletePartnerAssetsResultsResponseArray;
-import org.openapitools.model.Error;
-import org.openapitools.model.PartnerType;
+import org.openapitools.model.DeletePartnerAssetAccessResultsResponseArray;
+import org.openapitools.model.NonDraftEntityStatus;
 import org.openapitools.model.PermissionsWithOwner;
-import org.openapitools.model.UpdateAssetGroupBody;
-import org.openapitools.model.UpdateAssetGroupResponse;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.UpdateMemberAssetAccessBody;
 import org.openapitools.model.UpdateMemberAssetsResultsResponseArray;
 import org.openapitools.model.UpdatePartnerAssetAccessBody;
@@ -47,17 +49,17 @@ public class BusinessAccessAssetsApiTest {
     /**
      * Create a new asset group.
      *
-     * Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+     * Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
      */
     @Test
     @Disabled("Not Implemented")
     public void assetGroupCreateTest() {
         // given
-        String businessId = "729090764583391194";
-        CreateAssetGroupBody createAssetGroupBody = new CreateAssetGroupBody("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", Arrays.asList());
+        String businessId = "example";
+        AssetGroupInputCreate assetGroupInputCreate = new AssetGroupInputCreate("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", Arrays.asList());
 
         // when
-        CreateAssetGroupResponse body = api.assetGroupCreate(businessId, createAssetGroupBody).block();
+        AssetGroupInput body = api.assetGroupCreate(businessId, assetGroupInputCreate).block();
 
         // then
         // TODO implement the assetGroupCreateTest()
@@ -73,11 +75,11 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void assetGroupDeleteTest() {
         // given
-        String businessId = "729090764583391194";
-        DeleteAssetGroupBody deleteAssetGroupBody = new DeleteAssetGroupBody(Arrays.asList("example"));
+        String businessId = "example";
+        AssetGroupDeletionDelete assetGroupDeletionDelete = new AssetGroupDeletionDelete(Arrays.asList("example"));
 
         // when
-        DeleteAssetGroupResponse body = api.assetGroupDelete(businessId, deleteAssetGroupBody).block();
+        AssetGroupDeletion body = api.assetGroupDelete(businessId, assetGroupDeletionDelete).block();
 
         // then
         // TODO implement the assetGroupDeleteTest()
@@ -93,11 +95,11 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void assetGroupUpdateTest() {
         // given
-        String businessId = "729090764583391194";
-        UpdateAssetGroupBody updateAssetGroupBody = new UpdateAssetGroupBody();
+        String businessId = "example";
+        AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate = new AssetGroupModificationReadOrUpdate();
 
         // when
-        UpdateAssetGroupResponse body = api.assetGroupUpdate(businessId, updateAssetGroupBody).block();
+        AssetGroupModification body = api.assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate).block();
 
         // then
         // TODO implement the assetGroupUpdateTest()
@@ -113,15 +115,15 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void businessAssetMembersGetTest() {
         // given
-        String businessId = "729090764583391194";
-        String assetId = "729090764583391194";
+        String businessId = "example";
+        String assetId = "example";
+        Integer startIndex = 0;
         Boolean fetchSystemUsers = false;
         String bookmark = "example";
         Integer pageSize = 25;
-        Integer startIndex = 0;
 
         // when
-        BusinessAssetMembersGet200Response body = api.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex).block();
+        BusinessAssetMembersGet200Response body = api.businessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize).block();
 
         // then
         // TODO implement the businessAssetMembersGetTest()
@@ -137,14 +139,14 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void businessAssetPartnersGetTest() {
         // given
-        String businessId = "729090764583391194";
-        String assetId = "729090764583391194";
+        String businessId = "example";
+        String assetId = "example";
         Integer startIndex = 0;
         String bookmark = "example";
         Integer pageSize = 25;
 
         // when
-        BusinessAssetPartnersGet200Response body = api.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize).block();
+        BusinessAssetMembersGet200Response body = api.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize).block();
 
         // then
         // TODO implement the businessAssetPartnersGetTest()
@@ -160,10 +162,10 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void businessAssetsGetTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         List<PermissionsWithOwner> permissions = Arrays.asList();
-        String childAssetId = "549764894835";
-        String assetGroupId = "7078106104032";
+        String childAssetId = "example";
+        String assetGroupId = "example";
         String assetType = "AD_ACCOUNT";
         Integer startIndex = 0;
         String bookmark = "example";
@@ -186,15 +188,21 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void businessMemberAssetsGetTest() {
         // given
-        String businessId = "729090764583391194";
-        String memberId = "729090764583391194";
+        String businessId = "example";
+        String memberId = "example";
         String assetType = "AD_ACCOUNT";
         Integer startIndex = 0;
+        AssetSortBy sortBy = AssetSortBy.fromValue("NAME");
+        Boolean sortAscending = true;
+        AssetSearchBy searchBy = AssetSearchBy.fromValue("NAME");
+        String searchValue = "example";
+        AssetPermissionType assetPermissionType = AssetPermissionType.fromValue("AGGREGATED_PERMISSION");
+        List<NonDraftEntityStatus> adAccountStatuses = Arrays.asList();
         String bookmark = "example";
         Integer pageSize = 25;
 
         // when
-        BusinessMemberAssetsGet200Response body = api.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize).block();
+        BusinessMemberAssetsGetResponse body = api.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize).block();
 
         // then
         // TODO implement the businessMemberAssetsGetTest()
@@ -210,11 +218,11 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void businessMembersAssetAccessDeleteTest() {
         // given
-        String businessId = "729090764583391194";
-        BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest = new BusinessMembersAssetAccessDeleteRequest(Arrays.asList());
+        String businessId = "example";
+        BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody = new BusinessMembersAssetAccessDeleteBody(Arrays.asList());
 
         // when
-        DeleteMemberAccessResultsResponseArray body = api.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest).block();
+        DeleteMemberAccessResultsResponseArray body = api.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody).block();
 
         // then
         // TODO implement the businessMembersAssetAccessDeleteTest()
@@ -224,13 +232,13 @@ public class BusinessAccessAssetsApiTest {
     /**
      * Assign/Update member asset permissions
      *
-     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      */
     @Test
     @Disabled("Not Implemented")
     public void businessMembersAssetAccessUpdateTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         UpdateMemberAssetAccessBody updateMemberAssetAccessBody = new UpdateMemberAssetAccessBody(Arrays.asList());
 
         // when
@@ -250,16 +258,20 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void businessPartnerAssetAccessGetTest() {
         // given
-        String businessId = "729090764583391194";
-        String partnerId = "729090764583391194";
-        PartnerType partnerType = PartnerType.fromValue("INTERNAL");
+        String businessId = "example";
+        String partnerId = "example";
+        String partnerType = "INTERNAL";
         String assetType = "AD_ACCOUNT";
         Integer startIndex = 0;
-        Integer pageSize = 25;
+        AssetSortBy sortBy = AssetSortBy.fromValue("NAME");
+        Boolean sortAscending = true;
+        AssetSearchBy searchBy = AssetSearchBy.fromValue("NAME");
+        String searchValue = "example";
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        BusinessPartnerAssetAccessGet200Response body = api.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark).block();
+        BusinessPartnerAssetAccessGet200Response body = api.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize).block();
 
         // then
         // TODO implement the businessPartnerAssetAccessGetTest()
@@ -275,11 +287,11 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void deletePartnerAssetAccessHandlerImplTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         DeletePartnerAssetAccessBody deletePartnerAssetAccessBody = new DeletePartnerAssetAccessBody(Arrays.asList());
 
         // when
-        DeletePartnerAssetsResultsResponseArray body = api.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody).block();
+        DeletePartnerAssetAccessResultsResponseArray body = api.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody).block();
 
         // then
         // TODO implement the deletePartnerAssetAccessHandlerImplTest()
@@ -295,7 +307,7 @@ public class BusinessAccessAssetsApiTest {
     @Disabled("Not Implemented")
     public void updatePartnerAssetAccessHandlerImplTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody = new UpdatePartnerAssetAccessBody(Arrays.asList());
 
         // when

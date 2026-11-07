@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestionWarnings
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedIngestionWarnings {
   public static final String SERIALIZED_NAME_A_D_I_M_A_G_E_D_O_W_N_L_O_A_D_C_O_N_T_E_N_T_R_E_A_D_E_R_R_O_R = "AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR";
   @SerializedName(SERIALIZED_NAME_A_D_I_M_A_G_E_D_O_W_N_L_O_A_D_C_O_N_T_E_N_T_R_E_A_D_E_R_R_O_R)

@@ -18,32 +18,32 @@ feature -- Test routines
             --
             -- Get a list of the boards a user follows. The request returns a board summary object array.
         local
-            l_response: BOARDS_USER_FOLLOWS_LIST_200_RESPONSE
+            l_response: BOARDS_LIST_200_RESPONSE
+            l_ad_account_id: STRING_32
+            l_explicit_following: BOOLEAN
             l_bookmark: STRING_32
             l_page_size: INTEGER_32
-            l_explicit_following: BOOLEAN
-            l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
 
-            -- l_response := api.boards_user_follows_list(l_bookmark, l_page_size, l_explicit_following, l_ad_account_id)
+            -- l_response := api.boards_user_follows_list(l_ad_account_id, l_explicit_following, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
     test_follow_user_update
             -- Follow user
             --
-            -- &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+            -- **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
         local
-            l_response: USER_SUMMARY
+            l_response: FOLLOW_USER
             l_username: STRING_32
-            l_follow_user_request: FOLLOW_USER_REQUEST
+            l_follow_user_create: FOLLOW_USER_CREATE
         do
             -- TODO: Initialize required params.
             -- l_username
-            -- l_follow_user_request
+            -- l_follow_user_create
 
-            -- l_response := api.follow_user_update(l_username, l_follow_user_request)
+            -- l_response := api.follow_user_update(l_username, l_follow_user_create)
             assert ("not_implemented", False)
         end
 
@@ -78,14 +78,15 @@ feature -- Test routines
     test_unverify_website_delete
             -- Unverify website
             --
-            -- Unverifu a website verified by the signed-in user.
+            -- Unverify a website verified by the signed-in user.
         local
+            l_response: USER_WEBSITE
             l_website: STRING_32
         do
             -- TODO: Initialize required params.
             -- l_website
 
-            -- api.unverify_website_delete(l_website)
+            -- l_response := api.unverify_website_delete(l_website)
             assert ("not_implemented", False)
         end
 
@@ -102,7 +103,7 @@ feature -- Test routines
             l_app_types: STRING_32
             l_content_type: STRING_32
             l_source: STRING_32
-            l_metric_types: LIST [STRING_32]
+            l_metric_types: LIST [QUERYMETRICTYPES_ITEMS]
             l_split_field: STRING_32
             l_ad_account_id: STRING_32
         do
@@ -122,15 +123,15 @@ feature -- Test routines
             l_response: TOP_PINS_ANALYTICS_RESPONSE
             l_start_date: DATE
             l_end_date: DATE
-            l_sort_by: STRING_32
+            l_sort_by: TOP_PINS_SORT_BY
             l_from_claimed_content: STRING_32
             l_pin_format: STRING_32
             l_app_types: STRING_32
             l_content_type: STRING_32
             l_source: STRING_32
-            l_metric_types: LIST [STRING_32]
+            l_metric_types: LIST [QUERYMETRICTYPES_ITEMS]
             l_num_of_pins: INTEGER_32
-            l_created_in_last_n_days: INTEGER_32
+            l_created_in_last_n_days: REAL_32
             l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
@@ -150,15 +151,15 @@ feature -- Test routines
             l_response: TOP_VIDEO_PINS_ANALYTICS_RESPONSE
             l_start_date: DATE
             l_end_date: DATE
-            l_sort_by: STRING_32
+            l_sort_by: TOP_VIDEO_PINS_SORT_BY
             l_from_claimed_content: STRING_32
             l_pin_format: STRING_32
             l_app_types: STRING_32
             l_content_type: STRING_32
             l_source: STRING_32
-            l_metric_types: LIST [STRING_32]
+            l_metric_types: LIST [QUERYVIDEOPINMETRICTYPES_ITEMS]
             l_num_of_pins: INTEGER_32
-            l_created_in_last_n_days: INTEGER_32
+            l_created_in_last_n_days: REAL_32
             l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
@@ -190,7 +191,7 @@ feature -- Test routines
     test_user_account_get
             -- Get user account
             --
-            -- Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+            -- Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
         local
             l_response: ACCOUNT
             l_ad_account_id: STRING_32
@@ -206,16 +207,16 @@ feature -- Test routines
             --
             -- Get a list of who a certain user follows.
         local
-            l_response: USER_FOLLOWING_GET_200_RESPONSE
+            l_response: FOLLOWERS_LIST_200_RESPONSE
+            l_ad_account_id: STRING_32
+            l_explicit_following: BOOLEAN
+            l_feed_type: USER_FOLLOWING_FEED_TYPE
             l_bookmark: STRING_32
             l_page_size: INTEGER_32
-            l_feed_type: USER_FOLLOWING_FEED_TYPE
-            l_explicit_following: BOOLEAN
-            l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
 
-            -- l_response := api.user_following_get(l_bookmark, l_page_size, l_feed_type, l_explicit_following, l_ad_account_id)
+            -- l_response := api.user_following_get(l_ad_account_id, l_explicit_following, l_feed_type, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
@@ -239,14 +240,14 @@ feature -- Test routines
             --
             -- Verify a website as a signed-in user.
         local
-            l_response: USER_WEBSITE_SUMMARY
-            l_user_website_verify_request: USER_WEBSITE_VERIFY_REQUEST
+            l_response: USER_WEBSITE
+            l_user_website_create: USER_WEBSITE_CREATE
             l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.
-            -- l_user_website_verify_request
+            -- l_user_website_create
 
-            -- l_response := api.verify_website_update(l_user_website_verify_request, l_ad_account_id)
+            -- l_response := api.verify_website_update(l_user_website_create, l_ad_account_id)
             assert ("not_implemented", False)
         end
 
@@ -255,7 +256,7 @@ feature -- Test routines
             --
             -- Get verification code for user to install on the website to claim it.
         local
-            l_response: USER_WEBSITE_VERIFICATION_CODE
+            l_response: USER_WEBSITE_VERIFICATION
             l_ad_account_id: STRING_32
         do
             -- TODO: Initialize required params.

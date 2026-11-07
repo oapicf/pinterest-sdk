@@ -9,7 +9,7 @@ import javax.validation.Valid;
 /**
  * Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-03T06:14:07.558725589Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-07T02:50:19.877694946Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class PinMediaSourcePinURL   {
   @JsonProperty("is_affiliate_link")

@@ -22,9 +22,29 @@ module CustomerListsApiHandlerTestsHelper =
   let mutable CustomerListsCreateBody = ""
 
   CustomerListsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;list_type&quot; : &quot;EMAIL&quot;,
+  &quot;is_nca&quot; : true,
+  &quot;list_type&quot; : &quot;&quot;,
+  &quot;name&quot; : &quot;The Glengarry Glen Ross leads&quot;,
   &quot;records&quot; : &quot;email1@pinterest.com,email2@pinterest.com,..&lt;more records&gt;&quot;,
-  &quot;name&quot; : &quot;The Glengarry Glen Ross leads&quot;
+  &quot;records_v2&quot; : [ {
+    &quot;email&quot; : &quot;email&quot;,
+    &quot;external_id&quot; : &quot;external_id&quot;,
+    &quot;hashed_phone_number&quot; : &quot;hashed_phone_number&quot;,
+    &quot;hashed_pinner_id&quot; : &quot;hashed_pinner_id&quot;,
+    &quot;ip_address&quot; : &quot;ip_address&quot;,
+    &quot;liveramp_envelope&quot; : &quot;liveramp_envelope&quot;,
+    &quot;maid&quot; : &quot;maid&quot;,
+    &quot;user_agent&quot; : &quot;user_agent&quot;
+  }, {
+    &quot;email&quot; : &quot;email&quot;,
+    &quot;external_id&quot; : &quot;external_id&quot;,
+    &quot;hashed_phone_number&quot; : &quot;hashed_phone_number&quot;,
+    &quot;hashed_pinner_id&quot; : &quot;hashed_pinner_id&quot;,
+    &quot;ip_address&quot; : &quot;ip_address&quot;,
+    &quot;liveramp_envelope&quot; : &quot;liveramp_envelope&quot;,
+    &quot;maid&quot; : &quot;maid&quot;,
+    &quot;user_agent&quot; : &quot;user_agent&quot;
+  } ]
 }"
   CustomerListsCreateExamples <- CustomerListsCreateExamples.Add("application/json", CustomerListsCreateBody)
 
@@ -40,8 +60,27 @@ module CustomerListsApiHandlerTestsHelper =
   let mutable CustomerListsUpdateBody = ""
 
   CustomerListsUpdateBody <- WebUtility.HtmlDecode "{
-  &quot;operation_type&quot; : &quot;operation_type&quot;,
-  &quot;records&quot; : &quot;email2@pinterest.com,email6@pinterest.com,&quot;
+  &quot;operation_type&quot; : &quot;&quot;,
+  &quot;records&quot; : &quot;email1@pinterest.com,email2@pinterest.com,..&lt;more records&gt;&quot;,
+  &quot;records_v2&quot; : [ {
+    &quot;email&quot; : &quot;email&quot;,
+    &quot;external_id&quot; : &quot;external_id&quot;,
+    &quot;hashed_phone_number&quot; : &quot;hashed_phone_number&quot;,
+    &quot;hashed_pinner_id&quot; : &quot;hashed_pinner_id&quot;,
+    &quot;ip_address&quot; : &quot;ip_address&quot;,
+    &quot;liveramp_envelope&quot; : &quot;liveramp_envelope&quot;,
+    &quot;maid&quot; : &quot;maid&quot;,
+    &quot;user_agent&quot; : &quot;user_agent&quot;
+  }, {
+    &quot;email&quot; : &quot;email&quot;,
+    &quot;external_id&quot; : &quot;external_id&quot;,
+    &quot;hashed_phone_number&quot; : &quot;hashed_phone_number&quot;,
+    &quot;hashed_pinner_id&quot; : &quot;hashed_pinner_id&quot;,
+    &quot;ip_address&quot; : &quot;ip_address&quot;,
+    &quot;liveramp_envelope&quot; : &quot;liveramp_envelope&quot;,
+    &quot;maid&quot; : &quot;maid&quot;,
+    &quot;user_agent&quot; : &quot;user_agent&quot;
+  } ]
 }"
   CustomerListsUpdateExamples <- CustomerListsUpdateExamples.Add("application/json", CustomerListsUpdateBody)
 

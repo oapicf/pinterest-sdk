@@ -1,7 +1,6 @@
 package org.openapitools.api;
 
 import org.openapitools.model.AgeTrendsBucket;
-import org.openapitools.model.Error;
 import org.openapitools.model.FeaturedTrend;
 import org.openapitools.model.GenderBucket;
 import org.openapitools.model.InterestsEnum;
@@ -15,6 +14,10 @@ import org.openapitools.model.ProductCategoryRegion;
 import org.openapitools.model.TrendType;
 import org.openapitools.model.TrendingKeywordsResponse;
 import org.openapitools.model.TrendingProductCategory;
+import org.openapitools.model.TrendsAgeBucket;
+import org.openapitools.model.TrendsEditorial;
+import org.openapitools.model.TrendsGenderFilter;
+import org.openapitools.model.TrendsL1Interest;
 import org.openapitools.model.TrendsSupportedRegion;
 import org.openapitools.model.VerticalProductCategory;
 
@@ -34,15 +37,15 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.context.request.NativeWebRequest;
 
-import javax.validation.constraints.*;
-import javax.validation.Valid;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Controller
 @RequestMapping("${openapi.pinterestREST.base-path:/v5}")
 public class TrendsApiController implements TrendsApi {

@@ -2,21 +2,25 @@ package org.openapitools.api;
 
 import org.openapitools.model.Account;
 import org.openapitools.model.AnalyticsMetricsResponse;
-import org.openapitools.model.BoardsUserFollowsList200Response;
-import org.openapitools.model.Error;
-import org.openapitools.model.FollowUserRequest;
+import java.math.BigDecimal;
+import org.openapitools.model.BoardsList200Response;
+import org.openapitools.model.FollowUser;
+import org.openapitools.model.FollowUserCreate;
 import org.openapitools.model.FollowersList200Response;
 import org.openapitools.model.LinkedBusiness;
 import java.time.LocalDate;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.QuerymetrictypesItems;
+import org.openapitools.model.QueryvideopinmetrictypesItems;
 import org.openapitools.model.TopPinsAnalyticsResponse;
+import org.openapitools.model.TopPinsSortBy;
 import org.openapitools.model.TopVideoPinsAnalyticsResponse;
+import org.openapitools.model.TopVideoPinsSortBy;
 import org.openapitools.model.UserAccountFollowedInterests200Response;
 import org.openapitools.model.UserFollowingFeedType;
-import org.openapitools.model.UserFollowingGet200Response;
-import org.openapitools.model.UserSummary;
-import org.openapitools.model.UserWebsiteSummary;
-import org.openapitools.model.UserWebsiteVerificationCode;
-import org.openapitools.model.UserWebsiteVerifyRequest;
+import org.openapitools.model.UserWebsite;
+import org.openapitools.model.UserWebsiteCreate;
+import org.openapitools.model.UserWebsiteVerification;
 import org.openapitools.model.UserWebsitesGet200Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -49,13 +53,13 @@ public class UserAccountApiTest {
     @Disabled("Not Implemented")
     public void boardsUserFollowsListTest() {
         // given
+        String adAccountId = "example";
+        Boolean explicitFollowing = false;
         String bookmark = "example";
         Integer pageSize = 25;
-        Boolean explicitFollowing = false;
-        String adAccountId = "example";
 
         // when
-        BoardsUserFollowsList200Response body = api.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId).block();
+        BoardsList200Response body = api.boardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize).block();
 
         // then
         // TODO implement the boardsUserFollowsListTest()
@@ -65,17 +69,17 @@ public class UserAccountApiTest {
     /**
      * Follow user
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
      */
     @Test
     @Disabled("Not Implemented")
     public void followUserUpdateTest() {
         // given
-        String username = "username";
-        FollowUserRequest followUserRequest = new FollowUserRequest();
+        String username = "example";
+        FollowUserCreate followUserCreate = new FollowUserCreate();
 
         // when
-        UserSummary body = api.followUserUpdate(username, followUserRequest).block();
+        FollowUser body = api.followUserUpdate(username, followUserCreate).block();
 
         // then
         // TODO implement the followUserUpdateTest()
@@ -123,16 +127,16 @@ public class UserAccountApiTest {
     /**
      * Unverify website
      *
-     * Unverifu a website verified by the signed-in user.
+     * Unverify a website verified by the signed-in user.
      */
     @Test
     @Disabled("Not Implemented")
     public void unverifyWebsiteDeleteTest() {
         // given
-        String website = "mysite.test";
+        String website = "example";
 
         // when
-        api.unverifyWebsiteDelete(website).block();
+        UserWebsite body = api.unverifyWebsiteDelete(website).block();
 
         // then
         // TODO implement the unverifyWebsiteDeleteTest()
@@ -155,7 +159,7 @@ public class UserAccountApiTest {
         String appTypes = "ALL";
         String contentType = "ALL";
         String source = "ALL";
-        List<String> metricTypes = Arrays.asList("example");
+        List<QuerymetrictypesItems> metricTypes = Arrays.asList();
         String splitField = "NO_SPLIT";
         String adAccountId = "example";
 
@@ -178,15 +182,15 @@ public class UserAccountApiTest {
         // given
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        String sortBy = "example";
+        TopPinsSortBy sortBy = TopPinsSortBy.fromValue("ENGAGEMENT");
         String fromClaimedContent = "BOTH";
         String pinFormat = "ALL";
         String appTypes = "ALL";
         String contentType = "ALL";
         String source = "ALL";
-        List<String> metricTypes = Arrays.asList("example");
+        List<QuerymetrictypesItems> metricTypes = Arrays.asList();
         Integer numOfPins = 10;
-        Integer createdInLastNDays = 30;
+        BigDecimal createdInLastNDays = new BigDecimal(78);
         String adAccountId = "example";
 
         // when
@@ -208,15 +212,15 @@ public class UserAccountApiTest {
         // given
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        String sortBy = "example";
+        TopVideoPinsSortBy sortBy = TopVideoPinsSortBy.fromValue("SAVE");
         String fromClaimedContent = "BOTH";
         String pinFormat = "ALL";
         String appTypes = "ALL";
         String contentType = "ALL";
         String source = "ALL";
-        List<String> metricTypes = Arrays.asList("example");
+        List<QueryvideopinmetrictypesItems> metricTypes = Arrays.asList();
         Integer numOfPins = 10;
-        Integer createdInLastNDays = 30;
+        BigDecimal createdInLastNDays = new BigDecimal(78);
         String adAccountId = "example";
 
         // when
@@ -236,7 +240,7 @@ public class UserAccountApiTest {
     @Disabled("Not Implemented")
     public void userAccountFollowedInterestsTest() {
         // given
-        String username = "username";
+        String username = "example";
         String bookmark = "example";
         Integer pageSize = 25;
 
@@ -251,7 +255,7 @@ public class UserAccountApiTest {
     /**
      * Get user account
      *
-     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
      */
     @Test
     @Disabled("Not Implemented")
@@ -276,14 +280,14 @@ public class UserAccountApiTest {
     @Disabled("Not Implemented")
     public void userFollowingGetTest() {
         // given
+        String adAccountId = "example";
+        Boolean explicitFollowing = false;
+        UserFollowingFeedType feedType = UserFollowingFeedType.fromValue("ALL");
         String bookmark = "example";
         Integer pageSize = 25;
-        UserFollowingFeedType feedType = UserFollowingFeedType.fromValue("ALL");
-        Boolean explicitFollowing = false;
-        String adAccountId = "example";
 
         // when
-        UserFollowingGet200Response body = api.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId).block();
+        FollowersList200Response body = api.userFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize).block();
 
         // then
         // TODO implement the userFollowingGetTest()
@@ -319,11 +323,11 @@ public class UserAccountApiTest {
     @Disabled("Not Implemented")
     public void verifyWebsiteUpdateTest() {
         // given
-        UserWebsiteVerifyRequest userWebsiteVerifyRequest = new UserWebsiteVerifyRequest();
+        UserWebsiteCreate userWebsiteCreate = new UserWebsiteCreate();
         String adAccountId = "example";
 
         // when
-        UserWebsiteSummary body = api.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId).block();
+        UserWebsite body = api.verifyWebsiteUpdate(userWebsiteCreate, adAccountId).block();
 
         // then
         // TODO implement the verifyWebsiteUpdateTest()
@@ -342,7 +346,7 @@ public class UserAccountApiTest {
         String adAccountId = "example";
 
         // when
-        UserWebsiteVerificationCode body = api.websiteVerificationGet(adAccountId).block();
+        UserWebsiteVerification body = api.websiteVerificationGet(adAccountId).block();
 
         // then
         // TODO implement the websiteVerificationGetTest()

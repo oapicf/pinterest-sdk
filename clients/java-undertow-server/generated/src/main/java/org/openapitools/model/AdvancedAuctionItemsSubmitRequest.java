@@ -27,7 +27,7 @@ import org.openapitools.model.AdvancedAuctionItemsSubmitRecord;
  */
 
 @ApiModel(description = "Request containing operations to perform on bid prices and bid multipliers for a batch of retail catalog items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvancedAuctionItemsSubmitRequest   {
   
   private String catalogId;

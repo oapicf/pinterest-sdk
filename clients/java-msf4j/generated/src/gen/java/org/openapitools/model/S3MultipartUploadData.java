@@ -13,7 +13,7 @@ import org.openapitools.model.S3FilePart;
 /**
  * S3MultipartUploadData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class S3MultipartUploadData   {
   @JsonProperty("file_parts")
   private List<@Valid S3FilePart> fileParts = null;

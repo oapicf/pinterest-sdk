@@ -3,18 +3,21 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictBool, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import List, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
-from openapi_server.models.keyword_update_body import KeywordUpdateBody  # noqa: F401
+from openapi_server.models.keywords import Keywords  # noqa: F401
+from openapi_server.models.keywords_create import KeywordsCreate  # noqa: F401
 from openapi_server.models.keywords_get200_response import KeywordsGet200Response  # noqa: F401
 from openapi_server.models.keywords_metrics_array_response import KeywordsMetricsArrayResponse  # noqa: F401
-from openapi_server.models.keywords_request import KeywordsRequest  # noqa: F401
-from openapi_server.models.keywords_response import KeywordsResponse  # noqa: F401
+from openapi_server.models.keywords_update import KeywordsUpdate  # noqa: F401
 from openapi_server.models.match_type import MatchType  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 from openapi_server.models.trend_type import TrendType  # noqa: F401
 from openapi_server.models.trending_keywords_response import TrendingKeywordsResponse  # noqa: F401
+from openapi_server.models.trends_age_bucket import TrendsAgeBucket  # noqa: F401
+from openapi_server.models.trends_gender_filter import TrendsGenderFilter  # noqa: F401
+from openapi_server.models.trends_l1_interest import TrendsL1Interest  # noqa: F401
 from openapi_server.models.trends_supported_region import TrendsSupportedRegion  # noqa: F401
 
 
@@ -23,7 +26,7 @@ def test_keywords_get(client: TestClient):
 
     Get keywords
     """
-    params = [("campaign_id", 'campaign_id_example'),     ("ad_group_id", '123123123'),     ("ad_group_ids", ['ad_group_ids_example']),     ("match_types", [openapi_server.MatchType()]),     ("page_size", 25),     ("bookmark", 'bookmark_example')]
+    params = [("campaign_id", 'campaign_id_example'),     ("ad_group_id", 'ad_group_id_example'),     ("ad_group_ids", ['ad_group_ids_example']),     ("match_types", [openapi_server.MatchType()]),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -45,7 +48,7 @@ def test_keywords_create(client: TestClient):
 
     Create keywords
     """
-    keywords_request = {"keywords":[{"match_type":"BROAD","bid":6,"value":"value"},{"match_type":"BROAD","bid":6,"value":"value"}],"parent_id":"383791336903426391"}
+    keywords_create = openapi_server.KeywordsCreate()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -55,7 +58,7 @@ def test_keywords_create(client: TestClient):
     #    "POST",
     #    "/ad_accounts/{ad_account_id}/keywords".format(ad_account_id='ad_account_id_example'),
     #    headers=headers,
-    #    json=keywords_request,
+    #    json=keywords_create,
     #)
 
     # uncomment below to assert the status code of the HTTP response
@@ -67,7 +70,7 @@ def test_keywords_update(client: TestClient):
 
     Update keywords
     """
-    keyword_update_body = {"keywords":[{"archived":0,"id":"2886364308355","bid":1},{"archived":0,"id":"2886364308355","bid":1}]}
+    keywords_update = openapi_server.KeywordsUpdate()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -77,7 +80,7 @@ def test_keywords_update(client: TestClient):
     #    "PATCH",
     #    "/ad_accounts/{ad_account_id}/keywords".format(ad_account_id='ad_account_id_example'),
     #    headers=headers,
-    #    json=keyword_update_body,
+    #    json=keywords_update,
     #)
 
     # uncomment below to assert the status code of the HTTP response
@@ -89,7 +92,7 @@ def test_country_keywords_metrics_get(client: TestClient):
 
     Get country's keyword metrics
     """
-    params = [("country_code", 'US'),     ("keywords", ['keywords_example'])]
+    params = [("country_code", 'country_code_example'),     ("keywords", ['keywords_example'])]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -111,7 +114,7 @@ def test_trending_keywords_list(client: TestClient):
 
     List trending keywords
     """
-    params = [("interests", ['[\"beauty\",\"womens_fashion\"]']),     ("genders", ['[\"female\",\"unknown\"]']),     ("ages", ['[\"35-44\",\"50-54\"]']),     ("include_keywords", ['[\"recipes\",\"dessert\"]']),     ("normalize_against_group", False),     ("limit", 50),     ("include_prediction", False),     ("include_demographics", False)]
+    params = [("interests", [openapi_server.TrendsL1Interest()]),     ("genders", [openapi_server.TrendsGenderFilter()]),     ("ages", [openapi_server.TrendsAgeBucket()]),     ("include_keywords", ['include_keywords_example']),     ("normalize_against_group", False),     ("limit", 50),     ("include_demographics", False)]
     headers = {
         "Authorization": "Bearer special-key",
     }

@@ -3,14 +3,16 @@ module.exports = {
         { data: {} },
     "MetricsResponseSample": 
         { data: {} },
-    "CampaignsAnalyticsResponse_innerSample": 
+    "CampaignsAnalyticsMetricsSample": 
         { data: {} },
-    "CampaignCreateResponseSample": 
+    "CampaignBatchWriteResponseModelSample": 
         { data: {} },
-    "CampaignResponseSample": 
+    "CampaignSample": 
         { data: {} },
     "campaigns_list_200_responseSample": 
         { data: {} },
-    "CampaignUpdateResponseSample": 
+    "CampaignBatchWriteResponseModelSample": 
+        { data: {} },
+    "CampaignDeliveryEstimatesResponseSample": 
         { data: {} },
 }

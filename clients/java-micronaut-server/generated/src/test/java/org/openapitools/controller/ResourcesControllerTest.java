@@ -1,10 +1,12 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.AdAccountsCountryResponse;
-import org.openapitools.model.BookClosedResponse;
-import org.openapitools.model.DeliveryMetricsResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.SingleInterestTargetingOptionResponse;
+import org.openapitools.model.AdAccountCountriesGet200Response;
+import org.openapitools.model.BookClosed;
+import org.openapitools.model.DeliveryMetricsGet200Response;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PublicTargetingType;
+import org.openapitools.model.ReportType;
+import org.openapitools.model.SingleInterestTargetingOption;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -65,7 +67,7 @@ public class ResourcesControllerTest {
         // given
 
         // when
-        AdAccountsCountryResponse result = controller.adAccountCountriesGet().block();
+        AdAccountCountriesGet200Response result = controller.adAccountCountriesGet().block();
 
         // then
         Assertions.assertTrue(true);
@@ -83,10 +85,10 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/ad_account_countries").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@411d9acf");
+            .accept("[Ljava.lang.String;@58912c44");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountsCountryResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountCountriesGet200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -97,7 +99,7 @@ public class ResourcesControllerTest {
      *
      * The method should: Get available metrics&#39; definitions
      *
-     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See &lt;a href&#x3D;&#39;/docs/api-features/analytics-overview/&#39;&gt;Organic Analytics&lt;/a&gt; and &lt;a href&#x3D;&#39;/docs/api-features/ads-reporting/&#39;&gt;Ads Analytics&lt;/a&gt; for more information.
+     * Get the definitions for ads and organic metrics available across both synchronous and asynchronous report endpoints. The &#x60;display_name&#x60; attribute will match how the metric is named in our native tools like Ads Manager. See [Organic Analytics](/docs/api-features/analytics-overview/) and [Ads Analytics](/docs/api-features/ads-reporting/) for more information.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -105,10 +107,10 @@ public class ResourcesControllerTest {
     @Disabled("Not Implemented")
     void deliveryMetricsGetMethodTest() {
         // given
-        String reportType = "example";
+        ReportType reportType = ReportType.fromValue("SYNC");
 
         // when
-        DeliveryMetricsResponse result = controller.deliveryMetricsGet(reportType).block();
+        DeliveryMetricsGet200Response result = controller.deliveryMetricsGet(reportType).block();
 
         // then
         Assertions.assertTrue(true);
@@ -126,12 +128,12 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/delivery_metrics").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6b0445d4");
+            .accept("[Ljava.lang.String;@77366ad3");
         request.getParameters()
-            .add("report_type", "example"); // The query parameter format should be 
+            .add("report_type", String.valueOf(ReportType.fromValue("SYNC"))); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, DeliveryMetricsResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, DeliveryMetricsGet200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -142,7 +144,7 @@ public class ResourcesControllerTest {
      *
      * The method should: Get interest details
      *
-     * &lt;p&gt;Get details of a specific interest given interest ID.&lt;/p&gt; &lt;p&gt;Click &lt;a href&#x3D;\&quot;https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid&#x3D;118370875\&quot; target&#x3D;\&quot;_blank\&quot;&gt;here&lt;/a&gt; for a spreadsheet listing interests and their IDs.&lt;/p&gt;
+     * Get details of a specific interest given interest ID.  Click [here](https://docs.google.com/spreadsheets/d/1HxL-0Z3p2fgxis9YBP2HWC3tvPrs1hAuHDRtH-NJTIM/edit#gid&#x3D;118370875) for a spreadsheet listing interests and their IDs.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -153,7 +155,7 @@ public class ResourcesControllerTest {
         String interestId = "example";
 
         // when
-        SingleInterestTargetingOptionResponse result = controller.interestTargetingOptionsGet(interestId).block();
+        SingleInterestTargetingOption result = controller.interestTargetingOptionsGet(interestId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -174,10 +176,10 @@ public class ResourcesControllerTest {
             put("interest_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@70aecb8c");
+            .accept("[Ljava.lang.String;@10bfd589");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, SingleInterestTargetingOptionResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, SingleInterestTargetingOption.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -188,7 +190,7 @@ public class ResourcesControllerTest {
      *
      * The method should: Get lead form questions
      *
-     * Get a list of all lead form question type names. Some questions might not be used.  &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get a list of all lead form question type names. Some questions might not be used.  **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      *
      * TODO fill in the parameters and test return value.
      */
@@ -216,7 +218,7 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/lead_form_questions").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@18cbde4d");
+            .accept("[Ljava.lang.String;@52f7b4df");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
@@ -238,10 +240,10 @@ public class ResourcesControllerTest {
     @Disabled("Not Implemented")
     void metricsReadyStateGetMethodTest() {
         // given
-        String date = "2022-07-13";
+        String date = "example";
 
         // when
-        BookClosedResponse result = controller.metricsReadyStateGet(date).block();
+        BookClosed result = controller.metricsReadyStateGet(date).block();
 
         // then
         Assertions.assertTrue(true);
@@ -259,12 +261,12 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/metrics_ready_state").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@35ade479");
+            .accept("[Ljava.lang.String;@3d551c9");
         request.getParameters()
-            .add("date", "2022-07-13"); // The query parameter format should be 
+            .add("date", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, BookClosedResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BookClosed.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -275,7 +277,7 @@ public class ResourcesControllerTest {
      *
      * The method should: Get targeting options
      *
-     * &lt;p&gt;You can use targeting values in ads placement to define your intended audience. &lt;/p&gt; &lt;p&gt;Targeting metrics are organized around targeting specifications.&lt;/p&gt; &lt;p&gt;For more information on ads targeting, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;.&lt;/p&gt; &lt;p&gt;&lt;b&gt;Sample return:&lt;/b&gt;&lt;/p&gt; &lt;pre class&#x3D;\&quot;literal-block\&quot;&gt; [{&amp;quot;36313&amp;quot;: &amp;quot;Australia: Moreton Bay - North&amp;quot;, &amp;quot;124735&amp;quot;: &amp;quot;Canada: North Battleford&amp;quot;, &amp;quot;36109&amp;quot;: &amp;quot;Australia: Murray&amp;quot;, &amp;quot;36108&amp;quot;: &amp;quot;Australia: Mid North Coast&amp;quot;, &amp;quot;36101&amp;quot;: &amp;quot;Australia: Capital Region&amp;quot;, &amp;quot;811&amp;quot;: &amp;quot;U.S.: Reno&amp;quot;, &amp;quot;36103&amp;quot;: &amp;quot;Australia: Central West&amp;quot;, &amp;quot;36102&amp;quot;: &amp;quot;Australia: Central Coast&amp;quot;, &amp;quot;36105&amp;quot;: &amp;quot;Australia: Far West and Orana&amp;quot;, &amp;quot;36104&amp;quot;: &amp;quot;Australia: Coffs Harbour - Grafton&amp;quot;, &amp;quot;36107&amp;quot;: &amp;quot;Australia: Illawarra&amp;quot;, &amp;quot;36106&amp;quot;: &amp;quot;Australia: Hunter Valley Exc Newcastle&amp;quot;, &amp;quot;554017&amp;quot;: &amp;quot;New Zealand: Wanganui&amp;quot;, &amp;quot;554016&amp;quot;: &amp;quot;New Zealand: Marlborough&amp;quot;, &amp;quot;554015&amp;quot;: &amp;quot;New Zealand: Gisborne&amp;quot;, &amp;quot;554014&amp;quot;: &amp;quot;New Zealand: Tararua&amp;quot;, &amp;quot;554013&amp;quot;: &amp;quot;New Zealand: Invercargill&amp;quot;, &amp;quot;GR&amp;quot;: &amp;quot;Greece&amp;quot;, &amp;quot;554011&amp;quot;: &amp;quot;New Zealand: Whangarei&amp;quot;, &amp;quot;554010&amp;quot;: &amp;quot;New Zealand: Far North&amp;quot;, &amp;quot;717&amp;quot;: &amp;quot;U.S.: Quincy-Hannibal-Keokuk&amp;quot;, &amp;quot;716&amp;quot;: &amp;quot;U.S.: Baton Rouge&amp;quot;,...}] &lt;/pre&gt;
+     *     You can use targeting values in ads placement to define your intended audience.      Targeting metrics are organized around targeting specifications.      For more information on ads targeting, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting).      **Sample return:**      &#x60;&#x60;&#x60;     [{\&quot;36313\&quot;: \&quot;Australia: Moreton Bay - North\&quot;, \&quot;124735\&quot;: \&quot;Canada: North Battleford\&quot;, \&quot;36109\&quot;: \&quot;Australia: Murray\&quot;, \&quot;36108\&quot;: \&quot;Australia: Mid North Coast\&quot;, \&quot;36101\&quot;: \&quot;Australia: Capital Region\&quot;, \&quot;811\&quot;: \&quot;U.S.: Reno\&quot;, \&quot;36103\&quot;: \&quot;Australia: Central West\&quot;, \&quot;36102\&quot;: \&quot;Australia: Central Coast\&quot;, \&quot;36105\&quot;: \&quot;Australia: Far West and Orana\&quot;, \&quot;36104\&quot;: \&quot;Australia: Coffs Harbour - Grafton\&quot;, \&quot;36107\&quot;: \&quot;Australia: Illawarra\&quot;, \&quot;36106\&quot;: \&quot;Australia: Hunter Valley Exc Newcastle\&quot;, \&quot;554017\&quot;: \&quot;New Zealand: Wanganui\&quot;, \&quot;554016\&quot;: \&quot;New Zealand: Marlborough\&quot;, \&quot;554015\&quot;: \&quot;New Zealand: Gisborne\&quot;, \&quot;554014\&quot;: \&quot;New Zealand: Tararua\&quot;, \&quot;554013\&quot;: \&quot;New Zealand: Invercargill\&quot;, \&quot;GR\&quot;: \&quot;Greece\&quot;, \&quot;554011\&quot;: \&quot;New Zealand: Whangarei\&quot;, \&quot;554010\&quot;: \&quot;New Zealand: Far North\&quot;, \&quot;717\&quot;: \&quot;U.S.: Quincy-Hannibal-Keokuk\&quot;, \&quot;716\&quot;: \&quot;U.S.: Baton Rouge\&quot;,...}]     &#x60;&#x60;&#x60;
      *
      * TODO fill in the parameters and test return value.
      */
@@ -283,14 +285,14 @@ public class ResourcesControllerTest {
     @Disabled("Not Implemented")
     void targetingOptionsGetMethodTest() {
         // given
-        String targetingType = "APPTYPE";
-        String clientId = "1094834";
-        String oauthSignature = "8209f";
-        String timestamp = "1618338184277";
+        PublicTargetingType targetingType = PublicTargetingType.fromValue("APPTYPE");
         String adAccountId = "example";
+        String clientId = "example";
+        String oauthSignature = "example";
+        String timestamp = "example";
 
         // when
-        List<Object> result = controller.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId).block();
+        List<Object> result = controller.targetingOptionsGet(targetingType, adAccountId, clientId, oauthSignature, timestamp).block();
 
         // then
         Assertions.assertTrue(true);
@@ -308,15 +310,15 @@ public class ResourcesControllerTest {
         // given
         String uri = UriTemplate.of("/resources/targeting/{targeting_type}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("targeting_type", "APPTYPE");
+            put("targeting_type", PublicTargetingType.fromValue("APPTYPE"));
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@7cce2dfd");
+            .accept("[Ljava.lang.String;@4771c392");
         request.getParameters()
-            .add("client_id", "1094834") // The query parameter format should be 
-            .add("oauth_signature", "8209f") // The query parameter format should be 
-            .add("timestamp", "1618338184277") // The query parameter format should be 
-            .add("ad_account_id", "example"); // The query parameter format should be 
+            .add("ad_account_id", "example") // The query parameter format should be 
+            .add("client_id", "example") // The query parameter format should be 
+            .add("oauth_signature", "example") // The query parameter format should be 
+            .add("timestamp", "example"); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, Object.class));

@@ -29,9 +29,10 @@ func Test_openapi_LeadAdsAPIService(t *testing.T) {
 		var adAccountId string
 		var subscriptionId string
 
-		httpRes, err := apiClient.LeadAdsAPI.AdAccountsSubscriptionsDelById(context.Background(), adAccountId, subscriptionId).Execute()
+		resp, httpRes, err := apiClient.LeadAdsAPI.AdAccountsSubscriptionsDelById(context.Background(), adAccountId, subscriptionId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Pin URL-based media source for product pin creation. Currently the field is only available to a list of beta users.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaSourcePinURL {
   public static final String SERIALIZED_NAME_IS_AFFILIATE_LINK = "is_affiliate_link";
   @SerializedName(SERIALIZED_NAME_IS_AFFILIATE_LINK)

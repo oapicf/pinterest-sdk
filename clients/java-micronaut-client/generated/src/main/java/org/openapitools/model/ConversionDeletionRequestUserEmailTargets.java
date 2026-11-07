@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   ConversionDeletionRequestUserEmailTargets.JSON_PROPERTY_USER_EMAILS
 })
 @JsonTypeName("ConversionDeletionRequestUserEmailTargets")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ConversionDeletionRequestUserEmailTargets {
     public static final String JSON_PROPERTY_USER_EMAILS = "user_emails";

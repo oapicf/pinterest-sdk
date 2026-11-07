@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An object with a list of all the invites the user would like to respond to and the action to take.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-03T06:15:53.236789724Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@ApiModel(description="An object with a list of all the invites the user would like to respond to and the action to take.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T02:51:45.323422857Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AuthRespondInvitesBody   {
   
   private List<@Valid AuthRespondInvitesBodyItem> invites = new ArrayList<>();

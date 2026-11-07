@@ -1,10 +1,12 @@
 package org.openapitools.api
 
-import org.openapitools.model.AdAccountsCountryResponse
-import org.openapitools.model.BookClosedResponse
-import org.openapitools.model.DeliveryMetricsResponse
-import org.openapitools.model.Error
-import org.openapitools.model.SingleInterestTargetingOptionResponse
+import org.openapitools.model.AdAccountCountriesGet200Response
+import org.openapitools.model.BookClosed
+import org.openapitools.model.DeliveryMetricsGet200Response
+import org.openapitools.model.PinterestLibError
+import org.openapitools.model.PublicTargetingType
+import org.openapitools.model.ReportType
+import org.openapitools.model.SingleInterestTargetingOption
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -21,7 +23,8 @@ class ResourcesApiTest {
     @Test
     fun adAccountCountriesGetTest() {
         
-        val response: ResponseEntity<AdAccountsCountryResponse> = api.adAccountCountriesGet()
+        
+        val response: ResponseEntity<AdAccountCountriesGet200Response> = api.adAccountCountriesGet()
 
         // TODO: test validations
     }
@@ -34,9 +37,10 @@ class ResourcesApiTest {
      */
     @Test
     fun deliveryMetricsGetTest() {
-        val reportType: kotlin.String? = TODO()
+        val reportType: ReportType? = TODO()
         
-        val response: ResponseEntity<DeliveryMetricsResponse> = api.deliveryMetricsGet(reportType)
+        
+        val response: ResponseEntity<DeliveryMetricsGet200Response> = api.deliveryMetricsGet(reportType)
 
         // TODO: test validations
     }
@@ -51,7 +55,8 @@ class ResourcesApiTest {
     fun interestTargetingOptionsGetTest() {
         val interestId: kotlin.String = TODO()
         
-        val response: ResponseEntity<SingleInterestTargetingOptionResponse> = api.interestTargetingOptionsGet(interestId)
+        
+        val response: ResponseEntity<SingleInterestTargetingOption> = api.interestTargetingOptionsGet(interestId)
 
         // TODO: test validations
     }
@@ -64,6 +69,7 @@ class ResourcesApiTest {
      */
     @Test
     fun leadFormQuestionsGetTest() {
+        
         
         val response: ResponseEntity<Unit> = api.leadFormQuestionsGet()
 
@@ -80,7 +86,8 @@ class ResourcesApiTest {
     fun metricsReadyStateGetTest() {
         val date: kotlin.String = TODO()
         
-        val response: ResponseEntity<BookClosedResponse> = api.metricsReadyStateGet(date)
+        
+        val response: ResponseEntity<BookClosed> = api.metricsReadyStateGet(date)
 
         // TODO: test validations
     }
@@ -93,13 +100,14 @@ class ResourcesApiTest {
      */
     @Test
     fun targetingOptionsGetTest() {
-        val targetingType: kotlin.String = TODO()
+        val targetingType: PublicTargetingType = TODO()
+        val adAccountId: kotlin.String? = TODO()
         val clientId: kotlin.String? = TODO()
         val oauthSignature: kotlin.String? = TODO()
         val timestamp: kotlin.String? = TODO()
-        val adAccountId: kotlin.String? = TODO()
         
-        val response: ResponseEntity<List<kotlin.Any>> = api.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
+        
+        val response: ResponseEntity<List<kotlin.Any>> = api.targetingOptionsGet(targetingType, adAccountId, clientId, oauthSignature, timestamp)
 
         // TODO: test validations
     }

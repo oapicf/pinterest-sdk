@@ -30,7 +30,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-11-03T06:15:11.297068727Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-11-07T02:51:11.241513942Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public interface BoardsApiService {
       public Response boardSectionsCreate(String boardId, BoardSectionCreate boardSectionCreate, String adAccountId, SecurityContext securityContext);
       public Response boardSectionsDelete(String boardId, String sectionId, String adAccountId, SecurityContext securityContext);

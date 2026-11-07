@@ -32,7 +32,7 @@ import javax.annotation.Generated;
   PerformancePlusCampaignSettings.JSON_PROPERTY_PINNER_LIST_EXCLUSIONS
 })
 @JsonTypeName("PerformancePlusCampaignSettings")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class PerformancePlusCampaignSettings {
     public static final String JSON_PROPERTY_BOOST_PROSPECTING_AD_GROUP_BID = "boost_prospecting_ad_group_bid";

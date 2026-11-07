@@ -1,8 +1,8 @@
 module.exports = {
     "CustomerListUploadCreateResponseSample": 
         { data: {} },
-    "CustomerListUploadResponseSample": 
+    "CustomerListUploadSample": 
         { data: {} },
-    "CustomerListUploadResponseSample": 
+    "CustomerListUploadSample": 
         { data: {} },
 }

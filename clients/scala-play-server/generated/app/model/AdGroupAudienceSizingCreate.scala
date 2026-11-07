@@ -10,7 +10,7 @@ import play.api.libs.json._
   * @param placementGroup [Placement group](/docs/redoc/#section/Placement-group).
   * @param productGroupIds Targeted product group IDs. **Note:** This can only be combined with shopping/catalog sales campaigns. For more information, [click here](https://help.pinterest.com/en/business/article/shopping-ads#section-14571). SHOPPING_RETARGETING must be included in targeting_spec object or this field will be ignored.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class AdGroupAudienceSizingCreate(
   autoTargetingEnabled: Option[Boolean],
   creativeTypes: Option[List[AdGroupAudienceSizingCreativeTypes]],

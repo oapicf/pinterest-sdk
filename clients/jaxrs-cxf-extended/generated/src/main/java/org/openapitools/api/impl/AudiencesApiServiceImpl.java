@@ -1,11 +1,13 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Audience;
-import org.openapitools.model.AudienceCreateRequest;
-import org.openapitools.model.AudienceUpdateRequest;
+import org.openapitools.model.AdAccountsAudience;
+import org.openapitools.model.AdAccountsAudienceCreate;
+import org.openapitools.model.AdAccountsAudienceUpdate;
+import org.openapitools.model.AudienceOwnershipType;
 import org.openapitools.model.AudiencesList200Response;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -30,11 +32,11 @@ public class AudiencesApiServiceImpl implements AudiencesApi {
     /**
      * Create audience
      *
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+     * Create a new audience for the ad account.
      *
      */
     @Override
-    public Audience audiencesCreate(String adAccountId, AudienceCreateRequest audienceCreateRequest) {
+    public AdAccountsAudience audiencesCreate(String adAccountId, AdAccountsAudienceCreate adAccountsAudienceCreate) {
         // TODO: Implement...
         return null;
     }
@@ -46,7 +48,7 @@ public class AudiencesApiServiceImpl implements AudiencesApi {
      *
      */
     @Override
-    public Audience audiencesGet(String adAccountId, String audienceId) {
+    public AdAccountsAudience audiencesGet(String audienceId, String adAccountId) {
         // TODO: Implement...
         return null;
     }
@@ -58,7 +60,7 @@ public class AudiencesApiServiceImpl implements AudiencesApi {
      *
      */
     @Override
-    public AudiencesList200Response audiencesList(String adAccountId, String bookmark, String order, Integer pageSize, String ownershipType) {
+    public AudiencesList200Response audiencesList(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order, AudienceOwnershipType ownershipType, Boolean excludeNca) {
         // TODO: Implement...
         return null;
     }
@@ -66,11 +68,11 @@ public class AudiencesApiServiceImpl implements AudiencesApi {
     /**
      * Update audience
      *
-     * Update (edit or remove) an existing targeting audience.
+     * Update an existing audience for the ad account.
      *
      */
     @Override
-    public Audience audiencesUpdate(String adAccountId, String audienceId, AudienceUpdateRequest audienceUpdateRequest) {
+    public AdAccountsAudience audiencesUpdate(String audienceId, String adAccountId, AdAccountsAudienceUpdate adAccountsAudienceUpdate) {
         // TODO: Implement...
         return null;
     }

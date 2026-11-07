@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -23,7 +31,7 @@ import org.openapitools.client.models.AdvancedAuctionItems
 import org.openapitools.client.models.AdvancedAuctionItemsGetRequest
 import org.openapitools.client.models.AdvancedAuctionItemsSubmitRequest
 import org.openapitools.client.models.AdvancedAuctionProcessedItems
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 
 class AdvancedAuctionApiTest : ShouldSpec() {
     init {
@@ -33,7 +41,7 @@ class AdvancedAuctionApiTest : ShouldSpec() {
         // to test advancedAuctionItemsGetPost
         should("test advancedAuctionItemsGetPost") {
             // uncomment below to test advancedAuctionItemsGetPost
-            //val advancedAuctionItemsGetRequest : AdvancedAuctionItemsGetRequest =  // AdvancedAuctionItemsGetRequest | Request object used to get bid options values for a batch of retail catalog items
+            //val advancedAuctionItemsGetRequest : AdvancedAuctionItemsGetRequest =  // AdvancedAuctionItemsGetRequest | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : AdvancedAuctionItems = apiInstance.advancedAuctionItemsGetPost(advancedAuctionItemsGetRequest, adAccountId)
             //result shouldBe ("TODO")
@@ -42,7 +50,7 @@ class AdvancedAuctionApiTest : ShouldSpec() {
         // to test advancedAuctionItemsSubmitPost
         should("test advancedAuctionItemsSubmitPost") {
             // uncomment below to test advancedAuctionItemsSubmitPost
-            //val advancedAuctionItemsSubmitRequest : AdvancedAuctionItemsSubmitRequest =  // AdvancedAuctionItemsSubmitRequest | Request object used to upsert or delete bid options for a batch of retail catalog items
+            //val advancedAuctionItemsSubmitRequest : AdvancedAuctionItemsSubmitRequest =  // AdvancedAuctionItemsSubmitRequest | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : AdvancedAuctionProcessedItems = apiInstance.advancedAuctionItemsSubmitPost(advancedAuctionItemsSubmitRequest, adAccountId)
             //result shouldBe ("TODO")

@@ -86,7 +86,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AdGroup.JSON_PROPERTY_PACING_DELIVERY_TYPE
 })
 @JsonTypeName("AdGroup")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdGroup {
     public static final String JSON_PROPERTY_AD_ACCOUNT_ID = "ad_account_id";

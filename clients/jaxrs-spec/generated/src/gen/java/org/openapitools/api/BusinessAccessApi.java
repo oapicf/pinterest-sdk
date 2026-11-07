@@ -21,7 +21,7 @@ import javax.validation.Valid;
 */
 @Path("/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts")
 @Api(description = "the business_access API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-03T06:16:03.582968295Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-07T02:51:53.160510316Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessAccessApi {
 
     @POST

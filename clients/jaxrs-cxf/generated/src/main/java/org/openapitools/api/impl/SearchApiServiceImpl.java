@@ -1,10 +1,10 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
+import org.openapitools.model.BoardsList200Response;
+import org.openapitools.model.PinsList200Response;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.SearchPartnerPins200Response;
-import org.openapitools.model.SearchUserBoardsGet200Response;
-import org.openapitools.model.SearchUserPinsList200Response;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,7 +28,7 @@ public class SearchApiServiceImpl implements SearchApi {
     /**
      * Search pins by a given search term
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Get the top 10 Pins by a given search term.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Get the top 10 Pins by a given search term.
      *
      */
     public SearchPartnerPins200Response searchPartnerPins(String term, String countryCode, String bookmark, String locale, Integer limit) {
@@ -40,10 +40,10 @@ public class SearchApiServiceImpl implements SearchApi {
     /**
      * Search user&#39;s boards
      *
-     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for boards for the \&quot;operation user_account\&quot;. This includes boards of all board types. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
      *
      */
-    public SearchUserBoardsGet200Response searchUserBoardsGet(String adAccountId, String bookmark, Integer pageSize, String query) {
+    public BoardsList200Response searchUserBoardsGet(String adAccountId, String query, String bookmark, Integer pageSize) {
         // TODO: Implement...
 
         return null;
@@ -52,10 +52,10 @@ public class SearchApiServiceImpl implements SearchApi {
     /**
      * Search user&#39;s Pins
      *
-     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Search for pins for the \&quot;operation user_account\&quot;. - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access](/docs/getting-started/using-business-access/) for more information.
      *
      */
-    public SearchUserPinsList200Response searchUserPinsList(String query, String adAccountId, String bookmark) {
+    public PinsList200Response searchUserPinsList(String query, String adAccountId, String bookmark) {
         // TODO: Implement...
 
         return null;

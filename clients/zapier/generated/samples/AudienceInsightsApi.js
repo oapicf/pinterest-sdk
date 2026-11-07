@@ -1,6 +1,6 @@
 module.exports = {
-    "AudienceInsightsResponseSample": 
+    "AudienceInsightsSample": 
         { data: {} },
-    "AudienceDefinitionResponseSample": 
+    "audience_insights_scope_and_type_get_200_responseSample": 
         { data: {} },
 }

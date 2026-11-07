@@ -15,12 +15,12 @@ spec = withApp $ do
 
     describe "getBusinessesByTextAudiencesSharedAccountsR" $
         it "returns 501 Not Implemented" $ do
-            get $ BusinessesByTextAudiencesSharedAccountsR "729090764583391194"
+            get $ BusinessesByTextAudiencesSharedAccountsR "businessId_example"
             statusIs 501
 
     describe "getBusinessesByTextAudiencesR" $
         it "returns 501 Not Implemented" $ do
-            get $ BusinessesByTextAudiencesR "729090764583391194"
+            get $ BusinessesByTextAudiencesR "businessId_example"
             statusIs 501
 
     describe "patchAdAccountsByTextAudiencesAdAccountsSharedR" $
@@ -35,10 +35,10 @@ spec = withApp $ do
 
     describe "patchBusinessesByTextAudiencesAdAccountsSharedR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "PATCH" $ BusinessesByTextAudiencesAdAccountsSharedR "729090764583391194"
+            performMethod "PATCH" $ BusinessesByTextAudiencesAdAccountsSharedR "businessId_example"
             statusIs 501
 
     describe "patchBusinessesByTextAudiencesBusinessesSharedR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "PATCH" $ BusinessesByTextAudiencesBusinessesSharedR "729090764583391194"
+            performMethod "PATCH" $ BusinessesByTextAudiencesBusinessesSharedR "businessId_example"
             statusIs 501

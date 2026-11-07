@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "InviteAssetsSummary", description = "Ad accounts and profiles the member/partner will be granted access to with this invite/request.")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteAssetsSummary {
 
   private List<@Valid InviteAssetsSummaryItem> adAccounts = new ArrayList<>();

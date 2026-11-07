@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,15 +27,18 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.KeywordsApi
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.KeywordUpdateBody
+import org.openapitools.client.models.Keywords
+import org.openapitools.client.models.KeywordsCreate
 import org.openapitools.client.models.KeywordsGet200Response
 import org.openapitools.client.models.KeywordsMetricsArrayResponse
-import org.openapitools.client.models.KeywordsRequest
-import org.openapitools.client.models.KeywordsResponse
+import org.openapitools.client.models.KeywordsUpdate
 import org.openapitools.client.models.MatchType
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.TrendType
 import org.openapitools.client.models.TrendingKeywordsResponse
+import org.openapitools.client.models.TrendsAgeBucket
+import org.openapitools.client.models.TrendsGenderFilter
+import org.openapitools.client.models.TrendsL1Interest
 import org.openapitools.client.models.TrendsSupportedRegion
 
 class KeywordsApiTest : ShouldSpec() {
@@ -39,7 +50,7 @@ class KeywordsApiTest : ShouldSpec() {
         should("test countryKeywordsMetricsGet") {
             // uncomment below to test countryKeywordsMetricsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val countryCode : kotlin.String = US // kotlin.String | Two letter country code (ISO 3166-1 alpha-2)
+            //val countryCode : kotlin.String = countryCode_example // kotlin.String | Two letter country code (ISO 3166-1 alpha-2)
             //val keywords : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Comma-separated keywords
             //val result : KeywordsMetricsArrayResponse = apiInstance.countryKeywordsMetricsGet(adAccountId, countryCode, keywords)
             //result shouldBe ("TODO")
@@ -49,8 +60,8 @@ class KeywordsApiTest : ShouldSpec() {
         should("test keywordsCreate") {
             // uncomment below to test keywordsCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val keywordsRequest : KeywordsRequest =  // KeywordsRequest | 
-            //val result : KeywordsResponse = apiInstance.keywordsCreate(adAccountId, keywordsRequest)
+            //val keywordsCreate : KeywordsCreate =  // KeywordsCreate | 
+            //val result : Keywords = apiInstance.keywordsCreate(adAccountId, keywordsCreate)
             //result shouldBe ("TODO")
         }
 
@@ -59,12 +70,12 @@ class KeywordsApiTest : ShouldSpec() {
             // uncomment below to test keywordsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val campaignId : kotlin.String = campaignId_example // kotlin.String | Campaign Id to use to filter the results.
-            //val adGroupId : kotlin.String = 123123123 // kotlin.String | Ad group Id.
+            //val adGroupId : kotlin.String = adGroupId_example // kotlin.String | Ad group Id.
             //val adGroupIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
-            //val matchTypes : kotlin.collections.List<MatchType> =  // kotlin.collections.List<MatchType> | Keyword <a target=\"_blank\" href=\"/docs/api-features/targeting-overview/\">match type</a>
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. Default maximum of 250. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val matchTypes : kotlin.collections.List<MatchType> =  // kotlin.collections.List<MatchType> | Keyword [match type](/docs/api-features/targeting-overview/)
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : KeywordsGet200Response = apiInstance.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : KeywordsGet200Response = apiInstance.keywordsGet(adAccountId, campaignId, adGroupId, adGroupIds, matchTypes, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
@@ -72,25 +83,24 @@ class KeywordsApiTest : ShouldSpec() {
         should("test keywordsUpdate") {
             // uncomment below to test keywordsUpdate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val keywordUpdateBody : KeywordUpdateBody =  // KeywordUpdateBody | 
-            //val result : KeywordsResponse = apiInstance.keywordsUpdate(adAccountId, keywordUpdateBody)
+            //val keywordsUpdate : KeywordsUpdate =  // KeywordsUpdate | 
+            //val result : Keywords = apiInstance.keywordsUpdate(adAccountId, keywordsUpdate)
             //result shouldBe ("TODO")
         }
 
         // to test trendingKeywordsList
         should("test trendingKeywordsList") {
             // uncomment below to test trendingKeywordsList
-            //val region : TrendsSupportedRegion =  // TrendsSupportedRegion | The geographic region of interest. Only top trends within the specified region will be returned.<br /> The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`, corresponding to the following geographic areas: - `US` - United States - `CA` - Canada - `DE` - Germany - `FR` - France - `ES` - Spain - `IT` - Italy - `DE+AT+CH` - Germanic countries - `GB+IE` - Great Britain & Ireland - `IT+ES+PT+GR+MT` - Southern Europe - `PL+RO+HU+SK+CZ` - Eastern Europe - `SE+DK+FI+NO` - Nordic countries - `NL+BE+LU` - Benelux - `AR` - Argentina - `BR` - Brazil - `CO` - Colombia - `MX` - Mexico - `MX+AR+CO+CL` - Hispanic LatAm - `AU+NZ` - Australasia
-            //val trendType : TrendType =  // TrendType | The methodology used to rank how trendy a keyword is. - `growing` trends have high upward growth in search volume over the last quarter - `monthly` trends have high search volume in the last month - `yearly` trends have high search volume in the last year - `seasonal` trends have high upward growth in search volume over the last month and exhibit a seasonal recurring pattern (typically annual)
-            //val interests : kotlin.collections.List<kotlin.String> = ["beauty","womens_fashion"] // kotlin.collections.List<kotlin.String> | If set, filters the results to trends associated with the specified interests.<br /> If unset, trends for all interests will be returned.<br /> The list of supported interests is: - `animals` - Animals - `architecture` - Architecture - `art` - Art - `beauty` - Beauty - `childrens_fashion` - Children's Fashion - `design` - Design - `diy_and_crafts` - DIY & Crafts - `education` - Education - `electronics` - Electronics - `entertainment` - Entertainment - `event_planning` - Event Planning - `finance` - Finance - `food_and_drinks` - Food & Drink - `gardening` - Gardening - `health` - Health - `home_decor` - Home Decor - `mens_fashion` - Men's Fashion - `parenting` - Parenting - `quotes` - Quotes - `sport` - Sports - `travel` - Travel - `vehicles` - Vehicles - `wedding` - Wedding - `womens_fashion` - Women's Fashion
-            //val genders : kotlin.collections.List<kotlin.String> = ["female","unknown"] // kotlin.collections.List<kotlin.String> | If set, filters the results to trends among users who identify with the specified gender(s).<br /> If unset, trends among all genders will be returned.<br /> The `unknown` group includes users with unspecified or customized gender profile settings.
-            //val ages : kotlin.collections.List<kotlin.String> = ["35-44","50-54"] // kotlin.collections.List<kotlin.String> | If set, filters the results to trends among users in the specified age range(s).<br /> If unset, trends among all age groups will be returned.
-            //val includeKeywords : kotlin.collections.List<kotlin.String> = ["recipes","dessert"] // kotlin.collections.List<kotlin.String> | If set, filters the results to top trends which include at least one of the specified keywords.<br /> If unset, no keyword filtering logic is applied.
-            //val normalizeAgainstGroup : kotlin.Boolean = true // kotlin.Boolean | Governs how the resulting time series data will be normalized to a [0-100] scale.<br /> By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.<br /> If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.
-            //val limit : kotlin.Int = 25 // kotlin.Int | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.
-            //val includePrediction : kotlin.Boolean = true // kotlin.Boolean | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including predicted weekly search volume data for the next 90 days. By default (`false`), the response will not include predicted data.
-            //val includeDemographics : kotlin.Boolean = true // kotlin.Boolean | <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Closed beta</a> Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.
-            //val result : TrendingKeywordsResponse = apiInstance.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includePrediction, includeDemographics)
+            //val region : TrendsSupportedRegion =  // TrendsSupportedRegion |   The geographic region of interest. Only top trends within the specified region will be returned.    The `region` parameter is formatted as ISO 3166-2 country codes delimited by `+`, corresponding to the following geographic areas:   - `US` - United States   - `CA` - Canada   - `DE` - Germany   - `FR` - France   - `ES` - Spain   - `IT` - Italy   - `DE+AT+CH` - Germanic countries   - `GB+IE` - Great Britain & Ireland   - `IT+ES+PT+GR+MT` - Southern Europe   - `PL+RO+HU+SK+CZ` - Eastern Europe   - `SE+DK+FI+NO` - Nordic countries   - `NL+BE+LU` - Benelux   - `AR` - Argentina   - `BR` - Brazil   - `CO` - Colombia   - `MX` - Mexico   - `MX+AR+CO+CL` - Hispanic LatAm   - `AU+NZ` - Australasia
+            //val trendType : TrendType =  // TrendType |   The methodology used to rank how trendy a keyword is.   - `growing` trends have high upward growth in search volume over the last quarter   - `monthly` trends have high search volume in the last month   - `yearly` trends have high search volume in the last year   - `seasonal` trends have high upward growth in search volume over the last month and exhibit a seasonal recurring pattern (typically annual)
+            //val interests : kotlin.collections.List<TrendsL1Interest> =  // kotlin.collections.List<TrendsL1Interest> |   The list of supported interests is:   - `animals` - Animals   - `architecture` - Architecture   - `art` - Art   - `beauty` - Beauty   - `childrens_fashion` - Children's Fashion   - `design` - Design   - `diy_and_crafts` - DIY & Crafts   - `education` - Education   - `electronics` - Electronics   - `entertainment` - Entertainment   - `event_planning` - Event Planning   - `finance` - Finance   - `food_and_drinks` - Food & Drink   - `gardening` - Gardening   - `health` - Health   - `home_decor` - Home Decor   - `mens_fashion` - Men's Fashion   - `parenting` - Parenting   - `quotes` - Quotes   - `sport` - Sports   - `travel` - Travel   - `vehicles` - Vehicles   - `wedding` - Wedding   - `womens_fashion` - Women's Fashion
+            //val genders : kotlin.collections.List<TrendsGenderFilter> =  // kotlin.collections.List<TrendsGenderFilter> | If set, filters the results to trends among users who identify with the specified gender(s). If unset, trends among all genders will be returned. The `unknown` group includes users with unspecified or customized gender profile settings.
+            //val ages : kotlin.collections.List<TrendsAgeBucket> =  // kotlin.collections.List<TrendsAgeBucket> | If set, filters the results to trends among users in the specified age range(s). If unset, trends among all age groups will be returned.
+            //val includeKeywords : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | If set, filters the results to top trends which include at least one of the specified keywords. If unset, no keyword filtering logic is applied.
+            //val normalizeAgainstGroup : kotlin.Boolean = true // kotlin.Boolean |  Governs how the resulting time series data will be normalized to a [0-100] scale.    By default (`false`), the data will be normalized independently for each keyword.  The peak search volume observation in *each* keyword's time series will be represented by the value 100.  This is ideal for analyzing when an individual keyword is expected to peak in interest.    If set to `true`, the data will be normalized as a group.  The peak search volume observation across *all* keywords in the response will be represented by the value 100, and all other values scaled accordingly.  Use this option when you wish to compare relative search volume between multiple keywords.
+            //val limit : kotlin.Int = 56 // kotlin.Int | The maximum number of trending keywords that will be returned. Keywords are returned in trend-ranked order, so a `limit` of 50 will return the top 50 trends.
+            //val includeDemographics : kotlin.Boolean = true // kotlin.Boolean | Including the age and gender distribution for each keyword. By default (`false`), the response will not include demographics data.
+            //val result : TrendingKeywordsResponse = apiInstance.trendingKeywordsList(region, trendType, interests, genders, ages, includeKeywords, normalizeAgainstGroup, limit, includeDemographics)
             //result shouldBe ("TODO")
         }
 

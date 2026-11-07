@@ -16,11 +16,11 @@ open TestHelper
 open CatalogItemsApiHandlerTestsHelper
 open OpenAPI.CatalogItemsApiHandler
 open OpenAPI.CatalogItemsApiHandlerParams
-open OpenAPI.Model.CatalogsItems
 open OpenAPI.Model.CatalogsItemsBatch
+open OpenAPI.Model.CatalogsItemsBatchPostRequest
 open OpenAPI.Model.CatalogsItemsRequest
-open OpenAPI.Model.Error
-open OpenAPI.Model.ItemsBatchPostRequest
+open OpenAPI.Model.ItemsPost200Response
+open OpenAPI.Model.PinterestLibError
 
 module CatalogItemsApiHandlerTests =
 
@@ -29,7 +29,7 @@ module CatalogItemsApiHandlerTests =
   // ---------------------------------
 
   [<Fact>]
-  let ``ItemsBatchGet - Get item batch status returns 200 where Response containing the requested catalogs items batch`` () =
+  let ``ItemsBatchGet - Get item batch status returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -46,7 +46,24 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsBatchGet - Get item batch status returns 401 where Not authenticated to access catalogs items batch`` () =
+  let ``ItemsBatchGet - Get item batch status returns 400 where The request could not be understood by the server due to unexpected data.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/items/batch/{batch_id}".Replace("batchId", "ADDME") + "?adAccountId=ADDME"
+
+      HttpGet client path
+        |> isStatus (enum<HttpStatusCode>(400))
+        |> readText
+        |> shouldEqual "TESTME"
+        |> ignore
+      }
+
+  [<Fact>]
+  let ``ItemsBatchGet - Get item batch status returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -63,7 +80,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsBatchGet - Get item batch status returns 403 where Not authorized to access catalogs items batch`` () =
+  let ``ItemsBatchGet - Get item batch status returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -80,7 +97,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsBatchGet - Get item batch status returns 404 where Catalogs items batch not found`` () =
+  let ``ItemsBatchGet - Get item batch status returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -97,7 +114,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsBatchGet - Get item batch status returns 405 where Method Not Allowed.`` () =
+  let ``ItemsBatchGet - Get item batch status returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -107,14 +124,14 @@ module CatalogItemsApiHandlerTests =
       let path = "/v5/catalogs/items/batch/{batch_id}".Replace("batchId", "ADDME") + "?adAccountId=ADDME"
 
       HttpGet client path
-        |> isStatus (enum<HttpStatusCode>(405))
+        |> isStatus (enum<HttpStatusCode>(429))
         |> readText
         |> shouldEqual "TESTME"
         |> ignore
       }
 
   [<Fact>]
-  let ``ItemsBatchGet - Get item batch status returns 0 where Unexpected error`` () =
+  let ``ItemsBatchGet - Get item batch status returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -131,7 +148,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsBatchPost - Operate on item batch returns 200 where Response containing the requested catalogs items batch`` () =
+  let ``ItemsBatchPost - Operate on item batch returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -142,8 +159,8 @@ module CatalogItemsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getItemsBatchPostExample "application/json")
-      // or pass a body of type ItemsBatchPostRequest
-      let body = obj() :?> ItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsItemsBatchPostRequest
+      let body = obj() :?> CatalogsItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -153,7 +170,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsBatchPost - Operate on item batch returns 400 where Invalid request parameters.`` () =
+  let ``ItemsBatchPost - Operate on item batch returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -164,8 +181,8 @@ module CatalogItemsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getItemsBatchPostExample "application/json")
-      // or pass a body of type ItemsBatchPostRequest
-      let body = obj() :?> ItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsItemsBatchPostRequest
+      let body = obj() :?> CatalogsItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -175,7 +192,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsBatchPost - Operate on item batch returns 401 where Not authenticated to post catalogs items`` () =
+  let ``ItemsBatchPost - Operate on item batch returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -186,8 +203,8 @@ module CatalogItemsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getItemsBatchPostExample "application/json")
-      // or pass a body of type ItemsBatchPostRequest
-      let body = obj() :?> ItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsItemsBatchPostRequest
+      let body = obj() :?> CatalogsItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -197,7 +214,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsBatchPost - Operate on item batch returns 403 where Not authorized to post catalogs items`` () =
+  let ``ItemsBatchPost - Operate on item batch returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -208,8 +225,8 @@ module CatalogItemsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getItemsBatchPostExample "application/json")
-      // or pass a body of type ItemsBatchPostRequest
-      let body = obj() :?> ItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsItemsBatchPostRequest
+      let body = obj() :?> CatalogsItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -219,7 +236,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsBatchPost - Operate on item batch returns 0 where Unexpected error`` () =
+  let ``ItemsBatchPost - Operate on item batch returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -230,8 +247,52 @@ module CatalogItemsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getItemsBatchPostExample "application/json")
-      // or pass a body of type ItemsBatchPostRequest
-      let body = obj() :?> ItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type CatalogsItemsBatchPostRequest
+      let body = obj() :?> CatalogsItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(404))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``ItemsBatchPost - Operate on item batch returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/items/batch" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getItemsBatchPostExample "application/json")
+      // or pass a body of type CatalogsItemsBatchPostRequest
+      let body = obj() :?> CatalogsItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``ItemsBatchPost - Operate on item batch returns 0 where An unexpected error response.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/items/batch" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getItemsBatchPostExample "application/json")
+      // or pass a body of type CatalogsItemsBatchPostRequest
+      let body = obj() :?> CatalogsItemsBatchPostRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -241,7 +302,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsPost - Get catalogs items (POST) returns 200 where Response containing the requested catalogs items`` () =
+  let ``ItemsPost - Get catalogs items (POST) returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -263,7 +324,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsPost - Get catalogs items (POST) returns 400 where Invalid request`` () =
+  let ``ItemsPost - Get catalogs items (POST) returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -285,7 +346,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsPost - Get catalogs items (POST) returns 401 where Not authorized to access catalogs items`` () =
+  let ``ItemsPost - Get catalogs items (POST) returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -307,7 +368,7 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsPost - Get catalogs items (POST) returns 403 where Not authorized to access catalogs items`` () =
+  let ``ItemsPost - Get catalogs items (POST) returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -329,7 +390,51 @@ module CatalogItemsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``ItemsPost - Get catalogs items (POST) returns 0 where Unexpected error`` () =
+  let ``ItemsPost - Get catalogs items (POST) returns 404 where The requested resource could not be found on this server.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/items" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getItemsPostExample "application/json")
+      // or pass a body of type CatalogsItemsRequest
+      let body = obj() :?> CatalogsItemsRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(404))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``ItemsPost - Get catalogs items (POST) returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/catalogs/items" + "?adAccountId=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getItemsPostExample "application/json")
+      // or pass a body of type CatalogsItemsRequest
+      let body = obj() :?> CatalogsItemsRequest |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(429))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``ItemsPost - Get catalogs items (POST) returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()

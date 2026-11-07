@@ -4,13 +4,14 @@ import org.openapitools.model.Board;
 import org.openapitools.model.BoardCreate;
 import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
+import org.openapitools.model.BoardSectionCreate;
+import org.openapitools.model.BoardSectionUpdateWithRequiredBody;
 import org.openapitools.model.BoardSectionsList200Response;
 import org.openapitools.model.BoardWithUpdatePrivacy;
 import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
 import org.openapitools.model.CreativeType;
-import org.openapitools.model.Error;
 import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
@@ -44,11 +45,11 @@ public class BoardsApiTest {
     public void boardSectionsCreateTest() {
         // given
         String boardId = "example";
-        BoardSection boardSection = new BoardSection("Salads");
+        BoardSectionCreate boardSectionCreate = new BoardSectionCreate("Salads");
         String adAccountId = "example";
 
         // when
-        BoardSection body = api.boardSectionsCreate(boardId, boardSection, adAccountId).block();
+        BoardSection body = api.boardSectionsCreate(boardId, boardSectionCreate, adAccountId).block();
 
         // then
         // TODO implement the boardSectionsCreateTest()
@@ -69,7 +70,7 @@ public class BoardsApiTest {
         String adAccountId = "example";
 
         // when
-        api.boardSectionsDelete(boardId, sectionId, adAccountId).block();
+        BoardSection body = api.boardSectionsDelete(boardId, sectionId, adAccountId).block();
 
         // then
         // TODO implement the boardSectionsDeleteTest()
@@ -132,11 +133,11 @@ public class BoardsApiTest {
         // given
         String boardId = "example";
         String sectionId = "example";
-        BoardSection boardSection = new BoardSection("Salads");
+        BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody = new BoardSectionUpdateWithRequiredBody("Salads");
         String adAccountId = "example";
 
         // when
-        BoardSection body = api.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId).block();
+        BoardSection body = api.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId).block();
 
         // then
         // TODO implement the boardSectionsUpdateTest()
@@ -176,7 +177,7 @@ public class BoardsApiTest {
         String adAccountId = "example";
 
         // when
-        api.boardsDelete(boardId, adAccountId).block();
+        Board body = api.boardsDelete(boardId, adAccountId).block();
 
         // then
         // TODO implement the boardsDeleteTest()
@@ -235,14 +236,14 @@ public class BoardsApiTest {
     public void boardsListPinsTest() {
         // given
         String boardId = "example";
-        String bookmark = "example";
-        Integer pageSize = 25;
         List<CreativeType> creativeTypes = Arrays.asList();
         String adAccountId = "example";
         Boolean pinMetrics = false;
+        String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        BoardsListPins200Response body = api.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics).block();
+        BoardsListPins200Response body = api.boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize).block();
 
         // then
         // TODO implement the boardsListPinsTest()

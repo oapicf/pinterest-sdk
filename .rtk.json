@@ -1,13 +1,6 @@
 {
   "resources": [
     {
-      "path": "specification/pinterest-sdk.yml",
-      "type": "yaml",
-      "params": {
-        "property": "info.version"
-      }
-    },
-    {
       "path": "clients/java/conf.json",
       "type": "json",
       "params": {

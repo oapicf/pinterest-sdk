@@ -1,23 +1,25 @@
 package org.openapitools.controller;
 
+import org.openapitools.model.AssetGroupDeletion;
+import org.openapitools.model.AssetGroupDeletionDelete;
+import org.openapitools.model.AssetGroupInput;
+import org.openapitools.model.AssetGroupInputCreate;
+import org.openapitools.model.AssetGroupModification;
+import org.openapitools.model.AssetGroupModificationReadOrUpdate;
+import org.openapitools.model.AssetPermissionType;
+import org.openapitools.model.AssetSearchBy;
+import org.openapitools.model.AssetSortBy;
 import org.openapitools.model.BusinessAssetMembersGet200Response;
-import org.openapitools.model.BusinessAssetPartnersGet200Response;
 import org.openapitools.model.BusinessAssetsGet200Response;
-import org.openapitools.model.BusinessMemberAssetsGet200Response;
-import org.openapitools.model.BusinessMembersAssetAccessDeleteRequest;
+import org.openapitools.model.BusinessMemberAssetsGetResponse;
+import org.openapitools.model.BusinessMembersAssetAccessDeleteBody;
 import org.openapitools.model.BusinessPartnerAssetAccessGet200Response;
-import org.openapitools.model.CreateAssetGroupBody;
-import org.openapitools.model.CreateAssetGroupResponse;
-import org.openapitools.model.DeleteAssetGroupBody;
-import org.openapitools.model.DeleteAssetGroupResponse;
 import org.openapitools.model.DeleteMemberAccessResultsResponseArray;
 import org.openapitools.model.DeletePartnerAssetAccessBody;
-import org.openapitools.model.DeletePartnerAssetsResultsResponseArray;
-import org.openapitools.model.Error;
-import org.openapitools.model.PartnerType;
+import org.openapitools.model.DeletePartnerAssetAccessResultsResponseArray;
+import org.openapitools.model.NonDraftEntityStatus;
 import org.openapitools.model.PermissionsWithOwner;
-import org.openapitools.model.UpdateAssetGroupBody;
-import org.openapitools.model.UpdateAssetGroupResponse;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.UpdateMemberAssetAccessBody;
 import org.openapitools.model.UpdateMemberAssetsResultsResponseArray;
 import org.openapitools.model.UpdatePartnerAssetAccessBody;
@@ -72,7 +74,7 @@ public class BusinessAccessAssetsControllerTest {
      *
      * The method should: Create a new asset group.
      *
-     * Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+     * Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -80,11 +82,11 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void assetGroupCreateMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        CreateAssetGroupBody createAssetGroupBody = new CreateAssetGroupBody("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", Arrays.asList());
+        String businessId = "example";
+        AssetGroupInputCreate assetGroupInputCreate = new AssetGroupInputCreate("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", Arrays.asList());
 
         // when
-        CreateAssetGroupResponse result = controller.assetGroupCreate(businessId, createAssetGroupBody).block();
+        AssetGroupInput result = controller.assetGroupCreate(businessId, assetGroupInputCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -100,16 +102,16 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void assetGroupCreateClientApiTest() throws IOException {
         // given
-        CreateAssetGroupBody body = new CreateAssetGroupBody("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", Arrays.asList());
+        AssetGroupInputCreate body = new AssetGroupInputCreate("Asset groups that has ad accounts shared in Canada", "Canada Ad Accounts", Arrays.asList());
         String uri = UriTemplate.of("/businesses/{business_id}/asset_groups").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@2b737de9");
+            .accept("[Ljava.lang.String;@6d5eebd");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, CreateAssetGroupResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AssetGroupInput.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -128,11 +130,11 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void assetGroupDeleteMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        DeleteAssetGroupBody deleteAssetGroupBody = new DeleteAssetGroupBody(Arrays.asList("example"));
+        String businessId = "example";
+        AssetGroupDeletionDelete assetGroupDeletionDelete = new AssetGroupDeletionDelete(Arrays.asList("example"));
 
         // when
-        DeleteAssetGroupResponse result = controller.assetGroupDelete(businessId, deleteAssetGroupBody).block();
+        AssetGroupDeletion result = controller.assetGroupDelete(businessId, assetGroupDeletionDelete).block();
 
         // then
         Assertions.assertTrue(true);
@@ -148,16 +150,16 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void assetGroupDeleteClientApiTest() throws IOException {
         // given
-        DeleteAssetGroupBody body = new DeleteAssetGroupBody(Arrays.asList("example"));
+        AssetGroupDeletionDelete body = new AssetGroupDeletionDelete(Arrays.asList("example"));
         String uri = UriTemplate.of("/businesses/{business_id}/asset_groups").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@2cb7feef");
+            .accept("[Ljava.lang.String;@cd61b0");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, DeleteAssetGroupResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AssetGroupDeletion.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -176,11 +178,11 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void assetGroupUpdateMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        UpdateAssetGroupBody updateAssetGroupBody = new UpdateAssetGroupBody();
+        String businessId = "example";
+        AssetGroupModificationReadOrUpdate assetGroupModificationReadOrUpdate = new AssetGroupModificationReadOrUpdate();
 
         // when
-        UpdateAssetGroupResponse result = controller.assetGroupUpdate(businessId, updateAssetGroupBody).block();
+        AssetGroupModification result = controller.assetGroupUpdate(businessId, assetGroupModificationReadOrUpdate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -196,16 +198,16 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void assetGroupUpdateClientApiTest() throws IOException {
         // given
-        UpdateAssetGroupBody body = new UpdateAssetGroupBody();
+        AssetGroupModificationReadOrUpdate body = new AssetGroupModificationReadOrUpdate();
         String uri = UriTemplate.of("/businesses/{business_id}/asset_groups").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@13efea9b");
+            .accept("[Ljava.lang.String;@12271417");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, UpdateAssetGroupResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AssetGroupModification.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -224,15 +226,15 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void businessAssetMembersGetMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        String assetId = "729090764583391194";
+        String businessId = "example";
+        String assetId = "example";
+        Integer startIndex = 0;
         Boolean fetchSystemUsers = false;
         String bookmark = "example";
         Integer pageSize = 25;
-        Integer startIndex = 0;
 
         // when
-        BusinessAssetMembersGet200Response result = controller.businessAssetMembersGet(businessId, assetId, fetchSystemUsers, bookmark, pageSize, startIndex).block();
+        BusinessAssetMembersGet200Response result = controller.businessAssetMembersGet(businessId, assetId, startIndex, fetchSystemUsers, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -250,16 +252,16 @@ public class BusinessAccessAssetsControllerTest {
         // given
         String uri = UriTemplate.of("/businesses/{business_id}/assets/{asset_id}/members").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
-            put("asset_id", "729090764583391194");
+            put("business_id", "example");
+            put("asset_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@af9c11e");
+            .accept("[Ljava.lang.String;@2ecd3df0");
         request.getParameters()
+            .add("start_index", String.valueOf(0)) // The query parameter format should be 
             .add("fetch_system_users", String.valueOf(false)) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("start_index", String.valueOf(0)); // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BusinessAssetMembersGet200Response.class);
@@ -281,14 +283,14 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void businessAssetPartnersGetMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        String assetId = "729090764583391194";
+        String businessId = "example";
+        String assetId = "example";
         Integer startIndex = 0;
         String bookmark = "example";
         Integer pageSize = 25;
 
         // when
-        BusinessAssetPartnersGet200Response result = controller.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize).block();
+        BusinessAssetMembersGet200Response result = controller.businessAssetPartnersGet(businessId, assetId, startIndex, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -306,18 +308,18 @@ public class BusinessAccessAssetsControllerTest {
         // given
         String uri = UriTemplate.of("/businesses/{business_id}/assets/{asset_id}/partners").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
-            put("asset_id", "729090764583391194");
+            put("business_id", "example");
+            put("asset_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3a55699d");
+            .accept("[Ljava.lang.String;@7c49e92");
         request.getParameters()
             .add("start_index", String.valueOf(0)) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, BusinessAssetPartnersGet200Response.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BusinessAssetMembersGet200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -336,10 +338,10 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void businessAssetsGetMethodTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         List<PermissionsWithOwner> permissions = Arrays.asList();
-        String childAssetId = "549764894835";
-        String assetGroupId = "7078106104032";
+        String childAssetId = "example";
+        String assetGroupId = "example";
         String assetType = "AD_ACCOUNT";
         Integer startIndex = 0;
         String bookmark = "example";
@@ -364,14 +366,14 @@ public class BusinessAccessAssetsControllerTest {
         // given
         String uri = UriTemplate.of("/businesses/{business_id}/assets").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2986a8be");
+            .accept("[Ljava.lang.String;@6c6faf3b");
         request.getParameters()
             .add("permissions", Arrays.asList()) // The query format should be multi
-            .add("child_asset_id", "549764894835") // The query parameter format should be 
-            .add("asset_group_id", "7078106104032") // The query parameter format should be 
+            .add("child_asset_id", "example") // The query parameter format should be 
+            .add("asset_group_id", "example") // The query parameter format should be 
             .add("asset_type", "AD_ACCOUNT") // The query parameter format should be 
             .add("start_index", String.valueOf(0)) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -397,15 +399,21 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void businessMemberAssetsGetMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        String memberId = "729090764583391194";
+        String businessId = "example";
+        String memberId = "example";
         String assetType = "AD_ACCOUNT";
         Integer startIndex = 0;
+        AssetSortBy sortBy = AssetSortBy.fromValue("NAME");
+        Boolean sortAscending = true;
+        AssetSearchBy searchBy = AssetSearchBy.fromValue("NAME");
+        String searchValue = "example";
+        AssetPermissionType assetPermissionType = AssetPermissionType.fromValue("AGGREGATED_PERMISSION");
+        List<NonDraftEntityStatus> adAccountStatuses = Arrays.asList();
         String bookmark = "example";
         Integer pageSize = 25;
 
         // when
-        BusinessMemberAssetsGet200Response result = controller.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, bookmark, pageSize).block();
+        BusinessMemberAssetsGetResponse result = controller.businessMemberAssetsGet(businessId, memberId, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, assetPermissionType, adAccountStatuses, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -423,19 +431,25 @@ public class BusinessAccessAssetsControllerTest {
         // given
         String uri = UriTemplate.of("/businesses/{business_id}/members/{member_id}/assets").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
-            put("member_id", "729090764583391194");
+            put("business_id", "example");
+            put("member_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@45513427");
+            .accept("[Ljava.lang.String;@4642990d");
         request.getParameters()
             .add("asset_type", "AD_ACCOUNT") // The query parameter format should be 
             .add("start_index", String.valueOf(0)) // The query parameter format should be 
+            .add("sort_by", String.valueOf(AssetSortBy.fromValue("NAME"))) // The query parameter format should be 
+            .add("sort_ascending", String.valueOf(true)) // The query parameter format should be 
+            .add("search_by", String.valueOf(AssetSearchBy.fromValue("NAME"))) // The query parameter format should be 
+            .add("search_value", "example") // The query parameter format should be 
+            .add("asset_permission_type", String.valueOf(AssetPermissionType.fromValue("AGGREGATED_PERMISSION"))) // The query parameter format should be 
+            .add("ad_account_statuses", Arrays.asList()) // The query format should be multi
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, BusinessMemberAssetsGet200Response.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BusinessMemberAssetsGetResponse.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -454,11 +468,11 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void businessMembersAssetAccessDeleteMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        BusinessMembersAssetAccessDeleteRequest businessMembersAssetAccessDeleteRequest = new BusinessMembersAssetAccessDeleteRequest(Arrays.asList());
+        String businessId = "example";
+        BusinessMembersAssetAccessDeleteBody businessMembersAssetAccessDeleteBody = new BusinessMembersAssetAccessDeleteBody(Arrays.asList());
 
         // when
-        DeleteMemberAccessResultsResponseArray result = controller.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteRequest).block();
+        DeleteMemberAccessResultsResponseArray result = controller.businessMembersAssetAccessDelete(businessId, businessMembersAssetAccessDeleteBody).block();
 
         // then
         Assertions.assertTrue(true);
@@ -474,13 +488,13 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void businessMembersAssetAccessDeleteClientApiTest() throws IOException {
         // given
-        BusinessMembersAssetAccessDeleteRequest body = new BusinessMembersAssetAccessDeleteRequest(Arrays.asList());
+        BusinessMembersAssetAccessDeleteBody body = new BusinessMembersAssetAccessDeleteBody(Arrays.asList());
         String uri = UriTemplate.of("/businesses/{business_id}/members/assets/access").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@164eca2");
+            .accept("[Ljava.lang.String;@1270e88");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, DeleteMemberAccessResultsResponseArray.class);
@@ -494,7 +508,7 @@ public class BusinessAccessAssetsControllerTest {
      *
      * The method should: Assign/Update member asset permissions
      *
-     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+     * Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -502,7 +516,7 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void businessMembersAssetAccessUpdateMethodTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         UpdateMemberAssetAccessBody updateMemberAssetAccessBody = new UpdateMemberAssetAccessBody(Arrays.asList());
 
         // when
@@ -525,10 +539,10 @@ public class BusinessAccessAssetsControllerTest {
         UpdateMemberAssetAccessBody body = new UpdateMemberAssetAccessBody(Arrays.asList());
         String uri = UriTemplate.of("/businesses/{business_id}/members/assets/access").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@10ec7492");
+            .accept("[Ljava.lang.String;@22b43030");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UpdateMemberAssetsResultsResponseArray.class);
@@ -550,16 +564,20 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void businessPartnerAssetAccessGetMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        String partnerId = "729090764583391194";
-        PartnerType partnerType = PartnerType.fromValue("INTERNAL");
+        String businessId = "example";
+        String partnerId = "example";
+        String partnerType = "INTERNAL";
         String assetType = "AD_ACCOUNT";
         Integer startIndex = 0;
-        Integer pageSize = 25;
+        AssetSortBy sortBy = AssetSortBy.fromValue("NAME");
+        Boolean sortAscending = true;
+        AssetSearchBy searchBy = AssetSearchBy.fromValue("NAME");
+        String searchValue = "example";
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        BusinessPartnerAssetAccessGet200Response result = controller.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, pageSize, bookmark).block();
+        BusinessPartnerAssetAccessGet200Response result = controller.businessPartnerAssetAccessGet(businessId, partnerId, partnerType, assetType, startIndex, sortBy, sortAscending, searchBy, searchValue, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -577,17 +595,21 @@ public class BusinessAccessAssetsControllerTest {
         // given
         String uri = UriTemplate.of("/businesses/{business_id}/partners/{partner_id}/assets").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
-            put("partner_id", "729090764583391194");
+            put("business_id", "example");
+            put("partner_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@cb3fd69");
+            .accept("[Ljava.lang.String;@3333452a");
         request.getParameters()
-            .add("partner_type", String.valueOf(PartnerType.fromValue("INTERNAL"))) // The query parameter format should be 
+            .add("partner_type", "INTERNAL") // The query parameter format should be 
             .add("asset_type", "AD_ACCOUNT") // The query parameter format should be 
             .add("start_index", String.valueOf(0)) // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("sort_by", String.valueOf(AssetSortBy.fromValue("NAME"))) // The query parameter format should be 
+            .add("sort_ascending", String.valueOf(true)) // The query parameter format should be 
+            .add("search_by", String.valueOf(AssetSearchBy.fromValue("NAME"))) // The query parameter format should be 
+            .add("search_value", "example") // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BusinessPartnerAssetAccessGet200Response.class);
@@ -609,11 +631,11 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void deletePartnerAssetAccessHandlerImplMethodTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         DeletePartnerAssetAccessBody deletePartnerAssetAccessBody = new DeletePartnerAssetAccessBody(Arrays.asList());
 
         // when
-        DeletePartnerAssetsResultsResponseArray result = controller.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody).block();
+        DeletePartnerAssetAccessResultsResponseArray result = controller.deletePartnerAssetAccessHandlerImpl(businessId, deletePartnerAssetAccessBody).block();
 
         // then
         Assertions.assertTrue(true);
@@ -632,13 +654,13 @@ public class BusinessAccessAssetsControllerTest {
         DeletePartnerAssetAccessBody body = new DeletePartnerAssetAccessBody(Arrays.asList());
         String uri = UriTemplate.of("/businesses/{business_id}/partners/assets").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@400f00d4");
+            .accept("[Ljava.lang.String;@61eb38b0");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, DeletePartnerAssetsResultsResponseArray.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, DeletePartnerAssetAccessResultsResponseArray.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -657,7 +679,7 @@ public class BusinessAccessAssetsControllerTest {
     @Disabled("Not Implemented")
     void updatePartnerAssetAccessHandlerImplMethodTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         UpdatePartnerAssetAccessBody updatePartnerAssetAccessBody = new UpdatePartnerAssetAccessBody(Arrays.asList());
 
         // when
@@ -680,10 +702,10 @@ public class BusinessAccessAssetsControllerTest {
         UpdatePartnerAssetAccessBody body = new UpdatePartnerAssetAccessBody(Arrays.asList());
         String uri = UriTemplate.of("/businesses/{business_id}/partners/assets").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@6628f58b");
+            .accept("[Ljava.lang.String;@5881294b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, UpdatePartnerAssetsResultsResponseArray.class);

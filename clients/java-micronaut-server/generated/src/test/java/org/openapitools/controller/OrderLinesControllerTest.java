@@ -1,8 +1,9 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
 import org.openapitools.model.OrderLine;
 import org.openapitools.model.OrderLinesList200Response;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -61,11 +62,11 @@ public class OrderLinesControllerTest {
     @Disabled("Not Implemented")
     void orderLinesGetMethodTest() {
         // given
-        String adAccountId = "example";
         String orderLineId = "example";
+        String adAccountId = "example";
 
         // when
-        OrderLine result = controller.orderLinesGet(adAccountId, orderLineId).block();
+        OrderLine result = controller.orderLinesGet(orderLineId, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -83,11 +84,11 @@ public class OrderLinesControllerTest {
         // given
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/order_lines/{order_line_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("ad_account_id", "example");
             put("order_line_id", "example");
+            put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4dbd8d6");
+            .accept("[Ljava.lang.String;@6a3e296c");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, OrderLine.class);
@@ -99,7 +100,7 @@ public class OrderLinesControllerTest {
     /**
      * This test is used to validate the implementation of orderLinesList() method
      *
-     * The method should: Get order lines
+     * The method should: Get order lines.
      *
      * List existing order lines associated with an ad account.
      *
@@ -110,12 +111,12 @@ public class OrderLinesControllerTest {
     void orderLinesListMethodTest() {
         // given
         String adAccountId = "example";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
 
         // when
-        OrderLinesList200Response result = controller.orderLinesList(adAccountId, pageSize, order, bookmark).block();
+        OrderLinesList200Response result = controller.orderLinesList(adAccountId, bookmark, pageSize, order).block();
 
         // then
         Assertions.assertTrue(true);
@@ -136,11 +137,11 @@ public class OrderLinesControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@9c1d1ea");
+            .accept("[Ljava.lang.String;@94ecd0e");
         request.getParameters()
+            .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("order", "ASCENDING") // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("order", String.valueOf(PinterestLibPaginationOrder.fromValue("ASCENDING"))); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, OrderLinesList200Response.class);

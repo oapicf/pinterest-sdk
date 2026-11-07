@@ -3,15 +3,14 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
-from typing import Optional  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
+from typing import Any, Dict, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
 from openapi_server.models.catalogs_create_report_response import CatalogsCreateReportResponse  # noqa: F401
 from openapi_server.models.catalogs_report import CatalogsReport  # noqa: F401
 from openapi_server.models.catalogs_report_parameters import CatalogsReportParameters  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 from openapi_server.models.reports_stats200_response import ReportsStats200Response  # noqa: F401
-from openapi_server.models.reports_stats_parameters_parameter import ReportsStatsParametersParameter  # noqa: F401
 
 
 def test_reports_get(client: TestClient):
@@ -40,7 +39,7 @@ def test_reports_create(client: TestClient):
 
     Build catalogs report
     """
-    catalogs_report_parameters = {"catalog_type":"RETAIL"}
+    catalogs_report_parameters = openapi_server.CatalogsReportParameters()
     params = [("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
@@ -63,7 +62,7 @@ def test_reports_stats(client: TestClient):
 
     List report stats
     """
-    params = [("ad_account_id", 'ad_account_id_example'),     ("page_size", 25),     ("bookmark", 'bookmark_example'),     ("parameters", openapi_server.ReportsStatsParametersParameter())]
+    params = [("ad_account_id", 'ad_account_id_example'),     ("parameters", {'key': openapi_server.CatalogsReportStatsParameters()}),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
     }

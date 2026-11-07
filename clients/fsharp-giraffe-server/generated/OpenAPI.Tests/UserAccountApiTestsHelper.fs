@@ -24,7 +24,7 @@ module UserAccountApiHandlerTestsHelper =
   let mutable FollowUserUpdateBody = ""
 
   FollowUserUpdateBody <- WebUtility.HtmlDecode "{
-  &quot;auto_follow&quot; : false
+  &quot;auto_follow&quot; : true
 }"
   FollowUserUpdateExamples <- FollowUserUpdateExamples.Add("application/json", FollowUserUpdateBody)
 
@@ -56,8 +56,8 @@ module UserAccountApiHandlerTestsHelper =
   let mutable VerifyWebsiteUpdateBody = ""
 
   VerifyWebsiteUpdateBody <- WebUtility.HtmlDecode "{
-  &quot;website&quot; : &quot;pintest-website-12345678.test/test_1&quot;,
-  &quot;verification_method&quot; : &quot;METATAG&quot;
+  &quot;verification_method&quot; : &quot;&quot;,
+  &quot;website&quot; : &quot;website&quot;
 }"
   VerifyWebsiteUpdateExamples <- VerifyWebsiteUpdateExamples.Add("application/json", VerifyWebsiteUpdateBody)
 

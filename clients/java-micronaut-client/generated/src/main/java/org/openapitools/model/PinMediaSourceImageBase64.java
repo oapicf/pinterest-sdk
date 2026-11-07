@@ -32,7 +32,7 @@ import javax.annotation.Generated;
   PinMediaSourceImageBase64.JSON_PROPERTY_SOURCE_TYPE
 })
 @JsonTypeName("PinMediaSourceImageBase64")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class PinMediaSourceImageBase64 {
     public static final String JSON_PROPERTY_CONTENT_TYPE = "content_type";

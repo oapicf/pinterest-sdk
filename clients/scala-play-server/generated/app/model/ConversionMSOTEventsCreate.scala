@@ -21,7 +21,7 @@ import play.api.libs.json._
   * @param value Order value of the conversion event. Required if `event_name` is `add_to_cart` or `checkout`.
   * @param viewWindow View window used for attribution (for example, `1d`, `7d`, `30d`).
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class ConversionMSOTEventsCreate(
   actionTimestamps: Option[List[Long]],
   adGroupId: String,

@@ -11,16 +11,16 @@ void main() {
     //
     // Get a specific existing order line associated with an ad account.
     //
-    //Future<OrderLine> orderLinesGet(String adAccountId, String orderLineId) async
+    //Future<OrderLine> orderLinesGet(String orderLineId, String adAccountId) async
     test('test orderLinesGet', () async {
       // TODO
     });
 
-    // Get order lines
+    // Get order lines.
     //
     // List existing order lines associated with an ad account.
     //
-    //Future<OrderLinesList200Response> orderLinesList(String adAccountId, { int pageSize, String order, String bookmark }) async
+    //Future<OrderLinesList200Response> orderLinesList(String adAccountId, { String bookmark, int pageSize, PinterestLibPaginationOrder order }) async
     test('test orderLinesList', () async {
       // TODO
     });

@@ -16,17 +16,17 @@ feature -- Test routines
     test_asset_group_create
             -- Create a new asset group.
             --
-            -- Create a new asset group with the specified parameters. - An &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/asset-groups\&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+            -- Create a new asset group with the specified parameters. - An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
         local
-            l_response: CREATE_ASSET_GROUP_RESPONSE
+            l_response: ASSET_GROUP_INPUT
             l_business_id: STRING_32
-            l_create_asset_group_body: CREATE_ASSET_GROUP_BODY
+            l_asset_group_input_create: ASSET_GROUP_INPUT_CREATE
         do
             -- TODO: Initialize required params.
             -- l_business_id
-            -- l_create_asset_group_body
+            -- l_asset_group_input_create
 
-            -- l_response := api.asset_group_create(l_business_id, l_create_asset_group_body)
+            -- l_response := api.asset_group_create(l_business_id, l_asset_group_input_create)
             assert ("not_implemented", False)
         end
 
@@ -35,15 +35,15 @@ feature -- Test routines
             --
             -- Delete a batch of asset groups.
         local
-            l_response: DELETE_ASSET_GROUP_RESPONSE
+            l_response: ASSET_GROUP_DELETION
             l_business_id: STRING_32
-            l_delete_asset_group_body: DELETE_ASSET_GROUP_BODY
+            l_asset_group_deletion_delete: ASSET_GROUP_DELETION_DELETE
         do
             -- TODO: Initialize required params.
             -- l_business_id
-            -- l_delete_asset_group_body
+            -- l_asset_group_deletion_delete
 
-            -- l_response := api.asset_group_delete(l_business_id, l_delete_asset_group_body)
+            -- l_response := api.asset_group_delete(l_business_id, l_asset_group_deletion_delete)
             assert ("not_implemented", False)
         end
 
@@ -52,15 +52,15 @@ feature -- Test routines
             --
             -- Update a batch of asset groups with the specified parameters.
         local
-            l_response: UPDATE_ASSET_GROUP_RESPONSE
+            l_response: ASSET_GROUP_MODIFICATION
             l_business_id: STRING_32
-            l_update_asset_group_body: UPDATE_ASSET_GROUP_BODY
+            l_asset_group_modification_read_or_update: ASSET_GROUP_MODIFICATION_READ_OR_UPDATE
         do
             -- TODO: Initialize required params.
             -- l_business_id
-            -- l_update_asset_group_body
+            -- l_asset_group_modification_read_or_update
 
-            -- l_response := api.asset_group_update(l_business_id, l_update_asset_group_body)
+            -- l_response := api.asset_group_update(l_business_id, l_asset_group_modification_read_or_update)
             assert ("not_implemented", False)
         end
 
@@ -72,16 +72,16 @@ feature -- Test routines
             l_response: BUSINESS_ASSET_MEMBERS_GET_200_RESPONSE
             l_business_id: STRING_32
             l_asset_id: STRING_32
+            l_start_index: INTEGER_32
             l_fetch_system_users: BOOLEAN
             l_bookmark: STRING_32
             l_page_size: INTEGER_32
-            l_start_index: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_business_id
             -- l_asset_id
 
-            -- l_response := api.business_asset_members_get(l_business_id, l_asset_id, l_fetch_system_users, l_bookmark, l_page_size, l_start_index)
+            -- l_response := api.business_asset_members_get(l_business_id, l_asset_id, l_start_index, l_fetch_system_users, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
@@ -90,7 +90,7 @@ feature -- Test routines
             --
             -- Get all the partners the requesting business has granted access to on the given asset. Note: If the asset has been shared with you, an empty array will be returned. This is because an asset shared with you cannot be shared with a different partner.
         local
-            l_response: BUSINESS_ASSET_PARTNERS_GET_200_RESPONSE
+            l_response: BUSINESS_ASSET_MEMBERS_GET_200_RESPONSE
             l_business_id: STRING_32
             l_asset_id: STRING_32
             l_start_index: INTEGER_32
@@ -132,11 +132,17 @@ feature -- Test routines
             --
             -- Get assets on which you assigned asset permissions to the given member. Can be used to: - get all assets, regardless of asset type or - get assets of one asset type by using the asset_type query. The return response will include the permissions the member has to that asset and the asset type.
         local
-            l_response: BUSINESS_MEMBER_ASSETS_GET_200_RESPONSE
+            l_response: BUSINESS_MEMBER_ASSETS_GET_RESPONSE
             l_business_id: STRING_32
             l_member_id: STRING_32
             l_asset_type: STRING_32
             l_start_index: INTEGER_32
+            l_sort_by: ASSET_SORT_BY
+            l_sort_ascending: BOOLEAN
+            l_search_by: ASSET_SEARCH_BY
+            l_search_value: STRING_32
+            l_asset_permission_type: ASSET_PERMISSION_TYPE
+            l_ad_account_statuses: LIST [NON_DRAFT_ENTITY_STATUS]
             l_bookmark: STRING_32
             l_page_size: INTEGER_32
         do
@@ -144,7 +150,7 @@ feature -- Test routines
             -- l_business_id
             -- l_member_id
 
-            -- l_response := api.business_member_assets_get(l_business_id, l_member_id, l_asset_type, l_start_index, l_bookmark, l_page_size)
+            -- l_response := api.business_member_assets_get(l_business_id, l_member_id, l_asset_type, l_start_index, l_sort_by, l_sort_ascending, l_search_by, l_search_value, l_asset_permission_type, l_ad_account_statuses, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
@@ -155,20 +161,20 @@ feature -- Test routines
         local
             l_response: DELETE_MEMBER_ACCESS_RESULTS_RESPONSE_ARRAY
             l_business_id: STRING_32
-            l_business_members_asset_access_delete_request: BUSINESS_MEMBERS_ASSET_ACCESS_DELETE_REQUEST
+            l_business_members_asset_access_delete_body: BUSINESS_MEMBERS_ASSET_ACCESS_DELETE_BODY
         do
             -- TODO: Initialize required params.
             -- l_business_id
-            -- l_business_members_asset_access_delete_request
+            -- l_business_members_asset_access_delete_body
 
-            -- l_response := api.business_members_asset_access_delete(l_business_id, l_business_members_asset_access_delete_request)
+            -- l_response := api.business_members_asset_access_delete(l_business_id, l_business_members_asset_access_delete_body)
             assert ("not_implemented", False)
         end
 
     test_business_members_asset_access_update
             -- Assign/Update member asset permissions
             --
-            -- Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE. 
+            -- Grant multiple members access to assets and/or update multiple member&#39;s exisiting permissions to an asset. Note: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
         local
             l_response: UPDATE_MEMBER_ASSETS_RESULTS_RESPONSE_ARRAY
             l_business_id: STRING_32
@@ -190,17 +196,21 @@ feature -- Test routines
             l_response: BUSINESS_PARTNER_ASSET_ACCESS_GET_200_RESPONSE
             l_business_id: STRING_32
             l_partner_id: STRING_32
-            l_partner_type: PARTNER_TYPE
+            l_partner_type: STRING_32
             l_asset_type: STRING_32
             l_start_index: INTEGER_32
-            l_page_size: INTEGER_32
+            l_sort_by: ASSET_SORT_BY
+            l_sort_ascending: BOOLEAN
+            l_search_by: ASSET_SEARCH_BY
+            l_search_value: STRING_32
             l_bookmark: STRING_32
+            l_page_size: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_business_id
             -- l_partner_id
 
-            -- l_response := api.business_partner_asset_access_get(l_business_id, l_partner_id, l_partner_type, l_asset_type, l_start_index, l_page_size, l_bookmark)
+            -- l_response := api.business_partner_asset_access_get(l_business_id, l_partner_id, l_partner_type, l_asset_type, l_start_index, l_sort_by, l_sort_ascending, l_search_by, l_search_value, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
@@ -209,7 +219,7 @@ feature -- Test routines
             --
             -- Terminate multiple partners&#39; access to an asset. If - partner_type&#x3D;INTERNAL: You will terminate a partner&#39;s asset access to your business assets. - partner_type&#x3D;EXTERNAL: You will terminate your own access to your partner&#39;s business assets.
         local
-            l_response: DELETE_PARTNER_ASSETS_RESULTS_RESPONSE_ARRAY
+            l_response: DELETE_PARTNER_ASSET_ACCESS_RESULTS_RESPONSE_ARRAY
             l_business_id: STRING_32
             l_delete_partner_asset_access_body: DELETE_PARTNER_ASSET_ACCESS_BODY
         do

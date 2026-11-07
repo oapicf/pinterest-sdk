@@ -20,7 +20,7 @@ void main() {
     //
     // Cancel membership/partnership invites and/or requests.
     //
-    //Future<DeleteInvitesResultsResponseArray> cancelInvitesOrRequests(String businessId, CancelInvitesBody cancelInvitesBody) async
+    //Future<CancelInvitesResponse> cancelInvitesOrRequests(String businessId, CancelInvitesRequest cancelInvitesRequest) async
     test('test cancelInvitesOrRequests', () async {
       // TODO
     });
@@ -47,7 +47,7 @@ void main() {
     //
     // Get the membership/partnership invites and/or requests for the authorized user.
     //
-    //Future<GetInvites200Response> getInvites(String businessId, { bool isMember, BuiltList<String> inviteStatus, InviteType inviteType, String bookmark, int pageSize }) async
+    //Future<GetInvites200Response> getInvites(String businessId, { bool isMember, BuiltList<InviteFilterStatus> inviteStatus, InviteType inviteType, String bookmark, int pageSize }) async
     test('test getInvites', () async {
       // TODO
     });

@@ -19,7 +19,7 @@ void main() {
   group('tests for TermsApi', () {
     // List related terms
     //
-    // Get a list of terms logically related to each input term. <p/> Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
+    // Get a list of terms logically related to each input term.  Example: the term 'workout' would list related terms like 'one song workout', 'yoga workout', 'workout motivation', etc.
     //
     //Future<RelatedTerms> termsRelatedList(List<String> terms) async
     test('test termsRelatedList', () async {
@@ -28,7 +28,7 @@ void main() {
 
     // List suggested terms
     //
-    // Get popular search terms that begin with your input term. <p/> Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
+    // Get popular search terms that begin with your input term.  Example: 'sport' would return popular terms like 'sports bar' and 'sportswear', but not 'motor sports' since the phrase does not begin with the given term.
     //
     //Future<List<String>> termsSuggestedList(String term, { int limit }) async
     test('test termsSuggestedList', () async {

@@ -4,9 +4,9 @@ import org.openapitools.model.ConversionEventResponse;
 import org.openapitools.model.ConversionTag;
 import org.openapitools.model.ConversionTagCreate;
 import org.openapitools.model.ConversionTagsList200Response;
-import org.openapitools.model.Error;
 import org.openapitools.model.PageVisitConversionTagsGet200Response;
 import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -39,7 +39,7 @@ public class ConversionTagsApiTest {
     public void conversionTagsCreateTest() {
         // given
         String adAccountId = "example";
-        ConversionTagCreate conversionTagCreate = new ConversionTagCreate("ACME Checkout Test Tag");
+        ConversionTagCreate conversionTagCreate = new ConversionTagCreate("download_picture");
 
         // when
         ConversionTag body = api.conversionTagsCreate(adAccountId, conversionTagCreate).block();
@@ -59,7 +59,7 @@ public class ConversionTagsApiTest {
     public void conversionTagsGetTest() {
         // given
         String adAccountId = "example";
-        String conversionTagId = "2617998078212";
+        String conversionTagId = "example";
 
         // when
         ConversionTag body = api.conversionTagsGet(adAccountId, conversionTagId).block();
@@ -118,12 +118,12 @@ public class ConversionTagsApiTest {
     public void pageVisitConversionTagsGetTest() {
         // given
         String adAccountId = "example";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
 
         // when
-        PageVisitConversionTagsGet200Response body = api.pageVisitConversionTagsGet(adAccountId, pageSize, order, bookmark).block();
+        PageVisitConversionTagsGet200Response body = api.pageVisitConversionTagsGet(adAccountId, bookmark, pageSize, order).block();
 
         // then
         // TODO implement the pageVisitConversionTagsGetTest()

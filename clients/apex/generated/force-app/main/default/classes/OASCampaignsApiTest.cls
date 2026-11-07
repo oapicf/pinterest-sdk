@@ -3,7 +3,7 @@ private class OASCampaignsApiTest {
     /**
      * Get pins analytics
      *
-     * Get analytics for the pins given a campaign and pins in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.\n- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+     * Get analytics for the pins given a campaign and pins in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days.\n- If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
      */
     @isTest
     private static void adPinsAnalyticsTest() {
@@ -13,14 +13,14 @@ private class OASCampaignsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
             'campaignId' => 'null',
             'pinIds' => new List<String>{''},
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'columns' => new List<String>{'TOTAL_CONVERSIONS'},
-            'granularity' => DAY,
-            'clickWindowDays' => 1,
+            'columns' => new List<OASReportingColumnSync>{OASReportingColumnSync.getExample()},
+            'granularity' => '',
+            'adAccountId' => 'null',
+            'clickWindowDays' => '',
             'engagementWindowDays' => '',
             'viewWindowDays' => '',
             'conversionReportTime' => TIME_OF_AD_ACTION
@@ -35,51 +35,115 @@ private class OASCampaignsApiTest {
         client = new OASClient();
         api = new OASCampaignsApi(client);
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
         response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
         response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
+        response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
+        response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
+        response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
+        response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
         response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASCampaignsApi(client);
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
         response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
         response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
+        response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
+        response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
+        response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
+        response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASAdPinAnalytics>{OASAdPinAnalytics.getExample()};
         response = (List<OASAdPinAnalytics>) api.adPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
     }
@@ -87,7 +151,7 @@ private class OASCampaignsApiTest {
     /**
      * Get targeting analytics for campaigns
      *
-     * Get targeting analytics for one or more campaigns.\nFor the requested account and metrics, the response will include the requested metric information\n(e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. &quot;age_bucket&quot;) for applicable values (e.g. &quot;45-49&quot;). &lt;p/&gt;\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one\nof the necessary roles granted to them via\n&lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. &quot;age_bucket&quot;) for applicable values (e.g. &quot;45-49&quot;).\n\n* The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.\n* If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n* If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      */
     @isTest
     private static void campaignTargetingAnalyticsGetTest() {
@@ -102,9 +166,9 @@ private class OASCampaignsApiTest {
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
             'targetingTypes' => new List<OASAdsAnalyticsCampaignTargetingType>{OASAdsAnalyticsCampaignTargetingType.getExample()},
-            'columns' => new List<String>{'TOTAL_CONVERSIONS'},
-            'granularity' => DAY,
-            'clickWindowDays' => 1,
+            'columns' => new List<OASReportingColumnSync>{OASReportingColumnSync.getExample()},
+            'granularity' => '',
+            'clickWindowDays' => '',
             'engagementWindowDays' => '',
             'viewWindowDays' => '',
             'conversionReportTime' => TIME_OF_AD_ACTION,
@@ -135,8 +199,88 @@ private class OASCampaignsApiTest {
         expectedResponse = OASMetricsResponse.getExample();
         response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASCampaignsApi(client);
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASMetricsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASMetricsResponse.getExample();
+        response = (OASMetricsResponse) api.campaignTargetingAnalyticsGet(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASMetricsResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -157,7 +301,7 @@ private class OASCampaignsApiTest {
     /**
      * Get campaign analytics
      *
-     * Get analytics for the specified campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get analytics for the specified campaigns in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      */
     @isTest
     private static void campaignsAnalyticsTest() {
@@ -167,13 +311,13 @@ private class OASCampaignsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
             'campaignIds' => new List<String>{''},
-            'columns' => new List<String>{'TOTAL_CONVERSIONS'},
-            'granularity' => DAY,
-            'clickWindowDays' => 1,
+            'columns' => new List<OASReportingColumnSync>{OASReportingColumnSync.getExample()},
+            'granularity' => '',
+            'adAccountId' => 'null',
+            'clickWindowDays' => '',
             'engagementWindowDays' => '',
             'viewWindowDays' => '',
             'conversionReportTime' => TIME_OF_AD_ACTION,
@@ -183,66 +327,130 @@ private class OASCampaignsApiTest {
 
         OASClient client;
         OASCampaignsApi api;
-        List<OASCampaignsAnalyticsResponseInner> response;
-        List<OASCampaignsAnalyticsResponseInner> expectedResponse;
+        List<OASCampaignsAnalyticsMetrics> response;
+        List<OASCampaignsAnalyticsMetrics> expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASCampaignsApi(client);
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASCampaignsAnalyticsResponseInner>) api.campaignsAnalytics(params);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASCampaignsAnalyticsResponseInner>) api.campaignsAnalytics(params);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASCampaignsAnalyticsResponseInner>) api.campaignsAnalytics(params);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASCampaignsApi(client);
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASCampaignsAnalyticsResponseInner>) api.campaignsAnalytics(params);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASCampaignsAnalyticsResponseInner>) api.campaignsAnalytics(params);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASCampaignsAnalyticsResponseInner>) api.campaignsAnalytics(params);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASCampaignsAnalyticsMetrics>{OASCampaignsAnalyticsMetrics.getExample()};
+        response = (List<OASCampaignsAnalyticsMetrics>) api.campaignsAnalytics(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Create campaigns
      *
-     * Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads.\nFor more, see &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/set-up-your-campaign/&quot;&gt;Set up your campaign&lt;/a&gt;. &lt;p/&gt;\n&lt;strong&gt;Note:&lt;/strong&gt;\n- The values for \&#39;lifetime_spend_cap\&#39; and \&#39;daily_spend_cap\&#39; are microcurrency amounts based on the currency field set in the advertiser\&#39;s profile. (e.g. USD) &lt;p/&gt;\n&lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.&lt;/p&gt;\n&lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt;\n&lt;ul&gt;\n  &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;\n  &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt;\n&lt;ul&gt;\n  &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;\n  &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt;\n&lt;/ul&gt;
+     * Create multiple new campaigns. Every campaign has its own campaign_id\nand houses one or more ad groups, which contain one or more ads.\n\nFor more, see [Set up your campaign](https://help.pinterest.com/en/business/article/set-up-your-campaign/).\n\n**Note:**\n- The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser\&#39;s profile (e.g. USD).\n\nMicrocurrency is used to track very small transactions, based on the currency set in the advertiser\&#39;s profile.\n\nA microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser\&#39;s profile.\n\n**Equivalency equations**, using dollars as an example currency:\n\n- $1 &#x3D; 1,000,000 microdollars\n- 1 microdollar &#x3D; $0.000001\n\n**To convert between currency and microcurrency**, using dollars as an example currency:\n\n- To convert dollars to microdollars, multiply dollars by 1,000,000\n- To convert microdollars to dollars, divide microdollars by 1,000,000
      */
     @isTest
     private static void campaignsCreateTest() {
@@ -253,31 +461,71 @@ private class OASCampaignsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSCampaignCreateRequest' => new List<OASCampaignCreateRequest>{OASCampaignCreateRequest.getExample()}
+            'oaSCampaignCreateItem' => new List<OASCampaignCreateItem>{OASCampaignCreateItem.getExample()}
         };
 
         OASClient client;
         OASCampaignsApi api;
-        OASCampaignCreateResponse response;
-        OASCampaignCreateResponse expectedResponse;
+        OASCampaignBatchWriteResponseModel response;
+        OASCampaignBatchWriteResponseModel expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASCampaignsApi(client);
 
-        js = JSON.serialize(OASCampaignCreateResponse.getExample());
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCampaignCreateResponse.getExample();
-        response = (OASCampaignCreateResponse) api.campaignsCreate(params);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASCampaignCreateResponse.getExample());
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCampaignCreateResponse.getExample();
-        response = (OASCampaignCreateResponse) api.campaignsCreate(params);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsCreate(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -294,56 +542,136 @@ private class OASCampaignsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
-            'campaignId' => 'null'
+            'campaignId' => 'null',
+            'adAccountId' => 'null'
         };
 
         OASClient client;
         OASCampaignsApi api;
-        OASCampaignResponse response;
-        OASCampaignResponse expectedResponse;
+        OASCampaign response;
+        OASCampaign expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASCampaignsApi(client);
 
-        js = JSON.serialize(OASCampaignResponse.getExample());
+        js = JSON.serialize(OASCampaign.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCampaignResponse.getExample();
-        response = (OASCampaignResponse) api.campaignsGet(params);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASCampaignResponse.getExample());
+        js = JSON.serialize(OASCampaign.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCampaignResponse.getExample();
-        response = (OASCampaignResponse) api.campaignsGet(params);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASCampaignsApi(client);
 
-        js = JSON.serialize(OASCampaignResponse.getExample());
+        js = JSON.serialize(OASCampaign.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCampaignResponse.getExample();
-        response = (OASCampaignResponse) api.campaignsGet(params);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASCampaignResponse.getExample());
+        js = JSON.serialize(OASCampaign.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCampaignResponse.getExample();
-        response = (OASCampaignResponse) api.campaignsGet(params);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaign.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaign.getExample();
+        response = (OASCampaign) api.campaignsGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * List campaigns
      *
-     * Get a list of the campaigns in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.
+     * Get a list of the campaigns in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary\nroles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
      */
     @isTest
     private static void campaignsListTest() {
@@ -354,11 +682,11 @@ private class OASCampaignsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'campaignIds' => new List<String>{''},
-            'entityStatuses' => new List<String>{'ACTIVE'},
+            'bookmark' => 'null',
             'pageSize' => '',
-            'order' => ASCENDING,
-            'bookmark' => 'null'
+            'order' => '',
+            'campaignIds' => new List<String>{''},
+            'entityStatuses' => new List<OASEntityStatus>{OASEntityStatus.getExample()}
         };
 
         OASClient client;
@@ -392,8 +720,72 @@ private class OASCampaignsApiTest {
         expectedResponse = OASCampaignsList200Response.getExample();
         response = (OASCampaignsList200Response) api.campaignsList(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignsList200Response.getExample();
+        response = (OASCampaignsList200Response) api.campaignsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignsList200Response.getExample();
+        response = (OASCampaignsList200Response) api.campaignsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignsList200Response.getExample();
+        response = (OASCampaignsList200Response) api.campaignsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignsList200Response.getExample();
+        response = (OASCampaignsList200Response) api.campaignsList(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASCampaignsApi(client);
+
+        js = JSON.serialize(OASCampaignsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignsList200Response.getExample();
+        response = (OASCampaignsList200Response) api.campaignsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignsList200Response.getExample();
+        response = (OASCampaignsList200Response) api.campaignsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignsList200Response.getExample();
+        response = (OASCampaignsList200Response) api.campaignsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignsList200Response.getExample();
+        response = (OASCampaignsList200Response) api.campaignsList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASCampaignsList200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -422,7 +814,7 @@ private class OASCampaignsApiTest {
     /**
      * Update campaigns
      *
-     * &lt;p&gt;Update multiple ad campaigns based on campaign_ids. &lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt;&lt;/p&gt;\n- &lt;p&gt;The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser\&#39;s profile. (e.g. USD) &lt;p/&gt;\n&lt;p&gt;Microcurrency is used to track very small transactions, based on the currency set in the advertiser\&#39;s profile.&lt;/p&gt;\n&lt;p&gt;A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser\&#39;s profile.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;Equivalency equations&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt;\n&lt;ul&gt;\n  &lt;li&gt;$1 &#x3D; 1,000,000 microdollars&lt;/li&gt;\n  &lt;li&gt;1 microdollar &#x3D; $0.000001 &lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;To convert between currency and microcurrency&lt;/strong&gt;, using dollars as an example currency:&lt;/p&gt;\n&lt;ul&gt;\n  &lt;li&gt;To convert dollars to microdollars, mutiply dollars by 1,000,000&lt;/li&gt;\n  &lt;li&gt;To convert microdollars to dollars, divide microdollars by 1,000,000&lt;/li&gt;\n&lt;/ul&gt;
+     * Update multiple ad campaigns based on campaign_ids.\n\n**Note:**\n- The values for &#x60;lifetime_spend_cap&#x60; and &#x60;daily_spend_cap&#x60; are microcurrency amounts based on the currency field set in the advertiser\&#39;s profile (e.g. USD).\n\nMicrocurrency is used to track very small transactions, based on the currency set in the advertiser\&#39;s profile.\n\nA microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser\&#39;s profile.\n\n**Equivalency equations**, using dollars as an example currency:\n\n- $1 &#x3D; 1,000,000 microdollars\n- 1 microdollar &#x3D; $0.000001\n\n**To convert between currency and microcurrency**, using dollars as an example currency:\n\n- To convert dollars to microdollars, multiply dollars by 1,000,000\n- To convert microdollars to dollars, divide microdollars by 1,000,000
      */
     @isTest
     private static void campaignsUpdateTest() {
@@ -433,31 +825,161 @@ private class OASCampaignsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSCampaignUpdateRequest' => new List<OASCampaignUpdateRequest>{OASCampaignUpdateRequest.getExample()}
+            'oaSCampaignBatchUpdateItem' => new List<OASCampaignBatchUpdateItem>{OASCampaignBatchUpdateItem.getExample()}
         };
 
         OASClient client;
         OASCampaignsApi api;
-        OASCampaignUpdateResponse response;
-        OASCampaignUpdateResponse expectedResponse;
+        OASCampaignBatchWriteResponseModel response;
+        OASCampaignBatchWriteResponseModel expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASCampaignsApi(client);
 
-        js = JSON.serialize(OASCampaignUpdateResponse.getExample());
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCampaignUpdateResponse.getExample();
-        response = (OASCampaignUpdateResponse) api.campaignsUpdate(params);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASCampaignUpdateResponse.getExample());
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCampaignUpdateResponse.getExample();
-        response = (OASCampaignUpdateResponse) api.campaignsUpdate(params);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignBatchWriteResponseModel.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignBatchWriteResponseModel.getExample();
+        response = (OASCampaignBatchWriteResponseModel) api.campaignsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+    }
+
+    /**
+     * Get campaign delivery estimates
+     *
+     * Get delivery estimates for an ads campaign\n\n**This endpoint is currently in beta and is not available to all apps [Learn more](/docs/new/about-beta-access/).**
+     */
+    @isTest
+    private static void getCampaignDeliveryEstimatesTest() {
+        HttpResponse res = new HttpResponse();
+        res.setStatusCode(200);
+        res.setStatus('OK');
+        Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
+
+        Map<String, Object> params = new Map<String, Object>{
+            'adAccountId' => 'null',
+            'oaSCampaignDeliveryEstimatesCampaign' => new List<OASCampaignDeliveryEstimatesCampaign>{OASCampaignDeliveryEstimatesCampaign.getExample()}
+        };
+
+        OASClient client;
+        OASCampaignsApi api;
+        OASCampaignDeliveryEstimatesResponse response;
+        OASCampaignDeliveryEstimatesResponse expectedResponse;
+        String js = '';
+
+        client = new OASClient();
+        api = new OASCampaignsApi(client);
+
+        js = JSON.serialize(OASCampaignDeliveryEstimatesResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignDeliveryEstimatesResponse.getExample();
+        response = (OASCampaignDeliveryEstimatesResponse) api.getCampaignDeliveryEstimates(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignDeliveryEstimatesResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignDeliveryEstimatesResponse.getExample();
+        response = (OASCampaignDeliveryEstimatesResponse) api.getCampaignDeliveryEstimates(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignDeliveryEstimatesResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignDeliveryEstimatesResponse.getExample();
+        response = (OASCampaignDeliveryEstimatesResponse) api.getCampaignDeliveryEstimates(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignDeliveryEstimatesResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignDeliveryEstimatesResponse.getExample();
+        response = (OASCampaignDeliveryEstimatesResponse) api.getCampaignDeliveryEstimates(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignDeliveryEstimatesResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignDeliveryEstimatesResponse.getExample();
+        response = (OASCampaignDeliveryEstimatesResponse) api.getCampaignDeliveryEstimates(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignDeliveryEstimatesResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignDeliveryEstimatesResponse.getExample();
+        response = (OASCampaignDeliveryEstimatesResponse) api.getCampaignDeliveryEstimates(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignDeliveryEstimatesResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignDeliveryEstimatesResponse.getExample();
+        response = (OASCampaignDeliveryEstimatesResponse) api.getCampaignDeliveryEstimates(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASCampaignDeliveryEstimatesResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASCampaignDeliveryEstimatesResponse.getExample();
+        response = (OASCampaignDeliveryEstimatesResponse) api.getCampaignDeliveryEstimates(params);
         System.assertEquals(expectedResponse, response);
     }
 }

@@ -26,7 +26,7 @@ import org.openapitools.model.QualityComponentDetails;
  */
 
 @ApiModel(description = "Set of quality components, with each component containing a event coverage and details.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QualityComponents   {
   
   private Map<String, QualityComponentDetails> advertiserExternalId = new HashMap<>();

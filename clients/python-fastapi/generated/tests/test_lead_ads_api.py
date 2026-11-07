@@ -3,7 +3,7 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Any, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
 from openapi_server.models.ad_accounts_subscriptions_get_list200_response import AdAccountsSubscriptionsGetList200Response  # noqa: F401
@@ -38,7 +38,7 @@ def test_ad_accounts_subscriptions_post(client: TestClient):
 
     Create lead ads subscription
     """
-    lead_subscription_post_params_create = {"webhook_url":"webhook_url","partner_refresh_token":"partner_refresh_token","lead_form_id":"lead_form_id","partner_metadata":{"subscriber_key":"subscriber_key"},"partner_access_token":"partner_access_token"}
+    lead_subscription_post_params_create = openapi_server.LeadSubscriptionPostParamsCreate()
 
     headers = {
         "Authorization": "Bearer special-key",

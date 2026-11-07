@@ -28,35 +28,35 @@ module BusinessAccessInviteApiHandlerTestsHelper =
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
     },
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;
+    &quot;partner_id&quot; : &quot;partner_id&quot;
   }, {
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
     },
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;
+    &quot;partner_id&quot; : &quot;partner_id&quot;
   }, {
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
     },
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;
+    &quot;partner_id&quot; : &quot;partner_id&quot;
   }, {
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
     },
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;
+    &quot;partner_id&quot; : &quot;partner_id&quot;
   }, {
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
     },
-    &quot;partner_id&quot; : &quot;809944451643622187&quot;
+    &quot;partner_id&quot; : &quot;partner_id&quot;
   } ]
 }"
   AssetAccessRequestsCreateExamples <- AssetAccessRequestsCreateExamples.Add("application/json", AssetAccessRequestsCreateBody)
@@ -69,7 +69,7 @@ module BusinessAccessInviteApiHandlerTestsHelper =
   let mutable CancelInvitesOrRequestsBody = ""
 
   CancelInvitesOrRequestsBody <- WebUtility.HtmlDecode "{
-  &quot;invite_ids&quot; : [ &quot;1234567890123456789&quot;, &quot;1122334455667788991&quot; ]
+  &quot;invite_ids&quot; : [ null, null, null, null, null ]
 }"
   CancelInvitesOrRequestsExamples <- CancelInvitesOrRequestsExamples.Add("application/json", CancelInvitesOrRequestsBody)
 
@@ -82,45 +82,45 @@ module BusinessAccessInviteApiHandlerTestsHelper =
 
   CreateAssetInvitesBody <- WebUtility.HtmlDecode "{
   &quot;invites&quot; : [ {
-    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;,
-    &quot;invite_id&quot; : &quot;1234567890123&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;invite_id&quot; : &quot;1234567890123&quot;,
+    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;
   }, {
-    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;,
-    &quot;invite_id&quot; : &quot;1234567890123&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;invite_id&quot; : &quot;1234567890123&quot;,
+    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;
   }, {
-    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;,
-    &quot;invite_id&quot; : &quot;1234567890123&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;invite_id&quot; : &quot;1234567890123&quot;,
+    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;
   }, {
-    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;,
-    &quot;invite_id&quot; : &quot;1234567890123&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;invite_id&quot; : &quot;1234567890123&quot;,
+    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;
   }, {
-    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;,
-    &quot;invite_id&quot; : &quot;1234567890123&quot;,
     &quot;asset_id_to_permissions&quot; : {
       &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
       &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
       &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-    }
+    },
+    &quot;invite_id&quot; : &quot;1234567890123&quot;,
+    &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;
   } ]
 }"
   CreateAssetInvitesExamples <- CreateAssetInvitesExamples.Add("application/json", CreateAssetInvitesBody)
@@ -133,10 +133,10 @@ module BusinessAccessInviteApiHandlerTestsHelper =
   let mutable CreateMembershipOrPartnershipInvitesBody = ""
 
   CreateMembershipOrPartnershipInvitesBody <- WebUtility.HtmlDecode "{
+  &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;,
   &quot;invite_type&quot; : &quot;MEMBER_INVITE&quot;,
-  &quot;partners&quot; : [ &quot;809944451643622187&quot;, &quot;766456567741825556&quot; ],
   &quot;members&quot; : [ &quot;business0101&quot;, &quot;user@business.com&quot; ],
-  &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;
+  &quot;partners&quot; : [ &quot;809944451643622187&quot;, &quot;766456567741825556&quot; ]
 }"
   CreateMembershipOrPartnershipInvitesExamples <- CreateMembershipOrPartnershipInvitesExamples.Add("application/json", CreateMembershipOrPartnershipInvitesBody)
 
@@ -151,55 +151,55 @@ module BusinessAccessInviteApiHandlerTestsHelper =
 
   RespondBusinessAccessInvitesBody <- WebUtility.HtmlDecode "{
   &quot;invites&quot; : [ {
-    &quot;invite_id&quot; : &quot;invite_id&quot;,
     &quot;action&quot; : {
+      &quot;accept_invite&quot; : true,
       &quot;asset_id_to_permissions&quot; : {
         &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
         &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
         &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-      },
-      &quot;accept_invite&quot; : true
-    }
+      }
+    },
+    &quot;invite_id&quot; : &quot;invite_id&quot;
   }, {
-    &quot;invite_id&quot; : &quot;invite_id&quot;,
     &quot;action&quot; : {
+      &quot;accept_invite&quot; : true,
       &quot;asset_id_to_permissions&quot; : {
         &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
         &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
         &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-      },
-      &quot;accept_invite&quot; : true
-    }
+      }
+    },
+    &quot;invite_id&quot; : &quot;invite_id&quot;
   }, {
-    &quot;invite_id&quot; : &quot;invite_id&quot;,
     &quot;action&quot; : {
+      &quot;accept_invite&quot; : true,
       &quot;asset_id_to_permissions&quot; : {
         &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
         &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
         &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-      },
-      &quot;accept_invite&quot; : true
-    }
+      }
+    },
+    &quot;invite_id&quot; : &quot;invite_id&quot;
   }, {
-    &quot;invite_id&quot; : &quot;invite_id&quot;,
     &quot;action&quot; : {
+      &quot;accept_invite&quot; : true,
       &quot;asset_id_to_permissions&quot; : {
         &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
         &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
         &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-      },
-      &quot;accept_invite&quot; : true
-    }
+      }
+    },
+    &quot;invite_id&quot; : &quot;invite_id&quot;
   }, {
-    &quot;invite_id&quot; : &quot;invite_id&quot;,
     &quot;action&quot; : {
+      &quot;accept_invite&quot; : true,
       &quot;asset_id_to_permissions&quot; : {
         &quot;549760723247&quot; : [ &quot;ANALYST&quot; ],
         &quot;549760723248&quot; : [ &quot;ANALYST&quot;, &quot;ADMIN&quot; ],
         &quot;809944451643622187&quot; : [ &quot;PROFILE_PUBLISHER&quot; ]
-      },
-      &quot;accept_invite&quot; : true
-    }
+      }
+    },
+    &quot;invite_id&quot; : &quot;invite_id&quot;
   } ]
 }"
   RespondBusinessAccessInvitesExamples <- RespondBusinessAccessInvitesExamples.Add("application/json", RespondBusinessAccessInvitesBody)

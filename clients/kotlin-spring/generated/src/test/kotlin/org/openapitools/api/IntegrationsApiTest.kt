@@ -1,14 +1,14 @@
 package org.openapitools.api
 
-import org.openapitools.model.Error
-import org.openapitools.model.IntegrationLogsRequest
+import org.openapitools.model.IntegrationLogsInvalidLogResponse
+import org.openapitools.model.IntegrationLogsRequestCreate
 import org.openapitools.model.IntegrationLogsSuccessResponse
 import org.openapitools.model.IntegrationMetadata
+import org.openapitools.model.IntegrationMetadataCreate
+import org.openapitools.model.IntegrationMetadataUpdate
 import org.openapitools.model.IntegrationRecord
-import org.openapitools.model.IntegrationRequest
-import org.openapitools.model.IntegrationRequestPatch
 import org.openapitools.model.IntegrationsGetList200Response
-import org.openapitools.model.IntegrationsLogsPost400Response
+import org.openapitools.model.PinterestLibError
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -26,7 +26,8 @@ class IntegrationsApiTest {
     fun integrationsCommerceDelTest() {
         val externalBusinessId: kotlin.String = TODO()
         
-        val response: ResponseEntity<Unit> = api.integrationsCommerceDel(externalBusinessId)
+        
+        val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommerceDel(externalBusinessId)
 
         // TODO: test validations
     }
@@ -40,6 +41,7 @@ class IntegrationsApiTest {
     @Test
     fun integrationsCommerceGetTest() {
         val externalBusinessId: kotlin.String = TODO()
+        
         
         val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommerceGet(externalBusinessId)
 
@@ -55,9 +57,10 @@ class IntegrationsApiTest {
     @Test
     fun integrationsCommercePatchTest() {
         val externalBusinessId: kotlin.String = TODO()
-        val integrationRequestPatch: IntegrationRequestPatch = TODO()
+        val integrationMetadataUpdate: IntegrationMetadataUpdate = TODO()
         
-        val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+        
+        val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
 
         // TODO: test validations
     }
@@ -70,9 +73,10 @@ class IntegrationsApiTest {
      */
     @Test
     fun integrationsCommercePostTest() {
-        val integrationRequest: IntegrationRequest = TODO()
+        val integrationMetadataCreate: IntegrationMetadataCreate = TODO()
         
-        val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommercePost(integrationRequest)
+        
+        val response: ResponseEntity<IntegrationMetadata> = api.integrationsCommercePost(integrationMetadataCreate)
 
         // TODO: test validations
     }
@@ -86,6 +90,7 @@ class IntegrationsApiTest {
     @Test
     fun integrationsGetByIdTest() {
         val id: kotlin.String = TODO()
+        
         
         val response: ResponseEntity<IntegrationRecord> = api.integrationsGetById(id)
 
@@ -103,6 +108,7 @@ class IntegrationsApiTest {
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
         
+        
         val response: ResponseEntity<IntegrationsGetList200Response> = api.integrationsGetList(bookmark, pageSize)
 
         // TODO: test validations
@@ -116,9 +122,10 @@ class IntegrationsApiTest {
      */
     @Test
     fun integrationsLogsPostTest() {
-        val integrationLogsRequest: IntegrationLogsRequest = TODO()
+        val integrationLogsRequestCreate: IntegrationLogsRequestCreate = TODO()
         
-        val response: ResponseEntity<IntegrationLogsSuccessResponse> = api.integrationsLogsPost(integrationLogsRequest)
+        
+        val response: ResponseEntity<IntegrationLogsSuccessResponse> = api.integrationsLogsPost(integrationLogsRequestCreate)
 
         // TODO: test validations
     }

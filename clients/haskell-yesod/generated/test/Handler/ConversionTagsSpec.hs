@@ -15,7 +15,7 @@ spec = withApp $ do
 
     describe "getAdAccountsByTextConversionTagsByTextR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextConversionTagsByTextR "adAccountId_example" "2617998078212"
+            get $ AdAccountsByTextConversionTagsByTextR "adAccountId_example" "conversionTagId_example"
             statusIs 501
 
     describe "getAdAccountsByTextConversionTagsR" $

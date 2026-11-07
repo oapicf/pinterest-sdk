@@ -30,7 +30,7 @@ spec = withApp $ do
 
     describe "getAdAccountsByTextCampaignsByTextR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextCampaignsByTextR "adAccountId_example" "campaignId_example"
+            get $ AdAccountsByTextCampaignsByTextR "campaignId_example" "adAccountId_example"
             statusIs 501
 
     describe "getAdAccountsByTextCampaignsR" $
@@ -41,4 +41,9 @@ spec = withApp $ do
     describe "patchAdAccountsByTextCampaignsR" $
         it "returns 501 Not Implemented" $ do
             performMethod "PATCH" $ AdAccountsByTextCampaignsR "adAccountId_example"
+            statusIs 501
+
+    describe "postAdAccountsByTextCampaignsDeliveryEstimatesR" $
+        it "returns 501 Not Implemented" $ do
+            post $ AdAccountsByTextCampaignsDeliveryEstimatesR "adAccountId_example"
             statusIs 501

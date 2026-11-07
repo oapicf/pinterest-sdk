@@ -16,10 +16,10 @@ open TestHelper
 open ConversionEventsApiHandlerTestsHelper
 open OpenAPI.ConversionEventsApiHandler
 open OpenAPI.ConversionEventsApiHandlerParams
-open OpenAPI.Model.ConversionApiResponse
 open OpenAPI.Model.ConversionEvents
+open OpenAPI.Model.ConversionEventsCreate
 open OpenAPI.Model.DetailedError
-open OpenAPI.Model.Error
+open OpenAPI.Model.PinterestLibError
 
 module ConversionEventsApiHandlerTests =
 
@@ -28,7 +28,7 @@ module ConversionEventsApiHandlerTests =
   // ---------------------------------
 
   [<Fact>]
-  let ``EventsCreate - Send conversions returns 200 where Success`` () =
+  let ``EventsCreate - Send conversions returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -39,8 +39,8 @@ module ConversionEventsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getEventsCreateExample "application/json")
-      // or pass a body of type ConversionEvents
-      let body = obj() :?> ConversionEvents |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type ConversionEventsCreate
+      let body = obj() :?> ConversionEventsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -50,7 +50,7 @@ module ConversionEventsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``EventsCreate - Send conversions returns 400 where The request was invalid.`` () =
+  let ``EventsCreate - Send conversions returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -61,8 +61,8 @@ module ConversionEventsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getEventsCreateExample "application/json")
-      // or pass a body of type ConversionEvents
-      let body = obj() :?> ConversionEvents |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type ConversionEventsCreate
+      let body = obj() :?> ConversionEventsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -72,7 +72,7 @@ module ConversionEventsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``EventsCreate - Send conversions returns 401 where Not authorized to send conversion events`` () =
+  let ``EventsCreate - Send conversions returns 401 where Authentication is required and has either failed or not been provided.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -83,8 +83,8 @@ module ConversionEventsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getEventsCreateExample "application/json")
-      // or pass a body of type ConversionEvents
-      let body = obj() :?> ConversionEvents |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type ConversionEventsCreate
+      let body = obj() :?> ConversionEventsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -94,7 +94,7 @@ module ConversionEventsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``EventsCreate - Send conversions returns 403 where Unauthorized access.`` () =
+  let ``EventsCreate - Send conversions returns 403 where The request was valid, but the server is refusing action. The user might not have the necessary permissions for a resource.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -105,8 +105,8 @@ module ConversionEventsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getEventsCreateExample "application/json")
-      // or pass a body of type ConversionEvents
-      let body = obj() :?> ConversionEvents |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type ConversionEventsCreate
+      let body = obj() :?> ConversionEventsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -116,7 +116,7 @@ module ConversionEventsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``EventsCreate - Send conversions returns 422 where Not all events were successfully processed.`` () =
+  let ``EventsCreate - Send conversions returns 404 where The requested resource could not be found on this server.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -127,8 +127,30 @@ module ConversionEventsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getEventsCreateExample "application/json")
-      // or pass a body of type ConversionEvents
-      let body = obj() :?> ConversionEvents |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type ConversionEventsCreate
+      let body = obj() :?> ConversionEventsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+
+      body
+        |> HttpPost client path
+        |> isStatus (enum<HttpStatusCode>(404))
+        |> readText
+        |> shouldEqual "TESTME"
+      }
+
+  [<Fact>]
+  let ``EventsCreate - Send conversions returns 422 where The request was well-formed but was unable to be followed due to semantic errors.`` () =
+    task {
+      use server = new TestServer(createHost())
+      use client = server.CreateClient()
+
+      // add your setup code here
+
+      let path = "/v5/ad_accounts/{ad_account_id}/events".Replace("adAccountId", "ADDME") + "?test=ADDME"
+
+      // use an example requestBody provided by the spec
+      let examples = Map.empty.Add("application/json", getEventsCreateExample "application/json")
+      // or pass a body of type ConversionEventsCreate
+      let body = obj() :?> ConversionEventsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -138,7 +160,7 @@ module ConversionEventsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``EventsCreate - Send conversions returns 429 where This request exceeded a rate limit. This can happen if the client exceeds one of the published rate limits within a short time window.`` () =
+  let ``EventsCreate - Send conversions returns 429 where The user has sent too many requests in a given amount of time and is being rate limited.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -149,8 +171,8 @@ module ConversionEventsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getEventsCreateExample "application/json")
-      // or pass a body of type ConversionEvents
-      let body = obj() :?> ConversionEvents |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type ConversionEventsCreate
+      let body = obj() :?> ConversionEventsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -160,7 +182,7 @@ module ConversionEventsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``EventsCreate - Send conversions returns 503 where The endpoint has been ramped down and is currently not accepting any traffic.`` () =
+  let ``EventsCreate - Send conversions returns 503 where The server is currently unable to handle the request due to a temporary overload or scheduled maintenance.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -171,8 +193,8 @@ module ConversionEventsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getEventsCreateExample "application/json")
-      // or pass a body of type ConversionEvents
-      let body = obj() :?> ConversionEvents |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type ConversionEventsCreate
+      let body = obj() :?> ConversionEventsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path
@@ -182,7 +204,7 @@ module ConversionEventsApiHandlerTests =
       }
 
   [<Fact>]
-  let ``EventsCreate - Send conversions returns 0 where Unexpected errors`` () =
+  let ``EventsCreate - Send conversions returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -193,8 +215,8 @@ module ConversionEventsApiHandlerTests =
 
       // use an example requestBody provided by the spec
       let examples = Map.empty.Add("application/json", getEventsCreateExample "application/json")
-      // or pass a body of type ConversionEvents
-      let body = obj() :?> ConversionEvents |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
+      // or pass a body of type ConversionEventsCreate
+      let body = obj() :?> ConversionEventsCreate |> Newtonsoft.Json.JsonConvert.SerializeObject |> Encoding.UTF8.GetBytes |> MemoryStream |> StreamContent
 
       body
         |> HttpPost client path

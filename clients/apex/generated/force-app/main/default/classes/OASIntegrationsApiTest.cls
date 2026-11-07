@@ -3,7 +3,7 @@ private class OASIntegrationsApiTest {
     /**
      * Delete commerce integration
      *
-     * Delete commerce integration metadata for the given external business ID.\nNote: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * Delete commerce integration metadata for the given external business ID. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      */
     @isTest
     private static void integrationsCommerceDelTest() {
@@ -18,23 +18,73 @@ private class OASIntegrationsApiTest {
 
         OASClient client;
         OASIntegrationsApi api;
+        OASIntegrationMetadata response;
+        OASIntegrationMetadata expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASIntegrationsApi(client);
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.integrationsCommerceDel(params);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceDel(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceDel(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceDel(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceDel(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceDel(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceDel(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceDel(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get commerce integration
      *
-     * Get commerce integration metadata associated with the given external business ID.\nNote: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * Get commerce integration metadata associated with the given external business ID. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      */
     @isTest
     private static void integrationsCommerceGetTest() {
@@ -86,12 +136,36 @@ private class OASIntegrationsApiTest {
         expectedResponse = OASIntegrationMetadata.getExample();
         response = (OASIntegrationMetadata) api.integrationsCommerceGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommerceGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Update commerce integration
      *
-     * Update commerce integration metadata for the given external business ID.\nNote: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * Update commerce integration metadata for the given external business ID. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      */
     @isTest
     private static void integrationsCommercePatchTest() {
@@ -102,7 +176,7 @@ private class OASIntegrationsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'externalBusinessId' => 'null',
-            'oaSIntegrationRequestPatch' => ''
+            'oaSIntegrationMetadataUpdate' => ''
         };
 
         OASClient client;
@@ -113,6 +187,30 @@ private class OASIntegrationsApiTest {
 
         client = new OASClient();
         api = new OASIntegrationsApi(client);
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommercePatch(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommercePatch(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommercePatch(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASIntegrationMetadata.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -149,7 +247,7 @@ private class OASIntegrationsApiTest {
     /**
      * Create commerce integration
      *
-     * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account.\nNote: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
+     * Create commerce integration metadata to link an external business ID with a Pinterest merchant &amp; ad account. Note: If you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.
      */
     @isTest
     private static void integrationsCommercePostTest() {
@@ -159,7 +257,7 @@ private class OASIntegrationsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'oaSIntegrationRequest' => ''
+            'oaSIntegrationMetadataCreate' => ''
         };
 
         OASClient client;
@@ -170,6 +268,38 @@ private class OASIntegrationsApiTest {
 
         client = new OASClient();
         api = new OASIntegrationsApi(client);
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommercePost(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommercePost(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommercePost(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationMetadata.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationMetadata.getExample();
+        response = (OASIntegrationMetadata) api.integrationsCommercePost(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASIntegrationMetadata.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -250,6 +380,38 @@ private class OASIntegrationsApiTest {
         expectedResponse = OASIntegrationRecord.getExample();
         response = (OASIntegrationRecord) api.integrationsGetById(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationRecord.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationRecord.getExample();
+        response = (OASIntegrationRecord) api.integrationsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationRecord.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationRecord.getExample();
+        response = (OASIntegrationRecord) api.integrationsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationRecord.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationRecord.getExample();
+        response = (OASIntegrationRecord) api.integrationsGetById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationRecord.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationRecord.getExample();
+        response = (OASIntegrationRecord) api.integrationsGetById(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -292,6 +454,46 @@ private class OASIntegrationsApiTest {
         expectedResponse = OASIntegrationsGetList200Response.getExample();
         response = (OASIntegrationsGetList200Response) api.integrationsGetList(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationsGetList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationsGetList200Response.getExample();
+        response = (OASIntegrationsGetList200Response) api.integrationsGetList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationsGetList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationsGetList200Response.getExample();
+        response = (OASIntegrationsGetList200Response) api.integrationsGetList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationsGetList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationsGetList200Response.getExample();
+        response = (OASIntegrationsGetList200Response) api.integrationsGetList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationsGetList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationsGetList200Response.getExample();
+        response = (OASIntegrationsGetList200Response) api.integrationsGetList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationsGetList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationsGetList200Response.getExample();
+        response = (OASIntegrationsGetList200Response) api.integrationsGetList(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
@@ -307,7 +509,7 @@ private class OASIntegrationsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'oaSIntegrationLogsRequest' => ''
+            'oaSIntegrationLogsRequestCreate' => ''
         };
 
         OASClient client;
@@ -318,6 +520,38 @@ private class OASIntegrationsApiTest {
 
         client = new OASClient();
         api = new OASIntegrationsApi(client);
+
+        js = JSON.serialize(OASIntegrationLogsSuccessResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationLogsSuccessResponse.getExample();
+        response = (OASIntegrationLogsSuccessResponse) api.integrationsLogsPost(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationLogsSuccessResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationLogsSuccessResponse.getExample();
+        response = (OASIntegrationLogsSuccessResponse) api.integrationsLogsPost(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationLogsSuccessResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationLogsSuccessResponse.getExample();
+        response = (OASIntegrationLogsSuccessResponse) api.integrationsLogsPost(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASIntegrationLogsSuccessResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASIntegrationLogsSuccessResponse.getExample();
+        response = (OASIntegrationLogsSuccessResponse) api.integrationsLogsPost(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASIntegrationLogsSuccessResponse.getExample());
         res.setHeader('Content-Type', 'application/json');

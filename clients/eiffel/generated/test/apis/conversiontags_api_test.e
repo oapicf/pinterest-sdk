@@ -85,14 +85,14 @@ feature -- Test routines
         local
             l_response: PAGE_VISIT_CONVERSION_TAGS_GET_200_RESPONSE
             l_ad_account_id: STRING_32
-            l_page_size: INTEGER_32
-            l_order: STRING_32
             l_bookmark: STRING_32
+            l_page_size: INTEGER_32
+            l_order: PINTEREST_LIB_PAGINATION_ORDER
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
 
-            -- l_response := api.page_visit_conversion_tags_get(l_ad_account_id, l_page_size, l_order, l_bookmark)
+            -- l_response := api.page_visit_conversion_tags_get(l_ad_account_id, l_bookmark, l_page_size, l_order)
             assert ("not_implemented", False)
         end
 

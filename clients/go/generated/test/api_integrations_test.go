@@ -28,9 +28,10 @@ func Test_openapi_IntegrationsAPIService(t *testing.T) {
 
 		var externalBusinessId string
 
-		httpRes, err := apiClient.IntegrationsAPI.IntegrationsCommerceDel(context.Background(), externalBusinessId).Execute()
+		resp, httpRes, err := apiClient.IntegrationsAPI.IntegrationsCommerceDel(context.Background(), externalBusinessId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

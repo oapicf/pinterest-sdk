@@ -16,7 +16,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "SSIO insertion order status item in a list response.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-03T06:13:57.614963105Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T02:50:11.535708279Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SSIOInsertionOrderStatus   {
   @JsonProperty("creation_time")
   private String creationTime;

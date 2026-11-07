@@ -1,19 +1,22 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.AdsCreditRedeemRequest;
-import org.openapitools.model.AdsCreditRedeemResponse;
+import org.openapitools.model.AdsCreditRedeem;
+import org.openapitools.model.AdsCreditRedeemCreate;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.model.BillingInvoiceDocumentType;
 import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoiceSortField;
+import org.openapitools.model.BillingInvoiceStatus;
 import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
-import org.openapitools.model.Error;
 import java.time.LocalDate;
-import org.openapitools.model.SSIOAccountResponse;
-import org.openapitools.model.SSIOCreateInsertionOrderRequest;
-import org.openapitools.model.SSIOCreateInsertionOrderResponse;
-import org.openapitools.model.SSIOEditInsertionOrderRequest;
-import org.openapitools.model.SSIOEditInsertionOrderResponse;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.SSIOAccount;
+import org.openapitools.model.SSIOInsertionOrder;
+import org.openapitools.model.SSIOInsertionOrderCreate;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.model.SSIOInsertionOrderUpdate;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -66,7 +69,7 @@ public class BillingControllerTest {
      *
      * The method should: Redeem ad credits
      *
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      *
      * TODO fill in the parameters and test return value.
      */
@@ -75,10 +78,10 @@ public class BillingControllerTest {
     void adsCreditRedeemMethodTest() {
         // given
         String adAccountId = "example";
-        AdsCreditRedeemRequest adsCreditRedeemRequest = new AdsCreditRedeemRequest("138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", true);
+        AdsCreditRedeemCreate adsCreditRedeemCreate = new AdsCreditRedeemCreate("138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", true);
 
         // when
-        AdsCreditRedeemResponse result = controller.adsCreditRedeem(adAccountId, adsCreditRedeemRequest).block();
+        AdsCreditRedeem result = controller.adsCreditRedeem(adAccountId, adsCreditRedeemCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -94,16 +97,16 @@ public class BillingControllerTest {
     @Disabled("Not Implemented")
     void adsCreditRedeemClientApiTest() throws IOException {
         // given
-        AdsCreditRedeemRequest body = new AdsCreditRedeemRequest("138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", true);
+        AdsCreditRedeemCreate body = new AdsCreditRedeemCreate("138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", true);
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/ads_credit/redeem").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@1578b99c");
+            .accept("[Ljava.lang.String;@3ebdd27f");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, AdsCreditRedeemResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AdsCreditRedeem.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -114,7 +117,7 @@ public class BillingControllerTest {
      *
      * The method should: Get ads credit discounts
      *
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      *
      * TODO fill in the parameters and test return value.
      */
@@ -148,7 +151,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4032b079");
+            .accept("[Ljava.lang.String;@708fff8e");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -199,7 +202,7 @@ public class BillingControllerTest {
             put("billing_invoice_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6c7daaf5");
+            .accept("[Ljava.lang.String;@4cbe5364");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BillingInvoiceDownloadResponse.class);
@@ -224,15 +227,15 @@ public class BillingControllerTest {
         String adAccountId = "example";
         String bookmark = "example";
         Integer pageSize = 25;
-        String sort = "DUE_DATE";
-        String order = "ASCENDING";
-        String status = "OPEN";
-        String documentType = "INVOICE";
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
+        BillingInvoiceSortField sort = BillingInvoiceSortField.fromValue("DUE_DATE");
+        BillingInvoiceStatus status = BillingInvoiceStatus.fromValue("OPEN");
+        BillingInvoiceDocumentType documentType = BillingInvoiceDocumentType.fromValue("INVOICE");
         LocalDate startDueDate = LocalDate.of(2001, 2, 3);
         LocalDate endDueDate = LocalDate.of(2001, 2, 3);
 
         // when
-        BillingInvoicesGet200Response result = controller.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate).block();
+        BillingInvoicesGet200Response result = controller.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -253,14 +256,14 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@15076c00");
+            .accept("[Ljava.lang.String;@4e4eacc9");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("sort", "DUE_DATE") // The query parameter format should be 
-            .add("order", "ASCENDING") // The query parameter format should be 
-            .add("status", "OPEN") // The query parameter format should be 
-            .add("document_type", "INVOICE") // The query parameter format should be 
+            .add("order", String.valueOf(PinterestLibPaginationOrder.fromValue("ASCENDING"))) // The query parameter format should be 
+            .add("sort", String.valueOf(BillingInvoiceSortField.fromValue("DUE_DATE"))) // The query parameter format should be 
+            .add("status", String.valueOf(BillingInvoiceStatus.fromValue("OPEN"))) // The query parameter format should be 
+            .add("document_type", String.valueOf(BillingInvoiceDocumentType.fromValue("INVOICE"))) // The query parameter format should be 
             .add("start_due_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_due_date", String.valueOf(LocalDate.of(2001, 2, 3))); // The query parameter format should be 
 
@@ -276,7 +279,7 @@ public class BillingControllerTest {
      *
      * The method should: Get billing profiles
      *
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      *
      * TODO fill in the parameters and test return value.
      */
@@ -284,13 +287,13 @@ public class BillingControllerTest {
     @Disabled("Not Implemented")
     void billingProfilesGetMethodTest() {
         // given
-        String adAccountId = "example";
         Boolean isActive = false;
+        String adAccountId = "example";
         String bookmark = "example";
         Integer pageSize = 25;
 
         // when
-        BillingProfilesGet200Response result = controller.billingProfilesGet(adAccountId, isActive, bookmark, pageSize).block();
+        BillingProfilesGet200Response result = controller.billingProfilesGet(isActive, adAccountId, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -311,7 +314,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@45638365");
+            .accept("[Ljava.lang.String;@1eb0b155");
         request.getParameters()
             .add("is_active", String.valueOf(false)) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -329,7 +332,7 @@ public class BillingControllerTest {
      *
      * The method should: Get Salesforce account details including bill-to information.
      *
-     * Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -340,7 +343,7 @@ public class BillingControllerTest {
         String adAccountId = "example";
 
         // when
-        SSIOAccountResponse result = controller.ssioAccountsGet(adAccountId).block();
+        SSIOAccount result = controller.ssioAccountsGet(adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -361,10 +364,10 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@108752c8");
+            .accept("[Ljava.lang.String;@11cc4e82");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, SSIOAccountResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, SSIOAccount.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -375,7 +378,7 @@ public class BillingControllerTest {
      *
      * The method should: Create insertion order through SSIO.
      *
-     * Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -384,10 +387,10 @@ public class BillingControllerTest {
     void ssioInsertionOrderCreateMethodTest() {
         // given
         String adAccountId = "example";
-        SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest = new SSIOCreateInsertionOrderRequest();
+        SSIOInsertionOrderCreate ssIOInsertionOrderCreate = new SSIOInsertionOrderCreate("example", "example", "example", "example", "example", "example", "example", org.openapitools.model.Currency.fromValue("UNK"), "example", "example", "example", org.openapitools.model.SSIOOrderLineType.fromValue("BUDGET"), "example", "example", "example", "example");
 
         // when
-        SSIOCreateInsertionOrderResponse result = controller.ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest).block();
+        SSIOInsertionOrder result = controller.ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -403,16 +406,16 @@ public class BillingControllerTest {
     @Disabled("Not Implemented")
     void ssioInsertionOrderCreateClientApiTest() throws IOException {
         // given
-        SSIOCreateInsertionOrderRequest body = new SSIOCreateInsertionOrderRequest();
+        SSIOInsertionOrderCreate body = new SSIOInsertionOrderCreate("example", "example", "example", "example", "example", "example", "example", org.openapitools.model.Currency.fromValue("UNK"), "example", "example", "example", org.openapitools.model.SSIOOrderLineType.fromValue("BUDGET"), "example", "example", "example", "example");
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/ssio/insertion_orders").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@112c682f");
+            .accept("[Ljava.lang.String;@2fd71aac");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, SSIOCreateInsertionOrderResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, SSIOInsertionOrder.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -423,7 +426,7 @@ public class BillingControllerTest {
      *
      * The method should: Edit insertion order through SSIO.
      *
-     * Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -432,10 +435,10 @@ public class BillingControllerTest {
     void ssioInsertionOrderEditMethodTest() {
         // given
         String adAccountId = "example";
-        SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest = new SSIOEditInsertionOrderRequest();
+        SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate = new SSIOInsertionOrderUpdate();
 
         // when
-        SSIOEditInsertionOrderResponse result = controller.ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest).block();
+        SSIOInsertionOrder result = controller.ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -451,16 +454,16 @@ public class BillingControllerTest {
     @Disabled("Not Implemented")
     void ssioInsertionOrderEditClientApiTest() throws IOException {
         // given
-        SSIOEditInsertionOrderRequest body = new SSIOEditInsertionOrderRequest();
+        SSIOInsertionOrderUpdate body = new SSIOInsertionOrderUpdate();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/ssio/insertion_orders").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@3f656166");
+            .accept("[Ljava.lang.String;@1444d37b");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, SSIOEditInsertionOrderResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, SSIOInsertionOrder.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -471,7 +474,7 @@ public class BillingControllerTest {
      *
      * The method should: Get insertion order status by ad account id.
      *
-     * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -505,7 +508,7 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@66c4b544");
+            .accept("[Ljava.lang.String;@fe5e2bf");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -522,7 +525,7 @@ public class BillingControllerTest {
      *
      * The method should: Get insertion order status by pin order id.
      *
-     * Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -531,7 +534,7 @@ public class BillingControllerTest {
     void ssioInsertionOrdersStatusGetByPinOrderIdMethodTest() {
         // given
         String adAccountId = "example";
-        String pinOrderId = "0Q01N0000015hekSVDFDC";
+        String pinOrderId = "example";
 
         // when
         SSIOInsertionOrderStatusResponse result = controller.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId).block();
@@ -553,10 +556,10 @@ public class BillingControllerTest {
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/ssio/insertion_orders/{pin_order_id}/status").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
-            put("pin_order_id", "0Q01N0000015hekSVDFDC");
+            put("pin_order_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4c7faa46");
+            .accept("[Ljava.lang.String;@7c2e059f");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SSIOInsertionOrderStatusResponse.class);
@@ -570,7 +573,7 @@ public class BillingControllerTest {
      *
      * The method should: Get Salesforce order lines by ad account id.
      *
-     * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -579,12 +582,12 @@ public class BillingControllerTest {
     void ssioOrderLinesGetByAdAccountMethodTest() {
         // given
         String adAccountId = "example";
+        String pinOrderId = "example";
         String bookmark = "example";
         Integer pageSize = 25;
-        String pinOrderId = "0Q01N0000015hekSVDFDC";
 
         // when
-        SsioOrderLinesGetByAdAccount200Response result = controller.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId).block();
+        SsioOrderLinesGetByAdAccount200Response result = controller.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -605,11 +608,11 @@ public class BillingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3e60def6");
+            .accept("[Ljava.lang.String;@6bbb72cc");
         request.getParameters()
+            .add("pin_order_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("pin_order_id", "0Q01N0000015hekSVDFDC"); // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, SsioOrderLinesGetByAdAccount200Response.class);

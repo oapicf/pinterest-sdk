@@ -5,6 +5,10 @@ module.exports = {
         { data: {} },
     "CatalogsFeedSample": 
         { data: {} },
+    "CatalogsFeedSample": 
+        { data: {} },
+    "CatalogsFeedSample": 
+        { data: {} },
     "CatalogsFeedIngestionSample": 
         { data: {} },
     "feeds_list_200_responseSample": 

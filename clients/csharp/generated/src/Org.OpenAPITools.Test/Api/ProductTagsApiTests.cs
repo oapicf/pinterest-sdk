@@ -61,7 +61,7 @@ namespace Org.OpenAPITools.Test.Api
             ProductTagsBulkAddRequest productTagsBulkAddRequest = default!;
             var response = await _instance.ProductTagsBulkAddAsync(pinId, productTagsBulkAddRequest);
             var model = response.Ok();
-            Assert.IsType<ProductTagsResponse>(model);
+            Assert.IsType<Org.OpenAPITools.Model.ProductTagsResponse>(model);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Org.OpenAPITools.Test.Api
             string pinId = default!;
             var response = await _instance.ProductTagsListAsync(pinId);
             var model = response.Ok();
-            Assert.IsType<ProductTagsResponse>(model);
+            Assert.IsType<Org.OpenAPITools.Model.ProductTagsResponse>(model);
         }
     }
 }

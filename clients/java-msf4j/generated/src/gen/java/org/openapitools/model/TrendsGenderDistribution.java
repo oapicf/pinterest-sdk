@@ -14,7 +14,7 @@ import org.openapitools.model.TrendsGender;
  * This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.
  */
 @ApiModel(description = "This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsGenderDistribution extends HashMap<String, Double>  {
   @JsonProperty("gender_distribution")
   private TrendsGender genderDistribution;

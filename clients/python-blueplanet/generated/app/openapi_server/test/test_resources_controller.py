@@ -5,11 +5,13 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.ad_accounts_country_response import AdAccountsCountryResponse  # noqa: E501
-from app.openapi_server.models.book_closed_response import BookClosedResponse  # noqa: E501
-from app.openapi_server.models.delivery_metrics_response import DeliveryMetricsResponse  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
-from app.openapi_server.models.single_interest_targeting_option_response import SingleInterestTargetingOptionResponse  # noqa: E501
+from app.openapi_server.models.ad_account_countries_get200_response import AdAccountCountriesGet200Response  # noqa: E501
+from app.openapi_server.models.book_closed import BookClosed  # noqa: E501
+from app.openapi_server.models.delivery_metrics_get200_response import DeliveryMetricsGet200Response  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.public_targeting_type import PublicTargetingType  # noqa: E501
+from app.openapi_server.models.report_type import ReportType  # noqa: E501
+from app.openapi_server.models.single_interest_targeting_option import SingleInterestTargetingOption  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -32,7 +34,7 @@ class TestResourcesController(BaseTestCase):
 
         Get available metrics' definitions
         """
-        query_string = [('report_type', 'report_type_example')]
+        query_string = [('report_type', openapi_server.ReportType())]
         response = self.client.open(
             '/v5/resources/delivery_metrics',
             method='GET',
@@ -67,7 +69,7 @@ class TestResourcesController(BaseTestCase):
 
         Get metrics ready state
         """
-        query_string = [('_date', '2022-07-13')]
+        query_string = [('_date', '_date_example')]
         response = self.client.open(
             '/v5/resources/metrics_ready_state',
             method='GET',
@@ -80,12 +82,12 @@ class TestResourcesController(BaseTestCase):
 
         Get targeting options
         """
-        query_string = [('client_id', '1094834'),
-                        ('oauth_signature', '8209f'),
-                        ('timestamp', '1618338184277'),
-                        ('ad_account_id', 'ad_account_id_example')]
+        query_string = [('ad_account_id', 'ad_account_id_example'),
+                        ('client_id', 'client_id_example'),
+                        ('oauth_signature', 'oauth_signature_example'),
+                        ('timestamp', 'timestamp_example')]
         response = self.client.open(
-            '/v5/resources/targeting/{targeting_type}'.format(targeting_type='APPTYPE'),
+            '/v5/resources/targeting/{targeting_type}'.format(targeting_type=openapi_server.PublicTargetingType()),
             method='GET',
             query_string=query_string)
         self.assert200(response,

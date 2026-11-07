@@ -21,7 +21,7 @@ void main() {
     //
     // Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.'
     //
-    //Future adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId) async
+    //Future<LeadSubscription> adAccountsSubscriptionsDelById(String adAccountId, String subscriptionId) async
     test('test adAccountsSubscriptionsDelById', () async {
       // TODO
     });

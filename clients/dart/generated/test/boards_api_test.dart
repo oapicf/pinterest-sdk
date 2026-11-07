@@ -21,7 +21,7 @@ void main() {
     //
     // Create a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
     //
-    //Future<BoardSection> boardSectionsCreate(String boardId, BoardSection boardSection, { String adAccountId }) async
+    //Future<BoardSection> boardSectionsCreate(String boardId, BoardSectionCreate boardSectionCreate, { String adAccountId }) async
     test('test boardSectionsCreate', () async {
       // TODO
     });
@@ -30,7 +30,7 @@ void main() {
     //
     // Delete a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
     //
-    //Future boardSectionsDelete(String boardId, String sectionId, { String adAccountId }) async
+    //Future<BoardSection> boardSectionsDelete(String boardId, String sectionId, { String adAccountId }) async
     test('test boardSectionsDelete', () async {
       // TODO
     });
@@ -57,7 +57,7 @@ void main() {
     //
     // Update a board section on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
     //
-    //Future<BoardSection> boardSectionsUpdate(String boardId, String sectionId, BoardSection boardSection, { String adAccountId }) async
+    //Future<BoardSection> boardSectionsUpdate(String boardId, String sectionId, BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody, { String adAccountId }) async
     test('test boardSectionsUpdate', () async {
       // TODO
     });
@@ -75,7 +75,7 @@ void main() {
     //
     // Delete a board owned by the \"operation user_account\". * Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". * By default, the \"operation user_account\" is the token user_account.
     //
-    //Future boardsDelete(String boardId, { String adAccountId }) async
+    //Future<Board> boardsDelete(String boardId, { String adAccountId }) async
     test('test boardsDelete', () async {
       // TODO
     });
@@ -102,7 +102,7 @@ void main() {
     //
     // Get a list of the Pins on a board owned by the \"operation user_account\" - or on a group board that has been shared with this account. - Optional: Business Access: Specify an ad_account_id to use the owner of that ad_account as the \"operation user_account\". - By default, the \"operation user_account\" is the token user_account.
     //
-    //Future<BoardsListPins200Response> boardsListPins(String boardId, { String bookmark, int pageSize, List<CreativeType> creativeTypes, String adAccountId, bool pinMetrics }) async
+    //Future<BoardsListPins200Response> boardsListPins(String boardId, { List<CreativeType> creativeTypes, String adAccountId, bool pinMetrics, String bookmark, int pageSize }) async
     test('test boardsListPins', () async {
       // TODO
     });

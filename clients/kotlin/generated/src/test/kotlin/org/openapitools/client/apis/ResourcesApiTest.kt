@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,11 +27,13 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.ResourcesApi
-import org.openapitools.client.models.AdAccountsCountryResponse
-import org.openapitools.client.models.BookClosedResponse
-import org.openapitools.client.models.DeliveryMetricsResponse
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.SingleInterestTargetingOptionResponse
+import org.openapitools.client.models.AdAccountCountriesGet200Response
+import org.openapitools.client.models.BookClosed
+import org.openapitools.client.models.DeliveryMetricsGet200Response
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PublicTargetingType
+import org.openapitools.client.models.ReportType
+import org.openapitools.client.models.SingleInterestTargetingOption
 
 class ResourcesApiTest : ShouldSpec() {
     init {
@@ -33,15 +43,15 @@ class ResourcesApiTest : ShouldSpec() {
         // to test adAccountCountriesGet
         should("test adAccountCountriesGet") {
             // uncomment below to test adAccountCountriesGet
-            //val result : AdAccountsCountryResponse = apiInstance.adAccountCountriesGet()
+            //val result : AdAccountCountriesGet200Response = apiInstance.adAccountCountriesGet()
             //result shouldBe ("TODO")
         }
 
         // to test deliveryMetricsGet
         should("test deliveryMetricsGet") {
             // uncomment below to test deliveryMetricsGet
-            //val reportType : kotlin.String = reportType_example // kotlin.String | Report type.
-            //val result : DeliveryMetricsResponse = apiInstance.deliveryMetricsGet(reportType)
+            //val reportType : ReportType =  // ReportType | Report type.
+            //val result : DeliveryMetricsGet200Response = apiInstance.deliveryMetricsGet(reportType)
             //result shouldBe ("TODO")
         }
 
@@ -49,7 +59,7 @@ class ResourcesApiTest : ShouldSpec() {
         should("test interestTargetingOptionsGet") {
             // uncomment below to test interestTargetingOptionsGet
             //val interestId : kotlin.String = interestId_example // kotlin.String | Unique identifier of an interest.
-            //val result : SingleInterestTargetingOptionResponse = apiInstance.interestTargetingOptionsGet(interestId)
+            //val result : SingleInterestTargetingOption = apiInstance.interestTargetingOptionsGet(interestId)
             //result shouldBe ("TODO")
         }
 
@@ -62,20 +72,20 @@ class ResourcesApiTest : ShouldSpec() {
         // to test metricsReadyStateGet
         should("test metricsReadyStateGet") {
             // uncomment below to test metricsReadyStateGet
-            //val date : kotlin.String = 2022-07-13 // kotlin.String | Analytics reports request date (UTC). Format: YYYY-MM-DD
-            //val result : BookClosedResponse = apiInstance.metricsReadyStateGet(date)
+            //val date : kotlin.String = date_example // kotlin.String | Analytics reports request date (UTC). Format: YYYY-MM-DD
+            //val result : BookClosed = apiInstance.metricsReadyStateGet(date)
             //result shouldBe ("TODO")
         }
 
         // to test targetingOptionsGet
         should("test targetingOptionsGet") {
             // uncomment below to test targetingOptionsGet
-            //val targetingType : kotlin.String = APPTYPE // kotlin.String | Public targeting type.
-            //val clientId : kotlin.String = 1094834 // kotlin.String | Client ID.
-            //val oauthSignature : kotlin.String = 8209f // kotlin.String | Oauth signature
-            //val timestamp : kotlin.String = 1618338184277 // kotlin.String | Timestamp
+            //val targetingType : PublicTargetingType =  // PublicTargetingType | Public targeting type
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : kotlin.collections.List<kotlin.Any> = apiInstance.targetingOptionsGet(targetingType, clientId, oauthSignature, timestamp, adAccountId)
+            //val clientId : kotlin.String = clientId_example // kotlin.String | Client ID
+            //val oauthSignature : kotlin.String = oauthSignature_example // kotlin.String | Oauth signature
+            //val timestamp : kotlin.String = timestamp_example // kotlin.String | Timestamp.
+            //val result : kotlin.collections.List<kotlin.Any> = apiInstance.targetingOptionsGet(targetingType, adAccountId, clientId, oauthSignature, timestamp)
             //result shouldBe ("TODO")
         }
 

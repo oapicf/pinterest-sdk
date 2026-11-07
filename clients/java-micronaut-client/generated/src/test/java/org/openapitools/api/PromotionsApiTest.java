@@ -1,9 +1,10 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.PromotionCreateRequest;
-import org.openapitools.model.PromotionResponse;
-import org.openapitools.model.PromotionUpdateRequest;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.Promotion;
+import org.openapitools.model.PromotionBatchUpdate;
+import org.openapitools.model.PromotionCreate;
 import org.openapitools.model.PromotionsList200Response;
 import org.openapitools.model.PromotionsResponse;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -38,10 +39,10 @@ public class PromotionsApiTest {
     public void promotionsCreateTest() {
         // given
         String adAccountId = "example";
-        List<@Valid PromotionCreateRequest> promotionCreateRequest = Arrays.asList();
+        List<@Valid PromotionCreate> promotionCreate = Arrays.asList();
 
         // when
-        PromotionsResponse body = api.promotionsCreate(adAccountId, promotionCreateRequest).block();
+        PromotionsResponse body = api.promotionsCreate(adAccountId, promotionCreate).block();
 
         // then
         // TODO implement the promotionsCreateTest()
@@ -57,11 +58,11 @@ public class PromotionsApiTest {
     @Disabled("Not Implemented")
     public void promotionsDeleteTest() {
         // given
-        String adAccountId = "example";
         String promotionId = "example";
+        String adAccountId = "example";
 
         // when
-        api.promotionsDelete(adAccountId, promotionId).block();
+        Promotion body = api.promotionsDelete(promotionId, adAccountId).block();
 
         // then
         // TODO implement the promotionsDeleteTest()
@@ -77,11 +78,11 @@ public class PromotionsApiTest {
     @Disabled("Not Implemented")
     public void promotionsGetTest() {
         // given
-        String adAccountId = "example";
         String promotionId = "example";
+        String adAccountId = "example";
 
         // when
-        PromotionResponse body = api.promotionsGet(adAccountId, promotionId).block();
+        Promotion body = api.promotionsGet(promotionId, adAccountId).block();
 
         // then
         // TODO implement the promotionsGetTest()
@@ -98,12 +99,12 @@ public class PromotionsApiTest {
     public void promotionsListTest() {
         // given
         String adAccountId = "example";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
 
         // when
-        PromotionsList200Response body = api.promotionsList(adAccountId, pageSize, order, bookmark).block();
+        PromotionsList200Response body = api.promotionsList(adAccountId, bookmark, pageSize, order).block();
 
         // then
         // TODO implement the promotionsListTest()
@@ -120,10 +121,10 @@ public class PromotionsApiTest {
     public void promotionsUpdateTest() {
         // given
         String adAccountId = "example";
-        List<@Valid PromotionUpdateRequest> promotionUpdateRequest = Arrays.asList();
+        List<@Valid PromotionBatchUpdate> promotionBatchUpdate = Arrays.asList();
 
         // when
-        PromotionsResponse body = api.promotionsUpdate(adAccountId, promotionUpdateRequest).block();
+        PromotionsResponse body = api.promotionsUpdate(adAccountId, promotionBatchUpdate).block();
 
         // then
         // TODO implement the promotionsUpdateTest()

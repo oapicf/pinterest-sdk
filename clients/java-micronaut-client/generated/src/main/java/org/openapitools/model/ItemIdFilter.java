@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   ItemIdFilter.JSON_PROPERTY_I_T_E_M_I_D
 })
 @JsonTypeName("ItemIdFilter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ItemIdFilter {
     public static final String JSON_PROPERTY_I_T_E_M_I_D = "ITEM_ID";

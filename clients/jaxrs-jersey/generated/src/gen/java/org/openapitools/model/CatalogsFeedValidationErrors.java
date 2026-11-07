@@ -60,7 +60,7 @@ import javax.validation.Valid;
   CatalogsFeedValidationErrors.JSON_PROPERTY_R_E_Q_U_I_R_E_D_C_O_L_U_M_N_S_M_I_S_S_I_N_G,
   CatalogsFeedValidationErrors.JSON_PROPERTY_T_I_T_L_E_M_I_S_S_I_N_G
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedValidationErrors   {
   public static final String JSON_PROPERTY_A_D_U_L_T_I_N_V_A_L_I_D = "ADULT_INVALID";
   @JsonProperty(JSON_PROPERTY_A_D_U_L_T_I_N_V_A_L_I_D)

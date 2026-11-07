@@ -1,15 +1,15 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.IntegrationLogsRequest;
+import org.openapitools.model.IntegrationLogsInvalidLogResponse;
+import org.openapitools.model.IntegrationLogsRequestCreate;
 import org.openapitools.model.IntegrationLogsSuccessResponse;
 import org.openapitools.model.IntegrationMetadata;
+import org.openapitools.model.IntegrationMetadataCreate;
+import org.openapitools.model.IntegrationMetadataUpdate;
 import org.openapitools.model.IntegrationRecord;
-import org.openapitools.model.IntegrationRequest;
-import org.openapitools.model.IntegrationRequestPatch;
 import org.openapitools.model.IntegrationsGetList200Response;
-import org.openapitools.model.IntegrationsLogsPost400Response;
 import org.springframework.lang.Nullable;
+import org.openapitools.model.PinterestLibError;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,15 +27,15 @@ import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.context.request.NativeWebRequest;
 
-import javax.validation.constraints.*;
-import javax.validation.Valid;
+import jakarta.validation.constraints.*;
+import jakarta.validation.Valid;
 
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-01-31T05:12:58.482218752Z[Etc/UTC]", comments = "Generator version: 7.18.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Controller
 @RequestMapping("${openapi.pinterestREST.base-path:/v5}")
 public class IntegrationsApiController implements IntegrationsApi {

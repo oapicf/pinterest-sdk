@@ -36,7 +36,7 @@ import javax.annotation.Generated;
   CatalogsFeedIngestionErrors.JSON_PROPERTY_L_I_N_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R
 })
 @JsonTypeName("CatalogsFeedIngestionErrors")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsFeedIngestionErrors {
     public static final String JSON_PROPERTY_A_C_C_O_U_N_T_F_L_A_G_G_E_D = "ACCOUNT_FLAGGED";

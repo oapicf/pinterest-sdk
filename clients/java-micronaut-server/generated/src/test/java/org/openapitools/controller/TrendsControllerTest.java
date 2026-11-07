@@ -92,7 +92,7 @@ public class TrendsControllerTest {
         // given
         String uri = UriTemplate.of("/trends/editorial_articles").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2e254127");
+            .accept("[Ljava.lang.String;@853fbea");
         request.getParameters()
             .add("region", String.valueOf(ProductCategoryRegion.fromValue("US"))); // The query parameter format should be 
 
@@ -138,7 +138,7 @@ public class TrendsControllerTest {
         // given
         String uri = UriTemplate.of("/trends/topics/featured").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@63b0d8fc");
+            .accept("[Ljava.lang.String;@54a2f191");
         request.getParameters()
             .add("interest", String.valueOf(InterestsEnum.fromValue("ALL"))) // The query parameter format should be 
             .add("region", String.valueOf(ProductCategoryRegion.fromValue("US"))); // The query parameter format should be 
@@ -187,7 +187,7 @@ public class TrendsControllerTest {
         // given
         String uri = UriTemplate.of("/trends/product_categories/details").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@28e37266");
+            .accept("[Ljava.lang.String;@6b1a4a22");
         request.getParameters()
             .add("product_categories", Arrays.asList()) // The query format should be multi
             .add("region", String.valueOf(ProductCategoryRegion.fromValue("US"))) // The query parameter format should be 
@@ -239,7 +239,7 @@ public class TrendsControllerTest {
         // given
         String uri = UriTemplate.of("/trends/product_categories/trending").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@11d1a510");
+            .accept("[Ljava.lang.String;@7c0ee8cc");
         request.getParameters()
             .add("region", String.valueOf(ProductCategoryRegion.fromValue("US"))) // The query parameter format should be 
             .add("verticals", Arrays.asList()) // The query format should be multi

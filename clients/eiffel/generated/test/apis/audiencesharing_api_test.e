@@ -19,18 +19,18 @@ feature -- Test routines
             -- List all ad accounts and/or businesses that have access to a specific audience. The audience must be owned by the requesting ad account.
         local
             l_response: AD_ACCOUNTS_AUDIENCES_SHARED_ACCOUNTS_LIST_200_RESPONSE
-            l_ad_account_id: STRING_32
             l_audience_id: STRING_32
             l_account_type: AUDIENCE_ACCOUNT_TYPE
-            l_page_size: INTEGER_32
+            l_ad_account_id: STRING_32
             l_bookmark: STRING_32
+            l_page_size: INTEGER_32
         do
             -- TODO: Initialize required params.
-            -- l_ad_account_id
             -- l_audience_id
             -- l_account_type
+            -- l_ad_account_id
 
-            -- l_response := api.ad_accounts_audiences_shared_accounts_list(l_ad_account_id, l_audience_id, l_account_type, l_page_size, l_bookmark)
+            -- l_response := api.ad_accounts_audiences_shared_accounts_list(l_audience_id, l_account_type, l_ad_account_id, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
@@ -43,15 +43,15 @@ feature -- Test routines
             l_business_id: STRING_32
             l_audience_id: STRING_32
             l_account_type: AUDIENCE_ACCOUNT_TYPE
-            l_page_size: INTEGER_32
             l_bookmark: STRING_32
+            l_page_size: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_business_id
             -- l_audience_id
             -- l_account_type
 
-            -- l_response := api.business_account_audiences_shared_accounts_list(l_business_id, l_audience_id, l_account_type, l_page_size, l_bookmark)
+            -- l_response := api.business_account_audiences_shared_accounts_list(l_business_id, l_audience_id, l_account_type, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
@@ -60,84 +60,84 @@ feature -- Test routines
             --
             -- Get a list of received audiences for the given business.
         local
-            l_response: AUDIENCES_LIST_200_RESPONSE
+            l_response: SHARED_AUDIENCES_FOR_BUSINESS_LIST_200_RESPONSE
             l_business_id: STRING_32
+            l_order: ORDER
             l_bookmark: STRING_32
-            l_order: STRING_32
             l_page_size: INTEGER_32
         do
             -- TODO: Initialize required params.
             -- l_business_id
 
-            -- l_response := api.shared_audiences_for_business_list(l_business_id, l_bookmark, l_order, l_page_size)
+            -- l_response := api.shared_audiences_for_business_list(l_business_id, l_order, l_bookmark, l_page_size)
             assert ("not_implemented", False)
         end
 
     test_update_ad_account_to_ad_account_shared_audience
             -- Update audience sharing between ad accounts
             --
-            -- From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+            -- From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
         local
-            l_response: SHARED_AUDIENCE_RESPONSE
+            l_response: AD_ACCOUNT_TO_AD_ACCOUNT_SHARED_AUDIENCE
             l_ad_account_id: STRING_32
-            l_shared_audience: SHARED_AUDIENCE
+            l_ad_account_to_ad_account_shared_audience_update_with_required_body: AD_ACCOUNT_TO_AD_ACCOUNT_SHARED_AUDIENCE_UPDATE_WITH_REQUIRED_BODY
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
-            -- l_shared_audience
+            -- l_ad_account_to_ad_account_shared_audience_update_with_required_body
 
-            -- l_response := api.update_ad_account_to_ad_account_shared_audience(l_ad_account_id, l_shared_audience)
+            -- l_response := api.update_ad_account_to_ad_account_shared_audience(l_ad_account_id, l_ad_account_to_ad_account_shared_audience_update_with_required_body)
             assert ("not_implemented", False)
         end
 
     test_update_ad_account_to_business_shared_audience
             -- Update audience sharing from an ad account to businesses
             --
-            -- From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+            -- From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
         local
-            l_response: BUSINESS_SHARED_AUDIENCE_RESPONSE
+            l_response: AD_ACCOUNT_TO_BUSINESS_SHARED_AUDIENCE
             l_ad_account_id: STRING_32
-            l_business_shared_audience: BUSINESS_SHARED_AUDIENCE
+            l_ad_account_to_business_shared_audience_update_with_required_body: AD_ACCOUNT_TO_BUSINESS_SHARED_AUDIENCE_UPDATE_WITH_REQUIRED_BODY
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
-            -- l_business_shared_audience
+            -- l_ad_account_to_business_shared_audience_update_with_required_body
 
-            -- l_response := api.update_ad_account_to_business_shared_audience(l_ad_account_id, l_business_shared_audience)
+            -- l_response := api.update_ad_account_to_business_shared_audience(l_ad_account_id, l_ad_account_to_business_shared_audience_update_with_required_body)
             assert ("not_implemented", False)
         end
 
     test_update_business_to_ad_account_shared_audience
             -- Update audience sharing from a business to ad accounts
             --
-            -- From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+            -- From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
         local
-            l_response: SHARED_AUDIENCE_RESPONSE
+            l_response: BUSINESS_TO_AD_ACCOUNT_SHARED_AUDIENCE
             l_business_id: STRING_32
-            l_shared_audience: SHARED_AUDIENCE
+            l_business_to_ad_account_shared_audience_update_with_required_body: BUSINESS_TO_AD_ACCOUNT_SHARED_AUDIENCE_UPDATE_WITH_REQUIRED_BODY
         do
             -- TODO: Initialize required params.
             -- l_business_id
-            -- l_shared_audience
+            -- l_business_to_ad_account_shared_audience_update_with_required_body
 
-            -- l_response := api.update_business_to_ad_account_shared_audience(l_business_id, l_shared_audience)
+            -- l_response := api.update_business_to_ad_account_shared_audience(l_business_id, l_business_to_ad_account_shared_audience_update_with_required_body)
             assert ("not_implemented", False)
         end
 
     test_update_business_to_business_shared_audience
             -- Update audience sharing between businesses
             --
-            -- From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+            -- From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
         local
-            l_response: BUSINESS_SHARED_AUDIENCE_RESPONSE
+            l_response: BUSINESS_TO_BUSINESS_SHARED_AUDIENCE
             l_business_id: STRING_32
-            l_business_shared_audience: BUSINESS_SHARED_AUDIENCE
+            l_business_to_business_shared_audience_update_with_required_body: BUSINESS_TO_BUSINESS_SHARED_AUDIENCE_UPDATE_WITH_REQUIRED_BODY
         do
             -- TODO: Initialize required params.
             -- l_business_id
-            -- l_business_shared_audience
+            -- l_business_to_business_shared_audience_update_with_required_body
 
-            -- l_response := api.update_business_to_business_shared_audience(l_business_id, l_business_shared_audience)
+            -- l_response := api.update_business_to_business_shared_audience(l_business_id, l_business_to_business_shared_audience_update_with_required_body)
             assert ("not_implemented", False)
         end
 

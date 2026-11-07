@@ -9,10 +9,10 @@ test_that("AdsCreditRedeem", {
   # tests for AdsCreditRedeem
   # base path: https://api.pinterest.com/v5
   # Redeem ad credits
-  # Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param ads_credit_redeem_request AdsCreditRedeemRequest Redeem ad credits request.
-  # @return [AdsCreditRedeemResponse]
+  # @param ads_credit_redeem_create AdsCreditRedeemCreate 
+  # @return [AdsCreditRedeem]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -22,10 +22,10 @@ test_that("AdsCreditsDiscountsGet", {
   # tests for AdsCreditsDiscountsGet
   # base path: https://api.pinterest.com/v5
   # Get ads credit discounts
-  # Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+  # Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [AdsCreditsDiscountsGet200Response]
 
   # uncomment below to test the operation
@@ -52,11 +52,11 @@ test_that("BillingInvoicesGet", {
   # Get billing invoices in the advertiser account.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param sort character Field of which to sort billing invoices (optional)
-  # @param order character The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
-  # @param status character Status of billing invoices to filter by (optional)
-  # @param document_type character Document type of billing invoices to filter by (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @param order PinterestLibPaginationOrder The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+  # @param sort BillingInvoiceSortField Field of which to sort billing invoices (optional)
+  # @param status BillingInvoiceStatus Status of billing invoices to filter by (optional)
+  # @param document_type BillingInvoiceDocumentType Document type of billing invoices to filter by (optional)
   # @param start_due_date character Starting point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
   # @param end_due_date character Ending point for due dates when searching for invoices. Format: YYYY-MM-DD (optional)
   # @return [BillingInvoicesGet200Response]
@@ -69,11 +69,11 @@ test_that("BillingProfilesGet", {
   # tests for BillingProfilesGet
   # base path: https://api.pinterest.com/v5
   # Get billing profiles
-  # Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
-  # @param ad_account_id character Unique identifier of an ad account.
+  # Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
   # @param is_active character Return active billing profiles, if false return all billing profiles.
+  # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [BillingProfilesGet200Response]
 
   # uncomment below to test the operation
@@ -84,9 +84,9 @@ test_that("SsioAccountsGet", {
   # tests for SsioAccountsGet
   # base path: https://api.pinterest.com/v5
   # Get Salesforce account details including bill-to information.
-  # Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  #   Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @return [SSIOAccountResponse]
+  # @return [SSIOAccount]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -96,10 +96,10 @@ test_that("SsioInsertionOrderCreate", {
   # tests for SsioInsertionOrderCreate
   # base path: https://api.pinterest.com/v5
   # Create insertion order through SSIO.
-  # Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  #   Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param ssio_create_insertion_order_request SSIOCreateInsertionOrderRequest Order line to create.
-  # @return [SSIOCreateInsertionOrderResponse]
+  # @param ssio_insertion_order_create SSIOInsertionOrderCreate 
+  # @return [SSIOInsertionOrder]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -109,10 +109,10 @@ test_that("SsioInsertionOrderEdit", {
   # tests for SsioInsertionOrderEdit
   # base path: https://api.pinterest.com/v5
   # Edit insertion order through SSIO.
-  # Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  #   Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param ssio_edit_insertion_order_request SSIOEditInsertionOrderRequest Order line to create.
-  # @return [SSIOEditInsertionOrderResponse]
+  # @param ssio_insertion_order_update SSIOInsertionOrderUpdate 
+  # @return [SSIOInsertionOrder]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -122,10 +122,10 @@ test_that("SsioInsertionOrdersStatusGetByAdAccount", {
   # tests for SsioInsertionOrdersStatusGetByAdAccount
   # base path: https://api.pinterest.com/v5
   # Get insertion order status by ad account id.
-  # Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  #   Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [SsioInsertionOrdersStatusGetByAdAccount200Response]
 
   # uncomment below to test the operation
@@ -136,7 +136,7 @@ test_that("SsioInsertionOrdersStatusGetByPinOrderId", {
   # tests for SsioInsertionOrdersStatusGetByPinOrderId
   # base path: https://api.pinterest.com/v5
   # Get insertion order status by pin order id.
-  # Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  #   Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param pin_order_id character The pin order id associated with the ssio insertion order
   # @return [SSIOInsertionOrderStatusResponse]
@@ -149,11 +149,11 @@ test_that("SsioOrderLinesGetByAdAccount", {
   # tests for SsioOrderLinesGetByAdAccount
   # base path: https://api.pinterest.com/v5
   # Get Salesforce order lines by ad account id.
-  # Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+  #   Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
   # @param ad_account_id character Unique identifier of an ad account.
+  # @param pin_order_id character The pin order id associated with the SSIO insertion order (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param pin_order_id character The pin order id associated with the ssio insertino order (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [SsioOrderLinesGetByAdAccount200Response]
 
   # uncomment below to test the operation

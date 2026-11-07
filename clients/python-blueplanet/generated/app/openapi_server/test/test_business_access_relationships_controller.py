@@ -5,22 +5,20 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.brand_accounts_create200_response import BrandAccountsCreate200Response  # noqa: E501
-from app.openapi_server.models.brand_accounts_create_request import BrandAccountsCreateRequest  # noqa: E501
-from app.openapi_server.models.brand_accounts_update_request import BrandAccountsUpdateRequest  # noqa: E501
-from app.openapi_server.models.delete_partners_request import DeletePartnersRequest  # noqa: E501
-from app.openapi_server.models.delete_partners_response import DeletePartnersResponse  # noqa: E501
-from app.openapi_server.models.deleted_members_response import DeletedMembersResponse  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.brand_account import BrandAccount  # noqa: E501
+from app.openapi_server.models.brand_account_create import BrandAccountCreate  # noqa: E501
+from app.openapi_server.models.brand_account_update import BrandAccountUpdate  # noqa: E501
+from app.openapi_server.models.business_membership_member import BusinessMembershipMember  # noqa: E501
+from app.openapi_server.models.delete_business_membership200_response import DeleteBusinessMembership200Response  # noqa: E501
+from app.openapi_server.models.delete_business_membership_body import DeleteBusinessMembershipBody  # noqa: E501
+from app.openapi_server.models.delete_business_partners import DeleteBusinessPartners  # noqa: E501
+from app.openapi_server.models.delete_business_partners_delete import DeleteBusinessPartnersDelete  # noqa: E501
 from app.openapi_server.models.get_business_employers200_response import GetBusinessEmployers200Response  # noqa: E501
-from app.openapi_server.models.get_business_members200_response import GetBusinessMembers200Response  # noqa: E501
-from app.openapi_server.models.get_business_partners200_response import GetBusinessPartners200Response  # noqa: E501
 from app.openapi_server.models.member_business_role import MemberBusinessRole  # noqa: E501
-from app.openapi_server.models.members_to_delete_body import MembersToDeleteBody  # noqa: E501
 from app.openapi_server.models.partner_type import PartnerType  # noqa: E501
-from app.openapi_server.models.system_user_update_request import SystemUserUpdateRequest  # noqa: E501
-from app.openapi_server.models.update_member_business_role_body import UpdateMemberBusinessRoleBody  # noqa: E501
-from app.openapi_server.models.update_member_results_response_array import UpdateMemberResultsResponseArray  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.system_user_update_with_required_body import SystemUserUpdateWithRequiredBody  # noqa: E501
+from app.openapi_server.models.update_business_memberships_response import UpdateBusinessMembershipsResponse  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -32,9 +30,9 @@ class TestBusinessAccessRelationshipsController(BaseTestCase):
 
         Create a Brand Account
         """
-        body = openapi_server.BrandAccountsCreateRequest()
+        body = {"about":"about","country":"AD","name":"name","profile_image":{"content_type":"image/jpeg","data":"data"},"username":"username","website":"website"}
         response = self.client.open(
-            '/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts'.format(business_hierarchy_id='7009386637860'),
+            '/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts'.format(business_hierarchy_id='business_hierarchy_id_example'),
             method='POST',
             data=json.dumps(body),
             content_type='application/json')
@@ -46,9 +44,9 @@ class TestBusinessAccessRelationshipsController(BaseTestCase):
 
         Update a Brand Account
         """
-        body = openapi_server.BrandAccountsUpdateRequest()
+        body = {"about":"about","country":"AD","name":"name","profile_image":{"content_type":"image/jpeg","data":"data"},"username":"username","website":"website"}
         response = self.client.open(
-            '/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}'.format(business_hierarchy_id='7009386637860', brand_account_id='729090764583391194'),
+            '/v5/business_access/business_hierarchy/{business_hierarchy_id}/brand_accounts/{brand_account_id}'.format(brand_account_id='brand_account_id_example', business_hierarchy_id='business_hierarchy_id_example'),
             method='PATCH',
             data=json.dumps(body),
             content_type='application/json')
@@ -60,9 +58,9 @@ class TestBusinessAccessRelationshipsController(BaseTestCase):
 
         Terminate business memberships
         """
-        body = {"members":[{"member_id":"140943737684417","business_role":"BIZ_ADMIN"},{"member_id":"140943737684417","business_role":"BIZ_ADMIN"},{"member_id":"140943737684417","business_role":"BIZ_ADMIN"},{"member_id":"140943737684417","business_role":"BIZ_ADMIN"},{"member_id":"140943737684417","business_role":"BIZ_ADMIN"}]}
+        body = {"members":[{"business_role":"BIZ_ADMIN","member_id":"140943737684417"},{"business_role":"BIZ_ADMIN","member_id":"140943737684417"},{"business_role":"BIZ_ADMIN","member_id":"140943737684417"},{"business_role":"BIZ_ADMIN","member_id":"140943737684417"},{"business_role":"BIZ_ADMIN","member_id":"140943737684417"}]}
         response = self.client.open(
-            '/v5/businesses/{business_id}/members'.format(business_id='729090764583391194'),
+            '/v5/businesses/{business_id}/members'.format(business_id='business_id_example'),
             method='DELETE',
             data=json.dumps(body),
             content_type='application/json')
@@ -74,9 +72,9 @@ class TestBusinessAccessRelationshipsController(BaseTestCase):
 
         Terminate business partnerships
         """
-        body = {"partner_type":"partner_type","partner_ids":["1234567890123","1234567890123","1234567890123","1234567890123","1234567890123"]}
+        body = {"partner_ids":[null,null,null,null,null],"partner_type":""}
         response = self.client.open(
-            '/v5/businesses/{business_id}/partners'.format(business_id='729090764583391194'),
+            '/v5/businesses/{business_id}/partners'.format(business_id='business_id_example'),
             method='DELETE',
             data=json.dumps(body),
             content_type='application/json')
@@ -88,8 +86,9 @@ class TestBusinessAccessRelationshipsController(BaseTestCase):
 
         List business employers for user
         """
-        query_string = [('page_size', 25),
-                        ('bookmark', 'bookmark_example')]
+        query_string = [('assets_summary', True),
+                        ('bookmark', 'bookmark_example'),
+                        ('page_size', 25)]
         response = self.client.open(
             '/v5/businesses/employers',
             method='GET',
@@ -105,12 +104,12 @@ class TestBusinessAccessRelationshipsController(BaseTestCase):
         query_string = [('fetch_system_users', False),
                         ('assets_summary', False),
                         ('business_roles', [openapi_server.MemberBusinessRole()]),
-                        ('member_ids', '00101010101,2222220101'),
+                        ('member_ids', 'member_ids_example'),
                         ('start_index', 0),
                         ('bookmark', 'bookmark_example'),
                         ('page_size', 25)]
         response = self.client.open(
-            '/v5/businesses/{business_id}/members'.format(business_id='729090764583391194'),
+            '/v5/businesses/{business_id}/members'.format(business_id='business_id_example'),
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -123,12 +122,13 @@ class TestBusinessAccessRelationshipsController(BaseTestCase):
         """
         query_string = [('assets_summary', False),
                         ('partner_type', openapi_server.PartnerType()),
-                        ('partner_ids', '00101010101,2222220101'),
+                        ('partner_ids', 'partner_ids_example'),
                         ('start_index', 0),
-                        ('page_size', 25),
-                        ('bookmark', 'bookmark_example')]
+                        ('sort_ascending', True),
+                        ('bookmark', 'bookmark_example'),
+                        ('page_size', 25)]
         response = self.client.open(
-            '/v5/businesses/{business_id}/partners'.format(business_id='729090764583391194'),
+            '/v5/businesses/{business_id}/partners'.format(business_id='business_id_example'),
             method='GET',
             query_string=query_string)
         self.assert200(response,
@@ -139,9 +139,9 @@ class TestBusinessAccessRelationshipsController(BaseTestCase):
 
         Update a system user information.
         """
-        body = openapi_server.SystemUserUpdateRequest()
+        body = {"name":"name"}
         response = self.client.open(
-            '/v5/businesses/{business_id}/system_users/{system_user_id}'.format(business_id='729090764583391194', system_user_id='729090764583391194'),
+            '/v5/businesses/{business_id}/system_users/{system_user_id}'.format(business_id='business_id_example', system_user_id='system_user_id_example'),
             method='PATCH',
             data=json.dumps(body),
             content_type='application/json')
@@ -153,9 +153,9 @@ class TestBusinessAccessRelationshipsController(BaseTestCase):
 
         Update member's business role
         """
-        body = {"member_id":"140943737684417","business_role":"BIZ_ADMIN"}
+        body = {"business_role":"BIZ_ADMIN","member_id":"140943737684417"}
         response = self.client.open(
-            '/v5/businesses/{business_id}/members'.format(business_id='729090764583391194'),
+            '/v5/businesses/{business_id}/members'.format(business_id='business_id_example'),
             method='PATCH',
             data=json.dumps(body),
             content_type='application/json')

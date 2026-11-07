@@ -29,7 +29,7 @@ import org.openapitools.model.ItemUpdateBatchRecord;
  */
 
 @ApiModel(description = "Request object to update catalogs items")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-03T06:14:17.985621696Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsItemsUpdateBatchRequest   {
   
   private Country country;

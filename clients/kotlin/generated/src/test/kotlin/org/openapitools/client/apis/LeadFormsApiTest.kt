@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,14 +27,15 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.LeadFormsApi
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.LeadFormArrayResponse
-import org.openapitools.client.models.LeadFormCreateRequest
-import org.openapitools.client.models.LeadFormResponse
-import org.openapitools.client.models.LeadFormTestRequest
-import org.openapitools.client.models.LeadFormTestResponse
-import org.openapitools.client.models.LeadFormUpdateRequest
+import org.openapitools.client.models.LeadForm
+import org.openapitools.client.models.LeadFormBatchUpdate
+import org.openapitools.client.models.LeadFormCreate
+import org.openapitools.client.models.LeadFormTest
+import org.openapitools.client.models.LeadFormTestCreate
+import org.openapitools.client.models.LeadFormsCreate200Response
 import org.openapitools.client.models.LeadFormsList200Response
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
 
 class LeadFormsApiTest : ShouldSpec() {
     init {
@@ -36,19 +45,19 @@ class LeadFormsApiTest : ShouldSpec() {
         // to test leadFormGet
         should("test leadFormGet") {
             // uncomment below to test leadFormGet
+            //val leadFormId : kotlin.String = leadFormId_example // kotlin.String | The ID of this lead form
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val leadFormId : kotlin.String = 1234567890123 // kotlin.String | Unique identifier of a lead form.
-            //val result : LeadFormResponse = apiInstance.leadFormGet(adAccountId, leadFormId)
+            //val result : LeadForm = apiInstance.leadFormGet(leadFormId, adAccountId)
             //result shouldBe ("TODO")
         }
 
         // to test leadFormTestCreate
         should("test leadFormTestCreate") {
             // uncomment below to test leadFormTestCreate
-            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val leadFormId : kotlin.String = 1234567890123 // kotlin.String | Unique identifier of a lead form.
-            //val leadFormTestRequest : LeadFormTestRequest =  // LeadFormTestRequest | Subscription to create.
-            //val result : LeadFormTestResponse = apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest)
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+            //val leadFormId : kotlin.String = leadFormId_example // kotlin.String | Unique identifier of a lead form.
+            //val leadFormTestCreate : LeadFormTestCreate =  // LeadFormTestCreate | 
+            //val result : LeadFormTest = apiInstance.leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate)
             //result shouldBe ("TODO")
         }
 
@@ -56,8 +65,8 @@ class LeadFormsApiTest : ShouldSpec() {
         should("test leadFormsCreate") {
             // uncomment below to test leadFormsCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val leadFormCreateRequest : kotlin.collections.List<LeadFormCreateRequest> =  // kotlin.collections.List<LeadFormCreateRequest> | List of lead forms to create, size limit [1, 30].
-            //val result : LeadFormArrayResponse = apiInstance.leadFormsCreate(adAccountId, leadFormCreateRequest)
+            //val leadFormCreate : kotlin.collections.List<LeadFormCreate> =  // kotlin.collections.List<LeadFormCreate> | 
+            //val result : LeadFormsCreate200Response = apiInstance.leadFormsCreate(adAccountId, leadFormCreate)
             //result shouldBe ("TODO")
         }
 
@@ -65,10 +74,10 @@ class LeadFormsApiTest : ShouldSpec() {
         should("test leadFormsList") {
             // uncomment below to test leadFormsList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : LeadFormsList200Response = apiInstance.leadFormsList(adAccountId, pageSize, order, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val result : LeadFormsList200Response = apiInstance.leadFormsList(adAccountId, bookmark, pageSize, order)
             //result shouldBe ("TODO")
         }
 
@@ -76,8 +85,8 @@ class LeadFormsApiTest : ShouldSpec() {
         should("test leadFormsUpdate") {
             // uncomment below to test leadFormsUpdate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val leadFormUpdateRequest : kotlin.collections.List<LeadFormUpdateRequest> =  // kotlin.collections.List<LeadFormUpdateRequest> | List of lead forms to update, size limit [1, 30].
-            //val result : LeadFormArrayResponse = apiInstance.leadFormsUpdate(adAccountId, leadFormUpdateRequest)
+            //val leadFormBatchUpdate : kotlin.collections.List<LeadFormBatchUpdate> =  // kotlin.collections.List<LeadFormBatchUpdate> | 
+            //val result : LeadFormsCreate200Response = apiInstance.leadFormsUpdate(adAccountId, leadFormBatchUpdate)
             //result shouldBe ("TODO")
         }
 

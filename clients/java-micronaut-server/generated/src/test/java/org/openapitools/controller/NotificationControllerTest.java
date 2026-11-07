@@ -1,8 +1,8 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
 import org.openapitools.model.NotificationPostRequest;
 import org.openapitools.model.NotificationResponse;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -83,7 +83,7 @@ public class NotificationControllerTest {
         NotificationPostRequest body = new NotificationPostRequest();
         String uri = UriTemplate.of("/notifications").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@48453feb");
+            .accept("[Ljava.lang.String;@74374cb6");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, NotificationResponse.class);

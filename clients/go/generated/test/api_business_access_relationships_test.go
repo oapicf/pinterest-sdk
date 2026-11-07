@@ -40,10 +40,10 @@ func Test_openapi_BusinessAccessRelationshipsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var businessHierarchyId string
 		var brandAccountId string
+		var businessHierarchyId string
 
-		resp, httpRes, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsUpdate(context.Background(), businessHierarchyId, brandAccountId).Execute()
+		resp, httpRes, err := apiClient.BusinessAccessRelationshipsAPI.BrandAccountsUpdate(context.Background(), brandAccountId, businessHierarchyId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

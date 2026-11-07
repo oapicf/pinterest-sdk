@@ -3,16 +3,16 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
 from openapi_server.models.catalog import Catalog  # noqa: F401
+from openapi_server.models.catalog_create import CatalogCreate  # noqa: F401
 from openapi_server.models.catalogs_available_filter_values import CatalogsAvailableFilterValues  # noqa: F401
-from openapi_server.models.catalogs_create_request import CatalogsCreateRequest  # noqa: F401
 from openapi_server.models.catalogs_list200_response import CatalogsList200Response  # noqa: F401
 from openapi_server.models.catalogs_locale import CatalogsLocale  # noqa: F401
 from openapi_server.models.country import Country  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 
 
 def test_catalogs_list(client: TestClient):
@@ -20,7 +20,7 @@ def test_catalogs_list(client: TestClient):
 
     List catalogs
     """
-    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("ad_account_id", 'ad_account_id_example'),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
     }
@@ -41,7 +41,7 @@ def test_catalogs_create(client: TestClient):
 
     Create catalog
     """
-    catalogs_create_request = {"catalog_type":"RETAIL","name":"name"}
+    catalog_create = openapi_server.CatalogCreate()
     params = [("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
@@ -51,7 +51,7 @@ def test_catalogs_create(client: TestClient):
     #    "POST",
     #    "/catalogs",
     #    headers=headers,
-    #    json=catalogs_create_request,
+    #    json=catalog_create,
     #    params=params,
     #)
 

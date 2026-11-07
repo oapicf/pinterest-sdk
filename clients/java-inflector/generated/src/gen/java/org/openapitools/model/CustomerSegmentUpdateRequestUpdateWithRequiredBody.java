@@ -18,7 +18,7 @@ import org.openapitools.model.AudienceUpdateOperationType;
  **/
 
 @ApiModel(description = "Resource create or update operation model with required body fields (no OptionalProperties).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerSegmentUpdateRequestUpdateWithRequiredBody   {
   @JsonProperty("audience_ids")
   private List<String> audienceIds = null;

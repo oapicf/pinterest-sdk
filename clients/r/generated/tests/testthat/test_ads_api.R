@@ -9,9 +9,9 @@ test_that("AdPreviewsCreate", {
   # tests for AdPreviewsCreate
   # base path: https://api.pinterest.com/v5
   # Create ad preview with pin or image
-  # Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad. &lt;p/&gt; If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/promoted-pins-overview\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Ads Overview&lt;/a&gt;.) &lt;p/&gt; You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.  Creating ad preview from catalog product group is currently in BETA and is not available to all users.
+  # Create an ad preview given an ad account ID and either an existing organic pin ID or the URL for an image to be used to create the Pin and the ad.  If you are creating a preview from an existing Pin, that Pin must be promotable: that is, it must have a clickthrough link and meet other requirements. (See [Ads Overview](https://help.pinterest.com/en/business/article/promoted-pins-overview).)  You can view the returned preview URL on a webpage or iframe for 7 days, after which the URL expires. Collection ads are not currently supported ad preview.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param ad_preview_request AdPreviewRequest Create ad preview with pin or image.
+  # @param ad_preview_request AdPreviewRequest 
   # @return [AdPreviewURLResponse]
 
   # uncomment below to test the operation
@@ -22,20 +22,22 @@ test_that("AdTargetingAnalyticsGet", {
   # tests for AdTargetingAnalyticsGet
   # base path: https://api.pinterest.com/v5
   # Get targeting analytics for ads
-  # Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;). &lt;p/&gt; - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+  # Get targeting analytics for one or more ads. For the requested ad(s) and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \&quot;age_bucket\&quot;) for applicable values (e.g. \&quot;45-49\&quot;).  * The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param ad_ids array[character] List of Ad Ids to use to filter the results.
   # @param start_date character Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   # @param end_date character Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  # @param targeting_types array[AdsAnalyticsAdTargetingType] Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
-  # @param columns array[character] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-  # @param granularity Granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-  # @param click_window_days integer Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
-  # @param engagement_window_days integer Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional)
-  # @param view_window_days integer Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
-  # @param conversion_report_time character The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
+  # @param targeting_types array[AdsAnalyticsAdTargetingType] Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\"] is in BETA and not yet available to all users.
+  # @param columns array[ReportingColumnSync] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+  # @param granularity Granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+  # @param click_window_days ConversionAttributionWindowDays Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
+  # @param engagement_window_days ConversionAttributionWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.  **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional)
+  # @param view_window_days ConversionAttributionWindowDays Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
+  # @param conversion_report_time ConversionReportTimeType The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
   # @param attribution_types array[ConversionReportAttributionType] List of types of attribution for the conversion report (optional)
   # @param reporting_timezone ReportingTimeZone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
+  # @param sort_columns array[character] Sort Columns. (optional)
+  # @param sort_ascending character Sort ascending. (optional)
   # @return [MetricsResponse]
 
   # uncomment below to test the operation
@@ -46,21 +48,21 @@ test_that("AdsAnalytics", {
   # tests for AdsAnalytics
   # base path: https://api.pinterest.com/v5
   # Get ad analytics
-  # Get analytics for the specified ads in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager. - The request must contain either ad_ids or both campaign_ids and pin_ids. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
-  # @param ad_account_id character Unique identifier of an ad account.
+  #     Get analytics for the specified ads in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.     - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.     - The request must contain either ad_ids or both campaign_ids and pin_ids.     - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.     - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
   # @param start_date character Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
   # @param end_date character Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-  # @param columns array[character] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-  # @param granularity Granularity TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-  # @param ad_ids array[character] List of Ad Ids to use to filter the results. (optional)
-  # @param click_window_days integer Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
-  # @param engagement_window_days integer Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>. (optional)
-  # @param view_window_days integer Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
-  # @param conversion_report_time character The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
+  # @param columns array[ReportingColumnSync] Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+  # @param granularity Granularity   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+  # @param ad_account_id character Unique identifier of an ad account.
   # @param pin_ids array[character] List of Pin IDs. (optional)
+  # @param ad_ids array[character] List of Ad Ids to use to filter the results. (optional)
+  # @param click_window_days numeric Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. (optional)
+  # @param engagement_window_days numeric Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**. (optional)
+  # @param view_window_days numeric Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day. (optional)
+  # @param conversion_report_time character The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event. (optional)
   # @param campaign_ids array[character] List of Campaign Ids to use to filter the results. (optional)
   # @param reporting_timezone ReportingTimeZone Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users. (optional)
-  # @return [array[AdsAnalyticsResponseInner]]
+  # @return [array[AdsAnalytics]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -70,10 +72,10 @@ test_that("AdsCreate", {
   # tests for AdsCreate
   # base path: https://api.pinterest.com/v5
   # Create ads
-  # Create multiple new ads. Request must contain &#x60;ad_group_id&#x60;, &#x60;creative_type&#x60;, and the source Pin &#x60;pin_id&#x60;.
+  # Create multiple new ads. Request must contain ad_group_id, creative_type, and the source Pin pin_id.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param ad_create_request array[AdCreateRequest] List of ads to create, size limit [1, 30].
-  # @return [AdArrayResponse]
+  # @param ad_create array[AdCreate] 
+  # @return [AdBatchWriteResponseModel]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -83,10 +85,10 @@ test_that("AdsGet", {
   # tests for AdsGet
   # base path: https://api.pinterest.com/v5
   # Get ad
-  # Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the &lt;a href&#x3D;\&quot;https://www.pinterest.com/_/_/policy/advertising-guidelines/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Pinterest advertising standards&lt;/a&gt;.
+  # Get a specific ad given the ad ID. If your pin is rejected, rejected_reasons will contain additional information from the Ad Review process. For more information about our policies and rejection reasons see the [Pinterest advertising standards](https://www.pinterest.com/_/_/policy/advertising-guidelines/).
+  # @param ad_id character The ID of this ad.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param ad_id character Unique identifier of an ad.
-  # @return [AdResponse]
+  # @return [Ad]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -96,15 +98,15 @@ test_that("AdsList", {
   # tests for AdsList
   # base path: https://api.pinterest.com/v5
   # List ads
-  # List ads that meet the filters provided:   - Listed campaign ids or ad group ids or ad ids   - Listed entity statuses &lt;p/&gt; If no filter is provided, all ads in the ad account are returned. &lt;p/&gt; &lt;strong&gt;Note:&lt;/strong&gt;&lt;p/&gt; Provide only campaign_id or ad_group_id or ad_id. Do not provide more than one type. &lt;p/&gt; Review status is provided for each ad; if review_status is REJECTED, the rejected_reasons field will contain additional information. For more, see &lt;a href&#x3D;\&quot;https://policy.pinterest.com/en/advertising-guidelines\&quot;&gt;Pinterest advertising standards&lt;/a&gt;.
+  # List ads that meet the filters provided:     - Listed campaign ids or ad group ids or ad ids     - Listed entity statuses  If no filter is provided, all ads in the ad account are returned.  **Note:** Provide only &#x60;campaign_id&#x60; or &#x60;ad_group_id&#x60; or &#x60;ad_id&#x60;. Do not provide more than one type.  Review status is provided for each ad; if &#x60;review_status&#x60; is &#x60;REJECTED&#x60;, the &#x60;rejected_reasons&#x60; field will contain additional information.  For more, see [Pinterest advertising standards](https://policy.pinterest.com/en/advertising-guidelines).
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param campaign_ids array[character] List of Campaign Ids to use to filter the results. (optional)
-  # @param ad_group_ids array[character] List of Ad group Ids to use to filter the results. (optional)
-  # @param ad_ids array[character] List of Ad Ids to use to filter the results. (optional)
-  # @param entity_statuses array[character] Entity status (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param order character The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @param order PinterestLibPaginationOrder The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
+  # @param campaign_ids array[character] List of Campaign Ids to use to filter the results. (optional)
+  # @param ad_group_ids array[character] List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users. (optional)
+  # @param ad_ids array[character] List of Ad Ids to use to filter the results. (optional)
+  # @param entity_statuses array[EntityStatus] Entity status (optional)
   # @return [AdsList200Response]
 
   # uncomment below to test the operation
@@ -117,8 +119,47 @@ test_that("AdsUpdate", {
   # Update ads
   # Update multiple existing ads
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param ad_update_request array[AdUpdateRequest] List of ads to update, size limit [1, 30]
-  # @return [AdArrayResponse]
+  # @param ad_batch_update array[AdBatchUpdate] 
+  # @return [AdBatchWriteResponseModel]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("CampaignAdPreviewCreate", {
+  # tests for CampaignAdPreviewCreate
+  # base path: https://api.pinterest.com/v5
+  # Create ad preview records for one or more ad groups
+  # Create ad preview records for one or more ad groups that can be shared. Each ad group is processed independently; individual failures do not block other previews.
+  # @param ad_account_id character Unique identifier of an ad account.
+  # @param campaign_ad_preview_create array[CampaignAdPreviewCreate] 
+  # @return [array[CampaignAdPreviewCreate200ResponseInner]]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("CampaignAdPreviewDelete", {
+  # tests for CampaignAdPreviewDelete
+  # base path: https://api.pinterest.com/v5
+  # Delete ad preview records for one or more ad groups
+  # Delete ad preview records for one or more ad groups. All ad groups are validated before deleting any records.
+  # @param ad_group_ids array[character] List of Ad group Ids to use to filter the results.
+  # @param ad_account_id character Unique identifier of an ad account.
+  # @return [array[CampaignAdPreviewDelete200ResponseInner]]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("CampaignAdPreviewRead", {
+  # tests for CampaignAdPreviewRead
+  # base path: https://api.pinterest.com/v5
+  # Fetch ad preview records for one or more ad groups
+  # Fetch ad preview records for one or more ad groups. Returns all active previews associated with the provided ad group IDs.
+  # @param ad_group_ids array[character] List of Ad group Ids to use to filter the results.
+  # @param ad_account_id character Unique identifier of an ad account.
+  # @return [array[CampaignAdPreview]]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

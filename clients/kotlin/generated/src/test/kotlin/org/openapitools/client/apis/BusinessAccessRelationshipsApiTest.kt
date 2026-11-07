@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,22 +27,20 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.BusinessAccessRelationshipsApi
-import org.openapitools.client.models.BrandAccountsCreate200Response
-import org.openapitools.client.models.BrandAccountsCreateRequest
-import org.openapitools.client.models.BrandAccountsUpdateRequest
-import org.openapitools.client.models.DeletePartnersRequest
-import org.openapitools.client.models.DeletePartnersResponse
-import org.openapitools.client.models.DeletedMembersResponse
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.BrandAccount
+import org.openapitools.client.models.BrandAccountCreate
+import org.openapitools.client.models.BrandAccountUpdate
+import org.openapitools.client.models.BusinessMembershipMember
+import org.openapitools.client.models.DeleteBusinessMembership200Response
+import org.openapitools.client.models.DeleteBusinessMembershipBody
+import org.openapitools.client.models.DeleteBusinessPartners
+import org.openapitools.client.models.DeleteBusinessPartnersDelete
 import org.openapitools.client.models.GetBusinessEmployers200Response
-import org.openapitools.client.models.GetBusinessMembers200Response
-import org.openapitools.client.models.GetBusinessPartners200Response
 import org.openapitools.client.models.MemberBusinessRole
-import org.openapitools.client.models.MembersToDeleteBody
 import org.openapitools.client.models.PartnerType
-import org.openapitools.client.models.SystemUserUpdateRequest
-import org.openapitools.client.models.UpdateMemberBusinessRoleBody
-import org.openapitools.client.models.UpdateMemberResultsResponseArray
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.SystemUserUpdateWithRequiredBody
+import org.openapitools.client.models.UpdateBusinessMembershipsResponse
 
 class BusinessAccessRelationshipsApiTest : ShouldSpec() {
     init {
@@ -44,93 +50,95 @@ class BusinessAccessRelationshipsApiTest : ShouldSpec() {
         // to test brandAccountsCreate
         should("test brandAccountsCreate") {
             // uncomment below to test brandAccountsCreate
-            //val businessHierarchyId : kotlin.String = 7009386637860 // kotlin.String | business hierarchy node id
-            //val brandAccountsCreateRequest : BrandAccountsCreateRequest =  // BrandAccountsCreateRequest | 
-            //val result : BrandAccountsCreate200Response = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest)
+            //val businessHierarchyId : kotlin.String = businessHierarchyId_example // kotlin.String | business hierarchy node id
+            //val brandAccountCreate : BrandAccountCreate =  // BrandAccountCreate | 
+            //val result : BrandAccount = apiInstance.brandAccountsCreate(businessHierarchyId, brandAccountCreate)
             //result shouldBe ("TODO")
         }
 
         // to test brandAccountsUpdate
         should("test brandAccountsUpdate") {
             // uncomment below to test brandAccountsUpdate
-            //val businessHierarchyId : kotlin.String = 7009386637860 // kotlin.String | business hierarchy node id
-            //val brandAccountId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of a brand account.
-            //val brandAccountsUpdateRequest : BrandAccountsUpdateRequest =  // BrandAccountsUpdateRequest | 
-            //val result : BrandAccountsCreate200Response = apiInstance.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest)
+            //val brandAccountId : kotlin.String = brandAccountId_example // kotlin.String | 
+            //val businessHierarchyId : kotlin.String = businessHierarchyId_example // kotlin.String | business hierarchy node id
+            //val brandAccountUpdate : BrandAccountUpdate =  // BrandAccountUpdate | 
+            //val result : BrandAccount = apiInstance.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate)
             //result shouldBe ("TODO")
         }
 
         // to test deleteBusinessMembership
         should("test deleteBusinessMembership") {
             // uncomment below to test deleteBusinessMembership
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Business id
-            //val membersToDeleteBody : MembersToDeleteBody =  // MembersToDeleteBody | List of members with role to delete.
-            //val result : DeletedMembersResponse = apiInstance.deleteBusinessMembership(businessId, membersToDeleteBody)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Business id
+            //val deleteBusinessMembershipBody : DeleteBusinessMembershipBody =  // DeleteBusinessMembershipBody | 
+            //val result : DeleteBusinessMembership200Response = apiInstance.deleteBusinessMembership(businessId, deleteBusinessMembershipBody)
             //result shouldBe ("TODO")
         }
 
         // to test deleteBusinessPartners
         should("test deleteBusinessPartners") {
             // uncomment below to test deleteBusinessPartners
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val deletePartnersRequest : DeletePartnersRequest =  // DeletePartnersRequest | An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
-            //val result : DeletePartnersResponse = apiInstance.deleteBusinessPartners(businessId, deletePartnersRequest)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val deleteBusinessPartnersDelete : DeleteBusinessPartnersDelete =  // DeleteBusinessPartnersDelete | 
+            //val result : DeleteBusinessPartners = apiInstance.deleteBusinessPartners(businessId, deleteBusinessPartnersDelete)
             //result shouldBe ("TODO")
         }
 
         // to test getBusinessEmployers
         should("test getBusinessEmployers") {
             // uncomment below to test getBusinessEmployers
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val assetsSummary : kotlin.Boolean = true // kotlin.Boolean | Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : GetBusinessEmployers200Response = apiInstance.getBusinessEmployers(pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : GetBusinessEmployers200Response = apiInstance.getBusinessEmployers(assetsSummary, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test getBusinessMembers
         should("test getBusinessMembers") {
             // uncomment below to test getBusinessMembers
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
             //val fetchSystemUsers : kotlin.Boolean = true // kotlin.Boolean | Fetches system users if True. Fetches regular user employees if False.
             //val assetsSummary : kotlin.Boolean = true // kotlin.Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
             //val businessRoles : kotlin.collections.List<MemberBusinessRole> =  // kotlin.collections.List<MemberBusinessRole> | A list of business roles to filter the members by. Only members whose roles are in the specified roles will be returned.
-            //val memberIds : kotlin.String = 00101010101,2222220101 // kotlin.String | A list of business members ids separated by comma.
-            //val startIndex : kotlin.Int = 0 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+            //val memberIds : kotlin.String = memberIds_example // kotlin.String | A list of business members ids separated by comma.
+            //val startIndex : kotlin.Int = 56 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val result : GetBusinessMembers200Response = apiInstance.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : GetBusinessEmployers200Response = apiInstance.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test getBusinessPartners
         should("test getBusinessPartners") {
             // uncomment below to test getBusinessPartners
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
             //val assetsSummary : kotlin.Boolean = true // kotlin.Boolean | Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are
-            //val partnerType : PartnerType = INTERNAL // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
-            //val partnerIds : kotlin.String = 00101010101,2222220101 // kotlin.String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
-            //val startIndex : kotlin.Int = 0 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val partnerType : PartnerType =  // PartnerType | Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset.
+            //val partnerIds : kotlin.String = partnerIds_example // kotlin.String | A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned.
+            //val startIndex : kotlin.Int = 56 // kotlin.Int | An index to start fetching the results from. Only the results starting from this index will be returned.
+            //val sortAscending : kotlin.Boolean = true // kotlin.Boolean | Sort ascending.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : GetBusinessPartners200Response = apiInstance.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : GetBusinessEmployers200Response = apiInstance.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test systemUserUpdate
         should("test systemUserUpdate") {
             // uncomment below to test systemUserUpdate
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val systemUserId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of a system user.
-            //val systemUserUpdateRequest : SystemUserUpdateRequest =  // SystemUserUpdateRequest | 
-            //apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val systemUserId : kotlin.String = systemUserId_example // kotlin.String | Unique identifier of a system user.
+            //val systemUserUpdateWithRequiredBody : SystemUserUpdateWithRequiredBody =  // SystemUserUpdateWithRequiredBody | 
+            //apiInstance.systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody)
         }
 
         // to test updateBusinessMemberships
         should("test updateBusinessMemberships") {
             // uncomment below to test updateBusinessMemberships
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Business id
-            //val updateMemberBusinessRoleBody : kotlin.collections.List<UpdateMemberBusinessRoleBody> =  // kotlin.collections.List<UpdateMemberBusinessRoleBody> | List of objects with the member id and the business_role.
-            //val result : UpdateMemberResultsResponseArray = apiInstance.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Business id
+            //val businessMembershipMember : kotlin.collections.List<BusinessMembershipMember> =  // kotlin.collections.List<BusinessMembershipMember> | 
+            //val result : UpdateBusinessMembershipsResponse = apiInstance.updateBusinessMemberships(businessId, businessMembershipMember)
             //result shouldBe ("TODO")
         }
 

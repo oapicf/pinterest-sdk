@@ -10,7 +10,7 @@ test_that("NotificationPost", {
   # base path: https://api.pinterest.com/v5
   # Receive notifications from external partners.
   # Used by third-party partners to send notifications to Pinterest. These notifications could be specific for your use-case or generic notification that are accepted by Pinterests&#39; systems. This API is gated and you need to request access to this feature.
-  # @param notification_post_request NotificationPostRequest notification event.
+  # @param notification_post_request NotificationPostRequest 
   # @return [NotificationResponse]
 
   # uncomment below to test the operation

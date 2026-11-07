@@ -16,9 +16,9 @@ open TestHelper
 open NotificationApiHandlerTestsHelper
 open OpenAPI.NotificationApiHandler
 open OpenAPI.NotificationApiHandlerParams
-open OpenAPI.Model.Error
 open OpenAPI.Model.NotificationPostRequest
 open OpenAPI.Model.NotificationResponse
+open OpenAPI.Model.PinterestLibError
 
 module NotificationApiHandlerTests =
 
@@ -27,7 +27,7 @@ module NotificationApiHandlerTests =
   // ---------------------------------
 
   [<Fact>]
-  let ``NotificationPost - Receive notifications from external partners. returns 200 where Successfully received notification`` () =
+  let ``NotificationPost - Receive notifications from external partners. returns 200 where The request has succeeded.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -49,7 +49,7 @@ module NotificationApiHandlerTests =
       }
 
   [<Fact>]
-  let ``NotificationPost - Receive notifications from external partners. returns 400 where Invalid request parameter.`` () =
+  let ``NotificationPost - Receive notifications from external partners. returns 400 where The request could not be understood by the server due to unexpected data.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()
@@ -71,7 +71,7 @@ module NotificationApiHandlerTests =
       }
 
   [<Fact>]
-  let ``NotificationPost - Receive notifications from external partners. returns 0 where Unexpected error`` () =
+  let ``NotificationPost - Receive notifications from external partners. returns 0 where An unexpected error response.`` () =
     task {
       use server = new TestServer(createHost())
       use client = server.CreateClient()

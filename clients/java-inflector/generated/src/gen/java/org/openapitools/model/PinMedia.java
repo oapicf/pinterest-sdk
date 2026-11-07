@@ -29,7 +29,7 @@ import org.openapitools.model.PinMediaWithVideos;
  **/
 
 @ApiModel(description = "Pin media that can be an image, video, or a mix of both.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMedia   {
   @JsonProperty("images")
   private ImageSize images;

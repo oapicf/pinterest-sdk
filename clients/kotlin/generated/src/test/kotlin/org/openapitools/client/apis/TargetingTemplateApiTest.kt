@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,11 +27,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.TargetingTemplateApi
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
+import org.openapitools.client.models.TargetingTemplate
 import org.openapitools.client.models.TargetingTemplateCreate
-import org.openapitools.client.models.TargetingTemplateGetResponseData
 import org.openapitools.client.models.TargetingTemplateList200Response
-import org.openapitools.client.models.TargetingTemplateUpdateRequest
+import org.openapitools.client.models.TargetingTemplateUpdateRequestReadOrUpdate
 
 class TargetingTemplateApiTest : ShouldSpec() {
     init {
@@ -34,8 +43,8 @@ class TargetingTemplateApiTest : ShouldSpec() {
         should("test targetingTemplateCreate") {
             // uncomment below to test targetingTemplateCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val targetingTemplateCreate : TargetingTemplateCreate =  // TargetingTemplateCreate | targeting template creation entity
-            //val result : TargetingTemplateGetResponseData = apiInstance.targetingTemplateCreate(adAccountId, targetingTemplateCreate)
+            //val targetingTemplateCreate : TargetingTemplateCreate =  // TargetingTemplateCreate | 
+            //val result : TargetingTemplate = apiInstance.targetingTemplateCreate(adAccountId, targetingTemplateCreate)
             //result shouldBe ("TODO")
         }
 
@@ -43,12 +52,12 @@ class TargetingTemplateApiTest : ShouldSpec() {
         should("test targetingTemplateList") {
             // uncomment below to test targetingTemplateList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
-            //val includeSizing : kotlin.Boolean = true // kotlin.Boolean | Include audience sizing in result or not
-            //val searchQuery : kotlin.String = gaming // kotlin.String | Search keyword for targeting templates
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : TargetingTemplateList200Response = apiInstance.targetingTemplateList(adAccountId, order, includeSizing, searchQuery, pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val includeSizing : kotlin.Boolean = true // kotlin.Boolean | Include audience sizing in result or not
+            //val searchQuery : kotlin.String = searchQuery_example // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+            //val result : TargetingTemplateList200Response = apiInstance.targetingTemplateList(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery)
             //result shouldBe ("TODO")
         }
 
@@ -56,8 +65,8 @@ class TargetingTemplateApiTest : ShouldSpec() {
         should("test targetingTemplateUpdate") {
             // uncomment below to test targetingTemplateUpdate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val targetingTemplateUpdateRequest : TargetingTemplateUpdateRequest =  // TargetingTemplateUpdateRequest | Operation type and targeting template ID
-            //apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequest)
+            //val targetingTemplateUpdateRequestReadOrUpdate : TargetingTemplateUpdateRequestReadOrUpdate =  // TargetingTemplateUpdateRequestReadOrUpdate | 
+            //apiInstance.targetingTemplateUpdate(adAccountId, targetingTemplateUpdateRequestReadOrUpdate)
         }
 
     }

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,15 +27,15 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.IntegrationsApi
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.IntegrationLogsRequest
+import org.openapitools.client.models.IntegrationLogsInvalidLogResponse
+import org.openapitools.client.models.IntegrationLogsRequestCreate
 import org.openapitools.client.models.IntegrationLogsSuccessResponse
 import org.openapitools.client.models.IntegrationMetadata
+import org.openapitools.client.models.IntegrationMetadataCreate
+import org.openapitools.client.models.IntegrationMetadataUpdate
 import org.openapitools.client.models.IntegrationRecord
-import org.openapitools.client.models.IntegrationRequest
-import org.openapitools.client.models.IntegrationRequestPatch
 import org.openapitools.client.models.IntegrationsGetList200Response
-import org.openapitools.client.models.IntegrationsLogsPost400Response
+import org.openapitools.client.models.PinterestLibError
 
 class IntegrationsApiTest : ShouldSpec() {
     init {
@@ -38,7 +46,8 @@ class IntegrationsApiTest : ShouldSpec() {
         should("test integrationsCommerceDel") {
             // uncomment below to test integrationsCommerceDel
             //val externalBusinessId : kotlin.String = externalBusinessId_example // kotlin.String | External business ID for the integration.
-            //apiInstance.integrationsCommerceDel(externalBusinessId)
+            //val result : IntegrationMetadata = apiInstance.integrationsCommerceDel(externalBusinessId)
+            //result shouldBe ("TODO")
         }
 
         // to test integrationsCommerceGet
@@ -53,23 +62,23 @@ class IntegrationsApiTest : ShouldSpec() {
         should("test integrationsCommercePatch") {
             // uncomment below to test integrationsCommercePatch
             //val externalBusinessId : kotlin.String = externalBusinessId_example // kotlin.String | External business ID for the integration.
-            //val integrationRequestPatch : IntegrationRequestPatch =  // IntegrationRequestPatch | Parameters to get create/update the Integration Metadata
-            //val result : IntegrationMetadata = apiInstance.integrationsCommercePatch(externalBusinessId, integrationRequestPatch)
+            //val integrationMetadataUpdate : IntegrationMetadataUpdate =  // IntegrationMetadataUpdate | 
+            //val result : IntegrationMetadata = apiInstance.integrationsCommercePatch(externalBusinessId, integrationMetadataUpdate)
             //result shouldBe ("TODO")
         }
 
         // to test integrationsCommercePost
         should("test integrationsCommercePost") {
             // uncomment below to test integrationsCommercePost
-            //val integrationRequest : IntegrationRequest =  // IntegrationRequest | Parameters to get create/update the Integration Metadata
-            //val result : IntegrationMetadata = apiInstance.integrationsCommercePost(integrationRequest)
+            //val integrationMetadataCreate : IntegrationMetadataCreate =  // IntegrationMetadataCreate | 
+            //val result : IntegrationMetadata = apiInstance.integrationsCommercePost(integrationMetadataCreate)
             //result shouldBe ("TODO")
         }
 
         // to test integrationsGetById
         should("test integrationsGetById") {
             // uncomment below to test integrationsGetById
-            //val id : kotlin.String = id_example // kotlin.String | Integration ID.
+            //val id : kotlin.String = id_example // kotlin.String | Integration record ID.
             //val result : IntegrationRecord = apiInstance.integrationsGetById(id)
             //result shouldBe ("TODO")
         }
@@ -78,7 +87,7 @@ class IntegrationsApiTest : ShouldSpec() {
         should("test integrationsGetList") {
             // uncomment below to test integrationsGetList
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : IntegrationsGetList200Response = apiInstance.integrationsGetList(bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -86,8 +95,8 @@ class IntegrationsApiTest : ShouldSpec() {
         // to test integrationsLogsPost
         should("test integrationsLogsPost") {
             // uncomment below to test integrationsLogsPost
-            //val integrationLogsRequest : IntegrationLogsRequest =  // IntegrationLogsRequest | Ingest log information from external integration application.
-            //val result : IntegrationLogsSuccessResponse = apiInstance.integrationsLogsPost(integrationLogsRequest)
+            //val integrationLogsRequestCreate : IntegrationLogsRequestCreate =  // IntegrationLogsRequestCreate | 
+            //val result : IntegrationLogsSuccessResponse = apiInstance.integrationsLogsPost(integrationLogsRequestCreate)
             //result shouldBe ("TODO")
         }
 

@@ -3,10 +3,10 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictBool, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 from openapi_server.models.terms_of_service import TermsOfService  # noqa: F401
 
 

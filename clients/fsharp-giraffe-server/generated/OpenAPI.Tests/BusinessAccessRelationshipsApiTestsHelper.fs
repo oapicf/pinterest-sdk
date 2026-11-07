@@ -21,8 +21,18 @@ module BusinessAccessRelationshipsApiHandlerTestsHelper =
   let mutable BrandAccountsCreateExamples = Map.empty
   let mutable BrandAccountsCreateBody = ""
 
-  BrandAccountsCreateBody <- WebUtility.HtmlDecode ""
-  BrandAccountsCreateExamples <- BrandAccountsCreateExamples.Add("", BrandAccountsCreateBody)
+  BrandAccountsCreateBody <- WebUtility.HtmlDecode "{
+  &quot;about&quot; : &quot;about&quot;,
+  &quot;country&quot; : &quot;AD&quot;,
+  &quot;name&quot; : &quot;name&quot;,
+  &quot;profile_image&quot; : {
+    &quot;content_type&quot; : &quot;image/jpeg&quot;,
+    &quot;data&quot; : &quot;data&quot;
+  },
+  &quot;username&quot; : &quot;username&quot;,
+  &quot;website&quot; : &quot;website&quot;
+}"
+  BrandAccountsCreateExamples <- BrandAccountsCreateExamples.Add("application/json", BrandAccountsCreateBody)
 
   let getBrandAccountsCreateExample mediaType =
     BrandAccountsCreateExamples.[mediaType]
@@ -31,8 +41,18 @@ module BusinessAccessRelationshipsApiHandlerTestsHelper =
   let mutable BrandAccountsUpdateExamples = Map.empty
   let mutable BrandAccountsUpdateBody = ""
 
-  BrandAccountsUpdateBody <- WebUtility.HtmlDecode ""
-  BrandAccountsUpdateExamples <- BrandAccountsUpdateExamples.Add("", BrandAccountsUpdateBody)
+  BrandAccountsUpdateBody <- WebUtility.HtmlDecode "{
+  &quot;about&quot; : &quot;about&quot;,
+  &quot;country&quot; : &quot;AD&quot;,
+  &quot;name&quot; : &quot;name&quot;,
+  &quot;profile_image&quot; : {
+    &quot;content_type&quot; : &quot;image/jpeg&quot;,
+    &quot;data&quot; : &quot;data&quot;
+  },
+  &quot;username&quot; : &quot;username&quot;,
+  &quot;website&quot; : &quot;website&quot;
+}"
+  BrandAccountsUpdateExamples <- BrandAccountsUpdateExamples.Add("application/json", BrandAccountsUpdateBody)
 
   let getBrandAccountsUpdateExample mediaType =
     BrandAccountsUpdateExamples.[mediaType]
@@ -43,20 +63,20 @@ module BusinessAccessRelationshipsApiHandlerTestsHelper =
 
   DeleteBusinessMembershipBody <- WebUtility.HtmlDecode "{
   &quot;members&quot; : [ {
-    &quot;member_id&quot; : &quot;140943737684417&quot;,
-    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;
+    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;,
+    &quot;member_id&quot; : &quot;140943737684417&quot;
   }, {
-    &quot;member_id&quot; : &quot;140943737684417&quot;,
-    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;
+    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;,
+    &quot;member_id&quot; : &quot;140943737684417&quot;
   }, {
-    &quot;member_id&quot; : &quot;140943737684417&quot;,
-    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;
+    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;,
+    &quot;member_id&quot; : &quot;140943737684417&quot;
   }, {
-    &quot;member_id&quot; : &quot;140943737684417&quot;,
-    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;
+    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;,
+    &quot;member_id&quot; : &quot;140943737684417&quot;
   }, {
-    &quot;member_id&quot; : &quot;140943737684417&quot;,
-    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;
+    &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;,
+    &quot;member_id&quot; : &quot;140943737684417&quot;
   } ]
 }"
   DeleteBusinessMembershipExamples <- DeleteBusinessMembershipExamples.Add("application/json", DeleteBusinessMembershipBody)
@@ -69,8 +89,8 @@ module BusinessAccessRelationshipsApiHandlerTestsHelper =
   let mutable DeleteBusinessPartnersBody = ""
 
   DeleteBusinessPartnersBody <- WebUtility.HtmlDecode "{
-  &quot;partner_type&quot; : &quot;partner_type&quot;,
-  &quot;partner_ids&quot; : [ &quot;1234567890123&quot;, &quot;1234567890123&quot;, &quot;1234567890123&quot;, &quot;1234567890123&quot;, &quot;1234567890123&quot; ]
+  &quot;partner_ids&quot; : [ null, null, null, null, null ],
+  &quot;partner_type&quot; : &quot;&quot;
 }"
   DeleteBusinessPartnersExamples <- DeleteBusinessPartnersExamples.Add("application/json", DeleteBusinessPartnersBody)
 
@@ -87,8 +107,10 @@ module BusinessAccessRelationshipsApiHandlerTestsHelper =
   let mutable SystemUserUpdateExamples = Map.empty
   let mutable SystemUserUpdateBody = ""
 
-  SystemUserUpdateBody <- WebUtility.HtmlDecode ""
-  SystemUserUpdateExamples <- SystemUserUpdateExamples.Add("", SystemUserUpdateBody)
+  SystemUserUpdateBody <- WebUtility.HtmlDecode "{
+  &quot;name&quot; : &quot;name&quot;
+}"
+  SystemUserUpdateExamples <- SystemUserUpdateExamples.Add("application/json", SystemUserUpdateBody)
 
   let getSystemUserUpdateExample mediaType =
     SystemUserUpdateExamples.[mediaType]
@@ -98,8 +120,8 @@ module BusinessAccessRelationshipsApiHandlerTestsHelper =
   let mutable UpdateBusinessMembershipsBody = ""
 
   UpdateBusinessMembershipsBody <- WebUtility.HtmlDecode "{
-  &quot;member_id&quot; : &quot;140943737684417&quot;,
-  &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;
+  &quot;business_role&quot; : &quot;BIZ_ADMIN&quot;,
+  &quot;member_id&quot; : &quot;140943737684417&quot;
 }"
   UpdateBusinessMembershipsExamples <- UpdateBusinessMembershipsExamples.Add("application/json", UpdateBusinessMembershipsBody)
 

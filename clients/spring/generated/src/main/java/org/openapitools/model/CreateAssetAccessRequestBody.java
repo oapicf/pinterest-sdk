@@ -24,7 +24,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CreateAssetAccessRequestBody", description = "An object containing a list of all the asset access requests")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-03T06:26:04.764536247Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateAssetAccessRequestBody {
 
   private List<@Valid CreateAssetAccessRequestItem> assetRequests = new ArrayList<>();

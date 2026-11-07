@@ -10,60 +10,60 @@ spec = withApp $ do
 
     describe "postBusinessesByTextAssetGroupsR" $
         it "returns 501 Not Implemented" $ do
-            post $ BusinessesByTextAssetGroupsR "729090764583391194"
+            post $ BusinessesByTextAssetGroupsR "businessId_example"
             statusIs 501
 
     describe "deleteBusinessesByTextAssetGroupsR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "DELETE" $ BusinessesByTextAssetGroupsR "729090764583391194"
+            performMethod "DELETE" $ BusinessesByTextAssetGroupsR "businessId_example"
             statusIs 501
 
     describe "patchBusinessesByTextAssetGroupsR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "PATCH" $ BusinessesByTextAssetGroupsR "729090764583391194"
+            performMethod "PATCH" $ BusinessesByTextAssetGroupsR "businessId_example"
             statusIs 501
 
     describe "getBusinessesByTextAssetsByTextMembersR" $
         it "returns 501 Not Implemented" $ do
-            get $ BusinessesByTextAssetsByTextMembersR "729090764583391194" "729090764583391194"
+            get $ BusinessesByTextAssetsByTextMembersR "businessId_example" "assetId_example"
             statusIs 501
 
     describe "getBusinessesByTextAssetsByTextPartnersR" $
         it "returns 501 Not Implemented" $ do
-            get $ BusinessesByTextAssetsByTextPartnersR "729090764583391194" "729090764583391194"
+            get $ BusinessesByTextAssetsByTextPartnersR "businessId_example" "assetId_example"
             statusIs 501
 
     describe "getBusinessesByTextAssetsR" $
         it "returns 501 Not Implemented" $ do
-            get $ BusinessesByTextAssetsR "729090764583391194"
+            get $ BusinessesByTextAssetsR "businessId_example"
             statusIs 501
 
     describe "getBusinessesByTextMembersByTextAssetsR" $
         it "returns 501 Not Implemented" $ do
-            get $ BusinessesByTextMembersByTextAssetsR "729090764583391194" "729090764583391194"
+            get $ BusinessesByTextMembersByTextAssetsR "businessId_example" "memberId_example"
             statusIs 501
 
     describe "deleteBusinessesByTextMembersAssetsAccessR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "DELETE" $ BusinessesByTextMembersAssetsAccessR "729090764583391194"
+            performMethod "DELETE" $ BusinessesByTextMembersAssetsAccessR "businessId_example"
             statusIs 501
 
     describe "patchBusinessesByTextMembersAssetsAccessR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "PATCH" $ BusinessesByTextMembersAssetsAccessR "729090764583391194"
+            performMethod "PATCH" $ BusinessesByTextMembersAssetsAccessR "businessId_example"
             statusIs 501
 
     describe "getBusinessesByTextPartnersByTextAssetsR" $
         it "returns 501 Not Implemented" $ do
-            get $ BusinessesByTextPartnersByTextAssetsR "729090764583391194" "729090764583391194"
+            get $ BusinessesByTextPartnersByTextAssetsR "businessId_example" "partnerId_example"
             statusIs 501
 
     describe "deleteBusinessesByTextPartnersAssetsR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "DELETE" $ BusinessesByTextPartnersAssetsR "729090764583391194"
+            performMethod "DELETE" $ BusinessesByTextPartnersAssetsR "businessId_example"
             statusIs 501
 
     describe "patchBusinessesByTextPartnersAssetsR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "PATCH" $ BusinessesByTextPartnersAssetsR "729090764583391194"
+            performMethod "PATCH" $ BusinessesByTextPartnersAssetsR "businessId_example"
             statusIs 501

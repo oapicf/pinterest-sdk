@@ -22,8 +22,8 @@ module BoardsApiHandlerTestsHelper =
   let mutable BoardSectionsCreateBody = ""
 
   BoardSectionsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;name&quot; : &quot;Salads&quot;,
-  &quot;id&quot; : &quot;549755885175&quot;
+  &quot;id&quot; : &quot;549755885175&quot;,
+  &quot;name&quot; : &quot;Salads&quot;
 }"
   BoardSectionsCreateExamples <- BoardSectionsCreateExamples.Add("application/json", BoardSectionsCreateBody)
 
@@ -41,8 +41,8 @@ module BoardsApiHandlerTestsHelper =
   let mutable BoardSectionsUpdateBody = ""
 
   BoardSectionsUpdateBody <- WebUtility.HtmlDecode "{
-  &quot;name&quot; : &quot;Salads&quot;,
-  &quot;id&quot; : &quot;549755885175&quot;
+  &quot;id&quot; : &quot;549755885175&quot;,
+  &quot;name&quot; : &quot;Salads&quot;
 }"
   BoardSectionsUpdateExamples <- BoardSectionsUpdateExamples.Add("application/json", BoardSectionsUpdateBody)
 
@@ -54,10 +54,10 @@ module BoardsApiHandlerTestsHelper =
   let mutable BoardsCreateBody = ""
 
   BoardsCreateBody <- WebUtility.HtmlDecode "{
-  &quot;name&quot; : &quot;Summer recipes&quot;,
   &quot;description&quot; : &quot;My favorite summer recipes&quot;,
-  &quot;privacy&quot; : &quot;&quot;,
-  &quot;is_ads_only&quot; : true
+  &quot;is_ads_only&quot; : true,
+  &quot;name&quot; : &quot;Summer recipes&quot;,
+  &quot;privacy&quot; : &quot;&quot;
 }"
   BoardsCreateExamples <- BoardsCreateExamples.Add("application/json", BoardsCreateBody)
 
@@ -77,8 +77,8 @@ module BoardsApiHandlerTestsHelper =
   let mutable BoardsUpdateBody = ""
 
   BoardsUpdateBody <- WebUtility.HtmlDecode "{
-  &quot;name&quot; : &quot;Summer recipes&quot;,
   &quot;description&quot; : &quot;My favorite summer recipes&quot;,
+  &quot;name&quot; : &quot;Summer recipes&quot;,
   &quot;privacy&quot; : &quot;PUBLIC&quot;
 }"
   BoardsUpdateExamples <- BoardsUpdateExamples.Add("application/json", BoardsUpdateBody)

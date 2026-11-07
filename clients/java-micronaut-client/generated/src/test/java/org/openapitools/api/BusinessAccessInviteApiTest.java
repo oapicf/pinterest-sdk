@@ -1,16 +1,17 @@
 package org.openapitools.api;
 
 import org.openapitools.model.AuthRespondInvitesBody;
-import org.openapitools.model.CancelInvitesBody;
+import org.openapitools.model.CancelInvitesRequest;
+import org.openapitools.model.CancelInvitesResponse;
 import org.openapitools.model.CreateAssetAccessRequestBody;
 import org.openapitools.model.CreateAssetAccessRequestResponse;
 import org.openapitools.model.CreateAssetInvitesRequest;
 import org.openapitools.model.CreateInvitesResultsResponseArray;
 import org.openapitools.model.CreateMembershipOrPartnershipInvitesBody;
-import org.openapitools.model.DeleteInvitesResultsResponseArray;
-import org.openapitools.model.Error;
 import org.openapitools.model.GetInvites200Response;
+import org.openapitools.model.InviteFilterStatus;
 import org.openapitools.model.InviteType;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -44,7 +45,7 @@ public class BusinessAccessInviteApiTest {
     @Disabled("Not Implemented")
     public void assetAccessRequestsCreateTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         CreateAssetAccessRequestBody createAssetAccessRequestBody = new CreateAssetAccessRequestBody(Arrays.asList());
 
         // when
@@ -64,11 +65,11 @@ public class BusinessAccessInviteApiTest {
     @Disabled("Not Implemented")
     public void cancelInvitesOrRequestsTest() {
         // given
-        String businessId = "729090764583391194";
-        CancelInvitesBody cancelInvitesBody = new CancelInvitesBody(Arrays.asList("example"));
+        String businessId = "example";
+        CancelInvitesRequest cancelInvitesRequest = new CancelInvitesRequest(Arrays.asList("example"));
 
         // when
-        DeleteInvitesResultsResponseArray body = api.cancelInvitesOrRequests(businessId, cancelInvitesBody).block();
+        CancelInvitesResponse body = api.cancelInvitesOrRequests(businessId, cancelInvitesRequest).block();
 
         // then
         // TODO implement the cancelInvitesOrRequestsTest()
@@ -84,7 +85,7 @@ public class BusinessAccessInviteApiTest {
     @Disabled("Not Implemented")
     public void createAssetInvitesTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         CreateAssetInvitesRequest createAssetInvitesRequest = new CreateAssetInvitesRequest(Arrays.asList());
 
         // when
@@ -104,8 +105,8 @@ public class BusinessAccessInviteApiTest {
     @Disabled("Not Implemented")
     public void createMembershipOrPartnershipInvitesTest() {
         // given
-        String businessId = "729090764583391194";
-        CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody = new CreateMembershipOrPartnershipInvitesBody("BIZ_ADMIN", org.openapitools.model.InviteType.fromValue("MEMBER_INVITE"));
+        String businessId = "example";
+        CreateMembershipOrPartnershipInvitesBody createMembershipOrPartnershipInvitesBody = new CreateMembershipOrPartnershipInvitesBody(org.openapitools.model.BusinessRoleForInvite.fromValue("BIZ_ADMIN"), org.openapitools.model.InviteType.fromValue("MEMBER_INVITE"));
 
         // when
         CreateInvitesResultsResponseArray body = api.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody).block();
@@ -124,9 +125,9 @@ public class BusinessAccessInviteApiTest {
     @Disabled("Not Implemented")
     public void getInvitesTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         Boolean isMember = true;
-        List<String> inviteStatus = Arrays.asList("example");
+        List<InviteFilterStatus> inviteStatus = Arrays.asList();
         InviteType inviteType = InviteType.fromValue("MEMBER_INVITE");
         String bookmark = "example";
         Integer pageSize = 25;

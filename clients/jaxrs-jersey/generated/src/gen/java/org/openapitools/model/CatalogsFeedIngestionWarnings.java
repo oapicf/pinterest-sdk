@@ -113,7 +113,7 @@ import javax.validation.Valid;
   CatalogsFeedIngestionWarnings.JSON_PROPERTY_V_I_D_E_O_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R,
   CatalogsFeedIngestionWarnings.JSON_PROPERTY_V_I_D_E_O_M_A_L_F_O_R_M_E_D_U_R_L
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedIngestionWarnings   {
   public static final String JSON_PROPERTY_A_D_I_M_A_G_E_D_O_W_N_L_O_A_D_C_O_N_T_E_N_T_R_E_A_D_E_R_R_O_R = "AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR";
   @JsonProperty(JSON_PROPERTY_A_D_I_M_A_G_E_D_O_W_N_L_O_A_D_C_O_N_T_E_N_T_R_E_A_D_E_R_R_O_R)

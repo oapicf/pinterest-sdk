@@ -1,7 +1,9 @@
 module.exports = {
-    "BulkDownloadResponseSample": 
+    "BulkDownloadSample": 
         { data: {} },
-    "BulkUpsertStatusResponseSample": 
+    "BulkDownloadSample": 
+        { data: {} },
+    "BulkJobDataSample": 
         { data: {} },
     "BulkUpsertResponseSample": 
         { data: {} },

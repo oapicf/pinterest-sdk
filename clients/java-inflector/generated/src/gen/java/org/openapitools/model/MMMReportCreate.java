@@ -22,7 +22,7 @@ import org.openapitools.model.TargetingAdvertiserCountry;
  **/
 
 @ApiModel(description = "Resource create operation model.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class MMMReportCreate   {
   @JsonProperty("advertiser_ids")
   private List<String> advertiserIds = null;

@@ -29,7 +29,7 @@ import javax.annotation.Generated;
   CustomNumber0Filter.JSON_PROPERTY_C_U_S_T_O_M_N_U_M_B_E_R0
 })
 @JsonTypeName("CustomNumber0Filter")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CustomNumber0Filter {
     public static final String JSON_PROPERTY_C_U_S_T_O_M_N_U_M_B_E_R0 = "CUSTOM_NUMBER_0";

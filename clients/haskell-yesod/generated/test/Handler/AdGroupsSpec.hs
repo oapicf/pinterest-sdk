@@ -25,7 +25,7 @@ spec = withApp $ do
 
     describe "getAdAccountsByTextAdGroupsByTextR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextAdGroupsByTextR "adAccountId_example" "adGroupId_example"
+            get $ AdAccountsByTextAdGroupsByTextR "adGroupId_example" "adAccountId_example"
             statusIs 501
 
     describe "getAdAccountsByTextAdGroupsR" $
@@ -43,7 +43,32 @@ spec = withApp $ do
             post $ AdAccountsByTextBidFloorR "adAccountId_example"
             statusIs 501
 
+    describe "getAdAccountsByTextAdGroupsByTextDynamicTitlesCsvR" $
+        it "returns 501 Not Implemented" $ do
+            get $ AdAccountsByTextAdGroupsByTextDynamicTitlesCsvR "adAccountId_example" "adGroupId_example"
+            statusIs 501
+
+    describe "getAdAccountsByTextAdGroupsByTextDynamicTitlesStatusR" $
+        it "returns 501 Not Implemented" $ do
+            get $ AdAccountsByTextAdGroupsByTextDynamicTitlesStatusR "adAccountId_example" "adGroupId_example"
+            statusIs 501
+
+    describe "getAdAccountsByTextAdGroupsByTextDynamicTitlesUploadsR" $
+        it "returns 501 Not Implemented" $ do
+            get $ AdAccountsByTextAdGroupsByTextDynamicTitlesUploadsR "adAccountId_example" "adGroupId_example"
+            statusIs 501
+
+    describe "postAdAccountsByTextAdGroupsByTextDynamicTitlesR" $
+        it "returns 501 Not Implemented" $ do
+            post $ AdAccountsByTextAdGroupsByTextDynamicTitlesR "adAccountId_example" "adGroupId_example"
+            statusIs 501
+
     describe "getAdAccountsByTextAdGroupsTargetingAnalyticsR" $
         it "returns 501 Not Implemented" $ do
             get $ AdAccountsByTextAdGroupsTargetingAnalyticsR "adAccountId_example"
+            statusIs 501
+
+    describe "getAdAccountsByTextPromotionAppliedEntitiesR" $
+        it "returns 501 Not Implemented" $ do
+            get $ AdAccountsByTextPromotionAppliedEntitiesR "adAccountId_example"
             statusIs 501

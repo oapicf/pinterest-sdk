@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 AdAccountsApi.conf
 AdGroupsApi.conf
 AdsApi.conf

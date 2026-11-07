@@ -9,18 +9,18 @@ void main() {
   group(AdAccountsApi, () {
     // Get ad account analytics
     //
-    // Get analytics for the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
+    //   Get analytics for the specified `ad_account_id`, filtered by the specified options.    - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.    - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.    - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time.
     //
-    //Future<BuiltList<AdAccountAnalyticsResponseInner>> adAccountAnalytics(String adAccountId, Date startDate, Date endDate, BuiltList<String> columns, Granularity granularity, { int clickWindowDays, int engagementWindowDays, int viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone }) async
+    //Future<BuiltList<AdAccountAnalyticsItems>> adAccountAnalytics(Date startDate, Date endDate, BuiltList<ReportingColumnSync> columns, Granularity granularity, String adAccountId, { num clickWindowDays, num engagementWindowDays, num viewWindowDays, String conversionReportTime, ReportingTimeZone reportingTimezone }) async
     test('test adAccountAnalytics', () async {
       // TODO
     });
 
     // Get targeting analytics for an ad account
     //
-    // Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+    // Get targeting analytics for an ad account. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/>  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
     //
-    //Future<MetricsResponse> adAccountTargetingAnalyticsGet(String adAccountId, Date startDate, Date endDate, BuiltList<AdsAnalyticsTargetingType> targetingTypes, BuiltList<String> columns, Granularity granularity, { int clickWindowDays, int engagementWindowDays, int viewWindowDays, String conversionReportTime, BuiltList<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone }) async
+    //Future<MetricsResponse> adAccountTargetingAnalyticsGet(String adAccountId, Date startDate, Date endDate, BuiltList<AdsAnalyticsAccountTargetingType> targetingTypes, BuiltList<ReportingColumnSync> columns, Granularity granularity, { num clickWindowDays, num engagementWindowDays, num viewWindowDays, String conversionReportTime, BuiltList<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone }) async
     test('test adAccountTargetingAnalyticsGet', () async {
       // TODO
     });
@@ -54,25 +54,25 @@ void main() {
 
     // Create a request for a brand, category, SKU report
     //
-    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
+    //   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   This creates an asynchronous brand, category, SKU report based on the given request. This request returns a token that you can use to download the report when it is ready.
     //
-    //Future<AdsAnalyticsCreateAsyncResponse> analyticsCreateConversionProductReport(String adAccountId, ConversionProductReportRequest conversionProductReportRequest) async
+    //Future<ConversionProductReport> analyticsCreateConversionProductReport(String adAccountId, ConversionProductReportCreate conversionProductReportCreate) async
     test('test analyticsCreateConversionProductReport', () async {
       // TODO
     });
 
     // Create a request for a Marketing Mix Modeling (MMM) report
     //
-    // This creates an asynchronous mmm report based on the given request. It returns a token that you can use to download the report when it is ready. NOTE: An additional limit of 5 queries per minute per advertiser applies to this endpoint while it's in beta release.
+    //     This creates an asynchronous mmm report based on the given request.     It returns a token that you can use to download the report when it is     ready. NOTE: An additional limit of 5 queries per minute per advertiser     applies to this endpoint while it's in beta release.     For the ADVERTISER_PAID_SPEND_IN_DOLLAR,     ADVERTISER_PAID_ECPC_IN_DOLLAR, and ADVERTISER_PAID_ECPM_IN_DOLLAR     columns: if you receive bonus media, this value still includes that spend, and it will     need to be removed manually with support from your Pinterest account team for a     fully netted value. Over time, we'll also subtract bonus media and other incentives as     data becomes available. Production and other non-media fees are excluded.
     //
-    //Future<CreateMMMReportResponse> analyticsCreateMmmReport(String adAccountId, CreateMMMReportRequest createMMMReportRequest) async
+    //Future<MMMReport> analyticsCreateMmmReport(String adAccountId, MMMReportCreate mMMReportCreate) async
     test('test analyticsCreateMmmReport', () async {
       // TODO
     });
 
     // Create async request for an account analytics report
     //
-    // This returns a token that you can use to download the report when it is ready. Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days. - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days. - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
+    //   This returns a token that you can use to download the report when it is ready.   Note that this endpoint requires the parameters to be passed as JSON-formatted in the request body. This endpoint does not support URL query parameters.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 914 days before the current date in UTC time, with a maximum time range of 186 days.   - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.   - If level is PRODUCT_ITEM, you can pull data from up to 92 days before the current date in UTC time, with a maximum time range of 31 days.   - If level is PRODUCT_ITEM, ad_ids and ad_statuses parameters are not allowed. Any columns related to pin promotion and ad is not allowed either.
     //
     //Future<AdsAnalyticsCreateAsyncResponse> analyticsCreateReport(String adAccountId, AdsAnalyticsCreateAsyncRequest adsAnalyticsCreateAsyncRequest) async
     test('test analyticsCreateReport', () async {
@@ -81,7 +81,7 @@ void main() {
 
     // Create async request for an analytics report using a template
     //
-    //    This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
+    //   This takes a template ID and an optional custom timeframe and   constructs an asynchronous report based on the template. It returns   a token that you can use to download the report when it is ready.
     //
     //Future<TemplateBasedReport> analyticsCreateTemplateReport(String adAccountId, String templateId, { Date startDate, Date endDate, Granularity granularity }) async
     test('test analyticsCreateTemplateReport', () async {
@@ -90,25 +90,25 @@ void main() {
 
     // Get advertiser brand, category, SKU report
     //
-    // <a href=\"/docs/getting-started/using-beta-and-restricted-features/\" target=\"blank\" target=\"blank\">Restricted</a> Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
+    //   [Restricted](/docs/getting-started/using-beta-and-restricted-features/)   Get a brand, category, SKU report for an ad account. This call returns the URL for the report that matches the token returned in the request to the Create brand, category, SKU report endpoint.
     //
-    //Future<AdsAnalyticsGetAsyncResponse> analyticsGetConversionProductReport(String adAccountId, String token) async
+    //Future<ConversionProductReport> analyticsGetConversionProductReport(String adAccountId, String token) async
     test('test analyticsGetConversionProductReport', () async {
       // TODO
     });
 
     // Get advertiser Marketing Mix Modeling (MMM) report.
     //
-    // Get an mmm report for an ad account. This returns a URL to an mmm metrics report given a token returned from the create mmm report endpoint.
+    //     Get an mmm report for an ad account. This returns a URL to an     mmm metrics report given a token returned from the create mmm report endpoint.
     //
-    //Future<GetMMMReportResponse> analyticsGetMmmReport(String adAccountId, String token) async
+    //Future<MMMReport> analyticsGetMmmReport(String adAccountId, String token) async
     test('test analyticsGetMmmReport', () async {
       // TODO
     });
 
     // Get the account analytics report created by the async call
     //
-    // This returns a URL to an analytics report given a token returned from the post request report creation call. You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+    //   This returns a URL to an analytics report given a token returned from the post request report creation call.   You can use the URL to download the report. The link is valid for five minutes and the report is valid for one hour.   - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
     //
     //Future<AdsAnalyticsGetAsyncResponse> analyticsGetReport(String adAccountId, String token) async
     test('test analyticsGetReport', () async {
@@ -128,7 +128,7 @@ void main() {
     //
     // Gets all Templates associated with an ad account ID.
     //
-    //Future<TemplatesList200Response> templatesList(String adAccountId, { int pageSize, String order, String bookmark }) async
+    //Future<TemplatesList200Response> templatesList(String adAccountId, { String bookmark, int pageSize, PinterestLibPaginationOrder order }) async
     test('test templatesList', () async {
       // TODO
     });

@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Possible status for a bulk reporting job
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-03T06:14:39.705183431Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T02:50:45.754899335Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum BulkReportingJobStatus {
   
   DOES_NOT_EXIST("DOES_NOT_EXIST"),

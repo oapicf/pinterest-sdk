@@ -5,11 +5,13 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.audience import Audience  # noqa: E501
-from app.openapi_server.models.audience_create_request import AudienceCreateRequest  # noqa: E501
-from app.openapi_server.models.audience_update_request import AudienceUpdateRequest  # noqa: E501
+from app.openapi_server.models.ad_accounts_audience import AdAccountsAudience  # noqa: E501
+from app.openapi_server.models.ad_accounts_audience_create import AdAccountsAudienceCreate  # noqa: E501
+from app.openapi_server.models.ad_accounts_audience_update import AdAccountsAudienceUpdate  # noqa: E501
+from app.openapi_server.models.audience_ownership_type import AudienceOwnershipType  # noqa: E501
 from app.openapi_server.models.audiences_list200_response import AudiencesList200Response  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -21,7 +23,7 @@ class TestAudiencesController(BaseTestCase):
 
         Create audience
         """
-        body = {"audience_type":"audience_type","name":"string","rule":{"country":"US","visitor_source_id":"549755885175","prefill":True,"customer_list_id":"5497558859876","event_source":{"=":["web","mobile"]},"objective_type":["AWARENESS"],"event_data":{"video_title":"How to style your Parker Boots","page_name":"Our Favorite Pins on Pinterest","order_quantity":1,"property":"Athleta","currency":"","lead_type":"Newsletter","promo_code":"WINTER10","line_items":"","search_query":"boots","order_id":"X-151481","value":"199.98"},"seed_id":["2542620639259","2542620639261"],"url":["url","url"],"ad_account_id":"549755885175","ad_id":["687201361754"],"ingestion_source":{"=":["tag"]},"engager_type":1,"retention_days":30,"engagement_type":"click","percentage":3,"engagement_domain":["www.somedomain.com"],"event":"checkout","pin_id":["34567"],"campaign_id":["626744528398"]},"description":"string","ad_account_id":"549755885175"}
+        body = {"ad_account_id":"ad_account_id","audience_type":"","description":"description","name":"name","rule":{"ad_account_id":"ad_account_id","ad_id":["ad_id","ad_id"],"campaign_id":["campaign_id","campaign_id"],"country":"country","customer_list_id":"customer_list_id","engagement_domain":["engagement_domain","engagement_domain"],"engagement_type":"engagement_type","engager_type":6,"event":"event","event_data":{"currency":"","lead_type":"Newsletter","line_items":"","order_id":"X-151481","order_quantity":1,"page_name":"Our Favorite Pins on Pinterest","promo_code":"WINTER10","property":"Athleta","search_query":"boots","value":"199.98","video_title":"How to style your Parker Boots"},"event_source":"{}","ingestion_source":"{}","objective_type":["AWARENESS","AWARENESS"],"percentage":1,"pin_id":["pin_id","pin_id"],"prefill":True,"retention_days":5,"seed_id":["seed_id","seed_id"],"url":["url","url"],"visitor_source_id":"visitor_source_id"}}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/audiences'.format(ad_account_id='ad_account_id_example'),
             method='POST',
@@ -36,7 +38,7 @@ class TestAudiencesController(BaseTestCase):
         Get audience
         """
         response = self.client.open(
-            '/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}'.format(ad_account_id='ad_account_id_example', audience_id='audience_id_example'),
+            '/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}'.format(audience_id='audience_id_example', ad_account_id='ad_account_id_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -47,9 +49,10 @@ class TestAudiencesController(BaseTestCase):
         List audiences
         """
         query_string = [('bookmark', 'bookmark_example'),
-                        ('order', 'ASCENDING'),
                         ('page_size', 25),
-                        ('ownership_type', OWNED)]
+                        ('order', openapi_server.PinterestLibPaginationOrder()),
+                        ('ownership_type', openapi_server.AudienceOwnershipType()),
+                        ('exclude_nca', False)]
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/audiences'.format(ad_account_id='ad_account_id_example'),
             method='GET',
@@ -62,9 +65,9 @@ class TestAudiencesController(BaseTestCase):
 
         Update audience
         """
-        body = {"operation_type":"UPDATE","name":"string","rule":{"country":"US","visitor_source_id":"549755885175","prefill":True,"customer_list_id":"5497558859876","event_source":{"=":["web","mobile"]},"objective_type":["AWARENESS"],"event_data":{"video_title":"How to style your Parker Boots","page_name":"Our Favorite Pins on Pinterest","order_quantity":1,"property":"Athleta","currency":"","lead_type":"Newsletter","promo_code":"WINTER10","line_items":"","search_query":"boots","order_id":"X-151481","value":"199.98"},"seed_id":["2542620639259","2542620639261"],"url":["url","url"],"ad_account_id":"549755885175","ad_id":["687201361754"],"ingestion_source":{"=":["tag"]},"engager_type":1,"retention_days":30,"engagement_type":"click","percentage":3,"engagement_domain":["www.somedomain.com"],"event":"checkout","pin_id":["34567"],"campaign_id":["626744528398"]},"description":"string","ad_account_id":"549755885175"}
+        body = {"ad_account_id":"ad_account_id","audience_type":"","description":"description","name":"name","operation_type":"","rule":{"ad_account_id":"ad_account_id","ad_id":["ad_id","ad_id"],"campaign_id":["campaign_id","campaign_id"],"country":"country","customer_list_id":"customer_list_id","engagement_domain":["engagement_domain","engagement_domain"],"engagement_type":"engagement_type","engager_type":6,"event":"event","event_data":{"currency":"","lead_type":"Newsletter","line_items":"","order_id":"X-151481","order_quantity":1,"page_name":"Our Favorite Pins on Pinterest","promo_code":"WINTER10","property":"Athleta","search_query":"boots","value":"199.98","video_title":"How to style your Parker Boots"},"event_source":"{}","ingestion_source":"{}","objective_type":["AWARENESS","AWARENESS"],"percentage":1,"pin_id":["pin_id","pin_id"],"prefill":True,"retention_days":5,"seed_id":["seed_id","seed_id"],"url":["url","url"],"visitor_source_id":"visitor_source_id"}}
         response = self.client.open(
-            '/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}'.format(ad_account_id='ad_account_id_example', audience_id='audience_id_example'),
+            '/v5/ad_accounts/{ad_account_id}/audiences/{audience_id}'.format(audience_id='audience_id_example', ad_account_id='ad_account_id_example'),
             method='PATCH',
             data=json.dumps(body),
             content_type='application/json')

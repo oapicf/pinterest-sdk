@@ -1,11 +1,11 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.BulkDownloadRequest;
-import org.openapitools.model.BulkDownloadResponse;
+import org.openapitools.model.BulkDownload;
+import org.openapitools.model.BulkDownloadCreate;
+import org.openapitools.model.BulkJobData;
 import org.openapitools.model.BulkUpsertRequest;
 import org.openapitools.model.BulkUpsertResponse;
-import org.openapitools.model.BulkUpsertStatusResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -56,7 +56,7 @@ public class BulkControllerTest {
      *
      * The method should: Get advertiser entities in bulk
      *
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -65,10 +65,10 @@ public class BulkControllerTest {
     void bulkDownloadCreateMethodTest() {
         // given
         String adAccountId = "example";
-        BulkDownloadRequest bulkDownloadRequest = new BulkDownloadRequest();
+        BulkDownloadCreate bulkDownloadCreate = new BulkDownloadCreate();
 
         // when
-        BulkDownloadResponse result = controller.bulkDownloadCreate(adAccountId, bulkDownloadRequest).block();
+        BulkDownload result = controller.bulkDownloadCreate(adAccountId, bulkDownloadCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -84,16 +84,16 @@ public class BulkControllerTest {
     @Disabled("Not Implemented")
     void bulkDownloadCreateClientApiTest() throws IOException {
         // given
-        BulkDownloadRequest body = new BulkDownloadRequest();
+        BulkDownloadCreate body = new BulkDownloadCreate();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/bulk/download").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@a0af2ac");
+            .accept("[Ljava.lang.String;@70412e1c");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, BulkDownloadResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BulkDownload.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -104,7 +104,7 @@ public class BulkControllerTest {
      *
      * The method should: Download advertiser entities in bulk
      *
-     * Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+     * Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -117,7 +117,7 @@ public class BulkControllerTest {
         Boolean includeDetails = false;
 
         // when
-        BulkUpsertStatusResponse result = controller.bulkRequestGet(adAccountId, bulkRequestId, includeDetails).block();
+        BulkJobData result = controller.bulkRequestGet(adAccountId, bulkRequestId, includeDetails).block();
 
         // then
         Assertions.assertTrue(true);
@@ -139,12 +139,12 @@ public class BulkControllerTest {
             put("bulk_request_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@730ca420");
+            .accept("[Ljava.lang.String;@55379c34");
         request.getParameters()
             .add("include_details", String.valueOf(false)); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, BulkUpsertStatusResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BulkJobData.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -155,7 +155,7 @@ public class BulkControllerTest {
      *
      * The method should: Create/update ad entities in bulk
      *
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -189,7 +189,7 @@ public class BulkControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@71a62ac6");
+            .accept("[Ljava.lang.String;@d1de5ad");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BulkUpsertResponse.class);

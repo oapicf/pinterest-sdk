@@ -3,7 +3,7 @@ private class OASAudienceInsightsApiTest {
     /**
      * Get audience insights
      *
-     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the\nad account\&#39;s engaged audience on Pinterest, the ad account\&#39;s total audience on Pinterest and Pinterest\&#39;s\ntotal audience.&lt;p/&gt;\n&lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/audience-insights&quot; target&#x3D;&quot;_blank&quot;&gt;Learn more about Audience Insights&lt;/a&gt;.
+     * Get Audience Insights for an ad account. The response will return insights for 3 types of audiences: the ad account\&#39;s engaged audience on Pinterest, the ad account\&#39;s total audience on Pinterest and Pinterest\&#39;s total audience.\n\n[Learn more about Audience Insights](https://help.pinterest.com/en/business/article/audience-insights).
      */
     @isTest
     private static void audienceInsightsGetTest() {
@@ -19,43 +19,123 @@ private class OASAudienceInsightsApiTest {
 
         OASClient client;
         OASAudienceInsightsApi api;
-        OASAudienceInsightsResponse response;
-        OASAudienceInsightsResponse expectedResponse;
+        OASAudienceInsights response;
+        OASAudienceInsights expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudienceInsightsApi(client);
 
-        js = JSON.serialize(OASAudienceInsightsResponse.getExample());
+        js = JSON.serialize(OASAudienceInsights.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudienceInsightsResponse.getExample();
-        response = (OASAudienceInsightsResponse) api.audienceInsightsGet(params);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudienceInsightsResponse.getExample());
+        js = JSON.serialize(OASAudienceInsights.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudienceInsightsResponse.getExample();
-        response = (OASAudienceInsightsResponse) api.audienceInsightsGet(params);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAudienceInsightsApi(client);
 
-        js = JSON.serialize(OASAudienceInsightsResponse.getExample());
+        js = JSON.serialize(OASAudienceInsights.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudienceInsightsResponse.getExample();
-        response = (OASAudienceInsightsResponse) api.audienceInsightsGet(params);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudienceInsightsResponse.getExample());
+        js = JSON.serialize(OASAudienceInsights.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudienceInsightsResponse.getExample();
-        response = (OASAudienceInsightsResponse) api.audienceInsightsGet(params);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsights.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsights.getExample();
+        response = (OASAudienceInsights) api.audienceInsightsGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -77,43 +157,123 @@ private class OASAudienceInsightsApiTest {
 
         OASClient client;
         OASAudienceInsightsApi api;
-        OASAudienceDefinitionResponse response;
-        OASAudienceDefinitionResponse expectedResponse;
+        OASAudienceInsightsScopeAndTypeGet20 response;
+        OASAudienceInsightsScopeAndTypeGet20 expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASAudienceInsightsApi(client);
 
-        js = JSON.serialize(OASAudienceDefinitionResponse.getExample());
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudienceDefinitionResponse.getExample();
-        response = (OASAudienceDefinitionResponse) api.audienceInsightsScopeAndTypeGet(params);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudienceDefinitionResponse.getExample());
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudienceDefinitionResponse.getExample();
-        response = (OASAudienceDefinitionResponse) api.audienceInsightsScopeAndTypeGet(params);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASAudienceInsightsApi(client);
 
-        js = JSON.serialize(OASAudienceDefinitionResponse.getExample());
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudienceDefinitionResponse.getExample();
-        response = (OASAudienceDefinitionResponse) api.audienceInsightsScopeAndTypeGet(params);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASAudienceDefinitionResponse.getExample());
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASAudienceDefinitionResponse.getExample();
-        response = (OASAudienceDefinitionResponse) api.audienceInsightsScopeAndTypeGet(params);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAudienceInsightsScopeAndTypeGet20.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAudienceInsightsScopeAndTypeGet20.getExample();
+        response = (OASAudienceInsightsScopeAndTypeGet20) api.audienceInsightsScopeAndTypeGet(params);
         System.assertEquals(expectedResponse, response);
     }
 }

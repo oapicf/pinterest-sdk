@@ -1,12 +1,12 @@
 module.exports = {
-    "LeadFormResponseSample": 
+    "LeadFormSample": 
         { data: {} },
-    "LeadFormTestResponseSample": 
+    "LeadFormTestSample": 
         { data: {} },
-    "LeadFormArrayResponseSample": 
+    "lead_forms_create_200_responseSample": 
         { data: {} },
     "lead_forms_list_200_responseSample": 
         { data: {} },
-    "LeadFormArrayResponseSample": 
+    "lead_forms_create_200_responseSample": 
         { data: {} },
 }

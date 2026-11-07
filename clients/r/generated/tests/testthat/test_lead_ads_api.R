@@ -12,7 +12,7 @@ test_that("AdAccountsSubscriptionsDelById", {
   # Delete an existing lead ads webhook subscription by ID.   - Only requests for the OWNER or ADMIN of the ad_account will be allowed.&#39;
   # @param ad_account_id character Unique identifier of an ad account.
   # @param subscription_id character Unique identifier of a subscription.
-  # @return [Void]
+  # @return [LeadSubscription]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

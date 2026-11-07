@@ -1,11 +1,11 @@
 package org.openapitools.api;
 
-import org.openapitools.model.BulkDownloadRequest;
-import org.openapitools.model.BulkDownloadResponse;
+import org.openapitools.model.BulkDownload;
+import org.openapitools.model.BulkDownloadCreate;
+import org.openapitools.model.BulkJobData;
 import org.openapitools.model.BulkUpsertRequest;
 import org.openapitools.model.BulkUpsertResponse;
-import org.openapitools.model.BulkUpsertStatusResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -31,17 +31,17 @@ public class BulkApiTest {
     /**
      * Get advertiser entities in bulk
      *
-     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
+     * Create an asynchronous report that may include information on campaigns, ad groups, product groups, ads, keywords, schedules,and/or labels; can filter by campaigns. Though the entities may be active, archived, or paused, only active entities will return data.
      */
     @Test
     @Disabled("Not Implemented")
     public void bulkDownloadCreateTest() {
         // given
         String adAccountId = "example";
-        BulkDownloadRequest bulkDownloadRequest = new BulkDownloadRequest();
+        BulkDownloadCreate bulkDownloadCreate = new BulkDownloadCreate();
 
         // when
-        BulkDownloadResponse body = api.bulkDownloadCreate(adAccountId, bulkDownloadRequest).block();
+        BulkDownload body = api.bulkDownloadCreate(adAccountId, bulkDownloadCreate).block();
 
         // then
         // TODO implement the bulkDownloadCreateTest()
@@ -51,7 +51,7 @@ public class BulkApiTest {
     /**
      * Download advertiser entities in bulk
      *
-     * Get the status of a bulk request by &lt;code&gt;request_id&lt;/code&gt;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, or keywords).
+     * Get the status of a bulk request by &#x60;request_id&#x60;, along with a download URL that will allow you to download the new or updated entity data (campaigns, ad groups, product groups, ads, schedules, or keywords).
      */
     @Test
     @Disabled("Not Implemented")
@@ -62,7 +62,7 @@ public class BulkApiTest {
         Boolean includeDetails = false;
 
         // when
-        BulkUpsertStatusResponse body = api.bulkRequestGet(adAccountId, bulkRequestId, includeDetails).block();
+        BulkJobData body = api.bulkRequestGet(adAccountId, bulkRequestId, includeDetails).block();
 
         // then
         // TODO implement the bulkRequestGetTest()
@@ -72,7 +72,7 @@ public class BulkApiTest {
     /**
      * Create/update ad entities in bulk
      *
-     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
+     * Either create or update any combination of campaigns, ad groups, product groups, ads, keywords, schedules, or labels. Note that this request will be processed asynchronously; the response will include a &lt;code&gt;request_id&lt;/code&gt; that can be used to obtain the status of the request.
      */
     @Test
     @Disabled("Not Implemented")

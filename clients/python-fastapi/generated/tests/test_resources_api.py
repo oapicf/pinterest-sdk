@@ -3,14 +3,16 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Any, Dict, List, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.ad_accounts_country_response import AdAccountsCountryResponse  # noqa: F401
-from openapi_server.models.book_closed_response import BookClosedResponse  # noqa: F401
-from openapi_server.models.delivery_metrics_response import DeliveryMetricsResponse  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
-from openapi_server.models.single_interest_targeting_option_response import SingleInterestTargetingOptionResponse  # noqa: F401
+from openapi_server.models.ad_account_countries_get200_response import AdAccountCountriesGet200Response  # noqa: F401
+from openapi_server.models.book_closed import BookClosed  # noqa: F401
+from openapi_server.models.delivery_metrics_get200_response import DeliveryMetricsGet200Response  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
+from openapi_server.models.public_targeting_type import PublicTargetingType  # noqa: F401
+from openapi_server.models.report_type import ReportType  # noqa: F401
+from openapi_server.models.single_interest_targeting_option import SingleInterestTargetingOption  # noqa: F401
 
 
 def test_ad_account_countries_get(client: TestClient):
@@ -39,7 +41,7 @@ def test_delivery_metrics_get(client: TestClient):
 
     Get available metrics' definitions
     """
-    params = [("report_type", 'report_type_example')]
+    params = [("report_type", openapi_server.ReportType())]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -81,7 +83,7 @@ def test_metrics_ready_state_get(client: TestClient):
 
     Get metrics ready state
     """
-    params = [("var_date", '2022-07-13')]
+    params = [("var_date", 'var_date_example')]
     headers = {
         "Authorization": "Bearer special-key",
     }
@@ -123,7 +125,7 @@ def test_targeting_options_get(client: TestClient):
 
     Get targeting options
     """
-    params = [("client_id", '1094834'),     ("oauth_signature", '8209f'),     ("timestamp", '1618338184277'),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("ad_account_id", 'ad_account_id_example'),     ("client_id", 'client_id_example'),     ("oauth_signature", 'oauth_signature_example'),     ("timestamp", 'timestamp_example')]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -131,7 +133,7 @@ def test_targeting_options_get(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/resources/targeting/{targeting_type}".format(targeting_type='APPTYPE'),
+    #    "/resources/targeting/{targeting_type}".format(targeting_type=openapi_server.PublicTargetingType()),
     #    headers=headers,
     #    params=params,
     #)

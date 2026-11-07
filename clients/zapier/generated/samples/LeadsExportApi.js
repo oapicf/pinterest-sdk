@@ -1,5 +1,7 @@
 module.exports = {
-    "LeadsExportCreateResponseSample": 
+    "LeadsExportsSample": 
+        { data: {} },
+    "LeadsExportsSample": 
         { data: {} },
     "LeadsExportResponseDataSample": 
         { data: {} },

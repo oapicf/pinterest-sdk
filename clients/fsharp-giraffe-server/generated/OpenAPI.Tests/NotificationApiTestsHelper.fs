@@ -21,8 +21,8 @@ module NotificationApiHandlerTestsHelper =
   let mutable NotificationPostExamples = Map.empty
   let mutable NotificationPostBody = ""
 
-  NotificationPostBody <- WebUtility.HtmlDecode ""
-  NotificationPostExamples <- NotificationPostExamples.Add("", NotificationPostBody)
+  NotificationPostBody <- WebUtility.HtmlDecode "[ &quot;{}&quot;, &quot;{}&quot;, &quot;{}&quot;, &quot;{}&quot;, &quot;{}&quot; ]"
+  NotificationPostExamples <- NotificationPostExamples.Add("application/json", NotificationPostBody)
 
   let getNotificationPostExample mediaType =
     NotificationPostExamples.[mediaType]

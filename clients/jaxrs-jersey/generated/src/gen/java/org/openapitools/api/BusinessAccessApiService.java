@@ -18,7 +18,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public abstract class BusinessAccessApiService {
     public abstract Response brandAccountsCreate( @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId,BrandAccountCreate brandAccountCreate,SecurityContext securityContext) throws NotFoundException;
     public abstract Response brandAccountsUpdate(String brandAccountId, @Pattern(regexp="^\\d+$") @Size(min=1,max=20)String businessHierarchyId,BrandAccountUpdate brandAccountUpdate,SecurityContext securityContext) throws NotFoundException;

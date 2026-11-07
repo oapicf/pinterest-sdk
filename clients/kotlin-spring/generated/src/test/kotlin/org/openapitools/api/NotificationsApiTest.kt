@@ -1,8 +1,8 @@
 package org.openapitools.api
 
-import org.openapitools.model.Error
 import org.openapitools.model.NotificationPostRequest
 import org.openapitools.model.NotificationResponse
+import org.openapitools.model.PinterestLibError
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
 
@@ -19,6 +19,7 @@ class NotificationsApiTest {
     @Test
     fun notificationPostTest() {
         val notificationPostRequest: NotificationPostRequest = TODO()
+        
         
         val response: ResponseEntity<NotificationResponse> = api.notificationPost(notificationPostRequest)
 

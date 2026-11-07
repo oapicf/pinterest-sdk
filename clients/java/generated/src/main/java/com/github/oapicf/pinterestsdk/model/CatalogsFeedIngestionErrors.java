@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CatalogsFeedIngestionErrors
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedIngestionErrors {
   public static final String SERIALIZED_NAME_A_C_C_O_U_N_T_F_L_A_G_G_E_D = "ACCOUNT_FLAGGED";
   @SerializedName(SERIALIZED_NAME_A_C_C_O_U_N_T_F_L_A_G_G_E_D)

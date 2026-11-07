@@ -20,7 +20,7 @@ import org.openapitools.model.ProductCondition;
  **/
 
 @ApiModel(description = "A map of filter attributes to their available values.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-03T06:13:14.972512762Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsRetailFilterValuesMap   {
   @JsonProperty("ad_image_tags")
   private List<String> adImageTags = null;

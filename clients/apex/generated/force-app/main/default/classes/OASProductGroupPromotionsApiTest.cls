@@ -14,31 +14,79 @@ private class OASProductGroupPromotionsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSProductGroupPromotionCreateReques' => ''
+            'oaSProductGroupPromotionsCreate' => ''
         };
 
         OASClient client;
         OASProductGroupPromotionsApi api;
-        OASProductGroupPromotionResponse response;
-        OASProductGroupPromotionResponse expectedResponse;
+        OASProductGroupPromotions response;
+        OASProductGroupPromotions expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASProductGroupPromotionsApi(client);
 
-        js = JSON.serialize(OASProductGroupPromotionResponse.getExample());
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASProductGroupPromotionResponse.getExample();
-        response = (OASProductGroupPromotionResponse) api.productGroupPromotionsCreate(params);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASProductGroupPromotionResponse.getExample());
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASProductGroupPromotionResponse.getExample();
-        response = (OASProductGroupPromotionResponse) api.productGroupPromotionsCreate(params);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsCreate(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -82,12 +130,52 @@ private class OASProductGroupPromotionsApiTest {
         expectedResponse = OASProductGroupPromotion.getExample();
         response = (OASProductGroupPromotion) api.productGroupPromotionsGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotion.getExample();
+        response = (OASProductGroupPromotion) api.productGroupPromotionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotion.getExample();
+        response = (OASProductGroupPromotion) api.productGroupPromotionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotion.getExample();
+        response = (OASProductGroupPromotion) api.productGroupPromotionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotion.getExample();
+        response = (OASProductGroupPromotion) api.productGroupPromotionsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotion.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotion.getExample();
+        response = (OASProductGroupPromotion) api.productGroupPromotionsGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get product group promotions
      *
-     * List existing product group promotions associated with an ad account.\n\nInclude either ad_group_id or product_group_promotion_ids in your request.\n\n&lt;b&gt;Note:&lt;/b&gt; ad_group_ids and product_group_promotion_ids are mutually exclusive parameters.\nOnly provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+     * List existing product group promotions associated with an ad account.\n\nInclude either ad_group_id or product_group_promotion_ids in your request.\n\n**Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters.\nOnly provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
      */
     @isTest
     private static void productGroupPromotionsListTest() {
@@ -98,12 +186,12 @@ private class OASProductGroupPromotionsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'productGroupPromotionIds' => new List<String>{''},
-            'entityStatuses' => new List<String>{'ACTIVE'},
-            'adGroupId' => 123123123,
+            'bookmark' => 'null',
             'pageSize' => '',
-            'order' => ASCENDING,
-            'bookmark' => 'null'
+            'order' => '',
+            'productGroupPromotionIds' => new List<String>{''},
+            'entityStatuses' => new List<OASEntityStatus>{OASEntityStatus.getExample()},
+            'adGroupId' => 'null'
         };
 
         OASClient client;
@@ -114,6 +202,46 @@ private class OASProductGroupPromotionsApiTest {
 
         client = new OASClient();
         api = new OASProductGroupPromotionsApi(client);
+
+        js = JSON.serialize(OASProductGroupPromotionsList200Resp.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotionsList200Resp.getExample();
+        response = (OASProductGroupPromotionsList200Resp) api.productGroupPromotionsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotionsList200Resp.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotionsList200Resp.getExample();
+        response = (OASProductGroupPromotionsList200Resp) api.productGroupPromotionsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotionsList200Resp.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotionsList200Resp.getExample();
+        response = (OASProductGroupPromotionsList200Resp) api.productGroupPromotionsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotionsList200Resp.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotionsList200Resp.getExample();
+        response = (OASProductGroupPromotionsList200Resp) api.productGroupPromotionsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotionsList200Resp.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotionsList200Resp.getExample();
+        response = (OASProductGroupPromotionsList200Resp) api.productGroupPromotionsList(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASProductGroupPromotionsList200Resp.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -145,38 +273,78 @@ private class OASProductGroupPromotionsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSProductGroupPromotionUpdateReques' => ''
+            'oaSProductGroupPromotionsUpdateWithR' => ''
         };
 
         OASClient client;
         OASProductGroupPromotionsApi api;
-        OASProductGroupPromotionResponse response;
-        OASProductGroupPromotionResponse expectedResponse;
+        OASProductGroupPromotions response;
+        OASProductGroupPromotions expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASProductGroupPromotionsApi(client);
 
-        js = JSON.serialize(OASProductGroupPromotionResponse.getExample());
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASProductGroupPromotionResponse.getExample();
-        response = (OASProductGroupPromotionResponse) api.productGroupPromotionsUpdate(params);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASProductGroupPromotionResponse.getExample());
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASProductGroupPromotionResponse.getExample();
-        response = (OASProductGroupPromotionResponse) api.productGroupPromotionsUpdate(params);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASProductGroupPromotions.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASProductGroupPromotions.getExample();
+        response = (OASProductGroupPromotions) api.productGroupPromotionsUpdate(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get product group analytics
      *
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options.\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.\n  - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get analytics for the specified product groups in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.\n\n- The token\&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.\n- If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days.\n- If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      */
     @isTest
     private static void productGroupsAnalyticsTest() {
@@ -186,13 +354,13 @@ private class OASProductGroupPromotionsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
             'productGroupIds' => new List<String>{''},
-            'columns' => new List<String>{'TOTAL_CONVERSIONS'},
-            'granularity' => DAY,
-            'clickWindowDays' => 1,
+            'columns' => new List<OASReportingColumnSync>{OASReportingColumnSync.getExample()},
+            'granularity' => '',
+            'adAccountId' => 'null',
+            'clickWindowDays' => '',
             'engagementWindowDays' => '',
             'viewWindowDays' => '',
             'conversionReportTime' => TIME_OF_AD_ACTION,
@@ -201,59 +369,123 @@ private class OASProductGroupPromotionsApiTest {
 
         OASClient client;
         OASProductGroupPromotionsApi api;
-        List<OASProductGroupAnalyticsResponseInne> response;
-        List<OASProductGroupAnalyticsResponseInne> expectedResponse;
+        List<OASProductGroupAnalyticsItems> response;
+        List<OASProductGroupAnalyticsItems> expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASProductGroupPromotionsApi(client);
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASProductGroupAnalyticsResponseInne>) api.productGroupsAnalytics(params);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASProductGroupAnalyticsResponseInne>) api.productGroupsAnalytics(params);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASProductGroupAnalyticsResponseInne>) api.productGroupsAnalytics(params);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASProductGroupPromotionsApi(client);
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASProductGroupAnalyticsResponseInne>) api.productGroupsAnalytics(params);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASProductGroupAnalyticsResponseInne>) api.productGroupsAnalytics(params);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(List.getExample());
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = List.getExample();
-        response = (List<OASProductGroupAnalyticsResponseInne>) api.productGroupsAnalytics(params);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new List<OASProductGroupAnalyticsItems>{OASProductGroupAnalyticsItems.getExample()};
+        response = (List<OASProductGroupAnalyticsItems>) api.productGroupsAnalytics(params);
         System.assertEquals(expectedResponse, response);
     }
 }

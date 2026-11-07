@@ -1,9 +1,0 @@
-
-
-# AdvancedAuctionOperation
-
-## Enum
-
-
-
-

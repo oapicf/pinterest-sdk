@@ -1,19 +1,22 @@
 package org.openapitools.api;
 
-import org.openapitools.model.AdsCreditRedeemRequest;
-import org.openapitools.model.AdsCreditRedeemResponse;
+import org.openapitools.model.AdsCreditRedeem;
+import org.openapitools.model.AdsCreditRedeemCreate;
 import org.openapitools.model.AdsCreditsDiscountsGet200Response;
+import org.openapitools.model.BillingInvoiceDocumentType;
 import org.openapitools.model.BillingInvoiceDownloadResponse;
+import org.openapitools.model.BillingInvoiceSortField;
+import org.openapitools.model.BillingInvoiceStatus;
 import org.openapitools.model.BillingInvoicesGet200Response;
 import org.openapitools.model.BillingProfilesGet200Response;
-import org.openapitools.model.Error;
 import java.time.LocalDate;
-import org.openapitools.model.SSIOAccountResponse;
-import org.openapitools.model.SSIOCreateInsertionOrderRequest;
-import org.openapitools.model.SSIOCreateInsertionOrderResponse;
-import org.openapitools.model.SSIOEditInsertionOrderRequest;
-import org.openapitools.model.SSIOEditInsertionOrderResponse;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.SSIOAccount;
+import org.openapitools.model.SSIOInsertionOrder;
+import org.openapitools.model.SSIOInsertionOrderCreate;
 import org.openapitools.model.SSIOInsertionOrderStatusResponse;
+import org.openapitools.model.SSIOInsertionOrderUpdate;
 import org.openapitools.model.SsioInsertionOrdersStatusGetByAdAccount200Response;
 import org.openapitools.model.SsioOrderLinesGetByAdAccount200Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
@@ -41,17 +44,17 @@ public class BillingApiTest {
     /**
      * Redeem ad credits
      *
-     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      */
     @Test
     @Disabled("Not Implemented")
     public void adsCreditRedeemTest() {
         // given
         String adAccountId = "example";
-        AdsCreditRedeemRequest adsCreditRedeemRequest = new AdsCreditRedeemRequest("138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", true);
+        AdsCreditRedeemCreate adsCreditRedeemCreate = new AdsCreditRedeemCreate("138e9e0ff7e38cf511b880975eb574c09aa9d5e1657590ab0431040da68caa67", true);
 
         // when
-        AdsCreditRedeemResponse body = api.adsCreditRedeem(adAccountId, adsCreditRedeemRequest).block();
+        AdsCreditRedeem body = api.adsCreditRedeem(adAccountId, adsCreditRedeemCreate).block();
 
         // then
         // TODO implement the adsCreditRedeemTest()
@@ -61,7 +64,7 @@ public class BillingApiTest {
     /**
      * Get ads credit discounts
      *
-     * Returns the list of discounts applied to the account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      */
     @Test
     @Disabled("Not Implemented")
@@ -111,15 +114,15 @@ public class BillingApiTest {
         String adAccountId = "example";
         String bookmark = "example";
         Integer pageSize = 25;
-        String sort = "DUE_DATE";
-        String order = "ASCENDING";
-        String status = "OPEN";
-        String documentType = "INVOICE";
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
+        BillingInvoiceSortField sort = BillingInvoiceSortField.fromValue("DUE_DATE");
+        BillingInvoiceStatus status = BillingInvoiceStatus.fromValue("OPEN");
+        BillingInvoiceDocumentType documentType = BillingInvoiceDocumentType.fromValue("INVOICE");
         LocalDate startDueDate = LocalDate.of(2001, 2, 3);
         LocalDate endDueDate = LocalDate.of(2001, 2, 3);
 
         // when
-        BillingInvoicesGet200Response body = api.billingInvoicesGet(adAccountId, bookmark, pageSize, sort, order, status, documentType, startDueDate, endDueDate).block();
+        BillingInvoicesGet200Response body = api.billingInvoicesGet(adAccountId, bookmark, pageSize, order, sort, status, documentType, startDueDate, endDueDate).block();
 
         // then
         // TODO implement the billingInvoicesGetTest()
@@ -129,19 +132,19 @@ public class BillingApiTest {
     /**
      * Get billing profiles
      *
-     * Get billing profiles in the advertiser account.  &lt;strong&gt;This endpoint might not be available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;
+     * Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
      */
     @Test
     @Disabled("Not Implemented")
     public void billingProfilesGetTest() {
         // given
-        String adAccountId = "example";
         Boolean isActive = false;
+        String adAccountId = "example";
         String bookmark = "example";
         Integer pageSize = 25;
 
         // when
-        BillingProfilesGet200Response body = api.billingProfilesGet(adAccountId, isActive, bookmark, pageSize).block();
+        BillingProfilesGet200Response body = api.billingProfilesGet(isActive, adAccountId, bookmark, pageSize).block();
 
         // then
         // TODO implement the billingProfilesGetTest()
@@ -151,7 +154,7 @@ public class BillingApiTest {
     /**
      * Get Salesforce account details including bill-to information.
      *
-     * Get Salesforce account details including bill-to information to be used in insertion orders process for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce account details including bill-to information to be used in insertion orders process for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      */
     @Test
     @Disabled("Not Implemented")
@@ -160,7 +163,7 @@ public class BillingApiTest {
         String adAccountId = "example";
 
         // when
-        SSIOAccountResponse body = api.ssioAccountsGet(adAccountId).block();
+        SSIOAccount body = api.ssioAccountsGet(adAccountId).block();
 
         // then
         // TODO implement the ssioAccountsGetTest()
@@ -170,17 +173,17 @@ public class BillingApiTest {
     /**
      * Create insertion order through SSIO.
      *
-     * Create insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Create insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      */
     @Test
     @Disabled("Not Implemented")
     public void ssioInsertionOrderCreateTest() {
         // given
         String adAccountId = "example";
-        SSIOCreateInsertionOrderRequest ssIOCreateInsertionOrderRequest = new SSIOCreateInsertionOrderRequest();
+        SSIOInsertionOrderCreate ssIOInsertionOrderCreate = new SSIOInsertionOrderCreate("example", "example", "example", "example", "example", "example", "example", org.openapitools.model.Currency.fromValue("UNK"), "example", "example", "example", org.openapitools.model.SSIOOrderLineType.fromValue("BUDGET"), "example", "example", "example", "example");
 
         // when
-        SSIOCreateInsertionOrderResponse body = api.ssioInsertionOrderCreate(adAccountId, ssIOCreateInsertionOrderRequest).block();
+        SSIOInsertionOrder body = api.ssioInsertionOrderCreate(adAccountId, ssIOInsertionOrderCreate).block();
 
         // then
         // TODO implement the ssioInsertionOrderCreateTest()
@@ -190,17 +193,17 @@ public class BillingApiTest {
     /**
      * Edit insertion order through SSIO.
      *
-     * Edit insertion order through SSIO for &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Edit insertion order through SSIO for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      */
     @Test
     @Disabled("Not Implemented")
     public void ssioInsertionOrderEditTest() {
         // given
         String adAccountId = "example";
-        SSIOEditInsertionOrderRequest ssIOEditInsertionOrderRequest = new SSIOEditInsertionOrderRequest();
+        SSIOInsertionOrderUpdate ssIOInsertionOrderUpdate = new SSIOInsertionOrderUpdate();
 
         // when
-        SSIOEditInsertionOrderResponse body = api.ssioInsertionOrderEdit(adAccountId, ssIOEditInsertionOrderRequest).block();
+        SSIOInsertionOrder body = api.ssioInsertionOrderEdit(adAccountId, ssIOInsertionOrderUpdate).block();
 
         // then
         // TODO implement the ssioInsertionOrderEditTest()
@@ -210,7 +213,7 @@ public class BillingApiTest {
     /**
      * Get insertion order status by ad account id.
      *
-     * Get insertion order status for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      */
     @Test
     @Disabled("Not Implemented")
@@ -231,14 +234,14 @@ public class BillingApiTest {
     /**
      * Get insertion order status by pin order id.
      *
-     * Get insertion order status for pin order id &lt;code&gt;pin_order_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get insertion order status for &#x60;pin_order_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      */
     @Test
     @Disabled("Not Implemented")
     public void ssioInsertionOrdersStatusGetByPinOrderIdTest() {
         // given
         String adAccountId = "example";
-        String pinOrderId = "0Q01N0000015hekSVDFDC";
+        String pinOrderId = "example";
 
         // when
         SSIOInsertionOrderStatusResponse body = api.ssioInsertionOrdersStatusGetByPinOrderId(adAccountId, pinOrderId).block();
@@ -251,19 +254,19 @@ public class BillingApiTest {
     /**
      * Get Salesforce order lines by ad account id.
      *
-     * Get Salesforce order lines for account id &lt;code&gt;ad_account_id&lt;/code&gt;. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Finance, Campaign.
+     *   Get Salesforce order lines for account id &#x60;ad_account_id&#x60;.   - The token&#39;s &#x60;user_account&#x60; must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
      */
     @Test
     @Disabled("Not Implemented")
     public void ssioOrderLinesGetByAdAccountTest() {
         // given
         String adAccountId = "example";
+        String pinOrderId = "example";
         String bookmark = "example";
         Integer pageSize = 25;
-        String pinOrderId = "0Q01N0000015hekSVDFDC";
 
         // when
-        SsioOrderLinesGetByAdAccount200Response body = api.ssioOrderLinesGetByAdAccount(adAccountId, bookmark, pageSize, pinOrderId).block();
+        SsioOrderLinesGetByAdAccount200Response body = api.ssioOrderLinesGetByAdAccount(adAccountId, pinOrderId, bookmark, pageSize).block();
 
         // then
         // TODO implement the ssioOrderLinesGetByAdAccountTest()

@@ -35,15 +35,15 @@ feature -- Test routines
             --
             -- Cancel membership/partnership invites and/or requests.
         local
-            l_response: DELETE_INVITES_RESULTS_RESPONSE_ARRAY
+            l_response: CANCEL_INVITES_RESPONSE
             l_business_id: STRING_32
-            l_cancel_invites_body: CANCEL_INVITES_BODY
+            l_cancel_invites_request: CANCEL_INVITES_REQUEST
         do
             -- TODO: Initialize required params.
             -- l_business_id
-            -- l_cancel_invites_body
+            -- l_cancel_invites_request
 
-            -- l_response := api.cancel_invites_or_requests(l_business_id, l_cancel_invites_body)
+            -- l_response := api.cancel_invites_or_requests(l_business_id, l_cancel_invites_request)
             assert ("not_implemented", False)
         end
 
@@ -89,7 +89,7 @@ feature -- Test routines
             l_response: GET_INVITES_200_RESPONSE
             l_business_id: STRING_32
             l_is_member: BOOLEAN
-            l_invite_status: LIST [STRING_32]
+            l_invite_status: LIST [INVITE_FILTER_STATUS]
             l_invite_type: INVITE_TYPE
             l_bookmark: STRING_32
             l_page_size: INTEGER_32

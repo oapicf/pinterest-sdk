@@ -9,9 +9,9 @@ from app.openapi_server.models.conversion_event_response import ConversionEventR
 from app.openapi_server.models.conversion_tag import ConversionTag  # noqa: E501
 from app.openapi_server.models.conversion_tag_create import ConversionTagCreate  # noqa: E501
 from app.openapi_server.models.conversion_tags_list200_response import ConversionTagsList200Response  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
 from app.openapi_server.models.page_visit_conversion_tags_get200_response import PageVisitConversionTagsGet200Response  # noqa: E501
 from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -23,7 +23,7 @@ class TestConversionTagsController(BaseTestCase):
 
         Create conversion tag
         """
-        body = {"aem_fnln_enabled":False,"aem_external_id_enabled":False,"aem_db_enabled":False,"aem_enabled":False,"name":"ACME Checkout Test Tag","md_frequency":0.6,"aem_ph_enabled":False,"aem_ge_enabled":False,"aem_loc_enabled":False}
+        body = {"aem_db_enabled":False,"aem_enabled":False,"aem_external_id_enabled":False,"aem_fnln_enabled":False,"aem_ge_enabled":False,"aem_loc_enabled":False,"aem_ph_enabled":False,"md_frequency":0.6,"name":"download_picture"}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/conversion_tags'.format(ad_account_id='ad_account_id_example'),
             method='POST',
@@ -38,7 +38,7 @@ class TestConversionTagsController(BaseTestCase):
         Get conversion tag
         """
         response = self.client.open(
-            '/v5/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}'.format(ad_account_id='ad_account_id_example', conversion_tag_id='2617998078212'),
+            '/v5/ad_accounts/{ad_account_id}/conversion_tags/{conversion_tag_id}'.format(ad_account_id='ad_account_id_example', conversion_tag_id='conversion_tag_id_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -72,9 +72,9 @@ class TestConversionTagsController(BaseTestCase):
 
         Get page visit conversion tags
         """
-        query_string = [('page_size', 25),
-                        ('order', 'ASCENDING'),
-                        ('bookmark', 'bookmark_example')]
+        query_string = [('bookmark', 'bookmark_example'),
+                        ('page_size', 25),
+                        ('order', openapi_server.PinterestLibPaginationOrder())]
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/conversion_tags/page_visit'.format(ad_account_id='ad_account_id_example'),
             method='GET',

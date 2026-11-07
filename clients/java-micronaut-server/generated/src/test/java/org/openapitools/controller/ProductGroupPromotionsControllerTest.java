@@ -1,14 +1,18 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
+import java.math.BigDecimal;
+import org.openapitools.model.EntityStatus;
 import org.openapitools.model.Granularity;
 import java.time.LocalDate;
-import org.openapitools.model.ProductGroupAnalyticsResponseInner;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
+import org.openapitools.model.ProductGroupAnalyticsItems;
 import org.openapitools.model.ProductGroupPromotion;
-import org.openapitools.model.ProductGroupPromotionCreateRequest;
-import org.openapitools.model.ProductGroupPromotionResponse;
-import org.openapitools.model.ProductGroupPromotionUpdateRequest;
+import org.openapitools.model.ProductGroupPromotions;
+import org.openapitools.model.ProductGroupPromotionsCreate;
 import org.openapitools.model.ProductGroupPromotionsList200Response;
+import org.openapitools.model.ProductGroupPromotionsUpdateWithRequiredBody;
+import org.openapitools.model.ReportingColumnSync;
 import org.openapitools.model.ReportingTimeZone;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
@@ -69,10 +73,10 @@ public class ProductGroupPromotionsControllerTest {
     void productGroupPromotionsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        ProductGroupPromotionCreateRequest productGroupPromotionCreateRequest = new ProductGroupPromotionCreateRequest("2680059592705", Arrays.asList());
+        ProductGroupPromotionsCreate productGroupPromotionsCreate = new ProductGroupPromotionsCreate("2680059592705", Arrays.asList());
 
         // when
-        ProductGroupPromotionResponse result = controller.productGroupPromotionsCreate(adAccountId, productGroupPromotionCreateRequest).block();
+        ProductGroupPromotions result = controller.productGroupPromotionsCreate(adAccountId, productGroupPromotionsCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -88,16 +92,16 @@ public class ProductGroupPromotionsControllerTest {
     @Disabled("Not Implemented")
     void productGroupPromotionsCreateClientApiTest() throws IOException {
         // given
-        ProductGroupPromotionCreateRequest body = new ProductGroupPromotionCreateRequest("2680059592705", Arrays.asList());
+        ProductGroupPromotionsCreate body = new ProductGroupPromotionsCreate("2680059592705", Arrays.asList());
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/product_group_promotions").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@5cb33571");
+            .accept("[Ljava.lang.String;@45ed3a9b");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotionResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotions.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -142,7 +146,7 @@ public class ProductGroupPromotionsControllerTest {
             put("product_group_promotion_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3c8c4ec3");
+            .accept("[Ljava.lang.String;@3659574b");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotion.class);
@@ -156,7 +160,7 @@ public class ProductGroupPromotionsControllerTest {
      *
      * The method should: Get product group promotions
      *
-     * List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  &lt;b&gt;Note:&lt;/b&gt; ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
+     * List existing product group promotions associated with an ad account.  Include either ad_group_id or product_group_promotion_ids in your request.  **Note:** ad_group_ids and product_group_promotion_ids are mutually exclusive parameters. Only provide one. If multiple options are provided, product_group_promotion_ids takes precedence over ad_group_ids. If none are provided, the endpoint returns an error.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -165,15 +169,15 @@ public class ProductGroupPromotionsControllerTest {
     void productGroupPromotionsListMethodTest() {
         // given
         String adAccountId = "example";
-        List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds = Arrays.asList("example");
-        List<String> entityStatuses = Arrays.asList("example");
-        String adGroupId = "123123123";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
+        List<@Pattern(regexp = "^\\d+$")String> productGroupPromotionIds = Arrays.asList("example");
+        List<EntityStatus> entityStatuses = Arrays.asList();
+        String adGroupId = "example";
 
         // when
-        ProductGroupPromotionsList200Response result = controller.productGroupPromotionsList(adAccountId, productGroupPromotionIds, entityStatuses, adGroupId, pageSize, order, bookmark).block();
+        ProductGroupPromotionsList200Response result = controller.productGroupPromotionsList(adAccountId, bookmark, pageSize, order, productGroupPromotionIds, entityStatuses, adGroupId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -194,14 +198,14 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@521146e3");
+            .accept("[Ljava.lang.String;@5d25fe35");
         request.getParameters()
-            .add("product_group_promotion_ids", Arrays.asList("example")) // The query format should be multi
-            .add("entity_statuses", Arrays.asList("example")) // The query format should be multi
-            .add("ad_group_id", "123123123") // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("order", "ASCENDING") // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("order", String.valueOf(PinterestLibPaginationOrder.fromValue("ASCENDING"))) // The query parameter format should be 
+            .add("product_group_promotion_ids", Arrays.asList("example")) // The query format should be multi
+            .add("entity_statuses", Arrays.asList()) // The query format should be multi
+            .add("ad_group_id", "example"); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotionsList200Response.class);
@@ -224,10 +228,10 @@ public class ProductGroupPromotionsControllerTest {
     void productGroupPromotionsUpdateMethodTest() {
         // given
         String adAccountId = "example";
-        ProductGroupPromotionUpdateRequest productGroupPromotionUpdateRequest = new ProductGroupPromotionUpdateRequest("2680059592705", Arrays.asList());
+        ProductGroupPromotionsUpdateWithRequiredBody productGroupPromotionsUpdateWithRequiredBody = new ProductGroupPromotionsUpdateWithRequiredBody("2680059592705", Arrays.asList());
 
         // when
-        ProductGroupPromotionResponse result = controller.productGroupPromotionsUpdate(adAccountId, productGroupPromotionUpdateRequest).block();
+        ProductGroupPromotions result = controller.productGroupPromotionsUpdate(adAccountId, productGroupPromotionsUpdateWithRequiredBody).block();
 
         // then
         Assertions.assertTrue(true);
@@ -243,16 +247,16 @@ public class ProductGroupPromotionsControllerTest {
     @Disabled("Not Implemented")
     void productGroupPromotionsUpdateClientApiTest() throws IOException {
         // given
-        ProductGroupPromotionUpdateRequest body = new ProductGroupPromotionUpdateRequest("2680059592705", Arrays.asList());
+        ProductGroupPromotionsUpdateWithRequiredBody body = new ProductGroupPromotionsUpdateWithRequiredBody("2680059592705", Arrays.asList());
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/product_group_promotions").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@5f02fcb3");
+            .accept("[Ljava.lang.String;@17ca2a05");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotionResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, ProductGroupPromotions.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -263,7 +267,7 @@ public class ProductGroupPromotionsControllerTest {
      *
      * The method should: Get product group analytics
      *
-     * Get analytics for the specified product groups in the specified &lt;code&gt;ad_account_id&lt;/code&gt;, filtered by the specified options. - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Campaign Manager.   - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+     * Get analytics for the specified product groups in the specified &#x60;ad_account_id&#x60;, filtered by the specified options.  - The token&#39;s user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -271,20 +275,20 @@ public class ProductGroupPromotionsControllerTest {
     @Disabled("Not Implemented")
     void productGroupsAnalyticsMethodTest() {
         // given
-        String adAccountId = "example";
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
         List<@Pattern(regexp = "^\\d+$")String> productGroupIds = Arrays.asList("example");
-        List<String> columns = Arrays.asList("example");
-        Granularity granularity = Granularity.fromValue("DAY");
-        Integer clickWindowDays = 30;
-        Integer engagementWindowDays = 30;
-        Integer viewWindowDays = 1;
+        List<ReportingColumnSync> columns = Arrays.asList();
+        Granularity granularity = Granularity.fromValue("TOTAL");
+        String adAccountId = "example";
+        BigDecimal clickWindowDays = new BigDecimal(78);
+        BigDecimal engagementWindowDays = new BigDecimal(78);
+        BigDecimal viewWindowDays = new BigDecimal(78);
         String conversionReportTime = "TIME_OF_AD_ACTION";
         ReportingTimeZone reportingTimezone = ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE");
 
         // when
-        List<ProductGroupAnalyticsResponseInner> result = controller.productGroupsAnalytics(adAccountId, startDate, endDate, productGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone).block();
+        List<ProductGroupAnalyticsItems> result = controller.productGroupsAnalytics(startDate, endDate, productGroupIds, columns, granularity, adAccountId, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, reportingTimezone).block();
 
         // then
         Assertions.assertTrue(true);
@@ -305,21 +309,21 @@ public class ProductGroupPromotionsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1a5f429f");
+            .accept("[Ljava.lang.String;@3b5ff385");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("product_group_ids", Arrays.asList("example")) // The query format should be multi
-            .add("columns", String.valueOf(Arrays.asList("example"))) // The query parameter format should be csv
-            .add("granularity", String.valueOf(Granularity.fromValue("DAY"))) // The query parameter format should be 
-            .add("click_window_days", String.valueOf(30)) // The query parameter format should be 
-            .add("engagement_window_days", String.valueOf(30)) // The query parameter format should be 
-            .add("view_window_days", String.valueOf(1)) // The query parameter format should be 
+            .add("columns", String.valueOf(Arrays.asList())) // The query parameter format should be csv
+            .add("granularity", String.valueOf(Granularity.fromValue("TOTAL"))) // The query parameter format should be 
+            .add("click_window_days", String.valueOf(new BigDecimal(78))) // The query parameter format should be 
+            .add("engagement_window_days", String.valueOf(new BigDecimal(78))) // The query parameter format should be 
+            .add("view_window_days", String.valueOf(new BigDecimal(78))) // The query parameter format should be 
             .add("conversion_report_time", "TIME_OF_AD_ACTION") // The query parameter format should be 
             .add("reporting_timezone", String.valueOf(ReportingTimeZone.fromValue("PINTEREST_TIME_ZONE"))); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, ProductGroupAnalyticsResponseInner.class));
+        HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, ProductGroupAnalyticsItems.class));
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

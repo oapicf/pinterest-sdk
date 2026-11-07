@@ -1,21 +1,19 @@
 package org.openapitools.api;
 
-import org.openapitools.model.BrandAccountsCreate200Response;
-import org.openapitools.model.BrandAccountsCreateRequest;
-import org.openapitools.model.BrandAccountsUpdateRequest;
-import org.openapitools.model.DeletePartnersRequest;
-import org.openapitools.model.DeletePartnersResponse;
-import org.openapitools.model.DeletedMembersResponse;
-import org.openapitools.model.Error;
+import org.openapitools.model.BrandAccount;
+import org.openapitools.model.BrandAccountCreate;
+import org.openapitools.model.BrandAccountUpdate;
+import org.openapitools.model.BusinessMembershipMember;
+import org.openapitools.model.DeleteBusinessMembership200Response;
+import org.openapitools.model.DeleteBusinessMembershipBody;
+import org.openapitools.model.DeleteBusinessPartners;
+import org.openapitools.model.DeleteBusinessPartnersDelete;
 import org.openapitools.model.GetBusinessEmployers200Response;
-import org.openapitools.model.GetBusinessMembers200Response;
-import org.openapitools.model.GetBusinessPartners200Response;
 import org.openapitools.model.MemberBusinessRole;
-import org.openapitools.model.MembersToDeleteBody;
 import org.openapitools.model.PartnerType;
-import org.openapitools.model.SystemUserUpdateRequest;
-import org.openapitools.model.UpdateMemberBusinessRoleBody;
-import org.openapitools.model.UpdateMemberResultsResponseArray;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.SystemUserUpdateWithRequiredBody;
+import org.openapitools.model.UpdateBusinessMembershipsResponse;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -47,11 +45,11 @@ public class BusinessAccessRelationshipsApiTest {
     @Disabled("Not Implemented")
     public void brandAccountsCreateTest() {
         // given
-        String businessHierarchyId = "7009386637860";
-        BrandAccountsCreateRequest brandAccountsCreateRequest = new BrandAccountsCreateRequest("Canada Stores", "canada_stores", org.openapitools.model.Country.fromValue("AD"));
+        String businessHierarchyId = "example";
+        BrandAccountCreate brandAccountCreate = new BrandAccountCreate(org.openapitools.model.Country.fromValue("AD"), "example", "example");
 
         // when
-        BrandAccountsCreate200Response body = api.brandAccountsCreate(businessHierarchyId, brandAccountsCreateRequest).block();
+        BrandAccount body = api.brandAccountsCreate(businessHierarchyId, brandAccountCreate).block();
 
         // then
         // TODO implement the brandAccountsCreateTest()
@@ -67,12 +65,12 @@ public class BusinessAccessRelationshipsApiTest {
     @Disabled("Not Implemented")
     public void brandAccountsUpdateTest() {
         // given
-        String businessHierarchyId = "7009386637860";
-        String brandAccountId = "729090764583391194";
-        BrandAccountsUpdateRequest brandAccountsUpdateRequest = new BrandAccountsUpdateRequest();
+        String brandAccountId = "example";
+        String businessHierarchyId = "example";
+        BrandAccountUpdate brandAccountUpdate = new BrandAccountUpdate();
 
         // when
-        BrandAccountsCreate200Response body = api.brandAccountsUpdate(businessHierarchyId, brandAccountId, brandAccountsUpdateRequest).block();
+        BrandAccount body = api.brandAccountsUpdate(brandAccountId, businessHierarchyId, brandAccountUpdate).block();
 
         // then
         // TODO implement the brandAccountsUpdateTest()
@@ -88,11 +86,11 @@ public class BusinessAccessRelationshipsApiTest {
     @Disabled("Not Implemented")
     public void deleteBusinessMembershipTest() {
         // given
-        String businessId = "729090764583391194";
-        MembersToDeleteBody membersToDeleteBody = new MembersToDeleteBody(Arrays.asList());
+        String businessId = "example";
+        DeleteBusinessMembershipBody deleteBusinessMembershipBody = new DeleteBusinessMembershipBody(Arrays.asList());
 
         // when
-        DeletedMembersResponse body = api.deleteBusinessMembership(businessId, membersToDeleteBody).block();
+        DeleteBusinessMembership200Response body = api.deleteBusinessMembership(businessId, deleteBusinessMembershipBody).block();
 
         // then
         // TODO implement the deleteBusinessMembershipTest()
@@ -108,11 +106,11 @@ public class BusinessAccessRelationshipsApiTest {
     @Disabled("Not Implemented")
     public void deleteBusinessPartnersTest() {
         // given
-        String businessId = "729090764583391194";
-        DeletePartnersRequest deletePartnersRequest = new DeletePartnersRequest(Arrays.asList("example"));
+        String businessId = "example";
+        DeleteBusinessPartnersDelete deleteBusinessPartnersDelete = new DeleteBusinessPartnersDelete(Arrays.asList("example"));
 
         // when
-        DeletePartnersResponse body = api.deleteBusinessPartners(businessId, deletePartnersRequest).block();
+        DeleteBusinessPartners body = api.deleteBusinessPartners(businessId, deleteBusinessPartnersDelete).block();
 
         // then
         // TODO implement the deleteBusinessPartnersTest()
@@ -128,11 +126,12 @@ public class BusinessAccessRelationshipsApiTest {
     @Disabled("Not Implemented")
     public void getBusinessEmployersTest() {
         // given
-        Integer pageSize = 25;
+        Boolean assetsSummary = true;
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        GetBusinessEmployers200Response body = api.getBusinessEmployers(pageSize, bookmark).block();
+        GetBusinessEmployers200Response body = api.getBusinessEmployers(assetsSummary, bookmark, pageSize).block();
 
         // then
         // TODO implement the getBusinessEmployersTest()
@@ -148,17 +147,17 @@ public class BusinessAccessRelationshipsApiTest {
     @Disabled("Not Implemented")
     public void getBusinessMembersTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         Boolean fetchSystemUsers = false;
         Boolean assetsSummary = false;
         List<MemberBusinessRole> businessRoles = Arrays.asList();
-        String memberIds = "00101010101,2222220101";
+        String memberIds = "example";
         Integer startIndex = 0;
         String bookmark = "example";
         Integer pageSize = 25;
 
         // when
-        GetBusinessMembers200Response body = api.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize).block();
+        GetBusinessEmployers200Response body = api.getBusinessMembers(businessId, fetchSystemUsers, assetsSummary, businessRoles, memberIds, startIndex, bookmark, pageSize).block();
 
         // then
         // TODO implement the getBusinessMembersTest()
@@ -174,16 +173,17 @@ public class BusinessAccessRelationshipsApiTest {
     @Disabled("Not Implemented")
     public void getBusinessPartnersTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         Boolean assetsSummary = false;
         PartnerType partnerType = PartnerType.fromValue("INTERNAL");
-        String partnerIds = "00101010101,2222220101";
+        String partnerIds = "example";
         Integer startIndex = 0;
-        Integer pageSize = 25;
+        Boolean sortAscending = false;
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        GetBusinessPartners200Response body = api.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, pageSize, bookmark).block();
+        GetBusinessEmployers200Response body = api.getBusinessPartners(businessId, assetsSummary, partnerType, partnerIds, startIndex, sortAscending, bookmark, pageSize).block();
 
         // then
         // TODO implement the getBusinessPartnersTest()
@@ -199,12 +199,12 @@ public class BusinessAccessRelationshipsApiTest {
     @Disabled("Not Implemented")
     public void systemUserUpdateTest() {
         // given
-        String businessId = "729090764583391194";
-        String systemUserId = "729090764583391194";
-        SystemUserUpdateRequest systemUserUpdateRequest = new SystemUserUpdateRequest("Billing API");
+        String businessId = "example";
+        String systemUserId = "example";
+        SystemUserUpdateWithRequiredBody systemUserUpdateWithRequiredBody = new SystemUserUpdateWithRequiredBody("example");
 
         // when
-        api.systemUserUpdate(businessId, systemUserId, systemUserUpdateRequest).block();
+        api.systemUserUpdate(businessId, systemUserId, systemUserUpdateWithRequiredBody).block();
 
         // then
         // TODO implement the systemUserUpdateTest()
@@ -220,11 +220,11 @@ public class BusinessAccessRelationshipsApiTest {
     @Disabled("Not Implemented")
     public void updateBusinessMembershipsTest() {
         // given
-        String businessId = "729090764583391194";
-        List<@Valid UpdateMemberBusinessRoleBody> updateMemberBusinessRoleBody = Arrays.asList();
+        String businessId = "example";
+        List<@Valid BusinessMembershipMember> businessMembershipMember = Arrays.asList();
 
         // when
-        UpdateMemberResultsResponseArray body = api.updateBusinessMemberships(businessId, updateMemberBusinessRoleBody).block();
+        UpdateBusinessMembershipsResponse body = api.updateBusinessMemberships(businessId, businessMembershipMember).block();
 
         // then
         // TODO implement the updateBusinessMembershipsTest()

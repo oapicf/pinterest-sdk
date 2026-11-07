@@ -3,18 +3,18 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictInt, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Any, List, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
 from openapi_server.models.catalogs_feed import CatalogsFeed  # noqa: F401
+from openapi_server.models.catalogs_feed_create_request_schema import CatalogsFeedCreateRequestSchema  # noqa: F401
 from openapi_server.models.catalogs_feed_ingestion import CatalogsFeedIngestion  # noqa: F401
+from openapi_server.models.catalogs_feed_update_request_schema import CatalogsFeedUpdateRequestSchema  # noqa: F401
 from openapi_server.models.catalogs_item_validation_issue import CatalogsItemValidationIssue  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
 from openapi_server.models.feed_processing_results_list200_response import FeedProcessingResultsList200Response  # noqa: F401
-from openapi_server.models.feeds_create_request import FeedsCreateRequest  # noqa: F401
 from openapi_server.models.feeds_list200_response import FeedsList200Response  # noqa: F401
-from openapi_server.models.feeds_update_request import FeedsUpdateRequest  # noqa: F401
 from openapi_server.models.items_issues_list200_response import ItemsIssuesList200Response  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 
 
 def test_feeds_list(client: TestClient):
@@ -22,7 +22,7 @@ def test_feeds_list(client: TestClient):
 
     List feeds
     """
-    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("catalog_id", 'catalog_id_example'),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("catalog_id", 'catalog_id_example'),     ("ad_account_id", 'ad_account_id_example'),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -44,7 +44,7 @@ def test_feeds_create(client: TestClient):
 
     Create feed
     """
-    feeds_create_request = openapi_server.FeedsCreateRequest()
+    catalogs_feed_create_request_schema = openapi_server.CatalogsFeedCreateRequestSchema()
     params = [("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
@@ -55,7 +55,7 @@ def test_feeds_create(client: TestClient):
     #    "POST",
     #    "/catalogs/feeds",
     #    headers=headers,
-    #    json=feeds_create_request,
+    #    json=catalogs_feed_create_request_schema,
     #    params=params,
     #)
 
@@ -112,7 +112,7 @@ def test_feeds_update(client: TestClient):
 
     Update feed
     """
-    feeds_update_request = openapi_server.FeedsUpdateRequest()
+    catalogs_feed_update_request_schema = openapi_server.CatalogsFeedUpdateRequestSchema()
     params = [("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
@@ -123,7 +123,7 @@ def test_feeds_update(client: TestClient):
     #    "PATCH",
     #    "/catalogs/feeds/{feed_id}".format(feed_id='feed_id_example'),
     #    headers=headers,
-    #    json=feeds_update_request,
+    #    json=catalogs_feed_update_request_schema,
     #    params=params,
     #)
 
@@ -157,7 +157,7 @@ def test_feed_processing_results_list(client: TestClient):
 
     List feed processing results
     """
-    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("ad_account_id", 'ad_account_id_example'),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
     }
@@ -178,14 +178,14 @@ def test_items_issues_list(client: TestClient):
 
     List item issues
     """
-    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("item_numbers", [[1,5]]),     ("item_validation_issue", openapi_server.CatalogsItemValidationIssue()),     ("ad_account_id", 'ad_account_id_example')]
+    params = [("item_numbers", [56]),     ("item_validation_issue", openapi_server.CatalogsItemValidationIssue()),     ("ad_account_id", 'ad_account_id_example'),     ("bookmark", 'bookmark_example'),     ("page_size", 25)]
     headers = {
         "Authorization": "Bearer special-key",
     }
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/catalogs/processing_results/{processing_result_id}/item_issues".format(processing_result_id='5224831246441439241'),
+    #    "/catalogs/processing_results/{processing_result_id}/item_issues".format(processing_result_id='processing_result_id_example'),
     #    headers=headers,
     #    params=params,
     #)

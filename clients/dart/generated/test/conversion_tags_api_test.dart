@@ -57,7 +57,7 @@ void main() {
     //
     // Get all page visit conversion tag events for an ad account.
     //
-    //Future<PageVisitConversionTagsGet200Response> pageVisitConversionTagsGet(String adAccountId, { int pageSize, String order, String bookmark }) async
+    //Future<PageVisitConversionTagsGet200Response> pageVisitConversionTagsGet(String adAccountId, { String bookmark, int pageSize, PinterestLibPaginationOrder order }) async
     test('test pageVisitConversionTagsGet', () async {
       // TODO
     });

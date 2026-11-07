@@ -19,16 +19,16 @@ void main() {
   group('tests for BillingApi', () {
     // Redeem ad credits
     //
-    // Redeem ads credit on behalf of the ad account id and apply it towards billing.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+    // Redeem ads credit on behalf of the ad account id and apply it towards billing.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
     //
-    //Future<AdsCreditRedeemResponse> adsCreditRedeem(String adAccountId, AdsCreditRedeemRequest adsCreditRedeemRequest) async
+    //Future<AdsCreditRedeem> adsCreditRedeem(String adAccountId, AdsCreditRedeemCreate adsCreditRedeemCreate) async
     test('test adsCreditRedeem', () async {
       // TODO
     });
 
     // Get ads credit discounts
     //
-    // Returns the list of discounts applied to the account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+    // Returns the list of discounts applied to the account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
     //
     //Future<AdsCreditsDiscountsGet200Response> adsCreditsDiscountsGet(String adAccountId, { String bookmark, int pageSize }) async
     test('test adsCreditsDiscountsGet', () async {
@@ -48,50 +48,50 @@ void main() {
     //
     // Get billing invoices in the advertiser account.
     //
-    //Future<BillingInvoicesGet200Response> billingInvoicesGet(String adAccountId, { String bookmark, int pageSize, String sort, String order, String status, String documentType, DateTime startDueDate, DateTime endDueDate }) async
+    //Future<BillingInvoicesGet200Response> billingInvoicesGet(String adAccountId, { String bookmark, int pageSize, PinterestLibPaginationOrder order, BillingInvoiceSortField sort, BillingInvoiceStatus status, BillingInvoiceDocumentType documentType, DateTime startDueDate, DateTime endDueDate }) async
     test('test billingInvoicesGet', () async {
       // TODO
     });
 
     // Get billing profiles
     //
-    // Get billing profiles in the advertiser account.  <strong>This endpoint might not be available to all apps. <a href='/docs/getting-started/using-beta-and-restricted-features/'>Learn more</a>.</strong>
+    // Get billing profiles in the advertiser account.  **This endpoint might not be available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**
     //
-    //Future<BillingProfilesGet200Response> billingProfilesGet(String adAccountId, bool isActive, { String bookmark, int pageSize }) async
+    //Future<BillingProfilesGet200Response> billingProfilesGet(bool isActive, String adAccountId, { String bookmark, int pageSize }) async
     test('test billingProfilesGet', () async {
       // TODO
     });
 
     // Get Salesforce account details including bill-to information.
     //
-    // Get Salesforce account details including bill-to information to be used in insertion orders process for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    //   Get Salesforce account details including bill-to information to be used in insertion orders process for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     //
-    //Future<SSIOAccountResponse> ssioAccountsGet(String adAccountId) async
+    //Future<SSIOAccount> ssioAccountsGet(String adAccountId) async
     test('test ssioAccountsGet', () async {
       // TODO
     });
 
     // Create insertion order through SSIO.
     //
-    // Create insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    //   Create insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     //
-    //Future<SSIOCreateInsertionOrderResponse> ssioInsertionOrderCreate(String adAccountId, SSIOCreateInsertionOrderRequest sSIOCreateInsertionOrderRequest) async
+    //Future<SSIOInsertionOrder> ssioInsertionOrderCreate(String adAccountId, SSIOInsertionOrderCreate sSIOInsertionOrderCreate) async
     test('test ssioInsertionOrderCreate', () async {
       // TODO
     });
 
     // Edit insertion order through SSIO.
     //
-    // Edit insertion order through SSIO for <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    //   Edit insertion order through SSIO for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     //
-    //Future<SSIOEditInsertionOrderResponse> ssioInsertionOrderEdit(String adAccountId, SSIOEditInsertionOrderRequest sSIOEditInsertionOrderRequest) async
+    //Future<SSIOInsertionOrder> ssioInsertionOrderEdit(String adAccountId, SSIOInsertionOrderUpdate sSIOInsertionOrderUpdate) async
     test('test ssioInsertionOrderEdit', () async {
       // TODO
     });
 
     // Get insertion order status by ad account id.
     //
-    // Get insertion order status for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    //   Get insertion order status for `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     //
     //Future<SsioInsertionOrdersStatusGetByAdAccount200Response> ssioInsertionOrdersStatusGetByAdAccount(String adAccountId, { String bookmark, int pageSize }) async
     test('test ssioInsertionOrdersStatusGetByAdAccount', () async {
@@ -100,7 +100,7 @@ void main() {
 
     // Get insertion order status by pin order id.
     //
-    // Get insertion order status for pin order id <code>pin_order_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    //   Get insertion order status for `pin_order_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     //
     //Future<SSIOInsertionOrderStatusResponse> ssioInsertionOrdersStatusGetByPinOrderId(String adAccountId, String pinOrderId) async
     test('test ssioInsertionOrdersStatusGetByPinOrderId', () async {
@@ -109,9 +109,9 @@ void main() {
 
     // Get Salesforce order lines by ad account id.
     //
-    // Get Salesforce order lines for account id <code>ad_account_id</code>. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Finance, Campaign.
+    //   Get Salesforce order lines for account id `ad_account_id`.   - The token's `user_account` must either be the owner of the specified ad account, or have one of the necessary roles granted via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Finance, Campaign.
     //
-    //Future<SsioOrderLinesGetByAdAccount200Response> ssioOrderLinesGetByAdAccount(String adAccountId, { String bookmark, int pageSize, String pinOrderId }) async
+    //Future<SsioOrderLinesGetByAdAccount200Response> ssioOrderLinesGetByAdAccount(String adAccountId, { String pinOrderId, String bookmark, int pageSize }) async
     test('test ssioOrderLinesGetByAdAccount', () async {
       // TODO
     });

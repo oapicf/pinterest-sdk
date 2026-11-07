@@ -10,7 +10,7 @@ import io.swagger.annotations.ApiModelProperty;
  * ID of the bulk request.
  */
 @ApiModel(description = "ID of the bulk request.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-03T06:13:47.520441256Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkUpsertResponse   {
   @JsonProperty("request_id")
   private String requestId;

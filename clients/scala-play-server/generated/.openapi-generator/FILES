@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 README.md
 app/api/AdAccountsApi.scala
 app/api/AdAccountsApiController.scala

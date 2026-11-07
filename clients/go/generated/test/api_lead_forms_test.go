@@ -26,10 +26,10 @@ func Test_openapi_LeadFormsAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var adAccountId string
 		var leadFormId string
+		var adAccountId string
 
-		resp, httpRes, err := apiClient.LeadFormsAPI.LeadFormGet(context.Background(), adAccountId, leadFormId).Execute()
+		resp, httpRes, err := apiClient.LeadFormsAPI.LeadFormGet(context.Background(), leadFormId, adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

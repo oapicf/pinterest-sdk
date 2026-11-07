@@ -1,11 +1,17 @@
 module.exports = {
     "BoardSectionSample": 
         { data: {} },
+    "BoardSectionSample": 
+        { data: {} },
+    "BoardSectionSample": 
+        { data: {} },
     "board_sections_list_200_responseSample": 
         { data: {} },
     "boards_list_pins_200_responseSample": 
         { data: {} },
     "BoardSectionSample": 
+        { data: {} },
+    "BoardSample": 
         { data: {} },
     "BoardSample": 
         { data: {} },

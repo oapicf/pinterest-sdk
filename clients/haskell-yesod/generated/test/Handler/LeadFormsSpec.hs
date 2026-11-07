@@ -10,12 +10,12 @@ spec = withApp $ do
 
     describe "getAdAccountsByTextLeadFormsByTextR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextLeadFormsByTextR "adAccountId_example" "1234567890123"
+            get $ AdAccountsByTextLeadFormsByTextR "leadFormId_example" "adAccountId_example"
             statusIs 501
 
     describe "postAdAccountsByTextLeadFormsByTextTestR" $
         it "returns 501 Not Implemented" $ do
-            post $ AdAccountsByTextLeadFormsByTextTestR "adAccountId_example" "1234567890123"
+            post $ AdAccountsByTextLeadFormsByTextTestR "adAccountId_example" "leadFormId_example"
             statusIs 501
 
     describe "postAdAccountsByTextLeadFormsR" $

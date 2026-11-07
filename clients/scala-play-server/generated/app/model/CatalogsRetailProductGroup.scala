@@ -12,7 +12,7 @@ import play.api.libs.json._
   * @param name Name of catalog product group
   * @param updatedAt Unix timestamp in seconds of last time catalog product group was updated.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CatalogsRetailProductGroup(
   catalogId: String,
   catalogType: CatalogsRetailProductGroup.CatalogType.Value,

@@ -1,18 +1,20 @@
 module.exports = {
-    "brand_accounts_create_200_responseSample": 
+    "BrandAccountSample": 
         { data: {} },
-    "brand_accounts_create_200_responseSample": 
+    "BrandAccountSample": 
         { data: {} },
-    "DeletedMembersResponseSample": 
+    "BrandAccountSample": 
         { data: {} },
-    "DeletePartnersResponseSample": 
+    "delete_business_membership_200_responseSample": 
+        { data: {} },
+    "DeleteBusinessPartnersSample": 
         { data: {} },
     "get_business_employers_200_responseSample": 
         { data: {} },
-    "get_business_members_200_responseSample": 
+    "get_business_employers_200_responseSample": 
         { data: {} },
-    "get_business_partners_200_responseSample": 
+    "get_business_employers_200_responseSample": 
         { data: {} },
-    "UpdateMemberResultsResponseArraySample": 
+    "UpdateBusinessMembershipsResponseSample": 
         { data: {} },
 }

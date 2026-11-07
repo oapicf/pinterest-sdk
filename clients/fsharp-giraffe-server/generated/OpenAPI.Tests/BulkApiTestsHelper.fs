@@ -22,17 +22,17 @@ module BulkApiHandlerTestsHelper =
   let mutable BulkDownloadCreateBody = ""
 
   BulkDownloadCreateBody <- WebUtility.HtmlDecode "{
-  &quot;output_format&quot; : &quot;JSON&quot;,
   &quot;campaign_filter&quot; : {
-    &quot;start_time&quot; : &quot;1622848072&quot;,
     &quot;campaign_status&quot; : [ &quot;RUNNING&quot;, &quot;RUNNING&quot; ],
     &quot;end_time&quot; : &quot;1622848072&quot;,
     &quot;name&quot; : &quot;campaign name&quot;,
-    &quot;objective_type&quot; : [ &quot;AWARENESS&quot;, &quot;AWARENESS&quot; ]
+    &quot;objective_type&quot; : [ &quot;AWARENESS&quot;, &quot;AWARENESS&quot; ],
+    &quot;start_time&quot; : &quot;1622848072&quot;
   },
+  &quot;entity_ids&quot; : [ null, null ],
   &quot;entity_types&quot; : [ &quot;CAMPAIGN&quot;, &quot;AD_GROUP&quot; ],
-  &quot;updated_since&quot; : &quot;1622848072&quot;,
-  &quot;entity_ids&quot; : [ &quot;entity_ids&quot;, &quot;entity_ids&quot; ]
+  &quot;output_format&quot; : &quot;&quot;,
+  &quot;updated_since&quot; : &quot;1622848072&quot;
 }"
   BulkDownloadCreateExamples <- BulkDownloadCreateExamples.Add("application/json", BulkDownloadCreateBody)
 
@@ -48,24 +48,38 @@ module BulkApiHandlerTestsHelper =
   BulkUpsertCreateBody <- WebUtility.HtmlDecode "{
   &quot;create&quot; : {
     &quot;ad_groups&quot; : [ {
+      &quot;bid_multiplier&quot; : 0.8008281904610115,
+      &quot;budget_type&quot; : &quot;DAILY&quot;,
+      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
       &quot;bid_in_micro_currency&quot; : 5000000,
-      &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
-      &quot;is_creative_optimization&quot; : true,
+      &quot;bid_strategy_type&quot; : &quot;AUTOMATIC_BID&quot;,
+      &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+      &quot;budget_in_micro_currency&quot; : 5000000,
+      &quot;campaign_id&quot; : &quot;626736533506&quot;,
       &quot;end_time&quot; : 5705424000,
+      &quot;is_creative_optimization&quot; : true,
+      &quot;lifetime_frequency_cap&quot; : 100,
+      &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
+      &quot;placement_group&quot; : &quot;&quot;,
       &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
       &quot;promotion_id&quot; : &quot;7834020347906&quot;,
-      &quot;auto_targeting_enabled&quot; : true,
-      &quot;bid_multiplier&quot; : 1,
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
-      &quot;budget_in_micro_currency&quot; : 5000000,
-      &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
+      &quot;promotion_ids&quot; : [ &quot;7834020347906&quot;, &quot;7834020347907&quot; ],
       &quot;start_time&quot; : 5686848000,
-      &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+      &quot;status&quot; : &quot;&quot;,
       &quot;targeting_spec&quot; : {
-        &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
         &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
+        &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
+        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
         &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
+        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
+        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+        &quot;GEO_EXCLUDE&quot; : [ &quot;GEO_EXCLUDE&quot;, &quot;GEO_EXCLUDE&quot; ],
+        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
+        &quot;LOCATION_EXCLUDE&quot; : [ &quot;LOCATION_EXCLUDE&quot;, &quot;LOCATION_EXCLUDE&quot; ],
+        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
+        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
         &quot;SHOPPING_RETARGETING&quot; : [ {
           &quot;lookback_window&quot; : 30,
           &quot;exclusion_window&quot; : 14,
@@ -75,42 +89,42 @@ module BulkApiHandlerTestsHelper =
           &quot;exclusion_window&quot; : 14,
           &quot;tag_types&quot; : [ 0, 6 ]
         } ],
-        &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
-        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
-        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
-        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
-        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
-        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
-        &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
+        &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ]
       },
-      &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
-      &quot;lifetime_frequency_cap&quot; : 100,
-      &quot;optimization_goal_metadata&quot; : &quot;{}&quot;,
-      &quot;placement_group&quot; : &quot;placement_group&quot;,
-      &quot;budget_type&quot; : &quot;DAILY&quot;,
-      &quot;campaign_id&quot; : &quot;626736533506&quot;,
-      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
-      &quot;status&quot; : &quot;status&quot;
+      &quot;targeting_template_ids&quot; : [ &quot;targeting_template_ids&quot; ]
     }, {
+      &quot;bid_multiplier&quot; : 0.8008281904610115,
+      &quot;budget_type&quot; : &quot;DAILY&quot;,
+      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
       &quot;bid_in_micro_currency&quot; : 5000000,
-      &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
-      &quot;is_creative_optimization&quot; : true,
+      &quot;bid_strategy_type&quot; : &quot;AUTOMATIC_BID&quot;,
+      &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+      &quot;budget_in_micro_currency&quot; : 5000000,
+      &quot;campaign_id&quot; : &quot;626736533506&quot;,
       &quot;end_time&quot; : 5705424000,
+      &quot;is_creative_optimization&quot; : true,
+      &quot;lifetime_frequency_cap&quot; : 100,
+      &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
+      &quot;placement_group&quot; : &quot;&quot;,
       &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
       &quot;promotion_id&quot; : &quot;7834020347906&quot;,
-      &quot;auto_targeting_enabled&quot; : true,
-      &quot;bid_multiplier&quot; : 1,
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
-      &quot;budget_in_micro_currency&quot; : 5000000,
-      &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
+      &quot;promotion_ids&quot; : [ &quot;7834020347906&quot;, &quot;7834020347907&quot; ],
       &quot;start_time&quot; : 5686848000,
-      &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+      &quot;status&quot; : &quot;&quot;,
       &quot;targeting_spec&quot; : {
-        &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
         &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
+        &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
+        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
         &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
+        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
+        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+        &quot;GEO_EXCLUDE&quot; : [ &quot;GEO_EXCLUDE&quot;, &quot;GEO_EXCLUDE&quot; ],
+        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
+        &quot;LOCATION_EXCLUDE&quot; : [ &quot;LOCATION_EXCLUDE&quot;, &quot;LOCATION_EXCLUDE&quot; ],
+        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
+        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
         &quot;SHOPPING_RETARGETING&quot; : [ {
           &quot;lookback_window&quot; : 30,
           &quot;exclusion_window&quot; : 14,
@@ -120,224 +134,186 @@ module BulkApiHandlerTestsHelper =
           &quot;exclusion_window&quot; : 14,
           &quot;tag_types&quot; : [ 0, 6 ]
         } ],
-        &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
-        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
-        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
-        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
-        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
-        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
-        &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
+        &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ]
       },
-      &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
-      &quot;lifetime_frequency_cap&quot; : 100,
-      &quot;optimization_goal_metadata&quot; : &quot;{}&quot;,
-      &quot;placement_group&quot; : &quot;placement_group&quot;,
-      &quot;budget_type&quot; : &quot;DAILY&quot;,
-      &quot;campaign_id&quot; : &quot;626736533506&quot;,
-      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
-      &quot;status&quot; : &quot;status&quot;
+      &quot;targeting_template_ids&quot; : [ &quot;targeting_template_ids&quot; ]
     } ],
     &quot;ads&quot; : [ {
-      &quot;is_removable&quot; : false,
-      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
-      &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;,
+      &quot;ad_group_id&quot; : &quot;ad_group_id&quot;,
       &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
-      &quot;destination_url&quot; : &quot;destination_url&quot;,
       &quot;carousel_android_deep_links&quot; : [ &quot;carousel_android_deep_links&quot;, &quot;carousel_android_deep_links&quot; ],
       &quot;carousel_destination_urls&quot; : [ &quot;carousel_destination_urls&quot;, &quot;carousel_destination_urls&quot; ],
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
-      &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
       &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
       &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
-      &quot;is_pin_deleted&quot; : false,
-      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
       &quot;creative_type&quot; : &quot;REGULAR&quot;,
-      &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
-      &quot;quiz_pin_data&quot; : &quot;{}&quot;,
-      &quot;name&quot; : &quot;name&quot;,
       &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,
-      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
-      &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
-      &quot;pin_id&quot; : &quot;394205773611545468&quot;,
-      &quot;status&quot; : &quot;ACTIVE&quot;
-    }, {
-      &quot;is_removable&quot; : false,
-      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
-      &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;,
-      &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
       &quot;destination_url&quot; : &quot;destination_url&quot;,
+      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
+      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
+      &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
+      &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
+      &quot;is_carting&quot; : true,
+      &quot;is_pin_deleted&quot; : false,
+      &quot;is_removable&quot; : false,
+      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;pin_id&quot; : &quot;394205773611545468&quot;,
+      &quot;status&quot; : &quot;ACTIVE&quot;,
+      &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;
+    }, {
+      &quot;ad_group_id&quot; : &quot;ad_group_id&quot;,
+      &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
       &quot;carousel_android_deep_links&quot; : [ &quot;carousel_android_deep_links&quot;, &quot;carousel_android_deep_links&quot; ],
       &quot;carousel_destination_urls&quot; : [ &quot;carousel_destination_urls&quot;, &quot;carousel_destination_urls&quot; ],
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
-      &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
       &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
       &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
-      &quot;is_pin_deleted&quot; : false,
-      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
       &quot;creative_type&quot; : &quot;REGULAR&quot;,
-      &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
-      &quot;quiz_pin_data&quot; : &quot;{}&quot;,
-      &quot;name&quot; : &quot;name&quot;,
       &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,
+      &quot;destination_url&quot; : &quot;destination_url&quot;,
+      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
+      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
+      &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
+      &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
+      &quot;is_carting&quot; : true,
+      &quot;is_pin_deleted&quot; : false,
+      &quot;is_removable&quot; : false,
       &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
-      &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
+      &quot;name&quot; : &quot;name&quot;,
       &quot;pin_id&quot; : &quot;394205773611545468&quot;,
-      &quot;status&quot; : &quot;ACTIVE&quot;
-    } ],
-    &quot;catalog_product_groups&quot; : [ {
-      &quot;name&quot; : &quot;name&quot;,
-      &quot;description&quot; : &quot;description&quot;,
-      &quot;filters&quot; : {
-        &quot;any_of&quot; : [ {
-          &quot;MIN_PRICE&quot; : {
-            &quot;inclusion&quot; : true,
-            &quot;negated&quot; : false,
-            &quot;values&quot; : 0.08008281904610115
-          }
-        }, {
-          &quot;MIN_PRICE&quot; : {
-            &quot;inclusion&quot; : true,
-            &quot;negated&quot; : false,
-            &quot;values&quot; : 0.08008281904610115
-          }
-        } ]
-      },
-      &quot;is_featured&quot; : false,
-      &quot;feed_id&quot; : &quot;2680059592705&quot;
-    }, {
-      &quot;name&quot; : &quot;name&quot;,
-      &quot;description&quot; : &quot;description&quot;,
-      &quot;filters&quot; : {
-        &quot;any_of&quot; : [ {
-          &quot;MIN_PRICE&quot; : {
-            &quot;inclusion&quot; : true,
-            &quot;negated&quot; : false,
-            &quot;values&quot; : 0.08008281904610115
-          }
-        }, {
-          &quot;MIN_PRICE&quot; : {
-            &quot;inclusion&quot; : true,
-            &quot;negated&quot; : false,
-            &quot;values&quot; : 0.08008281904610115
-          }
-        } ]
-      },
-      &quot;is_featured&quot; : false,
-      &quot;feed_id&quot; : &quot;2680059592705&quot;
+      &quot;status&quot; : &quot;ACTIVE&quot;,
+      &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;
     } ],
     &quot;campaigns&quot; : [ {
       &quot;bid_options&quot; : {
-        &quot;placement_multipliers&quot; : {
-          &quot;browse&quot; : 0.9,
-          &quot;search&quot; : 1.2,
-          &quot;related_pins&quot; : 1.1
-        },
-        &quot;app_type_multipliers&quot; : {
-          &quot;android_mobile&quot; : 1.1,
-          &quot;android_tablet&quot; : 1.1,
-          &quot;ipad&quot; : 1.2,
-          &quot;iphone&quot; : 1.2,
-          &quot;web&quot; : 0.9,
-          &quot;web_mobile&quot; : 0.8
-        },
-        &quot;audience_multipliers&quot; : {
-          &quot;123&quot; : 1.1,
-          &quot;456&quot; : 1.2
-        }
+        &quot;age_bucket_multipliers&quot; : &quot;&quot;,
+        &quot;app_type_multipliers&quot; : &quot;&quot;,
+        &quot;audience_multipliers&quot; : &quot;&quot;,
+        &quot;freq_bid_multiplier_time_window&quot; : &quot;&quot;,
+        &quot;frequency_multipliers&quot; : &quot;{}&quot;,
+        &quot;gender_multipliers&quot; : &quot;&quot;,
+        &quot;placement_multipliers&quot; : &quot;&quot;
       },
-      &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
-      &quot;lifetime_spend_cap&quot; : 1432744744,
-      &quot;end_time&quot; : 1644023526,
-      &quot;is_flexible_daily_budgets&quot; : false,
-      &quot;daily_spend_cap&quot; : 1432744744,
+      &quot;intended_promotion_type&quot; : &quot;LEGACY&quot;,
+      &quot;is_ltv_optimized&quot; : true,
+      &quot;is_performance_plus&quot; : false,
+      &quot;is_top_of_search&quot; : false,
       &quot;objective_type&quot; : &quot;AWARENESS&quot;,
-      &quot;is_campaign_budget_optimization&quot; : true,
-      &quot;is_performance_plus&quot; : true,
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
+      &quot;status&quot; : &quot;ACTIVE&quot;,
       &quot;ad_account_id&quot; : &quot;549755885175&quot;,
-      &quot;is_automated_campaign&quot; : false,
-      &quot;start_time&quot; : 1580865126,
+      &quot;daily_spend_cap&quot; : 1432744744,
+      &quot;default_ad_group_budget_in_micro_currency&quot; : 6,
+      &quot;end_time&quot; : 1644023526,
+      &quot;lifetime_spend_cap&quot; : 1432744744,
       &quot;name&quot; : &quot;ACME Tools&quot;,
       &quot;order_line_id&quot; : &quot;549755885175&quot;,
-      &quot;status&quot; : &quot;ACTIVE&quot;
+      &quot;start_time&quot; : 1580865126
     }, {
       &quot;bid_options&quot; : {
-        &quot;placement_multipliers&quot; : {
-          &quot;browse&quot; : 0.9,
-          &quot;search&quot; : 1.2,
-          &quot;related_pins&quot; : 1.1
-        },
-        &quot;app_type_multipliers&quot; : {
-          &quot;android_mobile&quot; : 1.1,
-          &quot;android_tablet&quot; : 1.1,
-          &quot;ipad&quot; : 1.2,
-          &quot;iphone&quot; : 1.2,
-          &quot;web&quot; : 0.9,
-          &quot;web_mobile&quot; : 0.8
-        },
-        &quot;audience_multipliers&quot; : {
-          &quot;123&quot; : 1.1,
-          &quot;456&quot; : 1.2
-        }
+        &quot;age_bucket_multipliers&quot; : &quot;&quot;,
+        &quot;app_type_multipliers&quot; : &quot;&quot;,
+        &quot;audience_multipliers&quot; : &quot;&quot;,
+        &quot;freq_bid_multiplier_time_window&quot; : &quot;&quot;,
+        &quot;frequency_multipliers&quot; : &quot;{}&quot;,
+        &quot;gender_multipliers&quot; : &quot;&quot;,
+        &quot;placement_multipliers&quot; : &quot;&quot;
       },
-      &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
-      &quot;lifetime_spend_cap&quot; : 1432744744,
-      &quot;end_time&quot; : 1644023526,
-      &quot;is_flexible_daily_budgets&quot; : false,
-      &quot;daily_spend_cap&quot; : 1432744744,
+      &quot;intended_promotion_type&quot; : &quot;LEGACY&quot;,
+      &quot;is_ltv_optimized&quot; : true,
+      &quot;is_performance_plus&quot; : false,
+      &quot;is_top_of_search&quot; : false,
       &quot;objective_type&quot; : &quot;AWARENESS&quot;,
-      &quot;is_campaign_budget_optimization&quot; : true,
-      &quot;is_performance_plus&quot; : true,
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
+      &quot;status&quot; : &quot;ACTIVE&quot;,
       &quot;ad_account_id&quot; : &quot;549755885175&quot;,
-      &quot;is_automated_campaign&quot; : false,
-      &quot;start_time&quot; : 1580865126,
+      &quot;daily_spend_cap&quot; : 1432744744,
+      &quot;default_ad_group_budget_in_micro_currency&quot; : 6,
+      &quot;end_time&quot; : 1644023526,
+      &quot;lifetime_spend_cap&quot; : 1432744744,
       &quot;name&quot; : &quot;ACME Tools&quot;,
       &quot;order_line_id&quot; : &quot;549755885175&quot;,
-      &quot;status&quot; : &quot;ACTIVE&quot;
+      &quot;start_time&quot; : 1580865126
+    } ],
+    &quot;catalog_product_groups&quot; : [ {
+      &quot;description&quot; : &quot;description&quot;,
+      &quot;feed_id&quot; : &quot;2680059592705&quot;,
+      &quot;filters&quot; : {
+        &quot;any_of&quot; : [ {
+          &quot;MIN_PRICE&quot; : {
+            &quot;inclusion&quot; : true,
+            &quot;negated&quot; : true,
+            &quot;values&quot; : 0.14658129805029452
+          }
+        }, {
+          &quot;MIN_PRICE&quot; : {
+            &quot;inclusion&quot; : true,
+            &quot;negated&quot; : true,
+            &quot;values&quot; : 0.14658129805029452
+          }
+        } ]
+      },
+      &quot;is_featured&quot; : true,
+      &quot;name&quot; : &quot;name&quot;
+    }, {
+      &quot;description&quot; : &quot;description&quot;,
+      &quot;feed_id&quot; : &quot;2680059592705&quot;,
+      &quot;filters&quot; : {
+        &quot;any_of&quot; : [ {
+          &quot;MIN_PRICE&quot; : {
+            &quot;inclusion&quot; : true,
+            &quot;negated&quot; : true,
+            &quot;values&quot; : 0.14658129805029452
+          }
+        }, {
+          &quot;MIN_PRICE&quot; : {
+            &quot;inclusion&quot; : true,
+            &quot;negated&quot; : true,
+            &quot;values&quot; : 0.14658129805029452
+          }
+        } ]
+      },
+      &quot;is_featured&quot; : true,
+      &quot;name&quot; : &quot;name&quot;
     } ],
     &quot;keywords&quot; : [ {
       &quot;keywords&quot; : [ {
+        &quot;bid&quot; : 5,
         &quot;match_type&quot; : &quot;BROAD&quot;,
-        &quot;bid&quot; : 6,
         &quot;value&quot; : &quot;value&quot;
       }, {
+        &quot;bid&quot; : 5,
         &quot;match_type&quot; : &quot;BROAD&quot;,
-        &quot;bid&quot; : 6,
         &quot;value&quot; : &quot;value&quot;
       } ],
-      &quot;parent_id&quot; : &quot;383791336903426391&quot;
+      &quot;parent_id&quot; : &quot;parent_id&quot;
     }, {
       &quot;keywords&quot; : [ {
+        &quot;bid&quot; : 5,
         &quot;match_type&quot; : &quot;BROAD&quot;,
-        &quot;bid&quot; : 6,
         &quot;value&quot; : &quot;value&quot;
       }, {
+        &quot;bid&quot; : 5,
         &quot;match_type&quot; : &quot;BROAD&quot;,
-        &quot;bid&quot; : 6,
         &quot;value&quot; : &quot;value&quot;
       } ],
-      &quot;parent_id&quot; : &quot;383791336903426391&quot;
+      &quot;parent_id&quot; : &quot;parent_id&quot;
     } ],
     &quot;labels&quot; : [ {
-      &quot;parent_id&quot; : &quot;626753052072&quot;,
       &quot;labels&quot; : [ {
         &quot;label_type&quot; : &quot;BRAND&quot;,
         &quot;value&quot; : &quot;value&quot;
       }, {
         &quot;label_type&quot; : &quot;BRAND&quot;,
         &quot;value&quot; : &quot;value&quot;
-      } ]
+      } ],
+      &quot;parent_id&quot; : &quot;parent_id&quot;
     }, {
-      &quot;parent_id&quot; : &quot;626753052072&quot;,
       &quot;labels&quot; : [ {
         &quot;label_type&quot; : &quot;BRAND&quot;,
         &quot;value&quot; : &quot;value&quot;
       }, {
         &quot;label_type&quot; : &quot;BRAND&quot;,
         &quot;value&quot; : &quot;value&quot;
-      } ]
+      } ],
+      &quot;parent_id&quot; : &quot;parent_id&quot;
     } ],
     &quot;product_groups&quot; : [ {
       &quot;product_group_promotion&quot; : [ {
@@ -385,28 +361,73 @@ module BulkApiHandlerTestsHelper =
         &quot;status&quot; : &quot;ACTIVE&quot;
       } ],
       &quot;ad_group_id&quot; : &quot;2680059592705&quot;
+    } ],
+    &quot;schedules&quot; : [ {
+      &quot;entity_id&quot; : &quot;entity_id&quot;,
+      &quot;entity_type&quot; : &quot;entity_type&quot;,
+      &quot;delta_value&quot; : &quot;ScheduleCommonDeltaValue&quot;,
+      &quot;end_timestamp&quot; : 5,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;schedule_action&quot; : &quot;INCREASE_BY_VALUE&quot;,
+      &quot;schedule_status&quot; : &quot;ACTIVE&quot;,
+      &quot;schedule_type&quot; : &quot;CAMPAIGN_BUDGET_CHANGE&quot;,
+      &quot;start_timestamp&quot; : 2
+    }, {
+      &quot;entity_id&quot; : &quot;entity_id&quot;,
+      &quot;entity_type&quot; : &quot;entity_type&quot;,
+      &quot;delta_value&quot; : &quot;ScheduleCommonDeltaValue&quot;,
+      &quot;end_timestamp&quot; : 5,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;schedule_action&quot; : &quot;INCREASE_BY_VALUE&quot;,
+      &quot;schedule_status&quot; : &quot;ACTIVE&quot;,
+      &quot;schedule_type&quot; : &quot;CAMPAIGN_BUDGET_CHANGE&quot;,
+      &quot;start_timestamp&quot; : 2
     } ]
   },
   &quot;update&quot; : {
     &quot;ad_groups&quot; : [ {
+      &quot;bid_multiplier&quot; : 7.061401241503109,
+      &quot;id&quot; : &quot;id&quot;,
+      &quot;targeting_spec_operations&quot; : [ {
+        &quot;field&quot; : &quot;AUDIENCE_EXCLUDE&quot;,
+        &quot;operation&quot; : &quot;SET&quot;,
+        &quot;values&quot; : [ &quot;values&quot;, &quot;values&quot; ]
+      }, {
+        &quot;field&quot; : &quot;AUDIENCE_EXCLUDE&quot;,
+        &quot;operation&quot; : &quot;SET&quot;,
+        &quot;values&quot; : [ &quot;values&quot;, &quot;values&quot; ]
+      } ],
+      &quot;auto_targeting_enabled&quot; : true,
       &quot;bid_in_micro_currency&quot; : 5000000,
-      &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
-      &quot;is_creative_optimization&quot; : true,
+      &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+      &quot;budget_in_micro_currency&quot; : 5000000,
+      &quot;budget_type&quot; : &quot;DAILY&quot;,
+      &quot;campaign_id&quot; : &quot;626736533506&quot;,
       &quot;end_time&quot; : 5705424000,
+      &quot;is_creative_optimization&quot; : true,
+      &quot;lifetime_frequency_cap&quot; : 100,
+      &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
+      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
+      &quot;placement_group&quot; : &quot;&quot;,
       &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
       &quot;promotion_id&quot; : &quot;7834020347906&quot;,
-      &quot;auto_targeting_enabled&quot; : true,
-      &quot;bid_multiplier&quot; : 1,
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
-      &quot;budget_in_micro_currency&quot; : 5000000,
-      &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
+      &quot;promotion_ids&quot; : [ &quot;7834020347906&quot;, &quot;7834020347907&quot; ],
       &quot;start_time&quot; : 5686848000,
-      &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+      &quot;status&quot; : &quot;&quot;,
       &quot;targeting_spec&quot; : {
-        &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
         &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
+        &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
+        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
         &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
+        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
+        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+        &quot;GEO_EXCLUDE&quot; : [ &quot;GEO_EXCLUDE&quot;, &quot;GEO_EXCLUDE&quot; ],
+        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
+        &quot;LOCATION_EXCLUDE&quot; : [ &quot;LOCATION_EXCLUDE&quot;, &quot;LOCATION_EXCLUDE&quot; ],
+        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
+        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
         &quot;SHOPPING_RETARGETING&quot; : [ {
           &quot;lookback_window&quot; : 30,
           &quot;exclusion_window&quot; : 14,
@@ -416,43 +437,52 @@ module BulkApiHandlerTestsHelper =
           &quot;exclusion_window&quot; : 14,
           &quot;tag_types&quot; : [ 0, 6 ]
         } ],
-        &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
-        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
-        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
-        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
-        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
-        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
-        &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
+        &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ]
       },
-      &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
-      &quot;lifetime_frequency_cap&quot; : 100,
-      &quot;id&quot; : &quot;2680060704746&quot;,
-      &quot;optimization_goal_metadata&quot; : &quot;{}&quot;,
-      &quot;placement_group&quot; : &quot;placement_group&quot;,
-      &quot;budget_type&quot; : &quot;budget_type&quot;,
-      &quot;campaign_id&quot; : &quot;626736533506&quot;,
-      &quot;pacing_delivery_type&quot; : &quot;pacing_delivery_type&quot;,
-      &quot;status&quot; : &quot;status&quot;
+      &quot;targeting_template_ids&quot; : [ &quot;targeting_template_ids&quot; ]
     }, {
+      &quot;bid_multiplier&quot; : 7.061401241503109,
+      &quot;id&quot; : &quot;id&quot;,
+      &quot;targeting_spec_operations&quot; : [ {
+        &quot;field&quot; : &quot;AUDIENCE_EXCLUDE&quot;,
+        &quot;operation&quot; : &quot;SET&quot;,
+        &quot;values&quot; : [ &quot;values&quot;, &quot;values&quot; ]
+      }, {
+        &quot;field&quot; : &quot;AUDIENCE_EXCLUDE&quot;,
+        &quot;operation&quot; : &quot;SET&quot;,
+        &quot;values&quot; : [ &quot;values&quot;, &quot;values&quot; ]
+      } ],
+      &quot;auto_targeting_enabled&quot; : true,
       &quot;bid_in_micro_currency&quot; : 5000000,
-      &quot;targeting_template_ids&quot; : [ &quot;643&quot; ],
-      &quot;is_creative_optimization&quot; : true,
+      &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+      &quot;budget_in_micro_currency&quot; : 5000000,
+      &quot;budget_type&quot; : &quot;DAILY&quot;,
+      &quot;campaign_id&quot; : &quot;626736533506&quot;,
       &quot;end_time&quot; : 5705424000,
+      &quot;is_creative_optimization&quot; : true,
+      &quot;lifetime_frequency_cap&quot; : 100,
+      &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
+      &quot;pacing_delivery_type&quot; : &quot;STANDARD&quot;,
+      &quot;placement_group&quot; : &quot;&quot;,
       &quot;promotion_application_level&quot; : &quot;ITEM&quot;,
       &quot;promotion_id&quot; : &quot;7834020347906&quot;,
-      &quot;auto_targeting_enabled&quot; : true,
-      &quot;bid_multiplier&quot; : 1,
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
-      &quot;budget_in_micro_currency&quot; : 5000000,
-      &quot;bid_strategy_type&quot; : &quot;MAX_BID&quot;,
+      &quot;promotion_ids&quot; : [ &quot;7834020347906&quot;, &quot;7834020347907&quot; ],
       &quot;start_time&quot; : 5686848000,
-      &quot;billable_event&quot; : &quot;CLICKTHROUGH&quot;,
+      &quot;status&quot; : &quot;&quot;,
       &quot;targeting_spec&quot; : {
-        &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
-        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
         &quot;AGE_BUCKET&quot; : [ &quot;35-44&quot;, &quot;50-54&quot; ],
+        &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
+        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ],
         &quot;AUDIENCE_INCLUDE&quot; : [ &quot;AUDIENCE_INCLUDE&quot;, &quot;AUDIENCE_INCLUDE&quot; ],
+        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
+        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
+        &quot;GEO_EXCLUDE&quot; : [ &quot;GEO_EXCLUDE&quot;, &quot;GEO_EXCLUDE&quot; ],
+        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
+        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
+        &quot;LOCATION&quot; : [ &quot;LOCATION&quot;, &quot;LOCATION&quot; ],
+        &quot;LOCATION_EXCLUDE&quot; : [ &quot;LOCATION_EXCLUDE&quot;, &quot;LOCATION_EXCLUDE&quot; ],
+        &quot;MAXIMUM_AGE&quot; : &quot;65+&quot;,
+        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
         &quot;SHOPPING_RETARGETING&quot; : [ {
           &quot;lookback_window&quot; : 30,
           &quot;exclusion_window&quot; : 14,
@@ -462,174 +492,131 @@ module BulkApiHandlerTestsHelper =
           &quot;exclusion_window&quot; : 14,
           &quot;tag_types&quot; : [ 0, 6 ]
         } ],
-        &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ],
-        &quot;INTEREST&quot; : [ &quot;INTEREST&quot;, &quot;INTEREST&quot; ],
-        &quot;GEO&quot; : [ &quot;GEO&quot;, &quot;GEO&quot; ],
-        &quot;MINIMUM_AGE&quot; : &quot;18&quot;,
-        &quot;LOCALE&quot; : [ &quot;LOCALE&quot;, &quot;LOCALE&quot; ],
-        &quot;GENDER&quot; : [ &quot;unknown&quot;, &quot;unknown&quot; ],
-        &quot;APPTYPE&quot; : [ &quot;ipad&quot;, &quot;iphone&quot; ],
-        &quot;AUDIENCE_EXCLUDE&quot; : [ &quot;AUDIENCE_EXCLUDE&quot;, &quot;AUDIENCE_EXCLUDE&quot; ]
+        &quot;TARGETING_STRATEGY&quot; : [ &quot;CHOOSE_YOUR_OWN&quot;, &quot;CHOOSE_YOUR_OWN&quot; ]
       },
-      &quot;name&quot; : &quot;Ad Group For Pin: 687195905986&quot;,
-      &quot;lifetime_frequency_cap&quot; : 100,
-      &quot;id&quot; : &quot;2680060704746&quot;,
-      &quot;optimization_goal_metadata&quot; : &quot;{}&quot;,
-      &quot;placement_group&quot; : &quot;placement_group&quot;,
-      &quot;budget_type&quot; : &quot;budget_type&quot;,
-      &quot;campaign_id&quot; : &quot;626736533506&quot;,
-      &quot;pacing_delivery_type&quot; : &quot;pacing_delivery_type&quot;,
-      &quot;status&quot; : &quot;status&quot;
+      &quot;targeting_template_ids&quot; : [ &quot;targeting_template_ids&quot; ]
     } ],
     &quot;ads&quot; : [ {
-      &quot;is_removable&quot; : false,
-      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
-      &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;,
+      &quot;id&quot; : &quot;id&quot;,
+      &quot;pin_id&quot; : &quot;pin_id&quot;,
+      &quot;ad_group_id&quot; : &quot;ad_group_id&quot;,
       &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
-      &quot;destination_url&quot; : &quot;destination_url&quot;,
       &quot;carousel_android_deep_links&quot; : [ &quot;carousel_android_deep_links&quot;, &quot;carousel_android_deep_links&quot; ],
       &quot;carousel_destination_urls&quot; : [ &quot;carousel_destination_urls&quot;, &quot;carousel_destination_urls&quot; ],
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
-      &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
       &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
       &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
-      &quot;is_pin_deleted&quot; : false,
-      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
-      &quot;creative_type&quot; : &quot;REGULAR&quot;,
-      &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
-      &quot;quiz_pin_data&quot; : &quot;{}&quot;,
-      &quot;name&quot; : &quot;name&quot;,
       &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,
-      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
-      &quot;id&quot; : &quot;687195134316&quot;,
-      &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
-      &quot;pin_id&quot; : &quot;394205773611545468&quot;,
-      &quot;status&quot; : &quot;ACTIVE&quot;
-    }, {
-      &quot;is_removable&quot; : false,
-      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
-      &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;,
-      &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
       &quot;destination_url&quot; : &quot;destination_url&quot;,
+      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
+      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
+      &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
+      &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
+      &quot;is_carting&quot; : true,
+      &quot;is_pin_deleted&quot; : false,
+      &quot;is_removable&quot; : false,
+      &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;status&quot; : &quot;ACTIVE&quot;,
+      &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;
+    }, {
+      &quot;id&quot; : &quot;id&quot;,
+      &quot;pin_id&quot; : &quot;pin_id&quot;,
+      &quot;ad_group_id&quot; : &quot;ad_group_id&quot;,
+      &quot;android_deep_link&quot; : &quot;android_deep_link&quot;,
       &quot;carousel_android_deep_links&quot; : [ &quot;carousel_android_deep_links&quot;, &quot;carousel_android_deep_links&quot; ],
       &quot;carousel_destination_urls&quot; : [ &quot;carousel_destination_urls&quot;, &quot;carousel_destination_urls&quot; ],
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
-      &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
       &quot;carousel_ios_deep_links&quot; : [ &quot;carousel_ios_deep_links&quot;, &quot;carousel_ios_deep_links&quot; ],
       &quot;click_tracking_url&quot; : &quot;click_tracking_url&quot;,
-      &quot;is_pin_deleted&quot; : false,
-      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
-      &quot;creative_type&quot; : &quot;REGULAR&quot;,
-      &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
-      &quot;quiz_pin_data&quot; : &quot;{}&quot;,
-      &quot;name&quot; : &quot;name&quot;,
       &quot;customizable_cta_type&quot; : &quot;LEARN_MORE&quot;,
+      &quot;destination_url&quot; : &quot;destination_url&quot;,
+      &quot;disclosure_type&quot; : &quot;MED_GUIDE&quot;,
+      &quot;disclosure_url&quot; : &quot;disclosure_url&quot;,
+      &quot;grid_click_type&quot; : &quot;CLOSEUP&quot;,
+      &quot;ios_deep_link&quot; : &quot;ios_deep_link&quot;,
+      &quot;is_carting&quot; : true,
+      &quot;is_pin_deleted&quot; : false,
+      &quot;is_removable&quot; : false,
       &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
-      &quot;id&quot; : &quot;687195134316&quot;,
-      &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
-      &quot;pin_id&quot; : &quot;394205773611545468&quot;,
-      &quot;status&quot; : &quot;ACTIVE&quot;
-    } ],
-    &quot;catalog_product_groups&quot; : [ {
       &quot;name&quot; : &quot;name&quot;,
-      &quot;description&quot; : &quot;description&quot;,
-      &quot;is_featured&quot; : true
-    }, {
-      &quot;name&quot; : &quot;name&quot;,
-      &quot;description&quot; : &quot;description&quot;,
-      &quot;is_featured&quot; : true
+      &quot;status&quot; : &quot;ACTIVE&quot;,
+      &quot;view_tracking_url&quot; : &quot;view_tracking_url&quot;
     } ],
     &quot;campaigns&quot; : [ {
       &quot;bid_options&quot; : {
-        &quot;placement_multipliers&quot; : {
-          &quot;browse&quot; : 0.9,
-          &quot;search&quot; : 1.2,
-          &quot;related_pins&quot; : 1.1
-        },
-        &quot;update_mask&quot; : [ &quot;AUDIENCE&quot;, &quot;AUDIENCE&quot; ],
-        &quot;app_type_multipliers&quot; : {
-          &quot;android_mobile&quot; : 1.1,
-          &quot;android_tablet&quot; : 1.1,
-          &quot;ipad&quot; : 1.2,
-          &quot;iphone&quot; : 1.2,
-          &quot;web&quot; : 0.9,
-          &quot;web_mobile&quot; : 0.8
-        },
-        &quot;audience_multipliers&quot; : {
-          &quot;123&quot; : 1.1,
-          &quot;456&quot; : 1.2
-        }
+        &quot;age_bucket_multipliers&quot; : &quot;&quot;,
+        &quot;app_type_multipliers&quot; : &quot;&quot;,
+        &quot;audience_multipliers&quot; : &quot;&quot;,
+        &quot;freq_bid_multiplier_time_window&quot; : &quot;&quot;,
+        &quot;frequency_multipliers&quot; : &quot;{}&quot;,
+        &quot;gender_multipliers&quot; : &quot;&quot;,
+        &quot;placement_multipliers&quot; : &quot;&quot;,
+        &quot;update_mask&quot; : [ &quot;AUDIENCE&quot;, &quot;AUDIENCE&quot; ]
       },
-      &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
-      &quot;lifetime_spend_cap&quot; : 1432744744,
-      &quot;end_time&quot; : 1644023526,
-      &quot;is_flexible_daily_budgets&quot; : true,
-      &quot;daily_spend_cap&quot; : 1432744744,
-      &quot;objective_type&quot; : &quot;objective_type&quot;,
-      &quot;is_campaign_budget_optimization&quot; : true,
+      &quot;is_ltv_optimized&quot; : true,
       &quot;is_performance_plus&quot; : true,
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
+      &quot;is_top_of_search&quot; : true,
+      &quot;objective_type&quot; : &quot;&quot;,
       &quot;ad_account_id&quot; : &quot;549755885175&quot;,
-      &quot;is_automated_campaign&quot; : true,
-      &quot;start_time&quot; : 1580865126,
+      &quot;daily_spend_cap&quot; : 1432744744,
+      &quot;default_ad_group_budget_in_micro_currency&quot; : 9,
+      &quot;end_time&quot; : 1644023526,
+      &quot;id&quot; : &quot;549755885175&quot;,
+      &quot;lifetime_spend_cap&quot; : 1432744744,
       &quot;name&quot; : &quot;ACME Tools&quot;,
       &quot;order_line_id&quot; : &quot;549755885175&quot;,
-      &quot;id&quot; : &quot;549755885175&quot;,
-      &quot;status&quot; : &quot;status&quot;
+      &quot;start_time&quot; : 1580865126,
+      &quot;status&quot; : &quot;ACTIVE&quot;
     }, {
       &quot;bid_options&quot; : {
-        &quot;placement_multipliers&quot; : {
-          &quot;browse&quot; : 0.9,
-          &quot;search&quot; : 1.2,
-          &quot;related_pins&quot; : 1.1
-        },
-        &quot;update_mask&quot; : [ &quot;AUDIENCE&quot;, &quot;AUDIENCE&quot; ],
-        &quot;app_type_multipliers&quot; : {
-          &quot;android_mobile&quot; : 1.1,
-          &quot;android_tablet&quot; : 1.1,
-          &quot;ipad&quot; : 1.2,
-          &quot;iphone&quot; : 1.2,
-          &quot;web&quot; : 0.9,
-          &quot;web_mobile&quot; : 0.8
-        },
-        &quot;audience_multipliers&quot; : {
-          &quot;123&quot; : 1.1,
-          &quot;456&quot; : 1.2
-        }
+        &quot;age_bucket_multipliers&quot; : &quot;&quot;,
+        &quot;app_type_multipliers&quot; : &quot;&quot;,
+        &quot;audience_multipliers&quot; : &quot;&quot;,
+        &quot;freq_bid_multiplier_time_window&quot; : &quot;&quot;,
+        &quot;frequency_multipliers&quot; : &quot;{}&quot;,
+        &quot;gender_multipliers&quot; : &quot;&quot;,
+        &quot;placement_multipliers&quot; : &quot;&quot;,
+        &quot;update_mask&quot; : [ &quot;AUDIENCE&quot;, &quot;AUDIENCE&quot; ]
       },
-      &quot;default_ad_group_budget_in_micro_currency&quot; : 0,
-      &quot;lifetime_spend_cap&quot; : 1432744744,
-      &quot;end_time&quot; : 1644023526,
-      &quot;is_flexible_daily_budgets&quot; : true,
-      &quot;daily_spend_cap&quot; : 1432744744,
-      &quot;objective_type&quot; : &quot;objective_type&quot;,
-      &quot;is_campaign_budget_optimization&quot; : true,
+      &quot;is_ltv_optimized&quot; : true,
       &quot;is_performance_plus&quot; : true,
-      &quot;tracking_urls&quot; : &quot;{}&quot;,
+      &quot;is_top_of_search&quot; : true,
+      &quot;objective_type&quot; : &quot;&quot;,
       &quot;ad_account_id&quot; : &quot;549755885175&quot;,
-      &quot;is_automated_campaign&quot; : true,
-      &quot;start_time&quot; : 1580865126,
+      &quot;daily_spend_cap&quot; : 1432744744,
+      &quot;default_ad_group_budget_in_micro_currency&quot; : 9,
+      &quot;end_time&quot; : 1644023526,
+      &quot;id&quot; : &quot;549755885175&quot;,
+      &quot;lifetime_spend_cap&quot; : 1432744744,
       &quot;name&quot; : &quot;ACME Tools&quot;,
       &quot;order_line_id&quot; : &quot;549755885175&quot;,
-      &quot;id&quot; : &quot;549755885175&quot;,
-      &quot;status&quot; : &quot;status&quot;
+      &quot;start_time&quot; : 1580865126,
+      &quot;status&quot; : &quot;ACTIVE&quot;
+    } ],
+    &quot;catalog_product_groups&quot; : [ {
+      &quot;description&quot; : &quot;description&quot;,
+      &quot;is_featured&quot; : true,
+      &quot;name&quot; : &quot;name&quot;
+    }, {
+      &quot;description&quot; : &quot;description&quot;,
+      &quot;is_featured&quot; : true,
+      &quot;name&quot; : &quot;name&quot;
     } ],
     &quot;keywords&quot; : [ {
-      &quot;archived&quot; : false,
-      &quot;id&quot; : &quot;2886364308355&quot;,
-      &quot;bid&quot; : 1
+      &quot;archived&quot; : true,
+      &quot;bid&quot; : 3,
+      &quot;id&quot; : &quot;id&quot;
     }, {
-      &quot;archived&quot; : false,
-      &quot;id&quot; : &quot;2886364308355&quot;,
-      &quot;bid&quot; : 1
+      &quot;archived&quot; : true,
+      &quot;bid&quot; : 3,
+      &quot;id&quot; : &quot;id&quot;
     } ],
     &quot;labels&quot; : [ {
-      &quot;id&quot; : &quot;1106385754497&quot;,
-      &quot;value&quot; : &quot;value&quot;,
+      &quot;id&quot; : &quot;id&quot;,
+      &quot;parent_id&quot; : &quot;parent_id&quot;,
       &quot;status&quot; : &quot;ARCHIVED&quot;
     }, {
-      &quot;id&quot; : &quot;1106385754497&quot;,
-      &quot;value&quot; : &quot;value&quot;,
+      &quot;id&quot; : &quot;id&quot;,
+      &quot;parent_id&quot; : &quot;parent_id&quot;,
       &quot;status&quot; : &quot;ARCHIVED&quot;
     } ],
     &quot;product_groups&quot; : [ {
@@ -682,6 +669,27 @@ module BulkApiHandlerTestsHelper =
         &quot;id&quot; : &quot;2680059592706&quot;
       } ],
       &quot;ad_group_id&quot; : &quot;26823439592705&quot;
+    } ],
+    &quot;schedules&quot; : [ {
+      &quot;entity_id&quot; : &quot;entity_id&quot;,
+      &quot;entity_type&quot; : &quot;entity_type&quot;,
+      &quot;id&quot; : &quot;id&quot;,
+      &quot;end_timestamp&quot; : 2,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;schedule_action&quot; : &quot;INCREASE_BY_VALUE&quot;,
+      &quot;schedule_status&quot; : &quot;ACTIVE&quot;,
+      &quot;schedule_type&quot; : &quot;CAMPAIGN_BUDGET_CHANGE&quot;,
+      &quot;start_timestamp&quot; : 4
+    }, {
+      &quot;entity_id&quot; : &quot;entity_id&quot;,
+      &quot;entity_type&quot; : &quot;entity_type&quot;,
+      &quot;id&quot; : &quot;id&quot;,
+      &quot;end_timestamp&quot; : 2,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;schedule_action&quot; : &quot;INCREASE_BY_VALUE&quot;,
+      &quot;schedule_status&quot; : &quot;ACTIVE&quot;,
+      &quot;schedule_type&quot; : &quot;CAMPAIGN_BUDGET_CHANGE&quot;,
+      &quot;start_timestamp&quot; : 4
     } ]
   }
 }"

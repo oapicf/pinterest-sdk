@@ -41,5 +41,45 @@ private class OASTermsOfServiceApiTest {
         expectedResponse = OASTermsOfService.getExample();
         response = (OASTermsOfService) api.termsOfServiceGet(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTermsOfService.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTermsOfService.getExample();
+        response = (OASTermsOfService) api.termsOfServiceGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTermsOfService.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTermsOfService.getExample();
+        response = (OASTermsOfService) api.termsOfServiceGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTermsOfService.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTermsOfService.getExample();
+        response = (OASTermsOfService) api.termsOfServiceGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTermsOfService.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTermsOfService.getExample();
+        response = (OASTermsOfService) api.termsOfServiceGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASTermsOfService.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASTermsOfService.getExample();
+        response = (OASTermsOfService) api.termsOfServiceGet(params);
+        System.assertEquals(expectedResponse, response);
     }
 }

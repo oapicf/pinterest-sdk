@@ -1,9 +1,0 @@
-
-
-# BatchOperation
-
-## Enum
-
-
-
-

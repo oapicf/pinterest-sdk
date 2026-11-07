@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,21 +27,29 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.AdGroupsApi
-import org.openapitools.client.models.AdGroupArrayResponse
-import org.openapitools.client.models.AdGroupAudienceSizingRequest
-import org.openapitools.client.models.AdGroupAudienceSizingResponse
-import org.openapitools.client.models.AdGroupCreateRequest
-import org.openapitools.client.models.AdGroupResponse
-import org.openapitools.client.models.AdGroupUpdateRequest
-import org.openapitools.client.models.AdGroupsAnalyticsResponseInner
+import org.openapitools.client.models.AdGroup
+import org.openapitools.client.models.AdGroupAudienceSizing
+import org.openapitools.client.models.AdGroupAudienceSizingCreate
+import org.openapitools.client.models.AdGroupCreateCreate
+import org.openapitools.client.models.AdGroupUpdateBatchUpdate
+import org.openapitools.client.models.AdGroupsAnalyticsMetrics
+import org.openapitools.client.models.AdGroupsCreate200Response
 import org.openapitools.client.models.AdGroupsList200Response
 import org.openapitools.client.models.AdsAnalyticsAdGroupTargetingType
 import org.openapitools.client.models.BidFloor
-import org.openapitools.client.models.BidFloorRequest
+import org.openapitools.client.models.BidFloorCreate
 import org.openapitools.client.models.ConversionReportAttributionType
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.DynamicTitlesDownloadCSV
+import org.openapitools.client.models.DynamicTitlesGetStatus
+import org.openapitools.client.models.DynamicTitlesProcessCSV
+import org.openapitools.client.models.DynamicTitlesProcessCSVCreate
+import org.openapitools.client.models.DynamicTitlesUploadURL
+import org.openapitools.client.models.EntityStatus
 import org.openapitools.client.models.Granularity
 import org.openapitools.client.models.MetricsResponse
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
+import org.openapitools.client.models.ReportingColumnSync
 import org.openapitools.client.models.ReportingTimeZone
 
 class AdGroupsApiTest : ShouldSpec() {
@@ -48,15 +64,15 @@ class AdGroupsApiTest : ShouldSpec() {
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
             //val adGroupIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad group Ids to use to filter the results.
-            //val columns : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-            //val granularity : Granularity = DAY // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-            //val clickWindowDays : kotlin.Int = 1 // kotlin.Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-            //val engagementWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
-            //val viewWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-            //val conversionReportTime : kotlin.String = TIME_OF_AD_ACTION // kotlin.String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+            //val columns : kotlin.collections.List<ReportingColumnSync> =  // kotlin.collections.List<ReportingColumnSync> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+            //val granularity : Granularity =  // Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+            //val clickWindowDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+            //val engagementWindowDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+            //val viewWindowDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+            //val conversionReportTime : kotlin.String = conversionReportTime_example // kotlin.String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
             //val aggregateReportRows : kotlin.Boolean = true // kotlin.Boolean | Determines if report rows should be aggregated across all requested entities. This feature is currently in BETA and is not available to all users.
             //val reportingTimezone : ReportingTimeZone =  // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
-            //val result : kotlin.collections.List<AdGroupsAnalyticsResponseInner> = apiInstance.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
+            //val result : kotlin.collections.List<AdGroupsAnalyticsMetrics> = apiInstance.adGroupsAnalytics(adAccountId, startDate, endDate, adGroupIds, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, aggregateReportRows, reportingTimezone)
             //result shouldBe ("TODO")
         }
 
@@ -64,8 +80,8 @@ class AdGroupsApiTest : ShouldSpec() {
         should("test adGroupsAudienceSizing") {
             // uncomment below to test adGroupsAudienceSizing
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val adGroupAudienceSizingRequest : AdGroupAudienceSizingRequest =  // AdGroupAudienceSizingRequest | 
-            //val result : AdGroupAudienceSizingResponse = apiInstance.adGroupsAudienceSizing(adAccountId, adGroupAudienceSizingRequest)
+            //val adGroupAudienceSizingCreate : AdGroupAudienceSizingCreate =  // AdGroupAudienceSizingCreate | 
+            //val result : AdGroupAudienceSizing = apiInstance.adGroupsAudienceSizing(adAccountId, adGroupAudienceSizingCreate)
             //result shouldBe ("TODO")
         }
 
@@ -73,8 +89,8 @@ class AdGroupsApiTest : ShouldSpec() {
         should("test adGroupsBidFloorGet") {
             // uncomment below to test adGroupsBidFloorGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val bidFloorRequest : BidFloorRequest =  // BidFloorRequest | Parameters to get bid_floor info
-            //val result : BidFloor = apiInstance.adGroupsBidFloorGet(adAccountId, bidFloorRequest)
+            //val bidFloorCreate : BidFloorCreate =  // BidFloorCreate | 
+            //val result : BidFloor = apiInstance.adGroupsBidFloorGet(adAccountId, bidFloorCreate)
             //result shouldBe ("TODO")
         }
 
@@ -82,17 +98,54 @@ class AdGroupsApiTest : ShouldSpec() {
         should("test adGroupsCreate") {
             // uncomment below to test adGroupsCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val adGroupCreateRequest : kotlin.collections.List<AdGroupCreateRequest> =  // kotlin.collections.List<AdGroupCreateRequest> | List of ad groups to create, size limit [1, 30].
-            //val result : AdGroupArrayResponse = apiInstance.adGroupsCreate(adAccountId, adGroupCreateRequest)
+            //val adGroupCreateCreate : kotlin.collections.List<AdGroupCreateCreate> =  // kotlin.collections.List<AdGroupCreateCreate> | 
+            //val result : AdGroupsCreate200Response = apiInstance.adGroupsCreate(adAccountId, adGroupCreateCreate)
+            //result shouldBe ("TODO")
+        }
+
+        // to test adGroupsDynamicTitlesDownloadCsv
+        should("test adGroupsDynamicTitlesDownloadCsv") {
+            // uncomment below to test adGroupsDynamicTitlesDownloadCsv
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val adGroupId : kotlin.String = adGroupId_example // kotlin.String | Ad group ID.
+            //val result : DynamicTitlesDownloadCSV = apiInstance.adGroupsDynamicTitlesDownloadCsv(adAccountId, adGroupId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test adGroupsDynamicTitlesGetStatus
+        should("test adGroupsDynamicTitlesGetStatus") {
+            // uncomment below to test adGroupsDynamicTitlesGetStatus
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val adGroupId : kotlin.String = adGroupId_example // kotlin.String | Ad group ID.
+            //val result : DynamicTitlesGetStatus = apiInstance.adGroupsDynamicTitlesGetStatus(adAccountId, adGroupId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test adGroupsDynamicTitlesGetUploadUrl
+        should("test adGroupsDynamicTitlesGetUploadUrl") {
+            // uncomment below to test adGroupsDynamicTitlesGetUploadUrl
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val adGroupId : kotlin.String = adGroupId_example // kotlin.String | Ad group ID.
+            //val result : DynamicTitlesUploadURL = apiInstance.adGroupsDynamicTitlesGetUploadUrl(adAccountId, adGroupId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test adGroupsDynamicTitlesProcessCsv
+        should("test adGroupsDynamicTitlesProcessCsv") {
+            // uncomment below to test adGroupsDynamicTitlesProcessCsv
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val adGroupId : kotlin.String = adGroupId_example // kotlin.String | Ad group ID.
+            //val dynamicTitlesProcessCSVCreate : DynamicTitlesProcessCSVCreate =  // DynamicTitlesProcessCSVCreate | 
+            //val result : DynamicTitlesProcessCSV = apiInstance.adGroupsDynamicTitlesProcessCsv(adAccountId, adGroupId, dynamicTitlesProcessCSVCreate)
             //result shouldBe ("TODO")
         }
 
         // to test adGroupsGet
         should("test adGroupsGet") {
             // uncomment below to test adGroupsGet
+            //val adGroupId : kotlin.String = adGroupId_example // kotlin.String | Ad group ID.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val adGroupId : kotlin.String = adGroupId_example // kotlin.String | Unique identifier of an ad group.
-            //val result : AdGroupResponse = apiInstance.adGroupsGet(adAccountId, adGroupId)
+            //val result : AdGroup = apiInstance.adGroupsGet(adGroupId, adAccountId)
             //result shouldBe ("TODO")
         }
 
@@ -100,14 +153,14 @@ class AdGroupsApiTest : ShouldSpec() {
         should("test adGroupsList") {
             // uncomment below to test adGroupsList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val campaignIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Campaign Ids to use to filter the results.
-            //val adGroupIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad group Ids to use to filter the results.
-            //val entityStatuses : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Entity status
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val campaignIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Campaign Ids to use to filter the results.
+            //val adGroupIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad group Ids to retrieve keywords from. This feature is currently in BETA and is not available to all users.
+            //val entityStatuses : kotlin.collections.List<EntityStatus> =  // kotlin.collections.List<EntityStatus> | Entity status
             //val translateInterestsToNames : kotlin.Boolean = true // kotlin.Boolean | Return interests as text names (if value is true) rather than topic IDs.
-            //val result : AdGroupsList200Response = apiInstance.adGroupsList(adAccountId, campaignIds, adGroupIds, entityStatuses, pageSize, order, bookmark, translateInterestsToNames)
+            //val result : AdGroupsList200Response = apiInstance.adGroupsList(adAccountId, bookmark, pageSize, order, campaignIds, adGroupIds, entityStatuses, translateInterestsToNames)
             //result shouldBe ("TODO")
         }
 
@@ -118,16 +171,18 @@ class AdGroupsApiTest : ShouldSpec() {
             //val adGroupIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Ad group Ids to use to filter the results.
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-            //val targetingTypes : kotlin.collections.List<AdsAnalyticsAdGroupTargetingType> =  // kotlin.collections.List<AdsAnalyticsAdGroupTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type <br> is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.
-            //val columns : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD,($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.<br/>For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).<br/>If a column has no value, it may not be returned
-            //val granularity : Granularity = DAY // Granularity | TOTAL - metrics are aggregated over the specified date range.<br> DAY - metrics are broken down daily.<br> HOUR - metrics are broken down hourly.<br>WEEKLY - metrics are broken down weekly.<br>MONTHLY - metrics are broken down monthly
-            //val clickWindowDays : kotlin.Int = 1 // kotlin.Int | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
-            //val engagementWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.<br> <strong>Note:</strong> This parameter no longer returns new data. However, you can still access historic data through <strong>Sept 30, 2027</strong>.
-            //val viewWindowDays : kotlin.Int = 56 // kotlin.Int | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
-            //val conversionReportTime : kotlin.String = TIME_OF_AD_ACTION // kotlin.String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
+            //val targetingTypes : kotlin.collections.List<AdsAnalyticsAdGroupTargetingType> =  // kotlin.collections.List<AdsAnalyticsAdGroupTargetingType> | Targeting type breakdowns for the report. The reporting per targeting type is independent from each other. [\"AGE_BUCKET_AND_GENDER\", \"CREATIVE_ENHANCEMENTS\"] are in BETA and not yet available to all users.
+            //val columns : kotlin.collections.List<ReportingColumnSync> =  // kotlin.collections.List<ReportingColumnSync> | Columns to retrieve, encoded as a comma-separated string. **NOTE**: Any metrics defined as MICRO_DOLLARS returns a value based on the advertiser profile's currency field. For USD, ($1/1,000,000, or $0.000001 - one one-ten-thousandth of a cent). it's microdollars. Otherwise, it's in microunits of the advertiser's currency.  For example, if the advertiser's currency is GBP (British pound sterling), all MICRO_DOLLARS fields will be in GBP microunits (1/1,000,000 British pound).  If a column has no value, it may not be returned.
+            //val granularity : Granularity =  // Granularity |   TOTAL - metrics are aggregated over the specified date range.    DAY - metrics are broken down daily.    HOUR - metrics are broken down hourly.    WEEK - metrics are broken down weekly.    MONTH - metrics are broken down monthly
+            //val clickWindowDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of days to use as the conversion attribution window for a pin click action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days.
+            //val engagementWindowDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `30` days. **Note:** This parameter no longer returns new data. However, you can still access historic data through **Sept 30, 2027**.
+            //val viewWindowDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Number of days to use as the conversion attribution window for a view action. Applies to Pinterest Tag conversion metrics. Prior conversion tags use their defined attribution windows. If not specified, defaults to `1` day.
+            //val conversionReportTime : kotlin.String = conversionReportTime_example // kotlin.String | The date by which the conversion metrics returned from this endpoint will be reported. There are two dates associated with a conversion event: the date that the user interacted with the ad, and the date that the user completed a conversion event.
             //val attributionTypes : kotlin.collections.List<ConversionReportAttributionType> =  // kotlin.collections.List<ConversionReportAttributionType> | List of types of attribution for the conversion report
             //val reportingTimezone : ReportingTimeZone =  // ReportingTimeZone | Specify the timezone to be applied for the reporting. This feature is currently in BETA and is not available to all users.
-            //val result : MetricsResponse = apiInstance.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone)
+            //val sortColumns : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Sort Columns.
+            //val sortAscending : kotlin.Boolean = true // kotlin.Boolean | Sort ascending.
+            //val result : MetricsResponse = apiInstance.adGroupsTargetingAnalyticsGet(adAccountId, adGroupIds, startDate, endDate, targetingTypes, columns, granularity, clickWindowDays, engagementWindowDays, viewWindowDays, conversionReportTime, attributionTypes, reportingTimezone, sortColumns, sortAscending)
             //result shouldBe ("TODO")
         }
 
@@ -135,8 +190,20 @@ class AdGroupsApiTest : ShouldSpec() {
         should("test adGroupsUpdate") {
             // uncomment below to test adGroupsUpdate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val adGroupUpdateRequest : kotlin.collections.List<AdGroupUpdateRequest> =  // kotlin.collections.List<AdGroupUpdateRequest> | List of ad groups to update, size limit [1, 30].
-            //val result : AdGroupArrayResponse = apiInstance.adGroupsUpdate(adAccountId, adGroupUpdateRequest)
+            //val adGroupUpdateBatchUpdate : kotlin.collections.List<AdGroupUpdateBatchUpdate> =  // kotlin.collections.List<AdGroupUpdateBatchUpdate> | 
+            //val result : AdGroupsCreate200Response = apiInstance.adGroupsUpdate(adAccountId, adGroupUpdateBatchUpdate)
+            //result shouldBe ("TODO")
+        }
+
+        // to test getAdGroupsByPromotionIdsList
+        should("test getAdGroupsByPromotionIdsList") {
+            // uncomment below to test getAdGroupsByPromotionIdsList
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val promotionIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Promotion IDs to use to filter the results.
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val result : AdGroupsList200Response = apiInstance.getAdGroupsByPromotionIdsList(adAccountId, promotionIds, bookmark, pageSize, order)
             //result shouldBe ("TODO")
         }
 

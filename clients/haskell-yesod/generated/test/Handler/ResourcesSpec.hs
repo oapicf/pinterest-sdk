@@ -33,7 +33,7 @@ spec = withApp $ do
             get ResourcesMetricsReadyStateR
             statusIs 501
 
-    describe "getResourcesTargetingByTextR" $
+    describe "getResourcesTargetingByPublicTargetingTypeR" $
         it "returns 501 Not Implemented" $ do
-            get $ ResourcesTargetingByTextR "APPTYPE"
+            get $ ResourcesTargetingByPublicTargetingTypeR unknown
             statusIs 501

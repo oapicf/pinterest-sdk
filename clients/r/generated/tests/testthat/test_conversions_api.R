@@ -5,13 +5,52 @@ context("Test ConversionsApi")
 
 api_instance <- ConversionsApi$new()
 
+test_that("AdvertiserDefinedEventsCreate", {
+  # tests for AdvertiserDefinedEventsCreate
+  # base path: https://api.pinterest.com/v5
+  # Create advertiser defined events
+  # Map advertiser defined events to standard events for the given ad account.
+  # @param ad_account_id character Unique identifier of an ad account.
+  # @param advertiser_defined_events_create_request AdvertiserDefinedEventsCreateRequest 
+  # @return [AdvertiserDefinedEventsCreate200Response]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("AdvertiserDefinedEventsDelete", {
+  # tests for AdvertiserDefinedEventsDelete
+  # base path: https://api.pinterest.com/v5
+  # Delete advertiser defined events
+  # Untrack advertiser defined events for the given ad account.
+  # @param ad_account_id character Unique identifier of an ad account.
+  # @param event_names array[character] List of event names to delete
+  # @return [AdvertiserDefinedEventsCreate200Response]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("AdvertiserDefinedEventsGet", {
   # tests for AdvertiserDefinedEventsGet
   # base path: https://api.pinterest.com/v5
   # Get advertiser defined events
-  # &lt;p&gt;Get advertiser defined events for the given ad account.&lt;/p&gt;
+  # Get advertiser defined events for the given ad account.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @return [AdvertiserDefinedEventsResponse]
+  # @return [AdvertiserDefinedEventsGet200Response]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("AdvertiserDefinedEventsUpdate", {
+  # tests for AdvertiserDefinedEventsUpdate
+  # base path: https://api.pinterest.com/v5
+  # Update advertiser defined events
+  # Update advertiser defined event names or mappings for the given ad account.
+  # @param ad_account_id character Unique identifier of an ad account.
+  # @param advertiser_defined_events_create_request AdvertiserDefinedEventsCreateRequest 
+  # @return [AdvertiserDefinedEventsCreate200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

@@ -3,7 +3,7 @@ private class OASBusinessAccessAssetsApiTest {
     /**
      * Create a new asset group.
      *
-     * Create a new asset group with the specified parameters.\n- An &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/asset-groups&quot;&gt;asset group&lt;/a&gt; is a custom group of assets based on how you’d like to manage your accounts.
+     * Create a new asset group with the specified parameters.\n- An [asset group](https://help.pinterest.com/en/business/article/asset-groups) is a custom group of assets based on how you would like to manage your accounts.
      */
     @isTest
     private static void assetGroupCreateTest() {
@@ -13,40 +13,80 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'oaSCreateAssetGroupBody' => ''
+            'businessId' => 'null',
+            'oaSAssetGroupInputCreate' => ''
         };
 
         OASClient client;
         OASBusinessAccessAssetsApi api;
-        OASCreateAssetGroupResponse response;
-        OASCreateAssetGroupResponse expectedResponse;
+        OASAssetGroupInput response;
+        OASAssetGroupInput expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
 
-        js = JSON.serialize(OASCreateAssetGroupResponse.getExample());
+        js = JSON.serialize(OASAssetGroupInput.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCreateAssetGroupResponse.getExample();
-        response = (OASCreateAssetGroupResponse) api.assetGroupCreate(params);
+        expectedResponse = OASAssetGroupInput.getExample();
+        response = (OASAssetGroupInput) api.assetGroupCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASCreateAssetGroupResponse.getExample());
+        js = JSON.serialize(OASAssetGroupInput.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCreateAssetGroupResponse.getExample();
-        response = (OASCreateAssetGroupResponse) api.assetGroupCreate(params);
+        expectedResponse = OASAssetGroupInput.getExample();
+        response = (OASAssetGroupInput) api.assetGroupCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASCreateAssetGroupResponse.getExample());
+        js = JSON.serialize(OASAssetGroupInput.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASCreateAssetGroupResponse.getExample();
-        response = (OASCreateAssetGroupResponse) api.assetGroupCreate(params);
+        expectedResponse = OASAssetGroupInput.getExample();
+        response = (OASAssetGroupInput) api.assetGroupCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAssetGroupInput.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAssetGroupInput.getExample();
+        response = (OASAssetGroupInput) api.assetGroupCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAssetGroupInput.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAssetGroupInput.getExample();
+        response = (OASAssetGroupInput) api.assetGroupCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAssetGroupInput.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAssetGroupInput.getExample();
+        response = (OASAssetGroupInput) api.assetGroupCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAssetGroupInput.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAssetGroupInput.getExample();
+        response = (OASAssetGroupInput) api.assetGroupCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAssetGroupInput.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAssetGroupInput.getExample();
+        response = (OASAssetGroupInput) api.assetGroupCreate(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -63,40 +103,32 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'oaSDeleteAssetGroupBody' => ''
+            'businessId' => 'null',
+            'oaSAssetGroupDeletionDelete' => ''
         };
 
         OASClient client;
         OASBusinessAccessAssetsApi api;
-        OASDeleteAssetGroupResponse response;
-        OASDeleteAssetGroupResponse expectedResponse;
+        OASAssetGroupDeletion response;
+        OASAssetGroupDeletion expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
 
-        js = JSON.serialize(OASDeleteAssetGroupResponse.getExample());
+        js = JSON.serialize(OASAssetGroupDeletion.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASDeleteAssetGroupResponse.getExample();
-        response = (OASDeleteAssetGroupResponse) api.assetGroupDelete(params);
+        expectedResponse = OASAssetGroupDeletion.getExample();
+        response = (OASAssetGroupDeletion) api.assetGroupDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASDeleteAssetGroupResponse.getExample());
+        js = JSON.serialize(OASAssetGroupDeletion.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASDeleteAssetGroupResponse.getExample();
-        response = (OASDeleteAssetGroupResponse) api.assetGroupDelete(params);
-        System.assertEquals(expectedResponse, response);
-
-
-        js = JSON.serialize(OASDeleteAssetGroupResponse.getExample());
-        res.setHeader('Content-Type', 'application/json');
-        res.setBody(js);
-        expectedResponse = OASDeleteAssetGroupResponse.getExample();
-        response = (OASDeleteAssetGroupResponse) api.assetGroupDelete(params);
+        expectedResponse = OASAssetGroupDeletion.getExample();
+        response = (OASAssetGroupDeletion) api.assetGroupDelete(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -113,40 +145,72 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'oaSUpdateAssetGroupBody' => ''
+            'businessId' => 'null',
+            'oaSAssetGroupModificationReadOrUpdat' => ''
         };
 
         OASClient client;
         OASBusinessAccessAssetsApi api;
-        OASUpdateAssetGroupResponse response;
-        OASUpdateAssetGroupResponse expectedResponse;
+        OASAssetGroupModification response;
+        OASAssetGroupModification expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
 
-        js = JSON.serialize(OASUpdateAssetGroupResponse.getExample());
+        js = JSON.serialize(OASAssetGroupModification.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUpdateAssetGroupResponse.getExample();
-        response = (OASUpdateAssetGroupResponse) api.assetGroupUpdate(params);
+        expectedResponse = OASAssetGroupModification.getExample();
+        response = (OASAssetGroupModification) api.assetGroupUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUpdateAssetGroupResponse.getExample());
+        js = JSON.serialize(OASAssetGroupModification.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUpdateAssetGroupResponse.getExample();
-        response = (OASUpdateAssetGroupResponse) api.assetGroupUpdate(params);
+        expectedResponse = OASAssetGroupModification.getExample();
+        response = (OASAssetGroupModification) api.assetGroupUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASUpdateAssetGroupResponse.getExample());
+        js = JSON.serialize(OASAssetGroupModification.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASUpdateAssetGroupResponse.getExample();
-        response = (OASUpdateAssetGroupResponse) api.assetGroupUpdate(params);
+        expectedResponse = OASAssetGroupModification.getExample();
+        response = (OASAssetGroupModification) api.assetGroupUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAssetGroupModification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAssetGroupModification.getExample();
+        response = (OASAssetGroupModification) api.assetGroupUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAssetGroupModification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAssetGroupModification.getExample();
+        response = (OASAssetGroupModification) api.assetGroupUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAssetGroupModification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAssetGroupModification.getExample();
+        response = (OASAssetGroupModification) api.assetGroupUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASAssetGroupModification.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASAssetGroupModification.getExample();
+        response = (OASAssetGroupModification) api.assetGroupUpdate(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -163,12 +227,12 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'assetId' => 729090764583391194,
+            'businessId' => 'null',
+            'assetId' => 'null',
+            'startIndex' => '',
             'fetchSystemUsers' => '',
             'bookmark' => 'null',
-            'pageSize' => '',
-            'startIndex' => 0
+            'pageSize' => ''
         };
 
         OASClient client;
@@ -179,6 +243,46 @@ private class OASBusinessAccessAssetsApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetMembersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetMembersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetMembersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetMembersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetMembersGet(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -209,35 +313,75 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'assetId' => 729090764583391194,
-            'startIndex' => 0,
+            'businessId' => 'null',
+            'assetId' => 'null',
+            'startIndex' => '',
             'bookmark' => 'null',
             'pageSize' => ''
         };
 
         OASClient client;
         OASBusinessAccessAssetsApi api;
-        OASBusinessAssetPartnersGet200Respon response;
-        OASBusinessAssetPartnersGet200Respon expectedResponse;
+        OASBusinessAssetMembersGet200Respons response;
+        OASBusinessAssetMembersGet200Respons expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
 
-        js = JSON.serialize(OASBusinessAssetPartnersGet200Respon.getExample());
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessAssetPartnersGet200Respon.getExample();
-        response = (OASBusinessAssetPartnersGet200Respon) api.businessAssetPartnersGet(params);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetPartnersGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBusinessAssetPartnersGet200Respon.getExample());
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessAssetPartnersGet200Respon.getExample();
-        response = (OASBusinessAssetPartnersGet200Respon) api.businessAssetPartnersGet(params);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetPartnersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetPartnersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetPartnersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetPartnersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetPartnersGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetMembersGet200Respons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetMembersGet200Respons.getExample();
+        response = (OASBusinessAssetMembersGet200Respons) api.businessAssetPartnersGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -254,12 +398,12 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
             'permissions' => new List<OASPermissionsWithOwner>{OASPermissionsWithOwner.getExample()},
-            'childAssetId' => 549764894835,
-            'assetGroupId' => 7078106104032,
+            'childAssetId' => 'null',
+            'assetGroupId' => 'null',
             'assetType' => AD_ACCOUNT,
-            'startIndex' => 0,
+            'startIndex' => '',
             'bookmark' => 'null',
             'pageSize' => ''
         };
@@ -272,6 +416,46 @@ private class OASBusinessAccessAssetsApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
+
+        js = JSON.serialize(OASBusinessAssetsGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetsGet200Response.getExample();
+        response = (OASBusinessAssetsGet200Response) api.businessAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetsGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetsGet200Response.getExample();
+        response = (OASBusinessAssetsGet200Response) api.businessAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetsGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetsGet200Response.getExample();
+        response = (OASBusinessAssetsGet200Response) api.businessAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetsGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetsGet200Response.getExample();
+        response = (OASBusinessAssetsGet200Response) api.businessAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessAssetsGet200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessAssetsGet200Response.getExample();
+        response = (OASBusinessAssetsGet200Response) api.businessAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASBusinessAssetsGet200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -302,36 +486,82 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'memberId' => 729090764583391194,
+            'businessId' => 'null',
+            'memberId' => 'null',
             'assetType' => AD_ACCOUNT,
-            'startIndex' => 0,
+            'startIndex' => '',
+            'sortBy' => '',
+            'sortAscending' => '',
+            'searchBy' => '',
+            'searchValue' => 'null',
+            'assetPermissionType' => '',
+            'adAccountStatuses' => new List<OASNonDraftEntityStatus>{OASNonDraftEntityStatus.getExample()},
             'bookmark' => 'null',
             'pageSize' => ''
         };
 
         OASClient client;
         OASBusinessAccessAssetsApi api;
-        OASBusinessMemberAssetsGet200Respons response;
-        OASBusinessMemberAssetsGet200Respons expectedResponse;
+        OASBusinessMemberAssetsGetResponse response;
+        OASBusinessMemberAssetsGetResponse expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
 
-        js = JSON.serialize(OASBusinessMemberAssetsGet200Respons.getExample());
+        js = JSON.serialize(OASBusinessMemberAssetsGetResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessMemberAssetsGet200Respons.getExample();
-        response = (OASBusinessMemberAssetsGet200Respons) api.businessMemberAssetsGet(params);
+        expectedResponse = OASBusinessMemberAssetsGetResponse.getExample();
+        response = (OASBusinessMemberAssetsGetResponse) api.businessMemberAssetsGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASBusinessMemberAssetsGet200Respons.getExample());
+        js = JSON.serialize(OASBusinessMemberAssetsGetResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASBusinessMemberAssetsGet200Respons.getExample();
-        response = (OASBusinessMemberAssetsGet200Respons) api.businessMemberAssetsGet(params);
+        expectedResponse = OASBusinessMemberAssetsGetResponse.getExample();
+        response = (OASBusinessMemberAssetsGetResponse) api.businessMemberAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessMemberAssetsGetResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessMemberAssetsGetResponse.getExample();
+        response = (OASBusinessMemberAssetsGetResponse) api.businessMemberAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessMemberAssetsGetResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessMemberAssetsGetResponse.getExample();
+        response = (OASBusinessMemberAssetsGetResponse) api.businessMemberAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessMemberAssetsGetResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessMemberAssetsGetResponse.getExample();
+        response = (OASBusinessMemberAssetsGetResponse) api.businessMemberAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessMemberAssetsGetResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessMemberAssetsGetResponse.getExample();
+        response = (OASBusinessMemberAssetsGetResponse) api.businessMemberAssetsGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessMemberAssetsGetResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessMemberAssetsGetResponse.getExample();
+        response = (OASBusinessMemberAssetsGetResponse) api.businessMemberAssetsGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -348,8 +578,8 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'oaSBusinessMembersAssetAccessDeleteR' => ''
+            'businessId' => 'null',
+            'oaSBusinessMembersAssetAccessDeleteB' => ''
         };
 
         OASClient client;
@@ -380,7 +610,7 @@ private class OASBusinessAccessAssetsApiTest {
     /**
      * Assign/Update member asset permissions
      *
-     * Grant multiple members access to assets and/or update multiple member\&#39;s exisiting permissions to an asset.\nNote: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.\n
+     * Grant multiple members access to assets and/or update multiple member\&#39;s exisiting permissions to an asset.\nNote: Not all listed permissions are applicable to each asset type. For example, PROFILE_PUBLISHER would not be applicable to an asset of type AD_ACCOUNT. The permission level PROFILE_PUBLISHER is only available to an asset of the type PROFILE.
      */
     @isTest
     private static void businessMembersAssetAccessUpdateTest() {
@@ -390,7 +620,7 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
             'oaSUpdateMemberAssetAccessBody' => ''
         };
 
@@ -402,6 +632,46 @@ private class OASBusinessAccessAssetsApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
+
+        js = JSON.serialize(OASUpdateMemberAssetsResultsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateMemberAssetsResultsResponse.getExample();
+        response = (OASUpdateMemberAssetsResultsResponse) api.businessMembersAssetAccessUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdateMemberAssetsResultsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateMemberAssetsResultsResponse.getExample();
+        response = (OASUpdateMemberAssetsResultsResponse) api.businessMembersAssetAccessUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdateMemberAssetsResultsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateMemberAssetsResultsResponse.getExample();
+        response = (OASUpdateMemberAssetsResultsResponse) api.businessMembersAssetAccessUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdateMemberAssetsResultsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateMemberAssetsResultsResponse.getExample();
+        response = (OASUpdateMemberAssetsResultsResponse) api.businessMembersAssetAccessUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdateMemberAssetsResultsResponse.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdateMemberAssetsResultsResponse.getExample();
+        response = (OASUpdateMemberAssetsResultsResponse) api.businessMembersAssetAccessUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASUpdateMemberAssetsResultsResponse.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -432,13 +702,17 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
-            'partnerId' => 729090764583391194,
+            'businessId' => 'null',
+            'partnerId' => 'null',
             'partnerType' => INTERNAL,
             'assetType' => AD_ACCOUNT,
-            'startIndex' => 0,
-            'pageSize' => '',
-            'bookmark' => 'null'
+            'startIndex' => '',
+            'sortBy' => '',
+            'sortAscending' => '',
+            'searchBy' => '',
+            'searchValue' => 'null',
+            'bookmark' => 'null',
+            'pageSize' => ''
         };
 
         OASClient client;
@@ -449,6 +723,46 @@ private class OASBusinessAccessAssetsApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
+
+        js = JSON.serialize(OASBusinessPartnerAssetAccessGet200R.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessPartnerAssetAccessGet200R.getExample();
+        response = (OASBusinessPartnerAssetAccessGet200R) api.businessPartnerAssetAccessGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessPartnerAssetAccessGet200R.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessPartnerAssetAccessGet200R.getExample();
+        response = (OASBusinessPartnerAssetAccessGet200R) api.businessPartnerAssetAccessGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessPartnerAssetAccessGet200R.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessPartnerAssetAccessGet200R.getExample();
+        response = (OASBusinessPartnerAssetAccessGet200R) api.businessPartnerAssetAccessGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessPartnerAssetAccessGet200R.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessPartnerAssetAccessGet200R.getExample();
+        response = (OASBusinessPartnerAssetAccessGet200R) api.businessPartnerAssetAccessGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASBusinessPartnerAssetAccessGet200R.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASBusinessPartnerAssetAccessGet200R.getExample();
+        response = (OASBusinessPartnerAssetAccessGet200R) api.businessPartnerAssetAccessGet(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASBusinessPartnerAssetAccessGet200R.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -479,32 +793,32 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
             'oaSDeletePartnerAssetAccessBody' => ''
         };
 
         OASClient client;
         OASBusinessAccessAssetsApi api;
-        OASDeletePartnerAssetsResultsRespons response;
-        OASDeletePartnerAssetsResultsRespons expectedResponse;
+        OASDeletePartnerAssetAccessResultsRe response;
+        OASDeletePartnerAssetAccessResultsRe expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
 
-        js = JSON.serialize(OASDeletePartnerAssetsResultsRespons.getExample());
+        js = JSON.serialize(OASDeletePartnerAssetAccessResultsRe.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASDeletePartnerAssetsResultsRespons.getExample();
-        response = (OASDeletePartnerAssetsResultsRespons) api.deletePartnerAssetAccessHandlerImpl(params);
+        expectedResponse = OASDeletePartnerAssetAccessResultsRe.getExample();
+        response = (OASDeletePartnerAssetAccessResultsRe) api.deletePartnerAssetAccessHandlerImpl(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASDeletePartnerAssetsResultsRespons.getExample());
+        js = JSON.serialize(OASDeletePartnerAssetAccessResultsRe.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASDeletePartnerAssetsResultsRespons.getExample();
-        response = (OASDeletePartnerAssetsResultsRespons) api.deletePartnerAssetAccessHandlerImpl(params);
+        expectedResponse = OASDeletePartnerAssetAccessResultsRe.getExample();
+        response = (OASDeletePartnerAssetAccessResultsRe) api.deletePartnerAssetAccessHandlerImpl(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -521,7 +835,7 @@ private class OASBusinessAccessAssetsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'businessId' => 729090764583391194,
+            'businessId' => 'null',
             'oaSUpdatePartnerAssetAccessBody' => ''
         };
 
@@ -533,6 +847,46 @@ private class OASBusinessAccessAssetsApiTest {
 
         client = new OASClient();
         api = new OASBusinessAccessAssetsApi(client);
+
+        js = JSON.serialize(OASUpdatePartnerAssetsResultsRespons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdatePartnerAssetsResultsRespons.getExample();
+        response = (OASUpdatePartnerAssetsResultsRespons) api.updatePartnerAssetAccessHandlerImpl(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdatePartnerAssetsResultsRespons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdatePartnerAssetsResultsRespons.getExample();
+        response = (OASUpdatePartnerAssetsResultsRespons) api.updatePartnerAssetAccessHandlerImpl(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdatePartnerAssetsResultsRespons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdatePartnerAssetsResultsRespons.getExample();
+        response = (OASUpdatePartnerAssetsResultsRespons) api.updatePartnerAssetAccessHandlerImpl(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdatePartnerAssetsResultsRespons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdatePartnerAssetsResultsRespons.getExample();
+        response = (OASUpdatePartnerAssetsResultsRespons) api.updatePartnerAssetAccessHandlerImpl(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASUpdatePartnerAssetsResultsRespons.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASUpdatePartnerAssetsResultsRespons.getExample();
+        response = (OASUpdatePartnerAssetsResultsRespons) api.updatePartnerAssetAccessHandlerImpl(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASUpdatePartnerAssetsResultsRespons.getExample());
         res.setHeader('Content-Type', 'application/json');

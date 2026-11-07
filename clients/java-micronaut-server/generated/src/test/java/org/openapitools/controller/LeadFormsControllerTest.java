@@ -1,13 +1,14 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
-import org.openapitools.model.LeadFormArrayResponse;
-import org.openapitools.model.LeadFormCreateRequest;
-import org.openapitools.model.LeadFormResponse;
-import org.openapitools.model.LeadFormTestRequest;
-import org.openapitools.model.LeadFormTestResponse;
-import org.openapitools.model.LeadFormUpdateRequest;
+import org.openapitools.model.LeadForm;
+import org.openapitools.model.LeadFormBatchUpdate;
+import org.openapitools.model.LeadFormCreate;
+import org.openapitools.model.LeadFormTest;
+import org.openapitools.model.LeadFormTestCreate;
+import org.openapitools.model.LeadFormsCreate200Response;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -58,7 +59,7 @@ public class LeadFormsControllerTest {
      *
      * The method should: Get lead form by id
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -66,11 +67,11 @@ public class LeadFormsControllerTest {
     @Disabled("Not Implemented")
     void leadFormGetMethodTest() {
         // given
+        String leadFormId = "example";
         String adAccountId = "example";
-        String leadFormId = "1234567890123";
 
         // when
-        LeadFormResponse result = controller.leadFormGet(adAccountId, leadFormId).block();
+        LeadForm result = controller.leadFormGet(leadFormId, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -88,14 +89,14 @@ public class LeadFormsControllerTest {
         // given
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
+            put("lead_form_id", "example");
             put("ad_account_id", "example");
-            put("lead_form_id", "1234567890123");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@769e210b");
+            .accept("[Ljava.lang.String;@37015ba0");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, LeadForm.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -115,11 +116,11 @@ public class LeadFormsControllerTest {
     void leadFormTestCreateMethodTest() {
         // given
         String adAccountId = "example";
-        String leadFormId = "1234567890123";
-        LeadFormTestRequest leadFormTestRequest = new LeadFormTestRequest(Arrays.asList("example"));
+        String leadFormId = "example";
+        LeadFormTestCreate leadFormTestCreate = new LeadFormTestCreate(Arrays.asList("example"));
 
         // when
-        LeadFormTestResponse result = controller.leadFormTestCreate(adAccountId, leadFormId, leadFormTestRequest).block();
+        LeadFormTest result = controller.leadFormTestCreate(adAccountId, leadFormId, leadFormTestCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -135,17 +136,17 @@ public class LeadFormsControllerTest {
     @Disabled("Not Implemented")
     void leadFormTestCreateClientApiTest() throws IOException {
         // given
-        LeadFormTestRequest body = new LeadFormTestRequest(Arrays.asList("example"));
+        LeadFormTestCreate body = new LeadFormTestCreate(Arrays.asList("example"));
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/lead_forms/{lead_form_id}/test").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
-            put("lead_form_id", "1234567890123");
+            put("lead_form_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@527c7ee1");
+            .accept("[Ljava.lang.String;@2432bed2");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormTestResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormTest.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -156,7 +157,7 @@ public class LeadFormsControllerTest {
      *
      * The method should: Create lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -165,10 +166,10 @@ public class LeadFormsControllerTest {
     void leadFormsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        List<@Valid LeadFormCreateRequest> leadFormCreateRequest = Arrays.asList();
+        List<@Valid LeadFormCreate> leadFormCreate = Arrays.asList();
 
         // when
-        LeadFormArrayResponse result = controller.leadFormsCreate(adAccountId, leadFormCreateRequest).block();
+        LeadFormsCreate200Response result = controller.leadFormsCreate(adAccountId, leadFormCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -184,16 +185,16 @@ public class LeadFormsControllerTest {
     @Disabled("Not Implemented")
     void leadFormsCreateClientApiTest() throws IOException {
         // given
-        List<@Valid LeadFormCreateRequest> body = Arrays.asList();
+        List<@Valid LeadFormCreate> body = Arrays.asList();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/lead_forms").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@6a78192c");
+            .accept("[Ljava.lang.String;@457a154a");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormArrayResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormsCreate200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -204,7 +205,7 @@ public class LeadFormsControllerTest {
      *
      * The method should: List lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -213,12 +214,12 @@ public class LeadFormsControllerTest {
     void leadFormsListMethodTest() {
         // given
         String adAccountId = "example";
-        Integer pageSize = 25;
-        String order = "ASCENDING";
         String bookmark = "example";
+        Integer pageSize = 25;
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
 
         // when
-        LeadFormsList200Response result = controller.leadFormsList(adAccountId, pageSize, order, bookmark).block();
+        LeadFormsList200Response result = controller.leadFormsList(adAccountId, bookmark, pageSize, order).block();
 
         // then
         Assertions.assertTrue(true);
@@ -239,11 +240,11 @@ public class LeadFormsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3f36a813");
+            .accept("[Ljava.lang.String;@15b677ba");
         request.getParameters()
+            .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("order", "ASCENDING") // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("order", String.valueOf(PinterestLibPaginationOrder.fromValue("ASCENDING"))); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormsList200Response.class);
@@ -257,7 +258,7 @@ public class LeadFormsControllerTest {
      *
      * The method should: Update lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -266,10 +267,10 @@ public class LeadFormsControllerTest {
     void leadFormsUpdateMethodTest() {
         // given
         String adAccountId = "example";
-        List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest = Arrays.asList();
+        List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate = Arrays.asList();
 
         // when
-        LeadFormArrayResponse result = controller.leadFormsUpdate(adAccountId, leadFormUpdateRequest).block();
+        LeadFormsCreate200Response result = controller.leadFormsUpdate(adAccountId, leadFormBatchUpdate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -285,16 +286,16 @@ public class LeadFormsControllerTest {
     @Disabled("Not Implemented")
     void leadFormsUpdateClientApiTest() throws IOException {
         // given
-        List<@Valid LeadFormUpdateRequest> body = Arrays.asList();
+        List<@Valid LeadFormBatchUpdate> body = Arrays.asList();
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/lead_forms").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@38274087");
+            .accept("[Ljava.lang.String;@2857f2f7");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormArrayResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, LeadFormsCreate200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

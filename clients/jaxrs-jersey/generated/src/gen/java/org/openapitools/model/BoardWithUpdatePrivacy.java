@@ -44,7 +44,7 @@ import javax.validation.Valid;
   BoardWithUpdatePrivacy.JSON_PROPERTY_PIN_COUNT,
   BoardWithUpdatePrivacy.JSON_PROPERTY_PRIVACY
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BoardWithUpdatePrivacy   {
   public static final String JSON_PROPERTY_BOARD_PINS_MODIFIED_AT = "board_pins_modified_at";
   @JsonProperty(JSON_PROPERTY_BOARD_PINS_MODIFIED_AT)

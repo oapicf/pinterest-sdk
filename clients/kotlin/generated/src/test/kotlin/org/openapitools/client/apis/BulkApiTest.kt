@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,12 +27,12 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.BulkApi
-import org.openapitools.client.models.BulkDownloadRequest
-import org.openapitools.client.models.BulkDownloadResponse
+import org.openapitools.client.models.BulkDownload
+import org.openapitools.client.models.BulkDownloadCreate
+import org.openapitools.client.models.BulkJobData
 import org.openapitools.client.models.BulkUpsertRequest
 import org.openapitools.client.models.BulkUpsertResponse
-import org.openapitools.client.models.BulkUpsertStatusResponse
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 
 class BulkApiTest : ShouldSpec() {
     init {
@@ -35,8 +43,8 @@ class BulkApiTest : ShouldSpec() {
         should("test bulkDownloadCreate") {
             // uncomment below to test bulkDownloadCreate
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val bulkDownloadRequest : BulkDownloadRequest =  // BulkDownloadRequest | Parameters to get ad entities in bulk
-            //val result : BulkDownloadResponse = apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadRequest)
+            //val bulkDownloadCreate : BulkDownloadCreate =  // BulkDownloadCreate | 
+            //val result : BulkDownload = apiInstance.bulkDownloadCreate(adAccountId, bulkDownloadCreate)
             //result shouldBe ("TODO")
         }
 
@@ -44,9 +52,9 @@ class BulkApiTest : ShouldSpec() {
         should("test bulkRequestGet") {
             // uncomment below to test bulkRequestGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val bulkRequestId : kotlin.String = bulkRequestId_example // kotlin.String | Unique identifier of a bulk upsert request.
-            //val includeDetails : kotlin.Boolean = true // kotlin.Boolean | if set to True then attach the errors/details to all the requests
-            //val result : BulkUpsertStatusResponse = apiInstance.bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
+            //val bulkRequestId : kotlin.String = bulkRequestId_example // kotlin.String | Bulk request ID that is from one of the entities bulk endpoints
+            //val includeDetails : kotlin.Boolean = true // kotlin.Boolean | If set to True then attach the errors/details to all the requests
+            //val result : BulkJobData = apiInstance.bulkRequestGet(adAccountId, bulkRequestId, includeDetails)
             //result shouldBe ("TODO")
         }
 

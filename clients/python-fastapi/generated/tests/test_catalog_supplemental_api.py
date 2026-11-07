@@ -3,7 +3,7 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Any, List, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
 from openapi_server.models.catalogs_local_stores_create200_response_inner import CatalogsLocalStoresCreate200ResponseInner  # noqa: F401

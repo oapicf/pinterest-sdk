@@ -22,28 +22,29 @@ module ProductGroupPromotionsApiHandlerTestsHelper =
   let mutable ProductGroupPromotionsCreateBody = ""
 
   ProductGroupPromotionsCreateBody <- WebUtility.HtmlDecode "{
+  &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
   &quot;product_group_promotion&quot; : [ {
     &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
     &quot;creative_type&quot; : &quot;REGULAR&quot;,
     &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
-    &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName&quot;,
+    &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName to create&quot;,
     &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
     &quot;tracking_url&quot; : &quot;https://www.pinterest.com&quot;,
     &quot;slideshow_collections_title&quot; : &quot;Title&quot;,
-    &quot;is_mdl&quot; : true,
-    &quot;status&quot; : &quot;ACTIVE&quot;
+    &quot;status&quot; : &quot;ACTIVE&quot;,
+    &quot;is_mdl&quot; : true
   }, {
+    &quot;id&quot; : &quot;2680059592705&quot;,
+    &quot;catalog_product_group_id&quot; : &quot;1234123&quot;,
     &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
     &quot;creative_type&quot; : &quot;REGULAR&quot;,
     &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
-    &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName&quot;,
+    &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName to update&quot;,
     &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
     &quot;tracking_url&quot; : &quot;https://www.pinterest.com&quot;,
     &quot;slideshow_collections_title&quot; : &quot;Title&quot;,
-    &quot;is_mdl&quot; : true,
     &quot;status&quot; : &quot;ACTIVE&quot;
-  } ],
-  &quot;ad_group_id&quot; : &quot;2680059592705&quot;
+  } ]
 }"
   ProductGroupPromotionsCreateExamples <- ProductGroupPromotionsCreateExamples.Add("application/json", ProductGroupPromotionsCreateBody)
 
@@ -59,30 +60,29 @@ module ProductGroupPromotionsApiHandlerTestsHelper =
   let mutable ProductGroupPromotionsUpdateBody = ""
 
   ProductGroupPromotionsUpdateBody <- WebUtility.HtmlDecode "{
+  &quot;ad_group_id&quot; : &quot;2680059592705&quot;,
   &quot;product_group_promotion&quot; : [ {
+    &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
+    &quot;creative_type&quot; : &quot;REGULAR&quot;,
+    &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
+    &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName to create&quot;,
+    &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
+    &quot;tracking_url&quot; : &quot;https://www.pinterest.com&quot;,
+    &quot;slideshow_collections_title&quot; : &quot;Title&quot;,
+    &quot;status&quot; : &quot;ACTIVE&quot;,
+    &quot;is_mdl&quot; : true
+  }, {
+    &quot;id&quot; : &quot;2680059592705&quot;,
     &quot;catalog_product_group_id&quot; : &quot;1234123&quot;,
     &quot;slideshow_collections_description&quot; : &quot;Description&quot;,
     &quot;creative_type&quot; : &quot;REGULAR&quot;,
     &quot;collections_hero_pin_id&quot; : &quot;123123&quot;,
-    &quot;catalog_product_group_name&quot; : &quot;ProductGroupName&quot;,
+    &quot;catalog_product_group_name&quot; : &quot;catalogProductGroupName to update&quot;,
     &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
     &quot;tracking_url&quot; : &quot;https://www.pinterest.com&quot;,
     &quot;slideshow_collections_title&quot; : &quot;Title&quot;,
-    &quot;status&quot; : &quot;ACTIVE&quot;,
-    &quot;id&quot; : &quot;2680059592705&quot;
-  }, {
-    &quot;catalog_product_group_id&quot; : &quot;1231231&quot;,
-    &quot;slideshow_collections_description&quot; : &quot;Other description&quot;,
-    &quot;creative_type&quot; : &quot;REGULAR&quot;,
-    &quot;collections_hero_pin_id&quot; : &quot;123124&quot;,
-    &quot;catalog_product_group_name&quot; : &quot;ProductGroupName&quot;,
-    &quot;collections_hero_destination_url&quot; : &quot;http://www.pinterest.com&quot;,
-    &quot;tracking_url&quot; : &quot;https://www.pinterest.com&quot;,
-    &quot;slideshow_collections_title&quot; : &quot;Title&quot;,
-    &quot;status&quot; : &quot;ACTIVE&quot;,
-    &quot;id&quot; : &quot;2680059592706&quot;
-  } ],
-  &quot;ad_group_id&quot; : &quot;26823439592705&quot;
+    &quot;status&quot; : &quot;ACTIVE&quot;
+  } ]
 }"
   ProductGroupPromotionsUpdateExamples <- ProductGroupPromotionsUpdateExamples.Add("application/json", ProductGroupPromotionsUpdateBody)
 

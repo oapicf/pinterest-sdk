@@ -3,7 +3,7 @@ private class OASPinsApiTest {
     /**
      * Get multiple Pin analytics
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;\&#39;/docs/getting-started/using-beta-and-restricted-features/\&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;\n\nGet analytics for multiple pins owned by the &quot;operation user_account&quot; - or on a group board that has been shared with this account.\n- The maximum number of pins supported in a single request is 100.\n- By default, the &quot;operation user_account&quot; is the token user_account.\n\nOptional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&quot;/docs/api/v5/#operation/ad_accounts/list&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:\n\n- For Pins on public or protected boards: Admin, Analyst.\n- For Pins on secret boards: Admin.\n\nIf Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**\n\nGet analytics for multiple pins owned by the &quot;operation user_account&quot; - or on a group board that has been shared with this account.\n- The maximum number of pins supported in a single request is 100.\n- By default, the &quot;operation user_account&quot; is the token user_account.\n\nOptional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:\n\n- For Pins on public or protected boards: Admin, Analyst.\n- For Pins on secret boards: Admin.\n\nIf Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     @isTest
     private static void multiPinsAnalyticsTest() {
@@ -16,7 +16,7 @@ private class OASPinsApiTest {
             'pinIds' => new List<String>{''},
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'metricTypes' => new List<String>{'IMPRESSION'},
+            'metricTypes' => new List<OASMultiPinsAnalyticsMetricTypesItem>{OASMultiPinsAnalyticsMetricTypesItem.getExample()},
             'appTypes' => ALL,
             'adAccountId' => 'null'
         };
@@ -30,83 +30,99 @@ private class OASPinsApiTest {
         client = new OASClient();
         api = new OASPinsApi(client);
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
+        response = (Map<String, Map>) api.multiPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASPinsApi(client);
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(Map.getExample());
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = Map.getExample();
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
+        response = (Map<String, Map>) api.multiPinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(new Map<String, Map>{'key'=>Map.getExample()});
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = new Map<String, Map>{'key'=>Map.getExample()};
         response = (Map<String, Map>) api.multiPinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
     }
@@ -114,7 +130,7 @@ private class OASPinsApiTest {
     /**
      * Get Pin analytics
      *
-     * Get analytics for a Pin owned by the &quot;operation user_account&quot; - or on a group board that has been shared with this account.\n- By default, the &quot;operation user_account&quot; is the token user_account.\n\nOptional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;&quot;/docs/api/v5/#operation/ad_accounts/list&quot;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:\n\n- For Pins on public or protected boards: Admin, Analyst.\n- For Pins on secret boards: Admin.\n\nIf Pin was created before &lt;code&gt;2023-03-20&lt;/code&gt; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
+     * Get analytics for a Pin owned by the &quot;operation user_account&quot; - or on a group board that has been shared with this account.\n- By default, the &quot;operation user_account&quot; is the token user_account.\n\nOptional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:\n\n- For Pins on public or protected boards: Admin, Analyst.\n- For Pins on secret boards: Admin.\n\nIf Pin was created before &#x60;2023-03-20&#x60; lifetime metrics will only be available for Video and Idea Pin formats. Lifetime metrics are available for all Pin formats since then.
      */
     @isTest
     private static void pinsAnalyticsTest() {
@@ -127,7 +143,7 @@ private class OASPinsApiTest {
             'pinId' => 'null',
             'startDate' => Date.newInstance(1960, 2, 17),
             'endDate' => Date.newInstance(1960, 2, 17),
-            'metricTypes' => new List<String>{'IMPRESSION'},
+            'metricTypes' => new List<OASQuerypinanalyticsmetrictypesItems>{OASQuerypinanalyticsmetrictypesItems.getExample()},
             'appTypes' => ALL,
             'splitField' => NO_SPLIT,
             'adAccountId' => 'null'
@@ -172,8 +188,40 @@ private class OASPinsApiTest {
         expectedResponse = Map.getExample();
         response = (Map<String, OASPinAnalyticsMetricsResponse>) api.pinsAnalytics(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(Map.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = Map.getExample();
+        response = (Map<String, OASPinAnalyticsMetricsResponse>) api.pinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(Map.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = Map.getExample();
+        response = (Map<String, OASPinAnalyticsMetricsResponse>) api.pinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASPinsApi(client);
+
+        js = JSON.serialize(Map.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = Map.getExample();
+        response = (Map<String, OASPinAnalyticsMetricsResponse>) api.pinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(Map.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = Map.getExample();
+        response = (Map<String, OASPinAnalyticsMetricsResponse>) api.pinsAnalytics(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(Map.getExample());
         res.setHeader('Content-Type', 'application/json');
@@ -210,7 +258,7 @@ private class OASPinsApiTest {
     /**
      * Create Pin
      *
-     * \n Create a Pin on a board or board section owned by the &quot;operation user_account&quot;.\n\n Note: If the current &quot;operation user_account&quot; (defined by the access token) has access to another user\&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account\&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).\n\n- This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called \&#39;curated content\&#39;, please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).\n\n**[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.\n\n**[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
+     *  Create a Pin on a board or board section owned by the &quot;operation user_account&quot;.\n\n Note: If the current &quot;operation user_account&quot; (defined by the access token) has access to another user\&#39;s Ad Accounts via Pinterest Business Access, you can modify your request to make use of the current operation_user_account\&#39;s permissions to those Ad Accounts by including the ad_account_id in the path parameters for the request (e.g. .../?ad_account_id&#x3D;12345&amp;...).\n\n- This function is intended solely for publishing new content created by the user. If you are interested in saving content created by others to your Pinterest boards, sometimes called \&#39;curated content\&#39;, please use our [Save button](/docs/web-features/add-ons-overview/) instead. For more tips on creating fresh content for Pinterest, review our [Content App Solutions Guide](/docs/api-features/content-overview/).\n\n**[Learn more](/docs/api-features/creating-boards-and-pins/#creating-video-pins)** about video Pin creation.\n\n**[Learn more](/docs/api-features/creating-boards-and-pins/#creating-image-pins)** about image Pin creation.
      */
     @isTest
     private static void pinsCreateTest() {
@@ -365,7 +413,7 @@ private class OASPinsApiTest {
     /**
      * Delete Pin
      *
-     * \n  Delete a Pins owned by the &quot;operation user_account&quot; - or on a group board that has been shared with this account.\n  - By default, the &quot;operation user_account&quot; is the token user_account.\n\n  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:\n\n  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.\n  - For Pins on secret boards: Owner, Admin.
+     *   Delete a Pins owned by the &quot;operation user_account&quot; - or on a group board that has been shared with this account.\n  - By default, the &quot;operation user_account&quot; is the token user_account.\n\n  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:\n\n  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.\n  - For Pins on secret boards: Owner, Admin.
      */
     @isTest
     private static void pinsDeleteTest() {
@@ -381,112 +429,130 @@ private class OASPinsApiTest {
 
         OASClient client;
         OASPinsApi api;
+        OASPin response;
+        OASPin expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASPinsApi(client);
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPin.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
         client = new OASClient();
         api = new OASPinsApi(client);
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.pinsDelete(params);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPin.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsDelete(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Get Pin
      *
-     * \n  Get a Pin owned by the &quot;operation user_account&quot; - or on a group board that has been shared with this account.\n  - By default, the &quot;operation user_account&quot; is the token user_account.\n\n  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:\n\n  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.\n  - For Pins on secret boards: Owner, Admin.
+     *   Get a Pin owned by the &quot;operation user_account&quot; - or on a group board that has been shared with this account.\n  - By default, the &quot;operation user_account&quot; is the token user_account.\n\n  Optional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:\n\n  - For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.\n  - For Pins on secret boards: Owner, Admin.
      */
     @isTest
     private static void pinsGetTest() {
@@ -626,7 +692,7 @@ private class OASPinsApiTest {
     /**
      * List Pins
      *
-     * \n    Get a list of the Pins owned by the &quot;operation user_account&quot;.\n    - By default, the &quot;operation user_account&quot; is the token user_account.\n    - All Pins owned by the &quot;operation user_account&quot; are included, regardless of who owns the board they are on.\n\n    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; to use the owner of that ad_account as the &quot;operation user_account&quot;.\n\n    Disclaimer: There are known performance issues when filtering by field &#x60;creative_type&#x60; and including protected pins.\n    If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
+     *     Get a list of the Pins owned by the &quot;operation user_account&quot;.\n    - By default, the &quot;operation user_account&quot; is the token user_account.\n    - All Pins owned by the &quot;operation user_account&quot; are included, regardless of who owns the board they are on.\n\n    Optional: Business Access: Specify an &#x60;ad_account_id&#x60; to use the owner of that ad_account as the &quot;operation user_account&quot;.\n\n    Disclaimer: There are known performance issues when filtering by field &#x60;creative_type&#x60; and including protected pins.\n    If your request is timing out in this scenario, we encourage you to use [GET List Pins on Board](/docs/api/v5/#operation/boards/list_pins).
      */
     @isTest
     private static void pinsListTest() {
@@ -636,12 +702,15 @@ private class OASPinsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'pinFilter' => exclude_native,
+            'pinFilter' => '',
             'pinMetrics' => '',
             'includeProtectedPins' => '',
-            'pinType' => PRIVATE,
+            'pinType' => '',
             'creativeTypes' => new List<OASCreativeType>{OASCreativeType.getExample()},
             'adAccountId' => 'null',
+            'domain' => 'null',
+            'domains' => new List<String>{''},
+            'includeProductTagObj' => '',
             'bookmark' => 'null',
             'pageSize' => ''
         };
@@ -771,7 +840,7 @@ private class OASPinsApiTest {
     /**
      * Save Pin
      *
-     * Save a Pin on a board or board section owned by the &quot;operation user_account&quot;.\n- By default, the &quot;operation user_account&quot; is the token user_account.\nOptional: Business Access: Specify an &lt;code&gt;ad_account_id&lt;/code&gt; (obtained via &lt;a href&#x3D;\&#39;/docs/api/v5/#operation/ad_accounts/list\&#39;&gt;List ad accounts&lt;/a&gt;) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following &lt;a href&#x3D;&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts&quot;&gt;Business Access&lt;/a&gt; roles on the ad_account:\n\n- For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.\n- For Pins on secret boards: Owner, Admin.\n\n- Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc.\n- Any public Pin can be saved given a pin ID.
+     * Save a Pin on a board or board section owned by the &quot;operation user_account&quot;.\n- By default, the &quot;operation user_account&quot; is the token user_account.\nOptional: Business Access: Specify an &#x60;ad_account_id&#x60; (obtained via [List ad accounts](/docs/api/v5/#operation/ad_accounts/list)) to use the owner of that ad_account as the &quot;operation user_account&quot;. In order to do this, the token user_account must have one of the following [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts) roles on the ad_account:\n\n- For Pins on public or protected boards: Owner, Admin, Analyst, Campaign Manager.\n- For Pins on secret boards: Owner, Admin.\n\n- Any Pin type can be saved: image Pin, video Pin, Idea Pin, product Pin, etc.\n- Any public Pin can be saved given a pin ID.
      */
     @isTest
     private static void pinsSaveTest() {
@@ -782,7 +851,7 @@ private class OASPinsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'pinId' => 'null',
-            'oaSPinsSaveRequest' => '',
+            'oaSPinsSaveRequestCreate' => '',
             'adAccountId' => 'null'
         };
 
@@ -794,6 +863,30 @@ private class OASPinsApiTest {
 
         client = new OASClient();
         api = new OASPinsApi(client);
+
+        js = JSON.serialize(OASPin.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsSave(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPin.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsSave(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASPin.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASPin.getExample();
+        response = (OASPin) api.pinsSave(params);
+        System.assertEquals(expectedResponse, response);
+
 
         js = JSON.serialize(OASPin.getExample());
         res.setHeader('Content-Type', 'application/json');

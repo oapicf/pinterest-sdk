@@ -42,7 +42,7 @@ import javax.validation.Valid;
   ScheduleUpdateRequest.JSON_PROPERTY_SCHEDULE_TYPE,
   ScheduleUpdateRequest.JSON_PROPERTY_START_TIMESTAMP
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ScheduleUpdateRequest   {
   public static final String JSON_PROPERTY_ENTITY_ID = "entity_id";
   @JsonProperty(JSON_PROPERTY_ENTITY_ID)

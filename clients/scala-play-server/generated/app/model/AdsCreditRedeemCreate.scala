@@ -7,7 +7,7 @@ import play.api.libs.json._
   * @param offerCodeHash Takes in a SHA256 hash of the offerCode.
   * @param validateOnly If true, only validate if we can redeem offer code. Otherwise it will actually apply the offer code to the account
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class AdsCreditRedeemCreate(
   offerCodeHash: String,
   validateOnly: Boolean

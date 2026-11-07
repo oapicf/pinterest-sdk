@@ -31,7 +31,7 @@ import javax.validation.Valid;
   CustomerListUploadCreateResponse.JSON_PROPERTY_CUSTOMER_LIST_UPLOAD,
   CustomerListUploadCreateResponse.JSON_PROPERTY_S3_MULTIPART_UPLOAD_DATA
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomerListUploadCreateResponse   {
   public static final String JSON_PROPERTY_CUSTOMER_LIST_UPLOAD = "customer_list_upload";
   @JsonProperty(JSON_PROPERTY_CUSTOMER_LIST_UPLOAD)

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,16 +27,30 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.LabelsApi
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.LabelCreateRequest
 import org.openapitools.client.models.LabelUpdateRequest
+import org.openapitools.client.models.LabeledEntities
+import org.openapitools.client.models.LabeledEntitiesCreate
 import org.openapitools.client.models.LabelsList200Response
 import org.openapitools.client.models.LabelsResponse
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.QueryLabelEntityStatusesItems
+import org.openapitools.client.models.QueryLabelTypesItems
 
 class LabelsApiTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of LabelsApi
         //val apiInstance = LabelsApi()
+
+        // to test labelsApply
+        should("test labelsApply") {
+            // uncomment below to test labelsApply
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+            //val labelId : kotlin.String = labelId_example // kotlin.String | Label ID.
+            //val labeledEntitiesCreate : LabeledEntitiesCreate =  // LabeledEntitiesCreate | 
+            //val result : LabeledEntities = apiInstance.labelsApply(adAccountId, labelId, labeledEntitiesCreate)
+            //result shouldBe ("TODO")
+        }
 
         // to test labelsCreate
         should("test labelsCreate") {
@@ -45,11 +67,21 @@ class LabelsApiTest : ShouldSpec() {
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val campaignIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Campaign Ids to use to filter the results.
             //val labelIds : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of Label Ids to use to filter the results.
-            //val entityStatuses : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Label entity status
-            //val labelTypes : kotlin.collections.List<kotlin.String> = ["BRAND","CUSTOM"] // kotlin.collections.List<kotlin.String> | Label type.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val entityStatuses : kotlin.collections.List<QueryLabelEntityStatusesItems> =  // kotlin.collections.List<QueryLabelEntityStatusesItems> | Label entity status
+            //val labelTypes : kotlin.collections.List<QueryLabelTypesItems> =  // kotlin.collections.List<QueryLabelTypesItems> | Label type.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : LabelsList200Response = apiInstance.labelsList(adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, pageSize, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : LabelsList200Response = apiInstance.labelsList(adAccountId, campaignIds, labelIds, entityStatuses, labelTypes, bookmark, pageSize)
+            //result shouldBe ("TODO")
+        }
+
+        // to test labelsRemove
+        should("test labelsRemove") {
+            // uncomment below to test labelsRemove
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+            //val labelId : kotlin.String = labelId_example // kotlin.String | Label ID.
+            //val labeledEntitiesCreate : LabeledEntitiesCreate =  // LabeledEntitiesCreate | 
+            //val result : LabeledEntities = apiInstance.labelsRemove(adAccountId, labelId, labeledEntitiesCreate)
             //result shouldBe ("TODO")
         }
 

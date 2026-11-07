@@ -36,7 +36,7 @@ import javax.annotation.Generated;
   AssetGroupModificationReadOrUpdate.JSON_PROPERTY_UPDATED_ASSET_GROUPS
 })
 @JsonTypeName("AssetGroupModificationReadOrUpdate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AssetGroupModificationReadOrUpdate {
     public static final String JSON_PROPERTY_ASSET_GROUPS_TO_UPDATE = "asset_groups_to_update";

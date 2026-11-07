@@ -35,7 +35,7 @@ import javax.annotation.Generated;
   CatalogsProductGroupsList200Response.JSON_PROPERTY_ITEMS
 })
 @JsonTypeName("catalogs_product_groups_list_200_response")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsProductGroupsList200Response {
     public static final String JSON_PROPERTY_BOOKMARK = "bookmark";

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,10 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.CustomerListUploadsApi
+import org.openapitools.client.models.CustomerListUpload
 import org.openapitools.client.models.CustomerListUploadCreateRequest
 import org.openapitools.client.models.CustomerListUploadCreateResponse
-import org.openapitools.client.models.CustomerListUploadResponse
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 
 class CustomerListUploadsApiTest : ShouldSpec() {
     init {
@@ -32,9 +40,9 @@ class CustomerListUploadsApiTest : ShouldSpec() {
         // to test customerListUploadsCreate
         should("test customerListUploadsCreate") {
             // uncomment below to test customerListUploadsCreate
-            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Unique identifier of a customer list
-            //val customerListUploadCreateRequest : CustomerListUploadCreateRequest =  // CustomerListUploadCreateRequest | Parameters to create a customer list upload request
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Customer list ID.
+            //val customerListUploadCreateRequest : CustomerListUploadCreateRequest =  // CustomerListUploadCreateRequest | 
             //val result : CustomerListUploadCreateResponse = apiInstance.customerListUploadsCreate(adAccountId, customerListId, customerListUploadCreateRequest)
             //result shouldBe ("TODO")
         }
@@ -42,20 +50,20 @@ class CustomerListUploadsApiTest : ShouldSpec() {
         // to test customerListUploadsGet
         should("test customerListUploadsGet") {
             // uncomment below to test customerListUploadsGet
-            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Unique identifier of a customer list
-            //val customerListUploadId : kotlin.String = customerListUploadId_example // kotlin.String | Unique identifier of a customer list upload
-            //val result : CustomerListUploadResponse = apiInstance.customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Customer list ID.
+            //val customerListUploadId : kotlin.String = customerListUploadId_example // kotlin.String | Customer List Upload ID.
+            //val result : CustomerListUpload = apiInstance.customerListUploadsGet(adAccountId, customerListId, customerListUploadId)
             //result shouldBe ("TODO")
         }
 
         // to test customerListUploadsRun
         should("test customerListUploadsRun") {
             // uncomment below to test customerListUploadsRun
-            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Unique identifier of a customer list
-            //val customerListUploadId : kotlin.String = customerListUploadId_example // kotlin.String | Unique identifier of a customer list upload
-            //val result : CustomerListUploadResponse = apiInstance.customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | 
+            //val customerListId : kotlin.String = customerListId_example // kotlin.String | Customer list ID.
+            //val customerListUploadId : kotlin.String = customerListUploadId_example // kotlin.String | Customer List Upload ID.
+            //val result : CustomerListUpload = apiInstance.customerListUploadsRun(adAccountId, customerListId, customerListUploadId)
             //result shouldBe ("TODO")
         }
 

@@ -36,7 +36,7 @@ import javax.validation.Valid;
   CatalogsFeedIngestionErrors.JSON_PROPERTY_L_A_R_G_E_P_R_O_D_U_C_T_C_O_U_N_T_D_E_C_R_E_A_S_E,
   CatalogsFeedIngestionErrors.JSON_PROPERTY_L_I_N_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsFeedIngestionErrors   {
   public static final String JSON_PROPERTY_A_C_C_O_U_N_T_F_L_A_G_G_E_D = "ACCOUNT_FLAGGED";
   @JsonProperty(JSON_PROPERTY_A_C_C_O_U_N_T_F_L_A_G_G_E_D)

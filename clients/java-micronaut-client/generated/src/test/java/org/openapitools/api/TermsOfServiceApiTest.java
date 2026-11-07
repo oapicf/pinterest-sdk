@@ -1,6 +1,6 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.TermsOfService;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;

@@ -1,6 +1,6 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.RelatedTerms;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
@@ -52,7 +52,7 @@ public class TermsControllerTest {
      *
      * The method should: List related terms
      *
-     * Get a list of terms logically related to each input term. &lt;p/&gt; Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
+     * Get a list of terms logically related to each input term.  Example: the term &#39;workout&#39; would list related terms like &#39;one song workout&#39;, &#39;yoga workout&#39;, &#39;workout motivation&#39;, etc.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -81,7 +81,7 @@ public class TermsControllerTest {
         // given
         String uri = UriTemplate.of("/terms/related").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3991900e");
+            .accept("[Ljava.lang.String;@497cde09");
         request.getParameters()
             .add("terms", Arrays.asList("example")); // The query format should be multi
 
@@ -97,7 +97,7 @@ public class TermsControllerTest {
      *
      * The method should: List suggested terms
      *
-     * Get popular search terms that begin with your input term. &lt;p/&gt; Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
+     * Get popular search terms that begin with your input term.  Example: &#39;sport&#39; would return popular terms like &#39;sports bar&#39; and &#39;sportswear&#39;, but not &#39;motor sports&#39; since the phrase does not begin with the given term.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -105,7 +105,7 @@ public class TermsControllerTest {
     @Disabled("Not Implemented")
     void termsSuggestedListMethodTest() {
         // given
-        String term = "sports";
+        String term = "example";
         Integer limit = 4;
 
         // when
@@ -127,9 +127,9 @@ public class TermsControllerTest {
         // given
         String uri = UriTemplate.of("/terms/suggested").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5ceacac2");
+            .accept("[Ljava.lang.String;@45ef7404");
         request.getParameters()
-            .add("term", "sports") // The query parameter format should be 
+            .add("term", "example") // The query parameter format should be 
             .add("limit", String.valueOf(4)); // The query parameter format should be 
 
         // when

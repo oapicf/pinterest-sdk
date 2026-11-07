@@ -5,11 +5,25 @@ context("Test LabelsApi")
 
 api_instance <- LabelsApi$new()
 
+test_that("LabelsApply", {
+  # tests for LabelsApply
+  # base path: https://api.pinterest.com/v5
+  # Apply label to entity
+  #   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Apply a label to one or more campaigns.   Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/) in addition to campaigns.   Currently, you can apply **brand** and **custom** labels. Future releases will provide more options.    **Note:** You can only apply one brand label to a campaign. You can apply up to 30 custom labels to a campaign.
+  # @param ad_account_id character 
+  # @param label_id character Label ID.
+  # @param labeled_entities_create LabeledEntitiesCreate 
+  # @return [LabeledEntities]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
 test_that("LabelsCreate", {
   # tests for LabelsCreate
   # base path: https://api.pinterest.com/v5
   # Create labels
-  # &lt;p&gt; &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt; This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Apply one or more labels to a campaign.   Currently, you can apply brand and custom labels. Future releases will provide more options.    &lt;b&gt;Note:&lt;/b&gt; You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.  &lt;/p&gt;
+  # [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Apply one or more labels to a campaign. Future releases may support labels for other [entities](/docs/key-concepts/pinterest-entities/). Currently, you can apply brand and custom labels. Future releases will provide more options.  **Note:** You can only apply one brand label to a campaign. You can apply 30 custom labels to a campaign.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param label_create_request LabelCreateRequest 
   # @return [LabelsResponse]
@@ -22,15 +36,29 @@ test_that("LabelsList", {
   # tests for LabelsList
   # base path: https://api.pinterest.com/v5
   # List labels
-  # &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   See a list of labels for assets that your account owns, and filter the list by different criteria. &lt;/p&gt;
+  # [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  See a list of labels for assets that your account owns, and filter the list by different criteria. If no filter is provided, it will default to labels associated with the ad account id.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param campaign_ids array[character] List of Campaign Ids to use to filter the results. (optional)
   # @param label_ids array[character] List of Label Ids to use to filter the results. (optional)
-  # @param entity_statuses array[character] Label entity status (optional)
-  # @param label_types array[character] Label type. (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param entity_statuses array[QueryLabelEntityStatusesItems] Label entity status (optional)
+  # @param label_types array[QueryLabelTypesItems] Label type. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [LabelsList200Response]
+
+  # uncomment below to test the operation
+  #expect_equal(result, "EXPECTED_RESULT")
+})
+
+test_that("LabelsRemove", {
+  # tests for LabelsRemove
+  # base path: https://api.pinterest.com/v5
+  # Remove label from entities
+  #   [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)    Remove a label from one or more entities.
+  # @param ad_account_id character 
+  # @param label_id character Label ID.
+  # @param labeled_entities_create LabeledEntitiesCreate 
+  # @return [LabeledEntities]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -40,7 +68,7 @@ test_that("LabelsUpdate", {
   # tests for LabelsUpdate
   # base path: https://api.pinterest.com/v5
   # Update labels
-  # &lt;p&gt;   &lt;a href&#x3D;\&quot;/docs/getting-started/using-beta-and-restricted-features/\&quot; target&#x3D;\&quot;blank\&quot; target&#x3D;\&quot;blank\&quot;&gt;Closed beta&lt;/a&gt;   This endpoint is not available to all users. &lt;/p&gt; &lt;p&gt;   Change the properties of one or more labels. &lt;/p&gt;
+  # [Closed beta](/docs/getting-started/using-beta-and-restricted-features/)  Change the properties of one or more labels.
   # @param ad_account_id character Unique identifier of an ad account.
   # @param label_update_request LabelUpdateRequest 
   # @return [LabelsResponse]

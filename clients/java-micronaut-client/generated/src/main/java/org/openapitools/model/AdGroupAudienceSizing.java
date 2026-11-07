@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   AdGroupAudienceSizing.JSON_PROPERTY_AUDIENCE_SIZE_UPPER_BOUND
 })
 @JsonTypeName("AdGroupAudienceSizing")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdGroupAudienceSizing {
     public static final String JSON_PROPERTY_AUDIENCE_SIZE_LOWER_BOUND = "audience_size_lower_bound";

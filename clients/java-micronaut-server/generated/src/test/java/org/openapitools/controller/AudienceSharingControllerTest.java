@@ -1,13 +1,18 @@
 package org.openapitools.controller;
 
+import org.openapitools.model.AdAccountToAdAccountSharedAudience;
+import org.openapitools.model.AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.AdAccountToBusinessSharedAudience;
+import org.openapitools.model.AdAccountToBusinessSharedAudienceUpdateWithRequiredBody;
 import org.openapitools.model.AdAccountsAudiencesSharedAccountsList200Response;
 import org.openapitools.model.AudienceAccountType;
-import org.openapitools.model.AudiencesList200Response;
-import org.openapitools.model.BusinessSharedAudience;
-import org.openapitools.model.BusinessSharedAudienceResponse;
-import org.openapitools.model.Error;
-import org.openapitools.model.SharedAudience;
-import org.openapitools.model.SharedAudienceResponse;
+import org.openapitools.model.BusinessToAdAccountSharedAudience;
+import org.openapitools.model.BusinessToAdAccountSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.BusinessToBusinessSharedAudience;
+import org.openapitools.model.BusinessToBusinessSharedAudienceUpdateWithRequiredBody;
+import org.openapitools.model.Order;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.SharedAudiencesForBusinessList200Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -66,14 +71,14 @@ public class AudienceSharingControllerTest {
     @Disabled("Not Implemented")
     void adAccountsAudiencesSharedAccountsListMethodTest() {
         // given
-        String adAccountId = "example";
         String audienceId = "example";
         AudienceAccountType accountType = AudienceAccountType.fromValue("AD_ACCOUNT");
-        Integer pageSize = 25;
+        String adAccountId = "example";
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        AdAccountsAudiencesSharedAccountsList200Response result = controller.adAccountsAudiencesSharedAccountsList(adAccountId, audienceId, accountType, pageSize, bookmark).block();
+        AdAccountsAudiencesSharedAccountsList200Response result = controller.adAccountsAudiencesSharedAccountsList(audienceId, accountType, adAccountId, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -94,12 +99,12 @@ public class AudienceSharingControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2ce7d3be");
+            .accept("[Ljava.lang.String;@4a5fdb3e");
         request.getParameters()
             .add("audience_id", "example") // The query parameter format should be 
             .add("account_type", String.valueOf(AudienceAccountType.fromValue("AD_ACCOUNT"))) // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountsAudiencesSharedAccountsList200Response.class);
@@ -121,14 +126,14 @@ public class AudienceSharingControllerTest {
     @Disabled("Not Implemented")
     void businessAccountAudiencesSharedAccountsListMethodTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
         String audienceId = "example";
         AudienceAccountType accountType = AudienceAccountType.fromValue("AD_ACCOUNT");
-        Integer pageSize = 25;
         String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        AdAccountsAudiencesSharedAccountsList200Response result = controller.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, pageSize, bookmark).block();
+        AdAccountsAudiencesSharedAccountsList200Response result = controller.businessAccountAudiencesSharedAccountsList(businessId, audienceId, accountType, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -146,15 +151,15 @@ public class AudienceSharingControllerTest {
         // given
         String uri = UriTemplate.of("/businesses/{business_id}/audiences/shared/accounts").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4988b397");
+            .accept("[Ljava.lang.String;@40451d96");
         request.getParameters()
             .add("audience_id", "example") // The query parameter format should be 
             .add("account_type", String.valueOf(AudienceAccountType.fromValue("AD_ACCOUNT"))) // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("bookmark", "example"); // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountsAudiencesSharedAccountsList200Response.class);
@@ -176,13 +181,13 @@ public class AudienceSharingControllerTest {
     @Disabled("Not Implemented")
     void sharedAudiencesForBusinessListMethodTest() {
         // given
-        String businessId = "729090764583391194";
+        String businessId = "example";
+        Order order = Order.fromValue("ASCENDING");
         String bookmark = "example";
-        String order = "ASCENDING";
         Integer pageSize = 25;
 
         // when
-        AudiencesList200Response result = controller.sharedAudiencesForBusinessList(businessId, bookmark, order, pageSize).block();
+        SharedAudiencesForBusinessList200Response result = controller.sharedAudiencesForBusinessList(businessId, order, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -200,17 +205,17 @@ public class AudienceSharingControllerTest {
         // given
         String uri = UriTemplate.of("/businesses/{business_id}/audiences").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2cf9a66");
+            .accept("[Ljava.lang.String;@48386ee9");
         request.getParameters()
+            .add("order", String.valueOf(Order.fromValue("ASCENDING"))) // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
-            .add("order", "ASCENDING") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, AudiencesList200Response.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, SharedAudiencesForBusinessList200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -221,7 +226,7 @@ public class AudienceSharingControllerTest {
      *
      * The method should: Update audience sharing between ad accounts
      *
-     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same &lt;a href&#x3D;&#39;https://help.pinterest.com/en/business/article/create-and-manage-accounts&#39;&gt;Pinterest Business Hierarchy&lt;/a&gt; as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with another ad account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient ad account(s) must be in the same [Pinterest Business Hierarchy](https://help.pinterest.com/en/business/article/create-and-manage-accounts) as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -230,10 +235,10 @@ public class AudienceSharingControllerTest {
     void updateAdAccountToAdAccountSharedAudienceMethodTest() {
         // given
         String adAccountId = "example";
-        SharedAudience sharedAudience = new SharedAudience();
+        AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody adAccountToAdAccountSharedAudienceUpdateWithRequiredBody = new AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
 
         // when
-        SharedAudienceResponse result = controller.updateAdAccountToAdAccountSharedAudience(adAccountId, sharedAudience).block();
+        AdAccountToAdAccountSharedAudience result = controller.updateAdAccountToAdAccountSharedAudience(adAccountId, adAccountToAdAccountSharedAudienceUpdateWithRequiredBody).block();
 
         // then
         Assertions.assertTrue(true);
@@ -249,16 +254,16 @@ public class AudienceSharingControllerTest {
     @Disabled("Not Implemented")
     void updateAdAccountToAdAccountSharedAudienceClientApiTest() throws IOException {
         // given
-        SharedAudience body = new SharedAudience();
+        AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody body = new AdAccountToAdAccountSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/audiences/ad_accounts/shared").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@668e80a2");
+            .accept("[Ljava.lang.String;@bda9bae");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, SharedAudienceResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountToAdAccountSharedAudience.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -269,7 +274,7 @@ public class AudienceSharingControllerTest {
      *
      * The method should: Update audience sharing from an ad account to businesses
      *
-     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From an ad account, share a specific audience with a business account, or revoke access to a previously shared audience. Only the audience owner account can share the audience. The recipient business account must be in the same business hierarchy as the business owner of the ad account.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -278,10 +283,10 @@ public class AudienceSharingControllerTest {
     void updateAdAccountToBusinessSharedAudienceMethodTest() {
         // given
         String adAccountId = "example";
-        BusinessSharedAudience businessSharedAudience = new BusinessSharedAudience();
+        AdAccountToBusinessSharedAudienceUpdateWithRequiredBody adAccountToBusinessSharedAudienceUpdateWithRequiredBody = new AdAccountToBusinessSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
 
         // when
-        BusinessSharedAudienceResponse result = controller.updateAdAccountToBusinessSharedAudience(adAccountId, businessSharedAudience).block();
+        AdAccountToBusinessSharedAudience result = controller.updateAdAccountToBusinessSharedAudience(adAccountId, adAccountToBusinessSharedAudienceUpdateWithRequiredBody).block();
 
         // then
         Assertions.assertTrue(true);
@@ -297,16 +302,16 @@ public class AudienceSharingControllerTest {
     @Disabled("Not Implemented")
     void updateAdAccountToBusinessSharedAudienceClientApiTest() throws IOException {
         // given
-        BusinessSharedAudience body = new BusinessSharedAudience();
+        AdAccountToBusinessSharedAudienceUpdateWithRequiredBody body = new AdAccountToBusinessSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/audiences/businesses/shared").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@7466d5ee");
+            .accept("[Ljava.lang.String;@3fe827c0");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, BusinessSharedAudienceResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, AdAccountToBusinessSharedAudience.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -317,7 +322,7 @@ public class AudienceSharingControllerTest {
      *
      * The method should: Update audience sharing from a business to ad accounts
      *
-     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience. &lt;ul&gt; &lt;li&gt;If the business is the owner of the audience, it can share with any ad account within the same business hierarchy.&lt;/li&gt; &lt;li&gt;If the business is the recipient of the audience, it can share with any of its owned ad accounts.&lt;/li&gt; &lt;/ul&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with other ad account(s), or revoke access to a previously shared audience.  - If the business is the owner of the audience, it can share with any ad account within the same business hierarchy. - If the business is the recipient of the audience, it can share with any of its owned ad accounts.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -325,11 +330,11 @@ public class AudienceSharingControllerTest {
     @Disabled("Not Implemented")
     void updateBusinessToAdAccountSharedAudienceMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        SharedAudience sharedAudience = new SharedAudience();
+        String businessId = "example";
+        BusinessToAdAccountSharedAudienceUpdateWithRequiredBody businessToAdAccountSharedAudienceUpdateWithRequiredBody = new BusinessToAdAccountSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
 
         // when
-        SharedAudienceResponse result = controller.updateBusinessToAdAccountSharedAudience(businessId, sharedAudience).block();
+        BusinessToAdAccountSharedAudience result = controller.updateBusinessToAdAccountSharedAudience(businessId, businessToAdAccountSharedAudienceUpdateWithRequiredBody).block();
 
         // then
         Assertions.assertTrue(true);
@@ -345,16 +350,16 @@ public class AudienceSharingControllerTest {
     @Disabled("Not Implemented")
     void updateBusinessToAdAccountSharedAudienceClientApiTest() throws IOException {
         // given
-        SharedAudience body = new SharedAudience();
+        BusinessToAdAccountSharedAudienceUpdateWithRequiredBody body = new BusinessToAdAccountSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
         String uri = UriTemplate.of("/businesses/{business_id}/audiences/ad_accounts/shared").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@787ed4fe");
+            .accept("[Ljava.lang.String;@57a92406");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, SharedAudienceResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BusinessToAdAccountSharedAudience.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -365,7 +370,7 @@ public class AudienceSharingControllerTest {
      *
      * The method should: Update audience sharing between businesses
      *
-     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.&lt;br&gt; This endpoint is not available to all apps.&lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.
+     * From a business, share a specific audience with another business account, or revoke access to a previously shared audience. Only the audience owner can share the audience with other businesses, and the recipient business must be within the same business hierarchy.  This endpoint is not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).
      *
      * TODO fill in the parameters and test return value.
      */
@@ -373,11 +378,11 @@ public class AudienceSharingControllerTest {
     @Disabled("Not Implemented")
     void updateBusinessToBusinessSharedAudienceMethodTest() {
         // given
-        String businessId = "729090764583391194";
-        BusinessSharedAudience businessSharedAudience = new BusinessSharedAudience();
+        String businessId = "example";
+        BusinessToBusinessSharedAudienceUpdateWithRequiredBody businessToBusinessSharedAudienceUpdateWithRequiredBody = new BusinessToBusinessSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
 
         // when
-        BusinessSharedAudienceResponse result = controller.updateBusinessToBusinessSharedAudience(businessId, businessSharedAudience).block();
+        BusinessToBusinessSharedAudience result = controller.updateBusinessToBusinessSharedAudience(businessId, businessToBusinessSharedAudienceUpdateWithRequiredBody).block();
 
         // then
         Assertions.assertTrue(true);
@@ -393,16 +398,16 @@ public class AudienceSharingControllerTest {
     @Disabled("Not Implemented")
     void updateBusinessToBusinessSharedAudienceClientApiTest() throws IOException {
         // given
-        BusinessSharedAudience body = new BusinessSharedAudience();
+        BusinessToBusinessSharedAudienceUpdateWithRequiredBody body = new BusinessToBusinessSharedAudienceUpdateWithRequiredBody("2542621871096", org.openapitools.model.OperationType.fromValue("SHARE"), Arrays.asList("example"));
         String uri = UriTemplate.of("/businesses/{business_id}/audiences/businesses/shared").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("business_id", "729090764583391194");
+            put("business_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@69c7d3d");
+            .accept("[Ljava.lang.String;@5ced573c");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, BusinessSharedAudienceResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BusinessToBusinessSharedAudience.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

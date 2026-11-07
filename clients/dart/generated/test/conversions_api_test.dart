@@ -17,12 +17,39 @@ void main() {
   // final instance = ConversionsApi();
 
   group('tests for ConversionsApi', () {
+    // Create advertiser defined events
+    //
+    // Map advertiser defined events to standard events for the given ad account.
+    //
+    //Future<AdvertiserDefinedEventsCreate200Response> advertiserDefinedEventsCreate(String adAccountId, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) async
+    test('test advertiserDefinedEventsCreate', () async {
+      // TODO
+    });
+
+    // Delete advertiser defined events
+    //
+    // Untrack advertiser defined events for the given ad account.
+    //
+    //Future<AdvertiserDefinedEventsCreate200Response> advertiserDefinedEventsDelete(String adAccountId, List<String> eventNames) async
+    test('test advertiserDefinedEventsDelete', () async {
+      // TODO
+    });
+
     // Get advertiser defined events
     //
-    // <p>Get advertiser defined events for the given ad account.</p>
+    // Get advertiser defined events for the given ad account.
     //
-    //Future<AdvertiserDefinedEventsResponse> advertiserDefinedEventsGet(String adAccountId) async
+    //Future<AdvertiserDefinedEventsGet200Response> advertiserDefinedEventsGet(String adAccountId) async
     test('test advertiserDefinedEventsGet', () async {
+      // TODO
+    });
+
+    // Update advertiser defined events
+    //
+    // Update advertiser defined event names or mappings for the given ad account.
+    //
+    //Future<AdvertiserDefinedEventsCreate200Response> advertiserDefinedEventsUpdate(String adAccountId, AdvertiserDefinedEventsCreateRequest advertiserDefinedEventsCreateRequest) async
+    test('test advertiserDefinedEventsUpdate', () async {
       // TODO
     });
 

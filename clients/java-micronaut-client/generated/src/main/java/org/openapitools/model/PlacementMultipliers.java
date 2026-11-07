@@ -31,7 +31,7 @@ import javax.annotation.Generated;
   PlacementMultipliers.JSON_PROPERTY_P_L_A_C_E_M_E_N_T
 })
 @JsonTypeName("PlacementMultipliers")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class PlacementMultipliers extends HashMap<String, Double> {
     public static final String JSON_PROPERTY_P_L_A_C_E_M_E_N_T = "PLACEMENT";

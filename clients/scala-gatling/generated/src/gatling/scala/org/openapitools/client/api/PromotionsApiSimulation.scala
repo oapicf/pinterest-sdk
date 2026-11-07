@@ -122,9 +122,9 @@ class PromotionsApiSimulation extends Simulation {
         .feed(promotions/listPATHFeeder)
         .exec(http("promotionsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/promotions")
-        .queryParam("page_size","${page_size}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("order","${order}")
+        .queryParam("page_size","${page_size}")
 )
 
     // Run scnpromotionsList with warm up and reach a constant rate for entire duration

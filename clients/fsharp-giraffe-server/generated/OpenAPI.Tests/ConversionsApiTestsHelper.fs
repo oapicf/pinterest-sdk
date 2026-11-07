@@ -17,5 +17,43 @@ open OpenAPI.ConversionsApiHandlerParams
 
 module ConversionsApiHandlerTestsHelper =
 
+
+  let mutable AdvertiserDefinedEventsCreateExamples = Map.empty
+  let mutable AdvertiserDefinedEventsCreateBody = ""
+
+  AdvertiserDefinedEventsCreateBody <- WebUtility.HtmlDecode "{
+  &quot;items&quot; : [ {
+    &quot;mapped_conversion_type&quot; : &quot;SIGNUP&quot;,
+    &quot;name&quot; : &quot;newsletter_signup&quot;
+  }, {
+    &quot;mapped_conversion_type&quot; : &quot;SIGNUP&quot;,
+    &quot;name&quot; : &quot;newsletter_signup&quot;
+  } ]
+}"
+  AdvertiserDefinedEventsCreateExamples <- AdvertiserDefinedEventsCreateExamples.Add("application/json", AdvertiserDefinedEventsCreateBody)
+
+  let getAdvertiserDefinedEventsCreateExample mediaType =
+    AdvertiserDefinedEventsCreateExamples.[mediaType]
+      |> getConverter mediaType
   ()
 
+  ()
+
+
+  let mutable AdvertiserDefinedEventsUpdateExamples = Map.empty
+  let mutable AdvertiserDefinedEventsUpdateBody = ""
+
+  AdvertiserDefinedEventsUpdateBody <- WebUtility.HtmlDecode "{
+  &quot;items&quot; : [ {
+    &quot;mapped_conversion_type&quot; : &quot;SIGNUP&quot;,
+    &quot;name&quot; : &quot;newsletter_signup&quot;
+  }, {
+    &quot;mapped_conversion_type&quot; : &quot;SIGNUP&quot;,
+    &quot;name&quot; : &quot;newsletter_signup&quot;
+  } ]
+}"
+  AdvertiserDefinedEventsUpdateExamples <- AdvertiserDefinedEventsUpdateExamples.Add("application/json", AdvertiserDefinedEventsUpdateBody)
+
+  let getAdvertiserDefinedEventsUpdateExample mediaType =
+    AdvertiserDefinedEventsUpdateExamples.[mediaType]
+      |> getConverter mediaType

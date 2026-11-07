@@ -5,10 +5,11 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.error import Error  # noqa: E501
-from app.openapi_server.models.promotion_create_request import PromotionCreateRequest  # noqa: E501
-from app.openapi_server.models.promotion_response import PromotionResponse  # noqa: E501
-from app.openapi_server.models.promotion_update_request import PromotionUpdateRequest  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: E501
+from app.openapi_server.models.promotion import Promotion  # noqa: E501
+from app.openapi_server.models.promotion_batch_update import PromotionBatchUpdate  # noqa: E501
+from app.openapi_server.models.promotion_create import PromotionCreate  # noqa: E501
 from app.openapi_server.models.promotions_list200_response import PromotionsList200Response  # noqa: E501
 from app.openapi_server.models.promotions_response import PromotionsResponse  # noqa: E501
 from openapi_server.test import BaseTestCase
@@ -22,7 +23,7 @@ class TestPromotionsController(BaseTestCase):
 
         Create promotions
         """
-        body = {"promotion_type":"VARIABLE","start_time":1677003860,"promotion_custom_id":"freeshipping_2025","discount_status":"ACTIVE","platform_type":"DEFAULT","promotion_title":"Black Friday 10% off","promotion_code":"blackfriday10","end_time":1678003860,"external_id":"abc","template_values":[{"amount":100,"custom_text":"My promotion","percent":10,"currency_code":"UNK"},{"amount":100,"custom_text":"My promotion","percent":10,"currency_code":"UNK"}]}
+        body = {"discount_status":"OTHER","end_time":0,"external_id":"external_id","platform_type":"platform_type","promotion_code":"promotion_code","promotion_custom_id":"promotion_custom_id","promotion_title":"promotion_title","promotion_type":"VARIABLE","start_time":6,"template_values":[{"amount":100,"currency_code":"UNK","custom_text":"My promotion","percent":10},{"amount":100,"currency_code":"UNK","custom_text":"My promotion","percent":10}]}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/promotions'.format(ad_account_id='ad_account_id_example'),
             method='POST',
@@ -37,7 +38,7 @@ class TestPromotionsController(BaseTestCase):
         Delete promotion by id
         """
         response = self.client.open(
-            '/v5/ad_accounts/{ad_account_id}/promotions/{promotion_id}'.format(ad_account_id='ad_account_id_example', promotion_id='promotion_id_example'),
+            '/v5/ad_accounts/{ad_account_id}/promotions/{promotion_id}'.format(promotion_id='promotion_id_example', ad_account_id='ad_account_id_example'),
             method='DELETE')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -48,7 +49,7 @@ class TestPromotionsController(BaseTestCase):
         Get promotion by id
         """
         response = self.client.open(
-            '/v5/ad_accounts/{ad_account_id}/promotions/{promotion_id}'.format(ad_account_id='ad_account_id_example', promotion_id='promotion_id_example'),
+            '/v5/ad_accounts/{ad_account_id}/promotions/{promotion_id}'.format(promotion_id='promotion_id_example', ad_account_id='ad_account_id_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))
@@ -58,9 +59,9 @@ class TestPromotionsController(BaseTestCase):
 
         Get promotions
         """
-        query_string = [('page_size', 25),
-                        ('order', 'ASCENDING'),
-                        ('bookmark', 'bookmark_example')]
+        query_string = [('bookmark', 'bookmark_example'),
+                        ('page_size', 25),
+                        ('order', openapi_server.PinterestLibPaginationOrder())]
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/promotions'.format(ad_account_id='ad_account_id_example'),
             method='GET',
@@ -73,7 +74,7 @@ class TestPromotionsController(BaseTestCase):
 
         Update promotions
         """
-        body = {"promotion_type":"VARIABLE","start_time":1677003860,"promotion_custom_id":"freeshipping_2025","discount_status":"ACTIVE","platform_type":"DEFAULT","promotion_title":"Black Friday 10% off","promotion_code":"blackfriday10","end_time":1678003860,"external_id":"abc","template_values":[{"amount":100,"custom_text":"My promotion","percent":10,"currency_code":"UNK"},{"amount":100,"custom_text":"My promotion","percent":10,"currency_code":"UNK"}],"id":"7834020347906","status":"ACTIVE"}
+        body = {"discount_status":"OTHER","end_time":0,"external_id":"external_id","id":"id","platform_type":"platform_type","promotion_code":"promotion_code","promotion_custom_id":"promotion_custom_id","promotion_title":"promotion_title","promotion_type":"VARIABLE","start_time":6,"template_values":[{"amount":100,"currency_code":"UNK","custom_text":"My promotion","percent":10},{"amount":100,"currency_code":"UNK","custom_text":"My promotion","percent":10}]}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/promotions'.format(ad_account_id='ad_account_id_example'),
             method='PATCH',

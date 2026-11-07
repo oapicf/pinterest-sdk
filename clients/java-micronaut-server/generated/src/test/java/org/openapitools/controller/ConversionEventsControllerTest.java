@@ -1,9 +1,9 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.ConversionApiResponse;
 import org.openapitools.model.ConversionEvents;
+import org.openapitools.model.ConversionEventsCreate;
 import org.openapitools.model.DetailedError;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
 import io.micronaut.http.client.annotation.Client;
@@ -54,7 +54,7 @@ public class ConversionEventsControllerTest {
      *
      * The method should: Send conversions
      *
-     * The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their &lt;code&gt;ad_account_id&lt;/code&gt;. The request body should be a JSON object. - This endpoint requires an &lt;code&gt;access_token&lt;/code&gt; be generated through Ads Manager. Review the &lt;a href&#x3D;\&quot;/docs/api-features/conversion-overview/\&quot;&gt;Conversions Guide&lt;/a&gt; for more details. (Note that the authorization header required is &lt;code&gt;Authorization: Bearer &amp;lt;access_token&amp;gt;&lt;/code&gt;). - The token&#39;s &lt;code&gt;user_account&lt;/code&gt; must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\&quot;&gt;Business Access&lt;/a&gt;: Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
+     * The Pinterest API offers advertisers a way to send Pinterest their conversion information (including web conversions, in-app conversions, or even offline conversions) based on their &#x60;ad_account_id&#x60;. The request body should be a JSON object. - This endpoint requires an &#x60;access_token&#x60; be generated through Ads Manager. Review the [Conversions Guide](/docs/api-features/conversion-overview/) for more details. (Note that the authorization header required is &#x60;Authorization: Bearer &lt;access_token&gt;&#x60;). - The token&#39;s &#x60;user_account&#x60; must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Audience, Campaign. (Note that the token can be used across multiple ad accounts under an user ID.) - This endpoint has a rate limit of 5,000 calls per minute per ad account. - If the merchant is submitting this information using both Pinterest conversion tags and the Pinterest API, Pinterest will remove duplicate information before reporting. (Note that events that took place offline cannot be deduplicated.)
      *
      * TODO fill in the parameters and test return value.
      */
@@ -63,11 +63,11 @@ public class ConversionEventsControllerTest {
     void eventsCreateMethodTest() {
         // given
         String adAccountId = "example";
-        ConversionEvents conversionEvents = new ConversionEvents(Arrays.asList());
+        ConversionEventsCreate conversionEventsCreate = new ConversionEventsCreate(Arrays.asList());
         Boolean test = false;
 
         // when
-        ConversionApiResponse result = controller.eventsCreate(adAccountId, conversionEvents, test).block();
+        ConversionEvents result = controller.eventsCreate(adAccountId, conversionEventsCreate, test).block();
 
         // then
         Assertions.assertTrue(true);
@@ -83,18 +83,18 @@ public class ConversionEventsControllerTest {
     @Disabled("Not Implemented")
     void eventsCreateClientApiTest() throws IOException {
         // given
-        ConversionEvents body = new ConversionEvents(Arrays.asList());
+        ConversionEventsCreate body = new ConversionEventsCreate(Arrays.asList());
         String uri = UriTemplate.of("/ad_accounts/{ad_account_id}/events").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@3712d592");
+            .accept("[Ljava.lang.String;@1921f54a");
         request.getParameters()
             .add("test", String.valueOf(false)); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionApiResponse.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, ConversionEvents.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

@@ -1,8 +1,8 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Error;
 import org.openapitools.model.NotificationPostRequest;
 import org.openapitools.model.NotificationResponse;
+import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;

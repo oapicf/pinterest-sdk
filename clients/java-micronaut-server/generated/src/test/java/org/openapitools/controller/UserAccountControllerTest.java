@@ -2,21 +2,25 @@ package org.openapitools.controller;
 
 import org.openapitools.model.Account;
 import org.openapitools.model.AnalyticsMetricsResponse;
-import org.openapitools.model.BoardsUserFollowsList200Response;
-import org.openapitools.model.Error;
-import org.openapitools.model.FollowUserRequest;
+import java.math.BigDecimal;
+import org.openapitools.model.BoardsList200Response;
+import org.openapitools.model.FollowUser;
+import org.openapitools.model.FollowUserCreate;
 import org.openapitools.model.FollowersList200Response;
 import org.openapitools.model.LinkedBusiness;
 import java.time.LocalDate;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.QuerymetrictypesItems;
+import org.openapitools.model.QueryvideopinmetrictypesItems;
 import org.openapitools.model.TopPinsAnalyticsResponse;
+import org.openapitools.model.TopPinsSortBy;
 import org.openapitools.model.TopVideoPinsAnalyticsResponse;
+import org.openapitools.model.TopVideoPinsSortBy;
 import org.openapitools.model.UserAccountFollowedInterests200Response;
 import org.openapitools.model.UserFollowingFeedType;
-import org.openapitools.model.UserFollowingGet200Response;
-import org.openapitools.model.UserSummary;
-import org.openapitools.model.UserWebsiteSummary;
-import org.openapitools.model.UserWebsiteVerificationCode;
-import org.openapitools.model.UserWebsiteVerifyRequest;
+import org.openapitools.model.UserWebsite;
+import org.openapitools.model.UserWebsiteCreate;
+import org.openapitools.model.UserWebsiteVerification;
 import org.openapitools.model.UserWebsitesGet200Response;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
@@ -76,13 +80,13 @@ public class UserAccountControllerTest {
     @Disabled("Not Implemented")
     void boardsUserFollowsListMethodTest() {
         // given
+        String adAccountId = "example";
+        Boolean explicitFollowing = false;
         String bookmark = "example";
         Integer pageSize = 25;
-        Boolean explicitFollowing = false;
-        String adAccountId = "example";
 
         // when
-        BoardsUserFollowsList200Response result = controller.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId).block();
+        BoardsList200Response result = controller.boardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -100,15 +104,15 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/following/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5f9f3802");
+            .accept("[Ljava.lang.String;@35dc7aa5");
         request.getParameters()
-            .add("bookmark", "example") // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
+            .add("ad_account_id", "example") // The query parameter format should be 
             .add("explicit_following", String.valueOf(false)) // The query parameter format should be 
-            .add("ad_account_id", "example"); // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, BoardsUserFollowsList200Response.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, BoardsList200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -119,7 +123,7 @@ public class UserAccountControllerTest {
      *
      * The method should: Follow user
      *
-     * &lt;strong&gt;This endpoint is currently in beta and not available to all apps. &lt;a href&#x3D;&#39;/docs/getting-started/using-beta-and-restricted-features/&#39;&gt;Learn more&lt;/a&gt;.&lt;/strong&gt;  Use this request, as a signed-in user, to follow another user.
+     * **This endpoint is currently in beta and not available to all apps. [Learn more](/docs/getting-started/using-beta-and-restricted-features/).**  Use this request, as a signed-in user, to follow another user.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -127,11 +131,11 @@ public class UserAccountControllerTest {
     @Disabled("Not Implemented")
     void followUserUpdateMethodTest() {
         // given
-        String username = "username";
-        FollowUserRequest followUserRequest = new FollowUserRequest();
+        String username = "example";
+        FollowUserCreate followUserCreate = new FollowUserCreate();
 
         // when
-        UserSummary result = controller.followUserUpdate(username, followUserRequest).block();
+        FollowUser result = controller.followUserUpdate(username, followUserCreate).block();
 
         // then
         Assertions.assertTrue(true);
@@ -147,16 +151,16 @@ public class UserAccountControllerTest {
     @Disabled("Not Implemented")
     void followUserUpdateClientApiTest() throws IOException {
         // given
-        FollowUserRequest body = new FollowUserRequest();
+        FollowUserCreate body = new FollowUserCreate();
         String uri = UriTemplate.of("/user_account/following/{username}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("username", "username");
+            put("username", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@93e25a3");
+            .accept("[Ljava.lang.String;@2fd2b05");
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, UserSummary.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, FollowUser.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -197,7 +201,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/followers").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@203dff48");
+            .accept("[Ljava.lang.String;@41b79554");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -242,7 +246,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/businesses").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2b624a24");
+            .accept("[Ljava.lang.String;@2f0aba65");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, Argument.of(List.class, LinkedBusiness.class));
@@ -256,7 +260,7 @@ public class UserAccountControllerTest {
      *
      * The method should: Unverify website
      *
-     * Unverifu a website verified by the signed-in user.
+     * Unverify a website verified by the signed-in user.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -264,10 +268,10 @@ public class UserAccountControllerTest {
     @Disabled("Not Implemented")
     void unverifyWebsiteDeleteMethodTest() {
         // given
-        String website = "mysite.test";
+        String website = "example";
 
         // when
-        controller.unverifyWebsiteDelete(website).block();
+        UserWebsite result = controller.unverifyWebsiteDelete(website).block();
 
         // then
         Assertions.assertTrue(true);
@@ -285,12 +289,12 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/websites").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@d9b3862");
+            .accept("[Ljava.lang.String;@7955e473");
         request.getParameters()
-            .add("website", "mysite.test"); // The query parameter format should be 
+            .add("website", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
+        HttpResponse<?> response = client.toBlocking().exchange(request, UserWebsite.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -316,7 +320,7 @@ public class UserAccountControllerTest {
         String appTypes = "ALL";
         String contentType = "ALL";
         String source = "ALL";
-        List<String> metricTypes = Arrays.asList("example");
+        List<QuerymetrictypesItems> metricTypes = Arrays.asList();
         String splitField = "NO_SPLIT";
         String adAccountId = "example";
 
@@ -339,7 +343,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/analytics").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@75f0074f");
+            .accept("[Ljava.lang.String;@121b4d5f");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
@@ -348,7 +352,7 @@ public class UserAccountControllerTest {
             .add("app_types", "ALL") // The query parameter format should be 
             .add("content_type", "ALL") // The query parameter format should be 
             .add("source", "ALL") // The query parameter format should be 
-            .add("metric_types", String.valueOf(Arrays.asList("example"))) // The query parameter format should be csv
+            .add("metric_types", String.valueOf(Arrays.asList())) // The query parameter format should be csv
             .add("split_field", "NO_SPLIT") // The query parameter format should be 
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -374,15 +378,15 @@ public class UserAccountControllerTest {
         // given
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        String sortBy = "example";
+        TopPinsSortBy sortBy = TopPinsSortBy.fromValue("ENGAGEMENT");
         String fromClaimedContent = "BOTH";
         String pinFormat = "ALL";
         String appTypes = "ALL";
         String contentType = "ALL";
         String source = "ALL";
-        List<String> metricTypes = Arrays.asList("example");
+        List<QuerymetrictypesItems> metricTypes = Arrays.asList();
         Integer numOfPins = 10;
-        Integer createdInLastNDays = 30;
+        BigDecimal createdInLastNDays = new BigDecimal(78);
         String adAccountId = "example";
 
         // when
@@ -404,19 +408,19 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/analytics/top_pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3af86106");
+            .accept("[Ljava.lang.String;@6f7b777d");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
-            .add("sort_by", "example") // The query parameter format should be 
+            .add("sort_by", String.valueOf(TopPinsSortBy.fromValue("ENGAGEMENT"))) // The query parameter format should be 
             .add("from_claimed_content", "BOTH") // The query parameter format should be 
             .add("pin_format", "ALL") // The query parameter format should be 
             .add("app_types", "ALL") // The query parameter format should be 
             .add("content_type", "ALL") // The query parameter format should be 
             .add("source", "ALL") // The query parameter format should be 
-            .add("metric_types", String.valueOf(Arrays.asList("example"))) // The query parameter format should be csv
+            .add("metric_types", String.valueOf(Arrays.asList())) // The query parameter format should be csv
             .add("num_of_pins", String.valueOf(10)) // The query parameter format should be 
-            .add("created_in_last_n_days", String.valueOf(30)) // The query parameter format should be 
+            .add("created_in_last_n_days", String.valueOf(new BigDecimal(78))) // The query parameter format should be 
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
@@ -441,15 +445,15 @@ public class UserAccountControllerTest {
         // given
         LocalDate startDate = LocalDate.of(2001, 2, 3);
         LocalDate endDate = LocalDate.of(2001, 2, 3);
-        String sortBy = "example";
+        TopVideoPinsSortBy sortBy = TopVideoPinsSortBy.fromValue("SAVE");
         String fromClaimedContent = "BOTH";
         String pinFormat = "ALL";
         String appTypes = "ALL";
         String contentType = "ALL";
         String source = "ALL";
-        List<String> metricTypes = Arrays.asList("example");
+        List<QueryvideopinmetrictypesItems> metricTypes = Arrays.asList();
         Integer numOfPins = 10;
-        Integer createdInLastNDays = 30;
+        BigDecimal createdInLastNDays = new BigDecimal(78);
         String adAccountId = "example";
 
         // when
@@ -471,19 +475,19 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/analytics/top_video_pins").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@3f23f17");
+            .accept("[Ljava.lang.String;@15d82165");
         request.getParameters()
             .add("start_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
             .add("end_date", String.valueOf(LocalDate.of(2001, 2, 3))) // The query parameter format should be 
-            .add("sort_by", "example") // The query parameter format should be 
+            .add("sort_by", String.valueOf(TopVideoPinsSortBy.fromValue("SAVE"))) // The query parameter format should be 
             .add("from_claimed_content", "BOTH") // The query parameter format should be 
             .add("pin_format", "ALL") // The query parameter format should be 
             .add("app_types", "ALL") // The query parameter format should be 
             .add("content_type", "ALL") // The query parameter format should be 
             .add("source", "ALL") // The query parameter format should be 
-            .add("metric_types", String.valueOf(Arrays.asList("example"))) // The query parameter format should be csv
+            .add("metric_types", String.valueOf(Arrays.asList())) // The query parameter format should be csv
             .add("num_of_pins", String.valueOf(10)) // The query parameter format should be 
-            .add("created_in_last_n_days", String.valueOf(30)) // The query parameter format should be 
+            .add("created_in_last_n_days", String.valueOf(new BigDecimal(78))) // The query parameter format should be 
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
@@ -506,7 +510,7 @@ public class UserAccountControllerTest {
     @Disabled("Not Implemented")
     void userAccountFollowedInterestsMethodTest() {
         // given
-        String username = "username";
+        String username = "example";
         String bookmark = "example";
         Integer pageSize = 25;
 
@@ -529,10 +533,10 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/users/{username}/interests/follow").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
-            put("username", "username");
+            put("username", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@57fe4f23");
+            .accept("[Ljava.lang.String;@437839d1");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -549,7 +553,7 @@ public class UserAccountControllerTest {
      *
      * The method should: Get user account
      *
-     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See &lt;a href&#x3D;&#39;/docs/getting-started/using-business-access/&#39;&gt;Understanding Business Access&lt;/a&gt; for more information.
+     * Get account information for the \&quot;operation user_account\&quot; - By default, the \&quot;operation user_account\&quot; is the token user_account.  [Understanding Business Access]: https://developers.pinterest.com/docs/getting-started/using-business-access/ \&quot;Understanding Business Access\&quot; If using Business Access: Specify an ad_account_id to use the owner of that ad_account as the \&quot;operation user_account\&quot;. See [Understanding Business Access] for more information.
      *
      * TODO fill in the parameters and test return value.
      */
@@ -578,7 +582,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@2241f0ec");
+            .accept("[Ljava.lang.String;@b41f554");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -602,14 +606,14 @@ public class UserAccountControllerTest {
     @Disabled("Not Implemented")
     void userFollowingGetMethodTest() {
         // given
+        String adAccountId = "example";
+        Boolean explicitFollowing = false;
+        UserFollowingFeedType feedType = UserFollowingFeedType.fromValue("ALL");
         String bookmark = "example";
         Integer pageSize = 25;
-        UserFollowingFeedType feedType = UserFollowingFeedType.fromValue("ALL");
-        Boolean explicitFollowing = false;
-        String adAccountId = "example";
 
         // when
-        UserFollowingGet200Response result = controller.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId).block();
+        FollowersList200Response result = controller.userFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -627,16 +631,16 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/following").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@5b4855f3");
+            .accept("[Ljava.lang.String;@3fb5abde");
         request.getParameters()
-            .add("bookmark", "example") // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
-            .add("feed_type", UserFollowingFeedType.fromValue("ALL")) // The query parameter format should be 
+            .add("ad_account_id", "example") // The query parameter format should be 
             .add("explicit_following", String.valueOf(false)) // The query parameter format should be 
-            .add("ad_account_id", "example"); // The query parameter format should be 
+            .add("feed_type", String.valueOf(UserFollowingFeedType.fromValue("ALL"))) // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, UserFollowingGet200Response.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, FollowersList200Response.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -677,7 +681,7 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/websites").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@49d0c30a");
+            .accept("[Ljava.lang.String;@6b327644");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)); // The query parameter format should be 
@@ -702,11 +706,11 @@ public class UserAccountControllerTest {
     @Disabled("Not Implemented")
     void verifyWebsiteUpdateMethodTest() {
         // given
-        UserWebsiteVerifyRequest userWebsiteVerifyRequest = new UserWebsiteVerifyRequest();
+        UserWebsiteCreate userWebsiteCreate = new UserWebsiteCreate();
         String adAccountId = "example";
 
         // when
-        UserWebsiteSummary result = controller.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId).block();
+        UserWebsite result = controller.verifyWebsiteUpdate(userWebsiteCreate, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -722,15 +726,15 @@ public class UserAccountControllerTest {
     @Disabled("Not Implemented")
     void verifyWebsiteUpdateClientApiTest() throws IOException {
         // given
-        UserWebsiteVerifyRequest body = new UserWebsiteVerifyRequest();
+        UserWebsiteCreate body = new UserWebsiteCreate();
         String uri = UriTemplate.of("/user_account/websites").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@6cf21a44");
+            .accept("[Ljava.lang.String;@69067c42");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, UserWebsiteSummary.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, UserWebsite.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -752,7 +756,7 @@ public class UserAccountControllerTest {
         String adAccountId = "example";
 
         // when
-        UserWebsiteVerificationCode result = controller.websiteVerificationGet(adAccountId).block();
+        UserWebsiteVerification result = controller.websiteVerificationGet(adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -770,12 +774,12 @@ public class UserAccountControllerTest {
         // given
         String uri = UriTemplate.of("/user_account/websites/verification").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@411951a6");
+            .accept("[Ljava.lang.String;@6de9df63");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request, UserWebsiteVerificationCode.class);
+        HttpResponse<?> response = client.toBlocking().exchange(request, UserWebsiteVerification.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());

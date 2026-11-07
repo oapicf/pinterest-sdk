@@ -32,7 +32,7 @@ import javax.annotation.Generated;
   RetailLocalInventoryItemAttributesOptional.JSON_PROPERTY_SALE_PRICE
 })
 @JsonTypeName("RetailLocalInventoryItemAttributesOptional")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class RetailLocalInventoryItemAttributesOptional {
     public static final String JSON_PROPERTY_AD_LINK = "ad_link";

@@ -26,10 +26,10 @@ func Test_openapi_OrderLinesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var adAccountId string
 		var orderLineId string
+		var adAccountId string
 
-		resp, httpRes, err := apiClient.OrderLinesAPI.OrderLinesGet(context.Background(), adAccountId, orderLineId).Execute()
+		resp, httpRes, err := apiClient.OrderLinesAPI.OrderLinesGet(context.Background(), orderLineId, adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

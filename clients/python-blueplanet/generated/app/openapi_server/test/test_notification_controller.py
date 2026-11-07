@@ -5,9 +5,9 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.error import Error  # noqa: E501
 from app.openapi_server.models.notification_post_request import NotificationPostRequest  # noqa: E501
 from app.openapi_server.models.notification_response import NotificationResponse  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -19,7 +19,7 @@ class TestNotificationController(BaseTestCase):
 
         Receive notifications from external partners.
         """
-        body = openapi_server.NotificationPostRequest()
+        body = [ "{}", "{}", "{}", "{}", "{}" ]
         response = self.client.open(
             '/v5/notifications',
             method='POST',

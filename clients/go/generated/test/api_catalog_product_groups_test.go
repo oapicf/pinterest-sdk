@@ -66,9 +66,10 @@ func Test_openapi_CatalogProductGroupsAPIService(t *testing.T) {
 
 		var productGroupId string
 
-		httpRes, err := apiClient.CatalogProductGroupsAPI.CatalogsProductGroupsDelete(context.Background(), productGroupId).Execute()
+		resp, httpRes, err := apiClient.CatalogProductGroupsAPI.CatalogsProductGroupsDelete(context.Background(), productGroupId).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

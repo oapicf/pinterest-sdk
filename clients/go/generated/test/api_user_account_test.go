@@ -76,9 +76,10 @@ func Test_openapi_UserAccountAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		httpRes, err := apiClient.UserAccountAPI.UnverifyWebsiteDelete(context.Background()).Execute()
+		resp, httpRes, err := apiClient.UserAccountAPI.UnverifyWebsiteDelete(context.Background()).Execute()
 
 		require.Nil(t, err)
+		require.NotNil(t, resp)
 		assert.Equal(t, 200, httpRes.StatusCode)
 
 	})

@@ -22,25 +22,25 @@ module PromotionsApiHandlerTestsHelper =
   let mutable PromotionsCreateBody = ""
 
   PromotionsCreateBody <- WebUtility.HtmlDecode "{
+  &quot;discount_status&quot; : &quot;OTHER&quot;,
+  &quot;end_time&quot; : 0,
+  &quot;external_id&quot; : &quot;external_id&quot;,
+  &quot;platform_type&quot; : &quot;platform_type&quot;,
+  &quot;promotion_code&quot; : &quot;promotion_code&quot;,
+  &quot;promotion_custom_id&quot; : &quot;promotion_custom_id&quot;,
+  &quot;promotion_title&quot; : &quot;promotion_title&quot;,
   &quot;promotion_type&quot; : &quot;VARIABLE&quot;,
-  &quot;start_time&quot; : 1677003860,
-  &quot;promotion_custom_id&quot; : &quot;freeshipping_2025&quot;,
-  &quot;discount_status&quot; : &quot;ACTIVE&quot;,
-  &quot;platform_type&quot; : &quot;DEFAULT&quot;,
-  &quot;promotion_title&quot; : &quot;Black Friday 10% off&quot;,
-  &quot;promotion_code&quot; : &quot;blackfriday10&quot;,
-  &quot;end_time&quot; : 1678003860,
-  &quot;external_id&quot; : &quot;abc&quot;,
+  &quot;start_time&quot; : 6,
   &quot;template_values&quot; : [ {
     &quot;amount&quot; : 100,
+    &quot;currency_code&quot; : &quot;UNK&quot;,
     &quot;custom_text&quot; : &quot;My promotion&quot;,
-    &quot;percent&quot; : 10,
-    &quot;currency_code&quot; : &quot;UNK&quot;
+    &quot;percent&quot; : 10
   }, {
     &quot;amount&quot; : 100,
+    &quot;currency_code&quot; : &quot;UNK&quot;,
     &quot;custom_text&quot; : &quot;My promotion&quot;,
-    &quot;percent&quot; : 10,
-    &quot;currency_code&quot; : &quot;UNK&quot;
+    &quot;percent&quot; : 10
   } ]
 }"
   PromotionsCreateExamples <- PromotionsCreateExamples.Add("application/json", PromotionsCreateBody)
@@ -59,28 +59,27 @@ module PromotionsApiHandlerTestsHelper =
   let mutable PromotionsUpdateBody = ""
 
   PromotionsUpdateBody <- WebUtility.HtmlDecode "{
+  &quot;discount_status&quot; : &quot;OTHER&quot;,
+  &quot;end_time&quot; : 0,
+  &quot;external_id&quot; : &quot;external_id&quot;,
+  &quot;id&quot; : &quot;id&quot;,
+  &quot;platform_type&quot; : &quot;platform_type&quot;,
+  &quot;promotion_code&quot; : &quot;promotion_code&quot;,
+  &quot;promotion_custom_id&quot; : &quot;promotion_custom_id&quot;,
+  &quot;promotion_title&quot; : &quot;promotion_title&quot;,
   &quot;promotion_type&quot; : &quot;VARIABLE&quot;,
-  &quot;start_time&quot; : 1677003860,
-  &quot;promotion_custom_id&quot; : &quot;freeshipping_2025&quot;,
-  &quot;discount_status&quot; : &quot;ACTIVE&quot;,
-  &quot;platform_type&quot; : &quot;DEFAULT&quot;,
-  &quot;promotion_title&quot; : &quot;Black Friday 10% off&quot;,
-  &quot;promotion_code&quot; : &quot;blackfriday10&quot;,
-  &quot;end_time&quot; : 1678003860,
-  &quot;external_id&quot; : &quot;abc&quot;,
+  &quot;start_time&quot; : 6,
   &quot;template_values&quot; : [ {
     &quot;amount&quot; : 100,
+    &quot;currency_code&quot; : &quot;UNK&quot;,
     &quot;custom_text&quot; : &quot;My promotion&quot;,
-    &quot;percent&quot; : 10,
-    &quot;currency_code&quot; : &quot;UNK&quot;
+    &quot;percent&quot; : 10
   }, {
     &quot;amount&quot; : 100,
+    &quot;currency_code&quot; : &quot;UNK&quot;,
     &quot;custom_text&quot; : &quot;My promotion&quot;,
-    &quot;percent&quot; : 10,
-    &quot;currency_code&quot; : &quot;UNK&quot;
-  } ],
-  &quot;id&quot; : &quot;7834020347906&quot;,
-  &quot;status&quot; : &quot;ACTIVE&quot;
+    &quot;percent&quot; : 10
+  } ]
 }"
   PromotionsUpdateExamples <- PromotionsUpdateExamples.Add("application/json", PromotionsUpdateBody)
 

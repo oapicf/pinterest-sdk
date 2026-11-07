@@ -2,16 +2,17 @@ package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
 import org.openapitools.model.AuthRespondInvitesBody;
-import org.openapitools.model.CancelInvitesBody;
+import org.openapitools.model.CancelInvitesRequest;
+import org.openapitools.model.CancelInvitesResponse;
 import org.openapitools.model.CreateAssetAccessRequestBody;
 import org.openapitools.model.CreateAssetAccessRequestResponse;
 import org.openapitools.model.CreateAssetInvitesRequest;
 import org.openapitools.model.CreateInvitesResultsResponseArray;
 import org.openapitools.model.CreateMembershipOrPartnershipInvitesBody;
-import org.openapitools.model.DeleteInvitesResultsResponseArray;
-import org.openapitools.model.Error;
 import org.openapitools.model.GetInvites200Response;
+import org.openapitools.model.InviteFilterStatus;
 import org.openapitools.model.InviteType;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.RespondToInvitesResponseArray;
 import org.openapitools.model.UpdateInvitesResultsResponseArray;
 
@@ -54,7 +55,7 @@ public class BusinessAccessInviteApiServiceImpl implements BusinessAccessInviteA
      *
      */
     @Override
-    public DeleteInvitesResultsResponseArray cancelInvitesOrRequests(String businessId, CancelInvitesBody cancelInvitesBody) {
+    public CancelInvitesResponse cancelInvitesOrRequests(String businessId, CancelInvitesRequest cancelInvitesRequest) {
         // TODO: Implement...
         return null;
     }
@@ -90,7 +91,7 @@ public class BusinessAccessInviteApiServiceImpl implements BusinessAccessInviteA
      *
      */
     @Override
-    public GetInvites200Response getInvites(String businessId, Boolean isMember, List<String> inviteStatus, InviteType inviteType, String bookmark, Integer pageSize) {
+    public GetInvites200Response getInvites(String businessId, Boolean isMember, List<InviteFilterStatus> inviteStatus, InviteType inviteType, String bookmark, Integer pageSize) {
         // TODO: Implement...
         return null;
     }

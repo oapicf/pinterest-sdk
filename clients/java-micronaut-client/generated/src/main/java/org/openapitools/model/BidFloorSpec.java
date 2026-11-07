@@ -42,7 +42,7 @@ import javax.annotation.Generated;
   BidFloorSpec.JSON_PROPERTY_OPTIMIZATION_GOAL_METADATA
 })
 @JsonTypeName("BidFloorSpec")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class BidFloorSpec {
     public static final String JSON_PROPERTY_BILLABLE_EVENT = "billable_event";

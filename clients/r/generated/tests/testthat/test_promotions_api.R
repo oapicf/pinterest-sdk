@@ -11,7 +11,7 @@ test_that("PromotionsCreate", {
   # Create promotions
   # Create multiple new promotions.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param promotion_create_request array[PromotionCreateRequest] List of promotions to create, size limit [1, 30].
+  # @param promotion_create array[PromotionCreate] 
   # @return [PromotionsResponse]
 
   # uncomment below to test the operation
@@ -23,9 +23,9 @@ test_that("PromotionsDelete", {
   # base path: https://api.pinterest.com/v5
   # Delete promotion by id
   # Delete a promotion within Pinterest.
+  # @param promotion_id character Promotion ID
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param promotion_id character Unique identifier of a promotion
-  # @return [Void]
+  # @return [Promotion]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -36,9 +36,9 @@ test_that("PromotionsGet", {
   # base path: https://api.pinterest.com/v5
   # Get promotion by id
   # Get a promotion by its Pinterest-specific id. It must be associated with the provided ad account id.
+  # @param promotion_id character Promotion ID
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param promotion_id character Unique identifier of a promotion
-  # @return [PromotionResponse]
+  # @return [Promotion]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -50,9 +50,9 @@ test_that("PromotionsList", {
   # Get promotions
   # Gets all promotions associated with an ad account ID that can be applied to an ad group. Can be either internally-saved promotions or external promotions imported from a commerce integration.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param order character The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @param order PinterestLibPaginationOrder The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   # @return [PromotionsList200Response]
 
   # uncomment below to test the operation
@@ -65,7 +65,7 @@ test_that("PromotionsUpdate", {
   # Update promotions
   # Update multiple promotions.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param promotion_update_request array[PromotionUpdateRequest] List of promotions to create, size limit [1, 30].
+  # @param promotion_batch_update array[PromotionBatchUpdate] 
   # @return [PromotionsResponse]
 
   # uncomment below to test the operation

@@ -22,6 +22,34 @@ func Test_openapi_ConversionsAPIService(t *testing.T) {
 	configuration := openapiclient.NewConfiguration()
 	apiClient := openapiclient.NewAPIClient(configuration)
 
+	t.Run("Test ConversionsAPIService AdvertiserDefinedEventsCreate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.ConversionsAPI.AdvertiserDefinedEventsCreate(context.Background(), adAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConversionsAPIService AdvertiserDefinedEventsDelete", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.ConversionsAPI.AdvertiserDefinedEventsDelete(context.Background(), adAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
 	t.Run("Test ConversionsAPIService AdvertiserDefinedEventsGet", func(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
@@ -29,6 +57,20 @@ func Test_openapi_ConversionsAPIService(t *testing.T) {
 		var adAccountId string
 
 		resp, httpRes, err := apiClient.ConversionsAPI.AdvertiserDefinedEventsGet(context.Background(), adAccountId).Execute()
+
+		require.Nil(t, err)
+		require.NotNil(t, resp)
+		assert.Equal(t, 200, httpRes.StatusCode)
+
+	})
+
+	t.Run("Test ConversionsAPIService AdvertiserDefinedEventsUpdate", func(t *testing.T) {
+
+		t.Skip("skip test")  // remove to run test
+
+		var adAccountId string
+
+		resp, httpRes, err := apiClient.ConversionsAPI.AdvertiserDefinedEventsUpdate(context.Background(), adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

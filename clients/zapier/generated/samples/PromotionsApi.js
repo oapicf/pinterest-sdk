@@ -1,7 +1,9 @@
 module.exports = {
     "PromotionsResponseSample": 
         { data: {} },
-    "PromotionResponseSample": 
+    "PromotionSample": 
+        { data: {} },
+    "PromotionSample": 
         { data: {} },
     "promotions_list_200_responseSample": 
         { data: {} },

@@ -30,7 +30,7 @@ import javax.annotation.Generated;
   TotalCountByEntityStatus.JSON_PROPERTY_P_A_U_S_E_D
 })
 @JsonTypeName("TotalCountByEntityStatus")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-03T06:13:25.438781301Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class TotalCountByEntityStatus {
     public static final String JSON_PROPERTY_A_C_T_I_V_E = "ACTIVE";

@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,7 +27,7 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.TermsApi
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.RelatedTerms
 
 class TermsApiTest : ShouldSpec() {
@@ -38,8 +46,8 @@ class TermsApiTest : ShouldSpec() {
         // to test termsSuggestedList
         should("test termsSuggestedList") {
             // uncomment below to test termsSuggestedList
-            //val term : kotlin.String = sports // kotlin.String | Input term.
-            //val limit : kotlin.Int = 4 // kotlin.Int | Max suggested terms to return.
+            //val term : kotlin.String = term_example // kotlin.String | Input term.
+            //val limit : kotlin.Int = 56 // kotlin.Int | Max suggested terms to return.
             //val result : kotlin.collections.List<kotlin.String> = apiInstance.termsSuggestedList(term, limit)
             //result shouldBe ("TODO")
         }

@@ -15,7 +15,7 @@ spec = withApp $ do
 
     describe "getAdAccountsByTextAudiencesByTextR" $
         it "returns 501 Not Implemented" $ do
-            get $ AdAccountsByTextAudiencesByTextR "adAccountId_example" "audienceId_example"
+            get $ AdAccountsByTextAudiencesByTextR "audienceId_example" "adAccountId_example"
             statusIs 501
 
     describe "getAdAccountsByTextAudiencesR" $
@@ -25,5 +25,5 @@ spec = withApp $ do
 
     describe "patchAdAccountsByTextAudiencesByTextR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "PATCH" $ AdAccountsByTextAudiencesByTextR "adAccountId_example" "audienceId_example"
+            performMethod "PATCH" $ AdAccountsByTextAudiencesByTextR "audienceId_example" "adAccountId_example"
             statusIs 501

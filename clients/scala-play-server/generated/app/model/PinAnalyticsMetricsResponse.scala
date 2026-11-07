@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param lifetimeMetrics The lifetime metric name and value.
   * @param summaryMetrics The metric name and value over the requested period for each requested metric
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class PinAnalyticsMetricsResponse(
   dailyMetrics: Option[List[PinAnalyticsDailyMetrics]],
   lifetimeMetrics: Option[Map[String, Int]],

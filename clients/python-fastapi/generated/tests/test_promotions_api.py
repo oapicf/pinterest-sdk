@@ -3,13 +3,14 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Any, List, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
-from openapi_server.models.promotion_create_request import PromotionCreateRequest  # noqa: F401
-from openapi_server.models.promotion_response import PromotionResponse  # noqa: F401
-from openapi_server.models.promotion_update_request import PromotionUpdateRequest  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
+from openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: F401
+from openapi_server.models.promotion import Promotion  # noqa: F401
+from openapi_server.models.promotion_batch_update import PromotionBatchUpdate  # noqa: F401
+from openapi_server.models.promotion_create import PromotionCreate  # noqa: F401
 from openapi_server.models.promotions_list200_response import PromotionsList200Response  # noqa: F401
 from openapi_server.models.promotions_response import PromotionsResponse  # noqa: F401
 
@@ -19,7 +20,7 @@ def test_promotions_list(client: TestClient):
 
     Get promotions
     """
-    params = [("page_size", 25),     ("order", 'ASCENDING'),     ("bookmark", 'bookmark_example')]
+    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("order", openapi_server.PinterestLibPaginationOrder())]
     headers = {
         "Authorization": "Bearer special-key",
     }
@@ -40,7 +41,7 @@ def test_promotions_create(client: TestClient):
 
     Create promotions
     """
-    promotion_create_request = [{"promotion_type":"VARIABLE","start_time":1677003860,"promotion_custom_id":"freeshipping_2025","discount_status":"ACTIVE","platform_type":"DEFAULT","promotion_title":"Black Friday 10% off","promotion_code":"blackfriday10","end_time":1678003860,"external_id":"abc","template_values":[{"amount":100,"custom_text":"My promotion","percent":10,"currency_code":"UNK"},{"amount":100,"custom_text":"My promotion","percent":10,"currency_code":"UNK"}]}]
+    promotion_create = [[openapi_server.PromotionCreate()]]
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -50,7 +51,7 @@ def test_promotions_create(client: TestClient):
     #    "POST",
     #    "/ad_accounts/{ad_account_id}/promotions".format(ad_account_id='ad_account_id_example'),
     #    headers=headers,
-    #    json=promotion_create_request,
+    #    json=promotion_create,
     #)
 
     # uncomment below to assert the status code of the HTTP response
@@ -62,7 +63,7 @@ def test_promotions_update(client: TestClient):
 
     Update promotions
     """
-    promotion_update_request = [{"promotion_type":"VARIABLE","start_time":1677003860,"promotion_custom_id":"freeshipping_2025","discount_status":"ACTIVE","platform_type":"DEFAULT","promotion_title":"Black Friday 10% off","promotion_code":"blackfriday10","end_time":1678003860,"external_id":"abc","template_values":[{"amount":100,"custom_text":"My promotion","percent":10,"currency_code":"UNK"},{"amount":100,"custom_text":"My promotion","percent":10,"currency_code":"UNK"}],"id":"7834020347906","status":"ACTIVE"}]
+    promotion_batch_update = [[openapi_server.PromotionBatchUpdate()]]
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -72,7 +73,7 @@ def test_promotions_update(client: TestClient):
     #    "PATCH",
     #    "/ad_accounts/{ad_account_id}/promotions".format(ad_account_id='ad_account_id_example'),
     #    headers=headers,
-    #    json=promotion_update_request,
+    #    json=promotion_batch_update,
     #)
 
     # uncomment below to assert the status code of the HTTP response
@@ -91,7 +92,7 @@ def test_promotions_get(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/ad_accounts/{ad_account_id}/promotions/{promotion_id}".format(ad_account_id='ad_account_id_example', promotion_id='promotion_id_example'),
+    #    "/ad_accounts/{ad_account_id}/promotions/{promotion_id}".format(promotion_id='promotion_id_example', ad_account_id='ad_account_id_example'),
     #    headers=headers,
     #)
 
@@ -111,7 +112,7 @@ def test_promotions_delete(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "DELETE",
-    #    "/ad_accounts/{ad_account_id}/promotions/{promotion_id}".format(ad_account_id='ad_account_id_example', promotion_id='promotion_id_example'),
+    #    "/ad_accounts/{ad_account_id}/promotions/{promotion_id}".format(promotion_id='promotion_id_example', ad_account_id='ad_account_id_example'),
     #    headers=headers,
     #)
 

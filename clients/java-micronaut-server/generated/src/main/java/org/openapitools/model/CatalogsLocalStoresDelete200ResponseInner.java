@@ -32,7 +32,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsLocalStoresDelete200ResponseInner.JSON_PROPERTY_STATUS
 })
 @JsonTypeName("catalogs_local_stores_delete_200_response_inner")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsLocalStoresDelete200ResponseInner {
     public static final String JSON_PROPERTY_ID = "id";

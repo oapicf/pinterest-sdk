@@ -8,11 +8,12 @@ from io import BytesIO
 from app.openapi_server.models.catalogs_list_products_by_filter_request import CatalogsListProductsByFilterRequest  # noqa: E501
 from app.openapi_server.models.catalogs_product_group_pins_list200_response import CatalogsProductGroupPinsList200Response  # noqa: E501
 from app.openapi_server.models.catalogs_product_group_product_counts_vertical import CatalogsProductGroupProductCountsVertical  # noqa: E501
+from app.openapi_server.models.catalogs_product_groups_create_many_request_items import CatalogsProductGroupsCreateManyRequestItems  # noqa: E501
+from app.openapi_server.models.catalogs_product_groups_create_request_schema import CatalogsProductGroupsCreateRequestSchema  # noqa: E501
 from app.openapi_server.models.catalogs_product_groups_list200_response import CatalogsProductGroupsList200Response  # noqa: E501
-from app.openapi_server.models.catalogs_product_groups_update_request import CatalogsProductGroupsUpdateRequest  # noqa: E501
+from app.openapi_server.models.catalogs_product_groups_update_request_schema import CatalogsProductGroupsUpdateRequestSchema  # noqa: E501
 from app.openapi_server.models.catalogs_vertical_product_group import CatalogsVerticalProductGroup  # noqa: E501
-from app.openapi_server.models.error import Error  # noqa: E501
-from app.openapi_server.models.multiple_product_groups_inner import MultipleProductGroupsInner  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -24,10 +25,10 @@ class TestCatalogProductGroupsController(BaseTestCase):
 
         List products by product group
         """
-        query_string = [('bookmark', 'bookmark_example'),
-                        ('page_size', 25),
-                        ('ad_account_id', 'ad_account_id_example'),
-                        ('pin_metrics', False)]
+        query_string = [('ad_account_id', 'ad_account_id_example'),
+                        ('pin_metrics', False),
+                        ('bookmark', 'bookmark_example'),
+                        ('page_size', 25)]
         response = self.client.open(
             '/v5/catalogs/product_groups/{product_group_id}/products'.format(product_group_id='product_group_id_example'),
             method='GET',
@@ -40,7 +41,7 @@ class TestCatalogProductGroupsController(BaseTestCase):
 
         Create product group
         """
-        body = {"name":"Few Filters using \"all_of\"","feed_id":"2680059592705","filters":{"all_of":[{"MIN_PRICE":{"values":999.99,"inclusion":true}},{"CURRENCY":{"values":"USD"}},{"CUSTOM_LABEL_0":{"values":["Luxury Items"]}}]}}
+        body = {"description":"description","feed_id":"2680059592705","filters":{"any_of":[{"MIN_PRICE":{"inclusion":True,"negated":True,"values":0.14658129805029452}},{"MIN_PRICE":{"inclusion":True,"negated":True,"values":0.14658129805029452}}]},"is_featured":True,"name":"name"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/catalogs/product_groups',
@@ -56,7 +57,7 @@ class TestCatalogProductGroupsController(BaseTestCase):
 
         Create product groups
         """
-        body = [{"name":"Few Filters using \"all_of\"","feed_id":"2680059592705","filters":{"all_of":[{"MIN_PRICE":{"values":999.99,"inclusion":true}},{"CURRENCY":{"values":"USD"}},{"CUSTOM_LABEL_0":{"values":["Luxury Items"]}}]}}]
+        body = {"description":"description","feed_id":"2680059592705","filters":{"any_of":[{"MIN_PRICE":{"inclusion":True,"negated":True,"values":0.14658129805029452}},{"MIN_PRICE":{"inclusion":True,"negated":True,"values":0.14658129805029452}}]},"is_featured":True,"name":"name"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/catalogs/product_groups/multiple',
@@ -115,9 +116,9 @@ class TestCatalogProductGroupsController(BaseTestCase):
         query_string = [('id', [56]),
                         ('feed_id', 'feed_id_example'),
                         ('catalog_id', 'catalog_id_example'),
+                        ('ad_account_id', 'ad_account_id_example'),
                         ('bookmark', 'bookmark_example'),
-                        ('page_size', 25),
-                        ('ad_account_id', 'ad_account_id_example')]
+                        ('page_size', 25)]
         response = self.client.open(
             '/v5/catalogs/product_groups',
             method='GET',
@@ -143,7 +144,7 @@ class TestCatalogProductGroupsController(BaseTestCase):
 
         Update single product group
         """
-        body = openapi_server.CatalogsProductGroupsUpdateRequest()
+        body = {"description":"description","is_featured":True,"name":"name"}
         query_string = [('ad_account_id', 'ad_account_id_example')]
         response = self.client.open(
             '/v5/catalogs/product_groups/{product_group_id}'.format(product_group_id='product_group_id_example'),
@@ -159,7 +160,7 @@ class TestCatalogProductGroupsController(BaseTestCase):
 
         List products by filter
         """
-        body = {"filters":{"any_of":[{"MIN_PRICE":{"inclusion":True,"negated":False,"values":0.08008281904610115}},{"MIN_PRICE":{"inclusion":True,"negated":False,"values":0.08008281904610115}}]},"feed_id":"2680059592705"}
+        body = {"feed_id":"2680059592705","filters":{"any_of":[{"MIN_PRICE":{"inclusion":True,"negated":True,"values":0.14658129805029452}},{"MIN_PRICE":{"inclusion":True,"negated":True,"values":0.14658129805029452}}]}}
         query_string = [('bookmark', 'bookmark_example'),
                         ('page_size', 25),
                         ('ad_account_id', 'ad_account_id_example'),

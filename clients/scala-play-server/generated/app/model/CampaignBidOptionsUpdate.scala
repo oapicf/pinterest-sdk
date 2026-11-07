@@ -13,7 +13,7 @@ import play.api.libs.json._
   * @param placementMultipliers Placement multipliers for bid adjustments.
   * @param updateMask List of fields to update. Only the fields in the list will be updated.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CampaignBidOptionsUpdate(
   ageBucketMultipliers: Option[AgeBucketMultipliers],
   appTypeMultipliers: Option[AppTypeMultipliers],

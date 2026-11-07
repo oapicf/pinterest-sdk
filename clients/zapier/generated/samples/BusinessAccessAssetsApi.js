@@ -1,17 +1,19 @@
 module.exports = {
-    "CreateAssetGroupResponseSample": 
+    "AssetGroupInputSample": 
         { data: {} },
-    "DeleteAssetGroupResponseSample": 
+    "AssetGroupInputSample": 
         { data: {} },
-    "UpdateAssetGroupResponseSample": 
+    "AssetGroupDeletionSample": 
+        { data: {} },
+    "AssetGroupModificationSample": 
         { data: {} },
     "business_asset_members_get_200_responseSample": 
         { data: {} },
-    "business_asset_partners_get_200_responseSample": 
+    "business_asset_members_get_200_responseSample": 
         { data: {} },
     "business_assets_get_200_responseSample": 
         { data: {} },
-    "business_member_assets_get_200_responseSample": 
+    "BusinessMemberAssetsGetResponseSample": 
         { data: {} },
     "DeleteMemberAccessResultsResponseArraySample": 
         { data: {} },
@@ -19,7 +21,7 @@ module.exports = {
         { data: {} },
     "business_partner_asset_access_get_200_responseSample": 
         { data: {} },
-    "DeletePartnerAssetsResultsResponseArraySample": 
+    "DeletePartnerAssetAccessResultsResponseArraySample": 
         { data: {} },
     "UpdatePartnerAssetsResultsResponseArraySample": 
         { data: {} },

@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AdAccountsCountry.JSON_PROPERTY_NAME
 })
 @JsonTypeName("AdAccountsCountry")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AdAccountsCountry {
     public static final String JSON_PROPERTY_CODE = "code";

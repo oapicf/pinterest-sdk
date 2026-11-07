@@ -26,18 +26,18 @@ module IntegrationsApiHandlerTestsHelper =
   let mutable IntegrationsCommercePatchBody = ""
 
   IntegrationsCommercePatchBody <- WebUtility.HtmlDecode "{
+  &quot;additional_id_1&quot; : &quot;additional_id_1&quot;,
   &quot;connected_advertiser_id&quot; : &quot;connected_advertiser_id&quot;,
   &quot;connected_lba_id&quot; : &quot;connected_lba_id&quot;,
-  &quot;partner_primary_email&quot; : &quot;partner_primary_email&quot;,
-  &quot;connected_tag_id&quot; : &quot;connected_tag_id&quot;,
-  &quot;additional_id_1&quot; : &quot;additional_id_1&quot;,
-  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;,
   &quot;connected_merchant_id&quot; : &quot;connected_merchant_id&quot;,
-  &quot;partner_metadata&quot; : &quot;partner_metadata&quot;,
-  &quot;scopes&quot; : &quot;scopes&quot;,
+  &quot;connected_tag_id&quot; : &quot;connected_tag_id&quot;,
   &quot;partner_access_token&quot; : &quot;partner_access_token&quot;,
   &quot;partner_access_token_expiry&quot; : 0.8008281904610115,
-  &quot;partner_refresh_token_expiry&quot; : 6.027456183070403
+  &quot;partner_metadata&quot; : &quot;partner_metadata&quot;,
+  &quot;partner_primary_email&quot; : &quot;partner_primary_email&quot;,
+  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;,
+  &quot;partner_refresh_token_expiry&quot; : 6.027456183070403,
+  &quot;scopes&quot; : &quot;scopes&quot;
 }"
   IntegrationsCommercePatchExamples <- IntegrationsCommercePatchExamples.Add("application/json", IntegrationsCommercePatchBody)
 
@@ -49,19 +49,19 @@ module IntegrationsApiHandlerTestsHelper =
   let mutable IntegrationsCommercePostBody = ""
 
   IntegrationsCommercePostBody <- WebUtility.HtmlDecode "{
-  &quot;connected_advertiser_id&quot; : &quot;connected_advertiser_id&quot;,
-  &quot;partner_primary_email&quot; : &quot;partner_primary_email&quot;,
-  &quot;connected_tag_id&quot; : &quot;connected_tag_id&quot;,
-  &quot;partner_metadata&quot; : &quot;partner_metadata&quot;,
-  &quot;partner_access_token&quot; : &quot;partner_access_token&quot;,
-  &quot;partner_refresh_token_expiry&quot; : 6,
-  &quot;external_business_id&quot; : &quot;external_business_id&quot;,
-  &quot;connected_lba_id&quot; : &quot;connected_lba_id&quot;,
   &quot;additional_id_1&quot; : &quot;additional_id_1&quot;,
-  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;,
+  &quot;connected_advertiser_id&quot; : &quot;connected_advertiser_id&quot;,
+  &quot;connected_lba_id&quot; : &quot;connected_lba_id&quot;,
   &quot;connected_merchant_id&quot; : &quot;connected_merchant_id&quot;,
-  &quot;scopes&quot; : &quot;scopes&quot;,
-  &quot;partner_access_token_expiry&quot; : 0
+  &quot;connected_tag_id&quot; : &quot;connected_tag_id&quot;,
+  &quot;external_business_id&quot; : &quot;external_business_id&quot;,
+  &quot;partner_access_token&quot; : &quot;partner_access_token&quot;,
+  &quot;partner_access_token_expiry&quot; : 0.8008281904610115,
+  &quot;partner_metadata&quot; : &quot;partner_metadata&quot;,
+  &quot;partner_primary_email&quot; : &quot;partner_primary_email&quot;,
+  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;,
+  &quot;partner_refresh_token_expiry&quot; : 6.027456183070403,
+  &quot;scopes&quot; : &quot;scopes&quot;
 }"
   IntegrationsCommercePostExamples <- IntegrationsCommercePostExamples.Add("application/json", IntegrationsCommercePostBody)
 
@@ -78,180 +78,180 @@ module IntegrationsApiHandlerTestsHelper =
 
   IntegrationsLogsPostBody <- WebUtility.HtmlDecode "{
   &quot;logs&quot; : [ {
+    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
     &quot;client_timestamp&quot; : 0,
+    &quot;error&quot; : {
+      &quot;cause&quot; : &quot;cause&quot;,
+      &quot;column_number&quot; : 6,
+      &quot;file_name&quot; : &quot;file_name&quot;,
+      &quot;line_number&quot; : 1,
+      &quot;message&quot; : &quot;message&quot;,
+      &quot;message_detail&quot; : &quot;message_detail&quot;,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;number&quot; : 5,
+      &quot;stack_trace&quot; : &quot;stack_trace&quot;
+    },
+    &quot;event_type&quot; : &quot;&quot;,
+    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
+    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;,
+    &quot;log_level&quot; : &quot;&quot;,
+    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
+    &quot;message&quot; : &quot;message&quot;,
+    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;request&quot; : {
-      &quot;path&quot; : &quot;path&quot;,
-      &quot;response_headers&quot; : {
-        &quot;key&quot; : &quot;response_headers&quot;
-      },
-      &quot;method&quot; : &quot;GET&quot;,
       &quot;host&quot; : &quot;host&quot;,
+      &quot;method&quot; : &quot;GET&quot;,
+      &quot;path&quot; : &quot;path&quot;,
       &quot;request_headers&quot; : {
         &quot;key&quot; : &quot;request_headers&quot;
       },
+      &quot;response_headers&quot; : {
+        &quot;key&quot; : &quot;response_headers&quot;
+      },
       &quot;response_status_code&quot; : 5
     },
-    &quot;log_level&quot; : &quot;INFO&quot;,
-    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;error&quot; : {
-      &quot;number&quot; : 5,
-      &quot;file_name&quot; : &quot;file_name&quot;,
-      &quot;line_number&quot; : 1,
-      &quot;name&quot; : &quot;name&quot;,
-      &quot;cause&quot; : &quot;cause&quot;,
-      &quot;column_number&quot; : 6,
-      &quot;stack_trace&quot; : &quot;stack_trace&quot;,
-      &quot;message&quot; : &quot;message&quot;,
-      &quot;message_detail&quot; : &quot;message_detail&quot;
-    },
-    &quot;message&quot; : &quot;message&quot;,
-    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
-    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
-    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
-    &quot;event_type&quot; : &quot;APP&quot;,
-    &quot;tag_id&quot; : &quot;tag_id&quot;,
-    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
+    &quot;tag_id&quot; : &quot;tag_id&quot;
   }, {
+    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
     &quot;client_timestamp&quot; : 0,
+    &quot;error&quot; : {
+      &quot;cause&quot; : &quot;cause&quot;,
+      &quot;column_number&quot; : 6,
+      &quot;file_name&quot; : &quot;file_name&quot;,
+      &quot;line_number&quot; : 1,
+      &quot;message&quot; : &quot;message&quot;,
+      &quot;message_detail&quot; : &quot;message_detail&quot;,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;number&quot; : 5,
+      &quot;stack_trace&quot; : &quot;stack_trace&quot;
+    },
+    &quot;event_type&quot; : &quot;&quot;,
+    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
+    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;,
+    &quot;log_level&quot; : &quot;&quot;,
+    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
+    &quot;message&quot; : &quot;message&quot;,
+    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;request&quot; : {
-      &quot;path&quot; : &quot;path&quot;,
-      &quot;response_headers&quot; : {
-        &quot;key&quot; : &quot;response_headers&quot;
-      },
-      &quot;method&quot; : &quot;GET&quot;,
       &quot;host&quot; : &quot;host&quot;,
+      &quot;method&quot; : &quot;GET&quot;,
+      &quot;path&quot; : &quot;path&quot;,
       &quot;request_headers&quot; : {
         &quot;key&quot; : &quot;request_headers&quot;
       },
+      &quot;response_headers&quot; : {
+        &quot;key&quot; : &quot;response_headers&quot;
+      },
       &quot;response_status_code&quot; : 5
     },
-    &quot;log_level&quot; : &quot;INFO&quot;,
-    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;error&quot; : {
-      &quot;number&quot; : 5,
-      &quot;file_name&quot; : &quot;file_name&quot;,
-      &quot;line_number&quot; : 1,
-      &quot;name&quot; : &quot;name&quot;,
-      &quot;cause&quot; : &quot;cause&quot;,
-      &quot;column_number&quot; : 6,
-      &quot;stack_trace&quot; : &quot;stack_trace&quot;,
-      &quot;message&quot; : &quot;message&quot;,
-      &quot;message_detail&quot; : &quot;message_detail&quot;
-    },
-    &quot;message&quot; : &quot;message&quot;,
-    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
-    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
-    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
-    &quot;event_type&quot; : &quot;APP&quot;,
-    &quot;tag_id&quot; : &quot;tag_id&quot;,
-    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
+    &quot;tag_id&quot; : &quot;tag_id&quot;
   }, {
+    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
     &quot;client_timestamp&quot; : 0,
+    &quot;error&quot; : {
+      &quot;cause&quot; : &quot;cause&quot;,
+      &quot;column_number&quot; : 6,
+      &quot;file_name&quot; : &quot;file_name&quot;,
+      &quot;line_number&quot; : 1,
+      &quot;message&quot; : &quot;message&quot;,
+      &quot;message_detail&quot; : &quot;message_detail&quot;,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;number&quot; : 5,
+      &quot;stack_trace&quot; : &quot;stack_trace&quot;
+    },
+    &quot;event_type&quot; : &quot;&quot;,
+    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
+    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;,
+    &quot;log_level&quot; : &quot;&quot;,
+    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
+    &quot;message&quot; : &quot;message&quot;,
+    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;request&quot; : {
-      &quot;path&quot; : &quot;path&quot;,
-      &quot;response_headers&quot; : {
-        &quot;key&quot; : &quot;response_headers&quot;
-      },
-      &quot;method&quot; : &quot;GET&quot;,
       &quot;host&quot; : &quot;host&quot;,
+      &quot;method&quot; : &quot;GET&quot;,
+      &quot;path&quot; : &quot;path&quot;,
       &quot;request_headers&quot; : {
         &quot;key&quot; : &quot;request_headers&quot;
       },
+      &quot;response_headers&quot; : {
+        &quot;key&quot; : &quot;response_headers&quot;
+      },
       &quot;response_status_code&quot; : 5
     },
-    &quot;log_level&quot; : &quot;INFO&quot;,
-    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;error&quot; : {
-      &quot;number&quot; : 5,
-      &quot;file_name&quot; : &quot;file_name&quot;,
-      &quot;line_number&quot; : 1,
-      &quot;name&quot; : &quot;name&quot;,
-      &quot;cause&quot; : &quot;cause&quot;,
-      &quot;column_number&quot; : 6,
-      &quot;stack_trace&quot; : &quot;stack_trace&quot;,
-      &quot;message&quot; : &quot;message&quot;,
-      &quot;message_detail&quot; : &quot;message_detail&quot;
-    },
-    &quot;message&quot; : &quot;message&quot;,
-    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
-    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
-    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
-    &quot;event_type&quot; : &quot;APP&quot;,
-    &quot;tag_id&quot; : &quot;tag_id&quot;,
-    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
+    &quot;tag_id&quot; : &quot;tag_id&quot;
   }, {
+    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
     &quot;client_timestamp&quot; : 0,
+    &quot;error&quot; : {
+      &quot;cause&quot; : &quot;cause&quot;,
+      &quot;column_number&quot; : 6,
+      &quot;file_name&quot; : &quot;file_name&quot;,
+      &quot;line_number&quot; : 1,
+      &quot;message&quot; : &quot;message&quot;,
+      &quot;message_detail&quot; : &quot;message_detail&quot;,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;number&quot; : 5,
+      &quot;stack_trace&quot; : &quot;stack_trace&quot;
+    },
+    &quot;event_type&quot; : &quot;&quot;,
+    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
+    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;,
+    &quot;log_level&quot; : &quot;&quot;,
+    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
+    &quot;message&quot; : &quot;message&quot;,
+    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;request&quot; : {
-      &quot;path&quot; : &quot;path&quot;,
-      &quot;response_headers&quot; : {
-        &quot;key&quot; : &quot;response_headers&quot;
-      },
-      &quot;method&quot; : &quot;GET&quot;,
       &quot;host&quot; : &quot;host&quot;,
+      &quot;method&quot; : &quot;GET&quot;,
+      &quot;path&quot; : &quot;path&quot;,
       &quot;request_headers&quot; : {
         &quot;key&quot; : &quot;request_headers&quot;
       },
+      &quot;response_headers&quot; : {
+        &quot;key&quot; : &quot;response_headers&quot;
+      },
       &quot;response_status_code&quot; : 5
     },
-    &quot;log_level&quot; : &quot;INFO&quot;,
-    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;error&quot; : {
-      &quot;number&quot; : 5,
-      &quot;file_name&quot; : &quot;file_name&quot;,
-      &quot;line_number&quot; : 1,
-      &quot;name&quot; : &quot;name&quot;,
-      &quot;cause&quot; : &quot;cause&quot;,
-      &quot;column_number&quot; : 6,
-      &quot;stack_trace&quot; : &quot;stack_trace&quot;,
-      &quot;message&quot; : &quot;message&quot;,
-      &quot;message_detail&quot; : &quot;message_detail&quot;
-    },
-    &quot;message&quot; : &quot;message&quot;,
-    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
-    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
-    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
-    &quot;event_type&quot; : &quot;APP&quot;,
-    &quot;tag_id&quot; : &quot;tag_id&quot;,
-    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
+    &quot;tag_id&quot; : &quot;tag_id&quot;
   }, {
+    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
     &quot;app_version_number&quot; : &quot;app_version_number&quot;,
     &quot;client_timestamp&quot; : 0,
+    &quot;error&quot; : {
+      &quot;cause&quot; : &quot;cause&quot;,
+      &quot;column_number&quot; : 6,
+      &quot;file_name&quot; : &quot;file_name&quot;,
+      &quot;line_number&quot; : 1,
+      &quot;message&quot; : &quot;message&quot;,
+      &quot;message_detail&quot; : &quot;message_detail&quot;,
+      &quot;name&quot; : &quot;name&quot;,
+      &quot;number&quot; : 5,
+      &quot;stack_trace&quot; : &quot;stack_trace&quot;
+    },
+    &quot;event_type&quot; : &quot;&quot;,
+    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
+    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;,
+    &quot;log_level&quot; : &quot;&quot;,
+    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
+    &quot;message&quot; : &quot;message&quot;,
+    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
     &quot;request&quot; : {
-      &quot;path&quot; : &quot;path&quot;,
-      &quot;response_headers&quot; : {
-        &quot;key&quot; : &quot;response_headers&quot;
-      },
-      &quot;method&quot; : &quot;GET&quot;,
       &quot;host&quot; : &quot;host&quot;,
+      &quot;method&quot; : &quot;GET&quot;,
+      &quot;path&quot; : &quot;path&quot;,
       &quot;request_headers&quot; : {
         &quot;key&quot; : &quot;request_headers&quot;
       },
+      &quot;response_headers&quot; : {
+        &quot;key&quot; : &quot;response_headers&quot;
+      },
       &quot;response_status_code&quot; : 5
     },
-    &quot;log_level&quot; : &quot;INFO&quot;,
-    &quot;merchant_id&quot; : &quot;merchant_id&quot;,
-    &quot;error&quot; : {
-      &quot;number&quot; : 5,
-      &quot;file_name&quot; : &quot;file_name&quot;,
-      &quot;line_number&quot; : 1,
-      &quot;name&quot; : &quot;name&quot;,
-      &quot;cause&quot; : &quot;cause&quot;,
-      &quot;column_number&quot; : 6,
-      &quot;stack_trace&quot; : &quot;stack_trace&quot;,
-      &quot;message&quot; : &quot;message&quot;,
-      &quot;message_detail&quot; : &quot;message_detail&quot;
-    },
-    &quot;message&quot; : &quot;message&quot;,
-    &quot;platform_version_number&quot; : &quot;platform_version_number&quot;,
-    &quot;advertiser_id&quot; : &quot;advertiser_id&quot;,
-    &quot;external_business_id&quot; : &quot;external_business_id&quot;,
-    &quot;event_type&quot; : &quot;APP&quot;,
-    &quot;tag_id&quot; : &quot;tag_id&quot;,
-    &quot;feed_profile_id&quot; : &quot;feed_profile_id&quot;
+    &quot;tag_id&quot; : &quot;tag_id&quot;
   } ]
 }"
   IntegrationsLogsPostExamples <- IntegrationsLogsPostExamples.Add("application/json", IntegrationsLogsPostBody)

@@ -3,14 +3,15 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictBool, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Any, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
+from openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: F401
+from openapi_server.models.targeting_template import TargetingTemplate  # noqa: F401
 from openapi_server.models.targeting_template_create import TargetingTemplateCreate  # noqa: F401
-from openapi_server.models.targeting_template_get_response_data import TargetingTemplateGetResponseData  # noqa: F401
 from openapi_server.models.targeting_template_list200_response import TargetingTemplateList200Response  # noqa: F401
-from openapi_server.models.targeting_template_update_request import TargetingTemplateUpdateRequest  # noqa: F401
+from openapi_server.models.targeting_template_update_request_read_or_update import TargetingTemplateUpdateRequestReadOrUpdate  # noqa: F401
 
 
 def test_targeting_template_list(client: TestClient):
@@ -18,7 +19,7 @@ def test_targeting_template_list(client: TestClient):
 
     List targeting templates
     """
-    params = [("order", 'ASCENDING'),     ("include_sizing", False),     ("search_query", 'gaming'),     ("page_size", 25),     ("bookmark", 'bookmark_example')]
+    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("order", openapi_server.PinterestLibPaginationOrder()),     ("include_sizing", False),     ("search_query", 'search_query_example')]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -40,7 +41,7 @@ def test_targeting_template_create(client: TestClient):
 
     Create targeting templates
     """
-    targeting_template_create = {"targeting_attributes":{"location":["LOCATION","LOCATION"],"maximum_age":"65+","age_bucket":["35-44","50-54"],"audience_include":["AUDIENCE_INCLUDE","AUDIENCE_INCLUDE"],"shopping_retargeting":[{"lookback_window":30,"exclusion_window":14,"tag_types":[0,6]},{"lookback_window":30,"exclusion_window":14,"tag_types":[0,6]}],"targeting_strategy":["CHOOSE_YOUR_OWN","CHOOSE_YOUR_OWN"],"interest":["INTEREST","INTEREST"],"geo":["GEO","GEO"],"minimum_age":"18","locale":["LOCALE","LOCALE"],"gender":["unknown","unknown"],"apptype":["ipad","iphone"],"audience_exclude":["AUDIENCE_EXCLUDE","AUDIENCE_EXCLUDE"]},"keywords":[{"value":"cats","match_type":"EXACT_NEGATIVE"}],"name":"Gaming","auto_targeting_enabled":1,"placement_group":"ALL","tracking_urls":{"impression":["URL1","URL2"],"click":["URL1","URL2"],"engagement":["URL1","URL2"],"buyable_button":["URL1","URL2"],"audience_verification":["URL1","URL2"]}}
+    targeting_template_create = openapi_server.TargetingTemplateCreate()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -62,7 +63,7 @@ def test_targeting_template_update(client: TestClient):
 
     Update targeting templates
     """
-    targeting_template_update_request = {"targeting_attributes":{"location":["LOCATION","LOCATION"],"maximum_age":"65+","age_bucket":["35-44","50-54"],"audience_include":["AUDIENCE_INCLUDE","AUDIENCE_INCLUDE"],"shopping_retargeting":[{"lookback_window":30,"exclusion_window":14,"tag_types":[0,6]},{"lookback_window":30,"exclusion_window":14,"tag_types":[0,6]}],"targeting_strategy":["CHOOSE_YOUR_OWN","CHOOSE_YOUR_OWN"],"interest":["INTEREST","INTEREST"],"geo":["GEO","GEO"],"minimum_age":"18","locale":["LOCALE","LOCALE"],"gender":["unknown","unknown"],"apptype":["ipad","iphone"],"audience_exclude":["AUDIENCE_EXCLUDE","AUDIENCE_EXCLUDE"]},"operation_type":"REMOVE","id":"643"}
+    targeting_template_update_request_read_or_update = openapi_server.TargetingTemplateUpdateRequestReadOrUpdate()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -72,7 +73,7 @@ def test_targeting_template_update(client: TestClient):
     #    "PATCH",
     #    "/ad_accounts/{ad_account_id}/targeting_templates".format(ad_account_id='ad_account_id_example'),
     #    headers=headers,
-    #    json=targeting_template_update_request,
+    #    json=targeting_template_update_request_read_or_update,
     #)
 
     # uncomment below to assert the status code of the HTTP response

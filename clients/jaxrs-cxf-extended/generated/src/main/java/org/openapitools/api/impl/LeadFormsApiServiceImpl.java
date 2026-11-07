@@ -1,14 +1,15 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
-import org.openapitools.model.LeadFormArrayResponse;
-import org.openapitools.model.LeadFormCreateRequest;
-import org.openapitools.model.LeadFormResponse;
-import org.openapitools.model.LeadFormTestRequest;
-import org.openapitools.model.LeadFormTestResponse;
-import org.openapitools.model.LeadFormUpdateRequest;
+import org.openapitools.model.LeadForm;
+import org.openapitools.model.LeadFormBatchUpdate;
+import org.openapitools.model.LeadFormCreate;
+import org.openapitools.model.LeadFormTest;
+import org.openapitools.model.LeadFormTestCreate;
+import org.openapitools.model.LeadFormsCreate200Response;
 import org.openapitools.model.LeadFormsList200Response;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -33,11 +34,11 @@ public class LeadFormsApiServiceImpl implements LeadFormsApi {
     /**
      * Get lead form by id
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Gets a lead form given it&#39;s ID. It must also be associated with the provided ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      */
     @Override
-    public LeadFormResponse leadFormGet(String adAccountId, String leadFormId) {
+    public LeadForm leadFormGet(String leadFormId, String adAccountId) {
         // TODO: Implement...
         return null;
     }
@@ -49,7 +50,7 @@ public class LeadFormsApiServiceImpl implements LeadFormsApi {
      *
      */
     @Override
-    public LeadFormTestResponse leadFormTestCreate(String adAccountId, String leadFormId, LeadFormTestRequest leadFormTestRequest) {
+    public LeadFormTest leadFormTestCreate(String adAccountId, String leadFormId, LeadFormTestCreate leadFormTestCreate) {
         // TODO: Implement...
         return null;
     }
@@ -57,11 +58,11 @@ public class LeadFormsApiServiceImpl implements LeadFormsApi {
     /**
      * Create lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Create lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form&#39;s description, questions and confirmation sections.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      */
     @Override
-    public LeadFormArrayResponse leadFormsCreate(String adAccountId, List<@Valid LeadFormCreateRequest> leadFormCreateRequest) {
+    public LeadFormsCreate200Response leadFormsCreate(String adAccountId, List<@Valid LeadFormCreate> leadFormCreate) {
         // TODO: Implement...
         return null;
     }
@@ -69,11 +70,11 @@ public class LeadFormsApiServiceImpl implements LeadFormsApi {
     /**
      * List lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  List lead forms associated with an ad account ID.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  List lead forms associated with an ad account ID.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      */
     @Override
-    public LeadFormsList200Response leadFormsList(String adAccountId, Integer pageSize, String order, String bookmark) {
+    public LeadFormsList200Response leadFormsList(String adAccountId, String bookmark, Integer pageSize, PinterestLibPaginationOrder order) {
         // TODO: Implement...
         return null;
     }
@@ -81,11 +82,11 @@ public class LeadFormsApiServiceImpl implements LeadFormsApi {
     /**
      * Update lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see &lt;a class&#x3D;\&quot;reference external\&quot; href&#x3D;\&quot;https://help.pinterest.com/en/business/article/lead-ads\&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**  Update lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.  For more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      *
      */
     @Override
-    public LeadFormArrayResponse leadFormsUpdate(String adAccountId, List<@Valid LeadFormUpdateRequest> leadFormUpdateRequest) {
+    public LeadFormsCreate200Response leadFormsUpdate(String adAccountId, List<@Valid LeadFormBatchUpdate> leadFormBatchUpdate) {
         // TODO: Implement...
         return null;
     }

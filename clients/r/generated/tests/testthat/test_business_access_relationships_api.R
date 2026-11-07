@@ -11,8 +11,8 @@ test_that("BrandAccountsCreate", {
   # Create a Brand Account
   # Create a Brand Account that will be a child business of a business hierarchy. Request must contain name, username, and country.
   # @param business_hierarchy_id character business hierarchy node id
-  # @param brand_accounts_create_request BrandAccountsCreateRequest 
-  # @return [BrandAccountsCreate200Response]
+  # @param brand_account_create BrandAccountCreate 
+  # @return [BrandAccount]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -23,10 +23,10 @@ test_that("BrandAccountsUpdate", {
   # base path: https://api.pinterest.com/v5
   # Update a Brand Account
   # Update an existing Brand Account
+  # @param brand_account_id character 
   # @param business_hierarchy_id character business hierarchy node id
-  # @param brand_account_id character Unique identifier of a brand account.
-  # @param brand_accounts_update_request BrandAccountsUpdateRequest 
-  # @return [BrandAccountsCreate200Response]
+  # @param brand_account_update BrandAccountUpdate 
+  # @return [BrandAccount]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -38,8 +38,8 @@ test_that("DeleteBusinessMembership", {
   # Terminate business memberships
   # Terminate memberships between the specified members and your business.
   # @param business_id character Business id
-  # @param members_to_delete_body MembersToDeleteBody List of members with role to delete.
-  # @return [DeletedMembersResponse]
+  # @param delete_business_membership_body DeleteBusinessMembershipBody 
+  # @return [DeleteBusinessMembership200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -51,8 +51,8 @@ test_that("DeleteBusinessPartners", {
   # Terminate business partnerships
   # Terminate partnerships between the specified partners and your business. Note: You may only batch terminate partners of the same partner type.
   # @param business_id character Unique identifier of the requesting business.
-  # @param delete_partners_request DeletePartnersRequest An object containing a \"partner_ids\" property composed of a list of partner IDs and a \"partners_type\" property specifying the type of partners to delete. 
-  # @return [DeletePartnersResponse]
+  # @param delete_business_partners_delete DeleteBusinessPartnersDelete 
+  # @return [DeleteBusinessPartners]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -63,8 +63,9 @@ test_that("GetBusinessEmployers", {
   # base path: https://api.pinterest.com/v5
   # List business employers for user
   # Get all of the viewing user&#39;s business employers.
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param assets_summary character Include assets summary in the response if this is true. Defaults to true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
   # @return [GetBusinessEmployers200Response]
 
   # uncomment below to test the operation
@@ -83,8 +84,8 @@ test_that("GetBusinessMembers", {
   # @param member_ids character A list of business members ids separated by comma. (optional)
   # @param start_index integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @return [GetBusinessMembers200Response]
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @return [GetBusinessEmployers200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -97,12 +98,13 @@ test_that("GetBusinessPartners", {
   # Get all partners of the specified business.  If the assets_summary&#x3D;TRUE and: - partner_type&#x3D;INTERNAL, the business assets returned are your business assets the partner has access to. - partner_type&#x3D;EXTERNAL, the business assets returned are your partner&#39;s business assets the partner has granted you   access to.
   # @param business_id character Unique identifier of the requesting business.
   # @param assets_summary character Include assets summary in the response if this is true.  The assets summary returns a dictionary representing a summary of the assets for the business user ID, with information like the ad accounts and profiles the user has permissions for and what those permissions are (optional)
-  # @param partner_type PartnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets.<br> If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
+  # @param partner_type PartnerType Specifies whether to fetch internal or external (shared) partners. If partner_type=INTERNAL, the asset being queried is for accesses the partner has to your business assets. If partner_type=EXTERNAL, the asset being queried is for the accesses you have to the partner's business asset. (optional)
   # @param partner_ids character A list of business partner ids separated by commas used to filter the results. Only partners with the specified ids will be returned. (optional)
   # @param start_index integer An index to start fetching the results from. Only the results starting from this index will be returned. (optional)
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
+  # @param sort_ascending character Sort ascending. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
-  # @return [GetBusinessPartners200Response]
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @return [GetBusinessEmployers200Response]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")
@@ -115,7 +117,7 @@ test_that("SystemUserUpdate", {
   # Update a system user information such as name.
   # @param business_id character Unique identifier of the requesting business.
   # @param system_user_id character Unique identifier of a system user.
-  # @param system_user_update_request SystemUserUpdateRequest 
+  # @param system_user_update_with_required_body SystemUserUpdateWithRequiredBody 
   # @return [Void]
 
   # uncomment below to test the operation
@@ -128,8 +130,8 @@ test_that("UpdateBusinessMemberships", {
   # Update member&#39;s business role
   # Update a member&#39;s business role within the business.
   # @param business_id character Business id
-  # @param update_member_business_role_body array[UpdateMemberBusinessRoleBody] List of objects with the member id and the business_role.
-  # @return [UpdateMemberResultsResponseArray]
+  # @param business_membership_member array[BusinessMembershipMember] 
+  # @return [UpdateBusinessMembershipsResponse]
 
   # uncomment below to test the operation
   #expect_equal(result, "EXPECTED_RESULT")

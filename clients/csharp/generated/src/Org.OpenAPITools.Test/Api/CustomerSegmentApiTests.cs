@@ -61,7 +61,7 @@ namespace Org.OpenAPITools.Test.Api
             CustomerSegmentCreate customerSegmentCreate = default!;
             var response = await _instance.CustomerSegmentCreateAsync(adAccountId, customerSegmentCreate);
             var model = response.Ok();
-            Assert.IsType<CustomerSegment>(model);
+            Assert.IsType<Org.OpenAPITools.Model.CustomerSegment>(model);
         }
 
         /// <summary>
@@ -78,7 +78,7 @@ namespace Org.OpenAPITools.Test.Api
             Client.Option<string> searchQuery = default!;
             var response = await _instance.CustomerSegmentListAsync(adAccountId, bookmark, pageSize, order, includeSizing, searchQuery);
             var model = response.Ok();
-            Assert.IsType<CustomerSegmentList200Response>(model);
+            Assert.IsType<Org.OpenAPITools.Model.CustomerSegmentList200Response>(model);
         }
 
         /// <summary>

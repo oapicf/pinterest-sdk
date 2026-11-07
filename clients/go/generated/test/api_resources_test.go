@@ -87,7 +87,7 @@ func Test_openapi_ResourcesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var targetingType string
+		var targetingType openapiclient.PublicTargetingType
 
 		resp, httpRes, err := apiClient.ResourcesAPI.TargetingOptionsGet(context.Background(), targetingType).Execute()
 

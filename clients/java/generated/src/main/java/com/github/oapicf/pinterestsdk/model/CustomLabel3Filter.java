@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * CustomLabel3Filter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-03T06:12:19.906923460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CustomLabel3Filter {
   public static final String SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L3 = "CUSTOM_LABEL_3";
   @SerializedName(SERIALIZED_NAME_C_U_S_T_O_M_L_A_B_E_L3)

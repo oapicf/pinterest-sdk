@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,10 +27,10 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.SearchApi
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.BoardsList200Response
+import org.openapitools.client.models.PinsList200Response
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.SearchPartnerPins200Response
-import org.openapitools.client.models.SearchUserBoardsGet200Response
-import org.openapitools.client.models.SearchUserPinsList200Response
 
 class SearchApiTest : ShouldSpec() {
     init {
@@ -33,10 +41,10 @@ class SearchApiTest : ShouldSpec() {
         should("test searchPartnerPins") {
             // uncomment below to test searchPartnerPins
             //val term : kotlin.String = term_example // kotlin.String | Search term to look up pins.
-            //val countryCode : kotlin.String = US // kotlin.String | Two letter country code (ISO 3166-1 alpha-2)
+            //val countryCode : kotlin.String = countryCode_example // kotlin.String | Two letter country code (ISO 3166-1 alpha-2)
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
             //val locale : kotlin.String = locale_example // kotlin.String | Search locale.
-            //val limit : kotlin.Int = 4 // kotlin.Int | Max search result size
+            //val limit : kotlin.Int = 56 // kotlin.Int | Max search result size
             //val result : SearchPartnerPins200Response = apiInstance.searchPartnerPins(term, countryCode, bookmark, locale, limit)
             //result shouldBe ("TODO")
         }
@@ -45,20 +53,20 @@ class SearchApiTest : ShouldSpec() {
         should("test searchUserBoardsGet") {
             // uncomment below to test searchUserBoardsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
             //val query : kotlin.String = query_example // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
-            //val result : SearchUserBoardsGet200Response = apiInstance.searchUserBoardsGet(adAccountId, bookmark, pageSize, query)
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : BoardsList200Response = apiInstance.searchUserBoardsGet(adAccountId, query, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test searchUserPinsList
         should("test searchUserPinsList") {
             // uncomment below to test searchUserPinsList
-            //val query : kotlin.String = Plants // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
+            //val query : kotlin.String = query_example // kotlin.String | Search query. Can contain pin description keywords or comma-separated pin IDs.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : SearchUserPinsList200Response = apiInstance.searchUserPinsList(query, adAccountId, bookmark)
+            //val result : PinsList200Response = apiInstance.searchUserPinsList(query, adAccountId, bookmark)
             //result shouldBe ("TODO")
         }
 

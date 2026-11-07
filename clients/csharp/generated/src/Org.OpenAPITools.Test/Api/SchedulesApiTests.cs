@@ -79,7 +79,7 @@ namespace Org.OpenAPITools.Test.Api
             Client.Option<ScheduleType> scheduleType = default!;
             var response = await _instance.SchedulesListAsync(adAccountId, entityIds, bookmark, pageSize, order, scheduleStatuses, scheduleType);
             var model = response.Ok();
-            Assert.IsType<SchedulesList200Response>(model);
+            Assert.IsType<Org.OpenAPITools.Model.SchedulesList200Response>(model);
         }
 
         /// <summary>

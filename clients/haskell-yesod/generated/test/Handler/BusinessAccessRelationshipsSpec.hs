@@ -10,22 +10,22 @@ spec = withApp $ do
 
     describe "postBusinessAccessBusinessHierarchyByTextBrandAccountsR" $
         it "returns 501 Not Implemented" $ do
-            post $ BusinessAccessBusinessHierarchyByTextBrandAccountsR "7009386637860"
+            post $ BusinessAccessBusinessHierarchyByTextBrandAccountsR "businessHierarchyId_example"
             statusIs 501
 
     describe "patchBusinessAccessBusinessHierarchyByTextBrandAccountsByTextR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "PATCH" $ BusinessAccessBusinessHierarchyByTextBrandAccountsByTextR "7009386637860" "729090764583391194"
+            performMethod "PATCH" $ BusinessAccessBusinessHierarchyByTextBrandAccountsByTextR "brandAccountId_example" "businessHierarchyId_example"
             statusIs 501
 
     describe "deleteBusinessesByTextMembersR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "DELETE" $ BusinessesByTextMembersR "729090764583391194"
+            performMethod "DELETE" $ BusinessesByTextMembersR "businessId_example"
             statusIs 501
 
     describe "deleteBusinessesByTextPartnersR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "DELETE" $ BusinessesByTextPartnersR "729090764583391194"
+            performMethod "DELETE" $ BusinessesByTextPartnersR "businessId_example"
             statusIs 501
 
     describe "getBusinessesEmployersR" $
@@ -35,20 +35,20 @@ spec = withApp $ do
 
     describe "getBusinessesByTextMembersR" $
         it "returns 501 Not Implemented" $ do
-            get $ BusinessesByTextMembersR "729090764583391194"
+            get $ BusinessesByTextMembersR "businessId_example"
             statusIs 501
 
     describe "getBusinessesByTextPartnersR" $
         it "returns 501 Not Implemented" $ do
-            get $ BusinessesByTextPartnersR "729090764583391194"
+            get $ BusinessesByTextPartnersR "businessId_example"
             statusIs 501
 
     describe "patchBusinessesByTextSystemUsersByTextR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "PATCH" $ BusinessesByTextSystemUsersByTextR "729090764583391194" "729090764583391194"
+            performMethod "PATCH" $ BusinessesByTextSystemUsersByTextR "businessId_example" "systemUserId_example"
             statusIs 501
 
     describe "patchBusinessesByTextMembersR" $
         it "returns 501 Not Implemented" $ do
-            performMethod "PATCH" $ BusinessesByTextMembersR "729090764583391194"
+            performMethod "PATCH" $ BusinessesByTextMembersR "businessId_example"
             statusIs 501

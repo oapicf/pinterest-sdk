@@ -5,10 +5,10 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.boards_list200_response import BoardsList200Response  # noqa: E501
+from app.openapi_server.models.pins_list200_response import PinsList200Response  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from app.openapi_server.models.search_partner_pins200_response import SearchPartnerPins200Response  # noqa: E501
-from app.openapi_server.models.search_user_boards_get200_response import SearchUserBoardsGet200Response  # noqa: E501
-from app.openapi_server.models.search_user_pins_list200_response import SearchUserPinsList200Response  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -21,7 +21,7 @@ class TestSearchController(BaseTestCase):
         Search pins by a given search term
         """
         query_string = [('term', 'term_example'),
-                        ('country_code', 'US'),
+                        ('country_code', 'country_code_example'),
                         ('bookmark', 'bookmark_example'),
                         ('locale', 'locale_example'),
                         ('limit', 10)]
@@ -38,9 +38,9 @@ class TestSearchController(BaseTestCase):
         Search user's boards
         """
         query_string = [('ad_account_id', 'ad_account_id_example'),
+                        ('query', 'query_example'),
                         ('bookmark', 'bookmark_example'),
-                        ('page_size', 25),
-                        ('query', 'query_example')]
+                        ('page_size', 25)]
         response = self.client.open(
             '/v5/search/boards',
             method='GET',
@@ -54,7 +54,7 @@ class TestSearchController(BaseTestCase):
         Search user's Pins
         """
         query_string = [('ad_account_id', 'ad_account_id_example'),
-                        ('query', 'Plants'),
+                        ('query', 'query_example'),
                         ('bookmark', 'bookmark_example')]
         response = self.client.open(
             '/v5/search/pins',

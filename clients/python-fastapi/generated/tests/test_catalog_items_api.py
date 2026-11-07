@@ -6,11 +6,11 @@ from fastapi.testclient import TestClient
 from pydantic import Field, field_validator  # noqa: F401
 from typing import Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.catalogs_items import CatalogsItems  # noqa: F401
 from openapi_server.models.catalogs_items_batch import CatalogsItemsBatch  # noqa: F401
+from openapi_server.models.catalogs_items_batch_post_request import CatalogsItemsBatchPostRequest  # noqa: F401
 from openapi_server.models.catalogs_items_request import CatalogsItemsRequest  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
-from openapi_server.models.items_batch_post_request import ItemsBatchPostRequest  # noqa: F401
+from openapi_server.models.items_post200_response import ItemsPost200Response  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 
 
 def test_items_post(client: TestClient):
@@ -18,7 +18,7 @@ def test_items_post(client: TestClient):
 
     Get catalogs items (POST)
     """
-    catalogs_items_request = {"country":"AD","language":"af-ZA","filters":{"catalog_type":"RETAIL"}}
+    catalogs_items_request = openapi_server.CatalogsItemsRequest()
     params = [("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
@@ -41,7 +41,7 @@ def test_items_batch_post(client: TestClient):
 
     Operate on item batch
     """
-    items_batch_post_request = openapi_server.ItemsBatchPostRequest()
+    catalogs_items_batch_post_request = openapi_server.CatalogsItemsBatchPostRequest()
     params = [("ad_account_id", 'ad_account_id_example')]
     headers = {
         "Authorization": "Bearer special-key",
@@ -52,7 +52,7 @@ def test_items_batch_post(client: TestClient):
     #    "POST",
     #    "/catalogs/items/batch",
     #    headers=headers,
-    #    json=items_batch_post_request,
+    #    json=catalogs_items_batch_post_request,
     #    params=params,
     #)
 
@@ -73,7 +73,7 @@ def test_items_batch_get(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/catalogs/items/batch/{batch_id}".format(batch_id='66753b9bb65c46c49bd8503b27fecf9e'),
+    #    "/catalogs/items/batch/{batch_id}".format(batch_id='batch_id_example'),
     #    headers=headers,
     #    params=params,
     #)

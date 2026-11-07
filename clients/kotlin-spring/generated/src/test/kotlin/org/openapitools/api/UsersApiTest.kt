@@ -1,6 +1,6 @@
 package org.openapitools.api
 
-import org.openapitools.model.Error
+import org.openapitools.model.PinterestLibError
 import org.openapitools.model.UserAccountFollowedInterests200Response
 import org.junit.jupiter.api.Test
 import org.springframework.http.ResponseEntity
@@ -20,6 +20,7 @@ class UsersApiTest {
         val username: kotlin.String = TODO()
         val bookmark: kotlin.String? = TODO()
         val pageSize: kotlin.Int = TODO()
+        
         
         val response: ResponseEntity<UserAccountFollowedInterests200Response> = api.userAccountFollowedInterests(username, bookmark, pageSize)
 

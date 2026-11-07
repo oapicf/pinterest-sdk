@@ -31,7 +31,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   FrequencyMultipliers.JSON_PROPERTY_I_M_P_R_E_S_S_I_O_N_C_O_U_N_T
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-03T06:15:21.978491780Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class FrequencyMultipliers extends HashMap<String, Double>  {
   public static final String JSON_PROPERTY_I_M_P_R_E_S_S_I_O_N_C_O_U_N_T = "IMPRESSION_COUNT";
   @JsonProperty(JSON_PROPERTY_I_M_P_R_E_S_S_I_O_N_C_O_U_N_T)

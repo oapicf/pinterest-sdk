@@ -28,13 +28,11 @@ module LeadAdsApiHandlerTestsHelper =
   let mutable AdAccountsSubscriptionsPostBody = ""
 
   AdAccountsSubscriptionsPostBody <- WebUtility.HtmlDecode "{
-  &quot;webhook_url&quot; : &quot;webhook_url&quot;,
-  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;,
   &quot;lead_form_id&quot; : &quot;lead_form_id&quot;,
-  &quot;partner_metadata&quot; : {
-    &quot;subscriber_key&quot; : &quot;subscriber_key&quot;
-  },
-  &quot;partner_access_token&quot; : &quot;partner_access_token&quot;
+  &quot;webhook_url&quot; : &quot;webhook_url&quot;,
+  &quot;partner_access_token&quot; : &quot;partner_access_token&quot;,
+  &quot;partner_metadata&quot; : &quot;&quot;,
+  &quot;partner_refresh_token&quot; : &quot;partner_refresh_token&quot;
 }"
   AdAccountsSubscriptionsPostExamples <- AdAccountsSubscriptionsPostExamples.Add("application/json", AdAccountsSubscriptionsPostBody)
 

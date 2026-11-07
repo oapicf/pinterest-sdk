@@ -5,10 +5,10 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.error import Error  # noqa: E501
-from app.openapi_server.models.leads_export_create_request import LeadsExportCreateRequest  # noqa: E501
-from app.openapi_server.models.leads_export_create_response import LeadsExportCreateResponse  # noqa: E501
 from app.openapi_server.models.leads_export_response_data import LeadsExportResponseData  # noqa: E501
+from app.openapi_server.models.leads_exports import LeadsExports  # noqa: E501
+from app.openapi_server.models.leads_exports_create import LeadsExportsCreate  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from openapi_server.test import BaseTestCase
 
 
@@ -20,7 +20,7 @@ class TestLeadsExportController(BaseTestCase):
 
         Create a request to export leads collected from a lead ad
         """
-        body = {"end_date":"2020-12-20","ad_id":"687201361754","start_date":"2020-12-20"}
+        body = {"ad_id":"687201361754","end_date":"2020-12-20","start_date":"2020-12-20"}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/leads_export'.format(ad_account_id='ad_account_id_example'),
             method='POST',
@@ -35,7 +35,7 @@ class TestLeadsExportController(BaseTestCase):
         Get the lead export from the lead export create call
         """
         response = self.client.open(
-            '/v5/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}'.format(ad_account_id='ad_account_id_example', leads_export_id='123755885175'),
+            '/v5/ad_accounts/{ad_account_id}/leads_export/{leads_export_id}'.format(ad_account_id='ad_account_id_example', leads_export_id='leads_export_id_example'),
             method='GET')
         self.assert200(response,
                        'Response body is : ' + response.data.decode('utf-8'))

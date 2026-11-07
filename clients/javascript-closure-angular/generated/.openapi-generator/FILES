@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 API/Client/Account.js
 API/Client/AccountTemplate.js
 API/Client/ActionType.js

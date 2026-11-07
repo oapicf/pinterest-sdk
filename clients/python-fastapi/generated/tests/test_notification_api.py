@@ -3,11 +3,10 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field  # noqa: F401
-from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from typing import Optional  # noqa: F401
 from openapi_server.models.notification_post_request import NotificationPostRequest  # noqa: F401
 from openapi_server.models.notification_response import NotificationResponse  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
 
 
 def test_notification_post(client: TestClient):

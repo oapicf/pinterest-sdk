@@ -4,13 +4,14 @@ import org.openapitools.model.Board;
 import org.openapitools.model.BoardCreate;
 import org.openapitools.model.BoardPrivacyFilter;
 import org.openapitools.model.BoardSection;
+import org.openapitools.model.BoardSectionCreate;
+import org.openapitools.model.BoardSectionUpdateWithRequiredBody;
 import org.openapitools.model.BoardSectionsList200Response;
 import org.openapitools.model.BoardWithUpdatePrivacy;
 import org.openapitools.model.BoardWithUpdatePrivacyUpdate;
 import org.openapitools.model.BoardsList200Response;
 import org.openapitools.model.BoardsListPins200Response;
 import org.openapitools.model.CreativeType;
-import org.openapitools.model.Error;
 import org.openapitools.model.PinterestLibError;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
@@ -71,11 +72,11 @@ public class BoardsControllerTest {
     void boardSectionsCreateMethodTest() {
         // given
         String boardId = "example";
-        BoardSection boardSection = new BoardSection("Salads");
+        BoardSectionCreate boardSectionCreate = new BoardSectionCreate("Salads");
         String adAccountId = "example";
 
         // when
-        BoardSection result = controller.boardSectionsCreate(boardId, boardSection, adAccountId).block();
+        BoardSection result = controller.boardSectionsCreate(boardId, boardSectionCreate, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -91,13 +92,13 @@ public class BoardsControllerTest {
     @Disabled("Not Implemented")
     void boardSectionsCreateClientApiTest() throws IOException {
         // given
-        BoardSection body = new BoardSection("Salads");
+        BoardSectionCreate body = new BoardSectionCreate("Salads");
         String uri = UriTemplate.of("/boards/{board_id}/sections").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@3e7b836e");
+            .accept("[Ljava.lang.String;@30c41429");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -126,7 +127,7 @@ public class BoardsControllerTest {
         String adAccountId = "example";
 
         // when
-        controller.boardSectionsDelete(boardId, sectionId, adAccountId).block();
+        BoardSection result = controller.boardSectionsDelete(boardId, sectionId, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -148,12 +149,12 @@ public class BoardsControllerTest {
             put("section_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@2d06e5cd");
+            .accept("[Ljava.lang.String;@423eee82");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
+        HttpResponse<?> response = client.toBlocking().exchange(request, BoardSection.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -199,7 +200,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@1e032081");
+            .accept("[Ljava.lang.String;@75408a1c");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -254,7 +255,7 @@ public class BoardsControllerTest {
             put("section_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6507e78d");
+            .accept("[Ljava.lang.String;@328dad16");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("bookmark", "example") // The query parameter format should be 
@@ -282,11 +283,11 @@ public class BoardsControllerTest {
         // given
         String boardId = "example";
         String sectionId = "example";
-        BoardSection boardSection = new BoardSection("Salads");
+        BoardSectionUpdateWithRequiredBody boardSectionUpdateWithRequiredBody = new BoardSectionUpdateWithRequiredBody("Salads");
         String adAccountId = "example";
 
         // when
-        BoardSection result = controller.boardSectionsUpdate(boardId, sectionId, boardSection, adAccountId).block();
+        BoardSection result = controller.boardSectionsUpdate(boardId, sectionId, boardSectionUpdateWithRequiredBody, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -302,14 +303,14 @@ public class BoardsControllerTest {
     @Disabled("Not Implemented")
     void boardSectionsUpdateClientApiTest() throws IOException {
         // given
-        BoardSection body = new BoardSection("Salads");
+        BoardSectionUpdateWithRequiredBody body = new BoardSectionUpdateWithRequiredBody("Salads");
         String uri = UriTemplate.of("/boards/{board_id}/sections/{section_id}").expand(new HashMap<String, Object>(){{
             // Fill in the path variables
             put("board_id", "example");
             put("section_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@70578b0");
+            .accept("[Ljava.lang.String;@22f88232");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -356,7 +357,7 @@ public class BoardsControllerTest {
         BoardCreate body = new BoardCreate("Summer recipes");
         String uri = UriTemplate.of("/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@1d37dd10");
+            .accept("[Ljava.lang.String;@17072211");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -384,7 +385,7 @@ public class BoardsControllerTest {
         String adAccountId = "example";
 
         // when
-        controller.boardsDelete(boardId, adAccountId).block();
+        Board result = controller.boardsDelete(boardId, adAccountId).block();
 
         // then
         Assertions.assertTrue(true);
@@ -405,12 +406,12 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@1ab7f11f");
+            .accept("[Ljava.lang.String;@66e65a87");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
         // when
-        HttpResponse<?> response = client.toBlocking().exchange(request); // To retrieve body you must specify required type (e.g. Map.class) as second argument 
+        HttpResponse<?> response = client.toBlocking().exchange(request, Board.class);
 
         // then
         Assertions.assertEquals(HttpStatus.OK, response.status());
@@ -454,7 +455,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@40d6564b");
+            .accept("[Ljava.lang.String;@39dcbe50");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 
@@ -502,7 +503,7 @@ public class BoardsControllerTest {
         // given
         String uri = UriTemplate.of("/boards").expand(new HashMap<>());
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@6c3a7619");
+            .accept("[Ljava.lang.String;@5f53424b");
         request.getParameters()
             .add("ad_account_id", "example") // The query parameter format should be 
             .add("privacy", String.valueOf(BoardPrivacyFilter.fromValue("ALL"))) // The query parameter format should be 
@@ -530,14 +531,14 @@ public class BoardsControllerTest {
     void boardsListPinsMethodTest() {
         // given
         String boardId = "example";
-        String bookmark = "example";
-        Integer pageSize = 25;
         List<CreativeType> creativeTypes = Arrays.asList();
         String adAccountId = "example";
         Boolean pinMetrics = false;
+        String bookmark = "example";
+        Integer pageSize = 25;
 
         // when
-        BoardsListPins200Response result = controller.boardsListPins(boardId, bookmark, pageSize, creativeTypes, adAccountId, pinMetrics).block();
+        BoardsListPins200Response result = controller.boardsListPins(boardId, creativeTypes, adAccountId, pinMetrics, bookmark, pageSize).block();
 
         // then
         Assertions.assertTrue(true);
@@ -558,13 +559,13 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@4f46e9d3");
+            .accept("[Ljava.lang.String;@716af41a");
         request.getParameters()
-            .add("bookmark", "example") // The query parameter format should be 
-            .add("page_size", String.valueOf(25)) // The query parameter format should be 
             .add("creative_types", Arrays.asList()) // The query format should be multi
             .add("ad_account_id", "example") // The query parameter format should be 
-            .add("pin_metrics", String.valueOf(false)); // The query parameter format should be 
+            .add("pin_metrics", String.valueOf(false)) // The query parameter format should be 
+            .add("bookmark", "example") // The query parameter format should be 
+            .add("page_size", String.valueOf(25)); // The query parameter format should be 
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, BoardsListPins200Response.class);
@@ -613,7 +614,7 @@ public class BoardsControllerTest {
             put("board_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.PATCH(uri, body)
-            .accept("[Ljava.lang.String;@6a5cd62d");
+            .accept("[Ljava.lang.String;@258caad2");
         request.getParameters()
             .add("ad_account_id", "example"); // The query parameter format should be 
 

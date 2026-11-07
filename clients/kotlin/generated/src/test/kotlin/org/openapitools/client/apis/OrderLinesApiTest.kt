@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,9 +27,10 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.OrderLinesApi
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.OrderLine
 import org.openapitools.client.models.OrderLinesList200Response
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.PinterestLibPaginationOrder
 
 class OrderLinesApiTest : ShouldSpec() {
     init {
@@ -31,9 +40,9 @@ class OrderLinesApiTest : ShouldSpec() {
         // to test orderLinesGet
         should("test orderLinesGet") {
             // uncomment below to test orderLinesGet
+            //val orderLineId : kotlin.String = orderLineId_example // kotlin.String | Order line ID.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val orderLineId : kotlin.String = orderLineId_example // kotlin.String | Unique identifier of an order line.
-            //val result : OrderLine = apiInstance.orderLinesGet(adAccountId, orderLineId)
+            //val result : OrderLine = apiInstance.orderLinesGet(orderLineId, adAccountId)
             //result shouldBe ("TODO")
         }
 
@@ -41,10 +50,10 @@ class OrderLinesApiTest : ShouldSpec() {
         should("test orderLinesList") {
             // uncomment below to test orderLinesList
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val order : kotlin.String = ASCENDING // kotlin.String | The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val result : OrderLinesList200Response = apiInstance.orderLinesList(adAccountId, pageSize, order, bookmark)
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val order : PinterestLibPaginationOrder =  // PinterestLibPaginationOrder | The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items.
+            //val result : OrderLinesList200Response = apiInstance.orderLinesList(adAccountId, bookmark, pageSize, order)
             //result shouldBe ("TODO")
         }
 

@@ -1,3 +1,4 @@
+.openapi-generator-ignore
 docs/Account.md
 docs/AccountTemplate.md
 docs/ActionType.md

@@ -40,10 +40,10 @@ func Test_openapi_AudiencesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var adAccountId string
 		var audienceId string
+		var adAccountId string
 
-		resp, httpRes, err := apiClient.AudiencesAPI.AudiencesGet(context.Background(), adAccountId, audienceId).Execute()
+		resp, httpRes, err := apiClient.AudiencesAPI.AudiencesGet(context.Background(), audienceId, adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)
@@ -69,10 +69,10 @@ func Test_openapi_AudiencesAPIService(t *testing.T) {
 
 		t.Skip("skip test")  // remove to run test
 
-		var adAccountId string
 		var audienceId string
+		var adAccountId string
 
-		resp, httpRes, err := apiClient.AudiencesAPI.AudiencesUpdate(context.Background(), adAccountId, audienceId).Execute()
+		resp, httpRes, err := apiClient.AudiencesAPI.AudiencesUpdate(context.Background(), audienceId, adAccountId).Execute()
 
 		require.Nil(t, err)
 		require.NotNil(t, resp)

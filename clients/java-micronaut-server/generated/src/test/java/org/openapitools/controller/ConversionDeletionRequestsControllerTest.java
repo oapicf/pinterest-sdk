@@ -89,7 +89,7 @@ public class ConversionDeletionRequestsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.POST(uri, body)
-            .accept("[Ljava.lang.String;@2d1d1b2e");
+            .accept("[Ljava.lang.String;@36186d58");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ConversionDeletionRequest.class);
@@ -137,7 +137,7 @@ public class ConversionDeletionRequestsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.DELETE(uri)
-            .accept("[Ljava.lang.String;@217f837a");
+            .accept("[Ljava.lang.String;@2dac0deb");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ConversionDeletionRequest.class);
@@ -185,7 +185,7 @@ public class ConversionDeletionRequestsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@63ce22f0");
+            .accept("[Ljava.lang.String;@49aaf96d");
 
         // when
         HttpResponse<?> response = client.toBlocking().exchange(request, ConversionDeletionRequest.class);
@@ -234,7 +234,7 @@ public class ConversionDeletionRequestsControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@67c24580");
+            .accept("[Ljava.lang.String;@16faa7aa");
         request.getParameters()
             .add("bookmark", "example") // The query parameter format should be 
             .add("page_size", String.valueOf(25)) // The query parameter format should be 

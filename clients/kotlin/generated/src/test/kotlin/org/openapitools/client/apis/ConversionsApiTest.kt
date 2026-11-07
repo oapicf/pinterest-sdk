@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -19,19 +27,48 @@ import io.kotlintest.shouldBe
 import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.ConversionsApi
-import org.openapitools.client.models.AdvertiserDefinedEventsResponse
-import org.openapitools.client.models.Error
+import org.openapitools.client.models.AdvertiserDefinedEventsCreate200Response
+import org.openapitools.client.models.AdvertiserDefinedEventsCreateRequest
+import org.openapitools.client.models.AdvertiserDefinedEventsGet200Response
+import org.openapitools.client.models.PinterestLibError
 
 class ConversionsApiTest : ShouldSpec() {
     init {
         // uncomment below to create an instance of ConversionsApi
         //val apiInstance = ConversionsApi()
 
+        // to test advertiserDefinedEventsCreate
+        should("test advertiserDefinedEventsCreate") {
+            // uncomment below to test advertiserDefinedEventsCreate
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val advertiserDefinedEventsCreateRequest : AdvertiserDefinedEventsCreateRequest =  // AdvertiserDefinedEventsCreateRequest | 
+            //val result : AdvertiserDefinedEventsCreate200Response = apiInstance.advertiserDefinedEventsCreate(adAccountId, advertiserDefinedEventsCreateRequest)
+            //result shouldBe ("TODO")
+        }
+
+        // to test advertiserDefinedEventsDelete
+        should("test advertiserDefinedEventsDelete") {
+            // uncomment below to test advertiserDefinedEventsDelete
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val eventNames : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | List of event names to delete
+            //val result : AdvertiserDefinedEventsCreate200Response = apiInstance.advertiserDefinedEventsDelete(adAccountId, eventNames)
+            //result shouldBe ("TODO")
+        }
+
         // to test advertiserDefinedEventsGet
         should("test advertiserDefinedEventsGet") {
             // uncomment below to test advertiserDefinedEventsGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : AdvertiserDefinedEventsResponse = apiInstance.advertiserDefinedEventsGet(adAccountId)
+            //val result : AdvertiserDefinedEventsGet200Response = apiInstance.advertiserDefinedEventsGet(adAccountId)
+            //result shouldBe ("TODO")
+        }
+
+        // to test advertiserDefinedEventsUpdate
+        should("test advertiserDefinedEventsUpdate") {
+            // uncomment below to test advertiserDefinedEventsUpdate
+            //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
+            //val advertiserDefinedEventsCreateRequest : AdvertiserDefinedEventsCreateRequest =  // AdvertiserDefinedEventsCreateRequest | 
+            //val result : AdvertiserDefinedEventsCreate200Response = apiInstance.advertiserDefinedEventsUpdate(adAccountId, advertiserDefinedEventsCreateRequest)
             //result shouldBe ("TODO")
         }
 

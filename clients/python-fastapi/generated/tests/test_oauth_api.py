@@ -3,12 +3,13 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, StrictStr  # noqa: F401
 from typing import Any, Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.conversion_access_token_response import ConversionAccessTokenResponse  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
-from openapi_server.models.oauth_access_token_response import OauthAccessTokenResponse  # noqa: F401
+from openapi_server.models.conversion_access_token import ConversionAccessToken  # noqa: F401
+from openapi_server.models.oauth_access_token import OauthAccessToken  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
+from openapi_server.models.token_grant_type import TokenGrantType  # noqa: F401
 
 
 def test_oauth_conversion_token(client: TestClient):
@@ -41,7 +42,12 @@ def test_oauth_token(client: TestClient):
         "Authorization": "BasicZm9vOmJhcg==",
     }
     data = {
-        "grant_type": 'grant_type_example'
+        "code": 'code_example',
+        "continuous_refresh": 'continuous_refresh_example',
+        "grant_type": openapi_server.TokenGrantType(),
+        "redirect_uri": 'redirect_uri_example',
+        "refresh_token": 'refresh_token_example',
+        "scope": 'scope_example'
     }
     # uncomment below to make a request
     #response = client.request(
@@ -66,7 +72,7 @@ def test_token_revoke(client: TestClient):
     }
     data = {
         "token": 'token_example',
-        "token_type_hint": 'token_type_hint_example'
+        "token_type_hint": openapi_server.TokenTypeHint()
     }
     # uncomment below to make a request
     #response = client.request(

@@ -1,6 +1,6 @@
 package org.openapitools.controller;
 
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.TermsOfService;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import io.micronaut.http.client.HttpClient;
@@ -86,7 +86,7 @@ public class TermsOfServiceControllerTest {
             put("ad_account_id", "example");
         }});
         MutableHttpRequest<?> request = HttpRequest.GET(uri)
-            .accept("[Ljava.lang.String;@493f65d");
+            .accept("[Ljava.lang.String;@5729236c");
         request.getParameters()
             .add("include_html", String.valueOf(false)) // The query parameter format should be 
             .add("tos_type", "example"); // The query parameter format should be 

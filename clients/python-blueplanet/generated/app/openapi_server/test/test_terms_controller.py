@@ -5,7 +5,7 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
 from app.openapi_server.models.related_terms import RelatedTerms  # noqa: E501
 from openapi_server.test import BaseTestCase
 
@@ -31,7 +31,7 @@ class TestTermsController(BaseTestCase):
 
         List suggested terms
         """
-        query_string = [('term', 'sports'),
+        query_string = [('term', 'term_example'),
                         ('limit', 4)]
         response = self.client.open(
             '/v5/terms/suggested',

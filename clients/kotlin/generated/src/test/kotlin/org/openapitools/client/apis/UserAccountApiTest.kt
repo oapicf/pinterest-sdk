@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -21,20 +29,23 @@ import io.kotlintest.specs.ShouldSpec
 import org.openapitools.client.apis.UserAccountApi
 import org.openapitools.client.models.Account
 import org.openapitools.client.models.AnalyticsMetricsResponse
-import org.openapitools.client.models.BoardsUserFollowsList200Response
-import org.openapitools.client.models.Error
-import org.openapitools.client.models.FollowUserRequest
+import org.openapitools.client.models.BoardsList200Response
+import org.openapitools.client.models.FollowUser
+import org.openapitools.client.models.FollowUserCreate
 import org.openapitools.client.models.FollowersList200Response
 import org.openapitools.client.models.LinkedBusiness
+import org.openapitools.client.models.PinterestLibError
+import org.openapitools.client.models.QuerymetrictypesItems
+import org.openapitools.client.models.QueryvideopinmetrictypesItems
 import org.openapitools.client.models.TopPinsAnalyticsResponse
+import org.openapitools.client.models.TopPinsSortBy
 import org.openapitools.client.models.TopVideoPinsAnalyticsResponse
+import org.openapitools.client.models.TopVideoPinsSortBy
 import org.openapitools.client.models.UserAccountFollowedInterests200Response
 import org.openapitools.client.models.UserFollowingFeedType
-import org.openapitools.client.models.UserFollowingGet200Response
-import org.openapitools.client.models.UserSummary
-import org.openapitools.client.models.UserWebsiteSummary
-import org.openapitools.client.models.UserWebsiteVerificationCode
-import org.openapitools.client.models.UserWebsiteVerifyRequest
+import org.openapitools.client.models.UserWebsite
+import org.openapitools.client.models.UserWebsiteCreate
+import org.openapitools.client.models.UserWebsiteVerification
 import org.openapitools.client.models.UserWebsitesGet200Response
 
 class UserAccountApiTest : ShouldSpec() {
@@ -45,20 +56,20 @@ class UserAccountApiTest : ShouldSpec() {
         // to test boardsUserFollowsList
         should("test boardsUserFollowsList") {
             // uncomment below to test boardsUserFollowsList
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val explicitFollowing : kotlin.Boolean = true // kotlin.Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : BoardsUserFollowsList200Response = apiInstance.boardsUserFollowsList(bookmark, pageSize, explicitFollowing, adAccountId)
+            //val explicitFollowing : kotlin.Boolean = true // kotlin.Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : BoardsList200Response = apiInstance.boardsUserFollowsList(adAccountId, explicitFollowing, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
         // to test followUserUpdate
         should("test followUserUpdate") {
             // uncomment below to test followUserUpdate
-            //val username : kotlin.String = username // kotlin.String | A valid username
-            //val followUserRequest : FollowUserRequest =  // FollowUserRequest | Follow a user.
-            //val result : UserSummary = apiInstance.followUserUpdate(username, followUserRequest)
+            //val username : kotlin.String = username_example // kotlin.String | A valid username
+            //val followUserCreate : FollowUserCreate =  // FollowUserCreate | 
+            //val result : FollowUser = apiInstance.followUserUpdate(username, followUserCreate)
             //result shouldBe ("TODO")
         }
 
@@ -66,7 +77,7 @@ class UserAccountApiTest : ShouldSpec() {
         should("test followersList") {
             // uncomment below to test followersList
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : FollowersList200Response = apiInstance.followersList(bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -81,8 +92,9 @@ class UserAccountApiTest : ShouldSpec() {
         // to test unverifyWebsiteDelete
         should("test unverifyWebsiteDelete") {
             // uncomment below to test unverifyWebsiteDelete
-            //val website : kotlin.String = mysite.test // kotlin.String | Website with path or domain only
-            //apiInstance.unverifyWebsiteDelete(website)
+            //val website : kotlin.String = website_example // kotlin.String | Website with path or domain only
+            //val result : UserWebsite = apiInstance.unverifyWebsiteDelete(website)
+            //result shouldBe ("TODO")
         }
 
         // to test userAccountAnalytics
@@ -95,7 +107,7 @@ class UserAccountApiTest : ShouldSpec() {
             //val appTypes : kotlin.String = appTypes_example // kotlin.String | Apps or devices to get data for, default is all.
             //val contentType : kotlin.String = contentType_example // kotlin.String | Filter to paid or organic data. Default is all.
             //val source : kotlin.String = source_example // kotlin.String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-            //val metricTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Metric types to get data for, default is all. 
+            //val metricTypes : kotlin.collections.List<QuerymetrictypesItems> =  // kotlin.collections.List<QuerymetrictypesItems> | Metric types to get data for, default is all.
             //val splitField : kotlin.String = splitField_example // kotlin.String | How to split the data into groups. Not including this param means data won't be split.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : kotlin.collections.Map<kotlin.String, AnalyticsMetricsResponse> = apiInstance.userAccountAnalytics(startDate, endDate, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, splitField, adAccountId)
@@ -107,15 +119,15 @@ class UserAccountApiTest : ShouldSpec() {
             // uncomment below to test userAccountAnalyticsTopPins
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-            //val sortBy : kotlin.String = sortBy_example // kotlin.String | Specify sorting order for metrics
+            //val sortBy : TopPinsSortBy =  // TopPinsSortBy | Specify sorting order for metrics
             //val fromClaimedContent : kotlin.String = fromClaimedContent_example // kotlin.String | Filter on Pins that match your claimed domain.
             //val pinFormat : kotlin.String = pinFormat_example // kotlin.String | Pin formats to get data for, default is all.
             //val appTypes : kotlin.String = appTypes_example // kotlin.String | Apps or devices to get data for, default is all.
             //val contentType : kotlin.String = contentType_example // kotlin.String | Filter to paid or organic data. Default is all.
             //val source : kotlin.String = source_example // kotlin.String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-            //val metricTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Metric types to get data for, default is all. 
-            //val numOfPins : kotlin.Int = 25 // kotlin.Int | Number of pins to include, default is 10. Max is 50.
-            //val createdInLastNDays : kotlin.Int = 30 // kotlin.Int | Get metrics for pins created in the last \"n\" days.
+            //val metricTypes : kotlin.collections.List<QuerymetrictypesItems> =  // kotlin.collections.List<QuerymetrictypesItems> | Metric types to get data for, default is all.
+            //val numOfPins : kotlin.Int = 56 // kotlin.Int | Number of pins to include, default is 10. Max is 50.
+            //val createdInLastNDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Get metrics for pins created in the last \"n\" days.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : TopPinsAnalyticsResponse = apiInstance.userAccountAnalyticsTopPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId)
             //result shouldBe ("TODO")
@@ -126,15 +138,15 @@ class UserAccountApiTest : ShouldSpec() {
             // uncomment below to test userAccountAnalyticsTopVideoPins
             //val startDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report start date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days back from today.
             //val endDate : java.time.LocalDate = 2013-10-20 // java.time.LocalDate | Metric report end date (UTC). Format: YYYY-MM-DD. Cannot be more than 90 days past start_date.
-            //val sortBy : kotlin.String = sortBy_example // kotlin.String | Specify sorting order for video metrics
+            //val sortBy : TopVideoPinsSortBy =  // TopVideoPinsSortBy | Specify sorting order for video metrics
             //val fromClaimedContent : kotlin.String = fromClaimedContent_example // kotlin.String | Filter on Pins that match your claimed domain.
             //val pinFormat : kotlin.String = pinFormat_example // kotlin.String | Pin formats to get data for, default is all.
             //val appTypes : kotlin.String = appTypes_example // kotlin.String | Apps or devices to get data for, default is all.
             //val contentType : kotlin.String = contentType_example // kotlin.String | Filter to paid or organic data. Default is all.
             //val source : kotlin.String = source_example // kotlin.String | Filter to activity from Pins created and saved by your, or activity created and saved by others from your claimed accounts
-            //val metricTypes : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | Metric types to get video data for, default is all. 
-            //val numOfPins : kotlin.Int = 25 // kotlin.Int | Number of pins to include, default is 10. Max is 50.
-            //val createdInLastNDays : kotlin.Int = 30 // kotlin.Int | Get metrics for pins created in the last \"n\" days.
+            //val metricTypes : kotlin.collections.List<QueryvideopinmetrictypesItems> =  // kotlin.collections.List<QueryvideopinmetrictypesItems> | Metric types to get video data for, default is all.
+            //val numOfPins : kotlin.Int = 56 // kotlin.Int | Number of pins to include, default is 10. Max is 50.
+            //val createdInLastNDays : java.math.BigDecimal = 8.14 // java.math.BigDecimal | Get metrics for pins created in the last \"n\" days.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
             //val result : TopVideoPinsAnalyticsResponse = apiInstance.userAccountAnalyticsTopVideoPins(startDate, endDate, sortBy, fromClaimedContent, pinFormat, appTypes, contentType, source, metricTypes, numOfPins, createdInLastNDays, adAccountId)
             //result shouldBe ("TODO")
@@ -143,9 +155,9 @@ class UserAccountApiTest : ShouldSpec() {
         // to test userAccountFollowedInterests
         should("test userAccountFollowedInterests") {
             // uncomment below to test userAccountFollowedInterests
-            //val username : kotlin.String = username // kotlin.String | A valid username
+            //val username : kotlin.String = username_example // kotlin.String | A valid username
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : UserAccountFollowedInterests200Response = apiInstance.userAccountFollowedInterests(username, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -161,12 +173,12 @@ class UserAccountApiTest : ShouldSpec() {
         // to test userFollowingGet
         should("test userFollowingGet") {
             // uncomment below to test userFollowingGet
-            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
-            //val feedType : UserFollowingFeedType = feedType_example // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
-            //val explicitFollowing : kotlin.Boolean = true // kotlin.Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : UserFollowingGet200Response = apiInstance.userFollowingGet(bookmark, pageSize, feedType, explicitFollowing, adAccountId)
+            //val explicitFollowing : kotlin.Boolean = true // kotlin.Boolean | Whether or not to include implicit user follows, which means followees with board follows. When explicit_following is True, it means we only want explicit user follows.
+            //val feedType : UserFollowingFeedType =  // UserFollowingFeedType | Thrift param specifying what type of followees will be kept. Default to include all followees.
+            //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
+            //val result : FollowersList200Response = apiInstance.userFollowingGet(adAccountId, explicitFollowing, feedType, bookmark, pageSize)
             //result shouldBe ("TODO")
         }
 
@@ -174,7 +186,7 @@ class UserAccountApiTest : ShouldSpec() {
         should("test userWebsitesGet") {
             // uncomment below to test userWebsitesGet
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : UserWebsitesGet200Response = apiInstance.userWebsitesGet(bookmark, pageSize)
             //result shouldBe ("TODO")
         }
@@ -182,9 +194,9 @@ class UserAccountApiTest : ShouldSpec() {
         // to test verifyWebsiteUpdate
         should("test verifyWebsiteUpdate") {
             // uncomment below to test verifyWebsiteUpdate
-            //val userWebsiteVerifyRequest : UserWebsiteVerifyRequest =  // UserWebsiteVerifyRequest | Verify a website.
+            //val userWebsiteCreate : UserWebsiteCreate =  // UserWebsiteCreate | 
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : UserWebsiteSummary = apiInstance.verifyWebsiteUpdate(userWebsiteVerifyRequest, adAccountId)
+            //val result : UserWebsite = apiInstance.verifyWebsiteUpdate(userWebsiteCreate, adAccountId)
             //result shouldBe ("TODO")
         }
 
@@ -192,7 +204,7 @@ class UserAccountApiTest : ShouldSpec() {
         should("test websiteVerificationGet") {
             // uncomment below to test websiteVerificationGet
             //val adAccountId : kotlin.String = adAccountId_example // kotlin.String | Unique identifier of an ad account.
-            //val result : UserWebsiteVerificationCode = apiInstance.websiteVerificationGet(adAccountId)
+            //val result : UserWebsiteVerification = apiInstance.websiteVerificationGet(adAccountId)
             //result shouldBe ("TODO")
         }
 

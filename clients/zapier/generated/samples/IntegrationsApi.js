@@ -9,6 +9,10 @@ module.exports = {
         { data: {} },
     "IntegrationMetadataSample": 
         { data: {} },
+    "IntegrationMetadataSample": 
+        { data: {} },
+    "IntegrationMetadataSample": 
+        { data: {} },
     "IntegrationLogsSuccessResponseSample": 
         { data: {} },
 }

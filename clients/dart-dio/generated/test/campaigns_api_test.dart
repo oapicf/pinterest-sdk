@@ -9,36 +9,36 @@ void main() {
   group(CampaignsApi, () {
     // Get pins analytics
     //
-    // Get analytics for the pins given a campaign and pins in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
+    // Get analytics for the pins given a campaign and pins in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, the furthest back you can are allowed to pull data is 90 days before the current date in UTC time and the max time range supported is 90 days. - If granularity is HOUR, the furthest back you can are allowed to pull data is 8 days before the current date in UTC time and the max time range supported is 3 days. Data will not be provided for conversion metrics but will be available for non-conversion metrics.
     //
-    //Future<BuiltList<AdPinAnalytics>> adPinsAnalytics(String adAccountId, String campaignId, BuiltList<String> pinIds, Date startDate, Date endDate, BuiltList<String> columns, Granularity granularity, { int clickWindowDays, int engagementWindowDays, int viewWindowDays, String conversionReportTime }) async
+    //Future<BuiltList<AdPinAnalytics>> adPinsAnalytics(String campaignId, BuiltList<String> pinIds, Date startDate, Date endDate, BuiltList<ReportingColumnSync> columns, Granularity granularity, String adAccountId, { num clickWindowDays, num engagementWindowDays, num viewWindowDays, String conversionReportTime }) async
     test('test adPinsAnalytics', () async {
       // TODO
     });
 
     // Get targeting analytics for campaigns
     //
-    // Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\"). <p/> - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+    // Get targeting analytics for one or more campaigns. For the requested account and metrics, the response will include the requested metric information (e.g. SPEND_IN_DOLLAR) for the requested target type (e.g. \"age_bucket\") for applicable values (e.g. \"45-49\").  * The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. * If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. * If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
     //
-    //Future<MetricsResponse> campaignTargetingAnalyticsGet(String adAccountId, BuiltList<String> campaignIds, Date startDate, Date endDate, BuiltList<AdsAnalyticsCampaignTargetingType> targetingTypes, BuiltList<String> columns, Granularity granularity, { int clickWindowDays, int engagementWindowDays, int viewWindowDays, String conversionReportTime, BuiltList<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone }) async
+    //Future<MetricsResponse> campaignTargetingAnalyticsGet(String adAccountId, BuiltList<String> campaignIds, Date startDate, Date endDate, BuiltList<AdsAnalyticsCampaignTargetingType> targetingTypes, BuiltList<ReportingColumnSync> columns, Granularity granularity, { num clickWindowDays, num engagementWindowDays, num viewWindowDays, String conversionReportTime, BuiltList<ConversionReportAttributionType> attributionTypes, ReportingTimeZone reportingTimezone }) async
     test('test campaignTargetingAnalyticsGet', () async {
       // TODO
     });
 
     // Get campaign analytics
     //
-    // Get analytics for the specified campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
+    // Get analytics for the specified campaigns in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager. - If granularity is not HOUR, you can pull data from up to 90 days before the current date in UTC time, with a maximum time range of 90 days. - If granularity is HOUR, you can pull data from up to 8 days before the current date in UTC time, with a maximum time range of 3 days.
     //
-    //Future<BuiltList<CampaignsAnalyticsResponseInner>> campaignsAnalytics(String adAccountId, Date startDate, Date endDate, BuiltList<String> campaignIds, BuiltList<String> columns, Granularity granularity, { int clickWindowDays, int engagementWindowDays, int viewWindowDays, String conversionReportTime, bool aggregateReportRows, ReportingTimeZone reportingTimezone }) async
+    //Future<BuiltList<CampaignsAnalyticsMetrics>> campaignsAnalytics(Date startDate, Date endDate, BuiltList<String> campaignIds, BuiltList<ReportingColumnSync> columns, Granularity granularity, String adAccountId, { num clickWindowDays, num engagementWindowDays, num viewWindowDays, String conversionReportTime, bool aggregateReportRows, ReportingTimeZone reportingTimezone }) async
     test('test campaignsAnalytics', () async {
       // TODO
     });
 
     // Create campaigns
     //
-    // Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads. For more, see <a href=\"https://help.pinterest.com/en/business/article/set-up-your-campaign/\">Set up your campaign</a>. <p/> <strong>Note:</strong> - The values for 'lifetime_spend_cap' and 'daily_spend_cap' are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser’s profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser’s profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+    // Create multiple new campaigns. Every campaign has its own campaign_id and houses one or more ad groups, which contain one or more ads.  For more, see [Set up your campaign](https://help.pinterest.com/en/business/article/set-up-your-campaign/).  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
     //
-    //Future<CampaignCreateResponse> campaignsCreate(String adAccountId, BuiltList<CampaignCreateRequest> campaignCreateRequest) async
+    //Future<CampaignBatchWriteResponseModel> campaignsCreate(String adAccountId, BuiltList<CampaignCreateItem> campaignCreateItem) async
     test('test campaignsCreate', () async {
       // TODO
     });
@@ -47,26 +47,35 @@ void main() {
     //
     // Get a specific campaign given the campaign ID.
     //
-    //Future<CampaignResponse> campaignsGet(String adAccountId, String campaignId) async
+    //Future<Campaign> campaignsGet(String campaignId, String adAccountId) async
     test('test campaignsGet', () async {
       // TODO
     });
 
     // List campaigns
     //
-    // Get a list of the campaigns in the specified <code>ad_account_id</code>, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via <a href=\"https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts\">Business Access</a>: Admin, Analyst, Campaign Manager.
+    // Get a list of the campaigns in the specified `ad_account_id`, filtered by the specified options. - The token's user_account must either be the Owner of the specified ad account, or have one of the necessary roles granted to them via [Business Access](https://help.pinterest.com/en/business/article/share-and-manage-access-to-your-ad-accounts): Admin, Analyst, Campaign Manager.
     //
-    //Future<CampaignsList200Response> campaignsList(String adAccountId, { BuiltList<String> campaignIds, BuiltList<String> entityStatuses, int pageSize, String order, String bookmark }) async
+    //Future<CampaignsList200Response> campaignsList(String adAccountId, { String bookmark, int pageSize, PinterestLibPaginationOrder order, BuiltList<String> campaignIds, BuiltList<EntityStatus> entityStatuses }) async
     test('test campaignsList', () async {
       // TODO
     });
 
     // Update campaigns
     //
-    // <p>Update multiple ad campaigns based on campaign_ids. </p> <p><strong>Note:</strong></p> - <p>The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile. (e.g. USD) <p/> <p>Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.</p> <p>A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.</p> <p><strong>Equivalency equations</strong>, using dollars as an example currency:</p> <ul>   <li>$1 = 1,000,000 microdollars</li>   <li>1 microdollar = $0.000001 </li> </ul> <p><strong>To convert between currency and microcurrency</strong>, using dollars as an example currency:</p> <ul>   <li>To convert dollars to microdollars, mutiply dollars by 1,000,000</li>   <li>To convert microdollars to dollars, divide microdollars by 1,000,000</li> </ul>
+    // Update multiple ad campaigns based on campaign_ids.  **Note:** - The values for `lifetime_spend_cap` and `daily_spend_cap` are microcurrency amounts based on the currency field set in the advertiser's profile (e.g. USD).  Microcurrency is used to track very small transactions, based on the currency set in the advertiser's profile.  A microcurrency unit is 10^(-6) of the standard unit of currency selected in the advertiser's profile.  **Equivalency equations**, using dollars as an example currency:  - $1 = 1,000,000 microdollars - 1 microdollar = $0.000001  **To convert between currency and microcurrency**, using dollars as an example currency:  - To convert dollars to microdollars, multiply dollars by 1,000,000 - To convert microdollars to dollars, divide microdollars by 1,000,000
     //
-    //Future<CampaignUpdateResponse> campaignsUpdate(String adAccountId, BuiltList<CampaignUpdateRequest> campaignUpdateRequest) async
+    //Future<CampaignBatchWriteResponseModel> campaignsUpdate(String adAccountId, BuiltList<CampaignBatchUpdateItem> campaignBatchUpdateItem) async
     test('test campaignsUpdate', () async {
+      // TODO
+    });
+
+    // Get campaign delivery estimates
+    //
+    // Get delivery estimates for an ads campaign  **This endpoint is currently in beta and is not available to all apps [Learn more](/docs/new/about-beta-access/).**
+    //
+    //Future<CampaignDeliveryEstimatesResponse> getCampaignDeliveryEstimates(String adAccountId, BuiltList<CampaignDeliveryEstimatesCampaign> campaignDeliveryEstimatesCampaign) async
+    test('test getCampaignDeliveryEstimates', () async {
       // TODO
     });
 

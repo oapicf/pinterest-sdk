@@ -3,7 +3,7 @@ private class OASLeadFormsApiTest {
     /**
      * Get lead form by id
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;\n\nGets a lead form given it\&#39;s ID. It must also be associated with the provided ad account ID.\n\nFor more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;https://help.pinterest.com/en/business/article/lead-ads&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**\n\nGets a lead form given it\&#39;s ID. It must also be associated with the provided ad account ID.\n\nFor more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      */
     @isTest
     private static void leadFormGetTest() {
@@ -13,48 +13,72 @@ private class OASLeadFormsApiTest {
         Test.setMock(HttpCalloutMock.class, new OASResponseMock(res));
 
         Map<String, Object> params = new Map<String, Object>{
-            'adAccountId' => 'null',
-            'leadFormId' => 1234567890123
+            'leadFormId' => 'null',
+            'adAccountId' => 'null'
         };
 
         OASClient client;
         OASLeadFormsApi api;
-        OASLeadFormResponse response;
-        OASLeadFormResponse expectedResponse;
+        OASLeadForm response;
+        OASLeadForm expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASLeadFormsApi(client);
 
-        js = JSON.serialize(OASLeadFormResponse.getExample());
+        js = JSON.serialize(OASLeadForm.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormResponse.getExample();
-        response = (OASLeadFormResponse) api.leadFormGet(params);
+        expectedResponse = OASLeadForm.getExample();
+        response = (OASLeadForm) api.leadFormGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormResponse.getExample());
+        js = JSON.serialize(OASLeadForm.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormResponse.getExample();
-        response = (OASLeadFormResponse) api.leadFormGet(params);
+        expectedResponse = OASLeadForm.getExample();
+        response = (OASLeadForm) api.leadFormGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormResponse.getExample());
+        js = JSON.serialize(OASLeadForm.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormResponse.getExample();
-        response = (OASLeadFormResponse) api.leadFormGet(params);
+        expectedResponse = OASLeadForm.getExample();
+        response = (OASLeadForm) api.leadFormGet(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormResponse.getExample());
+        js = JSON.serialize(OASLeadForm.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormResponse.getExample();
-        response = (OASLeadFormResponse) api.leadFormGet(params);
+        expectedResponse = OASLeadForm.getExample();
+        response = (OASLeadForm) api.leadFormGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadForm.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadForm.getExample();
+        response = (OASLeadForm) api.leadFormGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadForm.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadForm.getExample();
+        response = (OASLeadForm) api.leadFormGet(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadForm.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadForm.getExample();
+        response = (OASLeadForm) api.leadFormGet(params);
         System.assertEquals(expectedResponse, response);
     }
 
@@ -72,55 +96,55 @@ private class OASLeadFormsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'leadFormId' => 1234567890123,
-            'oaSLeadFormTestRequest' => ''
+            'leadFormId' => 'null',
+            'oaSLeadFormTestCreate' => ''
         };
 
         OASClient client;
         OASLeadFormsApi api;
-        OASLeadFormTestResponse response;
-        OASLeadFormTestResponse expectedResponse;
+        OASLeadFormTest response;
+        OASLeadFormTest expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASLeadFormsApi(client);
 
-        js = JSON.serialize(OASLeadFormTestResponse.getExample());
+        js = JSON.serialize(OASLeadFormTest.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormTestResponse.getExample();
-        response = (OASLeadFormTestResponse) api.leadFormTestCreate(params);
+        expectedResponse = OASLeadFormTest.getExample();
+        response = (OASLeadFormTest) api.leadFormTestCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormTestResponse.getExample());
+        js = JSON.serialize(OASLeadFormTest.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormTestResponse.getExample();
-        response = (OASLeadFormTestResponse) api.leadFormTestCreate(params);
+        expectedResponse = OASLeadFormTest.getExample();
+        response = (OASLeadFormTest) api.leadFormTestCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormTestResponse.getExample());
+        js = JSON.serialize(OASLeadFormTest.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormTestResponse.getExample();
-        response = (OASLeadFormTestResponse) api.leadFormTestCreate(params);
+        expectedResponse = OASLeadFormTest.getExample();
+        response = (OASLeadFormTest) api.leadFormTestCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormTestResponse.getExample());
+        js = JSON.serialize(OASLeadFormTest.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormTestResponse.getExample();
-        response = (OASLeadFormTestResponse) api.leadFormTestCreate(params);
+        expectedResponse = OASLeadFormTest.getExample();
+        response = (OASLeadFormTest) api.leadFormTestCreate(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Create lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;\n\nCreate lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form’s description, questions and confirmation sections.\n\nFor more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;https://help.pinterest.com/en/business/article/lead-ads&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**\n\nCreate lead forms. Lead forms are used in lead ads and allow you to control what text appears on the lead form\&#39;s description, questions and confirmation sections.\n\nFor more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      */
     @isTest
     private static void leadFormsCreateTest() {
@@ -131,46 +155,78 @@ private class OASLeadFormsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSLeadFormCreateRequest' => new List<OASLeadFormCreateRequest>{OASLeadFormCreateRequest.getExample()}
+            'oaSLeadFormCreate' => new List<OASLeadFormCreate>{OASLeadFormCreate.getExample()}
         };
 
         OASClient client;
         OASLeadFormsApi api;
-        OASLeadFormArrayResponse response;
-        OASLeadFormArrayResponse expectedResponse;
+        OASLeadFormsCreate200Response response;
+        OASLeadFormsCreate200Response expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASLeadFormsApi(client);
 
-        js = JSON.serialize(OASLeadFormArrayResponse.getExample());
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormArrayResponse.getExample();
-        response = (OASLeadFormArrayResponse) api.leadFormsCreate(params);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormArrayResponse.getExample());
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormArrayResponse.getExample();
-        response = (OASLeadFormArrayResponse) api.leadFormsCreate(params);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsCreate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormArrayResponse.getExample());
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormArrayResponse.getExample();
-        response = (OASLeadFormArrayResponse) api.leadFormsCreate(params);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsCreate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsCreate(params);
         System.assertEquals(expectedResponse, response);
     }
 
     /**
      * List lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;\n\nList lead forms associated with an ad account ID.\n\nFor more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;https://help.pinterest.com/en/business/article/lead-ads&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**\n\nList lead forms associated with an ad account ID.\n\nFor more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      */
     @isTest
     private static void leadFormsListTest() {
@@ -181,9 +237,9 @@ private class OASLeadFormsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
+            'bookmark' => 'null',
             'pageSize' => '',
-            'order' => ASCENDING,
-            'bookmark' => 'null'
+            'order' => ''
         };
 
         OASClient client;
@@ -217,12 +273,44 @@ private class OASLeadFormsApiTest {
         expectedResponse = OASLeadFormsList200Response.getExample();
         response = (OASLeadFormsList200Response) api.leadFormsList(params);
         System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsList200Response.getExample();
+        response = (OASLeadFormsList200Response) api.leadFormsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsList200Response.getExample();
+        response = (OASLeadFormsList200Response) api.leadFormsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsList200Response.getExample();
+        response = (OASLeadFormsList200Response) api.leadFormsList(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsList200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsList200Response.getExample();
+        response = (OASLeadFormsList200Response) api.leadFormsList(params);
+        System.assertEquals(expectedResponse, response);
     }
 
     /**
      * Update lead forms
      *
-     * &lt;strong&gt;This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.&lt;/strong&gt;\n\nUpdate lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.\n\nFor more, see &lt;a class&#x3D;&quot;reference external&quot; href&#x3D;&quot;https://help.pinterest.com/en/business/article/lead-ads&quot;&gt;Lead ads&lt;/a&gt;.
+     * **This feature is currently in beta and not available to all apps, if you\&#39;re interested in joining the beta, please reach out to your Pinterest account manager.**\n\nUpdate lead forms. Lead ads help you reach people who are actively looking for, and interested in, your goods and services. The lead form can be associated with an ad to allow people to fill out the form.\n\nFor more, see [Lead ads](https://help.pinterest.com/en/business/article/lead-ads).
      */
     @isTest
     private static void leadFormsUpdateTest() {
@@ -233,39 +321,71 @@ private class OASLeadFormsApiTest {
 
         Map<String, Object> params = new Map<String, Object>{
             'adAccountId' => 'null',
-            'oaSLeadFormUpdateRequest' => new List<OASLeadFormUpdateRequest>{OASLeadFormUpdateRequest.getExample()}
+            'oaSLeadFormBatchUpdate' => new List<OASLeadFormBatchUpdate>{OASLeadFormBatchUpdate.getExample()}
         };
 
         OASClient client;
         OASLeadFormsApi api;
-        OASLeadFormArrayResponse response;
-        OASLeadFormArrayResponse expectedResponse;
+        OASLeadFormsCreate200Response response;
+        OASLeadFormsCreate200Response expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASLeadFormsApi(client);
 
-        js = JSON.serialize(OASLeadFormArrayResponse.getExample());
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormArrayResponse.getExample();
-        response = (OASLeadFormArrayResponse) api.leadFormsUpdate(params);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormArrayResponse.getExample());
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormArrayResponse.getExample();
-        response = (OASLeadFormArrayResponse) api.leadFormsUpdate(params);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsUpdate(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize(OASLeadFormArrayResponse.getExample());
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = OASLeadFormArrayResponse.getExample();
-        response = (OASLeadFormArrayResponse) api.leadFormsUpdate(params);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsUpdate(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadFormsCreate200Response.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadFormsCreate200Response.getExample();
+        response = (OASLeadFormsCreate200Response) api.leadFormsUpdate(params);
         System.assertEquals(expectedResponse, response);
     }
 }

@@ -5,14 +5,17 @@ from __future__ import absolute_import
 from flask import json
 from io import BytesIO
 
-from app.openapi_server.models.error import Error  # noqa: E501
+from app.openapi_server.models.entity_status import EntityStatus  # noqa: E501
 from app.openapi_server.models.granularity import Granularity  # noqa: E501
-from app.openapi_server.models.product_group_analytics_response_inner import ProductGroupAnalyticsResponseInner  # noqa: E501
+from app.openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: E501
+from app.openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: E501
+from app.openapi_server.models.product_group_analytics_items import ProductGroupAnalyticsItems  # noqa: E501
 from app.openapi_server.models.product_group_promotion import ProductGroupPromotion  # noqa: E501
-from app.openapi_server.models.product_group_promotion_create_request import ProductGroupPromotionCreateRequest  # noqa: E501
-from app.openapi_server.models.product_group_promotion_response import ProductGroupPromotionResponse  # noqa: E501
-from app.openapi_server.models.product_group_promotion_update_request import ProductGroupPromotionUpdateRequest  # noqa: E501
+from app.openapi_server.models.product_group_promotions import ProductGroupPromotions  # noqa: E501
+from app.openapi_server.models.product_group_promotions_create import ProductGroupPromotionsCreate  # noqa: E501
 from app.openapi_server.models.product_group_promotions_list200_response import ProductGroupPromotionsList200Response  # noqa: E501
+from app.openapi_server.models.product_group_promotions_update_with_required_body import ProductGroupPromotionsUpdateWithRequiredBody  # noqa: E501
+from app.openapi_server.models.reporting_column_sync import ReportingColumnSync  # noqa: E501
 from app.openapi_server.models.reporting_time_zone import ReportingTimeZone  # noqa: E501
 from openapi_server.test import BaseTestCase
 
@@ -25,7 +28,7 @@ class TestProductGroupPromotionsController(BaseTestCase):
 
         Create product group promotions
         """
-        body = {"product_group_promotion":[{"slideshow_collections_description":"Description","creative_type":"REGULAR","collections_hero_pin_id":"123123","catalog_product_group_name":"catalogProductGroupName","collections_hero_destination_url":"http://www.pinterest.com","tracking_url":"https://www.pinterest.com","slideshow_collections_title":"Title","is_mdl":True,"status":"ACTIVE"},{"slideshow_collections_description":"Description","creative_type":"REGULAR","collections_hero_pin_id":"123123","catalog_product_group_name":"catalogProductGroupName","collections_hero_destination_url":"http://www.pinterest.com","tracking_url":"https://www.pinterest.com","slideshow_collections_title":"Title","is_mdl":True,"status":"ACTIVE"}],"ad_group_id":"2680059592705"}
+        body = {"ad_group_id":"2680059592705","product_group_promotion":[{"slideshow_collections_description":"Description","creative_type":"REGULAR","collections_hero_pin_id":"123123","catalog_product_group_name":"catalogProductGroupName to create","collections_hero_destination_url":"http://www.pinterest.com","tracking_url":"https://www.pinterest.com","slideshow_collections_title":"Title","status":"ACTIVE","is_mdl":True},{"id":"2680059592705","catalog_product_group_id":"1234123","slideshow_collections_description":"Description","creative_type":"REGULAR","collections_hero_pin_id":"123123","catalog_product_group_name":"catalogProductGroupName to update","collections_hero_destination_url":"http://www.pinterest.com","tracking_url":"https://www.pinterest.com","slideshow_collections_title":"Title","status":"ACTIVE"}]}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/product_group_promotions'.format(ad_account_id='ad_account_id_example'),
             method='POST',
@@ -50,12 +53,12 @@ class TestProductGroupPromotionsController(BaseTestCase):
 
         Get product group promotions
         """
-        query_string = [('product_group_promotion_ids', ['product_group_promotion_ids_example']),
-                        ('entity_statuses', ["ACTIVE","PAUSED"]),
-                        ('ad_group_id', '123123123'),
+        query_string = [('bookmark', 'bookmark_example'),
                         ('page_size', 25),
-                        ('order', 'ASCENDING'),
-                        ('bookmark', 'bookmark_example')]
+                        ('order', openapi_server.PinterestLibPaginationOrder()),
+                        ('product_group_promotion_ids', ['product_group_promotion_ids_example']),
+                        ('entity_statuses', ["ACTIVE","PAUSED"]),
+                        ('ad_group_id', 'ad_group_id_example')]
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/product_group_promotions'.format(ad_account_id='ad_account_id_example'),
             method='GET',
@@ -68,7 +71,7 @@ class TestProductGroupPromotionsController(BaseTestCase):
 
         Update product group promotions
         """
-        body = {"product_group_promotion":[{"catalog_product_group_id":"1234123","slideshow_collections_description":"Description","creative_type":"REGULAR","collections_hero_pin_id":"123123","catalog_product_group_name":"ProductGroupName","collections_hero_destination_url":"http://www.pinterest.com","tracking_url":"https://www.pinterest.com","slideshow_collections_title":"Title","status":"ACTIVE","id":"2680059592705"},{"catalog_product_group_id":"1231231","slideshow_collections_description":"Other description","creative_type":"REGULAR","collections_hero_pin_id":"123124","catalog_product_group_name":"ProductGroupName","collections_hero_destination_url":"http://www.pinterest.com","tracking_url":"https://www.pinterest.com","slideshow_collections_title":"Title","status":"ACTIVE","id":"2680059592706"}],"ad_group_id":"26823439592705"}
+        body = {"ad_group_id":"2680059592705","product_group_promotion":[{"slideshow_collections_description":"Description","creative_type":"REGULAR","collections_hero_pin_id":"123123","catalog_product_group_name":"catalogProductGroupName to create","collections_hero_destination_url":"http://www.pinterest.com","tracking_url":"https://www.pinterest.com","slideshow_collections_title":"Title","status":"ACTIVE","is_mdl":True},{"id":"2680059592705","catalog_product_group_id":"1234123","slideshow_collections_description":"Description","creative_type":"REGULAR","collections_hero_pin_id":"123123","catalog_product_group_name":"catalogProductGroupName to update","collections_hero_destination_url":"http://www.pinterest.com","tracking_url":"https://www.pinterest.com","slideshow_collections_title":"Title","status":"ACTIVE"}]}
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/product_group_promotions'.format(ad_account_id='ad_account_id_example'),
             method='PATCH',
@@ -85,12 +88,12 @@ class TestProductGroupPromotionsController(BaseTestCase):
         query_string = [('start_date', '2013-10-20'),
                         ('end_date', '2013-10-20'),
                         ('product_group_ids', ['product_group_ids_example']),
-                        ('columns', ['columns_example']),
+                        ('columns', [openapi_server.ReportingColumnSync()]),
                         ('granularity', openapi_server.Granularity()),
                         ('click_window_days', 30),
                         ('engagement_window_days', 30),
                         ('view_window_days', 1),
-                        ('conversion_report_time', TIME_OF_AD_ACTION),
+                        ('conversion_report_time', 'TIME_OF_AD_ACTION'),
                         ('reporting_timezone', openapi_server.ReportingTimeZone())]
         response = self.client.open(
             '/v5/ad_accounts/{ad_account_id}/product_groups/analytics'.format(ad_account_id='ad_account_id_example'),

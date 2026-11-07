@@ -1,7 +1,7 @@
 package org.openapitools.api.impl;
 
 import org.openapitools.api.*;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
 import org.openapitools.model.TermsOfService;
 
 import java.io.InputStream;

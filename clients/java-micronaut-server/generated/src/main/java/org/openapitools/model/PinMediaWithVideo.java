@@ -40,7 +40,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   PinMediaWithVideo.JSON_PROPERTY_WIDTH
 })
 @JsonTypeName("PinMediaWithVideo")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-03T06:13:36.353910453Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class PinMediaWithVideo {
     public static final String JSON_PROPERTY_COVER_IMAGE_URL = "cover_image_url";

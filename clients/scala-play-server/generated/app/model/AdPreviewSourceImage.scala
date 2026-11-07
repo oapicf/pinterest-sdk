@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param promotionId Promotion id for the ad to preview, optional and only applicable when creating ad preview for an existing promotion.
   * @param title Title displayed below ad.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-03T06:25:30.649114982Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class AdPreviewSourceImage(
   imageUrl: String,
   promotionId: Option[String],

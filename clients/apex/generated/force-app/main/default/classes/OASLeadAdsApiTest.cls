@@ -19,56 +19,66 @@ private class OASLeadAdsApiTest {
 
         OASClient client;
         OASLeadAdsApi api;
+        OASLeadSubscription response;
+        OASLeadSubscription expectedResponse;
         String js = '';
 
         client = new OASClient();
         api = new OASLeadAdsApi(client);
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.adAccountsSubscriptionsDelById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsDelById(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.adAccountsSubscriptionsDelById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsDelById(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.adAccountsSubscriptionsDelById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsDelById(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.adAccountsSubscriptionsDelById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsDelById(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.adAccountsSubscriptionsDelById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsDelById(params);
         System.assertEquals(expectedResponse, response);
 
 
-        js = JSON.serialize();
+        js = JSON.serialize(OASLeadSubscription.getExample());
         res.setHeader('Content-Type', 'application/json');
         res.setBody(js);
-        expectedResponse = ;
-        response = () api.adAccountsSubscriptionsDelById(params);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsDelById(params);
+        System.assertEquals(expectedResponse, response);
+
+
+        js = JSON.serialize(OASLeadSubscription.getExample());
+        res.setHeader('Content-Type', 'application/json');
+        res.setBody(js);
+        expectedResponse = OASLeadSubscription.getExample();
+        response = (OASLeadSubscription) api.adAccountsSubscriptionsDelById(params);
         System.assertEquals(expectedResponse, response);
     }
 

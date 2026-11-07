@@ -1,10 +1,12 @@
 package org.openapitools.api;
 
-import org.openapitools.model.Audience;
-import org.openapitools.model.AudienceCreateRequest;
-import org.openapitools.model.AudienceUpdateRequest;
+import org.openapitools.model.AdAccountsAudience;
+import org.openapitools.model.AdAccountsAudienceCreate;
+import org.openapitools.model.AdAccountsAudienceUpdate;
+import org.openapitools.model.AudienceOwnershipType;
 import org.openapitools.model.AudiencesList200Response;
-import org.openapitools.model.Error;
+import org.openapitools.model.PinterestLibError;
+import org.openapitools.model.PinterestLibPaginationOrder;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
@@ -30,17 +32,17 @@ public class AudiencesApiTest {
     /**
      * Create audience
      *
-     * Create an audience you can use in targeting for specific ad groups. Targeting combines customer information with the ways users interact with Pinterest to help you reach specific groups of users; you can include or exclude specific &#x60;audience_ids&#x60; when you create an ad group. &lt;p/&gt; Learn about &lt;a href&#x3D;\&quot;/docs/work-with-targets-and-audiences/create-audiences/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;creating different kinds of audiences&lt;/a&gt;.
+     * Create a new audience for the ad account.
      */
     @Test
     @Disabled("Not Implemented")
     public void audiencesCreateTest() {
         // given
         String adAccountId = "example";
-        AudienceCreateRequest audienceCreateRequest = new AudienceCreateRequest();
+        AdAccountsAudienceCreate adAccountsAudienceCreate = new AdAccountsAudienceCreate();
 
         // when
-        Audience body = api.audiencesCreate(adAccountId, audienceCreateRequest).block();
+        AdAccountsAudience body = api.audiencesCreate(adAccountId, adAccountsAudienceCreate).block();
 
         // then
         // TODO implement the audiencesCreateTest()
@@ -56,11 +58,11 @@ public class AudiencesApiTest {
     @Disabled("Not Implemented")
     public void audiencesGetTest() {
         // given
-        String adAccountId = "example";
         String audienceId = "example";
+        String adAccountId = "example";
 
         // when
-        Audience body = api.audiencesGet(adAccountId, audienceId).block();
+        AdAccountsAudience body = api.audiencesGet(audienceId, adAccountId).block();
 
         // then
         // TODO implement the audiencesGetTest()
@@ -78,12 +80,13 @@ public class AudiencesApiTest {
         // given
         String adAccountId = "example";
         String bookmark = "example";
-        String order = "ASCENDING";
         Integer pageSize = 25;
-        String ownershipType = "OWNED";
+        PinterestLibPaginationOrder order = PinterestLibPaginationOrder.fromValue("ASCENDING");
+        AudienceOwnershipType ownershipType = AudienceOwnershipType.fromValue("OWNED");
+        Boolean excludeNca = false;
 
         // when
-        AudiencesList200Response body = api.audiencesList(adAccountId, bookmark, order, pageSize, ownershipType).block();
+        AudiencesList200Response body = api.audiencesList(adAccountId, bookmark, pageSize, order, ownershipType, excludeNca).block();
 
         // then
         // TODO implement the audiencesListTest()
@@ -93,18 +96,18 @@ public class AudiencesApiTest {
     /**
      * Update audience
      *
-     * Update (edit or remove) an existing targeting audience.
+     * Update an existing audience for the ad account.
      */
     @Test
     @Disabled("Not Implemented")
     public void audiencesUpdateTest() {
         // given
-        String adAccountId = "example";
         String audienceId = "example";
-        AudienceUpdateRequest audienceUpdateRequest = new AudienceUpdateRequest();
+        String adAccountId = "example";
+        AdAccountsAudienceUpdate adAccountsAudienceUpdate = new AdAccountsAudienceUpdate();
 
         // when
-        Audience body = api.audiencesUpdate(adAccountId, audienceId, audienceUpdateRequest).block();
+        AdAccountsAudience body = api.audiencesUpdate(audienceId, adAccountId, adAccountsAudienceUpdate).block();
 
         // then
         // TODO implement the audiencesUpdateTest()

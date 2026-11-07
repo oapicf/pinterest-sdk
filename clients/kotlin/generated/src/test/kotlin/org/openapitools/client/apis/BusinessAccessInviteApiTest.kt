@@ -8,9 +8,17 @@
 
 @file:Suppress(
     "ArrayInDataClass",
+    "DuplicatedCode",
     "EnumEntryName",
     "RemoveRedundantQualifierName",
-    "UnusedImport"
+    "RemoveRedundantCallsOfConversionMethods",
+    "REDUNDANT_CALL_OF_CONVERSION_METHOD",
+    "RedundantUnitReturnType",
+    "RemoveEmptyClassBody",
+    "UnnecessaryVariable",
+    "UnusedImport",
+    "UnnecessaryVariable",
+    "unused"
 )
 
 package org.openapitools.client.apis
@@ -20,16 +28,17 @@ import io.kotlintest.specs.ShouldSpec
 
 import org.openapitools.client.apis.BusinessAccessInviteApi
 import org.openapitools.client.models.AuthRespondInvitesBody
-import org.openapitools.client.models.CancelInvitesBody
+import org.openapitools.client.models.CancelInvitesRequest
+import org.openapitools.client.models.CancelInvitesResponse
 import org.openapitools.client.models.CreateAssetAccessRequestBody
 import org.openapitools.client.models.CreateAssetAccessRequestResponse
 import org.openapitools.client.models.CreateAssetInvitesRequest
 import org.openapitools.client.models.CreateInvitesResultsResponseArray
 import org.openapitools.client.models.CreateMembershipOrPartnershipInvitesBody
-import org.openapitools.client.models.DeleteInvitesResultsResponseArray
-import org.openapitools.client.models.Error
 import org.openapitools.client.models.GetInvites200Response
+import org.openapitools.client.models.InviteFilterStatus
 import org.openapitools.client.models.InviteType
+import org.openapitools.client.models.PinterestLibError
 import org.openapitools.client.models.RespondToInvitesResponseArray
 import org.openapitools.client.models.UpdateInvitesResultsResponseArray
 
@@ -41,7 +50,7 @@ class BusinessAccessInviteApiTest : ShouldSpec() {
         // to test assetAccessRequestsCreate
         should("test assetAccessRequestsCreate") {
             // uncomment below to test assetAccessRequestsCreate
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
             //val createAssetAccessRequestBody : CreateAssetAccessRequestBody =  // CreateAssetAccessRequestBody | 
             //val result : CreateAssetAccessRequestResponse = apiInstance.assetAccessRequestsCreate(businessId, createAssetAccessRequestBody)
             //result shouldBe ("TODO")
@@ -50,17 +59,17 @@ class BusinessAccessInviteApiTest : ShouldSpec() {
         // to test cancelInvitesOrRequests
         should("test cancelInvitesOrRequests") {
             // uncomment below to test cancelInvitesOrRequests
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val cancelInvitesBody : CancelInvitesBody =  // CancelInvitesBody | A list with invite ids
-            //val result : DeleteInvitesResultsResponseArray = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesBody)
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val cancelInvitesRequest : CancelInvitesRequest =  // CancelInvitesRequest | 
+            //val result : CancelInvitesResponse = apiInstance.cancelInvitesOrRequests(businessId, cancelInvitesRequest)
             //result shouldBe ("TODO")
         }
 
         // to test createAssetInvites
         should("test createAssetInvites") {
             // uncomment below to test createAssetInvites
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val createAssetInvitesRequest : CreateAssetInvitesRequest =  // CreateAssetInvitesRequest | A list of invites/requests together with the asset permissions to be assigned to the invite/request. 
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val createAssetInvitesRequest : CreateAssetInvitesRequest =  // CreateAssetInvitesRequest | 
             //val result : UpdateInvitesResultsResponseArray = apiInstance.createAssetInvites(businessId, createAssetInvitesRequest)
             //result shouldBe ("TODO")
         }
@@ -68,8 +77,8 @@ class BusinessAccessInviteApiTest : ShouldSpec() {
         // to test createMembershipOrPartnershipInvites
         should("test createMembershipOrPartnershipInvites") {
             // uncomment below to test createMembershipOrPartnershipInvites
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
-            //val createMembershipOrPartnershipInvitesBody : CreateMembershipOrPartnershipInvitesBody =  // CreateMembershipOrPartnershipInvitesBody | An object with the properties: invite_type, partners, members, business_role
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
+            //val createMembershipOrPartnershipInvitesBody : CreateMembershipOrPartnershipInvitesBody =  // CreateMembershipOrPartnershipInvitesBody | 
             //val result : CreateInvitesResultsResponseArray = apiInstance.createMembershipOrPartnershipInvites(businessId, createMembershipOrPartnershipInvitesBody)
             //result shouldBe ("TODO")
         }
@@ -77,12 +86,12 @@ class BusinessAccessInviteApiTest : ShouldSpec() {
         // to test getInvites
         should("test getInvites") {
             // uncomment below to test getInvites
-            //val businessId : kotlin.String = 729090764583391194 // kotlin.String | Unique identifier of the requesting business.
+            //val businessId : kotlin.String = businessId_example // kotlin.String | Unique identifier of the requesting business.
             //val isMember : kotlin.Boolean = true // kotlin.Boolean | A boolean field to indicate whether the invite is to create a partnership or a membership.
-            //val inviteStatus : kotlin.collections.List<kotlin.String> =  // kotlin.collections.List<kotlin.String> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
+            //val inviteStatus : kotlin.collections.List<InviteFilterStatus> =  // kotlin.collections.List<InviteFilterStatus> | A list of invite statuses to filter invites by. Only invites whose status is in the provided statuses will be returned.
             //val inviteType : InviteType =  // InviteType | Invite type to filter invites by. Only invites of the specified type will be returned.
             //val bookmark : kotlin.String = bookmark_example // kotlin.String | Cursor used to fetch the next page of items
-            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information.
+            //val pageSize : kotlin.Int = 56 // kotlin.Int | Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information.
             //val result : GetInvites200Response = apiInstance.getInvites(businessId, isMember, inviteStatus, inviteType, bookmark, pageSize)
             //result shouldBe ("TODO")
         }

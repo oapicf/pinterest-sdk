@@ -3,14 +3,16 @@
 from fastapi.testclient import TestClient
 
 
-from pydantic import Field, StrictStr, field_validator  # noqa: F401
+from pydantic import Field, field_validator  # noqa: F401
 from typing import Optional  # noqa: F401
 from typing_extensions import Annotated  # noqa: F401
-from openapi_server.models.audience import Audience  # noqa: F401
-from openapi_server.models.audience_create_request import AudienceCreateRequest  # noqa: F401
-from openapi_server.models.audience_update_request import AudienceUpdateRequest  # noqa: F401
+from openapi_server.models.ad_accounts_audience import AdAccountsAudience  # noqa: F401
+from openapi_server.models.ad_accounts_audience_create import AdAccountsAudienceCreate  # noqa: F401
+from openapi_server.models.ad_accounts_audience_update import AdAccountsAudienceUpdate  # noqa: F401
+from openapi_server.models.audience_ownership_type import AudienceOwnershipType  # noqa: F401
 from openapi_server.models.audiences_list200_response import AudiencesList200Response  # noqa: F401
-from openapi_server.models.error import Error  # noqa: F401
+from openapi_server.models.pinterest_lib_error import PinterestLibError  # noqa: F401
+from openapi_server.models.pinterest_lib_pagination_order import PinterestLibPaginationOrder  # noqa: F401
 
 
 def test_audiences_list(client: TestClient):
@@ -18,7 +20,7 @@ def test_audiences_list(client: TestClient):
 
     List audiences
     """
-    params = [("bookmark", 'bookmark_example'),     ("order", 'ASCENDING'),     ("page_size", 25),     ("ownership_type", OWNED)]
+    params = [("bookmark", 'bookmark_example'),     ("page_size", 25),     ("order", openapi_server.PinterestLibPaginationOrder()),     ("ownership_type", openapi_server.AudienceOwnershipType()),     ("exclude_nca", False)]
     headers = {
         "Authorization": "Bearer special-key",
         "Authorization": "Bearer special-key",
@@ -40,7 +42,7 @@ def test_audiences_create(client: TestClient):
 
     Create audience
     """
-    audience_create_request = {"audience_type":"audience_type","name":"string","rule":{"country":"US","visitor_source_id":"549755885175","prefill":1,"customer_list_id":"5497558859876","event_source":{"=":["web","mobile"]},"objective_type":["AWARENESS"],"event_data":{"video_title":"How to style your Parker Boots","page_name":"Our Favorite Pins on Pinterest","order_quantity":1,"property":"Athleta","currency":"","lead_type":"Newsletter","promo_code":"WINTER10","line_items":"","search_query":"boots","order_id":"X-151481","value":"199.98"},"seed_id":["2542620639259","2542620639261"],"url":["url","url"],"ad_account_id":"549755885175","ad_id":["687201361754"],"ingestion_source":{"=":["tag"]},"engager_type":1,"retention_days":30,"engagement_type":"click","percentage":3,"engagement_domain":["www.somedomain.com"],"event":"checkout","pin_id":["34567"],"campaign_id":["626744528398"]},"description":"string","ad_account_id":"549755885175"}
+    ad_accounts_audience_create = openapi_server.AdAccountsAudienceCreate()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -50,7 +52,7 @@ def test_audiences_create(client: TestClient):
     #    "POST",
     #    "/ad_accounts/{ad_account_id}/audiences".format(ad_account_id='ad_account_id_example'),
     #    headers=headers,
-    #    json=audience_create_request,
+    #    json=ad_accounts_audience_create,
     #)
 
     # uncomment below to assert the status code of the HTTP response
@@ -70,7 +72,7 @@ def test_audiences_get(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "GET",
-    #    "/ad_accounts/{ad_account_id}/audiences/{audience_id}".format(ad_account_id='ad_account_id_example', audience_id='audience_id_example'),
+    #    "/ad_accounts/{ad_account_id}/audiences/{audience_id}".format(audience_id='audience_id_example', ad_account_id='ad_account_id_example'),
     #    headers=headers,
     #)
 
@@ -83,7 +85,7 @@ def test_audiences_update(client: TestClient):
 
     Update audience
     """
-    audience_update_request = {"operation_type":"UPDATE","name":"string","rule":{"country":"US","visitor_source_id":"549755885175","prefill":1,"customer_list_id":"5497558859876","event_source":{"=":["web","mobile"]},"objective_type":["AWARENESS"],"event_data":{"video_title":"How to style your Parker Boots","page_name":"Our Favorite Pins on Pinterest","order_quantity":1,"property":"Athleta","currency":"","lead_type":"Newsletter","promo_code":"WINTER10","line_items":"","search_query":"boots","order_id":"X-151481","value":"199.98"},"seed_id":["2542620639259","2542620639261"],"url":["url","url"],"ad_account_id":"549755885175","ad_id":["687201361754"],"ingestion_source":{"=":["tag"]},"engager_type":1,"retention_days":30,"engagement_type":"click","percentage":3,"engagement_domain":["www.somedomain.com"],"event":"checkout","pin_id":["34567"],"campaign_id":["626744528398"]},"description":"string","ad_account_id":"549755885175"}
+    ad_accounts_audience_update = openapi_server.AdAccountsAudienceUpdate()
 
     headers = {
         "Authorization": "Bearer special-key",
@@ -91,9 +93,9 @@ def test_audiences_update(client: TestClient):
     # uncomment below to make a request
     #response = client.request(
     #    "PATCH",
-    #    "/ad_accounts/{ad_account_id}/audiences/{audience_id}".format(ad_account_id='ad_account_id_example', audience_id='audience_id_example'),
+    #    "/ad_accounts/{ad_account_id}/audiences/{audience_id}".format(audience_id='audience_id_example', ad_account_id='ad_account_id_example'),
     #    headers=headers,
-    #    json=audience_update_request,
+    #    json=ad_accounts_audience_update,
     #)
 
     # uncomment below to assert the status code of the HTTP response

@@ -10,8 +10,8 @@ test_that("OrderLinesGet", {
   # base path: https://api.pinterest.com/v5
   # Get order line
   # Get a specific existing order line associated with an ad account.
+  # @param order_line_id character Order line ID.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param order_line_id character Unique identifier of an order line.
   # @return [OrderLine]
 
   # uncomment below to test the operation
@@ -21,12 +21,12 @@ test_that("OrderLinesGet", {
 test_that("OrderLinesList", {
   # tests for OrderLinesList
   # base path: https://api.pinterest.com/v5
-  # Get order lines
+  # Get order lines.
   # List existing order lines associated with an ad account.
   # @param ad_account_id character Unique identifier of an ad account.
-  # @param page_size integer Maximum number of items to include in a single page of the response. See documentation on <a href='/docs/reference/pagination/'>Pagination</a> for more information. (optional)
-  # @param order character The order in which to sort the items returned: “ASCENDING” or “DESCENDING” by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   # @param bookmark character Cursor used to fetch the next page of items (optional)
+  # @param page_size integer Maximum number of items to include in a single page. See documentation on [Pagination](/docs/reference/pagination/) for more information. (optional)
+  # @param order PinterestLibPaginationOrder The order in which to sort the items returned: \"ASCENDING\" or \"DESCENDING\" by ID. Note that higher-value IDs are associated with more-recently added items. (optional)
   # @return [OrderLinesList200Response]
 
   # uncomment below to test the operation

@@ -16,17 +16,17 @@ feature -- Test routines
     test_customer_lists_create
             -- Create customer lists
             --
-            -- &lt;p&gt;Create a customer list from your records(hashed or plain-text email addresses, or hashed MAIDs or IDFAs).&lt;/p&gt; &lt;p&gt;A customer list is one of the four types of Pinterest audiences: for more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;p/&gt; &lt;p&gt;&lt;b&gt;Please review our &lt;u&gt;&lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting#section-13341\&quot; target&#x3D;\&quot;_blank\&quot;&gt;requirements&lt;/a&gt;&lt;/u&gt; for what type of information is allowed when uploading a customer list.&lt;/b&gt;&lt;/p&gt; &lt;p&gt;When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.&lt;/p&gt; &lt;p&gt;To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the &lt;a href&#x3D;\&quot;https://developer.pinterest.com/docs/api/v5/audiences-create\&quot; target&#x3D;\&quot;blank\&quot;&gt;create audience endpoint&lt;/a&gt;.&lt;/p&gt;
+            -- Create a customer list from your records (hashed or plain-text email addresses, or hashed MAIDs or IDFAs).  A customer list is one of the four types of Pinterest audiences: for more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.  **Please review our [requirements](https://help.pinterest.com/en/business/article/audience-targeting#section-13341) for what type of information is allowed when uploading a customer list.**   When you create a customer list, the system scans the list for existing Pinterest accounts; the list must include at least 100 Pinterest accounts. Your original list will be deleted when the matching process is complete. The filtered list – containing only the Pinterest accounts that were included in your starting list – is what will be used to create the audience.   To use your customer list after creating it, convert it into a customer list audience by passing the &#x60;CUSTOMER_LIST&#x60; audience type at the [create audience endpoint](https://developer.pinterest.com/docs/api/v5/audiences-create).
         local
             l_response: CUSTOMER_LIST
             l_ad_account_id: STRING_32
-            l_customer_list_request: CUSTOMER_LIST_REQUEST
+            l_customer_list_create: CUSTOMER_LIST_CREATE
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
-            -- l_customer_list_request
+            -- l_customer_list_create
 
-            -- l_response := api.customer_lists_create(l_ad_account_id, l_customer_list_request)
+            -- l_response := api.customer_lists_create(l_ad_account_id, l_customer_list_create)
             assert ("not_implemented", False)
         end
 
@@ -50,37 +50,38 @@ feature -- Test routines
     test_customer_lists_list
             -- Get customer lists
             --
-            -- &lt;p&gt;Get a set of customer lists including id and name based on the filters provided.&lt;/p&gt; &lt;p&gt;(Customer lists are a type of audience.) For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt;  or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+            -- Get a set of customer lists including id and name based on the filters provided.  (Customer lists are a type of audience.) For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
         local
             l_response: CUSTOMER_LISTS_LIST_200_RESPONSE
             l_ad_account_id: STRING_32
-            l_page_size: INTEGER_32
-            l_order: STRING_32
             l_bookmark: STRING_32
+            l_page_size: INTEGER_32
+            l_order: PINTEREST_LIB_PAGINATION_ORDER
+            l_exclude_nca: BOOLEAN
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
 
-            -- l_response := api.customer_lists_list(l_ad_account_id, l_page_size, l_order, l_bookmark)
+            -- l_response := api.customer_lists_list(l_ad_account_id, l_bookmark, l_page_size, l_order, l_exclude_nca)
             assert ("not_implemented", False)
         end
 
     test_customer_lists_update
             -- Update customer list
             --
-            -- &lt;p&gt;Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)&lt;/p&gt; &lt;p&gt;When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your “CUSTOMER_LIST” audience. Your original list of records to add will be deleted when the matching process is complete.&lt;/p&gt; &lt;p&gt;For more information, see &lt;a href&#x3D;\&quot;https://help.pinterest.com/en/business/article/audience-targeting\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audience targeting&lt;/a&gt; or the &lt;a href&#x3D;\&quot;/docs/api-features/targeting-overview/\&quot; target&#x3D;\&quot;_blank\&quot;&gt;Audiences&lt;/a&gt; section of the ads management guide.&lt;/p&gt;
+            -- Append or remove records to/from an existing customer list. (A customer list is one of the four types of Pinterest audiences.)  When you add records to an existing customer list, the system scans the additions for existing Pinterest accounts; those are the records that will be added to your \&quot;CUSTOMER_LIST\&quot; audience. Your original list of records to add will be deleted when the matching process is complete.  For more information, see [Audience targeting](https://help.pinterest.com/en/business/article/audience-targeting) or the [Audiences](/docs/api-features/targeting-overview/) section of the ads management guide.
         local
             l_response: CUSTOMER_LIST
             l_ad_account_id: STRING_32
             l_customer_list_id: STRING_32
-            l_customer_list_update_request: CUSTOMER_LIST_UPDATE_REQUEST
+            l_customer_list_update_with_required_body: CUSTOMER_LIST_UPDATE_WITH_REQUIRED_BODY
         do
             -- TODO: Initialize required params.
             -- l_ad_account_id
             -- l_customer_list_id
-            -- l_customer_list_update_request
+            -- l_customer_list_update_with_required_body
 
-            -- l_response := api.customer_lists_update(l_ad_account_id, l_customer_list_id, l_customer_list_update_request)
+            -- l_response := api.customer_lists_update(l_ad_account_id, l_customer_list_id, l_customer_list_update_with_required_body)
             assert ("not_implemented", False)
         end
 
