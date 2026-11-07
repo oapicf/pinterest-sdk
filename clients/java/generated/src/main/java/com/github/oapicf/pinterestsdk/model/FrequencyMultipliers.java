@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * This represents a mapping from impression count to a bid price adjustment for frequency-based bidding.  Keys are impression counts (0-10) representing how many times a user has seen the ad. Multiplier values must be between 0 and 10. A value of 10 represents a 900% increase in bid price. A value of 0 will stop distribution for this impression count. If a multiplier is not provided it is assumed to be 1 (no bid adjustment).
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T04:04:40.527481094Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class FrequencyMultipliers {
   public static final String SERIALIZED_NAME_I_M_P_R_E_S_S_I_O_N_C_O_U_N_T = "IMPRESSION_COUNT";
   @SerializedName(SERIALIZED_NAME_I_M_P_R_E_S_S_I_O_N_C_O_U_N_T)

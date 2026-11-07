@@ -20,7 +20,7 @@ import java.util.List;
  */
 @ApiModel(description = "Budget recommendation response containing recommended budget, estimated days, and point estimations.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T02:50:11.535708279Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T04:05:40.007064937Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningBudgetRecommendation   {
   @JsonProperty("budget_recommendation")
   private Integer budgetRecommendation;

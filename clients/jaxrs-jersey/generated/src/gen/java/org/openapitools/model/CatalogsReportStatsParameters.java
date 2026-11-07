@@ -37,7 +37,7 @@ import javax.validation.Valid;
   CatalogsReportStatsParameters.JSON_PROPERTY_CATALOG_TYPE,
   CatalogsReportStatsParameters.JSON_PROPERTY_REPORT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T04:06:30.634820227Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "catalog_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsHotelReportStatsParameters.class, name = "HOTEL"),
   @JsonSubTypes.Type(value = CatalogsRetailReportStatsParameters.class, name = "RETAIL"),

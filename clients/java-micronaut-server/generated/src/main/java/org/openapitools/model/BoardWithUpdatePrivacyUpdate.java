@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   BoardWithUpdatePrivacyUpdate.JSON_PROPERTY_PRIVACY
 })
 @JsonTypeName("BoardWithUpdatePrivacyUpdate")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T04:05:26.956049840Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class BoardWithUpdatePrivacyUpdate {
     public static final String JSON_PROPERTY_DESCRIPTION = "description";

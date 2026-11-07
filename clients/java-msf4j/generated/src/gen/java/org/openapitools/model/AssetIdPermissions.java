@@ -16,7 +16,7 @@ import org.openapitools.model.AssetTypeResponse;
  * An object containing the permissions a business member has on the asset.
  */
 @ApiModel(description = "An object containing the permissions a business member has on the asset.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AssetIdPermissions   {
   @JsonProperty("asset_group_info")
   private AssetGroupBinding assetGroupInfo;

@@ -49,7 +49,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Resource create operation model.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T04:04:40.527481094Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdsCreditRedeemCreate {
   public static final String SERIALIZED_NAME_OFFER_CODE_HASH = "offerCodeHash";
   @SerializedName(SERIALIZED_NAME_OFFER_CODE_HASH)

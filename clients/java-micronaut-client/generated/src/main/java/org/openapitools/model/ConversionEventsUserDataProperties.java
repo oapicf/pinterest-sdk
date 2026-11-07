@@ -47,7 +47,7 @@ import javax.annotation.Generated;
   ConversionEventsUserDataProperties.JSON_PROPERTY_ZP
 })
 @JsonTypeName("ConversionEventsUserDataProperties")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T04:05:20.373022734Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ConversionEventsUserDataProperties {
     public static final String JSON_PROPERTY_CLICK_ID = "click_id";

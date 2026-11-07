@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T02:51:45.323422857Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@ApiModel(description="Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T04:06:50.038620283Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupFiltersRequest   {
   
   private List<@Valid CatalogsProductGroupFilterKeys> anyOf = new ArrayList<>();

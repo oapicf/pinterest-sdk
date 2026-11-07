@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * The name of field that businesses are sorted by
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T02:50:45.754899335Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T04:06:05.360811865Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum BusinessMemberSortBy {
   
   FULL_NAME("FULL_NAME"),

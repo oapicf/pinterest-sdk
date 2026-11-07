@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Reporting columns
  */
 
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T04:13:03.034594358Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum ReportingColumnAsync {
   
   SPEND_IN_MICRO_DOLLAR("SPEND_IN_MICRO_DOLLAR"),

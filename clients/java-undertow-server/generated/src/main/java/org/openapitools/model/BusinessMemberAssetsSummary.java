@@ -27,7 +27,7 @@ import org.openapitools.model.AssetIdWithPermissions;
  */
 
 @ApiModel(description = "Ad accounts and profiles the business member/partner has access to.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T04:05:52.498751043Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessMemberAssetsSummary   {
   
   private List<AssetIdWithPermissions> adAccounts = new ArrayList<>();

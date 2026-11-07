@@ -7,7 +7,7 @@ import play.api.libs.json._
   * @param keywords Keyword JSON array. Each array element has 3 fields
   * @param parentId Keyword parent entity ID (advertiser, campaign, ad group).
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class KeywordsRequest(
   keywords: List[KeywordsCommon],
   parentId: String

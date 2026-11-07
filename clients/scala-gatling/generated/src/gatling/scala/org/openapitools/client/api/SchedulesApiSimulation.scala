@@ -90,12 +90,12 @@ class SchedulesApiSimulation extends Simulation {
         .feed(schedules/listPATHFeeder)
         .exec(http("schedulesList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/schedules")
+        .queryParam("page_size","${page_size}")
+        .queryParam("order","${order}")
         .queryParam("bookmark","${bookmark}")
         .queryParam("schedule_statuses","${schedule_statuses}")
-        .queryParam("entity_ids","${entity_ids}")
-        .queryParam("order","${order}")
-        .queryParam("page_size","${page_size}")
         .queryParam("schedule_type","${schedule_type}")
+        .queryParam("entity_ids","${entity_ids}")
 )
 
     // Run scnschedulesList with warm up and reach a constant rate for entire duration

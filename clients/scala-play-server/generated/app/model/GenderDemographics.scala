@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param male Percentage of male users
   * @param unspecified Percentage of users with unspecified gender
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class GenderDemographics(
   female: BigDecimal,
   male: BigDecimal,

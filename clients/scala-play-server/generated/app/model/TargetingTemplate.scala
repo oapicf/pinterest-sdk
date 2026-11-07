@@ -14,7 +14,7 @@ import play.api.libs.json._
   * @param updatedTime Targeting template updated time.Unix timestamp in seconds.
   * @param valid Inform if the targeting template is valid (ex. would be false if has revoked audience)
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class TargetingTemplate(
   adAccountId: Option[String],
   autoTargetingEnabled: Option[Boolean],

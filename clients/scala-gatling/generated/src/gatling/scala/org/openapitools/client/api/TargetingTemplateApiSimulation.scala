@@ -90,10 +90,10 @@ class TargetingTemplateApiSimulation extends Simulation {
         .feed(targeting_template/listPATHFeeder)
         .exec(http("targetingTemplateList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/targeting_templates")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("search_query","${search_query}")
-        .queryParam("order","${order}")
         .queryParam("page_size","${page_size}")
+        .queryParam("order","${order}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("include_sizing","${include_sizing}")
 )
 

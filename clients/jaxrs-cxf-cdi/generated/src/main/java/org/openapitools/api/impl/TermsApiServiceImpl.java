@@ -20,7 +20,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
 @RequestScoped
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-11-07T02:51:11.241513942Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSCXFCDIServerCodegen", date = "2026-11-07T04:06:24.193578628Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TermsApiServiceImpl implements TermsApiService {
       @Override
       public Response termsRelatedList(List<String> terms, SecurityContext securityContext) {

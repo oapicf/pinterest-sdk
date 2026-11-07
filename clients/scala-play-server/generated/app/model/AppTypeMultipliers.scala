@@ -7,7 +7,7 @@ import play.api.libs.json._
   * @param APP_TYPE App type identifier.
   * @param additionalProperties Any additional properties this model may have.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class AppTypeMultipliers(
   APP_TYPE: Option[TargetingSpecAppType]
   additionalProperties: Map[String, Double]

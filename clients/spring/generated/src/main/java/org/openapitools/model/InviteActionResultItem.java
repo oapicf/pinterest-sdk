@@ -25,7 +25,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "InviteActionResultItem", description = "An item representing the result of an invite/request action. Contains either an exception (on error) or an invite binding (on success).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T04:13:03.034594358Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteActionResultItem {
 
   private JsonNullable<InviteExceptionResponse> exception = JsonNullable.<InviteExceptionResponse>undefined();

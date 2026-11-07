@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param engagementWindowDays Number of days to use as the conversion attribution window for an engagement action. Engagements include saves, closeups, link clicks, and carousel card swipes.
   * @param viewWindowDays Number of days to use as the conversion attribution window for a view action.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CampaignPlanningConversionAttribution(
   clickWindowDays: Option[CampaignPlanningConversionAttributionWindowDays],
   engagementWindowDays: Option[CampaignPlanningConversionAttributionWindowDays],

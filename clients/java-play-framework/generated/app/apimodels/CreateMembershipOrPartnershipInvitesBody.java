@@ -14,7 +14,7 @@ import javax.validation.Valid;
 /**
  * Body to be used on path to send Members or Partners Invite or Request
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-07T02:50:19.877694946Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPlayFrameworkCodegen", date = "2026-11-07T04:05:46.315568162Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @SuppressWarnings({"UnusedReturnValue", "WeakerAccess"})
 public class CreateMembershipOrPartnershipInvitesBody   {
   @JsonProperty("business_role")

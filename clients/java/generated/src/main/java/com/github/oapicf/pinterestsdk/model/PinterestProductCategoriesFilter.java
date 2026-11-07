@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * PinterestProductCategoriesFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T04:04:40.527481094Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinterestProductCategoriesFilter {
   public static final String SERIALIZED_NAME_P_I_N_T_E_R_E_S_T_P_R_O_D_U_C_T_C_A_T_E_G_O_R_I_E_S = "PINTEREST_PRODUCT_CATEGORIES";
   @SerializedName(SERIALIZED_NAME_P_I_N_T_E_R_E_S_T_P_R_O_D_U_C_T_C_A_T_E_G_O_R_I_E_S)

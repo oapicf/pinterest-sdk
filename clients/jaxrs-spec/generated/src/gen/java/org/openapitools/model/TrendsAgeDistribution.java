@@ -27,7 +27,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
 @ApiModel(description = "This represents a mapping from age bucket to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.")
 @JsonTypeName("TrendsAgeDistribution")
 @JsonFormat(shape=JsonFormat.Shape.OBJECT)
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-07T02:51:53.160510316Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-07T04:06:56.090374257Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsAgeDistribution extends HashMap<String, Double>  {
   private TrendsAgeBucket ageDistribution;
 

@@ -1,1 +1,1 @@
-pin_ids,view_window_days,engagement_window_days,conversion_report_time,campaign_id,start_date,end_date,granularity,click_window_days,columns
+start_date,campaign_id,engagement_window_days,pin_ids,granularity,click_window_days,columns,conversion_report_time,view_window_days,end_date

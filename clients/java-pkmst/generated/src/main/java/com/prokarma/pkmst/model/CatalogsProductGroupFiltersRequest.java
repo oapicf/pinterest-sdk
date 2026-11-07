@@ -21,7 +21,7 @@ import java.util.List;
  */
 @ApiModel(description = "Object holding a group of filters for request on catalog product group.  This is a distinct schema. It is not possible to create or update a Product Group with empty filters. But some automatically generated Product Groups might have empty filters.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T02:50:11.535708279Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T04:05:40.007064937Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupFiltersRequest   {
   @JsonProperty("any_of")
   

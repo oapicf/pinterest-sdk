@@ -14,7 +14,7 @@ import model.LabelsResponse
 import model.QueryLabelEntityStatusesItems
 import model.QueryLabelTypesItems
 
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Singleton
 class LabelsApiController @Inject()(cc: ControllerComponents, api: LabelsApi) extends AbstractController(cc) {
   /**

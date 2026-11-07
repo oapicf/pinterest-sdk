@@ -107,10 +107,10 @@ class TrendsApiSimulation extends Simulation {
         .feed(trends_product_categories_details/listQUERYFeeder)
         .exec(http("trendsProductCategoriesDetailsList")
         .httpRequest("GET","/trends/product_categories/details")
-        .queryParam("lookback_window","${lookback_window}")
         .queryParam("region","${region}")
-        .queryParam("engagement_type","${engagement_type}")
+        .queryParam("lookback_window","${lookback_window}")
         .queryParam("product_categories","${product_categories}")
+        .queryParam("engagement_type","${engagement_type}")
 )
 
     // Run scntrendsProductCategoriesDetailsList with warm up and reach a constant rate for entire duration
@@ -125,11 +125,11 @@ class TrendsApiSimulation extends Simulation {
         .feed(trends_product_categories_trending/listQUERYFeeder)
         .exec(http("trendsProductCategoriesTrendingList")
         .httpRequest("GET","/trends/product_categories/trending")
-        .queryParam("verticals","${verticals}")
-        .queryParam("ages","${ages}")
         .queryParam("region","${region}")
-        .queryParam("engagement_type","${engagement_type}")
+        .queryParam("verticals","${verticals}")
         .queryParam("genders","${genders}")
+        .queryParam("ages","${ages}")
+        .queryParam("engagement_type","${engagement_type}")
 )
 
     // Run scntrendsProductCategoriesTrendingList with warm up and reach a constant rate for entire duration

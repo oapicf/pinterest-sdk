@@ -23,7 +23,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "AdGroupTrackingURLs", description = "  Third-party tracking URLs. Up to three tracking URLs - with a max length of 2,000 - are supported for   each event type. Tracking URLs set at the ad group or ad level can override   those set at the campaign level. For more information, see [Third-party and dynamic tracking](https://help.pinterest.com/en/business/article/third-party-and-dynamic-tracking).")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T04:13:03.034594358Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdGroupTrackingURLs {
 
   private List<String> audienceVerification = new ArrayList<>();

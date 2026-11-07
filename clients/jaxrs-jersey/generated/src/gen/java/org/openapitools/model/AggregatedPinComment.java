@@ -52,7 +52,7 @@ import javax.validation.Valid;
   AggregatedPinComment.JSON_PROPERTY_PIN_METRICS,
   AggregatedPinComment.JSON_PROPERTY_TITLE
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T04:06:30.634820227Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AggregatedPinComment   {
   public static final String JSON_PROPERTY_AI_DISCLOSURES = "ai_disclosures";
   @JsonProperty(JSON_PROPERTY_AI_DISCLOSURES)

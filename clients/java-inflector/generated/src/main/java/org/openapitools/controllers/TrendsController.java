@@ -31,7 +31,7 @@ import org.openapitools.model.TrendsL1Interest;
 import org.openapitools.model.TrendsSupportedRegion;
 import org.openapitools.model.VerticalProductCategory;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T04:05:13.632954680Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsController  {
   /**
    * Uncomment and implement as you see fit.  These operations will map

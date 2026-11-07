@@ -10,7 +10,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 /**
  * A targeting option that enables advertisers to choose whether to run ads in fullscreen feed, two column feed, or both.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-07T02:51:53.160510316Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-07T04:06:56.090374257Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum PlacementTrafficType {
   
   ALL("ALL"),

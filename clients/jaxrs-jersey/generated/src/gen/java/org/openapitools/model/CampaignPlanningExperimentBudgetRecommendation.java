@@ -36,7 +36,7 @@ import javax.validation.Valid;
   CampaignPlanningExperimentBudgetRecommendation.JSON_PROPERTY_POINT_ESTIMATIONS,
   CampaignPlanningExperimentBudgetRecommendation.JSON_PROPERTY_VERSION_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T04:06:30.634820227Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignPlanningExperimentBudgetRecommendation   {
   public static final String JSON_PROPERTY_BUDGET_RECOMMENDATION = "budget_recommendation";
   @JsonProperty(JSON_PROPERTY_BUDGET_RECOMMENDATION)

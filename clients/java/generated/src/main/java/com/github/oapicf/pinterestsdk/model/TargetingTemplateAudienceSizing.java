@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T04:04:40.527481094Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingTemplateAudienceSizing {
   public static final String SERIALIZED_NAME_REACH_ESTIMATE = "reach_estimate";
   @SerializedName(SERIALIZED_NAME_REACH_ESTIMATE)

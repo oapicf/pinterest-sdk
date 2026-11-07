@@ -56,7 +56,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Delivery estimate result for a single campaign within a bulk request.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T04:04:40.527481094Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkCampaignDeliveryEstimatesItem {
   public static final String SERIALIZED_NAME_ADGROUP_AUDIENCE_SIZES = "adgroup_audience_sizes";
   @SerializedName(SERIALIZED_NAME_ADGROUP_AUDIENCE_SIZES)

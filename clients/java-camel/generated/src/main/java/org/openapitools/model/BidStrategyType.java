@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Bid strategy type. For Campaigns with Video Completion objectives, the only supported bid strategy type is AUTOMATIC_BID, also known as \"Pinterest Performance+ bidding\".
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T02:50:45.754899335Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T04:06:05.360811865Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum BidStrategyType {
   
   AUTOMATIC_BID("AUTOMATIC_BID"),

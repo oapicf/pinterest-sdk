@@ -44,7 +44,7 @@ import javax.validation.Valid;
   LocalStore.JSON_PROPERTY_STORE_CODE,
   LocalStore.JSON_PROPERTY_UPDATED_AT
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T04:06:30.634820227Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LocalStore   {
   public static final String JSON_PROPERTY_ADDRESS_PRIMARY = "address_primary";
   @JsonProperty(JSON_PROPERTY_ADDRESS_PRIMARY)

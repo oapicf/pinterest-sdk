@@ -8,7 +8,7 @@ import play.api.libs.json._
   * @param itemResponseKind Discriminator literal identifying this leaf inside an `ItemResponse` payload.
   * @param pins The pins mapped to the item
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CatalogsRetailItemResponse(
   attributes: Option[ItemAttributes],
   catalogType: CatalogsRetailItemResponse.CatalogType.Value,

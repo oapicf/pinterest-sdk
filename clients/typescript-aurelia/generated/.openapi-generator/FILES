@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 AdAccountsApi.ts
 AdGroupsApi.ts
 AdsApi.ts

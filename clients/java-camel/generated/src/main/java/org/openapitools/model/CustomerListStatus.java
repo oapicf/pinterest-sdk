@@ -20,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
  * Customer list status. `TOO_SMALL` means the list has fewer than 100 Pinterest users.
  */
 
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T02:50:45.754899335Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T04:06:05.360811865Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public enum CustomerListStatus {
   
   PROCESSING("PROCESSING"),

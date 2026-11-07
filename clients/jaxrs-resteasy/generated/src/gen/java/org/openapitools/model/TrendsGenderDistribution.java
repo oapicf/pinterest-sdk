@@ -14,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-07T02:51:37.236630265Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@ApiModel(description="This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyServerCodegen", date = "2026-11-07T04:06:44.072323441Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsGenderDistribution extends HashMap<String, Double>  {
   
   private TrendsGender genderDistribution;

@@ -10,7 +10,7 @@ import org.openapitools.model.CatalogsProductGroupMultipleStringCriteria;
 /**
  * ItemIdFilter
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ItemIdFilter   {
   @JsonProperty("ITEM_ID")
   private CatalogsProductGroupMultipleStringCriteria ITEM_ID;

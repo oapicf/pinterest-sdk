@@ -31,7 +31,7 @@ import org.openapitools.model.CampaignPlanningResponseError;
  */
 
 @ApiModel(description = "Delivery estimate result for a single campaign within a bulk request.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T04:05:52.498751043Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BulkCampaignDeliveryEstimatesItem   {
   
   private List<CampaignPlanningAdGroupAudienceSize> adgroupAudienceSizes = new ArrayList<>();

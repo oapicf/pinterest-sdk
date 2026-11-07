@@ -18,7 +18,7 @@ import org.openapitools.model.TieBreakerType;
  * This field includes all quiz data including questions, options, and results.
  */
 @ApiModel(description = "This field includes all quiz data including questions, options, and results.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class QuizPinData   {
   @JsonProperty("questions")
   private List<@Valid QuizPinQuestion> questions = null;

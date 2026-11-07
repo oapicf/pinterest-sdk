@@ -37,7 +37,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsFeedIngestionErrors.JSON_PROPERTY_L_I_N_E_L_E_V_E_L_I_N_T_E_R_N_A_L_E_R_R_O_R
 })
 @JsonTypeName("CatalogsFeedIngestionErrors")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T04:05:26.956049840Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsFeedIngestionErrors {
     public static final String JSON_PROPERTY_A_C_C_O_U_N_T_F_L_A_G_G_E_D = "ACCOUNT_FLAGGED";

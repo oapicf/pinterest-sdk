@@ -25,7 +25,7 @@ import org.openapitools.model.AdvertiserDefinedEventMappingType;
  */
 
 @ApiModel(description = "Advertiser defined event input for create/update operations")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T04:05:52.498751043Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AdvertiserDefinedEventInput   {
   
   private AdvertiserDefinedEventMappingType mappedConversionType;

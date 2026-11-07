@@ -12,7 +12,7 @@ import play.api.libs.json._
   * @param operation The type of operation that caused the change
   * @param userId The id of the user who initiated the change
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class EntityHistory(
   changeTimestamp: Option[Int],
   dataChanges: Option[List[EntityDataChangeHistory]],

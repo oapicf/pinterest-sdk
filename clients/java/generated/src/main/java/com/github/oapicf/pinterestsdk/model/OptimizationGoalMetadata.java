@@ -52,7 +52,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * OptimizationGoalMetadata
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T04:04:40.527481094Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class OptimizationGoalMetadata {
   public static final String SERIALIZED_NAME_CONVERSION_TAG_V3_GOAL_METADATA = "conversion_tag_v3_goal_metadata";
   @SerializedName(SERIALIZED_NAME_CONVERSION_TAG_V3_GOAL_METADATA)

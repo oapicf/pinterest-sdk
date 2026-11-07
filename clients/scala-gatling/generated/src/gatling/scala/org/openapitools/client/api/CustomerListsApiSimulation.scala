@@ -106,10 +106,10 @@ class CustomerListsApiSimulation extends Simulation {
         .feed(customer_lists/listPATHFeeder)
         .exec(http("customerListsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/customer_lists")
-        .queryParam("exclude_nca","${exclude_nca}")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("order","${order}")
         .queryParam("page_size","${page_size}")
+        .queryParam("exclude_nca","${exclude_nca}")
+        .queryParam("order","${order}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scncustomerListsList with warm up and reach a constant rate for entire duration

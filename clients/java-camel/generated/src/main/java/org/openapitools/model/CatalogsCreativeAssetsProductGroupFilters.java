@@ -25,7 +25,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsCreativeAssetsProductGroupFilters", description = "Object holding a group of filters for a creative assets product group")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T02:50:45.754899335Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T04:06:05.360811865Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsCreativeAssetsProductGroupFilters {
 
   private List<@Valid CatalogsCreativeAssetsProductGroupFilterKeys> anyOf = new ArrayList<>();

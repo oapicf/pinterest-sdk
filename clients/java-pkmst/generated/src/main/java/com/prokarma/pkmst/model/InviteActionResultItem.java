@@ -18,7 +18,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  */
 @ApiModel(description = "An item representing the result of an invite/request action. Contains either an exception (on error) or an invite binding (on success).")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T02:50:11.535708279Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T04:05:40.007064937Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteActionResultItem   {
   @JsonProperty("exception")
   private InviteExceptionResponse exception;

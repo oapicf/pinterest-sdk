@@ -45,7 +45,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   Board.JSON_PROPERTY_PRIVACY
 })
 @JsonTypeName("Board")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T04:05:26.956049840Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class Board {
     public static final String JSON_PROPERTY_BOARD_PINS_MODIFIED_AT = "board_pins_modified_at";

@@ -94,9 +94,9 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .feed(catalogs_product_group_pins/listPATHFeeder)
         .exec(http("catalogsProductGroupPinsList")
         .httpRequest("GET","/catalogs/product_groups/${product_group_id}/products")
+        .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
         .queryParam("pin_metrics","${pin_metrics}")
 )
 
@@ -158,8 +158,8 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .feed(catalogs_product_groups/delete_manyQUERYFeeder)
         .exec(http("catalogsProductGroupsDeleteMany")
         .httpRequest("DELETE","/catalogs/product_groups/multiple")
-        .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("id","${id}")
+        .queryParam("ad_account_id","${ad_account_id}")
 )
 
     // Run scncatalogsProductGroupsDeleteMany with warm up and reach a constant rate for entire duration
@@ -190,12 +190,12 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .feed(catalogs_product_groups/listQUERYFeeder)
         .exec(http("catalogsProductGroupsList")
         .httpRequest("GET","/catalogs/product_groups")
-        .queryParam("ad_account_id","${ad_account_id}")
-        .queryParam("bookmark","${bookmark}")
         .queryParam("page_size","${page_size}")
         .queryParam("id","${id}")
-        .queryParam("catalog_id","${catalog_id}")
+        .queryParam("ad_account_id","${ad_account_id}")
+        .queryParam("bookmark","${bookmark}")
         .queryParam("feed_id","${feed_id}")
+        .queryParam("catalog_id","${catalog_id}")
 )
 
     // Run scncatalogsProductGroupsList with warm up and reach a constant rate for entire duration
@@ -242,9 +242,9 @@ class CatalogProductGroupsApiSimulation extends Simulation {
         .feed(products_by_product_group_filter/listQUERYFeeder)
         .exec(http("productsByProductGroupFilterList")
         .httpRequest("POST","/catalogs/products/get_by_product_group_filters")
+        .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
         .queryParam("pin_metrics","${pin_metrics}")
 )
 

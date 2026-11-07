@@ -91,9 +91,9 @@ class CatalogFeedsApiSimulation extends Simulation {
         .feed(feed_processing_results/listPATHFeeder)
         .exec(http("feedProcessingResultsList")
         .httpRequest("GET","/catalogs/feeds/${feed_id}/processing_results")
+        .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
 )
 
     // Run scnfeedProcessingResultsList with warm up and reach a constant rate for entire duration
@@ -171,9 +171,9 @@ class CatalogFeedsApiSimulation extends Simulation {
         .feed(feeds/listQUERYFeeder)
         .exec(http("feedsList")
         .httpRequest("GET","/catalogs/feeds")
+        .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
         .queryParam("catalog_id","${catalog_id}")
 )
 
@@ -206,11 +206,11 @@ class CatalogFeedsApiSimulation extends Simulation {
         .feed(items_issues/listPATHFeeder)
         .exec(http("itemsIssuesList")
         .httpRequest("GET","/catalogs/processing_results/${processing_result_id}/item_issues")
-        .queryParam("item_validation_issue","${item_validation_issue}")
+        .queryParam("item_numbers","${item_numbers}")
+        .queryParam("page_size","${page_size}")
         .queryParam("ad_account_id","${ad_account_id}")
         .queryParam("bookmark","${bookmark}")
-        .queryParam("page_size","${page_size}")
-        .queryParam("item_numbers","${item_numbers}")
+        .queryParam("item_validation_issue","${item_validation_issue}")
 )
 
     // Run scnitemsIssuesList with warm up and reach a constant rate for entire duration

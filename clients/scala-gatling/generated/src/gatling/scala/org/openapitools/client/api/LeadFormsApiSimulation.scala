@@ -122,9 +122,9 @@ class LeadFormsApiSimulation extends Simulation {
         .feed(lead_forms/listPATHFeeder)
         .exec(http("leadFormsList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/lead_forms")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("order","${order}")
         .queryParam("page_size","${page_size}")
+        .queryParam("order","${order}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnleadFormsList with warm up and reach a constant rate for entire duration

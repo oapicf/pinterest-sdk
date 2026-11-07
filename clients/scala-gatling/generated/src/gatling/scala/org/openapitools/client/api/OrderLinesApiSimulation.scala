@@ -88,9 +88,9 @@ class OrderLinesApiSimulation extends Simulation {
         .feed(order_lines/listPATHFeeder)
         .exec(http("orderLinesList")
         .httpRequest("GET","/ad_accounts/${ad_account_id}/order_lines")
-        .queryParam("bookmark","${bookmark}")
-        .queryParam("order","${order}")
         .queryParam("page_size","${page_size}")
+        .queryParam("order","${order}")
+        .queryParam("bookmark","${bookmark}")
 )
 
     // Run scnorderLinesList with warm up and reach a constant rate for entire duration

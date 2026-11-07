@@ -26,7 +26,7 @@ import jakarta.annotation.Generated;
  */
 
 @JsonTypeName("ssio_insertion_orders_status_get_by_ad_account_200_response")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T02:50:45.754899335Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T04:06:05.360811865Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class SsioInsertionOrdersStatusGetByAdAccount200Response {
 
   private JsonNullable<String> bookmark = JsonNullable.<String>undefined();

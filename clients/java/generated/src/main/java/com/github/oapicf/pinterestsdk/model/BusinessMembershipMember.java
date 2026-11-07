@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * A business member identified by &#x60;member_id&#x60; with their &#x60;business_role&#x60; in the business.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T04:04:40.527481094Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BusinessMembershipMember {
   public static final String SERIALIZED_NAME_BUSINESS_ROLE = "business_role";
   @SerializedName(SERIALIZED_NAME_BUSINESS_ROLE)

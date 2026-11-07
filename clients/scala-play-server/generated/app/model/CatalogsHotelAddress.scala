@@ -10,7 +10,7 @@ import play.api.libs.json._
   * @param postalCode Required for countries with a postal code system. Postal or zip code of the hotel.
   * @param region State, county, province, where the hotel is located.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CatalogsHotelAddress(
   addr1: Option[String],
   city: Option[String],

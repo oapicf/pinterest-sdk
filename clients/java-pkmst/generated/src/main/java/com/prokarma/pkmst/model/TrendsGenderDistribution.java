@@ -19,7 +19,7 @@ import java.util.Map;
  */
 @ApiModel(description = "This represents a mapping from gender to distribution of search volume for a keyword. The sum of all values in this object should approximately be 1.")
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T02:50:11.535708279Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaPKMSTServerCodegen", date = "2026-11-07T04:05:40.007064937Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TrendsGenderDistribution extends HashMap<String, Double>  {
   @JsonProperty("gender_distribution")
   private TrendsGender genderDistribution;

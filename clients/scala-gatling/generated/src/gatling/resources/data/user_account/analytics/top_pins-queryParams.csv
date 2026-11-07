@@ -1,1 +1,1 @@
-ad_account_id,created_in_last_n_days,metric_types,start_date,sort_by,content_type,end_date,source,app_types,num_of_pins,pin_format,from_claimed_content
+source,start_date,created_in_last_n_days,from_claimed_content,app_types,metric_types,sort_by,ad_account_id,num_of_pins,end_date,pin_format,content_type

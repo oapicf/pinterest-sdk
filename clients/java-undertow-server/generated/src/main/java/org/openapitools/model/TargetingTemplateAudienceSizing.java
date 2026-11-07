@@ -24,7 +24,7 @@ import org.openapitools.model.TargetingTemplateAudienceSizingReachEstimate;
  */
 
 @ApiModel(description = "Gets an audience size estimate for a set of given targeting spec data. **Returns:** An object containing an audience size estimate that has a reach estimate (number of unique users) against the given targeting template. This by default provides a monthly estimate.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T04:05:52.498751043Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class TargetingTemplateAudienceSizing   {
   
   private TargetingTemplateAudienceSizingReachEstimate reachEstimate;

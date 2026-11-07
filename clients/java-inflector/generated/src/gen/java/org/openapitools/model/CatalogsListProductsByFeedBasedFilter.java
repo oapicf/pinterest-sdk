@@ -14,7 +14,7 @@ import org.openapitools.model.CatalogsProductGroupFilters;
  **/
 
 @ApiModel(description = "Request object to list products for a given feed_id and product group filter.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T02:49:37.429519120Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaInflectorServerCodegen", date = "2026-11-07T04:05:13.632954680Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsListProductsByFeedBasedFilter   {
   @JsonProperty("feed_id")
   private String feedId;

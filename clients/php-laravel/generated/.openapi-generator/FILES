@@ -1,5 +1,4 @@
 .gitignore
-.openapi-generator-ignore
 Api/AdAccountsApiInterface.php
 Api/AdGroupsApiInterface.php
 Api/AdsApiInterface.php

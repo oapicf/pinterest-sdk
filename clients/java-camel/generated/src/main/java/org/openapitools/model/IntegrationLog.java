@@ -27,7 +27,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "IntegrationLog", description = "Schema for log sent from an integration application.")
-@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T02:50:45.754899335Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.JavaCamelServerCodegen", date = "2026-11-07T04:06:05.360811865Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IntegrationLog {
 
   private JsonNullable<@Size(max = 128) String> advertiserId = JsonNullable.<String>undefined();

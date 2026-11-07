@@ -24,7 +24,7 @@ import org.openapitools.jackson.nullable.JsonNullable;
  **/
 @ApiModel(description = "Object holding a group of filters for a hotel product group")
 @JsonTypeName("CatalogsHotelProductGroupFilters")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-07T02:51:53.160510316Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2026-11-07T04:06:56.090374257Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelProductGroupFilters   {
   private List<@Valid CatalogsHotelProductGroupFilterKeys> anyOf = new ArrayList<>();
   private List<@Valid CatalogsHotelProductGroupFilterKeys> allOf = new ArrayList<>();

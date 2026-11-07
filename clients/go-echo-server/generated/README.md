@@ -13,7 +13,7 @@ To see how to make this your own, look here:
 [README](https://openapi-generator.tech)
 
 - API version: 5.28.0
-- Build date: 2026-11-07T02:47:50.604871929Z[Etc/UTC]
+- Build date: 2026-11-07T04:03:52.796430770Z[Etc/UTC]
 - Generator version: 7.26.0
 For more information, please visit [https://github.com/oapicf/pinterest-sdk](https://github.com/oapicf/pinterest-sdk)
 

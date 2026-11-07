@@ -7,7 +7,7 @@ import play.api.libs.json._
   * @param catalogType Retail catalog based product group is available only for selected partners at the moment. If you are not eligible, please use feed based one.
   * @param name Name of catalog product group
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CatalogsRetailProductGroupUpdateRequest(
   catalogType: Option[CatalogsRetailProductGroupUpdateRequest.CatalogType.Value],
   country: Option[Country],

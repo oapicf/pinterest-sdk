@@ -22,7 +22,7 @@ import play.api.libs.json._
   * @param neighborhood A list of neighborhoods where the hotel is located
   * @param salePrice Sale price of a hotel room per night. Used to advertise discounts off the regular price of the hotel.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CatalogsUpdatableHotelAttributes(
   address: Option[CatalogsHotelAddress],
   basePrice: Option[String],

@@ -33,7 +33,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   AgeBucketMultipliers.JSON_PROPERTY_A_G_E_B_U_C_K_E_T
 })
 @JsonTypeName("AgeBucketMultipliers")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T04:05:26.956049840Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AgeBucketMultipliers extends HashMap<String, Double> {
     public static final String JSON_PROPERTY_A_G_E_B_U_C_K_E_T = "AGE_BUCKET";

@@ -19,7 +19,7 @@ import org.openapitools.model.TrackingUrls;
  * Campaign data in batch response, with all fields optional to support error cases where data may be empty.
  */
 @ApiModel(description = "Campaign data in batch response, with all fields optional to support error cases where data may be empty.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignBatchResponseData   {
   @JsonProperty("ad_account_id")
   private String adAccountId;

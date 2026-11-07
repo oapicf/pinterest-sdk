@@ -25,7 +25,7 @@ import jakarta.annotation.Generated;
  */
 
 @Schema(name = "CatalogsHotelProductGroupProductCounts", description = "Product counts for a Hotel CatalogsProductGroup")
-@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T03:00:15.291566106Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value = "org.openapitools.codegen.languages.SpringCodegen", date = "2026-11-07T04:13:03.034594358Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelProductGroupProductCounts implements CatalogsProductGroupProductCountsVertical {
 
   /**

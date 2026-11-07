@@ -50,7 +50,7 @@ import com.github.oapicf.pinterestsdk.JSON;
 /**
  * Video ID-based media source.
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T02:48:51.905033430Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen", date = "2026-11-07T04:04:40.527481094Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinMediaSourceVideoID {
   public static final String SERIALIZED_NAME_COVER_IMAGE_CONTENT_TYPE = "cover_image_content_type";
   @SerializedName(SERIALIZED_NAME_COVER_IMAGE_CONTENT_TYPE)

@@ -34,7 +34,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   ProductTagsBulkDeleteRequest.JSON_PROPERTY_PRODUCT_TAGS
 })
 @JsonTypeName("ProductTagsBulkDeleteRequest")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T04:05:26.956049840Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class ProductTagsBulkDeleteRequest {
     public static final String JSON_PROPERTY_PRODUCT_TAGS = "product_tags";

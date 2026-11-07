@@ -32,7 +32,7 @@ import javax.validation.Valid;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T02:51:45.323422857Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T04:06:50.038620283Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class PinsApiServiceImpl implements PinsApi {
       public Response multiPinsAnalytics(List<@Pattern(regexp = "^\\d+$")String> pinIds,Date startDate,Date endDate,List<MultiPinsAnalyticsMetricTypesItem> metricTypes,String appTypes,String adAccountId,SecurityContext securityContext) {
       // do some magic!

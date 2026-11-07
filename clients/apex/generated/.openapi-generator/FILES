@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 README.md
 config/project-scratch-def.json
 force-app/main/default/classes/OAS.cls
@@ -29,8 +28,6 @@ force-app/main/default/classes/OASAdAccountToBusinessSharedAudience.cls
 force-app/main/default/classes/OASAdAccountToBusinessSharedAudience.cls-meta.xml
 force-app/main/default/classes/OASAdAccountsApi.cls
 force-app/main/default/classes/OASAdAccountsApi.cls-meta.xml
-force-app/main/default/classes/OASAdAccountsApiTest.cls
-force-app/main/default/classes/OASAdAccountsApiTest.cls-meta.xml
 force-app/main/default/classes/OASAdAccountsAudience.cls
 force-app/main/default/classes/OASAdAccountsAudience.cls-meta.xml
 force-app/main/default/classes/OASAdAccountsAudienceCreate.cls
@@ -103,8 +100,6 @@ force-app/main/default/classes/OASAdGroupsAnalyticsMetrics.cls
 force-app/main/default/classes/OASAdGroupsAnalyticsMetrics.cls-meta.xml
 force-app/main/default/classes/OASAdGroupsApi.cls
 force-app/main/default/classes/OASAdGroupsApi.cls-meta.xml
-force-app/main/default/classes/OASAdGroupsApiTest.cls
-force-app/main/default/classes/OASAdGroupsApiTest.cls-meta.xml
 force-app/main/default/classes/OASAdGroupsCreate200Response.cls
 force-app/main/default/classes/OASAdGroupsCreate200Response.cls-meta.xml
 force-app/main/default/classes/OASAdGroupsCreate200ResponseItemsInn.cls
@@ -165,8 +160,6 @@ force-app/main/default/classes/OASAdsAnalyticsMetricsFilter.cls
 force-app/main/default/classes/OASAdsAnalyticsMetricsFilter.cls-meta.xml
 force-app/main/default/classes/OASAdsApi.cls
 force-app/main/default/classes/OASAdsApi.cls-meta.xml
-force-app/main/default/classes/OASAdsApiTest.cls
-force-app/main/default/classes/OASAdsApiTest.cls-meta.xml
 force-app/main/default/classes/OASAdsCreditDiscountType.cls
 force-app/main/default/classes/OASAdsCreditDiscountType.cls-meta.xml
 force-app/main/default/classes/OASAdsCreditDiscountsResponse.cls
@@ -181,8 +174,6 @@ force-app/main/default/classes/OASAdsList200Response.cls
 force-app/main/default/classes/OASAdsList200Response.cls-meta.xml
 force-app/main/default/classes/OASAdvancedAuctionApi.cls
 force-app/main/default/classes/OASAdvancedAuctionApi.cls-meta.xml
-force-app/main/default/classes/OASAdvancedAuctionApiTest.cls
-force-app/main/default/classes/OASAdvancedAuctionApiTest.cls-meta.xml
 force-app/main/default/classes/OASAdvancedAuctionBidOptions.cls
 force-app/main/default/classes/OASAdvancedAuctionBidOptions.cls-meta.xml
 force-app/main/default/classes/OASAdvancedAuctionItem.cls
@@ -313,8 +304,6 @@ force-app/main/default/classes/OASAudienceInsights.cls
 force-app/main/default/classes/OASAudienceInsights.cls-meta.xml
 force-app/main/default/classes/OASAudienceInsightsApi.cls
 force-app/main/default/classes/OASAudienceInsightsApi.cls-meta.xml
-force-app/main/default/classes/OASAudienceInsightsApiTest.cls
-force-app/main/default/classes/OASAudienceInsightsApiTest.cls-meta.xml
 force-app/main/default/classes/OASAudienceInsightsScopeAndTypeGet20.cls
 force-app/main/default/classes/OASAudienceInsightsScopeAndTypeGet20.cls-meta.xml
 force-app/main/default/classes/OASAudienceObjectiveType.cls
@@ -325,8 +314,6 @@ force-app/main/default/classes/OASAudienceRule.cls
 force-app/main/default/classes/OASAudienceRule.cls-meta.xml
 force-app/main/default/classes/OASAudienceSharingApi.cls
 force-app/main/default/classes/OASAudienceSharingApi.cls-meta.xml
-force-app/main/default/classes/OASAudienceSharingApiTest.cls
-force-app/main/default/classes/OASAudienceSharingApiTest.cls-meta.xml
 force-app/main/default/classes/OASAudienceStatus.cls
 force-app/main/default/classes/OASAudienceStatus.cls-meta.xml
 force-app/main/default/classes/OASAudienceSubcategory.cls
@@ -337,8 +324,6 @@ force-app/main/default/classes/OASAudienceUpdateOperationType.cls
 force-app/main/default/classes/OASAudienceUpdateOperationType.cls-meta.xml
 force-app/main/default/classes/OASAudiencesApi.cls
 force-app/main/default/classes/OASAudiencesApi.cls-meta.xml
-force-app/main/default/classes/OASAudiencesApiTest.cls
-force-app/main/default/classes/OASAudiencesApiTest.cls-meta.xml
 force-app/main/default/classes/OASAudiencesList200Response.cls
 force-app/main/default/classes/OASAudiencesList200Response.cls-meta.xml
 force-app/main/default/classes/OASAuthRespondInviteAction.cls
@@ -379,8 +364,6 @@ force-app/main/default/classes/OASBidStrategyType.cls
 force-app/main/default/classes/OASBidStrategyType.cls-meta.xml
 force-app/main/default/classes/OASBillingApi.cls
 force-app/main/default/classes/OASBillingApi.cls-meta.xml
-force-app/main/default/classes/OASBillingApiTest.cls
-force-app/main/default/classes/OASBillingApiTest.cls-meta.xml
 force-app/main/default/classes/OASBillingInvoice.cls
 force-app/main/default/classes/OASBillingInvoice.cls-meta.xml
 force-app/main/default/classes/OASBillingInvoiceDocumentType.cls
@@ -435,8 +418,6 @@ force-app/main/default/classes/OASBoardWithUpdatePrivacyUpdate.cls
 force-app/main/default/classes/OASBoardWithUpdatePrivacyUpdate.cls-meta.xml
 force-app/main/default/classes/OASBoardsApi.cls
 force-app/main/default/classes/OASBoardsApi.cls-meta.xml
-force-app/main/default/classes/OASBoardsApiTest.cls
-force-app/main/default/classes/OASBoardsApiTest.cls-meta.xml
 force-app/main/default/classes/OASBoardsList200Response.cls
 force-app/main/default/classes/OASBoardsList200Response.cls-meta.xml
 force-app/main/default/classes/OASBoardsListPins200Response.cls
@@ -461,8 +442,6 @@ force-app/main/default/classes/OASBudgetType.cls
 force-app/main/default/classes/OASBudgetType.cls-meta.xml
 force-app/main/default/classes/OASBulkApi.cls
 force-app/main/default/classes/OASBulkApi.cls-meta.xml
-force-app/main/default/classes/OASBulkApiTest.cls
-force-app/main/default/classes/OASBulkApiTest.cls-meta.xml
 force-app/main/default/classes/OASBulkCampaignDeliveryEstimatesItem.cls
 force-app/main/default/classes/OASBulkCampaignDeliveryEstimatesItem.cls-meta.xml
 force-app/main/default/classes/OASBulkCampaignDeliveryEstimatesResp.cls
@@ -497,16 +476,10 @@ force-app/main/default/classes/OASBulkUpsertResponse.cls
 force-app/main/default/classes/OASBulkUpsertResponse.cls-meta.xml
 force-app/main/default/classes/OASBusinessAccessAssetsApi.cls
 force-app/main/default/classes/OASBusinessAccessAssetsApi.cls-meta.xml
-force-app/main/default/classes/OASBusinessAccessAssetsApiTest.cls
-force-app/main/default/classes/OASBusinessAccessAssetsApiTest.cls-meta.xml
 force-app/main/default/classes/OASBusinessAccessInviteApi.cls
 force-app/main/default/classes/OASBusinessAccessInviteApi.cls-meta.xml
-force-app/main/default/classes/OASBusinessAccessInviteApiTest.cls
-force-app/main/default/classes/OASBusinessAccessInviteApiTest.cls-meta.xml
 force-app/main/default/classes/OASBusinessAccessRelationshipsApi.cls
 force-app/main/default/classes/OASBusinessAccessRelationshipsApi.cls-meta.xml
-force-app/main/default/classes/OASBusinessAccessRelationshipsApiTest.cls
-force-app/main/default/classes/OASBusinessAccessRelationshipsApiTest.cls-meta.xml
 force-app/main/default/classes/OASBusinessAccessRole.cls
 force-app/main/default/classes/OASBusinessAccessRole.cls-meta.xml
 force-app/main/default/classes/OASBusinessAccessUserSummary.cls
@@ -617,8 +590,6 @@ force-app/main/default/classes/OASCampaignsAnalyticsMetrics.cls
 force-app/main/default/classes/OASCampaignsAnalyticsMetrics.cls-meta.xml
 force-app/main/default/classes/OASCampaignsApi.cls
 force-app/main/default/classes/OASCampaignsApi.cls-meta.xml
-force-app/main/default/classes/OASCampaignsApiTest.cls
-force-app/main/default/classes/OASCampaignsApiTest.cls-meta.xml
 force-app/main/default/classes/OASCampaignsList200Response.cls
 force-app/main/default/classes/OASCampaignsList200Response.cls-meta.xml
 force-app/main/default/classes/OASCancelInviteException.cls
@@ -647,24 +618,14 @@ force-app/main/default/classes/OASCatalogCreate.cls
 force-app/main/default/classes/OASCatalogCreate.cls-meta.xml
 force-app/main/default/classes/OASCatalogFeedsApi.cls
 force-app/main/default/classes/OASCatalogFeedsApi.cls-meta.xml
-force-app/main/default/classes/OASCatalogFeedsApiTest.cls
-force-app/main/default/classes/OASCatalogFeedsApiTest.cls-meta.xml
 force-app/main/default/classes/OASCatalogItemsApi.cls
 force-app/main/default/classes/OASCatalogItemsApi.cls-meta.xml
-force-app/main/default/classes/OASCatalogItemsApiTest.cls
-force-app/main/default/classes/OASCatalogItemsApiTest.cls-meta.xml
 force-app/main/default/classes/OASCatalogProductGroupsApi.cls
 force-app/main/default/classes/OASCatalogProductGroupsApi.cls-meta.xml
-force-app/main/default/classes/OASCatalogProductGroupsApiTest.cls
-force-app/main/default/classes/OASCatalogProductGroupsApiTest.cls-meta.xml
 force-app/main/default/classes/OASCatalogReportsApi.cls
 force-app/main/default/classes/OASCatalogReportsApi.cls-meta.xml
-force-app/main/default/classes/OASCatalogReportsApiTest.cls
-force-app/main/default/classes/OASCatalogReportsApiTest.cls-meta.xml
 force-app/main/default/classes/OASCatalogSupplementalApi.cls
 force-app/main/default/classes/OASCatalogSupplementalApi.cls-meta.xml
-force-app/main/default/classes/OASCatalogSupplementalApiTest.cls
-force-app/main/default/classes/OASCatalogSupplementalApiTest.cls-meta.xml
 force-app/main/default/classes/OASCatalogUpdate.cls
 force-app/main/default/classes/OASCatalogUpdate.cls-meta.xml
 force-app/main/default/classes/OASCatalogsAiContentDisclosure.cls
@@ -673,8 +634,6 @@ force-app/main/default/classes/OASCatalogsAiContentDisclosureLabel.cls
 force-app/main/default/classes/OASCatalogsAiContentDisclosureLabel.cls-meta.xml
 force-app/main/default/classes/OASCatalogsApi.cls
 force-app/main/default/classes/OASCatalogsApi.cls-meta.xml
-force-app/main/default/classes/OASCatalogsApiTest.cls
-force-app/main/default/classes/OASCatalogsApiTest.cls-meta.xml
 force-app/main/default/classes/OASCatalogsAvailableFilterValues.cls
 force-app/main/default/classes/OASCatalogsAvailableFilterValues.cls-meta.xml
 force-app/main/default/classes/OASCatalogsBaseFilterKeys.cls
@@ -1051,12 +1010,8 @@ force-app/main/default/classes/OASConversionDeletionRequestUserEmai.cls
 force-app/main/default/classes/OASConversionDeletionRequestUserEmai.cls-meta.xml
 force-app/main/default/classes/OASConversionDeletionRequestsApi.cls
 force-app/main/default/classes/OASConversionDeletionRequestsApi.cls-meta.xml
-force-app/main/default/classes/OASConversionDeletionRequestsApiTest.cls
-force-app/main/default/classes/OASConversionDeletionRequestsApiTest.cls-meta.xml
 force-app/main/default/classes/OASConversionEqsApi.cls
 force-app/main/default/classes/OASConversionEqsApi.cls-meta.xml
-force-app/main/default/classes/OASConversionEqsApiTest.cls
-force-app/main/default/classes/OASConversionEqsApiTest.cls-meta.xml
 force-app/main/default/classes/OASConversionEvent.cls
 force-app/main/default/classes/OASConversionEvent.cls-meta.xml
 force-app/main/default/classes/OASConversionEventAppInfo.cls
@@ -1071,8 +1026,6 @@ force-app/main/default/classes/OASConversionEvents.cls
 force-app/main/default/classes/OASConversionEvents.cls-meta.xml
 force-app/main/default/classes/OASConversionEventsApi.cls
 force-app/main/default/classes/OASConversionEventsApi.cls-meta.xml
-force-app/main/default/classes/OASConversionEventsApiTest.cls
-force-app/main/default/classes/OASConversionEventsApiTest.cls-meta.xml
 force-app/main/default/classes/OASConversionEventsCreate.cls
 force-app/main/default/classes/OASConversionEventsCreate.cls-meta.xml
 force-app/main/default/classes/OASConversionEventsDataItems.cls
@@ -1125,14 +1078,10 @@ force-app/main/default/classes/OASConversionTagV3GoalMetadata.cls
 force-app/main/default/classes/OASConversionTagV3GoalMetadata.cls-meta.xml
 force-app/main/default/classes/OASConversionTagsApi.cls
 force-app/main/default/classes/OASConversionTagsApi.cls-meta.xml
-force-app/main/default/classes/OASConversionTagsApiTest.cls
-force-app/main/default/classes/OASConversionTagsApiTest.cls-meta.xml
 force-app/main/default/classes/OASConversionTagsList200Response.cls
 force-app/main/default/classes/OASConversionTagsList200Response.cls-meta.xml
 force-app/main/default/classes/OASConversionsApi.cls
 force-app/main/default/classes/OASConversionsApi.cls-meta.xml
-force-app/main/default/classes/OASConversionsApiTest.cls
-force-app/main/default/classes/OASConversionsApiTest.cls-meta.xml
 force-app/main/default/classes/OASCountry.cls
 force-app/main/default/classes/OASCountry.cls-meta.xml
 force-app/main/default/classes/OASCountryFilter.cls
@@ -1205,20 +1154,14 @@ force-app/main/default/classes/OASCustomerListUploadCreateResponse.cls
 force-app/main/default/classes/OASCustomerListUploadCreateResponse.cls-meta.xml
 force-app/main/default/classes/OASCustomerListUploadsApi.cls
 force-app/main/default/classes/OASCustomerListUploadsApi.cls-meta.xml
-force-app/main/default/classes/OASCustomerListUploadsApiTest.cls
-force-app/main/default/classes/OASCustomerListUploadsApiTest.cls-meta.xml
 force-app/main/default/classes/OASCustomerListsApi.cls
 force-app/main/default/classes/OASCustomerListsApi.cls-meta.xml
-force-app/main/default/classes/OASCustomerListsApiTest.cls
-force-app/main/default/classes/OASCustomerListsApiTest.cls-meta.xml
 force-app/main/default/classes/OASCustomerListsList200Response.cls
 force-app/main/default/classes/OASCustomerListsList200Response.cls-meta.xml
 force-app/main/default/classes/OASCustomerSegment.cls
 force-app/main/default/classes/OASCustomerSegment.cls-meta.xml
 force-app/main/default/classes/OASCustomerSegmentApi.cls
 force-app/main/default/classes/OASCustomerSegmentApi.cls-meta.xml
-force-app/main/default/classes/OASCustomerSegmentApiTest.cls
-force-app/main/default/classes/OASCustomerSegmentApiTest.cls-meta.xml
 force-app/main/default/classes/OASCustomerSegmentCreate.cls
 force-app/main/default/classes/OASCustomerSegmentCreate.cls-meta.xml
 force-app/main/default/classes/OASCustomerSegmentList200Response.cls
@@ -1409,8 +1352,6 @@ force-app/main/default/classes/OASIntegrationRecord.cls
 force-app/main/default/classes/OASIntegrationRecord.cls-meta.xml
 force-app/main/default/classes/OASIntegrationsApi.cls
 force-app/main/default/classes/OASIntegrationsApi.cls-meta.xml
-force-app/main/default/classes/OASIntegrationsApiTest.cls
-force-app/main/default/classes/OASIntegrationsApiTest.cls-meta.xml
 force-app/main/default/classes/OASIntegrationsGetList200Response.cls
 force-app/main/default/classes/OASIntegrationsGetList200Response.cls-meta.xml
 force-app/main/default/classes/OASIntendedPromotionType.cls
@@ -1495,8 +1436,6 @@ force-app/main/default/classes/OASKeywords.cls
 force-app/main/default/classes/OASKeywords.cls-meta.xml
 force-app/main/default/classes/OASKeywordsApi.cls
 force-app/main/default/classes/OASKeywordsApi.cls-meta.xml
-force-app/main/default/classes/OASKeywordsApiTest.cls
-force-app/main/default/classes/OASKeywordsApiTest.cls-meta.xml
 force-app/main/default/classes/OASKeywordsCommon.cls
 force-app/main/default/classes/OASKeywordsCommon.cls-meta.xml
 force-app/main/default/classes/OASKeywordsCreate.cls
@@ -1541,8 +1480,6 @@ force-app/main/default/classes/OASLabeledEntitiesCreate.cls
 force-app/main/default/classes/OASLabeledEntitiesCreate.cls-meta.xml
 force-app/main/default/classes/OASLabelsApi.cls
 force-app/main/default/classes/OASLabelsApi.cls-meta.xml
-force-app/main/default/classes/OASLabelsApiTest.cls
-force-app/main/default/classes/OASLabelsApiTest.cls-meta.xml
 force-app/main/default/classes/OASLabelsList200Response.cls
 force-app/main/default/classes/OASLabelsList200Response.cls-meta.xml
 force-app/main/default/classes/OASLabelsResponse.cls
@@ -1551,8 +1488,6 @@ force-app/main/default/classes/OASLanguage.cls
 force-app/main/default/classes/OASLanguage.cls-meta.xml
 force-app/main/default/classes/OASLeadAdsApi.cls
 force-app/main/default/classes/OASLeadAdsApi.cls-meta.xml
-force-app/main/default/classes/OASLeadAdsApiTest.cls
-force-app/main/default/classes/OASLeadAdsApiTest.cls-meta.xml
 force-app/main/default/classes/OASLeadForm.cls
 force-app/main/default/classes/OASLeadForm.cls-meta.xml
 force-app/main/default/classes/OASLeadFormBatchUpdate.cls
@@ -1575,8 +1510,6 @@ force-app/main/default/classes/OASLeadFormTestCreate.cls
 force-app/main/default/classes/OASLeadFormTestCreate.cls-meta.xml
 force-app/main/default/classes/OASLeadFormsApi.cls
 force-app/main/default/classes/OASLeadFormsApi.cls-meta.xml
-force-app/main/default/classes/OASLeadFormsApiTest.cls
-force-app/main/default/classes/OASLeadFormsApiTest.cls-meta.xml
 force-app/main/default/classes/OASLeadFormsCreate200Response.cls
 force-app/main/default/classes/OASLeadFormsCreate200Response.cls-meta.xml
 force-app/main/default/classes/OASLeadFormsCreate200ResponseItemsIn.cls
@@ -1593,8 +1526,6 @@ force-app/main/default/classes/OASLeadSubscriptionPostParamsCreate.cls
 force-app/main/default/classes/OASLeadSubscriptionPostParamsCreate.cls-meta.xml
 force-app/main/default/classes/OASLeadsExportApi.cls
 force-app/main/default/classes/OASLeadsExportApi.cls-meta.xml
-force-app/main/default/classes/OASLeadsExportApiTest.cls
-force-app/main/default/classes/OASLeadsExportApiTest.cls-meta.xml
 force-app/main/default/classes/OASLeadsExportResponseData.cls
 force-app/main/default/classes/OASLeadsExportResponseData.cls-meta.xml
 force-app/main/default/classes/OASLeadsExportStatus.cls
@@ -1661,8 +1592,6 @@ force-app/main/default/classes/OASMedia.cls
 force-app/main/default/classes/OASMedia.cls-meta.xml
 force-app/main/default/classes/OASMediaApi.cls
 force-app/main/default/classes/OASMediaApi.cls-meta.xml
-force-app/main/default/classes/OASMediaApiTest.cls
-force-app/main/default/classes/OASMediaApiTest.cls-meta.xml
 force-app/main/default/classes/OASMediaList200Response.cls
 force-app/main/default/classes/OASMediaList200Response.cls-meta.xml
 force-app/main/default/classes/OASMediaType.cls
@@ -1697,8 +1626,6 @@ force-app/main/default/classes/OASMsotEventName.cls
 force-app/main/default/classes/OASMsotEventName.cls-meta.xml
 force-app/main/default/classes/OASMsotEventsApi.cls
 force-app/main/default/classes/OASMsotEventsApi.cls-meta.xml
-force-app/main/default/classes/OASMsotEventsApiTest.cls
-force-app/main/default/classes/OASMsotEventsApiTest.cls-meta.xml
 force-app/main/default/classes/OASMultiPinsAnalyticsMetricTypesItem.cls
 force-app/main/default/classes/OASMultiPinsAnalyticsMetricTypesItem.cls-meta.xml
 force-app/main/default/classes/OASNetworkType.cls
@@ -1709,8 +1636,6 @@ force-app/main/default/classes/OASNonNullableCatalogsCurrency.cls
 force-app/main/default/classes/OASNonNullableCatalogsCurrency.cls-meta.xml
 force-app/main/default/classes/OASNotificationApi.cls
 force-app/main/default/classes/OASNotificationApi.cls-meta.xml
-force-app/main/default/classes/OASNotificationApiTest.cls
-force-app/main/default/classes/OASNotificationApiTest.cls-meta.xml
 force-app/main/default/classes/OASNotificationPostRequest.cls
 force-app/main/default/classes/OASNotificationPostRequest.cls-meta.xml
 force-app/main/default/classes/OASNotificationResponse.cls
@@ -1737,8 +1662,6 @@ force-app/main/default/classes/OASOauthAccessToken.cls
 force-app/main/default/classes/OASOauthAccessToken.cls-meta.xml
 force-app/main/default/classes/OASOauthApi.cls
 force-app/main/default/classes/OASOauthApi.cls-meta.xml
-force-app/main/default/classes/OASOauthApiTest.cls
-force-app/main/default/classes/OASOauthApiTest.cls-meta.xml
 force-app/main/default/classes/OASObjectiveType.cls
 force-app/main/default/classes/OASObjectiveType.cls-meta.xml
 force-app/main/default/classes/OASOperationType.cls
@@ -1763,8 +1686,6 @@ force-app/main/default/classes/OASOrderLineStatus.cls
 force-app/main/default/classes/OASOrderLineStatus.cls-meta.xml
 force-app/main/default/classes/OASOrderLinesApi.cls
 force-app/main/default/classes/OASOrderLinesApi.cls-meta.xml
-force-app/main/default/classes/OASOrderLinesApiTest.cls
-force-app/main/default/classes/OASOrderLinesApiTest.cls-meta.xml
 force-app/main/default/classes/OASOrderLinesList200Response.cls
 force-app/main/default/classes/OASOrderLinesList200Response.cls-meta.xml
 force-app/main/default/classes/OASOsFamily.cls
@@ -1841,8 +1762,6 @@ force-app/main/default/classes/OASPinnerListType.cls
 force-app/main/default/classes/OASPinnerListType.cls-meta.xml
 force-app/main/default/classes/OASPinsApi.cls
 force-app/main/default/classes/OASPinsApi.cls-meta.xml
-force-app/main/default/classes/OASPinsApiTest.cls
-force-app/main/default/classes/OASPinsApiTest.cls-meta.xml
 force-app/main/default/classes/OASPinsList200Response.cls
 force-app/main/default/classes/OASPinsList200Response.cls-meta.xml
 force-app/main/default/classes/OASPinsSaveRequestCreate.cls
@@ -1911,8 +1830,6 @@ force-app/main/default/classes/OASProductGroupPromotions.cls
 force-app/main/default/classes/OASProductGroupPromotions.cls-meta.xml
 force-app/main/default/classes/OASProductGroupPromotionsApi.cls
 force-app/main/default/classes/OASProductGroupPromotionsApi.cls-meta.xml
-force-app/main/default/classes/OASProductGroupPromotionsApiTest.cls
-force-app/main/default/classes/OASProductGroupPromotionsApiTest.cls-meta.xml
 force-app/main/default/classes/OASProductGroupPromotionsCreate.cls
 force-app/main/default/classes/OASProductGroupPromotionsCreate.cls-meta.xml
 force-app/main/default/classes/OASProductGroupPromotionsList200Resp.cls
@@ -1927,8 +1844,6 @@ force-app/main/default/classes/OASProductTagItem.cls
 force-app/main/default/classes/OASProductTagItem.cls-meta.xml
 force-app/main/default/classes/OASProductTagsApi.cls
 force-app/main/default/classes/OASProductTagsApi.cls-meta.xml
-force-app/main/default/classes/OASProductTagsApiTest.cls
-force-app/main/default/classes/OASProductTagsApiTest.cls-meta.xml
 force-app/main/default/classes/OASProductTagsBulkAddRequest.cls
 force-app/main/default/classes/OASProductTagsBulkAddRequest.cls-meta.xml
 force-app/main/default/classes/OASProductTagsBulkDeleteRequest.cls
@@ -1963,8 +1878,6 @@ force-app/main/default/classes/OASPromotionType.cls
 force-app/main/default/classes/OASPromotionType.cls-meta.xml
 force-app/main/default/classes/OASPromotionsApi.cls
 force-app/main/default/classes/OASPromotionsApi.cls-meta.xml
-force-app/main/default/classes/OASPromotionsApiTest.cls
-force-app/main/default/classes/OASPromotionsApiTest.cls-meta.xml
 force-app/main/default/classes/OASPromotionsList200Response.cls
 force-app/main/default/classes/OASPromotionsList200Response.cls-meta.xml
 force-app/main/default/classes/OASPromotionsResponse.cls
@@ -2015,8 +1928,6 @@ force-app/main/default/classes/OASReportsStats200Response.cls
 force-app/main/default/classes/OASReportsStats200Response.cls-meta.xml
 force-app/main/default/classes/OASResourcesApi.cls
 force-app/main/default/classes/OASResourcesApi.cls-meta.xml
-force-app/main/default/classes/OASResourcesApiTest.cls
-force-app/main/default/classes/OASResourcesApiTest.cls-meta.xml
 force-app/main/default/classes/OASRespondToInviteResultItem.cls
 force-app/main/default/classes/OASRespondToInviteResultItem.cls-meta.xml
 force-app/main/default/classes/OASRespondToInvitesResponseArray.cls
@@ -2097,8 +2008,6 @@ force-app/main/default/classes/OASScheduleUpdateRequestAllOf1.cls
 force-app/main/default/classes/OASScheduleUpdateRequestAllOf1.cls-meta.xml
 force-app/main/default/classes/OASSchedulesApi.cls
 force-app/main/default/classes/OASSchedulesApi.cls-meta.xml
-force-app/main/default/classes/OASSchedulesApiTest.cls
-force-app/main/default/classes/OASSchedulesApiTest.cls-meta.xml
 force-app/main/default/classes/OASSchedulesCreate200ResponseInner.cls
 force-app/main/default/classes/OASSchedulesCreate200ResponseInner.cls-meta.xml
 force-app/main/default/classes/OASSchedulesCreate200ResponseInnerDa.cls
@@ -2109,8 +2018,6 @@ force-app/main/default/classes/OASScrollupGoalMetadata.cls
 force-app/main/default/classes/OASScrollupGoalMetadata.cls-meta.xml
 force-app/main/default/classes/OASSearchApi.cls
 force-app/main/default/classes/OASSearchApi.cls-meta.xml
-force-app/main/default/classes/OASSearchApiTest.cls
-force-app/main/default/classes/OASSearchApiTest.cls-meta.xml
 force-app/main/default/classes/OASSearchPartnerPins200Response.cls
 force-app/main/default/classes/OASSearchPartnerPins200Response.cls-meta.xml
 force-app/main/default/classes/OASSharedAudienceAccount.cls
@@ -2199,8 +2106,6 @@ force-app/main/default/classes/OASTargetingTemplate.cls
 force-app/main/default/classes/OASTargetingTemplate.cls-meta.xml
 force-app/main/default/classes/OASTargetingTemplateApi.cls
 force-app/main/default/classes/OASTargetingTemplateApi.cls-meta.xml
-force-app/main/default/classes/OASTargetingTemplateApiTest.cls
-force-app/main/default/classes/OASTargetingTemplateApiTest.cls-meta.xml
 force-app/main/default/classes/OASTargetingTemplateAudienceSizing.cls
 force-app/main/default/classes/OASTargetingTemplateAudienceSizing.cls-meta.xml
 force-app/main/default/classes/OASTargetingTemplateAudienceSizingRe.cls
@@ -2223,14 +2128,10 @@ force-app/main/default/classes/OASTemplatesList200Response.cls
 force-app/main/default/classes/OASTemplatesList200Response.cls-meta.xml
 force-app/main/default/classes/OASTermsApi.cls
 force-app/main/default/classes/OASTermsApi.cls-meta.xml
-force-app/main/default/classes/OASTermsApiTest.cls
-force-app/main/default/classes/OASTermsApiTest.cls-meta.xml
 force-app/main/default/classes/OASTermsOfService.cls
 force-app/main/default/classes/OASTermsOfService.cls-meta.xml
 force-app/main/default/classes/OASTermsOfServiceApi.cls
 force-app/main/default/classes/OASTermsOfServiceApi.cls-meta.xml
-force-app/main/default/classes/OASTermsOfServiceApiTest.cls
-force-app/main/default/classes/OASTermsOfServiceApiTest.cls-meta.xml
 force-app/main/default/classes/OASTest.cls
 force-app/main/default/classes/OASTest.cls-meta.xml
 force-app/main/default/classes/OASTieBreakerType.cls
@@ -2283,8 +2184,6 @@ force-app/main/default/classes/OASTrendsAgeDistribution.cls
 force-app/main/default/classes/OASTrendsAgeDistribution.cls-meta.xml
 force-app/main/default/classes/OASTrendsApi.cls
 force-app/main/default/classes/OASTrendsApi.cls-meta.xml
-force-app/main/default/classes/OASTrendsApiTest.cls
-force-app/main/default/classes/OASTrendsApiTest.cls-meta.xml
 force-app/main/default/classes/OASTrendsEditorial.cls
 force-app/main/default/classes/OASTrendsEditorial.cls-meta.xml
 force-app/main/default/classes/OASTrendsGender.cls
@@ -2327,8 +2226,6 @@ force-app/main/default/classes/OASUpdatePartnerAssetsResultsRespons.cls
 force-app/main/default/classes/OASUpdatePartnerAssetsResultsRespons.cls-meta.xml
 force-app/main/default/classes/OASUserAccountApi.cls
 force-app/main/default/classes/OASUserAccountApi.cls-meta.xml
-force-app/main/default/classes/OASUserAccountApiTest.cls
-force-app/main/default/classes/OASUserAccountApiTest.cls-meta.xml
 force-app/main/default/classes/OASUserAccountFollowedInterests200Re.cls
 force-app/main/default/classes/OASUserAccountFollowedInterests200Re.cls-meta.xml
 force-app/main/default/classes/OASUserAccountType.cls

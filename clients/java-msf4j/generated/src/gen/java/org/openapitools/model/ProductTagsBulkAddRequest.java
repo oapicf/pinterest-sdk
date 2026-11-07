@@ -14,7 +14,7 @@ import org.openapitools.model.ProductTagItem;
  * Request body for bulk adding product tags to a pin.
  */
 @ApiModel(description = "Request body for bulk adding product tags to a pin.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class ProductTagsBulkAddRequest   {
   @JsonProperty("product_tags")
   private List<@Valid ProductTagItem> productTags = new ArrayList<>();

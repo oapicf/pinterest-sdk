@@ -197,7 +197,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.SecurityContext;
 import javax.validation.constraints.*;
 import javax.validation.Valid;
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T04:06:30.634820227Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public abstract class AdAccountsApiService {
     public abstract Response adAccountAnalytics( @NotNull Date startDate, @NotNull Date endDate, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity, @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId,BigDecimal clickWindowDays,BigDecimal engagementWindowDays,BigDecimal viewWindowDays,String conversionReportTime,ReportingTimeZone reportingTimezone,SecurityContext securityContext) throws NotFoundException;
     public abstract Response adAccountTargetingAnalyticsGet( @Pattern(regexp="^\\d+$") @Size(max=18)String adAccountId, @NotNull Date startDate, @NotNull Date endDate, @NotNull  @Size(min=1,max=15)List<AdsAnalyticsAccountTargetingType> targetingTypes, @NotNull List<ReportingColumnSync> columns, @NotNull Granularity granularity,BigDecimal clickWindowDays,BigDecimal engagementWindowDays,BigDecimal viewWindowDays,String conversionReportTime, @Size(max=2)List<ConversionReportAttributionType> attributionTypes,ReportingTimeZone reportingTimezone,SecurityContext securityContext) throws NotFoundException;

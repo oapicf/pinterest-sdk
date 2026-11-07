@@ -30,7 +30,7 @@ import javax.ws.rs.*;
 
 
 @io.swagger.annotations.Api(description = "the media API")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class MediaApi  {
    private final MediaApiService delegate = MediaApiServiceFactory.getMediaApi();
 

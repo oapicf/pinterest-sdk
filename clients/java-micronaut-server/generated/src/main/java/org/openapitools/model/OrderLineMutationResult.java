@@ -35,7 +35,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   OrderLineMutationResult.JSON_PROPERTY_ORDER_LINE
 })
 @JsonTypeName("OrderLineMutationResult")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T04:05:26.956049840Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class OrderLineMutationResult {
     public static final String JSON_PROPERTY_ERRORS = "errors";

@@ -91,7 +91,7 @@ import play.api.libs.json._
   * @param VIDEO_LEVEL_INTERNAL_ERROR We experienced a technical difficulty and were unable to download some additional videos. The next download attempt will happen in 24 hours.
   * @param VIDEO_MALFORMED_URL Video files are unreadable. Please check your link and upload new files to continue.
   */
-@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T02:59:47.831280460Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = Array("org.openapitools.codegen.languages.ScalaPlayFrameworkServerCodegen"), date = "2026-11-07T04:12:42.952922086Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 case class CatalogsFeedIngestionWarnings(
   AD_IMAGE_DOWNLOAD_CONTENT_READ_ERROR: Option[Int],
   AD_IMAGE_DOWNLOAD_DNS_LOOKUP_ERROR: Option[Int],

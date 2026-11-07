@@ -33,7 +33,7 @@ import javax.validation.Valid;
 @JsonPropertyOrder({
   AppTypeMultipliers.JSON_PROPERTY_A_P_P_T_Y_P_E
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T04:06:30.634820227Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class AppTypeMultipliers extends HashMap<String, Double>  {
   public static final String JSON_PROPERTY_A_P_P_T_Y_P_E = "APP_TYPE";
   @JsonProperty(JSON_PROPERTY_A_P_P_T_Y_P_E)

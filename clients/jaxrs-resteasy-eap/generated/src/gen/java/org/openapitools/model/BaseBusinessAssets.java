@@ -16,7 +16,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An object containing the permissions a business has on the asset.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T02:51:45.323422857Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@ApiModel(description="An object containing the permissions a business has on the asset.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T04:06:50.038620283Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BaseBusinessAssets   {
   
   private AssetGroupBinding assetGroupInfo;

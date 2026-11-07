@@ -15,7 +15,7 @@ import org.openapitools.model.BillingInvoice;
 /**
  * BillingInvoicesGet200Response
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class BillingInvoicesGet200Response   {
   @JsonProperty("bookmark")
   private String bookmark;

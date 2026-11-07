@@ -29,7 +29,7 @@ import org.openapitools.model.InviteType;
  */
 
 @ApiModel(description = "Body to be used on path to send Members or Partners Invite or Request")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T04:05:52.498751043Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CreateMembershipOrPartnershipInvitesBody   {
   
   private BusinessRoleForInvite businessRole;

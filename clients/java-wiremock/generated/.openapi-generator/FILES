@@ -1,4 +1,3 @@
-.openapi-generator-ignore
 pom.xml
 src/main/java/org/openapitools/mockserver/api/AdAccountsApiMockServer.java
 src/main/java/org/openapitools/mockserver/api/AdGroupsApiMockServer.java

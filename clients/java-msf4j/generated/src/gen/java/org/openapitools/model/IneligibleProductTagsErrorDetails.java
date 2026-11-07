@@ -14,7 +14,7 @@ import org.openapitools.model.IneligibleProductTagErrorItem;
  * Details about ineligible product tags in the request.
  */
 @ApiModel(description = "Details about ineligible product tags in the request.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class IneligibleProductTagsErrorDetails   {
   @JsonProperty("product_tags")
   private List<@Valid IneligibleProductTagErrorItem> productTags = new ArrayList<>();

@@ -12,7 +12,7 @@ import org.openapitools.model.CatalogsHotelReportStatsParametersReport;
  * Parameters for hotel report
  */
 @ApiModel(description = "Parameters for hotel report")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsHotelReportStatsParameters   {
   /**
    * Gets or Sets catalogType

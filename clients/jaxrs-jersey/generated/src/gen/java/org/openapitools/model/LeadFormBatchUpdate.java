@@ -43,7 +43,7 @@ import javax.validation.Valid;
   LeadFormBatchUpdate.JSON_PROPERTY_QUESTIONS,
   LeadFormBatchUpdate.JSON_PROPERTY_STATUS
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T04:06:30.634820227Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class LeadFormBatchUpdate   {
   public static final String JSON_PROPERTY_COMPLETION_MESSAGE = "completion_message";
   @JsonProperty(JSON_PROPERTY_COMPLETION_MESSAGE)

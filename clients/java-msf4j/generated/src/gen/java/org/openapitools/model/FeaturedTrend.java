@@ -17,7 +17,7 @@ import org.openapitools.model.TrendingTopic;
  * Featured trending topics for a specific interest and market
  */
 @ApiModel(description = "Featured trending topics for a specific interest and market")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T02:50:03.251555637Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaMSF4JServerCodegen", date = "2026-11-07T04:05:33.662988146Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class FeaturedTrend   {
   @JsonProperty("interest")
   private InterestsEnum interest;

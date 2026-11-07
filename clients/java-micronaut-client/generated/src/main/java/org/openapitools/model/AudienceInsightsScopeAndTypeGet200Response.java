@@ -33,7 +33,7 @@ import javax.annotation.Generated;
   AudienceInsightsScopeAndTypeGet200Response.JSON_PROPERTY_ITEMS
 })
 @JsonTypeName("audience_insights_scope_and_type_get_200_response")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T04:05:20.373022734Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class AudienceInsightsScopeAndTypeGet200Response {
     public static final String JSON_PROPERTY_ITEMS = "items";

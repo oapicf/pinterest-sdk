@@ -36,7 +36,7 @@ import javax.annotation.Generated;
   CartingProduct.JSON_PROPERTY_RANDOMIZE_PREFERRED_RETAILERS
 })
 @JsonTypeName("CartingProduct")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T02:49:46.018433938Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautClientCodegen", date="2026-11-07T04:05:20.373022734Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CartingProduct {
     public static final String JSON_PROPERTY_CARTING_PRODUCT_ID = "carting_product_id";

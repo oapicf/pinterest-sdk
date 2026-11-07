@@ -39,7 +39,7 @@ import javax.validation.Valid;
   CatalogsRetailReportParametersReport.JSON_PROPERTY_CATALOG_ID,
   CatalogsRetailReportParametersReport.JSON_PROPERTY_PRODUCT_GROUP_ID
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "report_type", visible = true)
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T04:06:30.634820227Z[Etc/UTC]", comments = "Generator version: 7.26.0")@JsonTypeInfo(use = JsonTypeInfo.Id.NAME, include = JsonTypeInfo.As.PROPERTY, property = "report_type", visible = true)
 @JsonSubTypes({
   @JsonSubTypes.Type(value = CatalogsRetailReportAllItemsFilter.class, name = "ALL_ITEMS"),
   @JsonSubTypes.Type(value = CatalogsReportDistributionIssueFilter.class, name = "DISTRIBUTION_ISSUES"),

@@ -32,7 +32,7 @@ import org.openapitools.model.TrackingUrls;
  */
 
 @ApiModel(description = "Campaign data in batch response, with all fields optional to support error cases where data may be empty.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T04:05:52.498751043Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignBatchResponseData   {
   
   private String adAccountId;

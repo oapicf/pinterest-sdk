@@ -34,7 +34,7 @@ import javax.validation.Valid;
   CatalogsProductGroupCreateRequest.JSON_PROPERTY_IS_FEATURED,
   CatalogsProductGroupCreateRequest.JSON_PROPERTY_NAME
 })
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T02:51:20.133823354Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJerseyServerCodegen", date = "2026-11-07T04:06:30.634820227Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CatalogsProductGroupCreateRequest   {
   public static final String JSON_PROPERTY_DESCRIPTION = "description";
   @JsonProperty(JSON_PROPERTY_DESCRIPTION)

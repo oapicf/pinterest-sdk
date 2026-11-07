@@ -12,7 +12,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 import io.swagger.annotations.*;
 
-@ApiModel(description="An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T02:51:45.323422857Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@ApiModel(description="An invite object if the invite/request was successfully updated. Will only be provided if the an invite/request is successfully updated.")@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaResteasyEapServerCodegen", date = "2026-11-07T04:06:50.038620283Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class InviteBusinessRoleBinding   {
   
   private String createdByBusinessId;

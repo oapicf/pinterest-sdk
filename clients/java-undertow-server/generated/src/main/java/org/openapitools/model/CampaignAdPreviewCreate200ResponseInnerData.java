@@ -26,7 +26,7 @@ import org.openapitools.model.PinterestLibError;
  */
 
 @ApiModel(description = "Created/updated resource on success or error details on failure")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T02:50:28.050174747Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaUndertowServerCodegen", date = "2026-11-07T04:05:52.498751043Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 public class CampaignAdPreviewCreate200ResponseInnerData   {
   
   private String adAccountId;

@@ -235,7 +235,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
   CatalogsItemValidationWarnings.JSON_PROPERTY_W_E_I_G_H_T_U_N_I_T_I_N_V_A_L_I_D
 })
 @JsonTypeName("CatalogsItemValidationWarnings")
-@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T02:49:54.495502757Z[Etc/UTC]", comments = "Generator version: 7.26.0")
+@Generated(value="org.openapitools.codegen.languages.JavaMicronautServerCodegen", date="2026-11-07T04:05:26.956049840Z[Etc/UTC]", comments = "Generator version: 7.26.0")
 @Introspected
 public class CatalogsItemValidationWarnings {
     public static final String JSON_PROPERTY_A_D_I_M_A_G_E0_L_I_N_K_D_U_P_L_I_C_A_T_E_D = "AD_IMAGE_0_LINK_DUPLICATED";
