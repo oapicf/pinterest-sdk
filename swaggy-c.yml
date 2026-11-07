@@ -1,7 +1,6 @@
 ---
-spec_uri: >-
-  https://raw.githubusercontent.com/pinterest/api-description/refs/tags/v5.28.0/v5/openapi.yaml
-version: 2.1.1-pre.0
+spec_uri: https://raw.githubusercontent.com/pinterest/api-description/refs/tags/v5.28.0/v5/openapi.yaml
+version: 2.2.0
 contact:
   name: OpenAPI Clients Factory
   url: https://github.com/oapicf/pinterest-sdk
@@ -12,9 +11,8 @@ scm:
 base_dir:
   github_actions: /home/runner/work/pinterest-sdk/pinterest-sdk
   local: /Users/cliffano/dev/workspace-oapicf/pinterest-sdk
-  custom: >-
-    /home/runner/work/generator-openapi-generator/generator-openapi-generator/stage/pinterest-sdk/
-generators_extra_args: '--global-property modelTests=false'
+  custom: /home/runner/work/generator-openapi-generator/generator-openapi-generator/stage/pinterest-sdk/
+generators_extra_args: --global-property modelTests=false
 generator:
   component: oag-url-spec
   inputs:
